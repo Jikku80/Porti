@@ -1,0 +1,109 @@
+extends baselayout
+
+block content
+    if (user)
+        if (portfolio.user.id == user._id)
+            img.loader.hidden(src="/images/loading.gif", alt="loader")
+            .land__content
+                .land__nav
+                    h1.land__head Your Creations
+                    #logout.logout
+                        img(src="/images/poweroff.png", alt="signout")
+            
+                .land__goto
+                    h1#port_name= `${portfolio.name}`
+                    p Go to your portfolio
+                    .port__link
+                        a#urlLink
+                            span#endpoint= `${portfolio._id}`
+
+                    .copy__link 
+                        button#copyLink.redbtn Copy Link
+                
+                .land__update
+                    button#update_port.redbtn Update Portfolio
+                    #update_form.hidden.upform
+                        .upform__head 
+                            h1 Update Your Portfolio 
+                            img.cancel(src="/images/cancel.png", alt="cancel_img")
+                        form#upPort
+                            .form__bod
+                                label Portfolio Name:
+                                input#upname(type="text" name="name" value=`${portfolio.name}` required)
+                            .form__bod
+                                label About You:
+                                textarea#upabout(rows="4" cols="50" name="about" required)= portfolio.about
+                            .form__bod
+                                label What You Do:
+                                textarea#upwhat(rows="4" cols="50" name="what" required)= portfolio.what
+                            .form__bod
+                                label Why You Do It:
+                                textarea#upwhy(rows="4" cols="50" name="why" required)= portfolio.why
+                            label Contact Details:
+                            .form__bod
+                                label Phone Number: 
+                                input#upno(type="number" value= `${portfolio.phn_no}` name="phn_no" required)
+                            .form__bod
+                                label Show Your Phone Number: 
+                                if (portfolio.showNo === true)
+                                    input#upCheck(type="checkbox" checked="checked")
+                                else
+                                    input#upCheck(type="checkbox") 
+                            .form__bod 
+                                label Change Theme 
+                                select#themes
+                                    option.opt(value="a9993e364706816aba3e25717850c26c9cd0d89d") Plain Layout 
+                                    option.opt(value="589c22335a381f122d129225f5c0ba3056ed5811") BG Layout
+                                    option.opt(value="481743d632b80d39bc2771d19be3ca3005b3f8af") ST Layout
+                            .form__bod
+                                label Email Address:
+                                input#upemail(type="email" value=`${portfolio.email}` name="email" required)
+                            .form__bod
+                                label Your Facebook Profile Link: 
+                                input#upFb(type="text" value=`${portfolio.fb}`)
+                            .form__bod
+                                label Detail:
+                                textarea#upwork(rows="4" cols="50" name="previous" required)= portfolio.previous
+                            button#updateBtn.redbtn Update
+                    
+                    button#update_Img.redbtn Update Portfolio Images
+                    #update_ImgForm.hidden.upform
+                        form#upImage
+                            .upform__head 
+                                h1 Update Your Port Images
+                                img.cancl(src="/images/cancel.png", alt="cancel_img")
+                            .form__bod.file_part
+                                input#img1(type="file" accept="image/*" name="img1" value=`/images/ports/imageCover/${portfolio.imageCover}`)
+                                label Heading: 
+                                input#firstImg(type="text" value= `${portfolio.firstImgHead}` name="firstImgHead")
+                            .form__bod.file_part
+                                input#img2(type="file" accept="image/*" name="img2" value= portfolio.imageSecond)
+                                label Heading: 
+                                input#secondImg(type="text" value= `${portfolio.secondImgHead}` name="secondImgHead")
+                            .form__bod.file_part
+                                input#img3(type="file" accept="image/*" name="img3" value= portfolio.imageThird)
+                                label Heading: 
+                                input#thirdImg(type="text" value= `${portfolio.thirdImgHead}` name="thirdImgHead")
+                            .form__bod.file_part
+                                input#img4(type="file" accept="image/*" name="img4" value= portfolio.imageFourth)
+                                label Heading: 
+                                input#fourthImg(type="text" value= `${portfolio.fourthImgHead}` name="fourthImgHead")
+                            .form__bod.file_part
+                                input#img5(type="file" accept="image/*" name="img5" value= portfolio.imageFifth)
+                                label Heading: 
+                                input#fifthImg(type="text" value= `${portfolio.fifthImgHead}` name="fifthImgHead")
+
+                            button#updateImgBtn.redbtn Update
+        else 
+            .confirm__pg
+                h1 You Dont Belong Here, Use Your Phone Number
+                a.redbtn(href="/porti") Go Back
+    else 
+        .notifier
+            h1 You are not Logged In! Please Log In 
+            a.redbtn(href="/login") Log In
+
+    script(src="/js/alert.js")     
+    script(src=`/js/layouts/landing.js`) 
+    script(src="/js/logout.js")
+     

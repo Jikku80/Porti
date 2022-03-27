@@ -1,0 +1,22 @@
+.login__form 
+    form#loginForm
+        h2 Log into your account 
+        .login__form__bod
+            label.form__label(for='email') Email Address
+            input#email_add.form__input(type='email', name="email_add", placeholder='you@example.com', required)
+            label.form__label(for='password') Password 
+            input#password.form__input(type='password', name="password", placeholder='********', required, minlength='8')
+            button.btn__login.redbtn Login
+    
+    img.loader.hidden(src="/images/loading.gif", alt="loader")
+    
+    include auth/_forgotPwd
+
+    include auth/_signup
+
+
+script(src="/js/alert.js") 
+script(src="/js/login.js") 
+
+
+        

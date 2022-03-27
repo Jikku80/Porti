@@ -1,0 +1,43 @@
+extends base
+
+block content
+    if (user)
+        .port__nav
+            a.port__head(href="/me")= user.name
+            button#view.redbtn View Your Creation
+            #logout.logout
+                img(src="/images/poweroff.png", alt="signout")
+    else
+        .port__nav.small__nav
+            h1 Please login or Signup to Create Your Portfolio!
+            a.login(href="/login") LogIn | SignUp
+    img.loader.hidden(src="/images/loading.gif", alt="loader")
+    .port__bod
+        h2 Create a portfolio
+        p Pick any of the layouts below and build your portfolio in just minutes!
+        if (user)
+            .layout__main
+                #layout1.un_layout
+                    img(src="/images/layout1.png", alt="layout1")
+                    p Plain Layout
+                #layout2.un_layout
+                    img(src="/images/layout2.png", alt="layout2")
+                    p BG Layout
+                #layout3.un_layout
+                    img(src="/images/layout3.png", alt="layout3")
+                    p ST Layout
+        else 
+            .layout__main
+                .un_layout
+                    img(src="/images/layout1.png", alt="layout1")
+                    p Plain Layout
+                .un_layout
+                    img(src="/images/layout2.png", alt="layout2")
+                    p BG Layout
+    
+    script(src="/js/alert.js")
+    script(src="/js/logout.js") 
+    script(src="/js/createPort/viewCr.js")
+    script(src="/js/createPort/createport.js")
+    script(src="/js/createPort/createport2.js")
+    script(src="/js/createPort/createport3.js")  

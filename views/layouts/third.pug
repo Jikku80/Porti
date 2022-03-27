@@ -1,0 +1,64 @@
+extends baselayout
+
+block content 
+    .main
+        .about__sec
+            .about__next 
+                img#left__next(src="/images/left.png", alt="left__next")
+                img#right__next(src="/images/right.png", alt="right__next")
+            .about__first
+                h1 Greetings! From 
+                    span=  portfolio.name
+            .about__sec__other
+                h2 About me
+                p= portfolio.about
+                h2 What I Do?
+                p= portfolio.what 
+                h2 Why I Do It?
+                p= portfolio.why
+
+        .prev__sec.hidden
+            .prev__next 
+                img#prevl__next(src="/images/left.png", alt="left__next")
+                img#prevr__next(src="/images/right.png", alt="right__next")
+            .prev__first
+                h1= portfolio.name 
+                    span  Accomplishments
+            .prev__sec__other
+                h2 Accomplishments
+                p= portfolio.previous
+                .prev__cont
+                    img.imgsnd(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="firs_image")
+                    h3#zr__head= portfolio.firstImgHead
+                    img.imgsnd(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img")
+                    h3#fst__head= portfolio.secondImgHead
+                    img.imgsnd(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img")
+                    h3#send__head= portfolio.thirdImgHead
+                    img.imgsnd(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img")
+                    h3#thrd__head= portfolio.fourthImgHead
+                    img.imgsnd(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img")
+                    h3#forth__head= portfolio.fifthImgHead
+                h6 You can view image in full screen by right clicking on image and open it in new tab
+
+        .contact__sec.hidden
+            .contact__next 
+                img#cleft__next(src="/images/left.png", alt="left__next")
+                img#cright__next(src="/images/right.png", alt="right__next")
+            .contact__first
+                h1 Contact 
+                    span=  portfolio.name
+            .contact__sec__other
+                .cont__boxbg
+                    h2 Get In Touch
+                    if (portfolio.showNo === true)
+                        .cont__box.contact__sec__box
+                            p= `Phone: ${portfolio.phn_no}` 
+                    .cont__box.contact__sec__box
+                        p= `Email: ${portfolio.email}`
+                    if (portfolio.fb != "")
+                        .cont__box.contact__sec__box
+                            a(href=`${portfolio.fb}`)
+                                img(src="/images/fb.png", alt="fb__icon")
+
+
+    script(src="/js/layouts/third.js") 

@@ -1,0 +1,35 @@
+extends base
+
+block content
+    if (user)
+        include _header
+        .update__account__form 
+            form#upInfo
+                h2 Update Your Account Details 
+                label.form__label(for='name') Name
+                input#upname.form__input(type='text', placeholder=`${user.name}`, required)
+                label.form__label(for='email') Email Address 
+                input#upemail.form__input(type='email', placeholder=`${user.email}`, required)
+                button.update__account.redbtn Update Info
+
+        img.loader.hidden(src="/images/loading.gif", alt="loader")
+
+        .update__account__password
+            form#upPass
+                h2 Update Your Password 
+                label.form__label(for='password') Current Password 
+                input#pwdCurrent.form__input(type='password', placeholder='********', required, minlength='8')
+                label.form__label(for='password') New Password 
+                input#up_password.form__input(type='password', placeholder='********', required, minlength='8')
+                label.form__label(for='password') Confirm Password
+                input#up_passwordConfirm.form__input(type='password', placeholder='********', required, minlength='8')
+                button.btn__pwd.redbtn Update
+
+        h1#acHead= `Greetings, ${user.name}`
+
+    else 
+        h1 You are not Logged In, Please Log In 
+        a.redbtn(href="/login") LogIn
+
+    script(src="/js/alert.js") 
+    script(src="/js/account.js") 

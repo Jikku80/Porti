@@ -1,0 +1,172 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    font-family:'Times New Roman', Times, serif;
+    background-color: rgb(44, 44, 44);
+    overflow-x: hidden;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:0;
+    padding:0;
+    background-color: teal;
+}
+
+.navbar__list{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.navbar .navbar__list li{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar__list li a{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar #heading{
+    text-align: left;
+    font-size: .9rem;
+    font-family: cursive;
+    padding-right: 5vw;
+}
+
+#about{
+    background-color: rgb(201, 201, 201);
+    color: rgb(29, 29, 29);
+    padding: 2%;
+}
+
+#about h2{
+    margin-top: 0;
+    color: darkslategray;
+}
+
+#previous {
+    background-color: cadetblue;
+    padding:2%;
+}
+
+.prev img{
+    width: 50vw;
+    height: 50vh;
+    border-radius: 2rem;
+}
+
+#contact{
+    background: linear-gradient(to right, rgb(201, 201, 201), teal);
+    color: darkslategray;
+    padding:2%;
+    height: 100vh;
+}
+
+#contact .bgbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fadein-animation{
+    animation: fadeIn 3s;
+}
+
+#contact .bgbox .contbox{
+    background-color: teal;
+    color:white;
+    height: 10vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin-top: 10vh;
+    padding: 2%;
+    border-radius: 1rem;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+#contact .bgbox .contbox:hover{
+    transform: scale(1.5);
+}
+
+#contact .bgbox .contbox p{
+    float: center;
+}
+
+#footer{
+    font-size: .6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2%;
+}
+
+#footer p{
+    display: flex;
+    align-items: center;
+    color: grey;
+}
+
+#gtop{
+    position: fixed;
+    align-items: flex-end;
+    top:90%;
+    left: 95%;
+}
+
+.hidden{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar__list{
+        display: block;
+    }
+
+    .navbar .navbar__list li{
+        padding: 3vh;
+    }
+
+    .navbar #heading{
+        font-size: .5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    #gtop{
+        position: fixed;
+        align-items: flex-end;
+        top:90%;
+        left: 80%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    #gtop{
+        position: fixed;
+        align-items: flex-end;
+        top:90%;
+        left: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,31 @@
+button#msgTM.redbtn Send Message to Tech Mafia
+
+.sender.hidden
+    .msg-form
+    h2.heading-secondary.ma-bt-lg Send Message To Tech Mafia
+    form
+        .form__group
+        label.form__label(for='name') Name
+        input#name.form__input(type='text', name="name", placeholder='your name', required)
+        br
+        label.form__label(for='email') Email address
+        input#email.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
+        br
+        label.form__label(for='siteType') Site Type 
+        select.form__select(type='select', name="siteType", id="siteType")
+                option(value="E-commerce") E-commerce
+                option(value="Logistic") Logistic 
+                option(value="Blog") Blog 
+                option(value="E-learning") E-learning 
+                option(value="Media") Media 
+                option(value="Other") Other
+        br
+        label.form__label(for='message') Message 
+        textarea#message.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="50", required)
+        .form__group
+        button.send__msg.redbtn Send
+
+        img.loader.hidden(src="/images/loading.gif", alt="loader")
+
+script(src="/js/alert.js") 
+script(src="/js/sendmsg.js") 

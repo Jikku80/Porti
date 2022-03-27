@@ -1,0 +1,22 @@
+extends base
+
+block content
+
+  form#reset__form
+    h2#reset__head Reset Your Password
+    p Check your mail for token
+    label.form__label(for='text') Token 
+    input#rtoken.form__input(type='text', name='token' placeholder='Enter Your Token', required)
+    br
+    label.form__label(for='password') New Password 
+    input#rpwd.form__input(type='password',  placeholder='********', required, minlength='8')
+    br
+    label.form__label(for='password') Confirm Password 
+    input#rpwdC.form__input(type='password',  placeholder='********', required, minlength='8')
+    br
+    button.btn__reset.redbtn Reset Password
+
+  img.loader.hidden(src="/images/loading.gif", alt="loader")
+
+  script(src="/js/alert.js") 
+  script(src="/js/auth/resetpwd.js") 

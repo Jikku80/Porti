@@ -1,0 +1,280 @@
+html{
+    scrollbar-width: thin;
+}
+
+body{
+    background-color: black;
+    color:white;
+    margin-top: 0;
+}
+
+.land__nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logout{
+    color: white;
+    text-decoration: none;
+}
+
+#port_name{
+    text-align: center;
+    font-size: medium;
+    font-family: cursive;
+}
+
+.land__goto{
+    background-color: rgba(245, 129, 129, 0.116);
+    border: 1px solid crimson;
+    border-radius: 1rem;
+    padding: 5vw;
+    margin: 2vh;
+}
+
+.port_link{
+    font-size: medium;
+    background-color: crimson;
+    color: white;
+    padding: 1%;
+    border-radius: 2rem;
+}
+
+.redbtn{
+    border: 2px solid crimson;
+    background-color: transparent;
+    height: 5vh;
+    color: white;
+    cursor: pointer;
+}
+
+.redbtn:hover{
+    background-color: crimson;
+    color: white;
+}
+
+.land__update{
+    background-color: rgba(245, 129, 129, 0.116);
+    border: 1px solid crimson;
+    border-radius: 1rem;
+    padding: 5vw;
+    margin: 2vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.upform__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upform__head h1{
+    font-size: large;
+}
+
+.cancel, .cancl{
+    cursor: pointer;
+}
+
+#upPort{
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+}
+
+#upPort label, #upImage label{
+    margin-right: 2%;
+    color: gray;
+}
+
+#upPort p, #upImage p{
+    font-size: xx-small;
+    margin-top: 0;
+    margin-left: 4%;
+    color: gray;
+    padding: 0;
+}
+
+#upPort input, #upImage input{
+    border: 2px solid crimson;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    padding: 1%;
+}
+
+#upFb{
+    width: 25vw;
+}
+
+#upPort textarea{
+    border: 2px solid crimson;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    padding: 1%;
+}
+
+.form__bod{
+    margin:1%;
+    display: flex;
+    align-items: center;
+}
+
+.file_part label{
+    margin-left: 4%;
+}
+
+#re__up{
+    color: white !important;
+}
+
+#logout{
+    cursor: pointer;
+  }
+
+.success__main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success__cont{
+    position: absolute;
+    top: 40vh;
+    background-color: rgba(0, 128, 0, 0.452);
+    padding: 5vh;
+    text-align: center;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    font-size: small;
+    z-index: 1;
+}
+
+.error__cont{
+    position: absolute;
+    top: 40vh;
+    background-color: rgba(220, 20, 60, 0.527);
+    padding: 5vh;
+    text-align: center;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    font-size: small;
+    z-index: 1;
+}
+
+.cancel__alert{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#updateBtn{
+    width: 25%;
+}
+
+#themes{
+    background-color: transparent;
+    border: 2px solid crimson;
+    color: gray;
+}
+
+.confirm__pg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40vh;
+    font-size: larger;
+  }
+  
+  .confirm__pg h1{
+    color: hotpink;
+  }
+  
+  .confirm__pg a{
+    text-decoration: none;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+  }
+
+.notifier{
+    text-align: center;
+    margin-top: 45vh;
+}
+
+.notifier h1{
+
+    margin-bottom: 4%;
+}
+
+.notifier a{
+    text-decoration: none;
+    padding: 2%;
+}
+
+.loader{
+    position: absolute;
+    top: 40vh;
+    left: 35vw;
+  }
+
+@media (min-width: 601px) and (max-width: 900px){
+    .port_link{
+        font-size: xx-small;
+        padding: 2%;
+    }
+
+    #upFb{
+        width: 50vw;
+    }
+
+    .loader{
+        position: absolute;
+        top: 40vh;
+        left: 25vw;
+        width: 50%;
+      }
+
+}
+
+@media screen and (max-width: 600px){
+    .land__head{
+        font-size: medium;
+    }
+    .port_link{
+        font-size: 4px;
+        padding: 2%;
+    }
+
+    #upPort label{
+        font-size: x-small;
+    }
+
+    #upPort textarea{
+        width: 60vw;
+    }
+
+    .file_part{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .loader{
+        position: absolute;
+        top: 40vh;
+        left: 25vw;
+        width: 50%;
+      }
+}

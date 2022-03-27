@@ -1,0 +1,17 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName},
+  p Welcome to TechMafia, we're glad to have you on board 🎉
+  p TechMafia is here to bring your application to reality, Use the Free portfolio feature to build yourself an amazing portfolio, Stand Out on interviews or anywhere you want to flex your Data!
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Explore TechMafia
+  p If you want to build a custom website feel free to message TechMafia!
+  p - TechMafia

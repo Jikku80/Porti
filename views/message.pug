@@ -1,0 +1,15 @@
+extends base
+
+block content
+
+    if (message)
+        each msg in message
+            .msg
+                .message
+                    h1.sender__name= `Sender: ${msg.name}`
+                    h3= `Sender Email Address: ${msg.email}`
+                    h3= `Build Type: ${msg.siteType}`
+                    h3= `Message: ${msg.message}`
+                    p= `sent at: ${msg.sentAt}`
+    else 
+        h1 no messages    

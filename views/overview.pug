@@ -1,0 +1,10 @@
+extends base
+
+block content
+
+    if !user 
+        include _loginForm
+    else 
+        include _header
+        include _sendMsg
+    

@@ -1,0 +1,406 @@
+html{
+    font-size: 10px;
+    scrollbar-width: thin;
+}
+
+body{
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(27, 27, 27); 
+    border-radius: 10px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: rgb(160, 159, 159); 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a7a6a6; 
+  }
+
+.hidden{
+    display: none;
+}
+
+.msg{
+    display: flex;
+    justify-content: center;
+}
+
+.message{
+    background-color: teal;
+    width: 50vw ;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.sender__name{
+    font-weight: bold;
+}
+
+.port__nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.port__head{
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-family: cursive;
+  font-weight: 900;
+}
+
+.port__head:hover{
+  color: rgb(253, 22, 68);
+}
+
+.login{
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: large;
+}
+
+.login:hover{
+  color: crimson;
+}
+
+.login__form, #reset__form, #upInfo, #upPass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginForm, #forgotPwd, .signup__form{
+  background-color: rgba(220, 20, 60, 0.288);
+  border: 2px solid crimson;
+  padding: 2%;
+  margin: 2%;
+  width: 75vw;
+  text-align: center;
+}
+
+#acHead{
+  color: grey;
+  text-align: center;
+}
+
+#reset__form{
+  margin-top: 20vh;
+}
+
+#upInfo h2, #upPass h2{
+  color: yellowgreen;
+}
+
+.signup__main{
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.btn__login, .btn__forgotPwd, .btn__signup, .btn__reset, .update__account, .btn__pwd{
+  margin: 2%;
+}
+
+.login__form__bod, .signup__bod{
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  align-items: center;
+}
+
+#logout{
+  cursor: pointer;
+}
+
+.form__label{
+  margin: 1%;
+  color: gray
+}
+
+.form__input{
+  background-color: transparent;
+  color: white;
+  border: 1px solid crimson;
+  border-radius: 1rem;
+  padding: 1%;
+}
+
+.port__bod{
+  margin: 4%;
+  background-color: rgba(220, 20, 60, 0.233);
+  border: 1px solid crimson;
+  border-radius: 2rem;
+  padding: 2%
+}
+
+.port__bod h2{
+  font-size: large;
+}
+
+.layout__main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  color: gray;
+}
+
+.un_layout{
+  padding: 1%;
+}
+
+.un_layout img{
+  width: 40vw;
+  height: 40vh;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.un_layout img:hover{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.comp__form{
+  background-color: rgba(220, 20, 60, 0.24);
+  border: 1px solid crimson;
+  border-radius: 1rem;
+  padding: 2%;
+  margin: 2%;
+}
+
+.form__head, .forgt__head, .signup__head{
+  display: flex;
+  justify-content: space-between;
+}
+
+#closeBtn, #signCancel{
+  cursor: pointer;
+}
+
+.signupnot{
+  color: yellowgreen;
+}
+
+.form__cont{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form__cont label{
+  margin: 1%;
+  color: gray;
+}
+
+.form__cont textarea, .form__cont input{
+  background-color: transparent;
+  color: white;
+  padding: 1%;
+  border: 2px solid crimson;
+  border-radius: 1rem;
+  margin: 1%;
+}
+
+.cancel__create, .cancelcreate, .closecreate{
+  cursor: pointer;
+}
+
+.head__main{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#createporti{
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+#createporti:hover{
+  color: gray;
+}
+
+.redbtn{
+  border: 2px solid crimson;
+  background-color: transparent;
+  height: 5vh;
+  color: white;
+  cursor: pointer;
+}
+
+.redbtn:hover{
+  background-color: crimson;
+  color: white;
+}
+
+.confirm__pg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40vh;
+  font-size: larger;
+}
+
+.confirm__pg h1, #reset__head{
+  color: hotpink;
+}
+
+.confirm__pg a{
+  text-decoration: none;
+  padding: 1%;
+  display: flex;
+  align-items: center;
+}
+
+.four0four{
+  text-align: center;
+  margin-top: 35vh;
+}
+
+.four0four h1{
+  font-size: 4rem;
+  margin-bottom: 4%;
+}
+
+#four0{
+  color: hotpink;
+}
+
+.four0four a{
+  text-decoration: none;
+  color: white;
+  border: 1px solid hotpink;
+  padding: 2%;
+}
+
+.four0four a:hover{
+  background-color: hotpink;
+}
+
+
+.success__main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success__cont{
+  position: absolute;
+  top: 40vh;
+  background-color: rgba(0, 128, 0, 0.452);
+  padding: 5vh;
+  text-align: center;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  font-weight: 800;
+  font-size: small;
+  z-index: 1;
+}
+
+.error__cont{
+  position: absolute;
+  top: 40vh;
+  background-color: rgba(220, 20, 60, 0.527);
+  padding: 5vh;
+  text-align: center;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  font-weight: 800;
+  font-size: small;
+  z-index: 1;
+}
+
+.info__cont{
+  position: absolute;
+  top: 40vh;
+  background-color: rgba(27, 27, 27, 0.726);
+  color: white;
+  font-weight: 800;
+  font-size: medium;
+  padding: 5vh;
+  text-align: center;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+}
+
+.cancel__alert{
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loader{
+  position: absolute;
+  top: 40vh;
+  left: 35vw;
+}
+
+
+@media (min-width: 601px) and (max-width: 900px){
+
+  .un_layout img{
+    width: 80vw;
+    height: 40vh;
+    margin-top: 4%;
+  }
+
+  .un_layout{
+    padding-left: 0;
+  }
+
+}
+
+.loader{
+  position: absolute;
+  top: 40vh;
+  left: 25vw;
+  width: 50%;
+}
+
+@media screen and (max-width: 600px){
+  .small__nav{
+    font-size: .7rem;
+  }
+
+  .un_layout img{
+    width: 80vw;
+    height: 30vh;
+    margin-top: 4%;
+  }
+
+  .small__form{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .un_layout{
+    padding-left: 0;
+  }
+
+  .loader{
+    position: absolute;
+    top: 40vh;
+    left: 25vw;
+    width: 50%;
+  }
+
+}
