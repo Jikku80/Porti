@@ -143,7 +143,10 @@ body{
   background-color: rgba(220, 20, 60, 0.233);
   border: 1px solid crimson;
   border-radius: 2rem;
-  padding: 2%
+  padding: 2%;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .port__bod h2{
@@ -179,7 +182,11 @@ body{
   border: 1px solid crimson;
   border-radius: 1rem;
   padding: 2%;
+  padding-left: 30vw;
   margin: 2%;
+  height: 75vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .form__head, .forgt__head, .signup__head{
@@ -215,7 +222,7 @@ body{
   margin: 1%;
 }
 
-.cancel__create, .cancelcreate, .closecreate{
+.cancel__create, .cancelcreate, .closecreate, .clcreate{
   cursor: pointer;
 }
 
@@ -233,6 +240,12 @@ body{
 
 #createporti:hover{
   color: gray;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 .redbtn{
@@ -356,6 +369,10 @@ body{
 
 
 @media (min-width: 601px) and (max-width: 900px){
+  .comp__form{
+    padding-left: 10vw;
+    height: 85vh;
+  }
 
   .un_layout img{
     width: 80vw;
@@ -377,6 +394,11 @@ body{
 }
 
 @media screen and (max-width: 600px){
+  .comp__form{
+    padding-left: 2%;
+    height: 85vh;
+  }
+
   .small__nav{
     font-size: .7rem;
   }

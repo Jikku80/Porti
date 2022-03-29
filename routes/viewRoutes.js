@@ -15,6 +15,9 @@ router.patch('/passwordreset', authController.resetPassword);
 router.get('/:user/portfolio/:id/a9993e364706816aba3e25717850c26c9cd0d89d', viewsController.layoutFirst);
 router.get('/:user/portfolio/:id/589c22335a381f122d129225f5c0ba3056ed5811', viewsController.layoutSecond);
 router.get('/:user/portfolio/:id/481743d632b80d39bc2771d19be3ca3005b3f8af', viewsController.layoutThird);
+router.get('/:user/portfolio/:id/d798d4338adeb553a1089a58e61e18c2fcdf77bb', viewsController.layoutFourth);
+router.get('/:user/portfolio/:id/da98568d1b2005611973ad49868b38aa8ae68fd7', viewsController.layoutFifth);
+
 router.post('/sendmsg', viewsController.newMsg);
 
 router.use(authController.isLoggedIn);

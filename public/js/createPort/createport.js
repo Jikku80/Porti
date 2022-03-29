@@ -7,7 +7,7 @@ layoutOneForm.classList.add("createForm");
 layoutOneForm.innerHTML = `
     <form class="comp__form">
         <div class="form__head">
-            <h1>Plain Layout</h1>
+            <h1>PL Layout</h1>
             <img src="/images/cancel.png" alt="cancel_img" class="cancel__create" />
         </div>
         <div class="form__cont">
@@ -41,42 +41,42 @@ layoutOneForm.innerHTML = `
         </div>
         <div class="form__cont">
             <label>Your Facebook Profile Link</label>
-            <input id="yourFb" type="text" placeholder="www.facebook.com/techmafia...." />
+            <input id="yourFb" type="text" placeholder="www.facebook.com/techmafia...." required />
         </div>
         <div class="form__cont">
-            <label>Previous work Details</label>
+            <label>Previous Accomplishment Details</label>
             <textarea id="yourwork"  rows="4" cols="50" placeholder="TechMafia has done..." required></textarea>
         </div>
-        <label>Add Your Previous work Image / GIF</label>
+        <label>Add Your Previous Accomplishment Image, All image field must have image --Required--</label>
         <div class="form__cont small__form">
             <label>Add Image</label>
-            <input type="file" id="yourimg1" name="img1" accept="image/*" />
+            <input type="file" id="yourimg1" name="img1" accept="image/*" required />
             <label>Heading</label>
-            <input type="text" id="firstImg" placeholder="My first work" />
+            <input type="text" id="firstImg" placeholder="My first" required />
         </div>
         <div class="form__cont small__form">
             <label>Add Image</label>
-            <input type="file" id="yourimg2" name="img2" accept="image/*" />
+            <input type="file" id="yourimg2" name="img2" accept="image/*" required />
             <label>Heading</label>
-            <input type="text" id="secondImg" placeholder="My second work" />
+            <input type="text" id="secondImg" placeholder="My second" required />
         </div>
         <div class="form__cont small__form">
             <label>Add Image</label>
-            <input type="file" id="yourimg3" name="img3" accept="image/*" />
+            <input type="file" id="yourimg3" name="img3" accept="image/*" required />
             <label>Heading</label>
-            <input type="text" id="thirdImg" placeholder="My third work" />
+            <input type="text" id="thirdImg" placeholder="My third" required />
         </div>
         <div class="form__cont small__form">
             <label>Add Image</label>
-            <input type="file" id="yourimg4" name="img4" accept="image/*" />
+            <input type="file" id="yourimg4" name="img4" accept="image/*" required />
             <label>Heading</label>
-            <input type="text" id="fourtImg" placeholder="My fourth work" />
+            <input type="text" id="fourtImg" placeholder="My fourth" required />
         </div>
         <div class="form__cont small__form">
             <label>Add Image</label>
-            <input type="file" id="yourimg5" name="img5" accept="image/*" />
+            <input type="file" id="yourimg5" name="img5" accept="image/*" required />
             <label>Heading</label>
-            <input type="text" id="fifthImg" placeholder="My fifth work" />
+            <input type="text" id="fifthImg" placeholder="My fifth" required />
         </div>
         <button id="form__btn" class="redbtn">Create</button>
     </form>

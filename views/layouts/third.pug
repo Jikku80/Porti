@@ -12,9 +12,9 @@ block content
             .about__sec__other
                 h2 About me
                 p= portfolio.about
-                h2 What I Do?
+                h2= `What ${portfolio.name} Do?`
                 p= portfolio.what 
-                h2 Why I Do It?
+                h2= `Why ${portfolio.name} Do It?`
                 p= portfolio.why
 
         .prev__sec.hidden

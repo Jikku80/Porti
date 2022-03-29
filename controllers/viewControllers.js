@@ -9,7 +9,7 @@ const atob = require('./../utils/decode');
 exports.getOverview = catchAsync(async (req, res, next) => {
 
     res.status(200).render('overview', {
-        title: 'TechMafia',
+        title: 'Login | SignUp',
     })
 })
 
@@ -78,6 +78,24 @@ exports.layoutThird = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
     const portfolio = await Portfolio.findById(port_id)
     res.status(200).render('layouts/third', {
+        title: portfolio.name,
+        portfolio
+    })
+})
+
+exports.layoutFourth = catchAsync(async (req, res, next) => {
+    const port_id = atob(req.params.id)
+    const portfolio = await Portfolio.findById(port_id)
+    res.status(200).render('layouts/fourth', {
+        title: portfolio.name,
+        portfolio
+    })
+})
+
+exports.layoutFifth = catchAsync(async (req, res, next) => {
+    const port_id = atob(req.params.id)
+    const portfolio = await Portfolio.findById(port_id)
+    res.status(200).render('layouts/fifth', {
         title: portfolio.name,
         portfolio
     })

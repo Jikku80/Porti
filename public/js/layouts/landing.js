@@ -1,42 +1,8 @@
-let url = document.getElementById('urlLink');
-let portName = document.getElementById('port_name');
-portName = portName.innerText;
-let endP = document.getElementById('endpoint');
-let end = endP.innerText;
-end = btoa(end);
-
-let updateImg = document.getElementById("update_Img");
-
-let searchPoint = location.search.slice(1);
-
-url.innerHTML = `
-<button id="openport" class="redbtn" href="">My Portfolio</button>
-<p>Share your potfolio with the link below</p>
-<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${end}/${(location.search).slice(1)}</p>
-`
-
-openport = document.getElementById("openport");
-
-openport.addEventListener("click", () => {
-    url = `/${portName}/portfolio/${end}/${searchPoint}`
-    window.open(url);
-})
-
-let copyLink = document.getElementById("copyLink");
-let portLink = document.querySelector(".port_link");
-
-copyLink.addEventListener("click", () => {
-    plink = portLink.innerText;
-
-    navigator.clipboard.writeText(plink);
-
-    successAlert("Link Copied")
-})
-
 let updatePort = document.getElementById('update_port');
 let updateForm = document.getElementById('update_form');
 let headGo = document.querySelector(".land__goto");
 let updateImgForm = document.getElementById('update_ImgForm');
+let updateImg = document.getElementById("update_Img");
 
 updatePort.addEventListener('click', () => {
     headGo.classList.add('hidden');
@@ -92,7 +58,7 @@ let img4 = document.getElementById("img4");
 let hd4 = document.getElementById("fourthImg");
 let img5 = document.getElementById("img5")
 let hd5 = document.getElementById("fifthImg");
-let id = endP.innerText
+let id = document.getElementById('endpoint').innerText;
 let themes = document.getElementById("themes");
 
 updBtn.addEventListener("click", async (e) => {

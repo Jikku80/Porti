@@ -14,30 +14,45 @@ block content
     img.loader.hidden(src="/images/loading.gif", alt="loader")
     .port__bod
         h2 Create a portfolio
-        p Pick any of the layouts below and build your portfolio in just minutes!
+        p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
+        p To create You will need 4-5 prior work images or if no prior works add your certificates/degrees your glories, pride :)
         if (user)
             .layout__main
                 #layout1.un_layout
                     img(src="/images/layout1.png", alt="layout1")
-                    p Plain Layout
+                    p PL Layout
                 #layout2.un_layout
                     img(src="/images/layout2.png", alt="layout2")
                     p BG Layout
                 #layout3.un_layout
                     img(src="/images/layout3.png", alt="layout3")
                     p ST Layout
+                #layout4.un_layout 
+                    img(src="/images/layout4.png", alt="layout4")
+                    p BS Layout
+                #layout5.un_layout
+                    img(src="/images/layout2.png", alt="layout5")
+                    p AT Layout
         else 
             .layout__main
                 .un_layout
                     img(src="/images/layout1.png", alt="layout1")
-                    p Plain Layout
+                    p PL Layout
                 .un_layout
                     img(src="/images/layout2.png", alt="layout2")
                     p BG Layout
+                .un_layout
+                    img(src="/images/layout3.png", alt="layout3")
+                    p ST Layout
+                .un_layout 
+                    img(src="/images/layout4.png", alt="layout1")
+                    p BS Layout
     
     script(src="/js/alert.js")
     script(src="/js/logout.js") 
     script(src="/js/createPort/viewCr.js")
     script(src="/js/createPort/createport.js")
     script(src="/js/createPort/createport2.js")
-    script(src="/js/createPort/createport3.js")  
+    script(src="/js/createPort/createport3.js")
+    script(src="/js/createPort/createport4.js") 
+    script(src="/js/createPort/createport5.js")  

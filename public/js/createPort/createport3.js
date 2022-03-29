@@ -40,42 +40,42 @@ formLayoutThree.innerHTML = `
     </div>
     <div class="form__cont">
         <label>Your Facebook Profile Link</label>
-        <input id="uthirdFb" type="text" placeholder="www.facebook.com/techmafia...." />
+        <input id="uthirdFb" type="text" placeholder="www.facebook.com/techmafia...." required />
     </div>
     <div class="form__cont">
         <label>Accomplishments</label>
         <textarea id="uthirdwork"  rows="4" cols="50" placeholder="Your big or small any accomplishment relevent to your portfolio...." required></textarea>
     </div>
-    <label>Add Your Certificates/Accomplisments Image / GIF</label>
+    <label>Add Your Certificates/Accomplisments Image, All image field must have image --Required--</label>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="uthirdimg1" name="img1" accept="image/*" />
+        <input type="file" id="uthirdimg1" name="img1" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="uthird1Img" placeholder="My first Certificate" />
+        <input type="text" id="uthird1Img" placeholder="My first" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="uthirdimg2" name="img2" accept="image/*" />
+        <input type="file" id="uthirdimg2" name="img2" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="uthird2Img" placeholder="My second" />
+        <input type="text" id="uthird2Img" placeholder="My second" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="uthirdimg3" name="img3" accept="image/*" />
+        <input type="file" id="uthirdimg3" name="img3" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="uthird3Img" placeholder="My third" />
+        <input type="text" id="uthird3Img" placeholder="My third" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="uthirdimg4" name="img4" accept="image/*" />
+        <input type="file" id="uthirdimg4" name="img4" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="uthird4Img" placeholder="My fourth" />
+        <input type="text" id="uthird4Img" placeholder="My fourth" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="uthirdimg5" name="img5" accept="image/*" />
+        <input type="file" id="uthirdimg5" name="img5" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="uthird5Img" placeholder="My fifth" />
+        <input type="text" id="uthird5Img" placeholder="My fifth" required />
     </div>
     <button id="thirdformbtn" class="redbtn">Create</button>
 </form>

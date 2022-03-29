@@ -82,6 +82,7 @@ body{
     display: flex;
     flex-direction: column;
     font-size: 10px;
+    padding-left: 25vw;
 }
 
 #upPort label, #upImage label{
@@ -180,6 +181,45 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+.del__port{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.del__bod{
+    margin: 2%;
+    border: 1px solid crimson;
+    border-radius: 1rem;
+    background-color: rgba(245, 129, 129, 0.116);
+    padding: 4%;
+}
+
+.dt__cf{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    padding: 2%;
+}
+
+.delete__Confirm{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.yesDelete{
+    padding: 2%;
+}
+
+.noDelete{
+    padding: 2%;
+}
+
 #updateBtn{
     width: 25%;
 }
@@ -231,6 +271,10 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
 @media (min-width: 601px) and (max-width: 900px){
+    #upPort{
+        padding-left: 10vw;
+    }
+
     .port_link{
         font-size: xx-small;
         padding: 2%;
@@ -250,6 +294,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width: 600px){
+    #upPort{
+        padding: 0;
+    }
+
     .land__head{
         font-size: medium;
     }
@@ -258,12 +306,20 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 2%;
     }
 
+    #themes{
+        width: 50vw;
+    }
+
     #upPort label{
         font-size: x-small;
     }
 
     #upPort textarea{
         width: 60vw;
+    }
+
+    .del__port{
+        margin: 3%;
     }
 
     .file_part{

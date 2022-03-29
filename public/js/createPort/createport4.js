@@ -1,114 +1,114 @@
-layout2 = document.querySelector("#layout2")
+layout4 = document.querySelector("#layout4")
 portBod = document.querySelector(".port__bod");
 
-let formLayoutTwo = document.createElement("div");
-formLayoutTwo.classList.add('formLayout2')
-formLayoutTwo.innerHTML = `
+let formLayoutFour = document.createElement("div");
+formLayoutFour.classList.add('formLayout4')
+formLayoutFour.innerHTML = `
 <form class="comp__form">
     <div class="form__head">
-        <h1>BG Layout</h1>
-        <img src="/images/cancel.png" alt="cancel_img" class="cancelcreate" />
+        <h1>BS Layout</h1>
+        <img src="/images/cancel.png" alt="cancel_img" class="clcreate" />
     </div>
     <div class="form__cont">
         <label>Portfolio Name:</label>
-        <input id="yrname" type="text" placeholder="TechMafia" required/>
+        <input id="fourthname" type="text" placeholder="TechMafia" required/>
     </div>
     <div class="form__cont">
         <label>About Your Portfolio</label>
-        <textarea id="yrabout" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
+        <textarea id="fourthabout" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
     </div>
     <div class="form__cont">
         <label>What You Do:</label>
-        <textarea id="yrwhat" rows="4" cols="50" placeholder="what techmafia do is...." required></textarea>
+        <textarea id="fourthwhat" rows="4" cols="50" placeholder="what techmafia do is...." required></textarea>
     </div>
     <div class="form__cont">
         <label>Why You Do it:</label>
-        <textarea id="yrwhy" rows="4" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
+        <textarea id="fourthwhy" rows="4" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
     </div>
     <label>Contact Details:</label>
     <div class="form__cont">
         <label>Phn Number:</label>
-        <input id="yrno" type="number" placeholder="9999888899" required/>
+        <input id="fourthno" type="number" placeholder="9999888899" required/>
     </div>
     <div class="form__cont">
         <label>Show Number:</label>
-        <input id="yrCheck" type="checkbox" />
+        <input id="fourthCheck" type="checkbox" />
     </div>
     <div class="form__cont">
         <label>Email Address:</label>
-        <input id="yremail" type="email" placeholder="techmafia@gmail.com" required/>
+        <input id="fourthemail" type="email" placeholder="techmafia@gmail.com" required/>
     </div>
     <div class="form__cont">
         <label>Your Facebook Profile Link</label>
-        <input id="yrFb" type="text" placeholder="www.facebook.com/techmafia...." required />
+        <input id="fourthFb" type="text" placeholder="www.facebook.com/techmafia...." required />
     </div>
     <div class="form__cont">
-        <label>Previous Accomplishment Details</label>
-        <textarea id="yrwork"  rows="4" cols="50" placeholder="TechMafia has done..." required></textarea>
+        <label>Prior Accomplishment</label>
+        <textarea id="fourthwork"  rows="4" cols="50" placeholder="Your big or small any accomplishment relevent to your portfolio...." required></textarea>
     </div>
     <div class="form__cont small__form">
         <label>Cover Image</label>
-        <input type="file" id="yrimg1" name="img1" accept="image/*" required/>
+        <input type="file" id="fourthimg1" name="img1" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="frstImg" placeholder="Cover Image" required />
+        <input type="text" id="fourth1Img" placeholder="My first" required />
     </div>
-    <label>Add Your Previous Accomplisments Image, All image field must have image --Required--</label>
+    <label>Add Your Accomplishment Image, All image field must have image --Required--</label>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="yrimg2" name="img2" accept="image/*" required/>
+        <input type="file" id="fourthimg2" name="img2" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="secndImg" placeholder="My second " required />
-    </div>
-    <div class="form__cont small__form">
-        <label>Add Image</label>
-        <input type="file" id="yrimg3" name="img3" accept="image/*" required />
-        <label>Heading</label>
-        <input type="text" id="thrdImg" placeholder="My third " required />
+        <input type="text" id="fourth2Img" placeholder="My second" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="yrimg4" name="img4" accept="image/*" required />
+        <input type="file" id="fourthimg3" name="img3" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="fourImg" placeholder="My fourth "  required/>
+        <input type="text" id="fourth3Img" placeholder="My third" required />
     </div>
     <div class="form__cont small__form">
         <label>Add Image</label>
-        <input type="file" id="yrimg5" name="img5" accept="image/*" required />
+        <input type="file" id="fourthimg4" name="img4" accept="image/*" required />
         <label>Heading</label>
-        <input type="text" id="fiftImg" placeholder="My fifth" required />
+        <input type="text" id="fourth4Img" placeholder="My fourth" required />
     </div>
-    <button id="formbtn" class="redbtn">Create</button>
+    <div class="form__cont small__form">
+        <label>Add Image</label>
+        <input type="file" id="fourthimg5" name="img5" accept="image/*" required/>
+        <label>Heading</label>
+        <input type="text" id="fourth5Img" placeholder="My fifth" required />
+    </div>
+    <button id="fourthformbtn" class="redbtn">Create</button>
 </form>
     `
-document.body.appendChild(formLayoutTwo);
-let layoutTwo = document.querySelector(".formLayout2")
-layoutTwo.classList.add("hidden");
+document.body.appendChild(formLayoutFour);
+let layoutFour = document.querySelector(".formLayout4")
+layoutFour.classList.add("hidden");
 
-layout2.addEventListener("click", () => {
+layout4.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
-    layoutTwo.classList.remove("hidden");
-    let yourname = document.querySelector("#yrname");
-    let aboutyou = document.getElementById("yrabout");
-    let what = document.getElementById("yrwhat");
-    let why = document.getElementById("yrwhy");
-    let yourno = document.getElementById("yrno");
-    let showNo = document.getElementById("yrCheck");
-    let youremail = document.getElementById("yremail");
-    let fb = document.getElementById("yrFb");
-    let yourwork = document.getElementById("yrwork");
-    let img1 = document.getElementById("yrimg1");
-    let hd1 = document.getElementById("frstImg");
-    let img2 = document.getElementById("yrimg2");
-    let hd2 = document.getElementById("secndImg");
-    let img3 = document.getElementById("yrimg3");
-    let hd3 = document.getElementById("thrdImg");
-    let img4 = document.getElementById("yrimg4");
-    let hd4 = document.getElementById("fourImg");
-    let img5 = document.getElementById("yrimg5");
-    let hd5 = document.getElementById("fiftImg");
-    let submit = document.getElementById("formbtn");
-    let theme = "589c22335a381f122d129225f5c0ba3056ed5811";
+    layoutFour.classList.remove("hidden");
+    let yourname = document.querySelector("#fourthname");
+    let aboutyou = document.getElementById("fourthabout");
+    let what = document.getElementById("fourthwhat");
+    let why = document.getElementById("fourthwhy");
+    let yourno = document.getElementById("fourthno");
+    let showNo = document.getElementById("fourthCheck");
+    let youremail = document.getElementById("fourthemail");
+    let fb = document.getElementById("fourthFb");
+    let yourwork = document.getElementById("fourthwork");
+    let img1 = document.getElementById("fourthimg1");
+    let hd1 = document.getElementById("fourth1Img");
+    let img2 = document.getElementById("fourthimg2");
+    let hd2 = document.getElementById("fourth2Img");
+    let img3 = document.getElementById("fourthimg3");
+    let hd3 = document.getElementById("fourth3Img");
+    let img4 = document.getElementById("fourthimg4");
+    let hd4 = document.getElementById("fourth4Img");
+    let img5 = document.getElementById("fourthimg5");
+    let hd5 = document.getElementById("fourth5Img");
+    let submit = document.getElementById("fourthformbtn");
+    let theme = "d798d4338adeb553a1089a58e61e18c2fcdf77bb";
 
     submit.addEventListener("click", (e) => {
         e.preventDefault();
@@ -177,8 +177,8 @@ layout2.addEventListener("click", () => {
     })
 })
 
-let canclCreate = document.querySelector(".cancelcreate")
-canclCreate.addEventListener("click", () => {
-    layoutTwo.classList.add("hidden");
+let clCreate = document.querySelector(".clcreate")
+clCreate.addEventListener("click", () => {
+    layoutFour.classList.add("hidden");
     portBod.classList.remove("hidden");
 })

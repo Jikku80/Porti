@@ -52,10 +52,12 @@
     text-align: left;
     padding: 1vh;
     border: 2px solid teal;
+    height: 92vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .contact__sec__other{
-    height: 100vh;
     font-size: 1rem;
 }
 

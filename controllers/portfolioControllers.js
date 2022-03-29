@@ -25,11 +25,11 @@ exports.uploadPortImages = upload.fields([
     { name: 'imageThird', maxCount: 1 },
     { name: 'imageFourth', maxCount: 1 },
     { name: 'imageFifth', maxCount: 1 },
-    { name: 'imageSixth', maxCount: 1 },
-    { name: 'imageSeventh', maxCount: 1 },
-    { name: 'imageEigth', maxCount: 1 },
-    { name: 'imageNineth', maxCount: 1 },
-    { name: 'imageTenth', maxCount: 1 }
+    { name: 'images', maxCount: 15 }
+]);
+
+exports.uploadImages = upload.fields([
+    { name: 'images', maxCount: 20 }
 ]);
 
 // exports.uploadPortImages = upload.single('imageCover');
@@ -82,21 +82,30 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageFifth/${img5.originalname}`);
-
-    console.log("nexting...")
     next();
 });
 
+
 exports.resizePortImages = catchAsync(async (req, res, next) => {
 
-    if (!req.file.originalname) return next();
+    if (!req.files.images) return next();
+    let img = req.files.images
 
-    req.file.originalname = `port-${req.body.id}-${Date.now()}-cover.jpeg`;
-    await sharp(req.file.buffer)
-        .resize(2000, 1333)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/${req.file.originalname}`);
+    req.body.images = []
+
+    await Promise.all(
+        img.map(async (file, i) => {
+            const filename = `port-${req.body.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
+
+            await sharp(file.buffer)
+                .resize(2000, 1333)
+                .toFormat('jpeg')
+                .jpeg({ quality: 90 })
+                .toFile(`public/images/ports/imageColl/${filename}`);
+
+            req.body.images.push(filename);
+        })
+    );
     next();
 });
 
@@ -138,8 +147,41 @@ exports.createMe = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.createImgColl = catchAsync(async (req, res, next) => {
+
+    const doc = await Portfolio.create({
+        name: req.body.name,
+        user: req.user.id,
+        email: req.body.email,
+        fb: req.body.fb,
+        phn_no: req.body.phn_no,
+        showNo: req.body.showNo,
+        theme: req.body.theme,
+        images: req.body.images
+    });
+
+    res.status(201).json({
+        status: 'success',
+        data: {
+            data: doc
+        }
+    })
+})
 
 exports.getAllPort = factory.getAll(Portfolio);
 exports.getMe = factory.getOne(Portfolio);
 exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
+
+exports.deletePorti = catchAsync(async (req, res, next) => {
+    await Portfolio.findByIdAndDelete(req.body.id);
+
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+})
