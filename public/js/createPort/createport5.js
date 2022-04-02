@@ -13,6 +13,18 @@ formLayoutFive.innerHTML = `
         <label>Portfolio Name:</label>
         <input id="fifthname" type="text" placeholder="TechMafia" required/>
     </div>
+    <div class="form__cont">
+        <label>About Your Portfolio</label>
+        <textarea id="fifthabout" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
+    </div>
+    <div class="form__cont">
+        <label>What You Do:</label>
+        <textarea id="fifthwhat" rows="4" cols="50" placeholder="what techmafia do is...." required></textarea>
+    </div>
+    <div class="form__cont">
+        <label>Why You Do it:</label>
+        <textarea id="fifthwhy" rows="4" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
+    </div>
     <label>Contact Details:</label>
     <div class="form__cont">
         <label>Phn Number:</label>
@@ -27,8 +39,8 @@ formLayoutFive.innerHTML = `
         <input id="fifthemail" type="email" placeholder="techmafia@gmail.com" required/>
     </div>
     <div class="form__cont">
-        <label>Your Facebook Profile Link</label>
-        <input id="fifthFb" type="text" placeholder="www.facebook.com/techmafia...." required />
+        <label>Your Social Media Profile Link</label>
+        <input id="fifthFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
     <p>You can Upload Upto 20 Images At Once</p>
     <div class="form__cont small__form">
@@ -47,6 +59,9 @@ layout5.addEventListener("click", () => {
     portBod.classList.add("hidden");
     layoutFive.classList.remove("hidden");
     let yourname = document.querySelector("#fifthname");
+    let yourabout = document.getElementById("fifthabout");
+    let yourwhat = document.getElementById("fifthwhat");
+    let yourwhy = document.getElementById("fifthwhy");
     let yourno = document.getElementById("fifthno");
     let showNo = document.getElementById("fifthCheck");
     let youremail = document.getElementById("fifthemail");
@@ -54,43 +69,51 @@ layout5.addEventListener("click", () => {
     let img1 = document.getElementById("fifthimg1");
     let submit = document.getElementById("fifthformbtn");
     let theme = "da98568d1b2005611973ad49868b38aa8ae68fd7";
-    submit.addEventListener("click", (e) => {
+    submit.addEventListener("click", async (e) => {
         e.preventDefault();
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden")
-        let num = btoa(yourno.value);
-        const formData = new FormData();
-        formData.append("name", yourname.value);
-        formData.append("phn_no", yourno.value);
-        formData.append("showNo", showNo.checked);
-        formData.append("email", youremail.value);
-        formData.append("fb", fb.value);
-        formData.append("theme", theme);
-        for (var x = 0; x < img1.files.length; x++) {
-            formData.append("images", img1.files[x]);
-        }
-        const endpoint = '/api/v1/portfolio/createCollec'
-        fetch((endpoint), {
-            body: formData,
-            method: 'POST'
-        }).then((response) => {
-            load.classList.add("hidden");
-            console.log(response);
-            if (response.status === 201) {
-                successAlert("Your Portfolio has been created :)");
-                window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${theme}`);
-                }, 400);
-            } else {
-                console.log(response);
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            let num = btoa(yourno.value);
+            const formData = new FormData();
+            formData.append("name", yourname.value);
+            formData.append("about", yourabout.value);
+            formData.append("what", yourwhat.value);
+            formData.append("why", yourwhy.value);
+            formData.append("phn_no", yourno.value);
+            formData.append("showNo", showNo.checked);
+            formData.append("email", youremail.value);
+            formData.append("fb", fb.value);
+            formData.append("theme", theme);
+            for (var x = 0; x < img1.files.length; x++) {
+                formData.append("images", img1.files[x]);
             }
-        })
-            .catch((err) => {
-                console.log(err);
-                errorAlert('Sorry! Something went wrong', err);
-            });
+            const endpoint = '/api/v1/portfolio/createCollec'
+            await fetch((endpoint), {
+                body: formData,
+                method: 'POST'
+            }).then((response) => {
+                load.classList.add("hidden");
+                console.log(response);
+                if (response.status === 201) {
+                    successAlert("Your Portfolio has been created :)");
+                    window.setTimeout(() => {
+                        location.assign(`/myportfolio/${num}?${theme}`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
         yourname.value = "",
+            yourabout.value = "",
+            yourwhat.value = "",
+            yourwhy.value = "",
             youremail.value = "",
             fb.value = "",
             yourno.value = "",

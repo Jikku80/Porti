@@ -28,14 +28,18 @@ block content
                 h2 Previous Accomplishment Details
                 p= portfolio.previous
                 .prev__cont
-                    img.imgsnd(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img", srcset="")
-                    h3#first__head= portfolio.secondImgHead
-                    img.imgsnd(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img", srcset="")
-                    h3#second__head= portfolio.thirdImgHead
-                    img.imgsnd(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img", srcset="")
-                    h3#third__head= portfolio.fourthImgHead
-                    img.imgsnd(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img", srcset="")
-                    h3#fourth__head= portfolio.fifthImgHead
+                    .prev__cont__sub
+                        img.imgsnd(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img", srcset="")
+                        h3#first__head= portfolio.secondImgHead
+                    .prev__cont__sub
+                        img.imgsnd(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img", srcset="")
+                        h3#second__head= portfolio.thirdImgHead
+                    .prev__cont__sub
+                        img.imgsnd(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img", srcset="")
+                        h3#third__head= portfolio.fourthImgHead
+                    .prev__cont__sub
+                        img.imgsnd(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img", srcset="")
+                        h3#fourth__head= portfolio.fifthImgHead
                 h6 You can view image in full screen by right clicking on image and open it in new tab
 
             #contat 
@@ -48,9 +52,12 @@ block content
                     .cont__box
                         p= `Email: ${portfolio.email}`
                     if (portfolio.fb != "")
-                        .cont__box 
+                        .cont 
                             a(href=`${portfolio.fb}`)
-                                img(src="/images/fb.png", alt="fb__icon")
+                                if (portfolio.user.photo)
+                                    img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                                else 
+                                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
             a#goup(href="#") 
                 img(src="/images/rup.png", alt="go_up")
                     

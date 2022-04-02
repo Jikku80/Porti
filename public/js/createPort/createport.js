@@ -40,8 +40,8 @@ layoutOneForm.innerHTML = `
             <input id="youremail" type="email" placeholder="techmafia@gmail.com" required/>
         </div>
         <div class="form__cont">
-            <label>Your Facebook Profile Link</label>
-            <input id="yourFb" type="text" placeholder="www.facebook.com/techmafia...." required />
+            <label>Your Social Profile Link</label>
+            <input id="yourFb" type="text" placeholder="https://www.facebook.com/instagram.com/linkedin.com" required />
         </div>
         <div class="form__cont">
             <label>Previous Accomplishment Details</label>

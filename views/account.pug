@@ -5,6 +5,13 @@ block content
         include _header
         .update__account__form 
             form#upInfo
+                if (user.photo)
+                    img.profPic(src=`images/users/${user.photo}`, alt="prof__pic")
+                else 
+                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                label.form__label(for='profile') Change DP
+                input#upPic.form__input(type="file" accept="image/*" name="profPic")
+                button#upProfPic.redbtn Update Picture 
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name
                 input#upname.form__input(type='text', placeholder=`${user.name}`, required)

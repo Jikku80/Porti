@@ -39,8 +39,8 @@ formLayoutTwo.innerHTML = `
         <input id="yremail" type="email" placeholder="techmafia@gmail.com" required/>
     </div>
     <div class="form__cont">
-        <label>Your Facebook Profile Link</label>
-        <input id="yrFb" type="text" placeholder="www.facebook.com/techmafia...." required />
+        <label>Your Social Media Profile Link</label>
+        <input id="yrFb" type="text" placeholder="https://www.facebook.com/instagram.com/linkedin.com" required />
     </div>
     <div class="form__cont">
         <label>Previous Accomplishment Details</label>
@@ -110,52 +110,54 @@ layout2.addEventListener("click", () => {
     let submit = document.getElementById("formbtn");
     let theme = "589c22335a381f122d129225f5c0ba3056ed5811";
 
-    submit.addEventListener("click", (e) => {
+    submit.addEventListener("click", async (e) => {
         e.preventDefault();
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden")
-        let num = btoa(yourno.value);
-        const formData = new FormData();
-        formData.append("name", yourname.value);
-        formData.append("about", aboutyou.value);
-        formData.append("what", what.value);
-        formData.append("why", why.value);
-        formData.append("phn_no", yourno.value);
-        formData.append("showNo", showNo.checked);
-        formData.append("email", youremail.value);
-        formData.append("fb", fb.value);
-        formData.append("previous", yourwork.value);
-        formData.append("theme", theme);
-        formData.append("firstImgHead", hd1.value);
-        formData.append("secondImgHead", hd2.value);
-        formData.append("thirdImgHead", hd3.value);
-        formData.append("fourthImgHead", hd4.value);
-        formData.append("fifthImgHead", hd5.value);
-        formData.append("imageCover", img1.files[0]);
-        formData.append("imageSecond", img2.files[0]);
-        formData.append("imageThird", img3.files[0]);
-        formData.append("imageFourth", img4.files[0]);
-        formData.append("imageFifth", img5.files[0]);
-        const endpoint = '/api/v1/portfolio'
-        fetch((endpoint), {
-            body: formData,
-            method: 'POST'
-        }).then((response) => {
-            load.classList.add("hidden");
-            if (response.status === 201) {
-                successAlert("Your Portfolio has been created :)");
-                window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${theme}`);
-                }, 400);
-            } else {
-                console.log(response);
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
-            }
-        })
-            .catch((err) => {
-                console.log(err);
-                errorAlert('Sorry! Something went wrong', err);
-            });
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            let num = btoa(yourno.value);
+            const formData = new FormData();
+            formData.append("name", yourname.value);
+            formData.append("about", aboutyou.value);
+            formData.append("what", what.value);
+            formData.append("why", why.value);
+            formData.append("phn_no", yourno.value);
+            formData.append("showNo", showNo.checked);
+            formData.append("email", youremail.value);
+            formData.append("fb", fb.value);
+            formData.append("previous", yourwork.value);
+            formData.append("theme", theme);
+            formData.append("firstImgHead", hd1.value);
+            formData.append("secondImgHead", hd2.value);
+            formData.append("thirdImgHead", hd3.value);
+            formData.append("fourthImgHead", hd4.value);
+            formData.append("fifthImgHead", hd5.value);
+            formData.append("imageCover", img1.files[0]);
+            formData.append("imageSecond", img2.files[0]);
+            formData.append("imageThird", img3.files[0]);
+            formData.append("imageFourth", img4.files[0]);
+            formData.append("imageFifth", img5.files[0]);
+            const endpoint = '/api/v1/portfolio'
+            await fetch((endpoint), {
+                body: formData,
+                method: 'POST'
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Your Portfolio has been created :)");
+                    window.setTimeout(() => {
+                        location.assign(`/myportfolio/${num}?${theme}`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
         yourname.value = "",
             youremail.value = "",
             fb.value = "",

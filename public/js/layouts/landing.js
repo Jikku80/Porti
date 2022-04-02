@@ -3,11 +3,13 @@ let updateForm = document.getElementById('update_form');
 let headGo = document.querySelector(".land__goto");
 let updateImgForm = document.getElementById('update_ImgForm');
 let updateImg = document.getElementById("update_Img");
+let delFirst = document.getElementById("delPp");
 
 updatePort.addEventListener('click', () => {
     headGo.classList.add('hidden');
     updatePort.classList.add('hidden');
     updateImg.classList.add("hidden");
+    delFirst.classList.add("hidden");
     updateForm.classList.remove('hidden');
 })
 
@@ -15,6 +17,7 @@ updateImg.addEventListener("click", () => {
     headGo.classList.add('hidden');
     updatePort.classList.add('hidden');
     updateImg.classList.add("hidden");
+    delFirst.classList.add("hidden");
     updateImgForm.classList.remove('hidden');
 })
 
@@ -25,6 +28,7 @@ cancel.addEventListener("click", () => {
     headGo.classList.remove('hidden');
     updatePort.classList.remove('hidden');
     updateImg.classList.remove("hidden");
+    delFirst.classList.remove("hidden");
     updateForm.classList.add('hidden');
 })
 
@@ -32,6 +36,7 @@ cancl.addEventListener("click", () => {
     headGo.classList.remove('hidden');
     updatePort.classList.remove('hidden');
     updateImg.classList.remove("hidden");
+    delFirst.classList.remove("hidden");
     updateImgForm.classList.add('hidden');
 })
 
@@ -80,6 +85,7 @@ updBtn.addEventListener("click", async (e) => {
                 about: upabout.value,
                 what: upwhat.value,
                 why: upwhy.value,
+                phn_no: upno.value,
                 showNo: upshowNo.checked,
                 theme: themes.value,
                 email: upemail.value,

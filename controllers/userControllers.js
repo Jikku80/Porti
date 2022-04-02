@@ -25,13 +25,16 @@ exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     if (!req.file) return next();
 
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+
+    pic = req.file;
+
+    pic.originalname = `user-${req.user.name}-${Date.now()}.jpeg`;
 
     await sharp(req.file.buffer)
         .resize(500, 500)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
-        .toFile(`public/images/users/${req.file.filename}`);
+        .toFile(`public/images/users/${pic.originalname}`);
 
     next();
 });
@@ -59,6 +62,25 @@ exports.updateMe = catchAsync(async (req, res, next) => {
             user: updatedUser
         }
     })
+})
+
+exports.updateDP = catchAsync(async (req, res, next) => {
+    const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        {
+            photo: req.file.originalname
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+    res.status(200).json({
+        status: 'success',
+        data: {
+            user: updatedUser
+        }
+    });
 })
 
 exports.deleteMe = catchAsync(async (req, res, next) => {

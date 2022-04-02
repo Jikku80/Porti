@@ -32,7 +32,6 @@ exports.uploadImages = upload.fields([
     { name: 'images', maxCount: 20 }
 ]);
 
-// exports.uploadPortImages = upload.single('imageCover');
 
 exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
@@ -152,6 +151,9 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
     const doc = await Portfolio.create({
         name: req.body.name,
         user: req.user.id,
+        about: req.body.about,
+        what: req.body.what,
+        why: req.body.why,
         email: req.body.email,
         fb: req.body.fb,
         phn_no: req.body.phn_no,
@@ -172,6 +174,7 @@ exports.getAllPort = factory.getAll(Portfolio);
 exports.getMe = factory.getOne(Portfolio);
 exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
+exports.makePorti = factory.createOne(Portfolio);
 
 exports.deletePorti = catchAsync(async (req, res, next) => {
     await Portfolio.findByIdAndDelete(req.body.id);

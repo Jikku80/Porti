@@ -2,10 +2,12 @@ let landCont = document.querySelector(".land__content");
 let dlcf = document.querySelector(".dt__cf")
 let delPorti = document.getElementById("delPort");
 let deel = document.querySelector(".del__port");
+let landPorti = document.querySelector(".land__update")
 
 delPorti.addEventListener("click", () => {
     landCont.classList.add("hidden");
     deel.classList.add("hidden");
+    landPorti.classList.add("hidden");
     dlcf.classList.remove("hidden");
 })
 
@@ -13,6 +15,7 @@ let abrt = document.querySelector(".noDelete")
 abrt.addEventListener("click", () => {
     dlcf.classList.add("hidden");
     landCont.classList.remove("hidden");
+    landPorti.classList.remove("hidden");
     deel.classList.remove("hidden");
 })
 

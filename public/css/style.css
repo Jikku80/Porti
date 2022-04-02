@@ -96,6 +96,20 @@ body{
   text-align: center;
 }
 
+.profPic{
+  width: 10rem;
+  height: 10rem;
+  border-radius: 8rem;
+}
+
+.satProf{
+  filter: saturate(2);
+}
+
+#upProfPic{
+  margin: 1%;
+}
+
 #reset__form{
   margin-top: 20vh;
 }
@@ -222,7 +236,7 @@ body{
   margin: 1%;
 }
 
-.cancel__create, .cancelcreate, .closecreate, .clcreate{
+.cancel__create, .cancelcreate, .closecreate, .clcreate, .clFivecreate, .clSixthcreate{
   cursor: pointer;
 }
 

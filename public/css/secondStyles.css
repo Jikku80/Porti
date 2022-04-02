@@ -110,22 +110,29 @@ html{
 
 .prev__cont{
     display: flex;
+    flex-direction:row;
     justify-content: center;
+    text-align: center;
     flex-wrap: wrap;
+}
+
+.prev__cont__sub{
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
     align-items: center;
 }
 
 .imgsnd{
-    height: 30vh;
-    width: 30vw;
+    height: 50vh;
+    width: auto;
     border-radius: 1rem;
     margin: 2%;
-    filter: grayscale(1);
     transition: transform .2s;
 }
 
 .imgsnd:hover{
-    filter: none;
+    filter: saturate(1.5);
     cursor: pointer;
     transform : scale(1.2)
 }

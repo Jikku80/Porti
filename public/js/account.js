@@ -78,3 +78,36 @@ pwdUpdate.addEventListener("click", async (e) => {
     uppwd.value = "";
     uppwdcfm.value = "";
 })
+
+let profPic = document.getElementById("upPic");
+let upProfPic = document.getElementById("upProfPic");
+upProfPic.addEventListener("click", async (e) => {
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden")
+    const formData = new FormData();
+    formData.append("photo", profPic.files[0]);
+    const endpoint = '/api/users/updateDP'
+    try {
+        await fetch(endpoint, {
+            body: formData,
+            method: 'PATCH'
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Your Profile Picture has been updated :)");
+                window.setTimeout(() => {
+                    location.assign(`/me`);
+                }, 400);
+            } else {
+                errorAlert("Provide a Valid Image!!!")
+            }
+        })
+
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+    profPic.value = ""
+})

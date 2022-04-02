@@ -59,9 +59,16 @@ body{
     border: 1px solid crimson;
     border-radius: 1rem;
     padding: 5vw;
-    margin: 2vh;
+    margin: 1vh;
     display: flex;
     justify-content: space-between;
+    width: 85vw;
+}
+
+.land__sixth, .land__secd, .land__farst{
+    overflow-y: auto;
+    padding: 1vh;
+    height: 70vh;
 }
 
 .upform__head {
@@ -74,23 +81,41 @@ body{
     font-size: large;
 }
 
-.cancel, .cancl{
+.cancel, .cancl, .cancelSec, .canclCollec, .cancelSix{
     cursor: pointer;
 }
 
-#upPort{
-    display: flex;
-    flex-direction: column;
-    font-size: 10px;
-    padding-left: 25vw;
+.cont{
+    margin: 10vh;
+    transition: transform .2s;
 }
 
-#upPort label, #upImage label{
+.cont:hover{
+    transform: scale(1.5);
+}
+
+.profPic{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 8rem;
+}
+
+#upPort, #upPortSec, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+    padding-left: 25vw;
+    padding-right: 25vw;
+}
+
+#upPort label, #upImage label, #upPortSec label, #upImageCollec label, #upPortSix label{
     margin-right: 2%;
     color: gray;
 }
 
-#upPort p, #upImage p{
+#upPort p, #upImage p, #upPortSec p, #upImageCollec p, #upPortSix p{
     font-size: xx-small;
     margin-top: 0;
     margin-left: 4%;
@@ -98,7 +123,7 @@ body{
     padding: 0;
 }
 
-#upPort input, #upImage input{
+#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input{
     border: 2px solid crimson;
     border-radius: 5px;
     background-color: transparent;
@@ -106,11 +131,11 @@ body{
     padding: 1%;
 }
 
-#upFb{
+#upFb, #upFbSec, #upFbSix{
     width: 25vw;
 }
 
-#upPort textarea{
+#upPort textarea, #upPortSec textarea, #upPortSix textarea{
     border: 2px solid crimson;
     border-radius: 10px;
     background-color: transparent;
@@ -121,6 +146,8 @@ body{
 .form__bod{
     margin:1%;
     display: flex;
+    flex-direction: column;
+    width: 100%;
     align-items: center;
 }
 
@@ -181,10 +208,17 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+.sec__land__bod{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
 .del__port{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .del__bod{
@@ -220,11 +254,11 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 2%;
 }
 
-#updateBtn{
+#updateBtn, #updateBtnSec, #updateBtnSix{
     width: 25%;
 }
 
-#themes{
+#themes, #themeSec, #themeSix{
     background-color: transparent;
     border: 2px solid crimson;
     color: gray;
@@ -271,7 +305,13 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
 @media (min-width: 601px) and (max-width: 900px){
-    #upPort{
+    .land__sixth, .land__secd, .land__farst{
+        height: 80vh;
+        width: 90vw;
+        margin-left: 0%;
+    }
+
+    #upPort, #upPortSec, #upPortSix{
         padding-left: 10vw;
     }
 
@@ -280,7 +320,7 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 2%;
     }
 
-    #upFb{
+    #upFb, #upFbsec, #upFbSix{
         width: 50vw;
     }
 
@@ -294,7 +334,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width: 600px){
-    #upPort{
+    .land__sixth, .land__secd, .land__farst{
+        height: 85vh;
+        width: 90vw;
+        margin-left: 0%;
+    }
+    #upPort, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm{
         padding: 0;
     }
 
@@ -306,15 +351,15 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 2%;
     }
 
-    #themes{
+    #themes, #themeSec, #themeSix{
         width: 50vw;
     }
 
-    #upPort label{
+    #upPort label, #upPortSec label, #upPortSix label{
         font-size: x-small;
     }
 
-    #upPort textarea{
+    #upPort textarea, #upPortSec textarea, #upPortSix textarea{
         width: 60vw;
     }
 

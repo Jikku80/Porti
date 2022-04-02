@@ -23,16 +23,21 @@ block content
                 h2 Previous Accomplishment Details
                 p= portfolio.previous
             .prev__cont
-                img.imgsnd(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="firs_image")
-                h3#zr__head= portfolio.firstImgHead
-                img.imgsnd(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img")
-                h3#fst__head= portfolio.secondImgHead
-                img.imgsnd(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img")
-                h3#send__head= portfolio.thirdImgHead
-                img.imgsnd(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img")
-                h3#thrd__head= portfolio.fourthImgHead
-                img.imgsnd(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img")
-                h3#forth__head= portfolio.fifthImgHead
+                .prev__cont__sub
+                    img.imgsnd(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="firs_image")
+                    h3#zr__head= portfolio.firstImgHead
+                .prev__cont__sub
+                    img.imgsnd(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img")
+                    h3#fst__head= portfolio.secondImgHead
+                .prev__cont__sub
+                    img.imgsnd(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img")
+                    h3#send__head= portfolio.thirdImgHead
+                .prev__cont__sub
+                    img.imgsnd(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img")
+                    h3#thrd__head= portfolio.fourthImgHead
+                .prev__cont__sub
+                    img.imgsnd(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img")
+                    h3#forth__head= portfolio.fifthImgHead
             h6 You can view image in full screen by right clicking on image and open it in new tab
         #contact
             h2 Contact
@@ -43,9 +48,12 @@ block content
                 .contbox
                     p= `Email-id: ${portfolio.email}`
                 if (portfolio.fb != "")
-                    .contbox
+                    .cont
                         a(href=`${portfolio.fb}`)
-                            img(src="/images/fb.png", alt="fb__icon")
+                            if (portfolio.user.photo)
+                                img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                            else 
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
 
         #footer 
             p= `${portfolio.name} portfolio`

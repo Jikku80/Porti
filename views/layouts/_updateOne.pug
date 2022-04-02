@@ -1,6 +1,6 @@
 .land__update
     button#update_port.redbtn Update Portfolio
-    #update_form.hidden.upform
+    #update_form.hidden.upform.land__farst
         .upform__head 
             h1 Update Your Portfolio 
             img.cancel(src="/images/cancel.png", alt="cancel_img")
@@ -39,7 +39,7 @@
                 label Email Address:
                 input#upemail(type="email" value=`${portfolio.email}` name="email" required)
             .form__bod
-                label Your Facebook Profile Link: 
+                label Your Social Media Profile Link: 
                 input#upFb(type="text" value=`${portfolio.fb}`)
             .form__bod
                 label Detail:

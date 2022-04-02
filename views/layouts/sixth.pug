@@ -1,0 +1,45 @@
+extends baselayout 
+
+block content
+    .main__sixth
+        .main__sixth__prev
+            h1  Prior 
+                span Detail
+            .main__prev__bod 
+                p= portfolio.previous
+                h2= `${portfolio.name} ran into a problem`
+                p= portfolio.firstImgHead 
+                h2= `How ${portfolio.name} solved the problem?`
+                p= portfolio.secondImgHead
+        .main__sixth__about 
+            h1 About 
+                span= `${portfolio.name}`
+            .main__about__bod 
+                p= portfolio.about 
+                h2= `What ${portfolio.name} Do?`
+                p= portfolio.what
+                h2= `Why ${portfolio.name} Do it?`
+                p= portfolio.why
+                h2= `How ${portfolio.name} deals with Failure?`
+                p= portfolio.fourthImgHead
+                h2= `How ${portfolio.name} stays motivated?`
+                p= portfolio.thirdImgHead
+                h2= `${portfolio.name} Message`
+                p= portfolio.fifthImgHead
+
+        .main__sixth__cont
+            h1 Get in 
+                span Touch
+            .cont__boxbg.main__cont__bod
+                if (portfolio.showNo === true)
+                    .cont__box.sixth__box
+                        p= `Phone: ${portfolio.phn_no}` 
+                .cont__box.sixth__box
+                    p= `Email: ${portfolio.email}`
+                if (portfolio.fb != "")
+                    .cont
+                        a(href=`${portfolio.fb}`)
+                            if (portfolio.user.photo)
+                                img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                            else 
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
