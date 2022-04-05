@@ -1,5 +1,6 @@
 layout2 = document.querySelector("#layout2")
 portBod = document.querySelector(".port__bod");
+inviSec2 = document.querySelector('.invi__section');
 
 let formLayoutTwo = document.createElement("div");
 formLayoutTwo.classList.add('formLayout2')
@@ -87,6 +88,7 @@ layoutTwo.classList.add("hidden");
 layout2.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec2.classList.add("hidden");
     layoutTwo.classList.remove("hidden");
     let yourname = document.querySelector("#yrname");
     let aboutyou = document.getElementById("yrabout");
@@ -183,4 +185,5 @@ let canclCreate = document.querySelector(".cancelcreate")
 canclCreate.addEventListener("click", () => {
     layoutTwo.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec2.classList.remove("hidden");
 })

@@ -6,5 +6,9 @@ block content
         include _loginForm
     else 
         include _header
-        include _sendMsg
+        .login__bod 
+            h1= `Hola! ${user.name}, You are Logged In!`
+            a(href="/porti")
+                button.redbtn Go to Porti 
+        
     

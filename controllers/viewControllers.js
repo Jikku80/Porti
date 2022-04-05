@@ -2,6 +2,7 @@ const Message = require('./../models/messageModel');
 const User = require('./../models/userModel');
 
 const Portfolio = require('./../models/portfolioModel');
+const Invite = require('./../models/inviteModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const atob = require('./../utils/decode');
@@ -56,12 +57,12 @@ exports.myPort = catchAsync(async (req, res) => {
     }).catch(err => console.log(err));
 })
 
-exports.myPortTwo = catchAsync(async (req, res) => {
+exports.myInvi = catchAsync(async (req, res) => {
     const num = atob(req.params.num) * 1
-    await Portfolio.findOne({ phn_no: num }).populate('user').then(portfolio => {
+    await Invite.findOne({ phn_no: num }).populate('user').then(invite => {
         res.status(200).render('layouts/landingSec', {
-            title: 'Porti Detail',
-            portfolio
+            title: 'Invitation Detail',
+            invite
         })
     }).catch(err => console.log(err));
 })

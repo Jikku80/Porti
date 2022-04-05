@@ -1,5 +1,7 @@
 layout3 = document.querySelector("#layout3")
 portBod = document.querySelector(".port__bod");
+inviSec = document.querySelector('.invi__section');
+
 
 let formLayoutThree = document.createElement("div");
 formLayoutThree.classList.add('formLayout3')
@@ -87,6 +89,7 @@ layoutThree.classList.add("hidden");
 layout3.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec.classList.add("hidden");
     layoutThree.classList.remove("hidden");
     let yourname = document.querySelector("#uthirdname");
     let aboutyou = document.getElementById("uthirdabout");
@@ -183,4 +186,5 @@ let closeCreate = document.querySelector(".closecreate")
 closeCreate.addEventListener("click", () => {
     layoutThree.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec.classList.remove("hidden");
 })

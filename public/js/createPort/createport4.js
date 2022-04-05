@@ -1,5 +1,6 @@
 layout4 = document.querySelector("#layout4")
 portBod = document.querySelector(".port__bod");
+inviSec = document.querySelector('.invi__section');
 
 let formLayoutFour = document.createElement("div");
 formLayoutFour.classList.add('formLayout4')
@@ -87,6 +88,7 @@ layoutFour.classList.add("hidden");
 layout4.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec.classList.add("hidden");
     layoutFour.classList.remove("hidden");
     let yourname = document.querySelector("#fourthname");
     let aboutyou = document.getElementById("fourthabout");
@@ -183,4 +185,5 @@ let clCreate = document.querySelector(".clcreate")
 clCreate.addEventListener("click", () => {
     layoutFour.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec.classList.remove("hidden");
 })

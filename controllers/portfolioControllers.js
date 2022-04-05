@@ -24,8 +24,7 @@ exports.uploadPortImages = upload.fields([
     { name: 'imageSecond', maxCount: 1 },
     { name: 'imageThird', maxCount: 1 },
     { name: 'imageFourth', maxCount: 1 },
-    { name: 'imageFifth', maxCount: 1 },
-    { name: 'images', maxCount: 15 }
+    { name: 'imageFifth', maxCount: 1 }
 ]);
 
 exports.uploadImages = upload.fields([

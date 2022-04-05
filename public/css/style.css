@@ -4,6 +4,9 @@ html{
 }
 
 body{
+    background-image: linear-gradient(to bottom right, rgb(44, 44, 44) , crimson);
+    background-size: contain;
+    background-repeat: no-repeat;
     background-color: rgb(44, 44, 44);
     color: white;
 }
@@ -47,7 +50,34 @@ body{
     font-weight: bold;
 }
 
+.login__bod{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding-top: 50vh;
+  padding-bottom: 50vh;
+}
+
 .port__nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.port__nav__first{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.port__nav__sub{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.port__nav__second{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -66,6 +96,24 @@ body{
   color: rgb(253, 22, 68);
 }
 
+.port_sec_head{
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.port_sec_head span{
+  color: rgb(245, 63, 100);
+}
+
+.login__head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
 .login{
   text-decoration: none;
   color: whitesmoke;
@@ -76,23 +124,32 @@ body{
   color: crimson;
 }
 
-.login__form, #reset__form, #upInfo, #upPass{
+.login__form, .fg__form #reset__form, #upInfo, #upPass{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.login__form{
+  min-height: 100vh;
+}
+
 #loginForm, #forgotPwd, .signup__form{
-  background-color: rgba(220, 20, 60, 0.288);
-  border: 2px solid crimson;
+  background-color: rgba(255, 255, 255, 0.103);  
+  backdrop-filter: blur(5px);
   padding: 2%;
   margin: 2%;
   width: 75vw;
   text-align: center;
 }
 
+.signup__form{
+  background-color: rgba(37, 37, 37, 0.356);  
+  backdrop-filter: blur(5px);
+}
+
 #acHead{
-  color: grey;
+  color: white;
   text-align: center;
 }
 
@@ -108,6 +165,12 @@ body{
 
 #upProfPic{
   margin: 1%;
+}
+
+.userDp{
+  height: 4.5rem;
+  width: 4.5rem;
+  cursor: pointer;
 }
 
 #reset__form{
@@ -135,13 +198,13 @@ body{
   align-items: center;
 }
 
-#logout{
+#logout, #view, #viewInvites{
   cursor: pointer;
 }
 
 .form__label{
   margin: 1%;
-  color: gray
+  color: white
 }
 
 .form__input{
@@ -152,18 +215,19 @@ body{
   padding: 1%;
 }
 
-.port__bod{
+.port__bod, .invi__section{
   margin: 4%;
-  background-color: rgba(220, 20, 60, 0.233);
-  border: 1px solid crimson;
-  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.103);  
+  backdrop-filter: blur(5px);
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   padding: 2%;
   height: 100vh;
   overflow-y: auto;
   scrollbar-width: thin;
 }
 
-.port__bod h2{
+.port__bod h2, .invi__section h2{
   font-size: large;
 }
 
@@ -172,14 +236,14 @@ body{
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
-  color: gray;
+  color: white;
 }
 
-.un_layout{
+.un_layout, .un_layout_log{
   padding: 1%;
 }
 
-.un_layout img{
+.un_layout img, .un_layout_log img{
   width: 40vw;
   height: 40vh;
   cursor: pointer;
@@ -191,10 +255,24 @@ body{
   -webkit-filter: blur(8px);
 }
 
-.comp__form{
-  background-color: rgba(220, 20, 60, 0.24);
-  border: 1px solid crimson;
+.unl{
   border-radius: 1rem;
+  overflow: hidden;
+}
+
+.un_layout_log img{
+  transition: transform .2s;
+}
+
+.un_layout_log img:hover{
+  transform: scale(1.15);
+}
+
+.comp__form{
+  background-color: rgba(37, 37, 37, 0.356);  
+  backdrop-filter: blur(5px);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
   padding: 2%;
   padding-left: 30vw;
   margin: 2%;
@@ -224,7 +302,7 @@ body{
 
 .form__cont label{
   margin: 1%;
-  color: gray;
+  color: white;
 }
 
 .form__cont textarea, .form__cont input{
@@ -232,7 +310,8 @@ body{
   color: white;
   padding: 1%;
   border: 2px solid crimson;
-  border-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
   margin: 1%;
 }
 
@@ -281,6 +360,7 @@ input[type=number]::-webkit-outer-spin-button {
   align-items: center;
   margin-top: 40vh;
   font-size: larger;
+  padding-bottom: 50vh;
 }
 
 .confirm__pg h1, #reset__head{
@@ -297,6 +377,7 @@ input[type=number]::-webkit-outer-spin-button {
 .four0four{
   text-align: center;
   margin-top: 35vh;
+  padding-bottom: 50vh;
 }
 
 .four0four h1{
@@ -388,7 +469,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 85vh;
   }
 
-  .un_layout img{
+  .un_layout img, .unl img{
     width: 80vw;
     height: 40vh;
     margin-top: 4%;
@@ -417,7 +498,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: .7rem;
   }
 
-  .un_layout img{
+  .un_layout img, .unl img{
     width: 80vw;
     height: 30vh;
     margin-top: 4%;

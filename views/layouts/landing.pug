@@ -5,11 +5,23 @@ block content
         if (portfolio.user.id == user._id)
             img.loader.hidden(src="/images/loading.gif", alt="loader")
             .land__content
-                .land__nav
-                    h1.land__head Your Creations
-                    #logout.logout
-                        img(src="/images/poweroff.png", alt="signout")
-            
+                .land__nav__main
+                    .land__nav
+                        a.land__head(href="/me")
+                            if (user.photo)
+                                img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic")
+                            else 
+                                img.userdp.satProf(src="/images/hitman.png", alt="prof__pic")
+                        a.port_sec_head(href="/")
+                            h1 Tech 
+                                span Mafia
+                        #logout.logout
+                            img(src="/images/poweroff.png", alt="signout")
+                    .land__nav__sub 
+                        a(href="/porti")
+                            img(src="/images/plus.png", alt="view_port")
+                        #goto__viewInvites
+                            img(src="/images/invite.png", alt="view_port")
                 .land__goto
                     h1#port_name= `${portfolio.name}`
                     p Go to your portfolio

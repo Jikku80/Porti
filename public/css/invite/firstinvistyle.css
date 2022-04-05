@@ -1,0 +1,169 @@
+body{
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.invite__main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.mrg__cover{
+    width: 100vw;
+    height: 100vh;
+    filter: brightness(.7);
+}
+
+.invite__main__sub{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.705);
+    top: 5;
+    border: 1px solid white;
+    width: 70%;
+    padding: 1%;
+    height: 80%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    text-align: center;
+    font-size: 16px;
+}
+
+.coupleName{
+    letter-spacing: 10px;
+}
+
+.invite__bod{
+    text-align: justify;
+}
+
+.invite__bod__cont{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 400px;
+}
+
+.invite__bod__abt{
+    overflow-y: auto;
+    scrollbar-width: thin;
+    font-size: 1.5rem;
+    padding:1%
+}
+
+.invite__bod__cont img{
+    width: 30vw;
+    margin: 1%;
+}
+
+.invite__bod__pic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invite__bod__pic img{
+    width: 90%;
+    margin: 1%;
+}
+
+.invite__bod__details{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-family: cursive;
+}
+
+.partyDate{
+    border: 2px solid goldenrod;
+    padding: 1%;
+    font-size: xx-large;
+    width: fit-content;
+    text-align: center;
+}
+
+.partyVenue{
+    color: goldenrod;
+    font-size: x-large;
+}
+
+.partyTime{
+    border: 2px solid goldenrod;
+    padding: 1%;
+    font-size: xx-large;
+    width: fit-content;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .coupleName{
+        letter-spacing: 6px;
+    }
+    .invite__main__sub{
+        font-size: 14px;
+    }
+
+    .invite__bod__cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .invite__bod__abt{
+        font-size: 14px;
+    }
+
+    .invite__bod__cont img{
+        width: 90%;
+        margin: 1%;
+    }
+    .partyDate{
+        font-size: x-large;
+    }
+
+    .partyVenue{
+        font-size: x-large;
+    }
+
+    .partyTime{
+        font-size: x-large;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .coupleName{
+        letter-spacing: 3px;
+    }
+
+    .invite__main__sub{
+        font-size: 10px;
+    }
+    .invite__bod__cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    .invite__bod__abt{
+        font-size: 12px;
+    }
+    .invite__bod__cont img{
+        width: 90%;
+        margin: 1%;
+    }
+
+    .partyDate{
+        font-size: medium;
+    }
+
+    .partyVenue{
+        font-size: medium;
+    }
+
+    .partyTime{
+        font-size: medium;
+    }
+}

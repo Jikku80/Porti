@@ -1,5 +1,7 @@
 layout5 = document.querySelector("#layout5")
 portBod = document.querySelector(".port__bod");
+inviSec = document.querySelector('.invi__section');
+
 
 let formLayoutFive = document.createElement("div");
 formLayoutFive.classList.add('formLayout5')
@@ -57,6 +59,7 @@ layoutFive.classList.add("hidden");
 layout5.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec.classList.add("hidden");
     layoutFive.classList.remove("hidden");
     let yourname = document.querySelector("#fifthname");
     let yourabout = document.getElementById("fifthabout");
@@ -125,4 +128,5 @@ let clFiveCreate = document.querySelector(".clFivecreate")
 clFiveCreate.addEventListener("click", () => {
     layoutFive.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec.classList.remove("hidden");
 })

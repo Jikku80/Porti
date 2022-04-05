@@ -1,5 +1,6 @@
 layout6 = document.querySelector("#layout6")
 portBod = document.querySelector(".port__bod");
+inviSec = document.querySelector('.invi__section');
 
 let formLayoutSix = document.createElement("div");
 formLayoutSix.classList.add('formLayout6')
@@ -77,6 +78,7 @@ layoutSix.classList.add("hidden");
 layout6.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec.classList.add("hidden");
     layoutSix.classList.remove("hidden");
     let yourname = document.querySelector("#sixthname");
     let aboutyou = document.getElementById("sixthabout");
@@ -162,4 +164,5 @@ let clsixthCreate = document.querySelector(".clSixthcreate")
 clsixthCreate.addEventListener("click", () => {
     layoutSix.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec.classList.remove("hidden");
 })

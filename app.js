@@ -11,6 +11,7 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const portfolioRouter = require('./routes/portfolioRoutes');
+const inviteRouter = require('./routes/inviteRoutes');
 const messageRouter = require('./routes/messageRoutes');
 const userRouter = require('./routes/userRoutes');
 const viewRouter = require('./routes/viewRoutes');
@@ -52,6 +53,7 @@ app.use(function (req, res, next) {
 app.use('/', viewRouter);
 app.use('/api/users', userRouter);
 app.use('/api/v1/portfolio', portfolioRouter);
+app.use('/api/v1/invite', inviteRouter);
 app.use('/api/v1/message', messageRouter);
 
 app.get('*', function (req, res, next) {

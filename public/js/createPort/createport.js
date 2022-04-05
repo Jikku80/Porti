@@ -1,5 +1,6 @@
 create_port = document.querySelector(".create_port")
 portBod = document.querySelector(".port__bod");
+inviSec = document.querySelector('.invi__section');
 layout1 = document.querySelector("#layout1");
 
 let layoutOneForm = document.createElement("div");
@@ -89,6 +90,7 @@ crForm.classList.add("hidden");
 layout1.addEventListener("click", () => {
     infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
+    inviSec.classList.add("hidden");
     crForm.classList.remove("hidden");
     let yourname = document.querySelector("#yourname");
     let aboutyou = document.getElementById("aboutyou");
@@ -185,4 +187,5 @@ let cancelCreate = document.querySelector(".cancel__create");
 cancelCreate.addEventListener("click", () => {
     crForm.classList.add("hidden");
     portBod.classList.remove("hidden");
+    inviSec.classList.remove("hidden");
 })

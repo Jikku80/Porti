@@ -1,0 +1,26 @@
+extends baseinvi 
+
+block content 
+    .invite__main 
+        img.mrg__cover(src=`/images/invites/imageCover/${invite.imgCover}`, alt="cover__pic")
+        .invite__main__sub
+            h2.coupleName= invite.fname 
+                span  &hearts; 
+                    span= invite.sname
+            .invite__bod
+                h3 Our Story 
+                .invite__bod__cont
+                    .invite__bod__abt
+                        p= invite.about
+                    img(src=`/images/invites/imageSecond/${invite.imgSecond}`, alt="snd__img")
+                h3 We keep this love in a Photograph :)
+                .invite__bod__pic
+                    img(src=`/images/invites/imageThird/${invite.imgThird}`, alt="thrd__img")
+                    img(src=`/images/invites/imageFourth/${invite.imgFourth}`, alt="forth__img")
+                    img(src=`/images/invites/imageFifth/${invite.imgFifth}`, alt="fith__img")
+                .invite__bod__details 
+                    h4.partyDate= `Date: ${invite.pdate }`
+                    h4.partyVenue= `Venue: ${invite.address}` 
+                    h4.partyTime= `Time: ${invite.ptime}`
+
+
