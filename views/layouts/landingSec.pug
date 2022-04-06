@@ -35,12 +35,15 @@ block content
                 .del__port#delinvi 
                     .del__bod
                         button#delInvite.redbtn Delete Invitation
-                .dt__cf.hidden
+                .dt__cf#dt__cf.hidden
                     h1 Are you sure you want to delete Your Invitation?
                     .delete__Confirm
-                        .yesDelete.redbtn Confrim
-                        .noDelete.redbtn Abort
-                h2 Updating Section
+                        .yesDelete#yesdel.redbtn Confrim
+                        .noDelete#nodel.redbtn Abort
+                if (invite.theme == '4dc50fc3bc007be011b5445f3f79298b9eeb51b7')
+                    include _updateInviOne.pug
+                else 
+                    h1 Update Section
         else 
             .confirm__pg
                 h1 You Dont Belong Here, Use Your Phone Number
@@ -52,5 +55,5 @@ block content
 
     script(src="/js/alert.js")
     script(src="/js/layouts/inviLand.js")      
-    script(src="/js/delete.js") 
+    script(src="/js/createInvi/delInvi.js") 
     script(src="/js/logout.js")

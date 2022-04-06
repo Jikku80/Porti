@@ -14,3 +14,14 @@ exports.inviFirst = catchAsync(async (req, res, next) => {
         })
     })
 })
+
+exports.inviSecond = catchAsync(async (req, res, next) => {
+    const invi_id = atob(req.params.id)
+    await Invite.findById(invi_id).populate('user').then(invite => {
+
+        res.status(200).render('invite/secondInvite', {
+            title: `${invite.fname}`,
+            invite
+        })
+    })
+})

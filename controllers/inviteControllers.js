@@ -192,15 +192,14 @@ exports.updateInviData = catchAsync(async (req, res, next) => {
             address: req.body.address,
             ptime: req.body.ptime,
             phn_no: req.body.phn_no,
-            pdate: req.body.pdate,
-            featuring: req.body.previous
+            pdate: req.body.pdate
         },
         {
             new: true,
             runValidators: true
         }
     );
-    res.status(200).render('layouts/landing', {
+    res.status(200).render('layouts/landingSec', {
         title: updatedInvite.name,
         invite: updatedInvite
     });

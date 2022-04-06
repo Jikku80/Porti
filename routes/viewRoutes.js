@@ -21,6 +21,8 @@ router.get('/:user/portfolio/:id/da98568d1b2005611973ad49868b38aa8ae68fd7', view
 router.get('/:user/portfolio/:id/836b9b955a98e0f2e2d678c179696d6ac53356eb', viewsController.layoutSixth);
 
 router.get('/:user/invitation/:id/4dc50fc3bc007be011b5445f3f79298b9eeb51b7', inlayoutController.inviFirst);
+router.get('/:user/invitation/:id/c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7', inlayoutController.inviSecond);
+
 
 
 router.post('/sendmsg', viewsController.newMsg);
@@ -39,6 +41,8 @@ router.get('/login', viewsController.getOverview);
 
 router.get('/porti', viewsController.gotoPort);
 router.get('/confirm/:num', viewsController.gotoPortMid);
+router.get('/confirmation/:num', viewsController.gotoInviMid);
+
 
 router.get('/messages', viewsController.getAllMsg);
 

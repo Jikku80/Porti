@@ -47,6 +47,16 @@ exports.gotoPortMid = catchAsync(async (req, res) => {
     }).catch(err => console.log(err));
 })
 
+exports.gotoInviMid = catchAsync(async (req, res) => {
+    const num = atob(req.params.num) * 1
+    await Invite.findOne({ phn_no: num }).populate('user').then(invite => {
+        res.status(200).render('confirmInvi', {
+            title: 'Confirmation',
+            invite
+        })
+    }).catch(err => console.log(err));
+})
+
 exports.myPort = catchAsync(async (req, res) => {
     const num = atob(req.params.num) * 1
     await Portfolio.findOne({ phn_no: num }).populate('user').then(portfolio => {

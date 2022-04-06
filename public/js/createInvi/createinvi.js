@@ -115,13 +115,13 @@ invi1.addEventListener("click", () => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 201) {
-                    successAlert("Your Portfolio has been created :)");
+                    successAlert("Your Invitation has been created :)");
                     window.setTimeout(() => {
                         location.assign(`/myinvi/${num}?${theme}`);
                     }, 400);
                 } else {
                     console.log(response)
-                    errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                    errorAlert("Given Phone number already in use!!, Duplication Input error!!")
                 }
             })
         }

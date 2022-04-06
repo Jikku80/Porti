@@ -1,0 +1,22 @@
+extends base
+
+block content
+    if (user)
+        if (invite.user.id == user._id)
+            .confirm__pg
+                h1 Confirmation Complete 
+                h2= `Welcome! ${user.name} Cilck on let's Go to access your invitation details :)`
+                p#tim.hidden= invite.theme
+                p#poh.hidden= invite.phn_no
+                button#inviConfirm.redbtn Let's Go 
+        else 
+            .confirm__pg
+                h1 You Dont Belong Here, Use Your Phone Number
+                a.redbtn(href="/porti") Go Back
+
+    else
+        .confirm__pg 
+            h1 You are not logged In!
+            a.redbtn(href="/login") LogIn
+
+    script(src="/js/confirmInvi.js")

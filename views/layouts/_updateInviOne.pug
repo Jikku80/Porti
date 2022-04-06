@@ -1,0 +1,56 @@
+.land__update#ld__up
+    button#update_invi.redbtn Update Invitation
+    #update_inviform.hidden.upform.land__farst
+        .upform__head 
+            h1 Update Your Portfolio 
+            img.cancelInvi(src="/images/cancel.png", alt="cancel_img")
+        form#upInvite.inviF
+            .form__bod
+                label First Person Name:
+                input#upinname(type="text" name="name" value=`${invite.fname}` required)
+            .form__bod
+                label Second Person Name:
+                input#upinsname(type="text" name="name" value=`${invite.sname}` required)
+            .form__bod
+                label Your Story:
+                textarea#upinabout(rows="4" cols="50" name="about" required)= invite.about
+            .form__bod
+                label Venue:
+                input#upinwhat( name="what" value=`${invite.address}` required)
+            .form__bod
+                label Date:
+                input#upinwhy(name="why" value= `${invite.pdate}` required)
+            label Contact Details:
+            .form__bod
+                label Phone Number: 
+                input#upinno(type="number" value= `${invite.phn_no}` name="phn_no" required)
+            .form__bod 
+                label Change Theme 
+                select#inthemes
+                    option.opt(hidden selected)= invite.theme 
+            .form__bod
+                label Time:
+                input#upinwork(name="previous" value= `${invite.ptime}` required)
+            button#updateinBtn.redbtn Update
+    
+    button#update_InviImg.redbtn Update Invitation Images
+    #update_ImgInviForm.hidden.upform
+        form#upInviImage
+            .upform__head 
+                h1 Update Your Invitation Images
+                img.canclInvi(src="/images/cancel.png", alt="cancel_img")
+            .form__bod.file_part
+                label Cover Image:
+                input#inimg1(type="file" accept="image/*" name="img1")
+            .form__bod.file_part
+                label Images:
+                input#inimg2(type="file" accept="image/*" name="img2")
+            .form__bod.file_part
+                input#inimg3(type="file" accept="image/*" name="img3")
+            .form__bod.file_part
+                input#inimg4(type="file" accept="image/*" name="img4")
+            .form__bod.file_part
+                input#inimg5(type="file" accept="image/*" name="img5")
+            button#updateinImgBtn.redbtn Update
+
+script(src="/js/upInvi/inviLand1.js")

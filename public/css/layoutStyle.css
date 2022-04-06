@@ -101,7 +101,7 @@ p{
     font-size: large;
 }
 
-.cancel, .cancl, .cancelSec, .canclCollec, .cancelSix, #goto__viewInvites{
+.cancel, .cancl, .cancelSec, .canclCollec, .cancelSix, #goto__viewInvites, #goto__portfolio{
     cursor: pointer;
 }
 
@@ -138,7 +138,7 @@ p{
     color: rgb(245, 63, 100);
 }
 
-#upPort, #upPortSec, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm{
+#upPort, #upPortSec, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm, .inviF{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -148,12 +148,12 @@ p{
     padding-right: 25vw;
 }
 
-#upPort label, #upImage label, #upPortSec label, #upImageCollec label, #upPortSix label{
+#upPort label, #upImage label, #upPortSec label, #upImageCollec label, #upPortSix label, .inviF label, #upInviImage label{
     margin-right: 2%;
     color: gray;
 }
 
-#upPort p, #upImage p, #upPortSec p, #upImageCollec p, #upPortSix p{
+#upPort p, #upImage p, #upPortSec p, #upImageCollec p, #upPortSix p, .inviF p{
     font-size: xx-small;
     margin-top: 0;
     margin-left: 4%;
@@ -161,7 +161,7 @@ p{
     padding: 0;
 }
 
-#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input{
+#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input, .inviF input, #upInviImage input{
     border: 2px solid crimson;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -176,7 +176,7 @@ p{
     border-bottom-left-radius: 5px;
 }
 
-#upPort textarea, #upPortSec textarea, #upPortSix textarea{
+#upPort textarea, #upPortSec textarea, #upPortSix textarea, .inviF textarea{
     border: 2px solid crimson;
     border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -302,7 +302,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 2%;
 }
 
-#themes, #themeSec, #themeSix{
+#themes, #themeSec, #themeSix, #inthemes{
     background-color: transparent;
     border: 2px solid crimson;
     border-top-left-radius: 5px;
