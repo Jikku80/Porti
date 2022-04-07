@@ -42,7 +42,6 @@ updBtnSix.addEventListener("click", async (e) => {
     let hd4 = document.getElementById("fourthImgSix");
     let hd5 = document.getElementById("fifthImgSix");
     let themes = document.getElementById("themeSix");
-    let num = btoa(upno.value);
     const endpoint = '/updateportSix'
     try {
         await fetch(endpoint, {
@@ -74,7 +73,10 @@ updBtnSix.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${themes.value}`);
+                    headGoSix.classList.remove('hidden');
+                    updatePortSix.classList.remove('hidden');
+                    delFirstSix.classList.remove("hidden");
+                    updateFormSix.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -85,18 +87,5 @@ updBtnSix.addEventListener("click", async (e) => {
     catch (err) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
-    };
-    upname.value = "",
-        upemail.value = "",
-        upFb.value = "",
-        upno.value = "",
-        upabout.value = "",
-        upwhat.value = "",
-        upwhy.value = "",
-        upwork.value = "",
-        hd1.value = "",
-        hd2.value = "",
-        hd3.value = "",
-        hd4.value = "",
-        hd5.value = ""
+    }
 })

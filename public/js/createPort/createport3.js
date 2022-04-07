@@ -1,6 +1,7 @@
 layout3 = document.querySelector("#layout3")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
+id3 = document.getElementById("usId").innerText;
 
 
 let formLayoutThree = document.createElement("div");
@@ -87,7 +88,6 @@ let layoutThree = document.querySelector(".formLayout3")
 layoutThree.classList.add("hidden");
 
 layout3.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     layoutThree.classList.remove("hidden");
@@ -118,7 +118,6 @@ layout3.addEventListener("click", () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            let num = btoa(yourno.value);
             const formData = new FormData();
             formData.append("name", yourname.value);
             formData.append("about", aboutyou.value);
@@ -149,7 +148,7 @@ layout3.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${num}?${theme}`);
+                        location.assign(`/myportfolio/${id3}`);
                     }, 400);
                 } else {
                     console.log(response);

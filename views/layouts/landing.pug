@@ -20,7 +20,7 @@ block content
                     .land__nav__sub 
                         a(href="/porti")
                             img(src="/images/plus.png", alt="view_port")
-                        #goto__viewInvites
+                        a(href=`/invitations/${user.id}`)
                             img(src="/images/invite.png", alt="view_port")
                 .land__goto
                     h1#port_name= `${portfolio.name}`
@@ -28,7 +28,7 @@ block content
                     .port__link
                         a#urlLink
                             span#endpoint= `${portfolio._id}`
-
+                            span#portitheme= portfolio.theme   
                     .copy__link 
                         button#copyLink.redbtn Copy Link
             .sec__land__bod
@@ -48,8 +48,12 @@ block content
                 else
                     include _updateTwo.pug
         else 
-            .confirm__pg
-                h1 You Dont Belong Here, Use Your Phone Number
+            .notifier
+                h1 You Dont Belong Here, GET LOST!!!
+                a.redbtn(href="/porti") Go Back
+        if (portfolio = null)
+            .notifier
+                h1 You have not created a portfolio YET! Create One and come back
                 a.redbtn(href="/porti") Go Back
     else 
         .notifier

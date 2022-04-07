@@ -1,7 +1,7 @@
 layout5 = document.querySelector("#layout5")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
-
+id5 = document.getElementById("usId").innerText;
 
 let formLayoutFive = document.createElement("div");
 formLayoutFive.classList.add('formLayout5')
@@ -57,7 +57,6 @@ let layoutFive = document.querySelector(".formLayout5")
 layoutFive.classList.add("hidden");
 
 layout5.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     layoutFive.classList.remove("hidden");
@@ -77,7 +76,6 @@ layout5.addEventListener("click", () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            let num = btoa(yourno.value);
             const formData = new FormData();
             formData.append("name", yourname.value);
             formData.append("about", yourabout.value);
@@ -101,7 +99,7 @@ layout5.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${num}?${theme}`);
+                        location.assign(`/myportfolio/${id5}`);
                     }, 400);
                 } else {
                     console.log(response);

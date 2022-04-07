@@ -2,6 +2,7 @@ create_port = document.querySelector(".create_port")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
 layout1 = document.querySelector("#layout1");
+id1 = document.getElementById("usId").innerText;
 
 let layoutOneForm = document.createElement("div");
 layoutOneForm.classList.add("createForm");
@@ -88,7 +89,6 @@ let crForm = document.querySelector('.createForm');
 crForm.classList.add("hidden");
 
 layout1.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     crForm.classList.remove("hidden");
@@ -118,7 +118,6 @@ layout1.addEventListener("click", () => {
         e.preventDefault();
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        let num = btoa(yourno.value);
         const formData = new FormData();
         formData.append("name", yourname.value);
         formData.append("about", aboutyou.value);
@@ -150,7 +149,7 @@ layout1.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${num}?${theme}`);
+                        location.assign(`/myportfolio/${id1}`);
                     }, 400);
                 } else {
                     errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")

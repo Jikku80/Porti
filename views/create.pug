@@ -15,10 +15,14 @@ block content
                 #logout.logout
                     img(src="/images/poweroff.png", alt="signout")
             .port__nav__sub 
-                #view
+                a(href=`/myportfolio/${user._id}`)
                     img(src="/images/porti.png", alt="view_port")
-                #viewInvites
+                    span#usId.hidden= user._id
+                a(href=`/invitations/${user._id}`)
                     img(src="/images/invite.png", alt="view_port")
+                    span#uiId.hidden= user._id
+                //- #viewInvites
+                //-     img(src="/images/invite.png", alt="view_port")
         .port__bod.port__section
             h2 Create a portfolio
             p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
@@ -103,7 +107,6 @@ block content
     
     script(src="/js/alert.js")
     script(src="/js/logout.js") 
-    script(src="/js/createPort/viewCr.js")
     script(src="/js/createInvi/viewIn.js") 
     script(src="/js/createPort/createport.js")
     script(src="/js/createPort/createport2.js")

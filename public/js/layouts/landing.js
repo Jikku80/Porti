@@ -70,7 +70,6 @@ updBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(upno.value);
     const endpoint = '/updateport'
     try {
         await fetch(endpoint, {
@@ -97,7 +96,11 @@ updBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${themes.value}`);
+                    headGo.classList.remove('hidden');
+                    updatePort.classList.remove('hidden');
+                    updateImg.classList.remove("hidden");
+                    delFirst.classList.remove("hidden");
+                    updateForm.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -109,14 +112,6 @@ updBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    upname.value = "",
-        upemail.value = "",
-        upFb.value = "",
-        upno.value = "",
-        upabout.value = "",
-        upwhat.value = "",
-        upwhy.value = "",
-        upwork.value = ""
 })
 
 upImgBtn.addEventListener("click", async (e) => {
@@ -146,7 +141,11 @@ upImgBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Portfolio Images has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${searchPoint}`);
+                    headGo.classList.remove('hidden');
+                    updatePort.classList.remove('hidden');
+                    updateImg.classList.remove("hidden");
+                    delFirst.classList.remove("hidden");
+                    updateImgForm.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -158,16 +157,6 @@ upImgBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    hd1.value = "",
-        hd2.value = "",
-        hd3.value = "",
-        hd4.value = "",
-        hd5.value = "",
-        img1.value = "",
-        img2.value = "",
-        img3.value = "",
-        img4.value = "",
-        img5.value = ""
 })
 
 

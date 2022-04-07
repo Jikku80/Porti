@@ -13,8 +13,7 @@ const inviteSchema = new mongoose.Schema({
     },
     phn_no: {
         type: Number,
-        trim: true,
-        unique: true
+        trim: true
     },
     user: {
         type: mongoose.Schema.ObjectId,

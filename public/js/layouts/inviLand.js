@@ -5,18 +5,19 @@ let endI = document.getElementById('inviteendpoint');
 let endinvi = endI.innerText;
 endinvi = btoa(endinvi);
 
-let invisearchPoint = location.search.slice(1);
+let invithemepoint = document.getElementById('invitetheme').innerText;
+// let invisearchPoint = location.search.slice(1);
 
 inviteurl.innerHTML = `
 <button id="openinvite" class="redbtn" href="">My Invitation</button>
 <p>Share your Invitation with the link below</p>
-<p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}/${(location.search).slice(1)}</p>
+<p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}/${invithemepoint}</p>
 `
 
 openinvite = document.getElementById("openinvite");
 
 openinvite.addEventListener("click", () => {
-    let myurl = `/${inviteName}/invitation/${endinvi}/${invisearchPoint}`
+    let myurl = `/${inviteName}/invitation/${endinvi}/${invithemepoint}`
     window.open(myurl);
 })
 
@@ -29,18 +30,4 @@ copyinviLink.addEventListener("click", () => {
     navigator.clipboard.writeText(inink);
 
     successAlert("Link Copied")
-})
-
-gotoPortf = document.getElementById("goto__portfolio");
-
-gotoPortf.addEventListener("click", (e) => {
-    let numb = prompt("Enter Your Portfolio Phone Number!");
-    let num = btoa(numb * 1)
-    if (numb != null) {
-        if (numb.length > 0) {
-            window.setTimeout(() => {
-                location.assign(`/confirm/${num}`);
-            }, 400);
-        }
-    }
 })

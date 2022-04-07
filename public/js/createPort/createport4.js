@@ -1,6 +1,7 @@
 layout4 = document.querySelector("#layout4")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
+id4 = document.getElementById("usId").innerText;
 
 let formLayoutFour = document.createElement("div");
 formLayoutFour.classList.add('formLayout4')
@@ -86,7 +87,6 @@ let layoutFour = document.querySelector(".formLayout4")
 layoutFour.classList.add("hidden");
 
 layout4.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     layoutFour.classList.remove("hidden");
@@ -117,7 +117,6 @@ layout4.addEventListener("click", () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            let num = btoa(yourno.value);
             const formData = new FormData();
             formData.append("name", yourname.value);
             formData.append("about", aboutyou.value);
@@ -148,7 +147,7 @@ layout4.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${num}?${theme}`);
+                        location.assign(`/myportfolio/${id4}`);
                     }, 400);
                 } else {
                     console.log(response);

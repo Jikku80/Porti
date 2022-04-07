@@ -60,7 +60,6 @@ pdBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(pno.value);
     const endpoint = '/updateportSec'
     try {
         await fetch(endpoint, {
@@ -86,7 +85,11 @@ pdBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${pthemes.value}`);
+                    headGoSec.classList.remove('hidden');
+                    updatePortSec.classList.remove('hidden');
+                    updateImgCollec.classList.remove("hidden");
+                    delSec.classList.remove("hidden");
+                    updateFormSec.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -98,13 +101,6 @@ pdBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    pname.value = "",
-        pabout.value = "",
-        pwhat.value = "",
-        pwhy.value = "",
-        pemail.value = "",
-        pFb.value = "",
-        pno.value = ""
 })
 
 pImgBtn.addEventListener("click", async (e) => {
@@ -126,7 +122,11 @@ pImgBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Portfolio Images has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myportfolio/${num}?${searchPoint}`);
+                    headGoSec.classList.remove('hidden');
+                    updatePortSec.classList.remove('hidden');
+                    updateImgCollec.classList.remove("hidden");
+                    delSec.classList.remove("hidden");
+                    updateImgFormCollec.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -138,5 +138,4 @@ pImgBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    pimg1.value = ""
 })

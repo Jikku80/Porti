@@ -37,29 +37,19 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
     })
 })
 
-exports.gotoPortMid = catchAsync(async (req, res) => {
-    const num = atob(req.params.num) * 1
-    await Portfolio.findOne({ phn_no: num }).populate('user').then(portfolio => {
-        res.status(200).render('confirm', {
-            title: 'Confirmation',
-            portfolio
-        })
-    }).catch(err => console.log(err));
-})
-
 exports.gotoInviMid = catchAsync(async (req, res) => {
-    const num = atob(req.params.num) * 1
-    await Invite.findOne({ phn_no: num }).populate('user').then(invite => {
+    const id = req.params.id
+    await Invite.find({ user: id }).populate('user').then(invites => {
         res.status(200).render('confirmInvi', {
             title: 'Confirmation',
-            invite
+            invites
         })
     }).catch(err => console.log(err));
 })
 
 exports.myPort = catchAsync(async (req, res) => {
-    const num = atob(req.params.num) * 1
-    await Portfolio.findOne({ phn_no: num }).populate('user').then(portfolio => {
+    const id = req.params.id
+    await Portfolio.findOne({ user: id }).populate('user').then(portfolio => {
         res.status(200).render('layouts/landing', {
             title: 'Porti Detail',
             portfolio
@@ -68,8 +58,8 @@ exports.myPort = catchAsync(async (req, res) => {
 })
 
 exports.myInvi = catchAsync(async (req, res) => {
-    const num = atob(req.params.num) * 1
-    await Invite.findOne({ phn_no: num }).populate('user').then(invite => {
+    const id = req.params.id
+    await Invite.findOne({ _id: id }).populate('user').then(invite => {
         res.status(200).render('layouts/landingSec', {
             title: 'Invitation Detail',
             invite

@@ -20,7 +20,7 @@ block content
                     .land__nav__sub 
                         a(href="/porti")
                             img(src="/images/plus.png", alt="view_port")
-                        #goto__portfolio
+                        a(href=`/myportfolio/${user._id}`)
                             img(src="/images/porti.png", alt="view_port")
                 .land__goto
                     h1#invite_name= `${invite.fname} and ${invite.sname}`
@@ -28,7 +28,7 @@ block content
                     .port__link
                         a#inviteurlLink
                             span#inviteendpoint= `${invite._id}`
-
+                            span#invitetheme= invite.theme    
                     .copy__link 
                         button#copyinviteLink.redbtn Copy Link
             .sec__land__bod
@@ -45,8 +45,8 @@ block content
                 else 
                     h1 Update Section
         else 
-            .confirm__pg
-                h1 You Dont Belong Here, Use Your Phone Number
+            .notifier
+                h1 You Dont Belong Here! GET LOST!
                 a.redbtn(href="/porti") Go Back
     else 
         .notifier

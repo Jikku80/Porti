@@ -34,14 +34,13 @@ router.patch('/updateportSix', authController.protect, authController.restrictTo
 
 router.patch('/updateportImg', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadPortImages, portController.resizeNewPortImages, viewsController.updatePortImgData);
 router.patch('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadImages, portController.resizePortImages, viewsController.updatePortImgCollec);
-router.get('/myportfolio/:num', viewsController.myPort);
-router.get('/myinvi/:num', viewsController.myInvi);
+router.get('/myportfolio/:id', viewsController.myPort);
+router.get('/myinvi/:id', viewsController.myInvi);
 
 router.get('/login', viewsController.getOverview);
 
 router.get('/porti', viewsController.gotoPort);
-router.get('/confirm/:num', viewsController.gotoPortMid);
-router.get('/confirmation/:num', viewsController.gotoInviMid);
+router.get('/invitations/:id', viewsController.gotoInviMid);
 
 
 router.get('/messages', viewsController.getAllMsg);

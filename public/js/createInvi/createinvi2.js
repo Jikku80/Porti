@@ -48,7 +48,6 @@ let mkForm2 = document.querySelector('.createInvi2');
 mkForm2.classList.add("hidden");
 
 invi2.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod2.classList.add("hidden");
     inviBod2.classList.add("hidden");
     mkForm2.classList.remove("hidden");
@@ -90,7 +89,7 @@ invi2.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Invitation has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myinvi/${num}?${theme}`);
+                        location.assign(`/myinvi/${num}`);
                     }, 400);
                 } else {
                     console.log(response)

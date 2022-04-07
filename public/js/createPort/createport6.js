@@ -1,6 +1,7 @@
 layout6 = document.querySelector("#layout6")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
+id6 = document.getElementById("usId").innerText;
 
 let formLayoutSix = document.createElement("div");
 formLayoutSix.classList.add('formLayout6')
@@ -76,7 +77,6 @@ let layoutSix = document.querySelector(".formLayout6")
 layoutSix.classList.add("hidden");
 
 layout6.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     layoutSix.classList.remove("hidden");
@@ -102,7 +102,6 @@ layout6.addEventListener("click", () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            let num = btoa(yourno.value);
             const endpoint = '/api/v1/portfolio/makePorti'
             await fetch((endpoint), {
                 method: 'POST',
@@ -132,7 +131,7 @@ layout6.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${num}?${theme}`);
+                        location.assign(`/myportfolio/${id6}`);
                     }, 400);
                 } else {
                     console.log(response);

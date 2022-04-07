@@ -4,19 +4,20 @@ portName = portName.innerText;
 let endP = document.getElementById('endpoint');
 let end = endP.innerText;
 end = btoa(end);
+let portithemepoint = document.getElementById('portitheme').innerText;
 
-let searchPoint = location.search.slice(1);
+// let searchPoint = location.search.slice(1);
 
 url.innerHTML = `
 <button id="openport" class="redbtn" href="">My Portfolio</button>
 <p>Share your potfolio with the link below</p>
-<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${end}/${(location.search).slice(1)}</p>
+<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${end}/${portithemepoint}</p>
 `
 
 openport = document.getElementById("openport");
 
 openport.addEventListener("click", () => {
-    let myurl = `/${portName}/portfolio/${end}/${searchPoint}`
+    let myurl = `/${portName}/portfolio/${end}/${portithemepoint}`
     window.open(myurl);
 })
 

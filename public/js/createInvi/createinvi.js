@@ -67,9 +67,9 @@ inviOneForm.innerHTML = `
 document.body.appendChild(inviOneForm);
 let mkForm = document.querySelector('.createInvi');
 mkForm.classList.add("hidden");
+inid1 = document.getElementById("uiId").innerText;
 
 invi1.addEventListener("click", () => {
-    infoAlert("Please Remember Your Phone number, required to access your creations!", "All the fields are Required")
     portBod.classList.add("hidden");
     inviBod.classList.add("hidden");
     mkForm.classList.remove("hidden");
@@ -117,7 +117,7 @@ invi1.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Invitation has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myinvi/${num}?${theme}`);
+                        location.assign(`/invitations/${inid1}`);
                     }, 400);
                 } else {
                     console.log(response)
