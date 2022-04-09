@@ -32,6 +32,10 @@ body{
     font-size: 16px;
 }
 
+.mrg__invi{
+    font-family: monospace;
+}
+
 .coupleName{
     letter-spacing: 10px;
 }

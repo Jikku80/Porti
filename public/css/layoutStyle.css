@@ -101,7 +101,7 @@ p{
     font-size: large;
 }
 
-.cancel, .cancl, .cancelSec, .canclCollec, .cancelSix, #goto__viewInvites, #goto__portfolio{
+.cancel, .cancl, .cancelSec, .canclCollec, .cancelSix, #goto__viewInvites, #goto__portfolio, .pointer{
     cursor: pointer;
 }
 
@@ -302,7 +302,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 2%;
 }
 
-#themes, #themeSec, #themeSix, #inthemes{
+#themes, #themeSec, #themeSix, #inthemes, .thim{
     background-color: transparent;
     border: 2px solid crimson;
     border-top-left-radius: 5px;

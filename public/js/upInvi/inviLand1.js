@@ -63,7 +63,6 @@ updinBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(upinno.value);
     const endpoint = '/api/v1/invite/updateInvi'
     try {
         await fetch(endpoint, {
@@ -88,7 +87,11 @@ updinBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Invitation has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myinvi/${num}?${inthemes.value}`);
+                    hdGo.classList.remove('hidden');
+                    updateInvi.classList.remove('hidden');
+                    updateInviImg.classList.remove("hidden");
+                    delInviFirst.classList.remove("hidden");
+                    updateInviForm.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -100,20 +103,12 @@ updinBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    upinname.value = "",
-        upinsname.value = "",
-        upinno.value = "",
-        upinabout.value = "",
-        upinwhat.value = "",
-        upinwhy.value = "",
-        upinwork.value = ""
 })
 
 upinImgBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(upinno.value);
     const formData = new FormData();
     formData.append("id", inid);
     formData.append("imgCover", inimg1.files[0]);
@@ -121,7 +116,7 @@ upinImgBtn.addEventListener("click", async (e) => {
     formData.append("imgThird", inimg3.files[0]);
     formData.append("imgFourth", inimg4.files[0]);
     formData.append("imgFifth", inimg5.files[0]);
-    const endpoint = '/api/v1/invite/updateInviImgCollec'
+    const endpoint = '/api/v1/invite/updateInviImg'
     try {
         await fetch(endpoint, {
             body: formData,
@@ -131,7 +126,11 @@ upinImgBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Invitation Images has been updated :)");
                 window.setTimeout(() => {
-                    location.assign(`/myinvi/${num}?${searchPoint}`);
+                    hdGo.classList.remove('hidden');
+                    updateInvi.classList.remove('hidden');
+                    updateInviImg.classList.remove("hidden");
+                    delInviFirst.classList.remove("hidden");
+                    updateInviImgForm.classList.add('hidden');
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
@@ -143,11 +142,6 @@ upinImgBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    inimg1.value = "",
-        inimg2.value = "",
-        inimg3.value = "",
-        inimg4.value = "",
-        inimg5.value = ""
 })
 
 

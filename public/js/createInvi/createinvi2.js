@@ -9,8 +9,9 @@ inviTwoForm.innerHTML = `
     <form class="comp__form">
         <div class="form__head">
             <h1>INI Layout</h1>
-            <img src="/images/cancel.png" alt="cancel_img" class="cancel__inviteTwo" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__inviteTwo pointer" />
         </div>
+        <p>You can Change Cover Image to your preference from update Cover Image</p>
         <div class="form__cont">
             <label>Program Name:</label>
             <input id="fname2" type="text" placeholder="Dr DE'z Party" required/>
@@ -35,10 +36,6 @@ inviTwoForm.innerHTML = `
             <label>Time onwards: </label>
             <input id="inviwork2" placeholder="11:00 AM onwards" required />
         </div>
-        <div class="form__cont">
-            <label>Phone Number: </label>
-            <input id="invino2" placeholder="999999998" required />
-        </div>
         <button id="invi__form__btn2" class="redbtn">Create</button>
     </form>
 `
@@ -46,6 +43,7 @@ inviTwoForm.innerHTML = `
 document.body.appendChild(inviTwoForm);
 let mkForm2 = document.querySelector('.createInvi2');
 mkForm2.classList.add("hidden");
+inid2 = document.getElementById("uiId").innerText;
 
 invi2.addEventListener("click", () => {
     portBod2.classList.add("hidden");
@@ -65,7 +63,6 @@ invi2.addEventListener("click", () => {
         e.preventDefault();
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        let num = btoa(yourno.value);
         const endpoint = '/api/v1/invite/makeInvi'
         try {
             await fetch((endpoint), {
@@ -80,7 +77,6 @@ invi2.addEventListener("click", () => {
                     about: aboutyou.value,
                     address: what.value,
                     pdate: why.value,
-                    phn_no: yourno.value,
                     ptime: yourwork.value,
                     theme: theme
                 })
@@ -89,11 +85,11 @@ invi2.addEventListener("click", () => {
                 if (response.status === 201) {
                     successAlert("Your Invitation has been created :)");
                     window.setTimeout(() => {
-                        location.assign(`/myinvi/${num}`);
+                        location.assign(`/invitations/${inid2}`);
                     }, 400);
                 } else {
                     console.log(response)
-                    errorAlert("Given Phone number already in use!!, Duplication Input error!!")
+                    errorAlert("All the fields are rquired!")
                 }
             })
         }

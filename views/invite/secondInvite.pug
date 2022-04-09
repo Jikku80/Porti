@@ -1,1 +1,21 @@
-h1 hey second layout
+extends baseinvi
+block content
+    .ini__invi__main 
+        if (invite.imgs == "")
+            img.invi__cover(src="/images/party.jpg", alt="cover__img")
+        else 
+            img.invi__cover(src=`/images/invites/imageColl/${invite.imgs[0]}`, alt="cover__img")
+        .ini__invi__bod
+            .ini__invi__head 
+                h1= invite.fname
+                h1.intation Invitation
+            .ini__invi__bod__sub 
+                h2= `${invite.fname} of ${invite.sname}`
+            .ini__invi__abt
+                p= invite.about
+            .ini__invi__ven 
+                h3= `Venue : ${invite.address}`
+            .ini__invi__dat 
+                h3= `Date : ${invite.pdate}`
+            .ini__invi__tim 
+                h3= `Time : ${invite.ptime}`

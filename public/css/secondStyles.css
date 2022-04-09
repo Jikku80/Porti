@@ -89,7 +89,17 @@ html{
     cursor: pointer;
 }
 
+.sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #abt{
+    width: 80vw;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
     margin: 4% 4% 0% 4%;
     padding: 2%;
     background-color: rgb(14, 28, 65);
@@ -102,6 +112,10 @@ html{
 }
 
 #pre{
+    width: 80vw;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
     margin: 4%;
     padding: 2%;
     background-color: rgb(88, 88, 88);
@@ -121,6 +135,7 @@ html{
     flex-direction: column;
     margin: 1%;
     align-items: center;
+    object-fit: cover;
 }
 
 .imgsnd{
@@ -129,16 +144,17 @@ html{
     border-radius: 1rem;
     margin: 2%;
     transition: transform .2s;
+    object-fit: cover;
 }
 
 .imgsnd:hover{
     filter: saturate(1.5);
     cursor: pointer;
-    transform : scale(1.2)
+    transform : scale(1.2);
 }
 
 #pre h3 { 
-    color: hotpink;
+    color: white;
     font-size: medium;
 }
 
@@ -184,6 +200,9 @@ html{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+    #abt, #pre, #contat{
+        width: 90vw;
+    }
 
     #prevWork{
         margin-left: 15%;
@@ -215,6 +234,9 @@ html{
 }
 
 @media screen and (max-width: 600px){
+    #abt, #pre, #contat{
+        width: 90vw;
+    }
     #prevWork{
         margin-left: 0;
     }

@@ -13,34 +13,34 @@ block content
                     img.picture-box__img(src=`/images/ports/imageColl/${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
 
         p To view image in full screen right click and  Open image in new tab.
-    
-    .about__bod#fifth__about
-        h2 About 
-            span=`${portfolio.name}`
-        p= portfolio.about 
-        h2 What 
-            span= `${portfolio.name} Do?`
-        p= portfolio.what 
-        h2 why 
-            span= `${portfolio.name} Do It?`
-        p= portfolio.why
-
-    .contact__bod#fifth__cont
-        h2 Contact 
-            span= `${portfolio.name}`
-        .cont__boxbg
-            if (portfolio.showNo === true)
+    .fifth
+        .about__bod#fifth__about
+            h2 About 
+                span=`${portfolio.name}`
+            p= portfolio.about 
+            h2 What 
+                span= `${portfolio.name} Do?`
+            p= portfolio.what 
+            h2 why 
+                span= `${portfolio.name} Do It?`
+            p= portfolio.why
+    .fifth
+        .contact__bod#fifth__cont
+            h2 Contact 
+                span= `${portfolio.name}`
+            .cont__boxbg
+                if (portfolio.showNo === true)
+                    .cont__box.fif__box
+                        p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.fif__box
-                    p= `Phone: ${portfolio.phn_no}` 
-            .cont__box.fif__box
-                p= `Email: ${portfolio.email}`
-            if (portfolio.fb != "")
-                .cont 
-                    a(href=`${portfolio.fb}`)
-                        if (portfolio.user.photo)
-                            img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
-                        else 
-                            img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    p= `Email: ${portfolio.email}`
+                if (portfolio.fb != "")
+                    .cont 
+                        a(href=`${portfolio.fb}`)
+                            if (portfolio.user.photo)
+                                img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                            else 
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
 
     a#goup(href="#") 
                 img(src="/images/yup.png", alt="go_up")

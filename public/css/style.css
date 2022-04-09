@@ -259,6 +259,7 @@ body{
 .unl{
   border-radius: 1rem;
   overflow: hidden;
+  padding: 1%;
 }
 
 .un_layout_log img{
@@ -287,7 +288,7 @@ body{
   justify-content: space-between;
 }
 
-#closeBtn, #signCancel{
+#closeBtn, #signCancel, .pointer{
   cursor: pointer;
 }
 
@@ -348,11 +349,42 @@ input[type=number]::-webkit-outer-spin-button {
   height: 5vh;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .redbtn:hover{
   background-color: crimson;
   color: white;
+}
+
+.card__main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.card{
+  border: 1px solid white;
+  width: 20vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+  background-color: rgb(44, 44, 44);
+  font-family: cursive;
+  font-size: 16px;
+  padding: 4%;
+}
+
+.card__link a{
+  padding: 1vw;
 }
 
 .confirm__pg{
@@ -479,15 +511,25 @@ input[type=number]::-webkit-outer-spin-button {
   .un_layout{
     padding-left: 0;
   }
+  .loader{
+    position: absolute;
+    top: 40vh;
+    left: 25vw;
+    width: 50%;
+  }
+
+  .card__main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card{
+    width: auto;
+    padding: 4%;
+  }
 
 }
 
-.loader{
-  position: absolute;
-  top: 40vh;
-  left: 25vw;
-  width: 50%;
-}
 
 @media screen and (max-width: 600px){
   .comp__form{
@@ -519,6 +561,16 @@ input[type=number]::-webkit-outer-spin-button {
     top: 40vh;
     left: 25vw;
     width: 50%;
+  }
+
+  .card__main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card{
+    width: auto;
+    padding: 2%;
   }
 
 }

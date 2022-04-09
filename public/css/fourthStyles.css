@@ -10,6 +10,15 @@
     height: 100vh;
 }
 
+.fourth__head{
+    position: absolute;
+    top: 0;
+    left: 1vw;
+    text-shadow: 2px 2px tomato;
+    font-family: monospace;
+    z-index: 1;
+}
+
 .bg__imgCov img{
     background-position: center;
     background-size: contain;
@@ -18,9 +27,10 @@
 }
 
 .header__round{
-    border: 4px solid rgb(98, 181, 248);
-    background-image: url('/images/jarvis.jpeg');
-    background-position: center;
+    background-image: url('/images/fire.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
     filter: saturate(2);
     border-radius: 16rem;
     position: relative;
@@ -33,8 +43,7 @@
 }
 
 .header__round__inner{
-    border: 1px solid rgb(29, 29, 29);
-    background-color: rgba(44, 44, 44, 0.89);
+    background-color: transparent;
     border-radius: 12rem;
     position: absolute;
     height: 40vh;

@@ -1,0 +1,117 @@
+.ini__invi__main{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.invi__cover{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;    
+}
+
+.intation{
+    font-family: monospace;
+}
+
+.ini__invi__bod{
+    position: absolute;
+    top: 0;
+    margin-top: 5vh;
+    width: 50vw;
+    height: 90vh;
+    background-image: linear-gradient(to top, #ffffff38, #ffffff3d);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.534);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.ini__invi__head h1{
+    color:rgba(255, 255, 255, 0.815);
+    margin: 4vh;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px hotpink;
+}
+
+.ini__invi__bod__sub{
+    margin: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ini__invi__bod__sub h2{
+    width: auto;
+    color:hotpink;
+    border: 1px solid white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.534);
+    padding: 1%;
+    background-color: rgba(29, 29, 29, 0.623);
+}
+
+.ini__invi__abt p, .ini__invi__ven{
+    width: auto;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.534);
+    padding: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 6%;
+    background-color: rgba(29, 29, 29, 0.623);
+}
+
+.ini__invi__abt p{
+    font-weight: 500;
+    text-shadow: 2px 2px red;
+    font-family: cursive;
+}
+
+.ini__invi__ven{
+    font-family: monospace;
+    font-size: large;
+}
+
+.ini__invi__dat{
+    width: auto;
+    border: 1px solid white;
+    color: hotpink;
+    margin: 2%;
+    background-color: rgba(54, 54, 54, 0.781);
+}
+
+.ini__invi__tim{
+    margin-top: 5vh;
+    width: auto;
+    text-shadow: 2px 2px red;
+    margin-bottom: 5vh;
+}
+
+
+@media (min-width: 601px) and (max-width: 900px){
+    .ini__invi__bod{
+        width: 90vw;
+    }
+
+    .ini__invi__bod__sub{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .ini__invi__bod{
+        width: 90vw;
+    }
+
+    .ini__invi__bod__sub{
+        font-size: 10px;
+    }
+}

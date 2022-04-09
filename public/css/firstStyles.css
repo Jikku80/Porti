@@ -43,10 +43,20 @@ body{
     padding-right: 5vw;
 }
 
+.first{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #about{
     background-color: rgb(201, 201, 201);
     color: rgb(29, 29, 29);
     padding: 2%;
+    width: 80vw;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 #about h2{
@@ -56,7 +66,13 @@ body{
 
 #previous {
     background-color: cadetblue;
-    padding:2%;
+    margin: 4%;
+    padding:2% 2% 30vh 2%;
+    width: 80vw;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 99%, 52% 82%);
 }
 
 .prev img{
@@ -66,9 +82,10 @@ body{
 }
 
 #contact{
-    background: linear-gradient(to right, rgb(201, 201, 201), teal);
-    color: darkslategray;
+    /* background: linear-gradient(to right, rgb(201, 201, 201), teal); */
+    color: rgb(88, 233, 233);
     padding:2%;
+    width: 80vw;
     height: 100vh;
 }
 
@@ -145,6 +162,10 @@ body{
         align-items: center;
     }
 
+    #about, #previous, #contact{
+        width: 90vw;
+    }
+
     #gtop{
         position: fixed;
         align-items: flex-end;
@@ -154,6 +175,9 @@ body{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+    #about, #previous, #contact{
+        width: 90vw;
+    }
     #gtop{
         position: fixed;
         align-items: flex-end;

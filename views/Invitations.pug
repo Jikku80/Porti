@@ -1,0 +1,38 @@
+extends base
+
+block content
+    if (user)
+        if (user.id == user._id)
+            .port__nav
+                .port__nav__first
+                    a.port__head(href="/me")
+                        if (user.photo)
+                            img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
+                        else 
+                            img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
+                    a.port_sec_head(href="/")
+                        h1 Tech 
+                            span Mafia
+                    #logout.logout
+                        img(src="/images/poweroff.png", alt="signout")
+                .port__nav__sub 
+                    a(href="/porti")
+                        img(src="/images/plus.png", alt="view_port")
+                    a(href=`/myportfolio/${user._id}`)
+                        img(src="/images/porti.png", alt="view_port")
+            .card__main 
+                each invite in invites
+                    .card
+                        .card__head
+                            h1= invite.fname
+                        .card__link
+                            a.redbtn(href=`/myinvi/${invite._id}`) Open
+        else 
+            .confirm__pg
+                h1 You Dont Belong Here, Use Your Phone Number
+                a.redbtn(href="/porti") Go Back
+
+    else
+        .confirm__pg 
+            h1 You are not logged In!
+            a.redbtn(href="/login") LogIn

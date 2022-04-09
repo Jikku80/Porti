@@ -48,11 +48,11 @@
 .about__sec__other, .prev__sec__other, .contact__sec__other{
     width: 48vw;
     margin: 1%;
-    font-size: 12px;
+    font-size: 16px;
     text-align: left;
-    padding: 1vh;
+    padding: 3vh;
     border: 2px solid teal;
-    height: 92vh;
+    height: 90vh;
     overflow-y: auto;
     scrollbar-width: thin;
 }

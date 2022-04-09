@@ -210,11 +210,11 @@ exports.updateInviImgData = catchAsync(async (req, res, next) => {
     const updatedInvite = await Invite.findByIdAndUpdate(
         req.body.id,
         {
-            imageCover: req.files.imgCover[0].originalname,
-            imageSecond: req.files.imgSecond[0].originalname,
-            imageThird: req.files.imgThird[0].originalname,
-            imageFourth: req.files.imgFourth[0].originalname,
-            imageFifth: req.files.imgFifth[0].originalname
+            imgCover: req.files.imgCover[0].originalname,
+            imgSecond: req.files.imgSecond[0].originalname,
+            imgThird: req.files.imgThird[0].originalname,
+            imgFourth: req.files.imgFourth[0].originalname,
+            imgFifth: req.files.imgFifth[0].originalname
         },
         {
             new: true,
@@ -232,7 +232,7 @@ exports.updateInviImgCollec = catchAsync(async (req, res, next) => {
     const updatedInvite = await Invite.findByIdAndUpdate(
         req.body.id,
         {
-            images: req.body.imgs
+            imgs: req.body.imgs
         },
         {
             new: true,

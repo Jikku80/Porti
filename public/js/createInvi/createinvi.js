@@ -9,7 +9,7 @@ inviOneForm.innerHTML = `
     <form class="comp__form">
         <div class="form__head">
             <h1>MRG Layout</h1>
-            <img src="/images/cancel.png" alt="cancel_img" class="cancel__invite" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__invite pointer" />
         </div>
         <div class="form__cont">
             <label>First Person Name:</label>

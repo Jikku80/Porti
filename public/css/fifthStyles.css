@@ -47,7 +47,10 @@
 }
 
 .contact__bod, .about__bod{
-    padding-bottom: 25vh;
+    height: 100vh;
+    width: 80vw;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .contact__bod h2, .about__bod{
@@ -62,8 +65,15 @@
     background-color: chocolate;
 }
 
-@media (min-width: 601px) and (max-width: 900px){
+.fifth{
+    display: flex;
+    justify-content: center;
+}
 
+@media (min-width: 601px) and (max-width: 900px){
+    .contact__bod, .about__bod{
+        width: 90vw;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -78,6 +88,10 @@
     }
 
     .picture-box__img{
+        width: 90vw;
+    }
+
+    .contact__bod, .about__bod{
         width: 90vw;
     }
 }

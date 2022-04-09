@@ -3,7 +3,7 @@ let lg = document.querySelector('.land__goto');
 let delcrf = document.querySelector("#dt__cf")
 let delinvi = document.getElementById("delinvi");
 let delInv = document.getElementById("delInvite")
-let ldup = document.querySelector("#ld__up")
+let ldup = document.querySelector(".land__update")
 
 delInv.addEventListener("click", () => {
     landCon.classList.add("hidden");

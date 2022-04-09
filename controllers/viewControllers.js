@@ -40,8 +40,8 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
 exports.gotoInviMid = catchAsync(async (req, res) => {
     const id = req.params.id
     await Invite.find({ user: id }).populate('user').then(invites => {
-        res.status(200).render('confirmInvi', {
-            title: 'Confirmation',
+        res.status(200).render('Invitations', {
+            title: 'Your Invitations',
             invites
         })
     }).catch(err => console.log(err));

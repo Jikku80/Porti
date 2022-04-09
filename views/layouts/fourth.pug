@@ -4,6 +4,7 @@ block content
     .main
         .bg__imgCov
             img(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="cover__img") 
+            h1.fourth__head= portfolio.name
         .main__header
             .header__round
             .header__round__inner
@@ -46,7 +47,6 @@ block content
         .main__cont__section.hide 
             .main__cont__head 
                 h2 Contact 
-                    span= `${portfolio.name}`
                 img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
             .cont__boxbg
                 if (portfolio.showNo === true)
