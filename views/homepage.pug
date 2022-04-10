@@ -1,0 +1,127 @@
+extends base
+
+block content 
+    .main__content 
+        .main__content__log
+            a#log.fkAncky(href="/login") Login | SignUp
+        .main__content__nav
+            a.fkAncky(href="#aboutTM") About 
+                span.mid  Tech
+                    span.lst  Mafia 
+            a.fkAncky(href="/porti")
+                p#go__create.crPr Create Portfolio
+            a.fkAncky(href="#contactTM") Contact  
+                span.mid  Tech
+                    span.lst  Mafia 
+        .main__content__learn
+            .learn__content 
+                a.greybtn(href="#abtPorti") Learn About Porti 
+                a.greybtn(href="#guidePorti") Porti Guidence
+    .bod 
+        .view__tm 
+            #abtPorti.padder
+                h2 About 
+                    span.mid Porti
+                p Tech Mafia Presents Porti. Are your Interviews Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. 
+                h3 Why Porti?
+                p Skip the waste of time on making CV's, Porti Brings you varities of Theme Select and Theme Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
+                h3 Who Porti is For?
+                ul  
+                    li For Students, Make your portfolio add your tasks, certificates, ace the interview 
+                    li For Graduates Who is about to take a interview, Create Your portfolio, Share your Portfolio link to the compayn set back relax and wait for the response.
+                    li For Artists, If you have alot of your art pictures, Create A portfolio, Add your art work pictures and share it to your desire location 
+                    li For Freelancers, Create Your portfolio add your previous works, Share it to your clients
+                    li Basically For Anyone | Everyone who needs a portfolio
+                h3 What Else Can You Do in Porti?
+                p You can create Invitation, Create Your Invitation Share it to your loved onces | friends | staffs, Invite them to your Party | Function | Meetings
+                h3 Does Porti Guarantee Your Ace In Interview?
+                p Well That's all upto You, Neither does your CV guarantee it, How you describe yourself | sell yourself | show your work, how good you are on what you do can make a diference. 
+                h3 Is Porti Free To Use?
+                p Yes! Porti is completely Free, Feel free to signup and create your portfolio.
+            #guidePorti.padder 
+                h2 How To Create Your First 
+                    span.mid Portfolio 
+                    span.lst ?
+                .guide__box
+                    .gbox 
+                        .gbox__head 
+                            h3 Step 1
+                        .gbox__bod
+                            p Create Your Account, Go to Login | SignUp to create Your Account 
+                            p Password must be 9 Characters long
+                    .gbox 
+                        .gbox__head 
+                            h3 Step 2
+                        .gbox__bod
+                            p You will be redirected to your account, Click on Plus Icon from nav bar 
+                            p Browse Through the theme and select one
+                    .gbox 
+                        .gbox__head 
+                            h3 Step 3
+                        .gbox__bod
+                            p After Selecting a theme, Fill up the form, Theme name also contains the detail on how many image you should upload 
+                            p Hit Create And You are All Set!
+                    .gbox 
+                        .gbox__head 
+                            h3 Step 4
+                        .gbox__bod
+                            p To view your portfolio Click on My Portfolio 
+                            p To share your portfolio click copy link and share it
+                h3 How To Create Your Invitation?
+                p Follow the Same procedure and you are all set!
+            #aboutTM.padder
+                h2 About 
+                    span.mid Tech 
+                        span.lst Mafia
+                p Tech Mafia is a Application Developer. Tech Mafia is here to bring your idea, plan to app-reality. In this era of Technology, where everything is running in web and app form, Tech Mafia is here to set you up for the sail to deep technology of web and Applications.
+                h3 Things You Should Know 
+                p The only thing you should know before contacting Tech mafia is 'NOTHING'. We will proccess you through all the small details we do while building the application.
+                h3 What We Do?
+                ul 
+                    li Responsive Web App Development 
+                    li Application Program Interface(API) Development
+                h3 What We Do Not Do?
+                p 'WE DO NOT REPAIR YOUR COMPUTER !'
+                h3 Why A Application?
+                p  In this age of Information Technology, the new generation's after certain age uses mobile, desktop, laptop. This create a huge market for your business to grow, or your blog to reach many people. Many have already stepped in to this era and are growing their business. so should you do it too! 
+                h3 What Tech Mafia Do It For?
+                ul 
+                    li Tech Mafia has the power to bring your dream idea to reality and we want to bring it to reality for you. 
+                    li With All those technologies Out there You might get overwhelmed about what to do and what not to. Tech-Mafia is here to clear out your confusion and make things easy for you 
+                h3 Copyright Notice 
+                p The entire TechMafia.com Web Site is Copyright © 2022 by Tech Mafia. All Rights Reserved. The techmafia.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
+                p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
+            #contactTM.padder 
+                h2 Contact 
+                    span.mid Tech 
+                        span.lst Mafia
+                .sender
+                    .msg-form
+                        h3.heading-secondary.ma-bt-lg Send Message To Tech Mafia
+                        form.msg__form
+                            label.form__label(for='name') Name
+                            input#msgname.form__input(type='text', name="name", placeholder='your name', required)
+                            br
+                            label.form__label(for='email') Email address
+                            input#msgemail.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
+                            br
+                            label.form__label(for='siteType') Site Type 
+                            select.form__select(type='select', name="siteType", id="siteType")
+                                    option(value="E-commerce") E-commerce
+                                    option(value="Logistic") Logistic 
+                                    option(value="Blog") Blog 
+                                    option(value="E-learning") E-learning 
+                                    option(value="Media") Media 
+                                    option(value="Other") Other
+                            br
+                            label.form__label(for='message') Message 
+                            textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="50", required)
+                            .form__group
+                            button.send__msg.greybtn Send
+
+                        img#msg_load.loader.hidden(src="/images/loading.gif", alt="loader")
+                        img#ok.hidden(src="/images/ok.png", alt="loader")
+
+    script(src="/js/alert.js")
+    script(src="/js/home.js")  
+    script(src="/js/sendmsg.js")

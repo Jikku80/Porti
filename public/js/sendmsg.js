@@ -1,16 +1,10 @@
 
-msgTm = document.getElementById("msgTM");
-sender = document.querySelector(".sender")
-
-msgTm.addEventListener('click', () => {
-    sender.classList.remove('hidden');
-})
-
 sendMsg = document.querySelector(".send__msg");
-let fullName = document.querySelector("#name");
-let email = document.querySelector("#email");
-let siteType = document.querySelector("#siteType");
-let message = document.querySelector("#message");
+let msgfullName = document.querySelector("#msgname");
+let msgemail = document.querySelector("#msgemail");
+let msgsiteType = document.querySelector("#siteType");
+let msgmessage = document.querySelector("#msgmessage");
+let ok = document.getElementById("ok");
 
 sendMsg.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -24,15 +18,19 @@ sendMsg.addEventListener("click", async (e) => {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
-                name: fullName.value,
-                email: email.value,
-                siteType: siteType.value,
-                message: message.value
+                name: msgfullName.value,
+                email: msgemail.value,
+                siteType: msgsiteType.value,
+                message: msgmessage.value
             })
         }).then((response) => {
             load.classList.add("hidden");
             if (response.status === 200) {
-                successAlert("Message Sent, TechMafia will get back to you soon :)");
+                ok.classList.remove("hidden");
+                setTimeout(() => {
+                    ok.classList.add("hidden");
+                }, 3000)
+                // successAlert("Message Sent, TechMafia will get back to you soon :)");
             } else {
                 errorAlert("OOPS!! something went wrong!!")
             }
@@ -42,8 +40,8 @@ sendMsg.addEventListener("click", async (e) => {
         console.log(err);
         alert('Sorry! Something went wrong', err);
     };
-    fullName.value = "";
-    email.value = "";
-    siteType.value = "E-commerce";
-    message.value = "";
+    msgfullName.value = "";
+    msgemail.value = "";
+    msgsiteType.value = "E-commerce";
+    msgmessage.value = "";
 })

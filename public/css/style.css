@@ -1,14 +1,20 @@
 html{
     font-size: 10px;
     scrollbar-width: thin;
-}
-
-body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  body{
     background-image: linear-gradient(to bottom right, rgb(44, 44, 44) , crimson);
     background-size: contain;
     background-repeat: no-repeat;
     background-color: rgb(44, 44, 44);
     color: white;
+    margin: 0px;
+    padding: 0px;
 }
 
 ::-webkit-scrollbar {
@@ -67,7 +73,8 @@ body{
 .port__nav__first{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding-top: 1%;
 }
 
 .port__nav__sub{
@@ -81,6 +88,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin: 1%;
   align-items: center;
 }
 
