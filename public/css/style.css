@@ -100,6 +100,11 @@ html{
   font-weight: 900;
 }
 
+.portDet{
+  color: white;
+  font-size:large;
+}
+
 .port__head:hover{
   color: rgb(253, 22, 68);
 }
@@ -132,10 +137,14 @@ html{
   color: crimson;
 }
 
-.login__form, .fg__form #reset__form, #upInfo, #upPass{
+.login__form, .fg__form, #reset__form, #upInfo, #upPass{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.rs_form{
+  padding-bottom: 50vh;
 }
 
 .login__form{
@@ -404,8 +413,14 @@ input[type=number]::-webkit-outer-spin-button {
   padding-bottom: 50vh;
 }
 
-.confirm__pg h1, #reset__head{
+.confirm__pg h1{
   color: hotpink;
+}
+
+#reset__head{
+  padding-top: 0;
+  color: yellowgreen;
+  font-size: xx-large;
 }
 
 .confirm__pg a{
@@ -501,6 +516,17 @@ input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   top: 40vh;
   left: 35vw;
+}
+
+.crpt{
+  padding: 1%;
+}
+
+.cp, .pf, .intg, .hmtg, .lgot, .actg{
+  text-align: center;
+  font-size: 10px;
+  position: absolute;
+  color: white;
 }
 
 

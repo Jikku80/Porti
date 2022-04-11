@@ -331,6 +331,13 @@ input[type=number]::-webkit-outer-spin-button {
     left: 35vw;
   }
 
+.cp, .pf, .intg, .hmtg, .lgot, .actg{
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    color: white;
+  }
+
 @media (min-width: 601px) and (max-width: 900px){
     .land__sixth, .land__secd, .land__farst{
         height: 80vh;

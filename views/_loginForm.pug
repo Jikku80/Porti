@@ -1,10 +1,12 @@
 .login__form 
     .login__head 
-        a.port_sec_head(href="/")
+        a.port_sec_head.hm(href="/")
             h1 Tech 
                 span Mafia
-        a(href="/porti")
+            p.hmtg.hidden home
+        a.crpt(href="/porti")
             img(src="/images/plus.png", alt="view_port")
+            p.cp.hidden porti
     form#loginForm
         h2 Log into your account 
         .login__form__bod
@@ -22,6 +24,7 @@
 
 
 script(src="/js/alert.js") 
+script(src="/js/nametag.js") 
 script(src="/js/login.js") 
 
 

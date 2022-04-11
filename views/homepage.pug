@@ -2,17 +2,19 @@ extends base
 
 block content 
     .main__content 
+        h2.presents.hidden Tech Mafia Presents PORTi
         .main__content__log
             a#log.fkAncky(href="/login") Login | SignUp
         .main__content__nav
             a.fkAncky(href="#aboutTM") About 
                 span.mid  Tech
                     span.lst  Mafia 
-            a.fkAncky(href="/porti")
-                p#go__create.crPr Create Portfolio
-            a.fkAncky(href="#contactTM") Contact  
-                span.mid  Tech
-                    span.lst  Mafia 
+            a.crPr(href="/porti")
+                p#go__create Create Portfolio
+            .fkAncky
+                a.opst(href="#contactTM") Reach  
+                    span.mid  Tech
+                        span.lst  Mafia 
         .main__content__learn
             .learn__content 
                 a.greybtn(href="#abtPorti") Learn About Porti 
@@ -39,7 +41,7 @@ block content
                 h3 Is Porti Free To Use?
                 p Yes! Porti is completely Free, Feel free to signup and create your portfolio.
             #guidePorti.padder 
-                h2 How To Create Your First 
+                h2 Create Your First 
                     span.mid Portfolio 
                     span.lst ?
                 .guide__box
@@ -67,7 +69,61 @@ block content
                         .gbox__bod
                             p To view your portfolio Click on My Portfolio 
                             p To share your portfolio click copy link and share it
-                h3 How To Create Your Invitation?
+                h3.mid#portiHelper Portfolio 
+                    span.lst Helper
+                p Do not Know What To Write In Your Portfolio? Here are Few Tips
+                p Just the tips cause only you can tell the world who you really are ;) 
+                .guide__box
+                    .gbox 
+                        .gbox__head 
+                            h3 About You
+                        .gbox__bod
+                            p Describe yourself detaily. About Who you are Porfessionally
+                            p If the theme | form has no your strength weakness option include these in about me section.
+                    .gbox 
+                        .gbox__head 
+                            h3 What You Do?
+                        .gbox__bod
+                            p Describe What you professionally Do.  
+                            p Show you are fully aware of what you do and can handle the task if given in this position.
+                    .gbox 
+                        .gbox__head 
+                            h3 Why You Do it?
+                        .gbox__bod
+                            p Describe Why you do what you professionally Do.  
+                            p Tell Why you do it? May be you love doing it, may be you were born for it, may you see lots of money in this line of profession be honest and tell your story.
+                    .gbox 
+                        .gbox__head 
+                            h3 Your Failoure | Probelem You faced While Doing What you do?
+                        .gbox__bod
+                            p Describe The time when you hit rock bottom and how you got yourself back up This kind of points shows how mentally strong you are, how you dont run away from your problems.  
+                            p If the form | Theme doesnt have this section feel free to add it in About me section.
+                    .gbox 
+                        .gbox__head 
+                            h3 Previous Work | Accomplishments
+                        .gbox__bod
+                            p Describe What you have done, achieved so far in your line of carreer.  
+                            p If you have acheived nothing, flex out your certificates, degrees, your prides your glory days relevent to your profession.
+                    .gbox 
+                        .gbox__head 
+                            h3 Image Section
+                        .gbox__bod
+                            p If the theme has Cover Image Your First Image will be your Theme Cover Image.  
+                            p Other Images Must be relevent to your previous Work, Accomplishments, degrees, pride.
+                            p Note Some Theme requires 5 image whereas In some You can Upload upto 20 Images to No Image
+                    .gbox 
+                        .gbox__head 
+                            h3 Image Heading Section
+                        .gbox__bod
+                            p Give your Image a heading or if you want to price your art work you can type in Rs. Amount  
+                    .gbox 
+                        .gbox__head 
+                            h3 Note
+                        .gbox__bod
+                            p Please Fill Every Field in the Form and Hit Create!  
+                h3 How To Create Your 
+                    span.mid Invitation 
+                        span.lst ?
                 p Follow the Same procedure and you are all set!
             #aboutTM.padder
                 h2 About 
@@ -101,10 +157,8 @@ block content
                         form.msg__form
                             label.form__label(for='name') Name
                             input#msgname.form__input(type='text', name="name", placeholder='your name', required)
-                            br
                             label.form__label(for='email') Email address
                             input#msgemail.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
-                            br
                             label.form__label(for='siteType') Site Type 
                             select.form__select(type='select', name="siteType", id="siteType")
                                     option(value="E-commerce") E-commerce
@@ -113,9 +167,8 @@ block content
                                     option(value="E-learning") E-learning 
                                     option(value="Media") Media 
                                     option(value="Other") Other
-                            br
                             label.form__label(for='message') Message 
-                            textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="50", required)
+                            textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="30", required)
                             .form__group
                             button.send__msg.greybtn Send
 

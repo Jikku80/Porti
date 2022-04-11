@@ -4,27 +4,33 @@ block content
     if (user)
         .port__nav
             .port__nav__first
-                a.port__head(href="/me")
+                a.port__head.act(href="/me")
                     if (user.photo)
                         img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
                     else 
                         img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
-                a.port_sec_head(href="/")
+                    p.actg.hidden your account
+                a.port_sec_head.hm(href="/")
                     h1 Tech 
                         span Mafia
+                    p.hmtg.hidden home
                 #logout.logout
                     img(src="/images/poweroff.png", alt="signout")
+                    p.lgot.hidden logout
             .port__nav__sub 
-                a(href=`/myportfolio/${user._id}`)
+                a.ypf(href=`/myportfolio/${user._id}`)
                     img(src="/images/porti.png", alt="view_port")
                     span#usId.hidden= user._id
-                a(href=`/invitations/${user._id}`)
+                    p.pf.hidden your portfolio
+                a.yin(href=`/invitations/${user._id}`)
                     img(src="/images/invite.png", alt="view_port")
                     span#uiId.hidden= user._id
+                    p.intg.hidden your invitations
         .port__bod.port__section
             h2 Create a portfolio
             p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
-            p To create You will need 4-5 prior work images or if no prior works add your certificates/degrees your glories, pride :)
+            p Need tips Creating Your Portfolio Go To 
+                a.portDet(href="/#portiHelper") Porti Helper
             .layout__main
                 #layout1.unl
                     .un_layout_log
@@ -70,7 +76,8 @@ block content
         .port__bod
             h2 Create a portfolio | You are not Logged In!
             p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
-            p To create You will need 4-5 prior work images or if no prior works add your certificates/degrees your glories, pride :)
+            p Need tips Creating Your Portfolio Go To 
+                a.portDet(href="/#portiHelper") Porti Helper
             .layout__main
                 .un_layout
                     img(src="/images/layout1.gif", alt="layout1")
@@ -104,6 +111,7 @@ block content
     img.loader.hidden(src="/images/loading.gif", alt="loader")
     
     script(src="/js/alert.js")
+    script(src="/js/nametag.js") 
     script(src="/js/logout.js")  
     script(src="/js/createPort/createport.js")
     script(src="/js/createPort/createport2.js")

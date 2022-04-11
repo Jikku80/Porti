@@ -7,21 +7,26 @@ block content
             .land__content
                 .land__nav__main
                     .land__nav
-                        a.land__head(href="/me")
+                        a.land__head.act(href="/me")
                             if (user.photo)
                                 img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic")
                             else 
                                 img.userdp.satProf(src="/images/hitman.png", alt="prof__pic")
-                        a.port_sec_head(href="/")
+                            p.actg.hidden your account
+                        a.port_sec_head.hm(href="/")
                             h1 Tech 
                                 span Mafia
+                            p.hmtg.hidden home
                         #logout.logout
                             img(src="/images/poweroff.png", alt="signout")
+                            p.lgot.hidden logout
                     .land__nav__sub 
-                        a(href="/porti")
+                        a.crpt(href="/porti")
                             img(src="/images/plus.png", alt="view_port")
-                        a(href=`/invitations/${user.id}`)
+                            p.cp.hidden porti
+                        a.yin(href=`/invitations/${user.id}`)
                             img(src="/images/invite.png", alt="view_port")
+                            p.intg.hidden your invitations
                 .land__goto
                     h1#port_name= `${portfolio.name}`
                     p Go to your portfolio
@@ -61,6 +66,7 @@ block content
             a.redbtn(href="/login") Log In
 
     script(src="/js/alert.js")
+    script(src="/js/nametag.js") 
     script(src="/js/layouts/baseLand.js")      
     script(src="/js/delete.js") 
     script(src="/js/logout.js")

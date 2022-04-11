@@ -7,11 +7,25 @@
     overflow-x: hidden;
 }
 
+.presents{
+    position: absolute;
+    font-variant: small-caps;
+    top: 65vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    animation: present 4s ease-in-out;
+}
+
 .main__content__log{
     position: absolute;
-    top: 15vh;
+    top: 25vh;
     left: 50%;
     transform: translate(-58%, 0);
+    animation: tm 4s infinite ease-in-out;
+}
+
+.main__content__log:hover{
+    animation: none;
 }
 
 #log{
@@ -19,7 +33,7 @@
 }
 
 #log:hover{
-    color: crimson;
+    color: white;
 }
 
 .fkAncky{
@@ -32,7 +46,18 @@
     transform: rotate(270deg);
 }
 
+.opst{
+    color: gray;
+    text-decoration: none;
+    display: inline-block; 
+    transform: scale(1,-1);
+}
+
 .fkAncky:hover{
+    transform: none;
+}
+
+.post:hover{
     transform: none;
 }
 
@@ -46,6 +71,11 @@
 
 .crPr{
     color: crimson;
+    text-decoration: none;
+    font-variant: small-caps;
+    font-size: larger;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 .main__content__nav{
@@ -93,7 +123,9 @@
 }
 
 .padder{
-    padding-top: 5vh;
+    margin: 5% 0 5% 0;
+    padding: 5vh 2vw 2vh 2vw;
+    border: 1px solid grey;
 }
 
 .guide__box{
@@ -145,12 +177,13 @@
 .msg__form label{
     color: gray;
     font-variant: small-caps;
+    margin: 2%;
 }
 
 .msg__form input, .msg__form textarea{
-    margin: 1%;
+    margin: 2%;
     border: 1px solid grey;
-    padding: 1%;
+    padding: 2%;
 }
 
 .msg__form select{
@@ -160,6 +193,7 @@
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     padding: 2%;
+    margin: 2%;
 }
 
 .send__msg{
@@ -175,16 +209,20 @@
 }
 
 .bg__changer{
-    background-image: linear-gradient(to bottom, rgb(44, 44, 44) , crimson);
+    animation: clChanger 2s ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 .crim{
-    background-color: crimson;
-    color: white;
+    animation: clCrim 2s ease-in-out forwards;
 }
 
 @media (max-height: 600px) {
-    .fkAncky{
+    .presents{
+        top: 10vh !important;
+        text-align: center;
+    }
+    .fkAncky, .crPr{
         transform: none;
         display: flex;
         justify-content: center;
@@ -192,7 +230,7 @@
     }
 
     .main__content__log{
-        top: 15vh;
+        top: 5vh;
     }
 
     .main__content__learn {
@@ -203,6 +241,16 @@
 @media screen and (max-width: 600px) {
     .main__content__log{
         transform: translate(-53%, 0);
+    }
+
+    .presents{
+        top: 55vh;
+        text-align: center;
+    }
+
+    .view__tm{
+        width: 95vw;
+        font-size: 14px;
     }
 
     .greybtn{
@@ -218,14 +266,95 @@
         width: 70vw;
         margin: 2% 0 2% 0;
     }
+
+    .msg__form label{
+        margin: 2%;
+    }
+
+    .msg__form input, .msg__form textarea, .msg__form select{
+        margin: 4%;
+        padding: 4%;
+    }
 }
 
 @media (min-width: 601px) and (max-width: 900px){
-    .main__content__log{
-        top: 20vh;
+    .presents{
+        top: 55vh;
+        text-align: center;
     }
 
     .greybtn{
         padding: 4%;
     }
+
+    .msg__form label{
+        margin: 2%;
+    }
+
+    .msg__form input, .msg__form textarea, .msg__form select{
+        margin: 4%;
+        padding: 4%;
+    }
+}
+
+@keyframes present {
+    0%{
+        opacity: 0;
+        color: rgba(255, 255, 255, 0.137);
+    }
+    10%{
+        opacity: 0.1;
+        color: rgba(255, 255, 255, 0.295);
+    }
+    20%{
+        opacity: 0.2;
+        color: rgba(255, 255, 255, 0.582);
+    }
+    30%{
+        opacity: 0.3s;
+        color: rgba(255, 255, 255, 0.815);
+    }
+    100%{
+        opacity: 1;
+        color: white;
+    }
+}
+
+@keyframes clChanger {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: crimson;
+    }
+    90%{
+        background-image: linear-gradient(to bottom, rgba(44, 44, 44, 0.575) , rgb(220, 20, 60));
+    }
+    100%{
+        background-image: linear-gradient(to bottom, rgb(44, 44, 44) , crimson);
+    }
+    
+}
+
+@keyframes clCrim {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: crimson;
+    }
+    100%{
+        background-color: crimson;
+    }
+    
+}
+
+@keyframes bodCl {
+    0%{
+        background-color: white;
+    }
+    100%{
+        background-color: crimson;
+    }
+    
 }

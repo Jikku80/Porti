@@ -5,21 +5,26 @@ block content
         if (user.id == user._id)
             .port__nav
                 .port__nav__first
-                    a.port__head(href="/me")
+                    a.port__head.act(href="/me")
                         if (user.photo)
                             img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
                         else 
                             img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
-                    a.port_sec_head(href="/")
+                        p.actg.hidden your account
+                    a.port_sec_head.hm(href="/")
                         h1 Tech 
                             span Mafia
+                        p.hmtg.hidden home
                     #logout.logout
                         img(src="/images/poweroff.png", alt="signout")
+                        p.lgot.hidden logout
                 .port__nav__sub 
-                    a(href="/porti")
+                    a.crpt(href="/porti")
                         img(src="/images/plus.png", alt="view_port")
-                    a(href=`/myportfolio/${user._id}`)
+                        p.cp.hidden porti
+                    a.ypf(href=`/myportfolio/${user._id}`)
                         img(src="/images/porti.png", alt="view_port")
+                        p.pf.hidden your portfolio
             .card__main 
                 each invite in invites
                     .card
@@ -36,3 +41,5 @@ block content
         .confirm__pg 
             h1 You are not logged In!
             a.redbtn(href="/login") LogIn
+
+    script(src="/js/nametag.js") 

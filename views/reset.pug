@@ -1,8 +1,8 @@
 extends base
 
 block content
-
-  form#reset__form
+  include _header.pug
+  form#reset__form.rs_form
     h2#reset__head Reset Your Password
     p Check your mail for token
     label.form__label(for='text') Token 
