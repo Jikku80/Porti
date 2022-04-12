@@ -3,7 +3,9 @@ extends baselayout
 block content
     if (user)
         if (invite.user.id == user._id)
-            img.loader.hidden(src="/images/loading.gif", alt="loader")
+            .loader.hidden
+                .inn__load
+                    .inner__loader
             .land__content
                 .land__nav__main
                     .land__nav
@@ -27,6 +29,15 @@ block content
                         a.ypf(href=`/myportfolio/${user._id}`)
                             img(src="/images/porti.png", alt="view_port")
                             p.pf.hidden your portfolio
+                    .breadcrumbs 
+                        a.bdcb(href="#") You Are Here |
+                        a.bdcb(href="/") Home 
+                        a.bdcb(href="#") &#8680;  
+                        a.bdcb(href="/porti") Porti 
+                        a.bdcb(href="#") &#8680;  
+                        a.bdcb(href=`/invitations/${user._id}`) All Invitations
+                        a.bdcb(href="#") &#8680;  
+                        a.cur(href="#") Your Invitation
                 .land__goto
                     h1#invite_name= `${invite.fname} and ${invite.sname}`
                     p View Your Invitation

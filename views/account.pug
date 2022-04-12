@@ -3,6 +3,11 @@ extends base
 block content
     if (user)
         include _header
+        .breadcrumbs 
+                a.bdcb(href="#") You Are Here |
+                a.bdcb(href="/") Home 
+                a.bdcb(href="#") &#8680;  
+                a.cur(href="#") Your Account 
         .update__account__form 
             form#upInfo
                 if (user.photo)
@@ -19,7 +24,9 @@ block content
                 input#upemail.form__input(type='email', placeholder=`${user.email}`, required)
                 button.update__account.redbtn Update Info
 
-        img.loader.hidden(src="/images/loading.gif", alt="loader")
+        .loader.hidden
+            .inn__load
+                .inner__loader
 
         .update__account__password
             form#upPass

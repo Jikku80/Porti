@@ -209,12 +209,12 @@
 }
 
 .bg__changer{
-    animation: clChanger 2s ease-in-out;
+    animation: clChanger 1.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .crim{
-    animation: clCrim 2s ease-in-out forwards;
+    animation: clCrim 1.5s ease-in-out forwards;
 }
 
 @media (max-height: 600px) {
@@ -327,9 +327,6 @@
     50%{
         background-color: crimson;
     }
-    90%{
-        background-image: linear-gradient(to bottom, rgba(44, 44, 44, 0.575) , rgb(220, 20, 60));
-    }
     100%{
         background-image: linear-gradient(to bottom, rgb(44, 44, 44) , crimson);
     }
@@ -351,10 +348,10 @@
 
 @keyframes bodCl {
     0%{
-        background-color: white;
+        background-color: crimson;
     }
     100%{
-        background-color: crimson;
+        background-color: white;
     }
     
 }

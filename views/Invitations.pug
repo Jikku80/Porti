@@ -25,13 +25,23 @@ block content
                     a.ypf(href=`/myportfolio/${user._id}`)
                         img(src="/images/porti.png", alt="view_port")
                         p.pf.hidden your portfolio
-            .card__main 
-                each invite in invites
-                    .card
-                        .card__head
-                            h1= invite.fname
-                        .card__link
-                            a.redbtn(href=`/myinvi/${invite._id}`) Open
+                .breadcrumbs 
+                        a.bdcb(href="#") You Are Here |
+                        a.bdcb(href="/") Home 
+                        a.bdcb(href="#") &#8680;  
+                        a.bdcb(href="/porti") Porti 
+                        a.bdcb(href="#") &#8680;  
+                        a.cur(href="#") All Invitations
+            if (invites !== undefined)
+                .card__main 
+                    each invite in invites
+                        .card
+                            .card__head
+                                h1= invite.fname
+                            .card__link
+                                a.redbtn(href=`/myinvi/${invite._id}`) Open
+            else 
+                h1 Ooops!! No Invitation Yet
         else 
             .confirm__pg
                 h1 You Dont Belong Here, Use Your Phone Number

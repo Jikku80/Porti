@@ -10,9 +10,7 @@ block content
         .main__pic
             each img, i in portfolio.images
                 .picture-box
-                    img.picture-box__img(src=`/images/ports/imageColl/${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
-
-        p To view image in full screen right click and  Open image in new tab.
+                    img.picture-box__img.imgFull(src=`/images/ports/imageColl/${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
     .fifth
         .about__bod#fifth__about
             h2 About 
@@ -43,4 +41,6 @@ block content
                                 img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
 
     a#goup(href="#") 
-                img(src="/images/yup.png", alt="go_up")
+        img(src="/images/yup.png", alt="go_up")
+    
+    script(src="/js/imgFull.js") 

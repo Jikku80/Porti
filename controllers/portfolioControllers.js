@@ -40,7 +40,6 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
     img.originalname = `port-${img.fieldname}-${Date.now()}-previous-work.jpeg`;
     await sharp(img.buffer)
-        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageCover/${img.originalname}`);
@@ -49,7 +48,6 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
     img2.originalname = `port-${img2.fieldname}-${Date.now()}-previous-work.jpeg`;
     await sharp(img2.buffer)
-        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageSecond/${img2.originalname}`);
@@ -58,7 +56,6 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
     img3.originalname = `port-${img3.fieldname}-${Date.now()}-previous-work.jpeg`;
     await sharp(img3.buffer)
-        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageThird/${img3.originalname}`);
@@ -67,7 +64,6 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
     img4.originalname = `port-${img4.fieldname}-${Date.now()}-previous-work.jpeg`;
     await sharp(img4.buffer)
-        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageFourth/${img4.originalname}`);
@@ -76,7 +72,6 @@ exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
     img5.originalname = `port-${img5.fieldname}-${Date.now()}-previous-work.jpeg`;
     await sharp(img5.buffer)
-        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageFifth/${img5.originalname}`);
@@ -96,7 +91,6 @@ exports.resizePortImages = catchAsync(async (req, res, next) => {
             const filename = `port-${req.body.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
 
             await sharp(file.buffer)
-                .resize(2000, 1333)
                 .toFormat('jpeg')
                 .jpeg({ quality: 90 })
                 .toFile(`public/images/ports/imageColl/${filename}`);

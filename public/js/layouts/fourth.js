@@ -3,9 +3,11 @@
     let ancSecond = document.querySelector(".anc__second")
     let mainHead = document.querySelector(".main__header")
     let aboutSection = document.querySelector(".main__about__section")
+    let fh = document.querySelector(".fourth__head")
 
     ancSecond.addEventListener("click", () => {
         mainHead.classList.add("hide");
+        fh.classList.add("hide");
         aboutSection.classList.remove("hide");
     })
 
@@ -13,6 +15,7 @@
 
     fourthClose.addEventListener("click", () => {
         aboutSection.classList.add("hide");
+        fh.classList.remove("hide");
         mainHead.classList.remove("hide");
     })
 
@@ -21,6 +24,7 @@
 
     ancThird.addEventListener("click", () => {
         mainHead.classList.add("hide");
+        fh.classList.add("hide");
         prevSection.classList.remove("hide");
     })
 
@@ -28,6 +32,7 @@
     fourthSecClose.addEventListener("click", () => {
         prevSection.classList.add("hide");
         mainHead.classList.remove("hide");
+        fh.classList.remove("hide");
     })
 
     let ancFourth = document.querySelector(".anc__last");
@@ -35,6 +40,7 @@
 
     ancFourth.addEventListener("click", () => {
         mainHead.classList.add("hide");
+        fh.classList.add("hide");
         contSection.classList.remove("hide");
     })
 
@@ -42,5 +48,15 @@
     fourthThirdClose.addEventListener("click", () => {
         contSection.classList.add("hide");
         mainHead.classList.remove("hide");
+        fh.classList.remove("hide");
+    })
+
+    const fullImg = document.querySelectorAll('.imgFull');
+
+    fullImg.forEach(img => {
+        img.addEventListener("click", () => {
+            window.open(img.src)
+        })
     })
 })()
+

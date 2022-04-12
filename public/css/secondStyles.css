@@ -135,16 +135,20 @@ html{
     flex-direction: column;
     margin: 1%;
     align-items: center;
-    object-fit: cover;
+    text-align: center;
+    height: 100%;
+    width: 35vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 .imgsnd{
-    height: 50vh;
-    width: auto;
     border-radius: 1rem;
+    width: 100%;
+    height: 100%;
     margin: 2%;
     transition: transform .2s;
-    object-fit: cover;
 }
 
 .imgsnd:hover{
@@ -214,9 +218,13 @@ html{
         align-items: center;
     }
 
-    .imgsnd{
+    .prev__cont__sub{
         width: 80%;
         height: 50%;
+    }
+
+    .imgsnd{
+        width: 100%;
     }
 
     .cont__box{
@@ -252,10 +260,13 @@ html{
         padding: 0;
     }
 
-    .imgsnd{
+    .prev__cont__sub{
         width: 90%;
         height: 50%;
-        margin: 0;
+    }
+
+    .imgsnd{
+        width: 100%;
     }
 
     #pre h3 { 

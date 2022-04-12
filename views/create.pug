@@ -2,6 +2,9 @@ extends base
 
 block content
     if (user)
+        .loader.hidden
+            .inn__load
+                .inner__loader
         .port__nav
             .port__nav__first
                 a.port__head.act(href="/me")
@@ -26,6 +29,11 @@ block content
                     img(src="/images/invite.png", alt="view_port")
                     span#uiId.hidden= user._id
                     p.intg.hidden your invitations
+            .breadcrumbs 
+                a.bdcb(href="#") You Are Here |
+                a.bdcb(href="/") Home 
+                a.bdcb(href="#") &#8680;  
+                a.cur(href="#") Porti  
         .port__bod.port__section
             h2 Create a portfolio
             p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
@@ -108,7 +116,6 @@ block content
                 .un_layout
                     img(src="/images/invi2.png", alt="invi2")
                     p INI Layout
-    img.loader.hidden(src="/images/loading.gif", alt="loader")
     
     script(src="/js/alert.js")
     script(src="/js/nametag.js") 

@@ -44,6 +44,7 @@
 .picture-box__img{
     margin:5px;
     width: 30vw;
+    cursor: pointer;
 }
 
 .contact__bod, .about__bod{

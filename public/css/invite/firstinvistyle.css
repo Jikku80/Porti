@@ -60,6 +60,7 @@ body{
 .invite__bod__cont img{
     width: 30vw;
     margin: 1%;
+    cursor: pointer;
 }
 
 .invite__bod__pic{
@@ -71,6 +72,7 @@ body{
 .invite__bod__pic img{
     width: 90%;
     margin: 1%;
+    cursor: pointer;
 }
 
 .invite__bod__details{
