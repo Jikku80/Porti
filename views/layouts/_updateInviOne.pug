@@ -3,7 +3,7 @@
     #update_inviform.hidden.upform.land__farst
         .upform__head 
             h1 Update Your Portfolio 
-            img.cancelInvi(src="/images/cancel.png", alt="cancel_img")
+            img.cancelInvi.pointer(src="/images/cancel.png", alt="cancel_img")
         form#upInvite.inviF
             .form__bod
                 label First Person Name:
@@ -38,19 +38,19 @@
         form#upInviImage
             .upform__head 
                 h1 Update Your Invitation Images
-                img.canclInvi(src="/images/cancel.png", alt="cancel_img")
+                img.canclInvi.pointer(src="/images/cancel.png", alt="cancel_img")
             .form__bod.file_part
                 label Cover Image:
-                input#inimg1(type="file" accept="image/*" name="img1")
+                input#inimg1(type="file" accept="image/*" name="img1", required)
             .form__bod.file_part
                 label Images:
-                input#inimg2(type="file" accept="image/*" name="img2")
+                input#inimg2(type="file" accept="image/*" name="img2", required)
             .form__bod.file_part
-                input#inimg3(type="file" accept="image/*" name="img3")
+                input#inimg3(type="file" accept="image/*" name="img3", required)
             .form__bod.file_part
-                input#inimg4(type="file" accept="image/*" name="img4")
+                input#inimg4(type="file" accept="image/*" name="img4", required)
             .form__bod.file_part
-                input#inimg5(type="file" accept="image/*" name="img5")
+                input#inimg5(type="file" accept="image/*" name="img5", required)
             button#updateinImgBtn.redbtn Update
 
 script(src="/js/upInvi/inviLand1.js")

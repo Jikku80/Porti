@@ -115,10 +115,24 @@ updBtn.addEventListener("click", async (e) => {
 })
 
 upImgBtn.addEventListener("click", async (e) => {
+    if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
+        return false;
+    }
+    if (img2.files[0] < 1 || img2.files[0] == "" || img2.files[0] == null) {
+        return false;
+    }
+    if (img3.files[0] < 1 || img3.files[0] == "" || img3.files[0] == null) {
+        return false;
+    }
+    if (img4.files[0] < 1 || img4.files[0] == "" || img4.files[0] == null) {
+        return false;
+    }
+    if (img5.files[0] < 1 || img5.files[0] == "" || img5.files[0] == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(upno.value);
     const formData = new FormData();
     formData.append("id", id);
     formData.append("firstImgHead", hd1.value);

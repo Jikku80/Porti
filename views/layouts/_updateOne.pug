@@ -53,23 +53,23 @@
                 h1 Update Your Port Images
                 img.cancl(src="/images/cancel.png", alt="cancel_img")
             .form__bod.file_part
-                input#img1(type="file" accept="image/*" name="img1" value=`/images/ports/imageCover/${portfolio.imageCover}`)
+                input#img1(type="file" accept="image/*" name="img1", required)
                 label Heading: 
                 input#firstImg(type="text" value= `${portfolio.firstImgHead}` name="firstImgHead")
             .form__bod.file_part
-                input#img2(type="file" accept="image/*" name="img2" value= portfolio.imageSecond)
+                input#img2(type="file" accept="image/*" name="img2", required)
                 label Heading: 
                 input#secondImg(type="text" value= `${portfolio.secondImgHead}` name="secondImgHead")
             .form__bod.file_part
-                input#img3(type="file" accept="image/*" name="img3" value= portfolio.imageThird)
+                input#img3(type="file" accept="image/*" name="img3", required)
                 label Heading: 
                 input#thirdImg(type="text" value= `${portfolio.thirdImgHead}` name="thirdImgHead")
             .form__bod.file_part
-                input#img4(type="file" accept="image/*" name="img4" value= portfolio.imageFourth)
+                input#img4(type="file" accept="image/*" name="img4", required)
                 label Heading: 
                 input#fourthImg(type="text" value= `${portfolio.fourthImgHead}` name="fourthImgHead")
             .form__bod.file_part
-                input#img5(type="file" accept="image/*" name="img5" value= portfolio.imageFifth)
+                input#img5(type="file" accept="image/*" name="img5", required)
                 label Heading: 
                 input#fifthImg(type="text" value= `${portfolio.fifthImgHead}` name="fifthImgHead")
 

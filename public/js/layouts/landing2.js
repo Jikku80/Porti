@@ -104,10 +104,12 @@ pdBtn.addEventListener("click", async (e) => {
 })
 
 pImgBtn.addEventListener("click", async (e) => {
+    if (pimg1.files[0] < 1 || pimg1.files[0] == "" || pimg1.files[0] == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    let num = btoa(pno.value);
     const formData = new FormData();
     for (var x = 0; x < pimg1.files.length; x++) {
         formData.append("images", pimg1.files[x]);

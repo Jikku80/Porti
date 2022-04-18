@@ -8,10 +8,11 @@ button#signup.redbtn SignUp
                 img#signCancel(src="/images/cancel.png" alt="cancel_img") 
             .signup__bod
                 label.form__label(for='text') Name
-                input#m_name.form__input(type='text', name="email_add", placeholder='Your Name')
+                input#m_name.form__input(type='text', name="email_add", placeholder='Your Name', required)
                 label.form__label(for='email') Email Address
-                input#m_email.form__input(type='email', name="m_email", placeholder='you@example.com')
+                input#m_email.form__input(type='email', name="m_email", placeholder='you@example.com', required)
                 label.form__label(for='password') Password 
+                p Note: Password Must be atleast 9 Characters long
                 input#m_password.form__input(type='password', name="m_password", placeholder='********', required, minlength='8')
                 label.form__label(for='password') Confirm Password
                 input#passwordConfirm.form__input(type='password', name="passwordConfirm", placeholder='********', required, minlength='8')

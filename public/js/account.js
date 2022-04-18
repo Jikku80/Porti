@@ -7,7 +7,18 @@ let pwdCurrent = document.querySelector("#pwdCurrent");
 let uppwd = document.getElementById("up_password");
 let uppwdcfm = document.getElementById("up_passwordConfirm");
 
+window.addEventListener("load", () => {
+    let loads = document.querySelector('.loader');
+    loads.classList.add("hidden");
+})
+
 updateBtn.addEventListener("click", async (e) => {
+    if (upname.value < 1 || upname.value == "" || upname.value == null) {
+        return false;
+    }
+    if (upemail.value < 1 || upemail.value == "" || upemail.value == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
@@ -43,6 +54,15 @@ updateBtn.addEventListener("click", async (e) => {
 })
 
 pwdUpdate.addEventListener("click", async (e) => {
+    if (pwdCurrent.value < 1 || pwdCurrent.value == "" || pwdCurrent.value == null) {
+        return false;
+    }
+    if (uppwd.value < 1 || uppwd.value == "" || uppwd.value == null) {
+        return false;
+    }
+    if (uppwdcfm.value < 1 || uppwdcfm.value == "" || uppwdcfm.value == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
@@ -82,6 +102,9 @@ pwdUpdate.addEventListener("click", async (e) => {
 let profPic = document.getElementById("upPic");
 let upProfPic = document.getElementById("upProfPic");
 upProfPic.addEventListener("click", async (e) => {
+    if (profPic.files[0] < 1 || profPic.files[0] == "" || profPic.files[0] == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

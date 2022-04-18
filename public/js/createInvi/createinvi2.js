@@ -60,6 +60,27 @@ invi2.addEventListener("click", () => {
     let theme = "c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7";
 
     submit.addEventListener("click", async (e) => {
+        if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
+            return false;
+        }
+        if (secname.value < 1 || secname.value == "" || secname.value == null) {
+            return false;
+        }
+        if (aboutyou.value < 1 || aboutyou.value == "" || aboutyou.value == null) {
+            return false;
+        }
+        if (what.value < 1 || what.value == "" || what.value == null) {
+            return false;
+        }
+        if (why.value < 1 || why.value == "" || why.value == null) {
+            return false;
+        }
+        if (yourno.value < 1 || yourno.value == "" || yourno.value == null) {
+            return false;
+        }
+        if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
+            return false;
+        }
         e.preventDefault();
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")

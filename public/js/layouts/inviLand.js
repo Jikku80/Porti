@@ -31,3 +31,8 @@ copyinviLink.addEventListener("click", () => {
 
     successAlert("Link Copied")
 })
+
+window.addEventListener("load", () => {
+    let loads = document.querySelector('.loader');
+    loads.classList.add("hidden");
+})

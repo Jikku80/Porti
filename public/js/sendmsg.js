@@ -7,6 +7,15 @@ let msgmessage = document.querySelector("#msgmessage");
 let ok = document.getElementById("ok");
 
 sendMsg.addEventListener("click", async (e) => {
+    if (msgfullName.value < 1 || msgfullName.value == "" || msgfullName.value == null) {
+        return false;
+    }
+    if (msgemail.value < 1 || msgemail.value == "" || msgemail.value == null) {
+        return false;
+    }
+    if (msgmessage.value < 1 || msgmessage.value == "" || msgmessage.value == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

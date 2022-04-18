@@ -1,6 +1,9 @@
 extends base
 
 block content
+  .loader
+      .inn__load
+          .inner__loader
   include _header.pug
   form#reset__form.rs_form
     h2#reset__head Reset Your Password
@@ -15,10 +18,6 @@ block content
     input#rpwdC.form__input(type='password',  placeholder='********', required, minlength='8')
     br
     button.btn__reset.redbtn Reset Password
-
-  .loader.hidden
-      .inn__load
-          .inner__loader
 
   script(src="/js/alert.js") 
   script(src="/js/auth/resetpwd.js") 

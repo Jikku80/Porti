@@ -13,6 +13,9 @@ closeBtn.addEventListener("click", () => {
 })
 
 forgotpwd.addEventListener("click", async (e) => {
+    if (forgotemail.value < 1 || forgotemail.value == "" || forgotemail.value == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

@@ -1,4 +1,7 @@
 .login__form 
+    .loader
+        .inn__load
+            .inner__loader
     .login__head 
         a.port_sec_head.hm(href="/")
             h1 Tech 
@@ -7,18 +10,16 @@
         a.crpt(href="/porti")
             img(src="/images/plus.png", alt="view_port")
             p.cp.hidden porti
-    form#loginForm
+    form#loginForm(name="logForm")
         h2 Log into your account 
         .login__form__bod
-            label.form__label(for='email') Email Address
-            input#email_add.form__input(type='email', name="email_add", placeholder='you@example.com', required)
-            label.form__label(for='password') Password 
-            input#password.form__input(type='password', name="password", placeholder='********', required, minlength='8')
+            .log__form__id
+                label.form__label(for='email') Email Address
+                input#email_add.form__input.frm__id(type='email', name="log_email_add", placeholder='you@example.com', required)
+            .log__form__pwd
+                label.form__label(for='password') Password 
+                input#password.form__input.frm__pwd(type='password', name="log_password", placeholder='********', required, minlength='8')
             button.btn__login.redbtn Login
-    
-    .loader.hidden
-        .inn__load
-            .inner__loader
     
     include auth/_forgotPwd
 

@@ -1,6 +1,9 @@
 extends base
 
 block content
+    .loader
+        .inn__load
+            .inner__loader
     if (user)
         include _header
         .breadcrumbs 
@@ -9,24 +12,21 @@ block content
                 a.bdcb(href="#") &#8680;  
                 a.cur(href="#") Your Account 
         .update__account__form 
-            form#upInfo
+            form#upAccImg
                 if (user.photo)
                     img.profPic(src=`images/users/${user.photo}`, alt="prof__pic")
                 else 
                     img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
                 label.form__label(for='profile') Change DP
-                input#upPic.form__input(type="file" accept="image/*" name="profPic")
+                input#upPic.form__input(type="file" accept="image/*" name="profPic", required)
                 button#upProfPic.redbtn Update Picture 
+            form#upInfo
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name
                 input#upname.form__input(type='text', placeholder=`${user.name}`, required)
                 label.form__label(for='email') Email Address 
                 input#upemail.form__input(type='email', placeholder=`${user.email}`, required)
                 button.update__account.redbtn Update Info
-
-        .loader.hidden
-            .inn__load
-                .inner__loader
 
         .update__account__password
             form#upPass

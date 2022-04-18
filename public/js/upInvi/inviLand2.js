@@ -99,6 +99,9 @@ updinBtn2.addEventListener("click", async (e) => {
 })
 
 upinImgBtn2.addEventListener("click", async (e) => {
+    if (in2img.files[0] < 1 || in2img.files[0] == "" || in2img.files[0] == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

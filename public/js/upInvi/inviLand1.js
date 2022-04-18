@@ -106,6 +106,21 @@ updinBtn.addEventListener("click", async (e) => {
 })
 
 upinImgBtn.addEventListener("click", async (e) => {
+    if (inimg1.files[0] < 1 || inimg1.files[0] == "" || inimg1.files[0] == null) {
+        return false;
+    }
+    if (inimg2.files[0] < 1 || inimg2.files[0] == "" || inimg2.files[0] == null) {
+        return false;
+    }
+    if (inimg3.files[0] < 1 || inimg3.files[0] == "" || inimg3.files[0] == null) {
+        return false;
+    }
+    if (inimg4.files[0] < 1 || inimg4.files[0] == "" || inimg4.files[0] == null) {
+        return false;
+    }
+    if (inimg5.files[0] < 1 || inimg5.files[0] == "" || inimg5.files[0] == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

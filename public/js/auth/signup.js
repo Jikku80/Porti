@@ -17,6 +17,18 @@ signCancel.addEventListener("click", () => {
 })
 
 signup.addEventListener('click', async (e) => {
+    if (mname.value < 1 || mname.value == "" || mname.value == null) {
+        return false;
+    }
+    if (memail.value < 1 || memail.value == "" || memail.value == null) {
+        return false;
+    }
+    if (mpassword.value < 1 || mpassword.value == "" || mpassword.value == null) {
+        return false;
+    }
+    if (pwdConfirm.value < 1 || pwdConfirm.value == "" || pwdConfirm.value == null) {
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")

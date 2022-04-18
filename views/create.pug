@@ -1,10 +1,10 @@
 extends base
 
 block content
+    .loader
+        .inn__load
+            .inner__loader
     if (user)
-        .loader.hidden
-            .inn__load
-                .inner__loader
         .port__nav
             .port__nav__first
                 a.port__head.act(href="/me")
@@ -43,19 +43,19 @@ block content
                 #layout1.unl
                     .un_layout_log
                         img(src="/images/layout1.gif", alt="layout1")
-                        p PL Layout
+                        p PL Layout (5 Images required)
                 #layout2.unl
                     .un_layout_log
                         img(src="/images/layout2.gif", alt="layout2")
-                        p BG Layout
+                        p BG Layout (5 Images required)
                 #layout3.unl
                     .un_layout_log
                         img(src="/images/layout3.gif", alt="layout3")
-                        p ST Layout
+                        p ST Layout (5 Images required)
                 #layout4.unl
                     .un_layout_log
                         img(src="/images/layout4.gif", alt="layout4")
-                        p BS Layout
+                        p BS Layout (5 Images required)
                 #layout5.unl
                     .un_layout_log
                         img(src="/images/layout5.gif", alt="layout5")
@@ -63,20 +63,19 @@ block content
                 #layout6.unl
                     .un_layout_log
                         img(src="/images/layout6.gif", alt="layout6")
-                        p NI Layout (no image required)
+                        p NI Layout (No Image required)
         .invi__section 
             h2 Create Invitation
             p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
-            p To create You will need 4-5 images :)
             .layout__main
                 #invi1.unl
                     .un_layout_log
                         img(src="/images/invi1.gif", alt="invi1")
-                        p MRG Layout
+                        p MRG Layout (5 Images required)
                 #invi2.unl
                     .un_layout_log
                         img(src="/images/invi2.png", alt="invi2")
-                        p INI Layout
+                        p INI Layout (1 | No Image required)
     else 
         .port__nav__second.small__nav
             h1 Please login or Signup to Create Your Portfolio!
@@ -89,16 +88,16 @@ block content
             .layout__main
                 .un_layout
                     img(src="/images/layout1.gif", alt="layout1")
-                    p PL Layout
+                    p PL Layout (5 Images required)
                 .un_layout
                     img(src="/images/layout2.gif", alt="layout2")
-                    p BG Layout
+                    p BG Layout (5 Images required)
                 .un_layout
                     img(src="/images/layout3.gif", alt="layout3")
-                    p ST Layout
+                    p ST Layout (5 Images required)
                 .un_layout 
                     img(src="/images/layout4.gif", alt="layout1")
-                    p BS Layout
+                    p BS Layout (5 Images required)
                 .un_layout
                     img(src="/images/layout5.gif", alt="layout5")
                     p AT Layout (you can upload upto 20 images)
@@ -108,14 +107,13 @@ block content
         .invi__section 
             h2 Create Invitation | You are not Logged In
             p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
-            p To create You will need 4-5 images :)
             .layout__main
                 .un_layout
                     img(src="/images/invi1.gif", alt="invi1")
-                    p MRG Layout
+                    p MRG Layout (5 Images required)
                 .un_layout
                     img(src="/images/invi2.png", alt="invi2")
-                    p INI Layout
+                    p INI Layout (1 | No Images required)
     
     script(src="/js/alert.js")
     script(src="/js/nametag.js") 

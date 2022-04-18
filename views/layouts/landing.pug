@@ -1,11 +1,11 @@
 extends baselayout
 
 block content
+    .loader
+        .inn__load
+            .inner__loader
     if (user)
         if (portfolio.user.id == user._id)
-            .loader.hidden
-                .inn__load
-                    .inner__loader
             .land__content
                 .land__nav__main
                     .land__nav

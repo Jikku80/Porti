@@ -72,6 +72,30 @@ layout5.addEventListener("click", () => {
     let submit = document.getElementById("fifthformbtn");
     let theme = "da98568d1b2005611973ad49868b38aa8ae68fd7";
     submit.addEventListener("click", async (e) => {
+        if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
+            return false;
+        }
+        if (yourabout.value < 1 || yourabout.value == "" || yourabout.value == null) {
+            return false;
+        }
+        if (yourwhat.value < 1 || yourwhat.value == "" || yourwhat.value == null) {
+            return false;
+        }
+        if (yourwhy.value < 1 || yourwhy.value == "" || yourwhy.value == null) {
+            return false;
+        }
+        if (yourno.value < 1 || yourno.value == "" || yourno.value == null) {
+            return false;
+        }
+        if (youremail.value < 1 || youremail.value == "" || youremail.value == null) {
+            return false;
+        }
+        if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
+            return false;
+        }
         e.preventDefault();
         try {
             let load = document.querySelector('.loader');

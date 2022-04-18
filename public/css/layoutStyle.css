@@ -83,7 +83,7 @@ p{
     display: flex;
     justify-content: space-between;
     width: 85vw;
-    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .land__sixth, .land__secd, .land__farst{
@@ -466,3 +466,30 @@ input[type=number]::-webkit-outer-spin-button {
         height: 4rem;
     }
 }
+
+
+@keyframes rotateLeft {
+    from {
+      opacity: 1;
+      -webkit-transform: rotate3d(0, 0, 1, -200deg);
+      transform: translate3d(0, 0, 1, -200deg);
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes rotateRight {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      -webkit-transform: rotate3d(0, 0, 1, 200deg);
+      transform: rotate3d(0, 0, 1, 360deg);
+      opacity: 1;
+    }
+  }

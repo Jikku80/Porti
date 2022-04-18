@@ -98,6 +98,45 @@ layout6.addEventListener("click", () => {
     let theme = "836b9b955a98e0f2e2d678c179696d6ac53356eb";
 
     submit.addEventListener("click", async (e) => {
+        if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
+            return false;
+        }
+        if (aboutyou.value < 1 || aboutyou.value == "" || aboutyou.value == null) {
+            return false;
+        }
+        if (what.value < 1 || what.value == "" || what.value == null) {
+            return false;
+        }
+        if (why.value < 1 || why.value == "" || why.value == null) {
+            return false;
+        }
+        if (yourno.value < 1 || yourno.value == "" || yourno.value == null) {
+            return false;
+        }
+        if (youremail.value < 1 || youremail.value == "" || youremail.value == null) {
+            return false;
+        }
+        if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
+            return false;
+        }
+        if (hd1.value < 1 || hd1.value == "" || hd1.value == null) {
+            return false;
+        }
+        if (hd2.value < 1 || hd2.value == "" || hd2.value == null) {
+            return false;
+        }
+        if (hd3.value < 1 || hd3.value == "" || hd3.value == null) {
+            return false;
+        }
+        if (hd4.value < 1 || hd4.value == "" || hd4.value == null) {
+            return false;
+        }
+        if (hd5.value < 1 || hd5.value == "" || hd5.value == null) {
+            return false;
+        }
         e.preventDefault();
         try {
             let load = document.querySelector('.loader');

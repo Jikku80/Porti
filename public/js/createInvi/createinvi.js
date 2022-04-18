@@ -89,6 +89,42 @@ invi1.addEventListener("click", () => {
     let theme = "4dc50fc3bc007be011b5445f3f79298b9eeb51b7";
 
     submit.addEventListener("click", async (e) => {
+        if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
+            return false;
+        }
+        if (secname.value < 1 || secname.value == "" || secname.value == null) {
+            return false;
+        }
+        if (aboutyou.value < 1 || aboutyou.value == "" || aboutyou.value == null) {
+            return false;
+        }
+        if (what.value < 1 || what.value == "" || what.value == null) {
+            return false;
+        }
+        if (why.value < 1 || why.value == "" || why.value == null) {
+            return false;
+        }
+        if (yourno.value < 1 || yourno.value == "" || yourno.value == null) {
+            return false;
+        }
+        if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
+            return false;
+        }
+        if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
+            return false;
+        }
+        if (img2.files[0] < 1 || img2.files[0] == "" || img2.files[0] == null) {
+            return false;
+        }
+        if (img3.files[0] < 1 || img3.files[0] == "" || img3.files[0] == null) {
+            return false;
+        }
+        if (img4.files[0] < 1 || img4.files[0] == "" || img4.files[0] == null) {
+            return false;
+        }
+        if (img5.files[0] < 1 || img5.files[0] == "" || img5.files[0] == null) {
+            return false;
+        }
         e.preventDefault();
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
