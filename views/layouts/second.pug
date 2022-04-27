@@ -57,6 +57,8 @@ block content
                                         img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
                                     else 
                                         img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                        .cont__box
+                            p= `Address: ${portfolio.location}`
             a#goup(href="#") 
                 img(src="/images/rup.png", alt="go_up")
 

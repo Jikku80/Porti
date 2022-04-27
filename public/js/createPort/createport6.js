@@ -1,6 +1,7 @@
 layout6 = document.querySelector("#layout6")
-portBod = document.querySelector(".port__bod");
-inviSec = document.querySelector('.invi__section');
+portBod6 = document.querySelector(".port__bod");
+inviSec6 = document.querySelector('.invi__section');
+menuSec6 = document.querySelector('.menu__section');
 id6 = document.getElementById("usId").innerText;
 
 let formLayoutSix = document.createElement("div");
@@ -57,6 +58,10 @@ formLayoutSix.innerHTML = `
         <input id="sixthFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
     <div class="form__cont">
+        <label>Address</label>
+        <input id="sixthLoc" type="text" placeholder="your location" required />
+    </div>
+    <div class="form__cont">
         <label>Prior Accomplishment</label>
         <textarea id="sixthwork"  rows="4" cols="50" placeholder="Your big or small any accomplishment relevent to your portfolio...." required></textarea>
     </div>
@@ -77,8 +82,9 @@ let layoutSix = document.querySelector(".formLayout6")
 layoutSix.classList.add("hidden");
 
 layout6.addEventListener("click", () => {
-    portBod.classList.add("hidden");
-    inviSec.classList.add("hidden");
+    portBod6.classList.add("hidden");
+    inviSec6.classList.add("hidden");
+    menuSec6.classList.add("hidden");
     layoutSix.classList.remove("hidden");
     let yourname = document.querySelector("#sixthname");
     let aboutyou = document.getElementById("sixthabout");
@@ -88,6 +94,7 @@ layout6.addEventListener("click", () => {
     let showNo = document.getElementById("sixthCheck");
     let youremail = document.getElementById("sixthemail");
     let fb = document.getElementById("sixthFb");
+    let location = document.getElementById("sixthLoc");
     let yourwork = document.getElementById("sixthwork");
     let hd1 = document.getElementById("sixth1");
     let hd2 = document.getElementById("sixth2");
@@ -117,6 +124,9 @@ layout6.addEventListener("click", () => {
             return false;
         }
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (location.value < 1 || location.value == "" || location.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -158,6 +168,7 @@ layout6.addEventListener("click", () => {
                     theme: theme,
                     email: youremail.value,
                     fb: fb.value,
+                    location: location.value,
                     previous: yourwork.value,
                     firstImgHead: hd1.value,
                     secondImgHead: hd2.value,
@@ -185,6 +196,7 @@ layout6.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
+            location.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",
@@ -201,6 +213,7 @@ layout6.addEventListener("click", () => {
 let clsixthCreate = document.querySelector(".clSixthcreate")
 clsixthCreate.addEventListener("click", () => {
     layoutSix.classList.add("hidden");
-    portBod.classList.remove("hidden");
-    inviSec.classList.remove("hidden");
+    portBod6.classList.remove("hidden");
+    inviSec6.classList.remove("hidden");
+    menuSec6.classList.remove("hidden");
 })

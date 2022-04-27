@@ -2,81 +2,10 @@ extends base
 
 block content
     .loader
-        .inn__load
-            .inner__loader
-    if (user)
-        .port__nav
-            .port__nav__first
-                a.port__head.act(href="/me")
-                    if (user.photo)
-                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
-                    else 
-                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
-                    p.actg.hidden your account
-                a.port_sec_head.hm(href="/")
-                    h1 Tech 
-                        span Mafia
-                    p.hmtg.hidden home
-                #logout.logout
-                    img(src="/images/poweroff.png", alt="signout")
-                    p.lgot.hidden logout
-            .port__nav__sub 
-                a.ypf(href=`/myportfolio/${user._id}`)
-                    img(src="/images/porti.png", alt="view_port")
-                    span#usId.hidden= user._id
-                    p.pf.hidden your portfolio
-                a.yin(href=`/invitations/${user._id}`)
-                    img(src="/images/invite.png", alt="view_port")
-                    span#uiId.hidden= user._id
-                    p.intg.hidden your invitations
-            .breadcrumbs 
-                a.bdcb(href="#") You Are Here |
-                a.bdcb(href="/") Home 
-                a.bdcb(href="#") &#8680;  
-                a.cur(href="#") Porti  
-        .port__bod.port__section
-            h2 Create a portfolio
-            p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
-            p Need tips Creating Your Portfolio Go To 
-                a.portDet(href="/#portiHelper") Porti Helper
-            .layout__main
-                #layout1.unl
-                    .un_layout_log
-                        img(src="/images/layout1.gif", alt="layout1")
-                        p PL Layout (5 Images required)
-                #layout2.unl
-                    .un_layout_log
-                        img(src="/images/layout2.gif", alt="layout2")
-                        p BG Layout (5 Images required)
-                #layout3.unl
-                    .un_layout_log
-                        img(src="/images/layout3.gif", alt="layout3")
-                        p ST Layout (5 Images required)
-                #layout4.unl
-                    .un_layout_log
-                        img(src="/images/layout4.gif", alt="layout4")
-                        p BS Layout (5 Images required)
-                #layout5.unl
-                    .un_layout_log
-                        img(src="/images/layout5.gif", alt="layout5")
-                        p AT Layout (you can upload upto 20 images)
-                #layout6.unl
-                    .un_layout_log
-                        img(src="/images/layout6.gif", alt="layout6")
-                        p NI Layout (No Image required)
-        .invi__section 
-            h2 Create Invitation
-            p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
-            .layout__main
-                #invi1.unl
-                    .un_layout_log
-                        img(src="/images/invi1.gif", alt="invi1")
-                        p MRG Layout (5 Images required)
-                #invi2.unl
-                    .un_layout_log
-                        img(src="/images/invi2.png", alt="invi2")
-                        p INI Layout (1 | No Image required)
-    else 
+        .out__load
+            .inn__load
+                .inner__loader
+    if (!user)
         .port__nav__second.small__nav
             h1 Please login or Signup to Create Your Portfolio!
             a.login(href="/login") LogIn | SignUp
@@ -114,15 +43,106 @@ block content
                 .un_layout
                     img(src="/images/invi2.png", alt="invi2")
                     p INI Layout (1 | No Images required)
+        .menu__section
+            h2 Create Menu For Your Restro 
+            p Pick any of the layouts below and buid a menu for your restro 
+            .layout__main
+                #menu1.unl
+                    .un_layout_log
+                        a(href="/api/v1/menu/additemstomenu")
+                            img(src="/images/invi1.gif", alt="menu1")
+                        p MRG Layout (5 Images required)
+    else 
+        .port__nav
+            .port__nav__first
+                a.port__head.act(href="/me")
+                    if (user.photo)
+                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
+                    else 
+                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
+                    p.actg.hidden your account
+                a.port_sec_head.hm(href="/")
+                    h1 Tech 
+                        span Mafia
+                    p.hmtg.hidden home
+                #logout.logout
+                    img(src="/images/poweroff.png", alt="signout")
+                    p.lgot.hidden logout
+            .port__nav__sub 
+                a.ypf(href=`/myportfolio/${user._id}`)
+                    img(src="/images/porti.png", alt="view_port")
+                    span#usId.hidden= user._id
+                    p.pf.hidden your portfolio
+                a.yin(href=`/invitations/${user._id}`)
+                    img(src="/images/invite.png", alt="view_port")
+                    span#uiId.hidden= user._id
+                    p.intg.hidden your invitations
+            .breadcrumbs 
+                a.bdcb(href="#") You Are Here |
+                a.bdcb(href="/") Home 
+                a.bdcb(href="#") &#8680;  
+                a.cur(href="#") Porti  
+        .port__bod.port__section#crtPort
+            h2 Create a portfolio
+            p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
+            p Need tips Creating Your Portfolio Go To 
+                a.portDet(href="/#portiHelper") Porti Helper
+            .layout__main
+                #layout1.unl
+                    .un_layout_log
+                        img(src="/images/layout1.gif", alt="layout1")
+                        p PL Layout (5 Images required)
+                #layout2.unl
+                    .un_layout_log
+                        img(src="/images/layout2.gif", alt="layout2")
+                        p BG Layout (5 Images required)
+                #layout3.unl
+                    .un_layout_log
+                        img(src="/images/layout3.gif", alt="layout3")
+                        p ST Layout (5 Images required)
+                #layout4.unl
+                    .un_layout_log
+                        img(src="/images/layout4.gif", alt="layout4")
+                        p BS Layout (5 Images required)
+                #layout5.unl
+                    .un_layout_log
+                        img(src="/images/layout5.gif", alt="layout5")
+                        p AT Layout (you can upload upto 20 images)
+                #layout6.unl
+                    .un_layout_log
+                        img(src="/images/layout6.gif", alt="layout6")
+                        p NI Layout (No Image required)
+        .invi__section#crtInvi
+            h2 Create Invitation
+            p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
+            .layout__main
+                #invi1.unl
+                    .un_layout_log
+                        img(src="/images/invi1.gif", alt="invi1")
+                        p MRG Layout (5 Images required)
+                #invi2.unl
+                    .un_layout_log
+                        img(src="/images/invi2.png", alt="invi2")
+                        p INI Layout (1 | No Image required)
+        .menu__section
+            h2 Create Menu For Your Restro 
+            p Pick any of the layouts below and buid a menu for your restro 
+            .layout__main
+                #menu1.unl
+                    .un_layout_log
+                        a(href="/api/v1/menu/additemstomenu")
+                            img(src="/images/invi1.gif", alt="menu1")
+                        p MRG Layout (5 Images required)
+        
     
-    script(src="/js/alert.js")
+        script(src="/js/alert.js")
+        script(src="/js/logout.js")  
+        script(src="/js/createPort/createport.js")
+        script(src="/js/createPort/createport2.js")
+        script(src="/js/createPort/createport3.js")
+        script(src="/js/createPort/createport4.js") 
+        script(src="/js/createPort/createport5.js")  
+        script(src="/js/createPort/createport6.js") 
+        script(src="/js/createInvi/createinvi.js")
+        script(src="/js/createInvi/createinvi2.js") 
     script(src="/js/nametag.js") 
-    script(src="/js/logout.js")  
-    script(src="/js/createPort/createport.js")
-    script(src="/js/createPort/createport2.js")
-    script(src="/js/createPort/createport3.js")
-    script(src="/js/createPort/createport4.js") 
-    script(src="/js/createPort/createport5.js")  
-    script(src="/js/createPort/createport6.js") 
-    script(src="/js/createInvi/createinvi.js")
-    script(src="/js/createInvi/createinvi2.js") 

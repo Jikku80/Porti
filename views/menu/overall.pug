@@ -1,0 +1,67 @@
+extends baseMenu 
+
+block content 
+
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+    if (user)
+        .port__nav
+            .port__nav__first
+                a.port__head.act(href="/me")
+                    if (user.photo)
+                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
+                    else 
+                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
+                    p.actg.hidden your account
+                a.port_sec_head.hm(href="/")
+                    h1 Tech 
+                        span Mafia
+                    p.hmtg.hidden home
+                .logout
+                    img.pointer(src="/images/poweroff.png", alt="signout")
+                    p.lgot.hidden logout
+            .port__nav__sub 
+                a.ypf(href=`/myportfolio/${user._id}`)
+                    img(src="/images/porti.png", alt="view_port")
+                    span#usId.hidden= user._id
+                    p.pf.hidden your portfolio
+                a.yin(href=`/invitations/${user._id}`)
+                    img(src="/images/invite.png", alt="view_port")
+                    span#uiId.hidden= user._id
+                    p.intg.hidden your invitations
+            .breadcrumbs 
+                a.bdcb(href="#") You Are Here |
+                a.bdcb(href="/") Home 
+                a.bdcb(href="#") &#8680;
+                a.bdcb(href="/porti") Porti
+                a.bdcb(href="#") &#8680;   
+                a.cur(href="#") Add Items To Menu
+        #item__form
+            .itemform__head 
+                h2 Add Items To Menu
+            form#addItem
+                .form__bod
+                    label Food Name:
+                    input#itemname(type="text" name="name" required)
+                .form__bod
+                    label Price: 
+                    input#itemprice(type="number" name="phn_no" required)
+                .form__bod
+                    label Category: 
+                    input#itemcat(type="text", required)
+                .form__bod
+                    label Detail (optional):
+                    textarea#itemDetail(rows="4" cols="50" name="previous")
+                .form__bod.file_part
+                    input#coverimage(type="file" accept="image/*"  required)
+                button#addItemBtn.blackbtn Add Item
+    else 
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/login") Sign In
+
+    script(src="/js/alert.js")
+    script(src="/js/nametag.js") 
+    script(src="/js/logout.js") 

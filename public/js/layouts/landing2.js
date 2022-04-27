@@ -50,6 +50,7 @@ let pno = document.getElementById("upnoSec");
 let pshowNo = document.getElementById("upCheckSec");
 let pemail = document.getElementById("upemailSec");
 let pFb = document.getElementById("upFbSec");
+let pLoc = document.getElementById("upLocSec");
 let pdBtn = document.getElementById("updateBtnSec");
 let pImgBtn = document.getElementById("updateImgBtnCollec");
 let pimg1 = document.querySelector('#img1Collec');
@@ -78,7 +79,8 @@ pdBtn.addEventListener("click", async (e) => {
                 showNo: pshowNo.checked,
                 theme: pthemes.value,
                 email: pemail.value,
-                fb: pFb.value
+                fb: pFb.value,
+                location: pLoc.value
             })
         }).then((response) => {
             load.classList.add("hidden");

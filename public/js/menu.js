@@ -3,7 +3,7 @@ let menu = document.getElementById("menu");
 menu.innerHTML = `
     <form>
         <div class="form__whole">
-            <div class="form__sec0">
+            <div class="form__sec">
                 <div class="form__sub">
                     <label>Heading</label>
                     <input class="head" type="text" />
@@ -28,9 +28,8 @@ let newSec = document.querySelector(".newSec")
 let count = 0
 newSec.addEventListener("click", (e) => {
     e.preventDefault()
-    console.log(addFields)
     formWh.innerHTML += `
-            <div class="form__sec${++count}">
+            <div class="form__sec">
                 <div class="form__sub">
                     <label>Heading</label>
                     <input class="head" type="text" />

@@ -1,6 +1,7 @@
 layout4 = document.querySelector("#layout4")
-portBod = document.querySelector(".port__bod");
-inviSec = document.querySelector('.invi__section');
+portBod4 = document.querySelector(".port__bod");
+inviSec4 = document.querySelector('.invi__section');
+menuSec4 = document.querySelector('.menu__section');
 id4 = document.getElementById("usId").innerText;
 
 let formLayoutFour = document.createElement("div");
@@ -45,6 +46,10 @@ formLayoutFour.innerHTML = `
         <input id="fourthFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
     <div class="form__cont">
+        <label>Address</label>
+        <input id="fourthLoc" type="text" placeholder="your location" required />
+    </div>
+    <div class="form__cont">
         <label>Prior Accomplishment</label>
         <textarea id="fourthwork"  rows="4" cols="50" placeholder="Your big or small any accomplishment relevent to your portfolio...." required></textarea>
     </div>
@@ -87,8 +92,9 @@ let layoutFour = document.querySelector(".formLayout4")
 layoutFour.classList.add("hidden");
 
 layout4.addEventListener("click", () => {
-    portBod.classList.add("hidden");
-    inviSec.classList.add("hidden");
+    portBod4.classList.add("hidden");
+    inviSec4.classList.add("hidden");
+    menuSec4.classList.add("hidden");
     layoutFour.classList.remove("hidden");
     let yourname = document.querySelector("#fourthname");
     let aboutyou = document.getElementById("fourthabout");
@@ -98,6 +104,7 @@ layout4.addEventListener("click", () => {
     let showNo = document.getElementById("fourthCheck");
     let youremail = document.getElementById("fourthemail");
     let fb = document.getElementById("fourthFb");
+    let location = document.getElementById("fourthLoc");
     let yourwork = document.getElementById("fourthwork");
     let img1 = document.getElementById("fourthimg1");
     let hd1 = document.getElementById("fourth1Img");
@@ -132,6 +139,9 @@ layout4.addEventListener("click", () => {
             return false;
         }
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (location.value < 1 || location.value == "" || location.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -180,6 +190,7 @@ layout4.addEventListener("click", () => {
             formData.append("showNo", showNo.checked);
             formData.append("email", youremail.value);
             formData.append("fb", fb.value);
+            formData.append("location", location.value);
             formData.append("previous", yourwork.value);
             formData.append("theme", theme);
             formData.append("firstImgHead", hd1.value);
@@ -216,6 +227,7 @@ layout4.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
+            location.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",
@@ -237,6 +249,7 @@ layout4.addEventListener("click", () => {
 let clCreate = document.querySelector(".clcreate")
 clCreate.addEventListener("click", () => {
     layoutFour.classList.add("hidden");
-    portBod.classList.remove("hidden");
-    inviSec.classList.remove("hidden");
+    portBod4.classList.remove("hidden");
+    inviSec4.classList.remove("hidden");
+    menuSec4.classList.remove("hidden");
 })

@@ -1,6 +1,7 @@
 layout2 = document.querySelector("#layout2")
-portBod = document.querySelector(".port__bod");
+portBod2 = document.querySelector(".port__bod");
 inviSec2 = document.querySelector('.invi__section');
+menuSec2 = document.querySelector('.menu__section');
 id2 = document.getElementById("usId").innerText;
 
 let formLayoutTwo = document.createElement("div");
@@ -45,6 +46,10 @@ formLayoutTwo.innerHTML = `
         <input id="yrFb" type="text" placeholder="https://www.facebook.com/instagram.com/linkedin.com" required />
     </div>
     <div class="form__cont">
+        <label>Address</label>
+        <input id="yrLoc" type="text" placeholder="your location" required />
+    </div>
+    <div class="form__cont">
         <label>Previous Accomplishment Details</label>
         <textarea id="yrwork"  rows="4" cols="50" placeholder="TechMafia has done..." required></textarea>
     </div>
@@ -87,8 +92,9 @@ let layoutTwo = document.querySelector(".formLayout2")
 layoutTwo.classList.add("hidden");
 
 layout2.addEventListener("click", () => {
-    portBod.classList.add("hidden");
+    portBod2.classList.add("hidden");
     inviSec2.classList.add("hidden");
+    menuSec2.classList.add("hidden");
     layoutTwo.classList.remove("hidden");
     let yourname = document.querySelector("#yrname");
     let aboutyou = document.getElementById("yrabout");
@@ -98,6 +104,7 @@ layout2.addEventListener("click", () => {
     let showNo = document.getElementById("yrCheck");
     let youremail = document.getElementById("yremail");
     let fb = document.getElementById("yrFb");
+    let location = document.getElementById("yrLoc");
     let yourwork = document.getElementById("yrwork");
     let img1 = document.getElementById("yrimg1");
     let hd1 = document.getElementById("frstImg");
@@ -132,6 +139,9 @@ layout2.addEventListener("click", () => {
             return false;
         }
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (location.value < 1 || location.value == "" || location.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -180,6 +190,7 @@ layout2.addEventListener("click", () => {
             formData.append("showNo", showNo.checked);
             formData.append("email", youremail.value);
             formData.append("fb", fb.value);
+            formData.append("location", location.value);
             formData.append("previous", yourwork.value);
             formData.append("theme", theme);
             formData.append("firstImgHead", hd1.value);
@@ -216,6 +227,7 @@ layout2.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
+            location.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",
@@ -237,6 +249,7 @@ layout2.addEventListener("click", () => {
 let canclCreate = document.querySelector(".cancelcreate")
 canclCreate.addEventListener("click", () => {
     layoutTwo.classList.add("hidden");
-    portBod.classList.remove("hidden");
+    portBod2.classList.remove("hidden");
     inviSec2.classList.remove("hidden");
+    menuSec2.classList.remove("hidden");
 })

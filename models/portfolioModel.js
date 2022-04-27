@@ -26,6 +26,10 @@ const portfolioSchema = new mongoose.Schema({
     fb: {
         type: String
     },
+    location: {
+        type: String,
+        trim: true
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

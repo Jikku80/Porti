@@ -24,7 +24,7 @@ p{
     text-decoration: none;
 }
 
-#port_name{
+#port_name, #invite_name{
     text-align: center;
     font-size: medium;
     font-family: cursive;
@@ -49,8 +49,12 @@ p{
     margin: 2vh;
 }
 
+.xsf{
+    font-size: small;
+}
+
 .port_link, .invi_link{
-    font-size: medium;
+    font-size: small;
     background-color: crimson;
     color: white;
     padding: 1%;
@@ -58,6 +62,7 @@ p{
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     scrollbar-width: thin;
+    text-align: left;
 }
 
 .redbtn{
@@ -78,12 +83,15 @@ p{
     border: 1px solid crimson;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    padding: 5vw;
     margin: 1vh;
     display: flex;
     justify-content: space-between;
-    width: 85vw;
-    overflow-x: auto;
+    width: 95vw;
+    overflow-y: auto;
+}
+
+.upMarg{
+    margin: 4%;
 }
 
 .land__sixth, .land__secd, .land__farst{
@@ -179,11 +187,16 @@ p{
 #upPort textarea, #upPortSec textarea, #upPortSix textarea, .inviF textarea{
     border: 2px solid crimson;
     border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     background-color: transparent;
     color: white;
     padding: 1%;
 }
+
+.inviF textarea{
+    width: 50vw;
+}
+
 
 .form__bod{
     margin:1%;
@@ -326,7 +339,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .loader{
-    position: absolute;
+    position: fixed;
     top: 45vh;
     left: 40vw;
     width: 14rem;
@@ -337,7 +350,7 @@ input[type=number]::-webkit-outer-spin-button {
     animation: rotateLeft 2s linear infinite;
 }
   
-  .inn__load{
+.inn__load{
     height: 100%;
     width: 100%;
     display: flex;
@@ -364,6 +377,8 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 10px;
     position: absolute;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .breadcrumbs{
@@ -403,21 +418,13 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     .port_link, .invi_link{
-        font-size: xx-small;
+        font-size: 7px;
         padding: 2%;
     }
 
     #upFb, #upFbsec, #upFbSix{
         width: 50vw;
     }
-
-    /* .loader{
-        position: absolute;
-        top: 40vh;
-        left: 25vw;
-        width: 50%;
-      } */
-
 }
 
 @media screen and (max-width: 600px){
@@ -430,8 +437,12 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 0;
     }
 
+    .xsf{
+        font-size: xx-small;
+    }
+
     .port_link, .invi_link{
-        font-size: 4px;
+        font-size: 3px;
         padding: 2%;
     }
 
@@ -459,6 +470,7 @@ input[type=number]::-webkit-outer-spin-button {
     .loader{
         width: 8rem;
         height: 8rem;
+        left: 35vw;
       }
 
     .inner__loader{

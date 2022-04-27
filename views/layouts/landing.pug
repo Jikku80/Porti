@@ -4,75 +4,76 @@ block content
     .loader
         .inn__load
             .inner__loader
-    if (user)
-        if (portfolio.user.id == user._id)
-            .land__content
-                .land__nav__main
-                    .land__nav
-                        a.land__head.act(href="/me")
-                            if (user.photo)
-                                img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic")
-                            else 
-                                img.userdp.satProf(src="/images/hitman.png", alt="prof__pic")
-                            p.actg.hidden your account
-                        a.port_sec_head.hm(href="/")
-                            h1 Tech 
-                                span Mafia
-                            p.hmtg.hidden home
-                        #logout.logout
-                            img(src="/images/poweroff.png", alt="signout")
-                            p.lgot.hidden logout
-                    .land__nav__sub 
-                        a.crpt(href="/porti")
-                            img(src="/images/plus.png", alt="view_port")
-                            p.cp.hidden porti
-                        a.yin(href=`/invitations/${user.id}`)
-                            img(src="/images/invite.png", alt="view_port")
-                            p.intg.hidden your invitations
-                    .breadcrumbs 
-                        a.bdcb(href="#") You Are Here |
-                        a.bdcb(href="/") Home 
-                        a.bdcb(href="#") &#8680;  
-                        a.bdcb(href="/porti") Porti 
-                        a.bdcb(href="#") &#8680;  
-                        a.cur(href="#") Your Portfolio
-                .land__goto
-                    h1#port_name= `${portfolio.name}`
-                    p Go to your portfolio
-                    .port__link
-                        a#urlLink
-                            span#endpoint= `${portfolio._id}`
-                            span#portitheme= portfolio.theme   
-                    .copy__link 
-                        button#copyLink.redbtn Copy Link
-            .sec__land__bod
-                .del__port#delPp 
-                    .del__bod
-                        button#delPort.redbtn Delete Portfolio
-                .dt__cf.hidden
-                    h1 Are you sure you want to delete Your Portfolio?
-                    .delete__Confirm
-                        .yesDelete.redbtn Confrim
-                        .noDelete.redbtn Abort
-                if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7')
-                    if (portfolio.theme == '836b9b955a98e0f2e2d678c179696d6ac53356eb')
-                        include _updateThree.pug
+    if (!portfolio)
+            .notifier
+                h1 You have not created a portfolio YET! Create and come back
+                a.redbtn(href="/porti#crtPort") Create Portfolio
+    else
+        if (user)
+            if (portfolio.user.id == user._id)
+                .land__content
+                    .land__nav__main
+                        .land__nav
+                            a.land__head.act(href="/me")
+                                if (user.photo)
+                                    img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic")
+                                else 
+                                    img.userdp.satProf(src="/images/hitman.png", alt="prof__pic")
+                                p.actg.hidden your account
+                            a.port_sec_head.hm(href="/")
+                                h1 Tech 
+                                    span Mafia
+                                p.hmtg.hidden home
+                            #logout.logout
+                                img(src="/images/poweroff.png", alt="signout")
+                                p.lgot.hidden logout
+                        .land__nav__sub 
+                            a.crpt(href="/porti")
+                                img(src="/images/plus.png", alt="view_port")
+                                p.cp.hidden porti
+                            a.yin(href=`/invitations/${user.id}`)
+                                img(src="/images/invite.png", alt="view_port")
+                                p.intg.hidden your invitations
+                        .breadcrumbs 
+                            a.bdcb(href="#") You Are Here |
+                            a.bdcb(href="/") Home 
+                            a.bdcb(href="#") &#8680;  
+                            a.bdcb(href="/porti") Porti 
+                            a.bdcb(href="#") &#8680;  
+                            a.cur(href="#") Your Portfolio
+                    .land__goto
+                        h1#port_name= `${portfolio.name}`
+                        p.xsf Go to your portfolio
+                        .port__link
+                            a#urlLink
+                                span#endpoint= `${portfolio._id}`
+                                span#portitheme= portfolio.theme   
+                        .copy__link 
+                            button#copyLink.redbtn Copy Link
+                .sec__land__bod
+                    .del__port#delPp 
+                        .del__bod
+                            button#delPort.redbtn Delete Portfolio
+                    .dt__cf.hidden
+                        h1 Are you sure you want to delete Your Portfolio?
+                        .delete__Confirm
+                            .yesDelete.redbtn Confrim
+                            .noDelete.redbtn Abort
+                    if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7')
+                        if (portfolio.theme == '836b9b955a98e0f2e2d678c179696d6ac53356eb')
+                            include _updateThree.pug
+                        else
+                            include _updateOne.pug
                     else
-                        include _updateOne.pug
-                else
-                    include _updateTwo.pug
+                        include _updateTwo.pug
+            else 
+                .notifier
+                    h1 You Dont Belong Here, GET LOST!!!
+                    a.redbtn(href="/porti") Go Back
         else 
             .notifier
-                h1 You Dont Belong Here, GET LOST!!!
-                a.redbtn(href="/porti") Go Back
-        if (portfolio = null)
-            .notifier
-                h1 You have not created a portfolio YET! Create One and come back
-                a.redbtn(href="/porti") Go Back
-    else 
-        .notifier
-            h1 You are not Logged In! Please Log In 
-            a.redbtn(href="/login") Log In
+                h1 You are not Logged In! Please Log In 
+                a.redbtn(href="/login") Log In
 
     script(src="/js/alert.js")
     script(src="/js/nametag.js") 

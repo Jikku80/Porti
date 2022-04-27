@@ -87,6 +87,8 @@ body{
     padding:2%;
     width: 80vw;
     height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 #contact .bgbox{

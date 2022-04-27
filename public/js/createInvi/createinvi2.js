@@ -1,6 +1,7 @@
 create_port2 = document.querySelector(".create_port")
 portBod2 = document.querySelector(".port__section");
 inviBod2 = document.querySelector(".invi__section");
+menuBod2 = document.querySelector(".menu__section");
 invi2 = document.querySelector("#invi2");
 
 let inviTwoForm = document.createElement("div");
@@ -48,6 +49,7 @@ inid2 = document.getElementById("uiId").innerText;
 invi2.addEventListener("click", () => {
     portBod2.classList.add("hidden");
     inviBod2.classList.add("hidden");
+    menuBod2.classList.add("hidden");
     mkForm2.classList.remove("hidden");
     let yourname = document.querySelector("#fname2");
     let secname = document.getElementById("sname2")
@@ -134,4 +136,5 @@ cancelInvite2.addEventListener("click", () => {
     mkForm2.classList.add("hidden");
     portBod2.classList.remove("hidden");
     inviBod2.classList.remove("hidden");
+    menuBod2.classList.remove("hidden");
 })

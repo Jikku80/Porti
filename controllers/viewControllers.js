@@ -179,6 +179,7 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             name: req.body.name,
             email: req.body.email,
             fb: req.body.fb,
+            location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
             theme: req.body.theme,
@@ -206,6 +207,7 @@ exports.updatePortSix = catchAsync(async (req, res, next) => {
             name: req.body.name,
             email: req.body.email,
             fb: req.body.fb,
+            location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
             theme: req.body.theme,
@@ -241,6 +243,7 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             why: req.body.why,
             email: req.body.email,
             fb: req.body.fb,
+            location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
             theme: req.body.theme

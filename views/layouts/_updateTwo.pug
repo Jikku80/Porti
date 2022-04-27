@@ -1,5 +1,5 @@
 .land__update
-    button#update_portSec.redbtn Update Portfolio
+    button#update_portSec.redbtn.upMarg Update Portfolio
     #update_formSec.hidden.upform.land__secd
         .upform__head 
             h1 Update Your Portfolio 
@@ -37,9 +37,12 @@
             .form__bod
                 label Your Social Media Profile Link: 
                 input#upFbSec(type="text" value=`${portfolio.fb}`)
+            .form__bod
+                label Address: 
+                input#upLocSec(type="text" value=`${portfolio.location}`)
             button#updateBtnSec.redbtn Update
 
-    button#update_ImgCollec.redbtn Update Portfolio Images
+    button#update_ImgCollec.redbtn.upMarg Update Portfolio Images
     #update_ImgFormCollec.hidden.upform
         form#upImageCollec
             .upform__head 

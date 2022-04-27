@@ -1,5 +1,5 @@
 .land__update
-    button#update_portSix.redbtn Update Portfolio
+    button#update_portSix.redbtn.upMarg Update Portfolio
     #update_formSix.hidden.upform.land__sixth
         .upform__head 
             h1 Update Your Portfolio 
@@ -50,6 +50,9 @@
             .form__bod
                 label Your Social Media Profile Link: 
                 input#upFbSix(type="text" value=`${portfolio.fb}`)
+            .form__bod
+                label Address: 
+                input#upLocSix(type="text" value=`${portfolio.location}`)
             .form__bod
                 label Detail:
                 textarea#upworkSix(rows="4" cols="50" name="previous" required)= portfolio.previous

@@ -1,8 +1,16 @@
 extends base
 
 block content
-    if (user)
-        if (user.id == user._id)
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+    if (invites.length == "" || invites.length == null || invites.length == undefined)
+        .confirm__pg 
+            h1 You have not Created Any Invitation YET!!! Create One and Come Back 
+            a.redbtn(href="/porti#crtInvi") Create One 
+    else
+        if (user)
             .port__nav
                 .port__nav__first
                     a.port__head.act(href="/me")
@@ -32,24 +40,18 @@ block content
                         a.bdcb(href="/porti") Porti 
                         a.bdcb(href="#") &#8680;  
                         a.cur(href="#") All Invitations
-            if (invites !== undefined)
-                .card__main 
-                    each invite in invites
-                        .card
-                            .card__head
-                                h1= invite.fname
-                            .card__link
-                                a.redbtn(href=`/myinvi/${invite._id}`) Open
-            else 
-                h1 Ooops!! No Invitation Yet
-        else 
-            .confirm__pg
-                h1 You Dont Belong Here, Use Your Phone Number
-                a.redbtn(href="/porti") Go Back
+                .invi__grp
+                    .card__main 
+                        each invite in invites
+                            if (invite.user.id == user._id)
+                                a.card(href=`/myinvi/${invite._id}`)
+                                    .card__head
+                                        h1= invite.fname
+                                        p View Invitation
 
-    else
-        .confirm__pg 
-            h1 You are not logged In!
-            a.redbtn(href="/login") LogIn
+        else
+            .confirm__pg 
+                h1 You are not logged In!
+                a.redbtn(href="/login") LogIn
 
     script(src="/js/nametag.js") 

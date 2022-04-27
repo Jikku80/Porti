@@ -10,7 +10,7 @@ let invithemepoint = document.getElementById('invitetheme').innerText;
 
 inviteurl.innerHTML = `
 <button id="openinvite" class="redbtn" href="">My Invitation</button>
-<p>Share your Invitation with the link below</p>
+<p class="xsf">Share your Invitation with the link below</p>
 <p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}/${invithemepoint}</p>
 `
 

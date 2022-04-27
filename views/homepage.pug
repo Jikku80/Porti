@@ -4,7 +4,10 @@ block content
     .main__content 
         h2.presents.hidden Tech Mafia Presents PORTi
         .main__content__log
-            a#log.fkAncky(href="/login") Login | SignUp
+            if (!user)
+                a#log.fkAncky.norot(href="/login") Login | SignUp
+            else 
+                a#log.fkAncky.norot(href="/me") Your Account
         .main__content__nav
             a.fkAncky(href="#aboutTM") About 
                 span.mid  Tech
@@ -173,8 +176,9 @@ block content
                             button.send__msg.greybtn Send
 
                         .loader#msg_load.hidden
-                            .inn__load
-                                .inner__loader
+                            .out__load
+                                .inn__load
+                                    .inner__loader
                         img#ok.hidden(src="/images/ok.png", alt="loader")
 
     script(src="/js/alert.js")

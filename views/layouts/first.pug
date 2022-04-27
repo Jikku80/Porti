@@ -56,6 +56,8 @@ block content
                                     img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
                                 else 
                                     img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    .contbox
+                        p= `Address: ${portfolio.location}`
 
         #footer 
             p= `${portfolio.name} portfolio`

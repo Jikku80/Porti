@@ -106,3 +106,8 @@ for (let item of act) {
         }
     })
 }
+
+window.addEventListener("load", () => {
+    let load = document.querySelector('.loader');
+    load.classList.add("hidden");
+})

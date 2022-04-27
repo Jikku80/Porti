@@ -9,7 +9,7 @@ html{
   
   body{
     background-image: linear-gradient(to bottom right, rgb(44, 44, 44) , crimson);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-color: rgb(44, 44, 44);
     color: white;
@@ -61,8 +61,8 @@ html{
   flex-direction: column;
   width: 100%;
   text-align: center;
-  padding-top: 50vh;
-  padding-bottom: 50vh;
+  padding-top: 20vh;
+  height: 80vh;
 }
 
 .port__nav{
@@ -223,6 +223,14 @@ html{
   cursor: pointer;
 }
 
+.form__sub{
+  margin: 1%;
+}
+
+.form__sub input{
+  height: 4rem;
+}
+
 .form__label{
   margin: 1%;
   color: white
@@ -231,12 +239,13 @@ html{
 .form__input{
   background-color: transparent;
   color: white;
-  border: 1px solid crimson;
+  border: 2px solid crimson;
   border-radius: 1rem;
   padding: 1%;
+  height: auto;
 }
 
-.port__bod, .invi__section{
+.port__bod, .invi__section, .menu__section{
   margin: 4%;
   background-color: rgba(255, 255, 255, 0.103);  
   backdrop-filter: blur(5px);
@@ -317,6 +326,11 @@ html{
   color: yellowgreen;
 }
 
+.signup__bod p{
+  margin: 0;
+  padding: 0;
+}
+
 .form__cont{
   display: flex;
   flex-direction: row;
@@ -378,47 +392,59 @@ input[type=number]::-webkit-outer-spin-button {
   color: white;
 }
 
-.card__main{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
+.invi__grp{
   height: 100vh;
   overflow-y: auto;
   scrollbar-width: thin;
 }
 
+.card__main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 4%;
+}
+
 .card{
   border: 1px solid white;
   width: 20vw;
-  height: auto;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: white;
+  text-decoration: none;
   margin: 1%;
-  background-color: rgb(44, 44, 44);
+  background-color: rgba(41, 41, 41, 0.425);
   font-family: cursive;
   font-size: 16px;
   padding: 4%;
 }
 
-.card__link a{
-  padding: 1vw;
+.card:hover{
+  background-color: rgba(255, 255, 255, 0.37);
+  color: rgba(41, 41, 41, 0.425)
+}
+
+.card p {
+  color: rgb(97, 96, 96);
 }
 
 .confirm__pg{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40vh;
+  justify-content: center;
+  height: 100vh;
   font-size: larger;
-  padding-bottom: 50vh;
 }
 
 .confirm__pg h1{
-  color: hotpink;
+  color: white;
 }
 
 #reset__head{
@@ -436,8 +462,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .four0four{
   text-align: center;
-  margin-top: 35vh;
-  padding-bottom: 50vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .four0four h1{
@@ -517,10 +545,21 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .loader{
+  background-color: rgba(0, 0, 0, 0.562);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  scroll-behavior: contain;
+}
+
+.out__load{
   position: absolute;
-  top: 45vh;
+  top: 40vh;
   text-align: center;
-  left: 40vw;
+  left: 45vw;
   width: 14rem;
   height: 14rem;
   border-radius: 10rem;
@@ -561,6 +600,8 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 10px;
   position: absolute;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .breadcrumbs{
@@ -600,32 +641,36 @@ input[type=number]::-webkit-outer-spin-button {
     height: 85vh;
   }
 
-.un_layout img, .unl img{
-    width: 80vw;
-    height: 40vh;
-    margin-top: 4%;
+  .form__sub input{
+    height: 2.5rem;
   }
 
-.un_layout{
-    padding-left: 0;
+  .un_layout img, .unl img{
+      width: 80vw;
+      height: 40vh;
+      margin-top: 4%;
+    }
+
+  .un_layout{
+      padding-left: 0;
+    }
+
+  .card{
+      width: 35vw;
+      padding: 4%;
+      font-size: small;
+    }
+
+  .out__load{
+    left: 43vw;
   }
-/* .loader{
-    position: absolute;
-    top: 40vh;
-    left: 25vw;
-    width: 20vw;
-    height: 20vh;
 
-} */
+  #acHead{
+    padding-bottom: 10vh;
+  }
 
-.card__main{
-    display: flex;
-    flex-direction: column;
-}
-
-.card{
-    width: auto;
-    padding: 4%;
+  .redbtn{
+    padding: 2%;
   }
 
 }
@@ -635,6 +680,10 @@ input[type=number]::-webkit-outer-spin-button {
   .comp__form{
     padding-left: 2%;
     height: 85vh;
+  }
+
+  .form__sub input{
+    height: auto;
   }
 
   .small__nav{
@@ -656,24 +705,21 @@ input[type=number]::-webkit-outer-spin-button {
     padding-left: 0;
   }
 
-  .loader{
-    width: 8rem;
-    height: 8rem;
-  }
-
-  .inner__loader{
-      width: 4rem;
-      height: 4rem;
+  .out__load{
+    left: 35vw;
   }
 
   .card__main{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .card{
-    width: auto;
+    width: 80vw;
     padding: 2%;
+    text-align: center;
+    font-size: small;
   }
 
 }

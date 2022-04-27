@@ -35,6 +35,7 @@ updBtnSix.addEventListener("click", async (e) => {
     let upshowNo = document.getElementById("upCheckSix");
     let upemail = document.getElementById("upemailSix");
     let upFb = document.getElementById("upFbSix");
+    let upLoc = document.getElementById("upLocSix");
     let upwork = document.getElementById("upworkSix");
     let hd1 = document.getElementById("firstImgSix");
     let hd2 = document.getElementById("secondImgSix");
@@ -61,6 +62,7 @@ updBtnSix.addEventListener("click", async (e) => {
                 theme: themes.value,
                 email: upemail.value,
                 fb: upFb.value,
+                location: upLoc.value,
                 previous: upwork.value,
                 firstImgHead: hd1.value,
                 secondImgHead: hd2.value,

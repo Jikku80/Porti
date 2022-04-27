@@ -1,6 +1,7 @@
 layout5 = document.querySelector("#layout5")
-portBod = document.querySelector(".port__bod");
-inviSec = document.querySelector('.invi__section');
+portBod5 = document.querySelector(".port__bod");
+inviSec5 = document.querySelector('.invi__section');
+menuSec5 = document.querySelector('.menu__section');
 id5 = document.getElementById("usId").innerText;
 
 let formLayoutFive = document.createElement("div");
@@ -44,6 +45,10 @@ formLayoutFive.innerHTML = `
         <label>Your Social Media Profile Link</label>
         <input id="fifthFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
+    <div class="form__cont">
+        <label>Address</label>
+        <input id="fifthLoc" type="text" placeholder="your location" required />
+    </div>
     <p>You can Upload Upto 20 Images At Once</p>
     <div class="form__cont small__form">
         <label>Upload Images</label>
@@ -57,8 +62,9 @@ let layoutFive = document.querySelector(".formLayout5")
 layoutFive.classList.add("hidden");
 
 layout5.addEventListener("click", () => {
-    portBod.classList.add("hidden");
-    inviSec.classList.add("hidden");
+    portBod5.classList.add("hidden");
+    inviSec5.classList.add("hidden");
+    menuSec5.classList.add("hidden");
     layoutFive.classList.remove("hidden");
     let yourname = document.querySelector("#fifthname");
     let yourabout = document.getElementById("fifthabout");
@@ -68,6 +74,7 @@ layout5.addEventListener("click", () => {
     let showNo = document.getElementById("fifthCheck");
     let youremail = document.getElementById("fifthemail");
     let fb = document.getElementById("fifthFb");
+    let location = document.getElementById("fifthLoc");
     let img1 = document.getElementById("fifthimg1");
     let submit = document.getElementById("fifthformbtn");
     let theme = "da98568d1b2005611973ad49868b38aa8ae68fd7";
@@ -93,6 +100,9 @@ layout5.addEventListener("click", () => {
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
             return false;
         }
+        if (location.value < 1 || location.value == "" || location.value == null) {
+            return false;
+        }
         if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
             return false;
         }
@@ -109,6 +119,7 @@ layout5.addEventListener("click", () => {
             formData.append("showNo", showNo.checked);
             formData.append("email", youremail.value);
             formData.append("fb", fb.value);
+            formData.append("location", location.value);
             formData.append("theme", theme);
             for (var x = 0; x < img1.files.length; x++) {
                 formData.append("images", img1.files[x]);
@@ -141,6 +152,7 @@ layout5.addEventListener("click", () => {
             yourwhy.value = "",
             youremail.value = "",
             fb.value = "",
+            location.value = "",
             yourno.value = "",
             img1.value = ""
     })
@@ -149,6 +161,7 @@ layout5.addEventListener("click", () => {
 let clFiveCreate = document.querySelector(".clFivecreate")
 clFiveCreate.addEventListener("click", () => {
     layoutFive.classList.add("hidden");
-    portBod.classList.remove("hidden");
-    inviSec.classList.remove("hidden");
+    portBod5.classList.remove("hidden");
+    inviSec5.classList.remove("hidden");
+    menuSec5.classList.remove("hidden");
 })

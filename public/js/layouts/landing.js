@@ -50,6 +50,7 @@ let upno = document.getElementById("upno");
 let upshowNo = document.getElementById("upCheck");
 let upemail = document.getElementById("upemail");
 let upFb = document.getElementById("upFb");
+let upLoc = document.getElementById("upLoc");
 let upwork = document.getElementById("upwork");
 let updBtn = document.getElementById("updateBtn");
 let upImgBtn = document.getElementById("updateImgBtn");
@@ -89,6 +90,7 @@ updBtn.addEventListener("click", async (e) => {
                 theme: themes.value,
                 email: upemail.value,
                 fb: upFb.value,
+                location: upLoc.value,
                 previous: upwork.value
             })
         }).then((response) => {

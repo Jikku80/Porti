@@ -1,6 +1,7 @@
 layout3 = document.querySelector("#layout3")
-portBod = document.querySelector(".port__bod");
-inviSec = document.querySelector('.invi__section');
+portBod3 = document.querySelector(".port__bod");
+inviSec3 = document.querySelector('.invi__section');
+menuSec3 = document.querySelector('.menu__section');
 id3 = document.getElementById("usId").innerText;
 
 
@@ -46,6 +47,10 @@ formLayoutThree.innerHTML = `
         <input id="uthirdFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
     <div class="form__cont">
+        <label>Address</label>
+        <input id="uthirdLoc" type="text" placeholder="your location" required />
+    </div>
+    <div class="form__cont">
         <label>Accomplishments</label>
         <textarea id="uthirdwork"  rows="4" cols="50" placeholder="Your big or small any accomplishment relevent to your portfolio...." required></textarea>
     </div>
@@ -88,8 +93,9 @@ let layoutThree = document.querySelector(".formLayout3")
 layoutThree.classList.add("hidden");
 
 layout3.addEventListener("click", () => {
-    portBod.classList.add("hidden");
-    inviSec.classList.add("hidden");
+    portBod3.classList.add("hidden");
+    inviSec3.classList.add("hidden");
+    menuSec3.classList.add("hidden");
     layoutThree.classList.remove("hidden");
     let yourname = document.querySelector("#uthirdname");
     let aboutyou = document.getElementById("uthirdabout");
@@ -99,6 +105,7 @@ layout3.addEventListener("click", () => {
     let showNo = document.getElementById("uthirdCheck");
     let youremail = document.getElementById("uthirdemail");
     let fb = document.getElementById("uthirdFb");
+    let location = document.getElementById("uthirdLoc");
     let yourwork = document.getElementById("uthirdwork");
     let img1 = document.getElementById("uthirdimg1");
     let hd1 = document.getElementById("uthird1Img");
@@ -133,6 +140,9 @@ layout3.addEventListener("click", () => {
             return false;
         }
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
+            return false;
+        }
+        if (location.value < 1 || location.value == "" || location.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -181,6 +191,7 @@ layout3.addEventListener("click", () => {
             formData.append("showNo", showNo.checked);
             formData.append("email", youremail.value);
             formData.append("fb", fb.value);
+            formData.append("location", location.value);
             formData.append("previous", yourwork.value);
             formData.append("theme", theme);
             formData.append("firstImgHead", hd1.value);
@@ -217,6 +228,7 @@ layout3.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
+            location.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",
@@ -238,6 +250,7 @@ layout3.addEventListener("click", () => {
 let closeCreate = document.querySelector(".closecreate")
 closeCreate.addEventListener("click", () => {
     layoutThree.classList.add("hidden");
-    portBod.classList.remove("hidden");
-    inviSec.classList.remove("hidden");
+    portBod3.classList.remove("hidden");
+    inviSec3.classList.remove("hidden");
+    menuSec3.classList.remove("hidden");
 })
