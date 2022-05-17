@@ -5,4 +5,32 @@ block content
         .out__load
             .inn__load
                 .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
+    .first__menu__bod
+        .menu__border
+            .menu__secborder
+                h1.menu__head Me n u
+                form.search
+                    input.searchbar(type="text", required, placeholder="Search Items...")
+                button.darkmode White
+                .menu__bod
+                    h3.grab__all ALL
+                    .category
+                .sub__items
+                    each menu in menus 
+                        .menu__card
+                            img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
+                            .menu__card__det
+                                h3.menu__card__head= menu.name
+                                p.menu__card__price= menu.price
+                                p.menu__card__detail= menu.detail
+                .paginate 
+                    button.prev Previous
+                    button.next Next
+
+    script(src="/js/alert.js") 
+    script(src="/js/logout.js") 
+    script(src="/js/menu/itemCat.js") 
     

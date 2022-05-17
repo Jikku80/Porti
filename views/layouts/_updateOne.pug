@@ -10,13 +10,13 @@
                 input#upname(type="text" name="name" value=`${portfolio.name}` required)
             .form__bod
                 label About You:
-                textarea#upabout(rows="4" cols="50" name="about" required)= portfolio.about
+                textarea#upabout(rows="4" cols="30" name="about" required)= portfolio.about
             .form__bod
                 label What You Do:
-                textarea#upwhat(rows="4" cols="50" name="what" required)= portfolio.what
+                textarea#upwhat(rows="4" cols="30" name="what" required)= portfolio.what
             .form__bod
                 label Why You Do It:
-                textarea#upwhy(rows="4" cols="50" name="why" required)= portfolio.why
+                textarea#upwhy(rows="4" cols="30" name="why" required)= portfolio.why
             label Contact Details:
             .form__bod
                 label Phone Number: 
@@ -46,7 +46,7 @@
                 input#upLoc(type="text" value=`${portfolio.location}`)
             .form__bod
                 label Detail:
-                textarea#upwork(rows="4" cols="50" name="previous" required)= portfolio.previous
+                textarea#upwork(rows="4" cols="30" name="previous" required)= portfolio.previous
             button#updateBtn.redbtn Update
     
     button#update_Img.redbtn.upMarg Update Portfolio Images

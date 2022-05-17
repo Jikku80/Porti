@@ -36,7 +36,7 @@ formLayoutThree.innerHTML = `
     </div>
     <div class="form__cont">
         <label>Show Number:</label>
-        <input id="uthirdCheck" type="checkbox" />
+        <input id="uthirdCheck" class="checkbox" type="checkbox" />
     </div>
     <div class="form__cont">
         <label>Email Address:</label>

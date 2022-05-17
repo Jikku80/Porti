@@ -57,8 +57,3 @@ loginBtn.addEventListener('click', async function (e) {
     emailAdd.value = "";
     pwd.value = "";
 })
-
-// window.addEventListener("load", () => {
-//     let load = document.querySelector('.loader');
-//     load.classList.add("hidden");
-// })

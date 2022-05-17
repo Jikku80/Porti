@@ -1,12 +1,14 @@
 let updateInvi = document.getElementById('update_invi');
 let updateInviForm = document.getElementById('update_inviform');
 let hdGo = document.querySelector(".land__goto");
+let ldNav = document.querySelector(".land__nav__main");
 let updateInviImgForm = document.getElementById('update_ImgInviForm');
 let updateInviImg = document.getElementById("update_InviImg");
 let delInviFirst = document.getElementById("delinvi");
 
 updateInvi.addEventListener('click', () => {
     hdGo.classList.add('hidden');
+    ldNav.classList.add('hidden');
     updateInvi.classList.add('hidden');
     updateInviImg.classList.add("hidden");
     delInviFirst.classList.add("hidden");
@@ -15,6 +17,7 @@ updateInvi.addEventListener('click', () => {
 
 updateInviImg.addEventListener("click", () => {
     hdGo.classList.add('hidden');
+    ldNav.classList.add('hidden');
     updateInvi.classList.add('hidden');
     updateInviImg.classList.add("hidden");
     delInviFirst.classList.add("hidden");
@@ -26,6 +29,7 @@ let canclInvi = document.querySelector(".canclInvi");
 
 cancelInvi.addEventListener("click", () => {
     hdGo.classList.remove('hidden');
+    ldNav.classList.remove('hidden');
     updateInvi.classList.remove('hidden');
     updateInviImg.classList.remove("hidden");
     delInviFirst.classList.remove("hidden");
@@ -34,6 +38,7 @@ cancelInvi.addEventListener("click", () => {
 
 canclInvi.addEventListener("click", () => {
     hdGo.classList.remove('hidden');
+    ldNav.classList.remove('hidden');
     updateInvi.classList.remove('hidden');
     updateInviImg.classList.remove("hidden");
     delInviFirst.classList.remove("hidden");
@@ -88,6 +93,7 @@ updinBtn.addEventListener("click", async (e) => {
                 successAlert("Your Invitation has been updated :)");
                 window.setTimeout(() => {
                     hdGo.classList.remove('hidden');
+                    ldNav.classList.remove('hidden');
                     updateInvi.classList.remove('hidden');
                     updateInviImg.classList.remove("hidden");
                     delInviFirst.classList.remove("hidden");
@@ -142,6 +148,7 @@ upinImgBtn.addEventListener("click", async (e) => {
                 successAlert("Your Invitation Images has been updated :)");
                 window.setTimeout(() => {
                     hdGo.classList.remove('hidden');
+                    ldNav.classList.remove('hidden');
                     updateInvi.classList.remove('hidden');
                     updateInviImg.classList.remove("hidden");
                     delInviFirst.classList.remove("hidden");

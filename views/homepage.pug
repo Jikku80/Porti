@@ -5,9 +5,9 @@ block content
         h2.presents.hidden Tech Mafia Presents PORTi
         .main__content__log
             if (!user)
-                a#log.fkAncky.norot(href="/login") Login | SignUp
+                a#log.fkAncky.norot(href="/login" title="Login | SignUp") Login | SignUp
             else 
-                a#log.fkAncky.norot(href="/me") Your Account
+                a#log.fkAncky.norot(href="/me" title="Your Account")= user.name
         .main__content__nav
             a.fkAncky(href="#aboutTM") About 
                 span.mid  Tech
@@ -175,10 +175,13 @@ block content
                             .form__group
                             button.send__msg.greybtn Send
 
-                        .loader#msg_load.hidden
+                        .loader#msg_load
                             .out__load
                                 .inn__load
                                     .inner__loader
+                            p.lodtl Tech 
+                                span.lodmid Mafia
+                                    span.lodend ...
                         img#ok.hidden(src="/images/ok.png", alt="loader")
 
     script(src="/js/alert.js")

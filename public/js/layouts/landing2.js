@@ -1,12 +1,14 @@
 let updatePortSec = document.getElementById('update_portSec');
 let updateFormSec = document.getElementById('update_formSec');
 let headGoSec = document.querySelector(".land__goto");
+let landNavSec = document.querySelector(".land__nav__main");
 let updateImgFormCollec = document.getElementById('update_ImgFormCollec');
 let updateImgCollec = document.getElementById("update_ImgCollec");
 let delSec = document.getElementById("delPp");
 
 updatePortSec.addEventListener('click', () => {
     headGoSec.classList.add('hidden');
+    landNavSec.classList.add('hidden');
     updatePortSec.classList.add('hidden');
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
@@ -15,6 +17,7 @@ updatePortSec.addEventListener('click', () => {
 
 updateImgCollec.addEventListener("click", () => {
     headGoSec.classList.add('hidden');
+    landNavSec.classList.add('hidden');
     updatePortSec.classList.add('hidden');
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
@@ -26,6 +29,7 @@ let canclSec = document.querySelector(".canclCollec");
 
 cancelSec.addEventListener("click", () => {
     headGoSec.classList.remove('hidden');
+    landNavSec.classList.remove('hidden');
     updatePortSec.classList.remove('hidden');
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
@@ -34,6 +38,7 @@ cancelSec.addEventListener("click", () => {
 
 canclSec.addEventListener("click", () => {
     headGoSec.classList.remove('hidden');
+    landNavSec.classList.remove('hidden');
     updatePortSec.classList.remove('hidden');
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
@@ -88,6 +93,7 @@ pdBtn.addEventListener("click", async (e) => {
                 successAlert("Your Portfolio has been updated :)");
                 window.setTimeout(() => {
                     headGoSec.classList.remove('hidden');
+                    landNavSec.classList.remove('hidden');
                     updatePortSec.classList.remove('hidden');
                     updateImgCollec.classList.remove("hidden");
                     delSec.classList.remove("hidden");
@@ -127,6 +133,7 @@ pImgBtn.addEventListener("click", async (e) => {
                 successAlert("Your Portfolio Images has been updated :)");
                 window.setTimeout(() => {
                     headGoSec.classList.remove('hidden');
+                    landNavSec.classList.remove('hidden');
                     updatePortSec.classList.remove('hidden');
                     updateImgCollec.classList.remove("hidden");
                     delSec.classList.remove("hidden");

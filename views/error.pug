@@ -4,5 +4,9 @@ block content
     include _header.pug
     .four0four
         h1#four0= `${status} ERROR`
-        h1 Oops! something ain't right! 
-        a(href="/") Go Back
+        if (`${status}` == 401)
+            h1 You Are Not Logged In!! Please Log In | Sign Up
+            a(href="/login") Go Back
+        else
+            h1 Oops! something ain't right! 
+            a(href="/") Go Back

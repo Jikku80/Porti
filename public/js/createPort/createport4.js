@@ -35,7 +35,7 @@ formLayoutFour.innerHTML = `
     </div>
     <div class="form__cont">
         <label>Show Number:</label>
-        <input id="fourthCheck" type="checkbox" />
+        <input id="fourthCheck" class="checkbox" type="checkbox" />
     </div>
     <div class="form__cont">
         <label>Email Address:</label>

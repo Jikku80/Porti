@@ -158,7 +158,7 @@ invi1.addEventListener("click", () => {
                     }, 400);
                 } else {
                     console.log(response)
-                    errorAlert("Given Phone number already in use!!, Duplication Input error!!")
+                    errorAlert("Duplication Input error!!")
                 }
             })
         }

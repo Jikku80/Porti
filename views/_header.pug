@@ -1,20 +1,21 @@
 .head__main
-    a#createporti.crpt(href="/porti")
+    a#createporti.crpt(href="/porti" title="porti")
         img(src="/images/plus.png", alt="add__img")
-        p.cp.hidden porti
-    a.port_sec_head.hm(href="/")
+    a.port_sec_head.hm(href="/" title="home")
         h1 Tech 
             span Mafia
         p.hmtg.hidden home
     #logout.logout
-        img(src="/images/poweroff.png", alt="signout")
+        img(src="/images/poweroff.png", alt="signout" title="logout")
         p.lgot.hidden logout
 
 .loader.hidden
     .out__load
         .inn__load
             .inner__loader
+    p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
 
-script(src="/js/alert.js") 
-script(src="/js/nametag.js") 
+script(src="/js/alert.js")  
 script(src="/js/logout.js") 

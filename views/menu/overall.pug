@@ -6,33 +6,31 @@ block content
         .out__load
             .inn__load
                 .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
     if (user)
         .port__nav
             .port__nav__first
                 a.port__head.act(href="/me")
                     if (user.photo)
-                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
+                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
                     else 
-                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
-                    p.actg.hidden your account
-                a.port_sec_head.hm(href="/")
+                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                a.port_sec_head.hm(href="/" title="home")
                     h1 Tech 
                         span Mafia
-                    p.hmtg.hidden home
                 .logout
-                    img.pointer(src="/images/poweroff.png", alt="signout")
-                    p.lgot.hidden logout
+                    img.pointer(src="/images/poweroff.png", alt="signout" title="logout")
             .port__nav__sub 
-                a.ypf(href=`/myportfolio/${user._id}`)
+                a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
                     span#usId.hidden= user._id
-                    p.pf.hidden your portfolio
-                a.yin(href=`/invitations/${user._id}`)
+                a.yin(href=`/invitations/${user._id}` title="your invitations")
                     img(src="/images/invite.png", alt="view_port")
                     span#uiId.hidden= user._id
-                    p.intg.hidden your invitations
             .breadcrumbs 
-                a.bdcb(href="#") You Are Here |
+                a.bdcb(href="#" title="additemstomenu") You Are Here |
                 a.bdcb(href="/") Home 
                 a.bdcb(href="#") &#8680;
                 a.bdcb(href="/porti") Porti
@@ -41,19 +39,21 @@ block content
         #item__form
             .itemform__head 
                 h2 Add Items To Menu
+                h2
+                    a(href=`/${user.name}/menu/${user._id}/40bd001563085fc35165329ea1ff5c5ecbdbbeef` title="My Menu") My Menu
             form#addItem
                 .form__bod
                     label Food Name:
-                    input#itemname(type="text" name="name" required)
+                    input#itemname(type="text" name="name" required placeholder="Chicken Burger")
                 .form__bod
                     label Price: 
-                    input#itemprice(type="number" name="phn_no" required)
+                    input#itemprice(type="text" name="phn_no" required placeholder="Rs. 150")
                 .form__bod
                     label Category: 
-                    input#itemcat(type="text", required)
+                    input#itemcat(type="text", required placeholder="Burger")
                 .form__bod
                     label Detail (optional):
-                    textarea#itemDetail(rows="4" cols="50" name="previous")
+                    textarea#itemdetail(rows="4" cols="50" name="previous" placeholder="You can Describe about your food only if you want to, this field is optional...")
                 .form__bod.file_part
                     input#coverimage(type="file" accept="image/*"  required)
                 button#addItemBtn.blackbtn Add Item
@@ -62,6 +62,6 @@ block content
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
 
-    script(src="/js/alert.js")
-    script(src="/js/nametag.js") 
+    script(src="/js/alert.js") 
     script(src="/js/logout.js") 
+    script(src="/js/menu/additem.js") 

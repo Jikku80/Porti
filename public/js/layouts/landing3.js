@@ -1,10 +1,12 @@
 let updatePortSix = document.getElementById('update_portSix');
 let updateFormSix = document.getElementById('update_formSix');
 let headGoSix = document.querySelector(".land__goto");
+let landNavSix = document.querySelector(".land__nav__main");
 let delFirstSix = document.getElementById("delPp");
 
 updatePortSix.addEventListener('click', () => {
     headGoSix.classList.add('hidden');
+    landNavSix.classList.add('hidden');
     updatePortSix.classList.add('hidden');
     delFirstSix.classList.add("hidden");
     updateFormSix.classList.remove('hidden');
@@ -14,6 +16,7 @@ let cancelSix = document.querySelector(".cancelSix");
 
 cancelSix.addEventListener("click", () => {
     headGoSix.classList.remove('hidden');
+    landNavSix.classList.remove('hidden');
     updatePortSix.classList.remove('hidden');
     delFirstSix.classList.remove("hidden");
     updateFormSix.classList.add('hidden');
@@ -76,6 +79,7 @@ updBtnSix.addEventListener("click", async (e) => {
                 successAlert("Your Portfolio has been updated :)");
                 window.setTimeout(() => {
                     headGoSix.classList.remove('hidden');
+                    landNavSix.classList.remove('hidden');
                     updatePortSix.classList.remove('hidden');
                     delFirstSix.classList.remove("hidden");
                     updateFormSix.classList.add('hidden');

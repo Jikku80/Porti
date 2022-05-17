@@ -2,8 +2,12 @@ extends baselayout
 
 block content
     .loader
-        .inn__load
-            .inner__loader
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
     if (!portfolio)
             .notifier
                 h1 You have not created a portfolio YET! Create and come back
@@ -16,26 +20,21 @@ block content
                         .land__nav
                             a.land__head.act(href="/me")
                                 if (user.photo)
-                                    img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic")
+                                    img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
                                 else 
-                                    img.userdp.satProf(src="/images/hitman.png", alt="prof__pic")
-                                p.actg.hidden your account
-                            a.port_sec_head.hm(href="/")
+                                    img.userdp.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                            a.port_sec_head.hm(href="/" title="home")
                                 h1 Tech 
                                     span Mafia
-                                p.hmtg.hidden home
                             #logout.logout
-                                img(src="/images/poweroff.png", alt="signout")
-                                p.lgot.hidden logout
+                                img(src="/images/poweroff.png", alt="signout", title="logout")
                         .land__nav__sub 
-                            a.crpt(href="/porti")
+                            a.crpt(href="/porti", title="porti")
                                 img(src="/images/plus.png", alt="view_port")
-                                p.cp.hidden porti
-                            a.yin(href=`/invitations/${user.id}`)
+                            a.yin(href=`/invitations/${user.id}`, title="your invitations")
                                 img(src="/images/invite.png", alt="view_port")
-                                p.intg.hidden your invitations
                         .breadcrumbs 
-                            a.bdcb(href="#") You Are Here |
+                            a.bdcb(href="#" title="your portfolio") You Are Here |
                             a.bdcb(href="/") Home 
                             a.bdcb(href="#") &#8680;  
                             a.bdcb(href="/porti") Porti 
@@ -76,7 +75,6 @@ block content
                 a.redbtn(href="/login") Log In
 
     script(src="/js/alert.js")
-    script(src="/js/nametag.js") 
     script(src="/js/layouts/baseLand.js")      
     script(src="/js/delete.js") 
     script(src="/js/logout.js")

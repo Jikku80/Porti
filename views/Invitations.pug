@@ -5,6 +5,9 @@ block content
         .out__load
             .inn__load
                 .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
     if (invites.length == "" || invites.length == null || invites.length == undefined)
         .confirm__pg 
             h1 You have not Created Any Invitation YET!!! Create One and Come Back 
@@ -15,26 +18,21 @@ block content
                 .port__nav__first
                     a.port__head.act(href="/me")
                         if (user.photo)
-                            img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic")
+                            img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
                         else 
-                            img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic")
-                        p.actg.hidden your account
-                    a.port_sec_head.hm(href="/")
+                            img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                    a.port_sec_head.hm(href="/" title="home")
                         h1 Tech 
                             span Mafia
-                        p.hmtg.hidden home
                     #logout.logout
-                        img(src="/images/poweroff.png", alt="signout")
-                        p.lgot.hidden logout
+                        img(src="/images/poweroff.png", alt="signout", title="logout")
                 .port__nav__sub 
-                    a.crpt(href="/porti")
+                    a.crpt(href="/porti" title="porti")
                         img(src="/images/plus.png", alt="view_port")
-                        p.cp.hidden porti
-                    a.ypf(href=`/myportfolio/${user._id}`)
+                    a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
                         img(src="/images/porti.png", alt="view_port")
-                        p.pf.hidden your portfolio
                 .breadcrumbs 
-                        a.bdcb(href="#") You Are Here |
+                        a.bdcb(href="#" title="All Invitation") You Are Here |
                         a.bdcb(href="/") Home 
                         a.bdcb(href="#") &#8680;  
                         a.bdcb(href="/porti") Porti 
@@ -54,4 +52,4 @@ block content
                 h1 You are not logged In!
                 a.redbtn(href="/login") LogIn
 
-    script(src="/js/nametag.js") 
+    script(src="/js/alert.js") 

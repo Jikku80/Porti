@@ -37,7 +37,10 @@ layoutOneForm.innerHTML = `
         </div>
         <div class="form__cont">
             <label>Show Number:</label>
-            <input id="yourCheck" type="checkbox" />
+            <div class="check">
+                <input id="yourCheck" class="checkbox" type="checkbox" />
+                <span class="customCheck"></span>
+            </div>
         </div>
         <div class="form__cont">
             <label>Email Address:</label>

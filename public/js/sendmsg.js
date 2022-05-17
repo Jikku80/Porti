@@ -47,7 +47,7 @@ sendMsg.addEventListener("click", async (e) => {
     }
     catch (err) {
         console.log(err);
-        alert('Sorry! Something went wrong', err);
+        erroralert('Sorry! Something went wrong', err);
     };
     msgfullName.value = "";
     msgemail.value = "";

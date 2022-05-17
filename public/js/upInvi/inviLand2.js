@@ -1,12 +1,14 @@
 let updateInvi2 = document.getElementById('update_invi2');
 let updateInviForm2 = document.getElementById('update_inviform2');
 let hdGo2 = document.querySelector(".land__goto");
+let ldNav2 = document.querySelector(".land__nav__main");
 let updateInviImgForm2 = document.getElementById('update_ImgInviForm2');
 let updateInviImg2 = document.getElementById("update_InviImg2");
 let delInvi2 = document.getElementById("delinvi");
 
 updateInvi2.addEventListener('click', () => {
     hdGo2.classList.add('hidden');
+    ldNav2.classList.add('hidden');
     updateInvi2.classList.add('hidden');
     updateInviImg2.classList.add("hidden");
     delInvi2.classList.add("hidden");
@@ -15,6 +17,7 @@ updateInvi2.addEventListener('click', () => {
 
 updateInviImg2.addEventListener("click", () => {
     hdGo2.classList.add('hidden');
+    ldNav2.classList.add('hidden');
     updateInvi2.classList.add('hidden');
     updateInviImg2.classList.add("hidden");
     delInvi2.classList.add("hidden");
@@ -26,6 +29,7 @@ let canclInvi2 = document.querySelector(".canclInvi2");
 
 cancelInvi2.addEventListener("click", () => {
     hdGo2.classList.remove('hidden');
+    ldNav2.classList.remove('hidden');
     updateInvi2.classList.remove('hidden');
     updateInviImg2.classList.remove("hidden");
     delInvi2.classList.remove("hidden");
@@ -34,6 +38,7 @@ cancelInvi2.addEventListener("click", () => {
 
 canclInvi2.addEventListener("click", () => {
     hdGo2.classList.remove('hidden');
+    ldNav2.classList.remove('hidden');
     updateInvi2.classList.remove('hidden');
     updateInviImg2.classList.remove("hidden");
     delInvi2.classList.remove("hidden");
@@ -81,6 +86,7 @@ updinBtn2.addEventListener("click", async (e) => {
                 successAlert("Your Invitation has been updated :)");
                 window.setTimeout(() => {
                     hdGo2.classList.remove('hidden');
+                    ldNav2.classList.remove('hidden');
                     updateInvi2.classList.remove('hidden');
                     updateInviImg2.classList.remove("hidden");
                     delInvi2.classList.remove("hidden");
@@ -119,6 +125,7 @@ upinImgBtn2.addEventListener("click", async (e) => {
                 successAlert("Your Cover Image has been updated :)");
                 window.setTimeout(() => {
                     hdGo2.classList.remove('hidden');
+                    ldNav2.classList.remove('hidden');
                     updateInvi2.classList.remove('hidden');
                     updateInviImg2.classList.remove("hidden");
                     delInvi2.classList.remove("hidden");

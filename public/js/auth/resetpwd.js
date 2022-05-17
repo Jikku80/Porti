@@ -49,8 +49,4 @@ btnReset.addEventListener('click', async (e) => {
     rpwdC.value = "";
 })
 
-window.addEventListener("load", () => {
-    let loads = document.querySelector('.loader');
-    loads.classList.add("hidden");
-})
 

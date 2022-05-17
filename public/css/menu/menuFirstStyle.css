@@ -1,0 +1,179 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+.first__menu__bod{
+    color: goldenrod;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 0;
+    padding: 2%;
+}
+
+.white__bg{
+    background-color: white;
+}
+
+.menu__head{
+    text-align: center;
+    font-size: 2.5rem;
+    color: chocolate;
+    margin-top: 0;
+}
+
+.menu__border{
+    border: 2px solid goldenrod;
+    padding: 1%;
+}
+
+.menu__secborder{
+    border: 2px solid goldenrod;
+    padding: 1%;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+}
+
+.searchbar{
+    border-top-color: transparent;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid chocolate;
+    padding: 1%;
+    width: 40vw;
+    outline: 0;
+    background-color: transparent;
+    color: chocolate;
+}
+
+.darkmode{
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    background-color: transparent;
+    border: 1px solid chocolate;
+    width: 60px;
+    height: 60px;
+    border-radius: 8rem;
+    padding: 1%;
+    color: goldenrod;
+    cursor: pointer;
+}
+
+.darkmode:hover{
+    background-color: chocolate;
+    color: white;
+}
+
+.menu__bod{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.category{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.menu__items, .grab__all{
+    transition: transform .2s;
+    margin: 8px;
+    border-radius: 2rem;
+    padding: 1%;
+    background-color: chocolate;
+    color: white;
+}
+
+.menu__items:hover, .grab__all:hover{
+    background-color: rgba(210, 105, 30, 0.596);
+    transform: scale(1.3);
+}
+
+.sub__items{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu__card{
+    display: flex;
+    flex-direction: row;
+    width: 18vw;
+    margin: 2%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu__card:hover{
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.363);
+}
+
+.menu__card__det{
+    margin-left: 2%;
+}
+
+.menu__card__img{
+    width: 40%;
+    height: auto;
+    background-blend-mode: multiply;
+}
+
+.paginate{
+    display: flex;
+    justify-content: center;
+}
+
+.next, .prev{
+    background-color: transparent;
+    border: 2px solid goldenrod;
+    color: white;
+    padding:2%;
+    margin: 2%;
+    cursor: pointer;
+}
+
+.next:hover, .prev:hover{
+    background-color: rgba(218, 165, 32, 0.486);
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .menu__card{
+        width: 40vw;
+    }
+    .darkmode{
+        right: 40px;
+        top: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 8rem;
+        padding: 1%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .darkmode{
+        right: 40px;
+        top: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 8rem;
+        padding: 1%;
+    }
+    .menu__items, .grab__all{
+        padding: 2%;
+
+    }
+    .sub__items{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu__card{
+        width: 80vw;
+    }
+}
