@@ -44,19 +44,35 @@ block content
             form#addItem
                 .form__bod
                     label Food Name:
-                    input#itemname(type="text" name="name" required placeholder="Chicken Burger")
+                    input#itemname(type="text" required placeholder="Chicken Burger")
                 .form__bod
                     label Price: 
-                    input#itemprice(type="text" name="phn_no" required placeholder="Rs. 150")
+                    input#itemprice(type="text" required placeholder="Rs. 150")
                 .form__bod
                     label Category: 
                     input#itemcat(type="text", required placeholder="Burger")
                 .form__bod
                     label Detail (optional):
-                    textarea#itemdetail(rows="4" cols="50" name="previous" placeholder="You can Describe about your food only if you want to, this field is optional...")
+                    textarea#itemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
                 .form__bod.file_part
                     input#coverimage(type="file" accept="image/*"  required)
                 button#addItemBtn.blackbtn Add Item
+        .your__item__sec
+            h2.items__head Your Items 
+            .sub__items
+                each menu in menus 
+                    if (menu.user.id == user._id)
+                        .menu__card
+                            img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
+                            .menu__card__det
+                                h3.itemname.menu__card__head= menu.name
+                                p.itemprice.menu__card__price= menu.price
+                                p.itemdetail.menu__card__detail= menu.detail
+                                a(href=`/${menu._id}/tweaks?update`).ygbtn Update
+                                a(href=`/${menu._id}/tweaks?delete`).redbtn Delete
+            .paginate 
+                button.prev Previous
+                button.next.hidden Next       
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !

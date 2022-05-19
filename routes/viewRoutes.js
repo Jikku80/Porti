@@ -40,6 +40,10 @@ router.patch('/updateportImg', authController.protect, authController.restrictTo
 router.patch('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadImages, portController.resizePortImages, viewsController.updatePortImgCollec);
 router.get('/myportfolio/:id', viewsController.myPort);
 router.get('/myinvi/:id', viewsController.myInvi);
+router.get('/menu/:id/additemstomenu', menuController.newMenu);
+
+router.get('/:id/tweaks', menuController.itemTweaks);
+
 
 router.get('/login', viewsController.getOverview);
 

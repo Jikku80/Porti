@@ -14,7 +14,8 @@ block content
                 h1.menu__head Me n u
                 form.search
                     input.searchbar(type="text", required, placeholder="Search Items...")
-                button.darkmode White
+                button.darkmode 
+                    img(src="/images/on.png")
                 .menu__bod
                     h3.grab__all ALL
                     .category
@@ -28,7 +29,7 @@ block content
                                 p.menu__card__detail= menu.detail
                 .paginate 
                     button.prev Previous
-                    button.next Next
+                    button.next.hidden Next
 
     script(src="/js/alert.js") 
     script(src="/js/logout.js") 

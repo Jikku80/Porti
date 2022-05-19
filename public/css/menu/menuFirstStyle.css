@@ -10,7 +10,7 @@ html{
 }
 
 .white__bg{
-    background-color: white;
+    background-color: rgb(250, 250, 250);
 }
 
 .menu__head{
@@ -36,34 +36,30 @@ html{
 }
 
 .searchbar{
-    border-top-color: transparent;
+    border-top: 0px;
     border-left: 0px;
     border-right: 0px;
     border-bottom: 2px solid chocolate;
     padding: 1%;
+    margin-bottom: 2%;
     width: 40vw;
     outline: 0;
     background-color: transparent;
     color: chocolate;
+    transition: transform .2s;
+}
+
+.searchbar:focus{
+    transform: scale(1.2);
 }
 
 .darkmode{
     position: absolute;
-    right: 60px;
+    right: 75px;
     top: 60px;
     background-color: transparent;
-    border: 1px solid chocolate;
-    width: 60px;
-    height: 60px;
-    border-radius: 8rem;
-    padding: 1%;
-    color: goldenrod;
+    border: none;
     cursor: pointer;
-}
-
-.darkmode:hover{
-    background-color: chocolate;
-    color: white;
 }
 
 .menu__bod{
@@ -71,22 +67,27 @@ html{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    cursor: pointer;
 }
 
 .category{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    /* height: 30vh;
+    overflow-y: auto;
+    scrollbar-width: thin; */
 }
 
 .menu__items, .grab__all{
+    cursor: pointer;
     transition: transform .2s;
     margin: 8px;
     border-radius: 2rem;
     padding: 1%;
     background-color: chocolate;
     color: white;
+    height: 15px;
+    text-align: center;
 }
 
 .menu__items:hover, .grab__all:hover{
@@ -96,31 +97,43 @@ html{
 
 .sub__items{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .menu__card{
     display: flex;
     flex-direction: row;
-    width: 18vw;
-    margin: 2%;
+    width: 20vw;
+    margin-top: 2%;
     cursor: pointer;
     font-size: 16px;
 }
 
-.menu__card:hover{
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.363);
-}
-
 .menu__card__det{
-    margin-left: 2%;
+    padding-left: 2%;
+    width: 60%;
 }
 
 .menu__card__img{
     width: 40%;
     height: auto;
-    background-blend-mode: multiply;
+    border-radius: 1rem;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.281);
+}
+
+.menu__card__img:hover{
+    box-shadow: none;
+}
+
+.menu__card__detail{
+    font-size: 11px;
+    padding-bottom: 1%;
+}
+
+.items__head{
+    text-align: center;
+    color: chocolate;
 }
 
 .paginate{
@@ -131,7 +144,7 @@ html{
 .next, .prev{
     background-color: transparent;
     border: 2px solid goldenrod;
-    color: white;
+    color: goldenrod;
     padding:2%;
     margin: 2%;
     cursor: pointer;
@@ -141,28 +154,28 @@ html{
     background-color: rgba(218, 165, 32, 0.486);
 }
 
+.go__back{
+    color: chocolate;
+}
+
+.hidden{
+    display: none;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .menu__card{
         width: 40vw;
     }
     .darkmode{
-        right: 40px;
+        right: 55px;
         top: 40px;
-        width: 50px;
-        height: 50px;
-        border-radius: 8rem;
-        padding: 1%;
     }
 }
 
 @media screen and (max-width: 600px){
     .darkmode{
-        right: 40px;
+        right: 35px;
         top: 40px;
-        width: 50px;
-        height: 50px;
-        border-radius: 8rem;
-        padding: 1%;
     }
     .menu__items, .grab__all{
         padding: 2%;

@@ -69,11 +69,20 @@ exports.updateMenu = factory.updateOne(Menu);
 exports.delMenu = factory.deleteOne(Menu);
 exports.makeMenu = factory.createOne(Menu);
 
+exports.itemTweaks = catchAsync(async (req, res) => {
+    const id = req.params.id
+    await Menu.findOne({ _id: id }).populate('user').then(menu => {
+
+        res.status(200).render('menu/tweaks', {
+            title: 'Porti Detail',
+            menu
+        })
+    }).catch(err => console.log(err));
+})
 
 exports.menuFirst = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
-    console.log(req.query);
-    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 2, page: 1 }).paginate()
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 10, page: req.query.page }).paginate()
     await features.query.populate('user').then(menus => {
         res.status(200).render('menu/firstMenu', {
             title: "menu",
@@ -83,8 +92,13 @@ exports.menuFirst = catchAsync(async (req, res, next) => {
 })
 
 exports.newMenu = catchAsync(async (req, res, next) => {
-    res.status(200).render('menu/overall', {
-        title: "Add Items"
+    const user_id = req.params.id
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 2, page: req.query.page }).paginate()
+    await features.query.populate('user').then(menus => {
+        res.status(200).render('menu/overall', {
+            title: "Add Items",
+            menus
+        })
     })
 })
 
@@ -110,6 +124,15 @@ exports.findbyCat = catchAsync(async (req, res, next) => {
 exports.lookup = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     await Menu.find({ user: user_id }).then((items) => {
+        res.status(200).json(items)
+    })
+})
+
+exports.paginate = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    const pg = req.params.count
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 2, page: pg }).paginate()
+    await features.query.then((items) => {
         res.status(200).json(items)
     })
 })

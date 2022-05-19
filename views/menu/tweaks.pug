@@ -1,0 +1,68 @@
+extends baseMenu 
+
+block content 
+
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
+    if (user)
+        if (menu.user.id == user.id)
+            .center
+                .menu__card
+                    img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
+                    .menu__card__det
+                        h3.itemname.menu__card__head= menu.name
+                        p.itemprice.menu__card__price= menu.price
+                        p.itemdetail.menu__card__detail= menu.detail
+                        p.itemid.hidden= menu.id
+            .up__items__detail
+                h2.items__head Update Item Detail
+                form.upItem
+                    .form__bod
+                        label Food Name:
+                        input#upitemname(type="text" value=menu.name required)
+                    .form__bod
+                        label Price: 
+                        input#upitemprice(type="text" value=menu.price required)
+                    .form__bod
+                        label Category: 
+                        input#upitemcat(type="text" value=menu.category required)
+                    .form__bod
+                        label Detail (optional):
+                        textarea#upitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
+                    .form__bod 
+                        label Theme 
+                        select#upitemtheme
+                            option.opt(hidden selected)= menu.theme 
+                    .group__btn
+                        button#upItemBtn.smallbtn.ygbtn Update Item
+                        a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel
+            .up__items__img
+                h2.items__head Update Items Image
+                form.upItem
+                    .form__bod.file_part
+                        input#upcoverimage(type="file" accept="image/*")
+                    .group__btn
+                        button#upImgItemBtn.smallbtn.ygbtn Update Item Image  
+                        a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel  
+            .del__items__sec 
+                h2.items__head Are You Sure You Want To Delete It?
+                .group__btn
+                    button#delItemBtn.smallbtn.redbtn Delete Item  
+                    a(href=`/menu/${user._id}/additemstomenu`).smallbtn.ygbtn Cancel
+        else 
+            .confirm__pg 
+                h1 You Dont Belong Here!!!
+                a(href="/") Go Back
+    else 
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/login") Sign In
+
+    script(src="/js/alert.js") 
+    script(src="/js/menu/upitem.js") 
+    
