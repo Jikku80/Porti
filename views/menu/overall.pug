@@ -23,6 +23,8 @@ block content
                 .logout
                     img.pointer(src="/images/poweroff.png", alt="signout" title="logout")
             .port__nav__sub 
+                a.crpt(href="/porti", title="porti")
+                    img(src="/images/plus.png", alt="view_port")
                 a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
                     span#usId.hidden= user._id
@@ -40,7 +42,7 @@ block content
             .itemform__head 
                 h2 Add Items To Menu
                 h2
-                    a(href=`/${user.name}/menu/${user._id}/40bd001563085fc35165329ea1ff5c5ecbdbbeef` title="My Menu") My Menu
+                    a(href="#openMenu") Menu Link
             form#addItem
                 .form__bod
                     label Food Name:
@@ -59,20 +61,19 @@ block content
                 button#addItemBtn.blackbtn Add Item
         .your__item__sec
             h2.items__head Your Items 
-            .sub__items
-                each menu in menus 
-                    if (menu.user.id == user._id)
-                        .menu__card
-                            img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
-                            .menu__card__det
-                                h3.itemname.menu__card__head= menu.name
-                                p.itemprice.menu__card__price= menu.price
-                                p.itemdetail.menu__card__detail= menu.detail
-                                a(href=`/${menu._id}/tweaks?update`).ygbtn Update
-                                a(href=`/${menu._id}/tweaks?delete`).redbtn Delete
-            .paginate 
-                button.prev Previous
-                button.next.hidden Next       
+            p.currentid.hidden= user._id
+            .sub__item__bod
+                .sub__items.sec__items
+                .paginate 
+                    button.prev Previous
+                    button.next.hidden Next
+        .share__menu 
+            h2 Share your menu 
+            p.uname__menu.hidden= user.name
+            p.share__link
+        
+        .qrcode__menu 
+            #qrcode 
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !
@@ -81,3 +82,4 @@ block content
     script(src="/js/alert.js") 
     script(src="/js/logout.js") 
     script(src="/js/menu/additem.js") 
+    script(src="/js/qr.js")

@@ -110,7 +110,7 @@ layout1.addEventListener("click", () => {
     let showNo = document.getElementById("yourCheck");
     let youremail = document.getElementById("youremail");
     let fb = document.getElementById("yourFb");
-    let location = document.getElementById("yourLoc");
+    let loction = document.getElementById("yourLoc");
     let yourwork = document.getElementById("yourwork");
     let img1 = document.getElementById("yourimg1");
     let hd1 = document.getElementById("firstImg");
@@ -147,7 +147,7 @@ layout1.addEventListener("click", () => {
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
             return false;
         }
-        if (location.value < 1 || location.value == "" || location.value == null) {
+        if (loction.value < 1 || loction.value == "" || loction.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -195,7 +195,7 @@ layout1.addEventListener("click", () => {
         formData.append("showNo", showNo.checked);
         formData.append("email", youremail.value);
         formData.append("fb", fb.value);
-        formData.append("location", location.value);
+        formData.append("location", loction.value);
         formData.append("previous", yourwork.value);
         formData.append("theme", theme);
         formData.append("firstImgHead", hd1.value);
@@ -232,7 +232,7 @@ layout1.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
-            location.value = "",
+            loction.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",

@@ -16,10 +16,10 @@ router.post('/makeInvi', authController.restrictTo('user', 'admin'), inviControl
 
 router.patch('/updateInvi', authController.protect, authController.restrictTo('admin', 'user'), inviController.updateInviData);
 
-router.patch('/updateInviImg', authController.protect, authController.restrictTo('admin', 'user'), inviController.uploadInviteImg, inviController.resizeNewInviteImg, inviController.updateInviImgData);
-router.patch('/updateInviImgCollec', authController.protect, authController.restrictTo('admin', 'user'), inviController.uploadInviteImages, inviController.resizeInviteImages, inviController.updateInviImgCollec);
+router.patch('/updateInviImg', authController.protect, authController.restrictTo('admin', 'user'), inviController.uploadInviteImg, inviController.resizeNewInviteImg, inviController.removeInviOldImg, inviController.updateInviImgData);
+router.patch('/updateInviImgCollec', authController.protect, authController.restrictTo('admin', 'user'), inviController.uploadInviteImages, inviController.resizeInviteImages, inviController.removeOldImgColl, inviController.updateInviImgCollec);
 
-router.delete('/deleteInvi', authController.restrictTo('user', 'admin'), inviController.deleteInvi);
+router.delete('/:id/deleteInvi', authController.restrictTo('user', 'admin'), inviController.deleteInvi);
 
 router.route('/:id').patch(authController.restrictTo('user', 'admin'), inviController.updateInvi).delete(authController.restrictTo('user', 'admin'), inviController.del);
 

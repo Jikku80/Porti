@@ -44,7 +44,7 @@ next.addEventListener("click", async () => {
                                 </div>
                             `
                     });
-                    if (sub.children.length === 10) {
+                    if (sub.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
                         next.classList.add("hidden");
@@ -120,7 +120,6 @@ window.addEventListener("load", async () => {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        // next.classList.add('hidden')
         const endpoint = `/api/v1/menu/allCategories/${resultpath[1]}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -150,7 +149,7 @@ window.addEventListener("load", async () => {
                                 load.classList.remove("hidden")
                                 page.classList.add("hidden");
                                 subItems.innerHTML = "";
-                                const endpoint = `/api/v1/menu/findbycate/${cate}`
+                                const endpoint = `/api/v1/menu/${resultpath[1]}/findbycate/${cate}`
                                 let myHeaders = new Headers();
                                 myHeaders.append('Content-Type', 'image/jpeg/png')
                                 myHeaders.get('Content-Type');
@@ -320,7 +319,7 @@ grabAll.addEventListener("click", async () => {
     };
 })
 
-if (sub.children.length === 10) {
+if (sub.children.length === 12) {
     next.classList.remove("hidden");
 } else {
     next.classList.add("hidden");
@@ -337,12 +336,10 @@ dark.addEventListener("click", () => {
     if (!bod.classList.contains('white__bg')) {
         bod.classList.add('white__bg');
         bod.style.color = "chocolate";
-        // dark.innerText = "Dark";
         dark.innerHTML = `<img src="/images/off.png" />`
     } else {
         bod.classList.remove('white__bg');
         bod.style.color = "goldenrod"
-        // dark.innerText = "White"
         dark.innerHTML = `<img src="/images/on.png" />`
     }
 })

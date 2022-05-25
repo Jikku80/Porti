@@ -70,11 +70,13 @@ block content
                     img(src="/images/poweroff.png", alt="signout" title="logout")
             .port__nav__sub 
                 a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
-                    img(src="/images/porti.png", alt="view_port")
+                    img(src="/images/porti.png", alt="view_portfolio")
                     span#usId.hidden= user._id
                 a.yin(href=`/invitations/${user._id}` title="your invitation")
-                    img(src="/images/invite.png", alt="view_port")
+                    img(src="/images/invite.png", alt="view_invitations")
                     span#uiId.hidden= user._id
+                a(href=`/menu/${user._id}/additemstomenu` title="your menu")
+                    img(src="/images/menu.png", alt="items__menu")
             .breadcrumbs 
                 a.bdcb(href="#" title="porti") You Are Here |
                 a.bdcb(href="/") Home 

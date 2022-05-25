@@ -1,6 +1,6 @@
 let url = document.getElementById('urlLink');
-let portName = document.getElementById('port_name');
-portName = portName.innerText;
+let portName = document.getElementById('port_name').innerText;
+portName = portName.replace(/\s/g, '');
 let endP = document.getElementById('endpoint');
 let end = endP.innerText;
 end = btoa(end);

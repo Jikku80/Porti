@@ -1,7 +1,55 @@
+async function getOneItem() {
+
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        let id = document.querySelector(".itemid");
+        let menuCard = document.querySelector(".menu__card");
+        const endpoint = `/api/v1/menu/${id.innerText}/getItem`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let item = result.data.data
+                    menuCard.innerHTML =
+                        `
+                            <img class="menu__card__img" src="/images/menu-pic/${item.coverImage}">
+                            <div class="menu__card__det">
+                                <h3 class="menu__card__head">${item.name}</h3>
+                                <p class="menu__card__price">${item.price}</p>
+                                <p class="menu__card__cat">${item.category}</p>
+                                <p class="menu__card__detail">${item.detail}</p>
+                            </div>
+                            `
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+window.addEventListener("load", async () => {
+    getOneItem();
+});
+
 (function () {
     let upitmDet = document.querySelector(".up__items__detail");
     let upitmImg = document.querySelector(".up__items__img");
     let delItmSec = document.querySelector(".del__items__sec");
+    let id = document.querySelector(".itemid");
 
     let upItemBtn = document.getElementById("upItemBtn");
 
@@ -13,7 +61,7 @@
         upitmDet.classList.add("hidden");
         upitmImg.classList.add("hidden");
     }
-    let id = document.querySelector(".itemid");
+
     let name = document.getElementById("upitemname");
     let price = document.getElementById("upitemprice");
     let cat = document.getElementById("upitemcat");
@@ -51,9 +99,7 @@
                 load.classList.add("hidden");
                 if (response.status === 200) {
                     successAlert("Item Updated Successfully :)");
-                    window.setTimeout(() => {
-                        location.reload();
-                    }, 400);
+                    getOneItem();
                 } else {
                     console.log(response);
                     errorAlert("Invalid input, Duplication Input error!!!")
@@ -64,9 +110,74 @@
             console.log(err);
             errorAlert('Sorry! Something went wrong', err);
         };
-        name.value = "",
-            price.value = "",
-            cat.value = "",
-            detail.value = ""
+    })
+
+    let upImItemBtn = document.getElementById("upImgItemBtn");
+
+    let imgItem = document.getElementById("upcoverimage");
+    upImItemBtn.addEventListener("click", async (e) => {
+        if (imgItem.files[0] < 1 || imgItem.files[0] == "" || imgItem.files[0] == null) {
+            return false;
+        }
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const formData = new FormData();
+            formData.append("coverImage", imgItem.files[0]);
+            const endpoint = `/api/v1/menu/${id.innerText}/updateItemImage`
+            await fetch(endpoint, {
+                body: formData,
+                method: 'PATCH'
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Item Image Updated Successfully :)");
+                    getOneItem();
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    let delItemBtn = document.getElementById("delItemBtn");
+    let curId = document.querySelector('.curid');
+
+    delItemBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/${id.innerText}/deleteItem`
+            await fetch(endpoint, {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Item deleted Successfully :)");
+                    location.assign(`/menu/${curId.innerText}/additemstomenu`)
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
     })
 })();
+

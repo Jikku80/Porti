@@ -11,14 +11,15 @@ block content
                 span.lodend ...
     if (user)
         if (menu.user.id == user.id)
+            p.itemid.hidden= menu.id
+            p.curid.hidden= user.id
+            .itemform__head 
+                a.blackbtn(href=`/menu/${user._id}/additemstomenu` title="Add Items") Go Back
+                a.blackbtn(href=`/${user.name}/menu/${user._id}/40bd001563085fc35165329ea1ff5c5ecbdbbeef` title="My Menu") My Menu
             .center
-                .menu__card
-                    img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
-                    .menu__card__det
-                        h3.itemname.menu__card__head= menu.name
-                        p.itemprice.menu__card__price= menu.price
-                        p.itemdetail.menu__card__detail= menu.detail
-                        p.itemid.hidden= menu.id
+                .sub__items__bod
+                    .sub__items
+                        .menu__card
             .up__items__detail
                 h2.items__head Update Item Detail
                 form.upItem
@@ -35,7 +36,7 @@ block content
                         label Detail (optional):
                         textarea#upitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
                     .form__bod 
-                        label Theme 
+                        label Theme:
                         select#upitemtheme
                             option.opt(hidden selected)= menu.theme 
                     .group__btn
@@ -45,7 +46,7 @@ block content
                 h2.items__head Update Items Image
                 form.upItem
                     .form__bod.file_part
-                        input#upcoverimage(type="file" accept="image/*")
+                        input#upcoverimage(type="file" accept="image/*" required)
                     .group__btn
                         button#upImgItemBtn.smallbtn.ygbtn Update Item Image  
                         a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel  

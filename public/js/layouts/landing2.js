@@ -119,6 +119,7 @@ pImgBtn.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     const formData = new FormData();
+    formData.append('id', pid)
     for (var x = 0; x < pimg1.files.length; x++) {
         formData.append("images", pimg1.files[x]);
     }

@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const multer = require('multer');
 const sharp = require('sharp');
 const User = require('./../models/userModel');
@@ -64,6 +66,17 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.removeUserOldImg = catchAsync(async (req, res, next) => {
+    const item = await User.findByIdAndUpdate(req.user.id)
+    if (fs.existsSync(`public/images/users/${item.photo}`)) {
+        if (item.photo.length !== 0) {
+            await fs.promises.unlink(`public/images/users/${item.photo}`);
+        }
+    }
+
+    next();
+})
+
 exports.updateDP = catchAsync(async (req, res, next) => {
     const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
@@ -85,9 +98,15 @@ exports.updateDP = catchAsync(async (req, res, next) => {
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
     //doesnt delete data from database
-    await User.findByIdAndUpdate(req.user.id, { active: false });
+    const item = await User.findByIdAndUpdate(req.user.id, { active: false });
     //deletes data from database
     // await User.findByIdAndDelete(req.user._id);
+
+    if (fs.existsSync(`public/images/users/${item.photo}`)) {
+        if (item.photo.length !== 0) {
+            await fs.promises.unlink(`public/images/users/${item.photo}`);
+        }
+    }
 
     res.status(204).json({
         status: 'success',

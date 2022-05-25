@@ -3,6 +3,7 @@ let dlcf = document.querySelector(".dt__cf")
 let delPorti = document.getElementById("delPort");
 let deel = document.querySelector(".del__port");
 let landPorti = document.querySelector(".land__update")
+let portidelid = document.getElementById("portidelid").innerText;
 
 delPorti.addEventListener("click", () => {
     landCont.classList.add("hidden");
@@ -32,18 +33,26 @@ yesConfirm.addEventListener('click', async function (e) {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                id: id
+                id: portidelid
             })
         }).then((response) => {
             load.classList.add("hidden");
-            successAlert("Your Portfolio has been deleted :)");
-            window.setTimeout(() => {
-                location.assign('/porti');
-            }, 400);
+            if (response.status === 200) {
+                successAlert("Your Portfolio has been deleted :)");
+                window.setTimeout(() => {
+                    location.assign('/porti');
+                }, 400);
+
+            } else {
+                console.log(response);
+                errorAlert("Deletion Error!!!")
+            }
+
         })
     }
     catch (err) {
         errorAlert('Sorry! Something went wrong', err);
+        console.log(err);
     };
 })
 

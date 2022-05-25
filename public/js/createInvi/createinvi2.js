@@ -22,6 +22,10 @@ inviTwoForm.innerHTML = `
             <input id="sname2" type="text" placeholder="Dr D" required/>
         </div>
         <div class="form__cont">
+            <label>Phone Number: </label>
+            <input id="invino2" placeholder="999999998" required />
+        </div>
+        <div class="form__cont">
             <label>Program Detail :</label>
             <textarea id="aboutinvi2" rows="4" cols="50" placeholder="We gonna go all night wild..." required></textarea>
         </div>
@@ -101,6 +105,7 @@ invi2.addEventListener("click", () => {
                     address: what.value,
                     pdate: why.value,
                     ptime: yourwork.value,
+                    phn_no: yourno.value,
                     theme: theme
                 })
             }).then((response) => {

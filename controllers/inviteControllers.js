@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const multer = require('multer');
 const sharp = require('sharp');
 const Invite = require('./../models/inviteModel');
@@ -86,7 +88,7 @@ exports.resizeInviteImages = catchAsync(async (req, res, next) => {
 
     await Promise.all(
         img.map(async (file, i) => {
-            const filename = `invite-${req.body.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
+            const filename = `invite-${req.user.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
 
             await sharp(file.buffer)
                 .toFormat('jpeg')
@@ -162,9 +164,43 @@ exports.del = factory.deleteOne(Invite);
 exports.makeInvi = factory.createOne(Invite);
 
 exports.deleteInvi = catchAsync(async (req, res, next) => {
-    await Invite.findByIdAndDelete(req.body.id);
+    const item = await Invite.findByIdAndDelete(req.params.id);
+    if (fs.existsSync(`public/images/invites/imageCover/${item.imgCover}`)) {
+        if (item.imgCover.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageCover/${item.imgCover}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageSecond/${item.imgSecond}`)) {
+        if (item.imgSecond.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageSecond/${item.imgSecond}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageThird/${item.imgThird}`)) {
 
-    if (!doc) return next(new AppError('No document found with the given ID', 404));
+        if (item.imgThird.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageThird/${item.imgThird}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageFourth/${item.imgFourth}`)) {
+
+        if (item.imgFourth.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageFourth/${item.imgFourth}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageFifth/${item.imgFifth}`)) {
+
+        if (item.imgFifth.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageFifth/${item.imgFifth}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageColl/${item.imgs[0]}`)) {
+
+        if (item.imgs.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageColl/${item.imgs}`);
+        }
+    }
+
+    if (!item) return next(new AppError('No document found with the given ID', 404));
 
     res.status(200).json({
         status: 'success',
@@ -199,6 +235,37 @@ exports.updateInviData = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.removeInviOldImg = catchAsync(async (req, res, next) => {
+    const item = await Invite.findByIdAndUpdate(req.body.id)
+    if (fs.existsSync(`public/images/invites/imageCover/${item.imgCover}`)) {
+        if (item.imgCover.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageCover/${item.imgCover}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageSecond/${item.imgSecond}`)) {
+        if (item.imgSecond.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageSecond/${item.imgSecond}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageThird/${item.imgThird}`)) {
+        if (item.imgThird.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageThird/${item.imgThird}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageFourth/${item.imgFourth}`)) {
+        if (item.imgFourth.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageFourth/${item.imgFourth}`);
+        }
+    }
+    if (fs.existsSync(`public/images/invites/imageFifth/${item.imgFifth}`)) {
+        if (item.imgFifth.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageFifth/${item.imgFifth}`);
+        }
+    }
+
+    next();
+})
+
 exports.updateInviImgData = catchAsync(async (req, res, next) => {
 
     const updatedInvite = await Invite.findByIdAndUpdate(
@@ -220,6 +287,16 @@ exports.updateInviImgData = catchAsync(async (req, res, next) => {
         invite: updatedInvite
     });
 });
+
+exports.removeOldImgColl = catchAsync(async (req, res, next) => {
+    const item = await Invite.findByIdAndUpdate(req.body.id)
+    if (fs.existsSync(`public/images/invites/imageColl/${item.imgs[0]}`)) {
+        if (item.imgs.length !== 0) {
+            await fs.promises.unlink(`public/images/invites/imageColl/${item.imgs}`);
+        }
+    }
+    next();
+})
 
 exports.updateInviImgCollec = catchAsync(async (req, res, next) => {
 

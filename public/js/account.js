@@ -124,6 +124,7 @@ upProfPic.addEventListener("click", async (e) => {
                 }, 400);
             } else {
                 errorAlert("Provide a Valid Image!!!")
+                console.log(response);
             }
         })
 

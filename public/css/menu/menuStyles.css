@@ -406,18 +406,42 @@ input::file-selector-button{
 }
 
 #upitemtheme{
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.247);
     color: white;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    padding: 2%;
 }
 
 ::-webkit-file-upload-button{
     display: none;
 }
 
+.sec__items{
+    display: flex;
+    width: 90% !important;
+    justify-content: left;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .center{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.share__menu{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.menu__link__displayer{
+    border: 1px solid chocolate;
+    background-color: chocolate;
+    margin: 2% 2% 0% 2%;
+    padding: 1%;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -427,6 +451,11 @@ input::file-selector-button{
     .file_part input{
         width: 50%;
     }
+
+    .menu__link__displayer{
+        margin: 2%;
+        padding: 2%;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -435,6 +464,11 @@ input::file-selector-button{
     }
     .file_part input{
         width: 50%;
+    }
+    .menu__link__displayer{
+        font-size: 5px;
+        margin: 2%;
+        padding: 2%;
     }
 }
   

@@ -27,25 +27,33 @@ yesConfm.addEventListener('click', async function (e) {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    const endpoint = '/api/v1/invite/deleteInvi'
+    let id = document.querySelector('.inviId.hidden').innerText;
+    const endpoint = `/api/v1/invite/${id}/deleteInvi`
     try {
         await fetch((endpoint), {
             method: 'DELETE',
             headers: {
+                Accept: "application/json, text/plain, */*",
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                id: id
             })
         }).then((response) => {
             load.classList.add("hidden");
-            successAlert("Your Invitation has been deleted :)");
-            window.setTimeout(() => {
-                location.assign('/porti');
-            }, 400);
+            if (response.status === 200) {
+                successAlert("Your Invitation has been deleted :)");
+                window.setTimeout(() => {
+                    location.assign('/porti');
+                }, 400);
+
+            } else {
+                console.log(response);
+                errorAlert("Deletion Error!!!")
+            }
         })
     }
     catch (err) {
         errorAlert('Sorry! Something went wrong', err);
+        console.log(err);
     };
 })

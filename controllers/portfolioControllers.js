@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const multer = require('multer');
 const sharp = require('sharp');
 const Portfolio = require('./../models/portfolioModel');
@@ -88,7 +90,7 @@ exports.resizePortImages = catchAsync(async (req, res, next) => {
 
     await Promise.all(
         img.map(async (file, i) => {
-            const filename = `port-${req.body.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
+            const filename = `port-${req.user.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
 
             await sharp(file.buffer)
                 .toFormat('jpeg')
@@ -172,9 +174,44 @@ exports.deleteMe = factory.deleteOne(Portfolio);
 exports.makePorti = factory.createOne(Portfolio);
 
 exports.deletePorti = catchAsync(async (req, res, next) => {
-    await Portfolio.findByIdAndDelete(req.body.id);
+    const item = await Portfolio.findByIdAndDelete(req.body.id);
 
-    if (!doc) return next(new AppError('No document found with the given ID', 404));
+    if (fs.existsSync(`public/images/ports/imageCover/${item.imageCover}`)) {
+        if (item.imageCover.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageSecond/${item.imageSecond}`)) {
+        if (item.imageSecond.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageSecond/${item.imageSecond}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageThird/${item.imageThird}`)) {
+        if (item.imageThird.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageThird/${item.imageThird}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageFourth/${item.imageFourth}`)) {
+        if (item.imageFourth.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageFourth/${item.imageFourth}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageFifth/${item.imageFifth}`)) {
+        if (item.imageFifth.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageFifth/${item.imageFifth}`);
+        }
+    }
+
+    let imgs = item.images;
+    for (let i = 0; i < imgs.length; i++) {
+        if (fs.existsSync(`public/images/ports/imageColl/${item.images[i]}`)) {
+            if (item.images[i].length !== 0) {
+                await fs.promises.unlink(`public/images/ports/imageColl/${item.images[i]}`);
+            }
+        }
+    }
+
+    if (!item) return next(new AppError('No document found with the given ID', 404));
 
     res.status(200).json({
         status: 'success',

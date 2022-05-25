@@ -1,6 +1,6 @@
 let inviteurl = document.getElementById('inviteurlLink');
-let inviteName = document.getElementById('invite_name');
-inviteName = inviteName.innerText;
+let inviteName = document.getElementById('invite_name').innerText;
+inviteName = inviteName.replace(/\s/g, '');
 let endI = document.getElementById('inviteendpoint');
 let endinvi = endI.innerText;
 endinvi = btoa(endinvi);

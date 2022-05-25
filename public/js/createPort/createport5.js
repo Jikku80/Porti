@@ -74,7 +74,7 @@ layout5.addEventListener("click", () => {
     let showNo = document.getElementById("fifthCheck");
     let youremail = document.getElementById("fifthemail");
     let fb = document.getElementById("fifthFb");
-    let location = document.getElementById("fifthLoc");
+    let loction = document.getElementById("fifthLoc");
     let img1 = document.getElementById("fifthimg1");
     let submit = document.getElementById("fifthformbtn");
     let theme = "da98568d1b2005611973ad49868b38aa8ae68fd7";
@@ -100,7 +100,7 @@ layout5.addEventListener("click", () => {
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
             return false;
         }
-        if (location.value < 1 || location.value == "" || location.value == null) {
+        if (loction.value < 1 || loction.value == "" || loction.value == null) {
             return false;
         }
         if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
@@ -119,7 +119,7 @@ layout5.addEventListener("click", () => {
             formData.append("showNo", showNo.checked);
             formData.append("email", youremail.value);
             formData.append("fb", fb.value);
-            formData.append("location", location.value);
+            formData.append("location", loction.value);
             formData.append("theme", theme);
             for (var x = 0; x < img1.files.length; x++) {
                 formData.append("images", img1.files[x]);
@@ -130,7 +130,6 @@ layout5.addEventListener("click", () => {
                 method: 'POST'
             }).then((response) => {
                 load.classList.add("hidden");
-                console.log(response);
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
                     window.setTimeout(() => {
@@ -152,7 +151,7 @@ layout5.addEventListener("click", () => {
             yourwhy.value = "",
             youremail.value = "",
             fb.value = "",
-            location.value = "",
+            loction.value = "",
             yourno.value = "",
             img1.value = ""
     })

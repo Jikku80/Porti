@@ -94,7 +94,7 @@ layout6.addEventListener("click", () => {
     let showNo = document.getElementById("sixthCheck");
     let youremail = document.getElementById("sixthemail");
     let fb = document.getElementById("sixthFb");
-    let location = document.getElementById("sixthLoc");
+    let loction = document.getElementById("sixthLoc");
     let yourwork = document.getElementById("sixthwork");
     let hd1 = document.getElementById("sixth1");
     let hd2 = document.getElementById("sixth2");
@@ -126,7 +126,7 @@ layout6.addEventListener("click", () => {
         if (fb.value < 1 || fb.value == "" || fb.value == null) {
             return false;
         }
-        if (location.value < 1 || location.value == "" || location.value == null) {
+        if (loction.value < 1 || loction.value == "" || loction.value == null) {
             return false;
         }
         if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
@@ -168,7 +168,7 @@ layout6.addEventListener("click", () => {
                     theme: theme,
                     email: youremail.value,
                     fb: fb.value,
-                    location: location.value,
+                    location: loction.value,
                     previous: yourwork.value,
                     firstImgHead: hd1.value,
                     secondImgHead: hd2.value,
@@ -196,7 +196,7 @@ layout6.addEventListener("click", () => {
         yourname.value = "",
             youremail.value = "",
             fb.value = "",
-            location.value = "",
+            loction.value = "",
             yourno.value = "",
             aboutyou.value = "",
             what.value = "",

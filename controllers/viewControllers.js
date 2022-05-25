@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const Message = require('./../models/messageModel');
 const User = require('./../models/userModel');
 
@@ -259,6 +261,37 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.removePortiOldImg = catchAsync(async (req, res, next) => {
+    const item = await Portfolio.findByIdAndUpdate(req.body.id)
+    if (fs.existsSync(`public/images/ports/imageCover/${item.imageCover}`)) {
+        if (item.imageCover.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageSecond/${item.imageSecond}`)) {
+        if (item.imageSecond.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageSecond/${item.imageSecond}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageThird/${item.imageThird}`)) {
+        if (item.imageThird.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageThird/${item.imageThird}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageFourth/${item.imageFourth}`)) {
+        if (item.imageFourth.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageFourth/${item.imageFourth}`);
+        }
+    }
+    if (fs.existsSync(`public/images/ports/imageFifth/${item.imageFifth}`)) {
+        if (item.imageFifth.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/imageFifth/${item.imageFifth}`);
+        }
+    }
+
+    next();
+})
+
 exports.updatePortImgData = catchAsync(async (req, res, next) => {
 
     const updatedPortfolio = await Portfolio.findByIdAndUpdate(
@@ -285,6 +318,19 @@ exports.updatePortImgData = catchAsync(async (req, res, next) => {
         portfolio: updatedPortfolio
     });
 });
+
+exports.removePortiOldImgColl = catchAsync(async (req, res, next) => {
+    const item = await Portfolio.findByIdAndUpdate(req.body.id)
+    let imgs = item.images;
+    for (let i = 0; i < imgs.length; i++) {
+        if (fs.existsSync(`public/images/ports/imageColl/${item.images[i]}`)) {
+            if (item.images[i].length !== 0) {
+                await fs.promises.unlink(`public/images/ports/imageColl/${item.images[i]}`);
+            }
+        }
+    }
+    next();
+})
 
 exports.updatePortImgCollec = catchAsync(async (req, res, next) => {
 

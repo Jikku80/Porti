@@ -39,7 +39,7 @@ p{
 .land__nav__sub{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .land__goto{
