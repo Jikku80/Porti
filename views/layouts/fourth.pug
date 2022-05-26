@@ -49,9 +49,9 @@ block content
                 img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
             .cont__boxbg
                 if (portfolio.showNo === true)
-                    .cont__box
+                    .cont__box.fourth__cont
                         p= `Phone: ${portfolio.phn_no}` 
-                .cont__box
+                .cont__box.fourth__cont
                     p= `Email: ${portfolio.email}`
                 if (portfolio.fb != "")
                     .cont
@@ -60,7 +60,7 @@ block content
                                 img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
                             else 
                                 img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
-                .cont__box
+                .cont__box.fourth__cont
                     p= `Address: ${portfolio.location}`
 
         script(src="/js/layouts/fourth.js") 

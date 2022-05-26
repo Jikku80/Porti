@@ -38,10 +38,17 @@ exports.newMsg = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.portiHighlights = catchAsync(async (req, res, next) => {
+    res.status(200).render('highlights', {
+    })
+})
+
 exports.gotoPort = catchAsync(async (req, res, next) => {
 
+    const portfolio = await Portfolio.find({ user: req.user.id })
     res.status(200).render('create', {
-        title: 'Create Portfolio'
+        title: 'create',
+        portfolio: portfolio[0]
     })
 })
 

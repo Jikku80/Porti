@@ -24,9 +24,9 @@
             .form__bod
                 label Show Your Phone Number: 
                 if (portfolio.showNo === true)
-                    input#upCheckSec(type="checkbox" checked="checked")
+                    input#upCheckSec.checkbox(type="checkbox" checked="checked")
                 else
-                    input#upCheckSec(type="checkbox") 
+                    input#upCheckSec.checkbox(type="checkbox") 
             .form__bod 
                 label Change Theme 
                 select#themeSec
@@ -40,16 +40,16 @@
             .form__bod
                 label Address: 
                 input#upLocSec(type="text" value=`${portfolio.location}`)
-            button#updateBtnSec.redbtn Update
+            button#updateBtnSec.redbtn.bigbtn Update
 
     button#update_ImgCollec.redbtn.upMarg Update Portfolio Images
     #update_ImgFormCollec.hidden.upform
+        .upform__head 
+            h1 Update Your Port Images
+            img.canclCollec(src="/images/cancel.png", alt="cancel_img")
         form#upImageCollec
-            .upform__head 
-                h1 Update Your Port Images
-                img.canclCollec(src="/images/cancel.png", alt="cancel_img")
             .form__bod.file_part
                 input#img1Collec(type="file" accept="image/*" multiple name="img1", required)
-            button#updateImgBtnCollec.redbtn Update
+            button#updateImgBtnCollec.redbtn.bigbtn Update
 
 script(src="/js/layouts/landing2.js") 

@@ -245,6 +245,12 @@ html{
   height: auto;
 }
 
+.creation__body{
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+
 .port__bod, .invi__section, .menu__section{
   margin: 4%;
   background-color: rgba(255, 255, 255, 0.103);  

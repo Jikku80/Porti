@@ -10,13 +10,13 @@
                 input#upname(type="text" name="name" value=`${portfolio.name}` required)
             .form__bod
                 label About You:
-                textarea#upabout(rows="4" cols="30" name="about" required)= portfolio.about
+                textarea#upabout(rows="5" cols="50" name="about" required)= portfolio.about
             .form__bod
                 label What You Do:
-                textarea#upwhat(rows="4" cols="30" name="what" required)= portfolio.what
+                textarea#upwhat(rows="5" cols="50" name="what" required)= portfolio.what
             .form__bod
                 label Why You Do It:
-                textarea#upwhy(rows="4" cols="30" name="why" required)= portfolio.why
+                textarea#upwhy(rows="5" cols="50" name="why" required)= portfolio.why
             label Contact Details:
             .form__bod
                 label Phone Number: 
@@ -24,9 +24,9 @@
             .form__bod
                 label Show Your Phone Number: 
                 if (portfolio.showNo === true)
-                    input#upCheck(type="checkbox" checked="checked")
+                    input#upCheck.checkbox(type="checkbox" checked="checked")
                 else
-                    input#upCheck(type="checkbox") 
+                    input#upCheck.checkbox(type="checkbox") 
             .form__bod 
                 label Change Theme 
                 select#themes
@@ -46,15 +46,15 @@
                 input#upLoc(type="text" value=`${portfolio.location}`)
             .form__bod
                 label Detail:
-                textarea#upwork(rows="4" cols="30" name="previous" required)= portfolio.previous
-            button#updateBtn.redbtn Update
+                textarea#upwork(rows="5" cols="50" name="previous" required)= portfolio.previous
+            button#updateBtn.redbtn.bigbtn Update
     
     button#update_Img.redbtn.upMarg Update Portfolio Images
     #update_ImgForm.hidden.upform
+        .upform__head 
+            h1 Update Your Port Images
+            img.cancl(src="/images/cancel.png", alt="cancel_img")
         form#upImage
-            .upform__head 
-                h1 Update Your Port Images
-                img.cancl(src="/images/cancel.png", alt="cancel_img")
             .form__bod.file_part
                 input#img1(type="file" accept="image/*" name="img1", required)
                 label Heading: 
@@ -76,6 +76,6 @@
                 label Heading: 
                 input#fifthImg(type="text" value= `${portfolio.fifthImgHead}` name="fifthImgHead")
 
-            button#updateImgBtn.redbtn Update
+            button#updateImgBtn.redbtn.bigbtn Update
 
 script(src="/js/layouts/landing.js") 

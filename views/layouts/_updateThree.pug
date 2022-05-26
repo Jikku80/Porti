@@ -35,9 +35,9 @@
                 .form__bod
                     label Show Your Phone Number: 
                     if (portfolio.showNo === true)
-                        input#upCheckSix(type="checkbox" checked="checked")
+                        input#upCheckSix.checkbox(type="checkbox" checked="checked")
                     else
-                        input#upCheckSix(type="checkbox") 
+                        input#upCheckSix.checkbox(type="checkbox") 
                 .form__bod 
                     label Change Theme 
                     select#themeSix
@@ -64,5 +64,5 @@
                 .form__bod
                     label How you solved that problem?
                     textarea#secondImgSix(type="text" rows="4" cols="30" name="secondImgHead")= portfolio.secondImgHead
-                button#updateBtnSix.redbtn Update
+                button#updateBtnSix.redbtn.bigbtn Update
 script(src="/js/layouts/landing3.js")

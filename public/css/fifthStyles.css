@@ -44,11 +44,13 @@
 }
 
 .picture-box{
-    height: fit-content;
+    display: flex;
+    align-items: center;
+    background-color: rgb(184, 184, 184);
+    margin:5px;
 }
 
 .picture-box__img{
-    margin:5px;
     width: 30vw;
     cursor: pointer;
 }
@@ -69,8 +71,13 @@
     color: chocolate;
 }
 
+.fif__box{
+    width: 70%;
+}
+
 .fif__box:hover{
     background-color: chocolate;
+    transform: scale(1.1);
 }
 
 .fifth{
@@ -102,4 +109,9 @@
     .contact__bod, .about__bod{
         width: 90vw;
     }
+
+    .fif__box{
+        width: 90%;
+    }
+    
 }

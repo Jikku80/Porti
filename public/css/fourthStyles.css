@@ -108,6 +108,14 @@
     width: 90vw;
 }
 
+.fourth__cont{
+    width: 50%;
+}
+
+.fourth__cont:hover{
+    background-color: rgb(37, 37, 37);
+}
+
 .main__about__head, .main__prev__head, .main__cont__head{
     display: flex;
     justify-content: space-between;
@@ -168,6 +176,10 @@
 
     .main__about__section, .main__prev__section, .main__cont__section{
         height: 95vh;
+    }
+
+    .fourth__cont{
+        width: 90%;
     }
 }
 

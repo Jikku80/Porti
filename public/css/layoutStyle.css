@@ -80,24 +80,17 @@ p{
 }
 
 .land__update{
-    background-color: rgba(245, 129, 129, 0.116);
-    border: 1px solid crimson;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     margin: 1vh;
     display: flex;
     justify-content: space-between;
-    width: 95vw;
-    overflow-y: auto;
+    width: 90%;
+    height: auto;
 }
 
 .upMarg{
     margin: 2%;
-}
-
-.land__sixth, .land__secd, .land__farst{
-    padding: 1vh;
-    height: 70vh;
 }
 
 .upform__head {
@@ -105,6 +98,7 @@ p{
     justify-content: space-between;
     align-items: center;
     padding-top: 2%;
+    width: 100%;
 }
 
 .upform__head h1{
@@ -164,7 +158,7 @@ p{
 }
 
 #upPort label, #upImage label, #upPortSec label, #upImageCollec label, #upPortSix label, .inviF label, #upInviImage label{
-    margin-right: 2%;
+    /* margin-right: 2%; */
     color: gray;
 }
 
@@ -181,7 +175,8 @@ p{
     border-bottom-left-radius: 5px;
     background-color: transparent;
     color: white;
-    padding: 1%;
+    /* padding: 1%; */
+    margin: 3%;
 }
 
 #upFb, #upFbSec, #upFbSix{
@@ -214,10 +209,6 @@ p{
 
 .form__divider{
     margin: 3%;
-}
-
-.file_part label{
-    margin-left: 4%;
 }
 
 #re__up{
@@ -279,8 +270,8 @@ input[type=number] {
 
 input[type='file']{
     background-color: transparent;
-    border: none;
-    width: 25%;
+    border: none !important;
+    width: 50%;
     color: white;
     font-size:16px;
     font-family: monospace;
@@ -305,6 +296,15 @@ input::file-selector-button{
     display: none;
 }
 
+.checkbox{
+    height: 5vh;
+    width: 5vw;
+}
+
+.bigbtn{
+    height: 50px;
+
+}
 
 .sec__land__bod{
     display: flex;
@@ -321,10 +321,7 @@ input::file-selector-button{
 
 .del__bod{
     margin: 2%;
-    border: 1px solid crimson;
-    border-radius: 1rem;
-    background-color: rgba(245, 129, 129, 0.116);
-    padding: 2%;
+    width: 100%;
 }
 
 .dt__cf{
@@ -335,6 +332,10 @@ input::file-selector-button{
     height: 100vh;
     font-size: 1.5rem;
     padding: 2%;
+}
+
+#delPort{
+    width: 100%;
 }
 
 .delete__Confirm{

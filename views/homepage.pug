@@ -12,8 +12,11 @@ block content
             a.fkAncky(href="#aboutTM") About 
                 span.mid  Tech
                     span.lst  Mafia 
-            a.crPr(href="/porti")
-                p#go__create Create Portfolio
+            if (!user)
+                a.crPr(href="/porti-highlights") View Porti-Features
+            else
+                a.crPr(href="/porti")
+                    p#go__create Create Portfolio
             .fkAncky
                 a.opst(href="#contactTM") Reach  
                     span.mid  Tech

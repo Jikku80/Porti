@@ -46,8 +46,8 @@ router.get('/:id/tweaks', menuController.itemTweaks);
 
 
 router.get('/login', viewsController.getOverview);
-
-router.get('/porti', viewsController.gotoPort);
+router.get('/porti-highlights', viewsController.portiHighlights);
+router.get('/porti', authController.protect, viewsController.gotoPort);
 router.get('/invitations/:id', viewsController.gotoInviMid);
 
 

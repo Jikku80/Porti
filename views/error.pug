@@ -1,7 +1,20 @@
 extends base
 
 block content 
-    include _header.pug
+    .head__main
+        a#createporti.crpt(href="/porti" title="porti")
+            img(src="/images/plus.png", alt="add__img")
+        a.port_sec_head.hm(href="/" title="home")
+            h1 Tech 
+                span Mafia
+
+    .loader.hidden
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+                span.lodmid Mafia
+                    span.lodend ...
     .four0four
         h1#four0= `${status} ERROR`
         if (`${status}` == 401)
@@ -10,3 +23,5 @@ block content
         else
             h1 Oops! something ain't right! 
             a(href="/") Go Back
+
+    script(src="/js/alert.js")  

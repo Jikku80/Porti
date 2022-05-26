@@ -63,6 +63,7 @@
 
 .contact__sec__box:hover{
     background-color: teal;
+    width: 50%;
 }
 
 @media (min-width: 601px) and (max-width: 900px){

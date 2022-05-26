@@ -1,0 +1,56 @@
+extends base
+
+block content
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
+    .port__nav__second.small__nav
+        h1 Please login or Signup to Create Your Portfolio!
+        a.login(href="/login") LogIn | SignUp
+    .port__bod
+        h2 Create a portfolio | You are not Logged In!
+        p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
+        p Need tips Creating Your Portfolio Go To 
+            a.portDet(href="/#portiHelper") Porti Helper
+        .layout__main
+            .un_layout
+                img(src="/images/layout1.gif", alt="layout1")
+                p PL Layout (5 Images required)
+            .un_layout
+                img(src="/images/layout2.gif", alt="layout2")
+                p BG Layout (5 Images required)
+            .un_layout
+                img(src="/images/layout3.gif", alt="layout3")
+                p ST Layout (5 Images required)
+            .un_layout 
+                img(src="/images/layout4.gif", alt="layout1")
+                p BS Layout (5 Images required)
+            .un_layout
+                img(src="/images/layout5.gif", alt="layout5")
+                p AT Layout (you can upload upto 20 images)
+            .un_layout
+                img(src="/images/layout6.gif", alt="layout6")
+                p NI Layout (no image required)
+    .invi__section 
+        h2 Create Invitation | You are not Logged In
+        p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
+        .layout__main
+            .un_layout
+                img(src="/images/invi1.gif", alt="invi1")
+                p MRG Layout (5 Images required)
+            .un_layout
+                img(src="/images/invi2.png", alt="invi2")
+                p INI Layout (1 | No Images required)
+    .menu__section
+        h2 Create Menu For Your Restro 
+        p Pick any of the layouts below and buid a menu for your restro 
+        .layout__main
+                .un_layout
+                    img(src="/images/invi1.gif", alt="menu1")
+                    p MRG Layout (5 Images required)
+
+    script(src="/js/alert.js") 

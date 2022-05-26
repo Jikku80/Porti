@@ -85,14 +85,12 @@ body{
 }
 
 #contact{
-    /* background: linear-gradient(to right, rgb(201, 201, 201), teal); */
     color: rgb(88, 233, 233);
     padding:2%;
     width: 80vw;
     height: 100vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    font-size: 16px;
 }
 
 #contact .bgbox{
