@@ -8,7 +8,18 @@ block content
     p.lodtl Tech 
             span.lodmid Mafia
                 span.lodend ...
-  include _header.pug
+  .login__head 
+    a.port_sec_head.hm(href="/" title="home")
+        h1 Tech 
+            span Mafia
+    if (!user)
+        a.crpt.smallest__cont(href="/porti-highlights" title="porti")
+            img(src="/images/plus.png", alt="view_port")
+            p.name__tag Porti
+    else
+        a.crpt.smallest__cont(href="/porti" title="porti")
+            img(src="/images/plus.png", alt="view_port")
+            p.name__tag Porti
   form#reset__form.rs_form
     h2#reset__head Reset Your Password
     p Check your mail for token

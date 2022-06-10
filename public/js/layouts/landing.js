@@ -5,6 +5,7 @@ let headGo = document.querySelector(".land__goto");
 let updateImgForm = document.getElementById('update_ImgForm');
 let updateImg = document.getElementById("update_Img");
 let delFirst = document.getElementById("delPp");
+let portiqrsec = document.querySelector(".qr__sec");
 
 updatePort.addEventListener('click', () => {
     headGo.classList.add('hidden');
@@ -12,6 +13,7 @@ updatePort.addEventListener('click', () => {
     updatePort.classList.add('hidden');
     updateImg.classList.add("hidden");
     delFirst.classList.add("hidden");
+    portiqrsec.classList.add("hidden");
     updateForm.classList.remove('hidden');
 })
 
@@ -21,6 +23,7 @@ updateImg.addEventListener("click", () => {
     updatePort.classList.add('hidden');
     updateImg.classList.add("hidden");
     delFirst.classList.add("hidden");
+    portiqrsec.classList.add("hidden");
     updateImgForm.classList.remove('hidden');
 })
 
@@ -33,6 +36,7 @@ cancel.addEventListener("click", () => {
     updatePort.classList.remove('hidden');
     updateImg.classList.remove("hidden");
     delFirst.classList.remove("hidden");
+    portiqrsec.classList.remove("hidden");
     updateForm.classList.add('hidden');
 })
 
@@ -42,6 +46,7 @@ cancl.addEventListener("click", () => {
     updatePort.classList.remove('hidden');
     updateImg.classList.remove("hidden");
     delFirst.classList.remove("hidden");
+    portiqrsec.classList.remove("hidden");
     updateImgForm.classList.add('hidden');
 })
 
@@ -76,6 +81,7 @@ updBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let portfolioName = document.getElementById("port_name")
     const endpoint = '/updateport'
     try {
         await fetch(endpoint, {
@@ -102,6 +108,11 @@ updBtn.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
+                let result = response.json();
+                result.then(item => {
+                    let portfolio = item.updatedPortfolio
+                    portfolioName.innerHTML = `${portfolio.name}`
+                })
                 window.setTimeout(() => {
                     headGo.classList.remove('hidden');
                     landNav.classList.remove('hidden');

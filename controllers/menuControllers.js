@@ -3,6 +3,7 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const Menu = require('./../models/menuModel');
+const Restaurant = require('./../models/restaurantDetailModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
@@ -96,6 +97,42 @@ exports.getMenu = factory.getOne(Menu);
 exports.updateMenu = factory.updateOne(Menu);
 exports.makeMenu = factory.createOne(Menu);
 
+exports.createRestaurant = catchAsync(async (req, res, next) => {
+
+    const doc = await Restaurant.create({
+        name: req.body.name,
+        user: req.user.id,
+        slogan: req.body.slogan,
+        Address: req.body.Address
+    });
+
+    res.status(201).json({
+        status: 'success',
+        data: {
+            data: doc
+        }
+    })
+})
+
+exports.updateRestaurant = catchAsync(async (req, res, next) => {
+
+    const updatedRestro = await Restaurant.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedRestro) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            restro: updatedRestro
+        }
+    })
+})
+
 exports.delMenu = catchAsync(async (req, res, next) => {
     const doc = await Menu.findByIdAndDelete(req.params.id);
     if (fs.existsSync(`public/images/menu-pic/${doc.coverImage}`)) {
@@ -119,28 +156,33 @@ exports.itemTweaks = catchAsync(async (req, res) => {
             title: 'Porti Detail',
             menu
         })
-    }).catch(err => console.log(err));
+    })
 })
 
 exports.menuFirst = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
-    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate().srt()
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate();
+    const restro = await Restaurant.find({ user: user_id })
     await features.query.populate('user').then(menus => {
         res.status(200).render('menu/firstMenu', {
             title: "menu",
-            menus
+            menus,
+            restro
         })
     })
+
 })
 
 exports.newMenu = catchAsync(async (req, res, next) => {
 
     const user_id = req.params.id
-    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate().srt()
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate();
+    const restro = await Restaurant.find({ user: user_id })
     await features.query.populate('user').then(menus => {
         res.status(200).render('menu/overall', {
             title: "Add Items",
-            menus
+            menus,
+            restro
         })
     })
 })
@@ -180,7 +222,7 @@ exports.lookup = catchAsync(async (req, res, next) => {
 exports.paginate = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const pg = req.params.count
-    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: pg }).paginate().srt();
+    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: pg }).paginate();
     await features.query.then((items) => {
         res.status(200).json(items)
     })

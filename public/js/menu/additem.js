@@ -22,6 +22,7 @@ additembtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let subItems = document.querySelector(".sub__items")
     const formData = new FormData();
     formData.append("name", iname.value);
     formData.append("price", iprice.value);
@@ -38,7 +39,24 @@ additembtn.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 201) {
                 successAlert("You Just Added a Item to your Menu :)");
-                getAllItem();
+                let result = response.json();
+                result.then(item => {
+                    console.log(item.data);
+                    let fResult = item.data.data
+                    subItems.innerHTML += `
+                                <div class="menu__card">
+                                    <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}">
+                                    <div class="menu__card__det">
+                                        <h3 class="menu__card__head">${fResult.name}</h3>
+                                        <p class="menu__card__price">${fResult.price}</p>
+                                        <p class="menu__card__cat">${fResult.category}</p>
+                                        <p class="menu__card__detail">${fResult.detail}</p>
+                                        <a href="/${fResult._id}/tweaks?update" class="ygbtn">Update</a>
+                                        <a href="/${fResult._id}/tweaks?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                        `
+                })
             } else {
                 console.log(response)
                 errorAlert("Duplication Input error!!")
@@ -254,14 +272,16 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="menu__link">
             <p class="head">Your Menu Link</p>
-            <p class="menu__link__displayer">${location.protocol}//${location.host}/${nm}/menu/${resultpath[1]}/${itheme}</p>
+            <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/${nm}/menu/${resultpath[1]}/${itheme}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
+            <button class="ygbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
+            <button class="ygbtn smallbtn downQr hidden" id="dqr">Download QRCode</button>
         </div>
     `
     let openMenu = document.getElementById("openMenu");
     openMenu.addEventListener("click", () => {
-        location.assign(`/${nm}/menu/${resultpath[1]}/${itheme}`)
+        window.open(`/${nm}/menu/${resultpath[1]}/${itheme}`)
     })
 
     let menuLinkDis = document.querySelector(".menu__link__displayer");
@@ -272,5 +292,115 @@ prev.addEventListener("click", async () => {
         navigator.clipboard.writeText(plink);
 
         successAlert("Link Copied")
+    })
+})();
+
+(function () {
+    let restroId = document.querySelector(".restro__len").innerText;
+    let updateRestroBtn = document.getElementById("updateResBtn");
+    let addRestroBtn = document.getElementById("addResBtn");
+    if (restroId >= 1) {
+        addRestroBtn.classList.add("hide")
+        updateRestroBtn.classList.remove("hide");
+    } else {
+        updateRestroBtn.classList.add("hide");
+        addRestroBtn.classList.remove('hide');
+    }
+})();
+
+(function () {
+    let addRestroBtn = document.getElementById("addResBtn");
+    let resName = document.getElementById("resname");
+    let resAddress = document.getElementById("resaddress");
+    let resSlogan = document.getElementById("resslogan");
+
+    addRestroBtn.addEventListener("click", async (e) => {
+        if (resName.value < 1 || resName.value == "" || resName.value == null) {
+            return false;
+        }
+        if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
+            return false;
+        }
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/createRestaurant`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: resName.value,
+                    slogan: resSlogan.value,
+                    Address: resAddress.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Restro Details Updated Successfully :)");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+
+(function () {
+    let updateRestroBtn = document.getElementById("updateResBtn");
+    let restroId = document.querySelector(".restro__id").innerText;
+    let resName = document.getElementById("resname");
+    let resAddress = document.getElementById("resaddress");
+    let resSlogan = document.getElementById("resslogan");
+
+    updateRestroBtn.addEventListener("click", async (e) => {
+        if (resName.value < 1 || resName.value == "" || resName.value == null) {
+            return false;
+        }
+        if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
+            return false;
+        }
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/${restroId}/updateRestaurant`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: resName.value,
+                    slogan: resSlogan.value,
+                    Address: resAddress.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Restro Details Updated Successfully :)");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
     })
 })()

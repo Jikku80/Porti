@@ -50,6 +50,22 @@ p{
     margin: 2vh;
 }
 
+.smallest__cont{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+}
+  
+.name__tag{
+    margin-top: 0;
+    color: white;
+    font-size: 8px;
+    font-weight: 100;
+    font-family: monospace;
+    text-align: center;
+}
+
 .xsf{
     font-size: small;
 }
@@ -125,8 +141,8 @@ p{
 }
 
 .userdp{
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 8rem;
     cursor: pointer;
   }
@@ -334,7 +350,7 @@ input::file-selector-button{
     padding: 2%;
 }
 
-#delPort{
+#delPort, #delInvite{
     width: 100%;
 }
 
@@ -443,7 +459,7 @@ input::file-selector-button{
   }
 
 .breadcrumbs{
-    font-size: medium;
+    font-size: 8px;
     background-color: rgba(0, 0, 0, 0.247);
     padding: 2%;
     display: flex;
@@ -465,6 +481,20 @@ input::file-selector-button{
 
 .cur{
     color: white;
+}
+
+.copy__link{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.qr__sec{
+    display: flex;
+    justify-content: center;
+}
+
+.qr__img{
+    height: 50vh;
 }
 
 @media (min-width: 601px) and (max-width: 900px){

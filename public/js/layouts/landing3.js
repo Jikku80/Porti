@@ -3,12 +3,14 @@ let updateFormSix = document.getElementById('update_formSix');
 let headGoSix = document.querySelector(".land__goto");
 let landNavSix = document.querySelector(".land__nav__main");
 let delFirstSix = document.getElementById("delPp");
+let portiqrsix = document.querySelector(".qr__sec");
 
 updatePortSix.addEventListener('click', () => {
     headGoSix.classList.add('hidden');
     landNavSix.classList.add('hidden');
     updatePortSix.classList.add('hidden');
     delFirstSix.classList.add("hidden");
+    portiqrsix.classList.add("hidden");
     updateFormSix.classList.remove('hidden');
 })
 
@@ -19,6 +21,7 @@ cancelSix.addEventListener("click", () => {
     landNavSix.classList.remove('hidden');
     updatePortSix.classList.remove('hidden');
     delFirstSix.classList.remove("hidden");
+    portiqrsix.classList.remove("hidden");
     updateFormSix.classList.add('hidden');
 })
 
@@ -30,6 +33,7 @@ updBtnSix.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let portfolioName = document.getElementById("port_name");
     let upname = document.querySelector("#upnameSix");
     let upabout = document.getElementById("upaboutSix");
     let upwhat = document.getElementById('upwhatSix');
@@ -77,6 +81,11 @@ updBtnSix.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
+                let result = response.json();
+                result.then(item => {
+                    let portfolio = item.updatedPortfolio
+                    portfolioName.innerHTML = `${portfolio.name}`
+                })
                 window.setTimeout(() => {
                     headGoSix.classList.remove('hidden');
                     landNavSix.classList.remove('hidden');

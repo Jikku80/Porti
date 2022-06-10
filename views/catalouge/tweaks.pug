@@ -1,0 +1,74 @@
+extends baseCatalouge 
+
+block content
+
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
+    if (user)
+        if (catalouge.user.id == user.id)
+            p.itemid.hidden= catalouge.id
+            p.curusrid.hidden= user.id
+            .itemform__head 
+                a.blackbtn(href=`/catalouge/${user._id}/additems` title="Add Items") Go Back
+                a.blackbtn(href=`/${user.name}/catalouge/${user._id}/51eac6b471a284d3341d8c0c63d0f1a286262a18` title="My Menu") My Catalouge
+            .center
+                .your__items__bod
+                    .your__items
+                        .catalouge__card
+            .up__items__detail
+                h2.items__head Update Item Detail
+                form.upItem
+                    .form__bod
+                        label Items Name:
+                        input#upcatalitemname(type="text" value=catalouge.name required)
+                    .form__bod
+                        label Items Price: 
+                        input#upcatalitemprice(type="text" value=catalouge.price required)
+                    .form__bod
+                        label Items Serial No: 
+                        input#upcatalitemserialno(type="text" value=catalouge.serialno)
+                    .form__bod
+                        label Items Category: 
+                        input#upcatalitemcat(type="text" value=catalouge.category required)
+                    .form__bod
+                        label Items Sub Category: 
+                        input#upcatalitemsubcat(type="text" value=catalouge.subcategory)
+                    .form__bod
+                        label Detail (optional):
+                        textarea#upcatalitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= catalouge.detail
+                    .form__bod 
+                        label Theme:
+                        select#upcatalitemtheme
+                            option.opt(hidden selected)= catalouge.theme 
+                    .group__btn
+                        button#upcatalItemBtn.smallbtn.ygbtn Update Item
+                        a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel
+            .up__items__img
+                h2.items__head Update Items Image
+                form.upItem
+                    .form__bod.file_part
+                        input#upcatalcoverimage(type="file" accept="image/*" required)
+                    .group__btn
+                        button#upcatalImgItemBtn.smallbtn.ygbtn Update Item Image  
+                        a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel  
+            .del__items__sec 
+                h2.items__head Are You Sure You Want To Delete It?
+                .group__btn
+                    button#delcatalItemBtn.smallbtn.redbtn Delete Item  
+                    a(href=`/catalouge/${user._id}/additems`).smallbtn.ygbtn Cancel
+        else 
+            .confirm__pg 
+                h1 You Dont Belong Here!!!
+                a(href="/") Go Back
+    else 
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/login") Sign In
+
+    script(src="/js/alert.js")
+    script(src="/js/catalouge/itemtweaks.js") 

@@ -2,6 +2,8 @@ layout4 = document.querySelector("#layout4")
 portBod4 = document.querySelector(".port__bod");
 inviSec4 = document.querySelector('.invi__section');
 menuSec4 = document.querySelector('.menu__section');
+catSec4 = document.querySelector('.catalouge__section');
+
 id4 = document.getElementById("usId").innerText;
 
 let formLayoutFour = document.createElement("div");
@@ -95,6 +97,7 @@ layout4.addEventListener("click", () => {
     portBod4.classList.add("hidden");
     inviSec4.classList.add("hidden");
     menuSec4.classList.add("hidden");
+    catSec4.classList.add("hidden");
     layoutFour.classList.remove("hidden");
     let yourname = document.querySelector("#fourthname");
     let aboutyou = document.getElementById("fourthabout");
@@ -252,4 +255,5 @@ clCreate.addEventListener("click", () => {
     portBod4.classList.remove("hidden");
     inviSec4.classList.remove("hidden");
     menuSec4.classList.remove("hidden");
+    catSec4.classList.remove("hidden");
 })

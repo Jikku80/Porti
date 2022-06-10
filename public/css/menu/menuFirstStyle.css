@@ -30,6 +30,11 @@ html{
     padding: 1%;
 }
 
+.res__add, .res__slogan{
+    font-size: 16px;
+    color: gray;
+}
+
 .search{
     display: flex;
     justify-content: center;
@@ -99,19 +104,26 @@ html{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .sub__items{
-    display: flex;
-    width: 98%;
-    justify-content: left;
-    flex-wrap: wrap;
+    display: flex;    
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
     align-items: center;
+}
+
+.row__items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .menu__card{
     display: flex;
-    flex-direction: row;
+    align-items: center;
     width: 22vw;
     margin-top: 2%;
     cursor: pointer;
@@ -127,7 +139,6 @@ html{
     width: 40%;
     height: auto;
     border-radius: 1rem;
-    /* filter: blur(1.5rem); */
     box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.281);
 }
 
@@ -174,9 +185,6 @@ html{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
-    .sub__items{
-        width: 90%;
-    }
     .menu__card{
         width: 40vw;
     }

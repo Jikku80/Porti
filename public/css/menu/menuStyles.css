@@ -100,8 +100,8 @@ body{
 }
   
 .userDp{
-    height: 4.5rem;
-    width: 4.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
     cursor: pointer;
 }
   
@@ -163,7 +163,22 @@ body{
   .lodmid{
     color: rgb(240, 64, 99);
     font-weight: bolder;
-  }
+}
+
+.smallest__cont{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+}
+  
+.name__tag{
+    margin-top: 0;
+    color: white;
+    font-size: 8px;
+    font-weight: 100;
+    font-family: monospace;
+}
 
 .breadcrumbs{
     font-size: medium;
@@ -430,18 +445,32 @@ input::file-selector-button{
     justify-content: center;
 }
 
-.share__menu{
+.share__menu, .share__catalouge{
     text-align: left;
     margin-left: 10px;
 }
 
-.menu__link__displayer{
+.menu__link__displayer, .catalouge__link__displayer{
     border: 1px solid chocolate;
     background-color: chocolate;
     margin: 2% 2% 0% 2%;
     padding: 1%;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
+}
+
+.qr__displayer{
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
+
+.qr__img{
+    height: 50vh;
+}
+
+.hide{
+    visibility: hidden;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -459,13 +488,16 @@ input::file-selector-button{
 }
 
 @media screen and (max-width: 600px){
+    .breadcrumbs{
+        font-size: 10px;
+    }
     .form__bod{
         width: 80%;
     }
     .file_part input{
         width: 50%;
     }
-    .menu__link__displayer{
+    .menu__link__displayer, .catalouge__link__displayer{
         font-size: 5px;
         margin: 2%;
         padding: 2%;

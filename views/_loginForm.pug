@@ -10,8 +10,12 @@
         a.port_sec_head.hm(href="/" title="home")
             h1 Tech 
                 span Mafia
-        a.crpt(href="/porti" title="porti")
-            img(src="/images/plus.png", alt="view_port")
+        if (!user)
+            a.crpt(href="/porti-highlights" title="porti")
+                img(src="/images/plus.png", alt="view_port")
+        else
+            a.crpt(href="/porti" title="porti")
+                img(src="/images/plus.png", alt="view_port")
     form#loginForm(name="logForm")
         h2 Log into your account 
         .login__form__bod

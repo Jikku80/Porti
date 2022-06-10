@@ -2,6 +2,8 @@ layout3 = document.querySelector("#layout3")
 portBod3 = document.querySelector(".port__bod");
 inviSec3 = document.querySelector('.invi__section');
 menuSec3 = document.querySelector('.menu__section');
+catSec3 = document.querySelector('.catalouge__section');
+
 id3 = document.getElementById("usId").innerText;
 
 
@@ -96,6 +98,7 @@ layout3.addEventListener("click", () => {
     portBod3.classList.add("hidden");
     inviSec3.classList.add("hidden");
     menuSec3.classList.add("hidden");
+    catSec3.classList.add("hidden");
     layoutThree.classList.remove("hidden");
     let yourname = document.querySelector("#uthirdname");
     let aboutyou = document.getElementById("uthirdabout");
@@ -253,4 +256,5 @@ closeCreate.addEventListener("click", () => {
     portBod3.classList.remove("hidden");
     inviSec3.classList.remove("hidden");
     menuSec3.classList.remove("hidden");
+    catSec3.classList.remove("hidden");
 })

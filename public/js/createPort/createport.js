@@ -2,6 +2,7 @@ create_port = document.querySelector(".create_port")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
 menuSec = document.querySelector('.menu__section');
+catSec = document.querySelector('.catalouge__section');
 layout1 = document.querySelector("#layout1");
 id1 = document.getElementById("usId").innerText;
 
@@ -101,6 +102,7 @@ layout1.addEventListener("click", () => {
     portBod.classList.add("hidden");
     inviSec.classList.add("hidden");
     menuSec.classList.add("hidden");
+    catSec.classList.add("hidden");
     crForm.classList.remove("hidden");
     let yourname = document.querySelector("#yourname");
     let aboutyou = document.getElementById("aboutyou");
@@ -258,4 +260,5 @@ cancelCreate.addEventListener("click", () => {
     portBod.classList.remove("hidden");
     inviSec.classList.remove("hidden");
     menuSec.classList.remove("hidden");
+    catSec.classList.remove("hidden");
 })

@@ -2,6 +2,8 @@ layout2 = document.querySelector("#layout2")
 portBod2 = document.querySelector(".port__bod");
 inviSec2 = document.querySelector('.invi__section');
 menuSec2 = document.querySelector('.menu__section');
+catSec2 = document.querySelector('.catalouge__section');
+
 id2 = document.getElementById("usId").innerText;
 
 let formLayoutTwo = document.createElement("div");
@@ -95,6 +97,7 @@ layout2.addEventListener("click", () => {
     portBod2.classList.add("hidden");
     inviSec2.classList.add("hidden");
     menuSec2.classList.add("hidden");
+    catSec2.classList.add("hidden");
     layoutTwo.classList.remove("hidden");
     let yourname = document.querySelector("#yrname");
     let aboutyou = document.getElementById("yrabout");
@@ -252,4 +255,5 @@ canclCreate.addEventListener("click", () => {
     portBod2.classList.remove("hidden");
     inviSec2.classList.remove("hidden");
     menuSec2.classList.remove("hidden");
+    catSec2.classList.remove("hidden");
 })

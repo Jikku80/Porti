@@ -5,6 +5,8 @@ let ldNav = document.querySelector(".land__nav__main");
 let updateInviImgForm = document.getElementById('update_ImgInviForm');
 let updateInviImg = document.getElementById("update_InviImg");
 let delInviFirst = document.getElementById("delinvi");
+let inviqrsec = document.querySelector(".qr__sec");
+
 
 updateInvi.addEventListener('click', () => {
     hdGo.classList.add('hidden');
@@ -12,6 +14,7 @@ updateInvi.addEventListener('click', () => {
     updateInvi.classList.add('hidden');
     updateInviImg.classList.add("hidden");
     delInviFirst.classList.add("hidden");
+    inviqrsec.classList.add("hidden");
     updateInviForm.classList.remove('hidden');
 })
 
@@ -21,6 +24,7 @@ updateInviImg.addEventListener("click", () => {
     updateInvi.classList.add('hidden');
     updateInviImg.classList.add("hidden");
     delInviFirst.classList.add("hidden");
+    inviqrsec.classList.add("hidden");
     updateInviImgForm.classList.remove('hidden');
 })
 
@@ -33,6 +37,7 @@ cancelInvi.addEventListener("click", () => {
     updateInvi.classList.remove('hidden');
     updateInviImg.classList.remove("hidden");
     delInviFirst.classList.remove("hidden");
+    inviqrsec.classList.remove("hidden");
     updateInviForm.classList.add('hidden');
 })
 
@@ -42,6 +47,7 @@ canclInvi.addEventListener("click", () => {
     updateInvi.classList.remove('hidden');
     updateInviImg.classList.remove("hidden");
     delInviFirst.classList.remove("hidden");
+    inviqrsec.classList.remove("hidden");
     updateInviImgForm.classList.add('hidden');
 })
 
@@ -68,6 +74,7 @@ updinBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let invitationName = document.getElementById("invite_name");
     const endpoint = '/api/v1/invite/updateInvi'
     try {
         await fetch(endpoint, {
@@ -91,6 +98,11 @@ updinBtn.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Your Invitation has been updated :)");
+                let result = response.json();
+                result.then(item => {
+                    let invite = item.updatedInvite
+                    invitationName.innerHTML = `${invite.fname} and ${invite.sname}`
+                })
                 window.setTimeout(() => {
                     hdGo.classList.remove('hidden');
                     ldNav.classList.remove('hidden');
@@ -100,7 +112,7 @@ updinBtn.addEventListener("click", async (e) => {
                     updateInviForm.classList.add('hidden');
                 }, 400);
             } else {
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                errorAlert("Invalid input, Duplication Input error!!!")
             }
         })
 
@@ -155,7 +167,7 @@ upinImgBtn.addEventListener("click", async (e) => {
                     updateInviImgForm.classList.add('hidden');
                 }, 400);
             } else {
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                errorAlert("Invalid input, Duplication Input error!!!")
             }
         })
 

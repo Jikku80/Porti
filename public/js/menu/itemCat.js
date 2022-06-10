@@ -212,7 +212,8 @@ searchBar.addEventListener("keypress", async (e) => {
     if (e.key == "Enter" || e.key == "Search") {
         let searchValue = searchBar.value;
         let searchLowNam = searchValue.toLowerCase();
-        let subItems = document.querySelector(".sub__items")
+        page.classList.add("hidden")
+        let subItems = document.querySelector(".sub__items");
         try {
             e.preventDefault();
             let load = document.querySelector('.loader');

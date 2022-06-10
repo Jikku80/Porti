@@ -1,0 +1,72 @@
+.your__item__bod{
+    display: flex;
+    justify-content: center;
+}
+
+.your__items{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.catalouge__card{
+    display: flex;
+    align-items: center;
+    width: 22rem;
+    padding: 2%;
+}
+
+.catalouge__card__img{
+    width: 50%;
+}
+
+.catalouge__card__det{
+    width: 50%;
+    padding: 1%;
+}
+
+.items__head{
+    text-align: center;
+    color: chocolate;
+}
+
+.paginate{
+    display: flex;
+    justify-content: center;
+}
+
+.next__catal, .prev__catal{
+    background-color: transparent;
+    border: 2px solid goldenrod;
+    color: goldenrod;
+    padding:2%;
+    margin: 25px;
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.next__catal:hover, .prev__catal:hover{
+    background-color: rgba(218, 165, 32, 0.486);
+}
+
+#upcatalitemtheme{
+    background-color: rgba(0, 0, 0, 0.247);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    padding: 2%;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .catalouge__card{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .catalouge__card{
+        width: 100%;
+    }
+}

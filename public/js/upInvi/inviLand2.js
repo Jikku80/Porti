@@ -5,6 +5,7 @@ let ldNav2 = document.querySelector(".land__nav__main");
 let updateInviImgForm2 = document.getElementById('update_ImgInviForm2');
 let updateInviImg2 = document.getElementById("update_InviImg2");
 let delInvi2 = document.getElementById("delinvi");
+let inviqrsec2 = document.querySelector(".qr__sec");
 
 updateInvi2.addEventListener('click', () => {
     hdGo2.classList.add('hidden');
@@ -12,6 +13,7 @@ updateInvi2.addEventListener('click', () => {
     updateInvi2.classList.add('hidden');
     updateInviImg2.classList.add("hidden");
     delInvi2.classList.add("hidden");
+    inviqrsec2.classList.add("hidden");
     updateInviForm2.classList.remove('hidden');
 })
 
@@ -21,6 +23,7 @@ updateInviImg2.addEventListener("click", () => {
     updateInvi2.classList.add('hidden');
     updateInviImg2.classList.add("hidden");
     delInvi2.classList.add("hidden");
+    inviqrsec2.classList.add("hidden");
     updateInviImgForm2.classList.remove('hidden');
 })
 
@@ -33,6 +36,7 @@ cancelInvi2.addEventListener("click", () => {
     updateInvi2.classList.remove('hidden');
     updateInviImg2.classList.remove("hidden");
     delInvi2.classList.remove("hidden");
+    inviqrsec2.classList.remove("hidden");
     updateInviForm2.classList.add('hidden');
 })
 
@@ -42,6 +46,7 @@ canclInvi2.addEventListener("click", () => {
     updateInvi2.classList.remove('hidden');
     updateInviImg2.classList.remove("hidden");
     delInvi2.classList.remove("hidden");
+    inviqrsec2.classList.remove("hidden");
     updateInviImgForm2.classList.add('hidden');
 })
 
@@ -63,6 +68,7 @@ updinBtn2.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let invitationName = document.getElementById("invite_name");
     const endpoint = `/api/v1/invite/${inid2}`
     try {
         await fetch(endpoint, {
@@ -84,6 +90,11 @@ updinBtn2.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Your Invitation has been updated :)");
+                let result = response.json();
+                result.then(item => {
+                    let invite = item.data.data
+                    invitationName.innerHTML = `${invite.fname} and ${invite.sname}`
+                })
                 window.setTimeout(() => {
                     hdGo2.classList.remove('hidden');
                     ldNav2.classList.remove('hidden');
@@ -93,7 +104,7 @@ updinBtn2.addEventListener("click", async (e) => {
                     updateInviForm2.classList.add('hidden');
                 }, 400);
             } else {
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                errorAlert("Invalid input, Duplication Input error!!!")
             }
         })
 
@@ -132,7 +143,7 @@ upinImgBtn2.addEventListener("click", async (e) => {
                     updateInviImgForm2.classList.add('hidden');
                 }, 400);
             } else {
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                errorAlert("Invalid input, Duplication Input error!!!")
             }
         })
 

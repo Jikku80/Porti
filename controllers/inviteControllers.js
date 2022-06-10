@@ -229,9 +229,9 @@ exports.updateInviData = catchAsync(async (req, res, next) => {
             runValidators: true
         }
     );
-    res.status(200).render('layouts/landingSec', {
-        title: updatedInvite.name,
-        invite: updatedInvite
+    res.status(200).json({
+        status: 'success',
+        updatedInvite
     });
 });
 

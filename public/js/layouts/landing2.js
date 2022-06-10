@@ -5,6 +5,7 @@ let landNavSec = document.querySelector(".land__nav__main");
 let updateImgFormCollec = document.getElementById('update_ImgFormCollec');
 let updateImgCollec = document.getElementById("update_ImgCollec");
 let delSec = document.getElementById("delPp");
+let portiqrsec2 = document.querySelector(".qr__sec");
 
 updatePortSec.addEventListener('click', () => {
     headGoSec.classList.add('hidden');
@@ -12,6 +13,7 @@ updatePortSec.addEventListener('click', () => {
     updatePortSec.classList.add('hidden');
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
+    portiqrsec2.classList.add("hidden");
     updateFormSec.classList.remove('hidden');
 })
 
@@ -21,6 +23,7 @@ updateImgCollec.addEventListener("click", () => {
     updatePortSec.classList.add('hidden');
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
+    portiqrsec2.classList.add("hidden");
     updateImgFormCollec.classList.remove('hidden');
 })
 
@@ -33,6 +36,7 @@ cancelSec.addEventListener("click", () => {
     updatePortSec.classList.remove('hidden');
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
+    portiqrsec2.classList.remove("hidden");
     updateFormSec.classList.add('hidden');
 })
 
@@ -42,6 +46,7 @@ canclSec.addEventListener("click", () => {
     updatePortSec.classList.remove('hidden');
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
+    portiqrsec2.classList.remove("hidden");
     updateImgFormCollec.classList.add('hidden');
 })
 
@@ -66,6 +71,7 @@ pdBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
+    let portfolioName = document.getElementById("port_name");
     const endpoint = '/updateportSec'
     try {
         await fetch(endpoint, {
@@ -91,6 +97,11 @@ pdBtn.addEventListener("click", async (e) => {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Your Portfolio has been updated :)");
+                let result = response.json();
+                result.then(item => {
+                    let portfolio = item.updatedPortfolio
+                    portfolioName.innerHTML = `${portfolio.name}`
+                })
                 window.setTimeout(() => {
                     headGoSec.classList.remove('hidden');
                     landNavSec.classList.remove('hidden');

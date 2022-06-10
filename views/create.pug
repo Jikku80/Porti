@@ -15,31 +15,49 @@ block content
     else 
         .port__nav
             .port__nav__first
-                a.port__head.act(href="/me")
+                a.port__head.act.smallest__cont(href="/me")
                     if (user.photo)
                         img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
                     else 
                         img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
                 a.port_sec_head.hm(href="/" title="home")
                     h1 Tech 
                         span Mafia
-                #logout.logout
-                    img(src="/images/poweroff.png", alt="signout" title="logout")
+                #logout.logout.smallest__cont
+                    img(src="/images/poweroff.png", alt="signout" title="Signout")
+                    p.name__tag Signout
             .port__nav__sub 
-                a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
+                a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_portfolio")
                     span#usId.hidden= user._id
-                a.yin(href=`/invitations/${user._id}` title="your invitation")
+                    p.name__tag Portfolio
+                a.yin.smallest__cont(href=`/invitations/${user._id}` title="your invitation")
                     img(src="/images/invite.png", alt="view_invitations")
                     span#uiId.hidden= user._id
-                a(href=`/menu/${user._id}/additemstomenu` title="your menu")
+                    p.name__tag Invitations
+                a.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
                     img(src="/images/menu.png", alt="items__menu")
+                    p.name__tag Food Menu
+                a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
+                    img(src="/images/catalouge.png", alt="items__catalouge")
+                    p.name__tag Catalouge
             .breadcrumbs 
                 a.bdcb(href="#" title="porti") You Are Here |
                 a.bdcb(href="/") Home 
                 a.bdcb(href="#") &#8680;  
                 a.cur(href="#") Porti  
         .creation__body
+            .catalouge__section.newsec
+                h2 Create Catalouge For Your Business 
+                p Pick any of the layouts below and buid a Catalouge 
+                .layout__main
+                    #catal1.unl
+                        .un_layout_log
+                            a(href=`/catalouge/${user._id}/additems`)
+                                img(src="/images/invi2.png", alt="catalouge1")
+                            p CT Layout
             .menu__section
                 h2 Create Menu For Your Restro 
                 p Pick any of the layouts below and buid a menu for your restro 
@@ -47,8 +65,8 @@ block content
                     #menu1.unl
                         .un_layout_log
                             a(href=`/menu/${user._id}/additemstomenu`)
-                                img(src="/images/invi1.gif", alt="menu1")
-                            p MRG Layout (5 Images required)
+                                img(src="/images/menu1.gif", alt="menu1")
+                            p DC Layout
             .invi__section#crtInvi
                 h2 Create Invitation
                 p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set

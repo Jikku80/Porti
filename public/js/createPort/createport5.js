@@ -2,6 +2,8 @@ layout5 = document.querySelector("#layout5")
 portBod5 = document.querySelector(".port__bod");
 inviSec5 = document.querySelector('.invi__section');
 menuSec5 = document.querySelector('.menu__section');
+catSec5 = document.querySelector('.catalouge__section');
+
 id5 = document.getElementById("usId").innerText;
 
 let formLayoutFive = document.createElement("div");
@@ -65,6 +67,7 @@ layout5.addEventListener("click", () => {
     portBod5.classList.add("hidden");
     inviSec5.classList.add("hidden");
     menuSec5.classList.add("hidden");
+    catSec5.classList.add("hidden");
     layoutFive.classList.remove("hidden");
     let yourname = document.querySelector("#fifthname");
     let yourabout = document.getElementById("fifthabout");
@@ -163,4 +166,5 @@ clFiveCreate.addEventListener("click", () => {
     portBod5.classList.remove("hidden");
     inviSec5.classList.remove("hidden");
     menuSec5.classList.remove("hidden");
+    catSec5.classList.remove("hidden");
 })

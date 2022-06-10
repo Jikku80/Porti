@@ -16,6 +16,7 @@ const messageRouter = require('./routes/messageRoutes');
 const userRouter = require('./routes/userRoutes');
 const menuRouter = require('./routes/menuRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const catalougeRouter = require('./routes/catalougeRoutes')
 
 const app = express();
 
@@ -57,6 +58,8 @@ app.use('/api/v1/portfolio', portfolioRouter);
 app.use('/api/v1/invite', inviteRouter);
 app.use('/api/v1/message', messageRouter);
 app.use('/api/v1/menu', menuRouter);
+app.use('/api/v1/catalouge', catalougeRouter);
+
 
 app.get('*', function (req, res, next) {
     res.locals.user = req.user || null;

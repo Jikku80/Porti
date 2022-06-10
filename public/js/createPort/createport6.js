@@ -2,6 +2,8 @@ layout6 = document.querySelector("#layout6")
 portBod6 = document.querySelector(".port__bod");
 inviSec6 = document.querySelector('.invi__section');
 menuSec6 = document.querySelector('.menu__section');
+catSec6 = document.querySelector('.catalouge__section');
+
 id6 = document.getElementById("usId").innerText;
 
 let formLayoutSix = document.createElement("div");
@@ -85,6 +87,7 @@ layout6.addEventListener("click", () => {
     portBod6.classList.add("hidden");
     inviSec6.classList.add("hidden");
     menuSec6.classList.add("hidden");
+    catSec6.classList.add("hidden");
     layoutSix.classList.remove("hidden");
     let yourname = document.querySelector("#sixthname");
     let aboutyou = document.getElementById("sixthabout");
@@ -216,4 +219,5 @@ clsixthCreate.addEventListener("click", () => {
     portBod6.classList.remove("hidden");
     inviSec6.classList.remove("hidden");
     menuSec6.classList.remove("hidden");
+    catSec6.classList.remove("hidden");
 })

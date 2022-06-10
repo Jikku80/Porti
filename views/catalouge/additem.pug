@@ -1,0 +1,135 @@
+extends baseCatalouge
+
+block content 
+
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+        p.lodtl Tech 
+            span.lodmid Mafia
+                span.lodend ...
+    if (user)
+        .port__nav
+            .port__nav__first
+                a.port__head.act.smallest__cont(href="/me")
+                    if (user.photo)
+                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
+                    else 
+                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
+                a.port_sec_head.hm(href="/" title="home")
+                    h1 Tech 
+                        span Mafia
+                .logout.smallest__cont
+                    img.pointer(src="/images/poweroff.png", alt="signout" title="Signout")
+                    p.name__tag Signout
+            .port__nav__sub 
+                a.crpt.smallest__cont(href="/porti", title="porti")
+                    img(src="/images/plus.png", alt="view_port")
+                    p.name__tag Porti
+                a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
+                    img(src="/images/porti.png", alt="view_port")
+                    span#catusId.hidden= user._id
+                    p.name__tag Portfolio
+                a.yin.smallest__cont(href=`/invitations/${user._id}` title="your invitations")
+                    img(src="/images/invite.png", alt="view_port")
+                    span#catuiId.hidden= user._id
+                    p.name__tag Invitations
+                a.yin.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
+                    img(src="/images/menu.png", alt="view_port")
+                    span#catuiId.hidden= user._id
+                    p.name__tag Food Menu
+            .breadcrumbs 
+                a.bdcb(href="#" title="additemstomenu") You Are Here |
+                a.bdcb(href="/") Home 
+                a.bdcb(href="#") &#8680;
+                a.bdcb(href="/porti") Porti
+                a.bdcb(href="#") &#8680;   
+                a.cur(href="#") Add Items To Catalouge
+        #item__form
+            .itemform__head 
+                h2 Add Items To Catalouge
+                h2
+                    a(href="#openCatalouge") Catalouge Link
+            form#addCatItem.upItem
+                .form__bod
+                    label Item Name:
+                    input#catitemname(type="text" required placeholder="Graphite Tile")
+                .form__bod
+                    label Item Price: 
+                    input#catitemprice(type="text" required placeholder="Rs. 400 per ft / $ 4 per piece")
+                .form__bod
+                    label Item Serial No. (optional): 
+                    input#catitemsn(type="text" placeholder="CA10050")
+                .form__bod
+                    label Item Category: 
+                    input#catitemcat(type="text", required placeholder="Tiles")
+                .form__bod
+                    label Item Sub-Category (optional): 
+                    input#subcatitemcat(type="text", placeholder="Japanese Tiles")
+                .form__bod
+                    label Item Detail (optional):
+                    textarea#catitemdetail(rows="4" cols="50" placeholder="You can Describe about your Item only if you want to, this field is optional...")
+                .form__bod.file_part
+                    input#catcoverimage(type="file" accept="image/*"  required)
+                button#cataddItemBtn.blackbtn Add Item
+        .your__item__sec
+            h2.items__head Your Items 
+            p.currentuid.hidden= user._id
+            .your__item__bod
+                .your__items.sec__items
+            .paginate 
+                button.prev__catal Previous
+                button.next__catal.hidden Next
+        .share__catalouge#openCatalouge 
+            h2 Share your menu 
+            p.uname__catal.hidden= user.name
+            p.share__catal__link
+        
+        .qrcode__menu 
+            #catalqrcode 
+        .itemform__head 
+            h2 Update Enterprise Detail
+        form#upCompany.upItem
+            .form__bod
+                label Company Name:
+                input#compname(type="text" required placeholder="Kings Burger")
+            .form__bod
+                label Company Address: 
+                input#compaddress(type="text" required placeholder="Heavens Hell")
+            .form__bod
+                label Company Address: 
+                input#compcontact(type="text" required placeholder="+977 98154568678")
+            .form__bod
+                label Company Slogan (optional): 
+                input#compslogan(type="text", placeholder="Eat Burger Save Time")
+            p.comp__len.hidden= company.length
+            if (company.length !== 0)
+                p.comp__id.hidden= company[0]._id
+            else 
+                p.comp__id.hidden
+            button#updateCompBtn.blackbtn Update now
+
+            button#addCompBtn.blackbtn Update
+        if (company.length !== 0)
+            .itemform__head 
+                h2 Update Enterprise Cover Image
+                p.compimg__id.hidden= company[0]._id
+            form#upCompanyImage.upItem
+                .form__bod.file_part
+                    input#compcoverimage(type="file" accept="image/*"  required)
+                button#compUpdateImgBtn.blackbtn Update Cover Image
+        else 
+            #compcoverimage
+            #compUpdateImgBtn
+    else 
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/login") Sign In
+    script(src="/js/logout.js")  
+    script(src="/js/alert.js")
+    script(src="/js/catalouge/additemtocat.js")
+    script(src="/js/catalouge/qrCode.js")
+

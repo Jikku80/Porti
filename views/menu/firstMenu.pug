@@ -11,16 +11,19 @@ block content
     .first__menu__bod
         .menu__border
             .menu__secborder
+                h1.menu__head.res__name= restro[0].name
+                p.menu__head.res__add= restro[0].Address
                 h1.menu__head Me n u
                 form.search
                     input.searchbar(type="text", required, placeholder="Search Items...")
                 button.darkmode 
                     img(src="/images/on.png")
+                p.menu__head.res__slogan= restro[0].slogan
                 .menu__bod
                     h3.grab__all ALL
                     .category
                 .sub__item__bod
-                    .sub__items
+                    .sub__items.row__items
                         each menu in menus 
                             .menu__card
                                 img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`)
@@ -30,7 +33,7 @@ block content
                                     p.menu__card__detail= menu.detail
                     .paginate 
                         button.prev Previous
-                        button.next.hidden Next
+                        button.next.hidden Next              
 
     script(src="/js/alert.js") 
     script(src="/js/logout.js") 

@@ -5,13 +5,12 @@ const authController = require('./../controllers/authControllers');
 const viewsController = require('./../controllers/viewControllers');
 const inlayoutController = require('./../controllers/inviLayoutControllers');
 const menuController = require('../controllers/menuControllers');
+const catalougeController = require('../controllers/catalougeController');
 
 
 const router = express.Router();
 
-router.post('/login', authController.login);
 router.get('/logout', authController.logout);
-router.get('/resetpassword', viewsController.restForm);
 router.patch('/passwordreset', authController.resetPassword);
 
 
@@ -26,11 +25,17 @@ router.get('/:user/invitation/:id/4dc50fc3bc007be011b5445f3f79298b9eeb51b7', inl
 router.get('/:user/invitation/:id/c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7', inlayoutController.inviSecond);
 
 router.get('/:user/menu/:id/40bd001563085fc35165329ea1ff5c5ecbdbbeef', menuController.menuFirst);
+router.get('/:user/catalouge/:id/51eac6b471a284d3341d8c0c63d0f1a286262a18', catalougeController.firstCatalouge);
+
 
 router.post('/sendmsg', viewsController.newMsg);
 
 router.use(authController.isLoggedIn);
 router.get('/', viewsController.homePage);
+router.post('/scan', viewsController.qrCodeGen);
+
+router.post('/login', authController.login);
+router.get('/resetpassword', viewsController.restForm);
 
 router.patch('/updateport', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortData);
 router.patch('/updateportSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);
@@ -41,8 +46,11 @@ router.patch('/updateportImgCollec', authController.protect, authController.rest
 router.get('/myportfolio/:id', viewsController.myPort);
 router.get('/myinvi/:id', viewsController.myInvi);
 router.get('/menu/:id/additemstomenu', menuController.newMenu);
+router.get('/catalouge/:id/additems', catalougeController.addItemsPage);
+
 
 router.get('/:id/tweaks', menuController.itemTweaks);
+router.get('/:id/catalougetweaks', catalougeController.itemTweaks);
 
 
 router.get('/login', viewsController.getOverview);

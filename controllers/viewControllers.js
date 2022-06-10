@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const qr = require('qrcode');
+
 const Message = require('./../models/messageModel');
 const User = require('./../models/userModel');
 
@@ -202,9 +204,9 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             runValidators: true
         }
     );
-    res.status(200).render('layouts/landing', {
-        title: updatedPortfolio.name,
-        portfolio: updatedPortfolio
+    res.status(200).json({
+        status: 'success',
+        updatedPortfolio
     });
 });
 
@@ -235,9 +237,9 @@ exports.updatePortSix = catchAsync(async (req, res, next) => {
             runValidators: true
         }
     );
-    res.status(200).render('layouts/landing', {
-        title: updatedPortfolio.name,
-        portfolio: updatedPortfolio
+    res.status(200).json({
+        status: 'success',
+        updatedPortfolio
     });
 });
 
@@ -262,9 +264,9 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             runValidators: true
         }
     );
-    res.status(200).render('layouts/landing', {
-        title: updatedPortfolio.name,
-        portfolio: updatedPortfolio
+    res.status(200).json({
+        status: 'success',
+        updatedPortfolio
     });
 });
 
@@ -356,6 +358,19 @@ exports.updatePortImgCollec = catchAsync(async (req, res, next) => {
         portfolio: updatedPortfolio
     });
 });
+
+exports.qrCodeGen = catchAsync(async (req, res, next) => {
+    const qrUrl = req.body.qrurl;
+    if (qrUrl.length === 0) res.send('Empty Data!');
+
+    qr.toDataURL(qrUrl, (err, src) => {
+        if (err) res.send('Error Occured');
+        res.status(201).json({
+            status: 'success',
+            src
+        });
+    })
+})
 
 
 

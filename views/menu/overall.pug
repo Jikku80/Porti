@@ -12,25 +12,34 @@ block content
     if (user)
         .port__nav
             .port__nav__first
-                a.port__head.act(href="/me")
+                a.port__head.act.smallest__cont(href="/me")
                     if (user.photo)
                         img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
                     else 
                         img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                        p.name__tag Account
                 a.port_sec_head.hm(href="/" title="home")
                     h1 Tech 
                         span Mafia
-                .logout
-                    img.pointer(src="/images/poweroff.png", alt="signout" title="logout")
+                .logout.smallest__cont
+                    img.pointer(src="/images/poweroff.png", alt="signout" title="Signout")
+                    p.name__tag Signout
             .port__nav__sub 
-                a.crpt(href="/porti", title="porti")
+                a.crpt.smallest__cont(href="/porti", title="porti")
                     img(src="/images/plus.png", alt="view_port")
-                a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
+                    p.name__tag Porti
+                a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
                     span#usId.hidden= user._id
-                a.yin(href=`/invitations/${user._id}` title="your invitations")
+                    p.name__tag Portfolio
+                a.yin.smallest__cont(href=`/invitations/${user._id}` title="your invitations")
                     img(src="/images/invite.png", alt="view_port")
                     span#uiId.hidden= user._id
+                    p.name__tag Invitations
+                a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
+                    img(src="/images/catalouge.png", alt="items__catalouge")
+                    p.name__tag Catalouge
             .breadcrumbs 
                 a.bdcb(href="#" title="additemstomenu") You Are Here |
                 a.bdcb(href="/") Home 
@@ -74,6 +83,26 @@ block content
         
         .qrcode__menu 
             #qrcode 
+        .itemform__head 
+            h2 Update Restaurant Detail
+        form#upRestro.upItem
+            .form__bod
+                label Restaurant Name:
+                input#resname(type="text" required placeholder="Kings Burger")
+            .form__bod
+                label Address: 
+                input#resaddress(type="text" required placeholder="Heavens Hell")
+            .form__bod
+                label Slogan (optional): 
+                input#resslogan(type="text", placeholder="Eat Burger Save Time")
+            p.restro__len.hidden= restro.length
+            if (restro.length !== 0)
+                p.restro__id.hidden= restro[0]._id
+            else 
+                p.restro__id.hidden
+            button#updateResBtn.blackbtn Update now
+
+            button#addResBtn.blackbtn Update
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !

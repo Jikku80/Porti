@@ -13,23 +13,32 @@ block content
             .land__content
                 .land__nav__main
                     .land__nav
-                        a.land__head.act(href="/me")
+                        a.land__head.act.smallest__cont(href="/me")
                             if (user.photo)
                                 img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+                                p.name__tag Account
                             else 
                                 img.userdp.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
+                                p.name__tag Account
                         a.port_sec_head.hm(href="/", title="home")
                             h1 Tech 
                                 span Mafia
-                        #logout.logout
-                            img(src="/images/poweroff.png", alt="signout", title="logout")
+                        #logout.logout.smallest__cont
+                            img(src="/images/poweroff.png", alt="signout", title="Signout")
+                            p.name__tag Signout
                     .land__nav__sub 
-                        a.yin(href=`/invitations/${user._id}` title="All invitation")
+                        a.yin.smallest__cont(href=`/invitations/${user._id}` title="All invitation")
                             img(src="/images/invite.png", alt="view_port")
-                        a.ypf(href=`/myportfolio/${user._id}` title="your portfolio")
+                            p.name__tag Invitations
+                        a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                             img(src="/images/porti.png", alt="view_port")
-                        a(href=`/menu/${user._id}/additemstomenu` title="your menu")
+                            p.name__tag Portfolio
+                        a.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
                             img(src="/images/menu.png", alt="items__menu")
+                            p.name__tag Food Menu
+                        a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
+                            img(src="/images/catalouge.png", alt="items__catalouge")
+                            p.name__tag Catalouge
                     .breadcrumbs 
                         a.bdcb(href="#" title=`${invite.fname} Invitation`) You Are Here |
                         a.bdcb(href="/") Home 
@@ -48,6 +57,9 @@ block content
                             span#invitetheme= invite.theme    
                     .copy__link 
                         button#copyinviteLink.redbtn Copy Link
+                        button#geninviqr.redbtn Generate QRCode
+                        button#downinviqr.redbtn.hidden Download QRCode
+                .qr__sec 
             .sec__land__bod
                 .del__port#delinvi 
                     .del__bod
