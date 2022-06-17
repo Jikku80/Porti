@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const companySchema = new mongoose.Schema({
     name: {
@@ -7,6 +8,21 @@ const companySchema = new mongoose.Schema({
         required: [true, 'Name should be provided!']
     },
     slogan: {
+        type: String,
+        trim: true
+    },
+    email: {
+        type: String,
+        required: [true, 'Please provide your email address!'],
+        unique: true,
+        lowercase: true,
+        validate: [validator.isEmail, 'please provide a valid email address!']
+    },
+    social: {
+        type: String,
+        trim: true
+    },
+    locationLink: {
         type: String,
         trim: true
     },

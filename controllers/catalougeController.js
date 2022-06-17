@@ -178,15 +178,66 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
 exports.firstCatalouge = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate()
-    // const restro = await Restaurant.find({ user: user_id })
-    await features.query.populate('user').then(menus => {
+    const company = await Company.find({ user: user_id })
+    await features.query.populate('user').then(catalouges => {
         res.status(200).render('catalouge/firstCatalouge', {
-            title: "menu",
-            menus
-            // restro
+            title: "Catalouge",
+            catalouges,
+            company: company[0]
         })
     })
 
+})
+
+exports.lookupCatalouge = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    await Catalouge.find({ user: user_id }).then((items) => {
+        res.status(200).json(items)
+    })
+})
+
+exports.listCatalougeCategories = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    let catalougeCategories = await Catalouge.find({ user: user_id }).then(arr => {
+        return distinctCat = [...new Set(arr.map(x => x.category))];
+    })
+    res.status(200).json(catalougeCategories)
+})
+
+exports.listCatalougeSubCategories = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    const category = req.params.cate
+    const subitems = await Catalouge.find({ category: category })
+
+    const userCategorize = subitems.filter(item => {
+        return item.user.id === user_id
+    })
+    const subCategories = [...new Set(userCategorize.map(x => x.subcategory))];
+    if (subCategories[0] !== "") {
+        res.status(200).json(subCategories)
+    }
+    else {
+        res.status(200).json(userCategorize)
+    }
+})
+
+exports.listBySubCategories = catchAsync(async (req, res, next) => {
+    let id = req.params.id
+    let cate = req.params.cate
+    let subcate = req.params.subcate
+    await Catalouge.find({ subcategory: subcate }).populate('user').then(items => {
+        items = items.filter(item => {
+            if (item.user.id === id) {
+                if (item.category === cate) {
+                    return item
+                }
+            }
+        })
+        res.status(200).json({
+            status: 'success',
+            items
+        })
+    })
 })
 
 exports.paginateCatalouge = catchAsync(async (req, res, next) => {
@@ -203,6 +254,9 @@ exports.createCompany = catchAsync(async (req, res, next) => {
     const doc = await Company.create({
         name: req.body.name,
         user: req.user.id,
+        email: req.body.email,
+        social: req.body.social,
+        locationLink: req.body.locationLink,
         slogan: req.body.slogan,
         contact: req.body.contact,
         Address: req.body.Address

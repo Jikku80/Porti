@@ -5,9 +5,10 @@ const authController = require('./../controllers/authControllers');
 
 const router = express.Router({ mergeParams: true });
 
-// router.get('/:id/findbycate/:cate', menuController.findbyCat);
-// router.get('/allCategories/:id', menuController.listCategories);
-// router.get('/:id/searchItems', menuController.lookup);
+router.get('/:id/finditems/:subcate/:cate', catalougeController.listBySubCategories);
+router.get('/:id/findsubcate/:cate', catalougeController.listCatalougeSubCategories);
+router.get('/allCatalougeCategories/:id', catalougeController.listCatalougeCategories);
+router.get('/:id/searchCatalouge', catalougeController.lookupCatalouge);
 router.get('/:id/paginate/:count', catalougeController.paginateCatalouge);
 router.use(authController.protect);
 router.use(authController.isLoggedIn);

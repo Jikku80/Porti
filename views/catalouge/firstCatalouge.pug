@@ -9,3 +9,70 @@ block content
         p.lodtl Tech 
             span.lodmid Mafia
                 span.lodend ...
+
+    .background__cover 
+        if (!company.coverImage)
+            img.company__cover(src="/images/party.jpg", alt="cover image")
+        else 
+            img.company__cover(src=`/images/company/${company.coverImage}`, alt="cover image")
+        .navigator
+            h1.blackbg= company.name
+            a.go__to__catalouge(href="#compcatalouge") Go To Catalouge
+    .search__catalouge 
+        form.catal__search
+            input.catalouge__searchbar#catalougeSearch(type="text", required, placeholder="Type To Find Items")
+    .all__items 
+        h3.center.get__all__items All Items
+    .cat__list 
+        h2.center Items Categories | Group
+        .categories__catalouge 
+    .sub__cat__list 
+        .sub__cat__opt
+            h2.sub__cat__head Sub Categories | SGroup
+            img.cancel__subModel(src="/images/cancel.png" alt="cancel")
+        .sub__categories__catalouge
+    #compcatalouge
+        h2.center= company.slogan
+        .catalouge__item__bod
+            .catalouge__items 
+                each item in catalouges
+                    .catal__card
+                        img(class="catal__card__img imgFull" loading="lazy" src=`/images/catalouge/${item.coverImage}`)
+                        .catal__card__det
+                            .card__sub__sec
+                                .catal__card__head Name: 
+                                .card__dark__text.catal__name= item.name
+                            .card__sub__sec
+                                .catal__card__head S.No: 
+                                .card__dark__text.catal__sno= item.serialno
+                            .card__sub__sec
+                                .catal__card__head Price: 
+                                .card__dark__text.catal__price= item.price
+                            .card__sub__sec
+                                .catal__card__head Group: 
+                                .card__dark__text= item.category
+                            .card__sub__sec
+                                .catal__card__head SGroup: 
+                                .card__dark__text= item.subcategory
+                            .card__sub__sec
+                                .catal__card__head Detail: 
+                                .card__dark__text= item.detail
+    .paginate 
+        button.prev__catal.blue Previous
+        button.next__catal.blue Next
+    .company__footer 
+        .footer__bod
+            h4.comp__cont Find Us At
+            p= company.Address 
+            a.comp__loc(href=`${company.locationLink}`)= `open ${company.name} Location`
+            h4.comp__cont Get In Touch With Us In 
+            h4= company.contact 
+        .footer__mail__bod.footer__bod 
+            h4.comp__cont Email Us At 
+            p.comp__email= company.email 
+            h4 OR
+            h4.comp__cont Our Social Link 
+            p= company.social
+
+    script(src="/js/alert.js") 
+    script(src="/js/catalouge/catalougeFeature.js") 

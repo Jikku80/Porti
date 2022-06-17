@@ -1,0 +1,267 @@
+.background__cover{
+    width: 100vw;
+    height: 100vh;
+}
+
+.company__cover{
+    width: inherit;
+    height: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navigator{
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.blackbg{
+    background-color: rgba(2, 2, 2, 0.349);
+    padding: 1%;
+    text-align: center;
+}
+
+.go__to__catalouge{
+    color: inherit;
+    font-weight: 900;
+    border: 1px solid white;
+    text-decoration: none;
+    padding: 2%;
+    background-color: rgba(2, 2, 2, 0.349);
+}
+
+.go__to__catalouge:hover{
+    background-color: rgba(255, 255, 255, 0.315);
+    color: rgba(2, 2, 2, 0.726); 
+    border: 1px solid rgba(2,2,2,0.726);
+}
+
+.catal__search{
+    display: flex;
+    justify-content: center;
+}
+
+.catalouge__searchbar{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid skyblue;
+    padding: 1%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    width: 40vw;
+    outline: 0;
+    background-color: transparent;
+    color: rgb(26, 154, 204);
+    transition: transform .2s;
+}
+
+.catalouge__searchbar:focus{
+    transform: scale(1.2);
+}
+
+.all__items{
+    display: flex;
+    justify-content: center;
+}
+
+.get__all__items{
+    width: 50px;
+}
+
+.categories__catalouge{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: monospace;
+}
+
+.catalouge__cate__list, .get__all__items{
+    background-color: rgb(26, 154, 204);
+    padding: 1%;
+    margin: 1%;
+    transition: transform .2s;
+}
+
+.catalouge__cate__list:hover, .get__all__items:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.sub__cat__list{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(27, 27, 27, 0.829);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.sub__cat__opt{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sub__cat__head{
+    font-size: 2rem;
+    color: skyblue;
+}
+
+.cancel__subModel{
+    cursor: pointer;
+    height: 5rem;
+    width: 5rem;
+}
+
+.sub__categories__catalouge{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: monospace;
+    font-size: 2rem;
+
+}
+
+.catalouge__subcate__list{
+    cursor: pointer;
+}
+
+.catalouge__subcate__list:hover{
+    color: skyblue;
+}
+
+.catalouge__item__bod{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+.catalouge__items {
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: monospace;
+}
+
+.catal__card{
+    width: 20vw;
+    padding: 1%;
+    margin: 1%;
+    background-color: white;
+}
+
+.catal__card__img{
+    width: inherit;
+    height: 30vh;
+}
+
+.catal__card__det{
+    color: gray;
+}
+
+.card__sub__sec{
+    display: flex;
+}
+
+.catal__card__head{
+    width: 14%;
+    font-size: 12px;
+}
+
+.card__dark__text{
+    color: black;
+    font-size: 14px;
+    padding-left: 4%;
+}
+
+.center{
+    text-align: center;
+    font-family: monospace;
+    font-variant: small-caps;
+}
+
+.catal__name{
+    font-weight: bolder;
+}
+
+.catal__sno{
+    color: blue;
+}
+
+.catal__price{
+    color: green;
+}
+
+.imgFull{
+    cursor: pointer;
+}
+
+.company__footer{
+    background-color: rgb(26, 154, 204);
+}
+
+.comp__loc{
+    color: white;
+}
+
+.comp__email{
+    font-variant: none;
+}
+
+.blue{
+    color: rgb(26, 154, 204);
+    border: 2px solid rgb(26, 154, 204);
+}
+
+.blue:hover{
+    background-color: rgb(26, 154, 204);
+    color: white;
+}
+
+.footer__bod{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-variant: small-caps;
+    font-size: 2rem;
+}
+
+.comp__cont{
+    margin-bottom: 0;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .catalouge__items{
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    .catal__card{
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .catalouge__items{
+        width: 100%;
+    }
+    .catal__card{
+        width: 90vw;
+    }
+}

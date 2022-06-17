@@ -50,7 +50,7 @@
                         let fResult = item.data.data
                         yourItems.innerHTML += `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" src="/images/catalouge/${fResult.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${fResult.coverImage}">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${fResult.name}</h3>
                                         <p class="catalouge__card__head">${fResult.serialno}</p>
@@ -113,11 +113,13 @@ async function getAllCatalougeItem() {
                             subItems.innerHTML +=
                                 `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
+                                        <p class="catalouge__card__head">${el.serialno}</p>
                                         <p class="catalouge__card__price">${el.price}</p>
                                         <p class="catalouge__card__cat">${el.category}</p>
+                                        <p class="catalouge__card__cat">${el.subcategory}</p>
                                         <p class="catalouge__card__detail">${el.detail}</p>
                                         <a href="/${el._id}/catalougetweaks?update" class="ygbtn">Update</a>
                                         <a href="/${el._id}/catalougetweaks?delete" class="redbtn">Delete</a>
@@ -125,8 +127,9 @@ async function getAllCatalougeItem() {
                                 </div>
                             `
                     });
+
                     if (subItems.children.length == 0) {
-                        sub.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+                        subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                     }
 
                     if (subItems.children.length === 12) {
@@ -150,13 +153,13 @@ async function getAllCatalougeItem() {
 
 getAllCatalougeItem();
 
-(function () {
-    let subItems = document.querySelector(".your__items")
+// (function () {
+//     let subItems = document.querySelector(".your__items")
 
-    if (subItems.children.length == 0) {
-        subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
-    }
-})();
+//     if (subItems.children.length == 0) {
+//         subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+//     }
+// })();
 
 let page = document.querySelector(".paginate");
 let next = document.querySelector(".next__catal");
@@ -196,7 +199,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
                                         <p class="catalouge__card__head">${el.serialno}</p>
@@ -262,7 +265,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
                                         <p class="catalouge__card__head">${el.serialno}</p>
@@ -339,12 +342,18 @@ prev.addEventListener("click", async () => {
 (function () {
     let addRestroBtn = document.getElementById("addCompBtn");
     let resName = document.getElementById("compname");
+    let compemail = document.getElementById("compemail");
+    let compsocial = document.getElementById("compsocial");
+    let comploc = document.getElementById("complocationLink");
     let resAddress = document.getElementById("compaddress");
     let compcontact = document.getElementById("compcontact");
     let resSlogan = document.getElementById("compslogan");
 
     addRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
+            return false;
+        }
+        if (compemail.value < 1 || compemail.value == "" || compemail.value == null) {
             return false;
         }
         if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
@@ -366,6 +375,9 @@ prev.addEventListener("click", async () => {
                 },
                 body: JSON.stringify({
                     name: resName.value,
+                    email: compemail.value,
+                    social: compsocial.value,
+                    locationLink: comploc.value,
                     slogan: resSlogan.value,
                     Address: resAddress.value,
                     contact: compcontact.value
@@ -398,9 +410,15 @@ prev.addEventListener("click", async () => {
     let resAddress = document.getElementById("compaddress");
     let compcontact = document.getElementById("compcontact");
     let resSlogan = document.getElementById("compslogan");
+    let compemail = document.getElementById("compemail");
+    let compsocial = document.getElementById("compsocial");
+    let comploc = document.getElementById("complocationLink");
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
+            return false;
+        }
+        if (compemail.value < 1 || compemail.value == "" || compemail.value == null) {
             return false;
         }
         if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
@@ -422,6 +440,9 @@ prev.addEventListener("click", async () => {
                 },
                 body: JSON.stringify({
                     name: resName.value,
+                    email: compemail.value,
+                    social: compsocial.value,
+                    locationLink: comploc.value,
                     slogan: resSlogan.value,
                     Address: resAddress.value,
                     contact: compcontact.value
