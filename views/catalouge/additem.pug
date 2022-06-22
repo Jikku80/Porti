@@ -48,6 +48,8 @@ block content
                 a.bdcb(href="/porti") Porti
                 a.bdcb(href="#") &#8680;   
                 a.cur(href="#") Add Items To Catalouge
+        if (!company[0])
+            h2.banner.up__place__det You Have Not Updated Your Enterprise Detail, Update Your Enterprise Details!!!
         #item__form
             .itemform__head 
                 h2 Add Items To Catalouge
@@ -55,25 +57,26 @@ block content
                     a(href="#openCatalouge") Catalouge Link
             form#addCatItem.upItem
                 .form__bod
-                    label Item Name:
+                    label(for="item_name") Item Name:
                     input#catitemname(type="text" required placeholder="Graphite Tile")
                 .form__bod
-                    label Item Price: 
+                    label(for="item_price") Item Price: 
                     input#catitemprice(type="text" required placeholder="Rs. 400 per ft / $ 4 per piece")
                 .form__bod
-                    label Item Serial No. (optional): 
+                    label(for="item_serialno") Item Serial No. (optional): 
                     input#catitemsn(type="text" placeholder="CA10050")
                 .form__bod
-                    label Item Category: 
+                    label(for="item_category") Item Category: 
                     input#catitemcat(type="text", required placeholder="Tiles")
                 .form__bod
-                    label Item Sub-Category (optional): 
+                    label(for="item_subcategory") Item Sub-Category (optional): 
                     input#subcatitemcat(type="text", placeholder="Japanese Tiles")
                 .form__bod
-                    label Item Detail (optional):
+                    label(for="item_detail") Item Detail (optional):
                     textarea#catitemdetail(rows="4" cols="50" placeholder="You can Describe about your Item only if you want to, this field is optional...")
                 .form__bod.file_part
-                    input#catcoverimage(type="file" accept="image/*"  required)
+                    label(for="catcoverimage") Item Image:
+                    input#catcoverimage(type="file" name="catcoverimage" accept="image/*"  required)
                 button#cataddItemBtn.blackbtn Add Item
         .your__item__sec
             h2.items__head Your Items 
@@ -84,35 +87,34 @@ block content
                 button.prev__catal Previous
                 button.next__catal.hidden Next
         .share__catalouge#openCatalouge 
-            h2 Share your menu 
+            h2 Share your Catalouge 
             p.uname__catal.hidden= user.name
             p.share__catal__link
-        
         .qrcode__menu 
             #catalqrcode 
         .itemform__head 
             h2 Update Enterprise Detail
         form#upCompany.upItem
             .form__bod
-                label Company Name:
+                label(for="company_name") Company Name:
                 input#compname(type="text" required placeholder="Kings Burger")
             .form__bod
-                label Company Email: 
+                label(for="company_email") Company Email: 
                 input#compemail(type="email" required placeholder="kingsbrug@email.com")
             .form__bod
-                label Company Social Account Link (optional): 
+                label(for="comapny_social_account") Company Social Account Link (optional): 
                 input#compsocial(type="text" placeholder="https://www.acebook.com/kingsburger")
             .form__bod
-                label Company Address: 
+                label(for="company_address") Company Address: 
                 input#compaddress(type="text" required placeholder="Heavens Hell")
             .form__bod
-                label Address Link (optional): 
+                label(for="company_address_link") Address Link (optional): 
                 input#complocationLink(type="text" placeholder="add your company location link")
             .form__bod
-                label Company Contact: 
+                label(for="company_contact") Company Contact: 
                 input#compcontact(type="text" required placeholder="+977 98154568678")
             .form__bod
-                label Company Slogan (optional): 
+                label(for="company_slogan") Company Slogan (optional): 
                 input#compslogan(type="text", placeholder="Eat Burger Save Time")
             p.comp__len.hidden= company.length
             if (company.length !== 0)
@@ -128,9 +130,11 @@ block content
                 p.compimg__id.hidden= company[0]._id
             form#upCompanyImage.upItem
                 .form__bod.file_part
+                    label(for="compcoverimage") Catalouge Cover Image:
                     input#compcoverimage(type="file" accept="image/*"  required)
                 button#compUpdateImgBtn.blackbtn Update Cover Image
         else 
+            .compimg__id.hidden
             #compcoverimage
             #compUpdateImgBtn
     else 

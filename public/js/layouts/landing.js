@@ -6,6 +6,7 @@ let updateImgForm = document.getElementById('update_ImgForm');
 let updateImg = document.getElementById("update_Img");
 let delFirst = document.getElementById("delPp");
 let portiqrsec = document.querySelector(".qr__sec");
+let addItemSec = document.querySelector(".portfolio__tweaks");
 
 updatePort.addEventListener('click', () => {
     headGo.classList.add('hidden');
@@ -14,6 +15,7 @@ updatePort.addEventListener('click', () => {
     updateImg.classList.add("hidden");
     delFirst.classList.add("hidden");
     portiqrsec.classList.add("hidden");
+    addItemSec.classList.add("hidden");
     updateForm.classList.remove('hidden');
 })
 
@@ -24,6 +26,7 @@ updateImg.addEventListener("click", () => {
     updateImg.classList.add("hidden");
     delFirst.classList.add("hidden");
     portiqrsec.classList.add("hidden");
+    addItemSec.classList.add("hidden");
     updateImgForm.classList.remove('hidden');
 })
 
@@ -37,6 +40,7 @@ cancel.addEventListener("click", () => {
     updateImg.classList.remove("hidden");
     delFirst.classList.remove("hidden");
     portiqrsec.classList.remove("hidden");
+    addItemSec.classList.remove("hidden");
     updateForm.classList.add('hidden');
 })
 
@@ -47,6 +51,7 @@ cancl.addEventListener("click", () => {
     updateImg.classList.remove("hidden");
     delFirst.classList.remove("hidden");
     portiqrsec.classList.remove("hidden");
+    addItemSec.classList.remove("hidden");
     updateImgForm.classList.add('hidden');
 })
 
@@ -137,33 +142,12 @@ upImgBtn.addEventListener("click", async (e) => {
     if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
         return false;
     }
-    if (img2.files[0] < 1 || img2.files[0] == "" || img2.files[0] == null) {
-        return false;
-    }
-    if (img3.files[0] < 1 || img3.files[0] == "" || img3.files[0] == null) {
-        return false;
-    }
-    if (img4.files[0] < 1 || img4.files[0] == "" || img4.files[0] == null) {
-        return false;
-    }
-    if (img5.files[0] < 1 || img5.files[0] == "" || img5.files[0] == null) {
-        return false;
-    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     const formData = new FormData();
     formData.append("id", id);
-    formData.append("firstImgHead", hd1.value);
-    formData.append("secondImgHead", hd2.value);
-    formData.append("thirdImgHead", hd3.value);
-    formData.append("fourthImgHead", hd4.value);
-    formData.append("fifthImgHead", hd5.value);
     formData.append("imageCover", img1.files[0]);
-    formData.append("imageSecond", img2.files[0]);
-    formData.append("imageThird", img3.files[0]);
-    formData.append("imageFourth", img4.files[0]);
-    formData.append("imageFifth", img5.files[0]);
     const endpoint = '/updateportImg'
     try {
         await fetch(endpoint, {
@@ -182,7 +166,7 @@ upImgBtn.addEventListener("click", async (e) => {
                     updateImgForm.classList.add('hidden');
                 }, 400);
             } else {
-                errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                errorAlert("Invalid input!!!")
             }
         })
 
@@ -192,5 +176,3 @@ upImgBtn.addEventListener("click", async (e) => {
         errorAlert('Sorry! Something went wrong', err);
     };
 })
-
-

@@ -3,7 +3,10 @@ extends baselayout
 block content 
     .main
         .bg__imgCov
-            img(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="cover__img") 
+            if (!portfolio.imageCover)
+                img(src=`/images/party.jpg`, alt="cover__pic")
+            else
+                img(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="cover__img") 
             h1.fourth__head= portfolio.name
         .main__header
             .header__round

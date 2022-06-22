@@ -27,3 +27,8 @@ logout.forEach((logout) => {
         };
     })
 })
+
+window.addEventListener("load", () => {
+    let loads = document.querySelector('.loader');
+    loads.classList.add("hidden");
+});

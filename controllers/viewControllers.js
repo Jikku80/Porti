@@ -5,11 +5,14 @@ const qr = require('qrcode');
 const Message = require('./../models/messageModel');
 const User = require('./../models/userModel');
 
+const APIFeatures = require('./../utils/apiFeatures')
+
 const Portfolio = require('./../models/portfolioModel');
 const Invite = require('./../models/inviteModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const atob = require('./../utils/decode');
+const PortfolioImage = require('../models/portfolioImageModel');
 
 exports.homePage = catchAsync(async (req, res, next) => {
     res.status(200).render('homepage', {
@@ -66,10 +69,14 @@ exports.gotoInviMid = catchAsync(async (req, res) => {
 
 exports.myPort = catchAsync(async (req, res) => {
     const id = req.params.id
+    const pg = 1;
+    const features = new APIFeatures(PortfolioImage.find({ user: id }), { limit: 4, page: pg }).paginate();
+    const portImage = await features.query
     await Portfolio.findOne({ user: id }).populate('user').then(portfolio => {
         res.status(200).render('layouts/landing', {
             title: 'Porti Detail',
-            portfolio
+            portfolio,
+            portImage
         })
     }).catch(err => console.log(err));
 })
@@ -86,44 +93,64 @@ exports.myInvi = catchAsync(async (req, res) => {
 
 exports.layoutFirst = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
+    const user_id = atob(req.params.userid)
+    const pg = 1;
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const portImage = await features.query
     await Portfolio.findById(port_id).populate('user').then(portfolio => {
 
         res.status(200).render('layouts/first', {
             title: portfolio.name,
-            portfolio
+            portfolio,
+            portImage
         })
     })
 })
 
 exports.layoutSecond = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
+    const user_id = atob(req.params.userid)
+    const pg = 1;
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const portImage = await features.query
     await Portfolio.findById(port_id).populate('user').then(portfolio => {
 
         res.status(200).render('layouts/second', {
             title: portfolio.name,
-            portfolio
+            portfolio,
+            portImage
         })
     })
 })
 
 exports.layoutThird = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
+    const user_id = atob(req.params.userid)
+    const pg = 1;
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const portImage = await features.query
     await Portfolio.findById(port_id).populate('user').then(portfolio => {
 
         res.status(200).render('layouts/third', {
             title: portfolio.name,
-            portfolio
+            portfolio,
+            portImage
         })
     })
 })
 
 exports.layoutFourth = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
+    const user_id = atob(req.params.userid)
+    const pg = 1;
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const portImage = await features.query
     await Portfolio.findById(port_id).populate('user').then(portfolio => {
 
         res.status(200).render('layouts/fourth', {
             title: portfolio.name,
-            portfolio
+            portfolio,
+            portImage
         })
     })
 })
@@ -277,26 +304,6 @@ exports.removePortiOldImg = catchAsync(async (req, res, next) => {
             await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
         }
     }
-    if (fs.existsSync(`public/images/ports/imageSecond/${item.imageSecond}`)) {
-        if (item.imageSecond.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageSecond/${item.imageSecond}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageThird/${item.imageThird}`)) {
-        if (item.imageThird.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageThird/${item.imageThird}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageFourth/${item.imageFourth}`)) {
-        if (item.imageFourth.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageFourth/${item.imageFourth}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageFifth/${item.imageFifth}`)) {
-        if (item.imageFifth.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageFifth/${item.imageFifth}`);
-        }
-    }
 
     next();
 })
@@ -306,16 +313,7 @@ exports.updatePortImgData = catchAsync(async (req, res, next) => {
     const updatedPortfolio = await Portfolio.findByIdAndUpdate(
         req.body.id,
         {
-            firstImgHead: req.body.firstImgHead,
-            secondImgHead: req.body.secondImgHead,
-            thirdImgHead: req.body.thirdImgHead,
-            fourthImgHead: req.body.fourthImgHead,
-            fifthImgHead: req.body.fifthImgHead,
-            imageCover: req.files.imageCover[0].originalname,
-            imageSecond: req.files.imageSecond[0].originalname,
-            imageThird: req.files.imageThird[0].originalname,
-            imageFourth: req.files.imageFourth[0].originalname,
-            imageFifth: req.files.imageFifth[0].originalname
+            imageCover: req.file.originalname,
         },
         {
             new: true,

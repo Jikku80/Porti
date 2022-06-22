@@ -24,7 +24,7 @@ inviOneForm.innerHTML = `
         </div>
         <div class="form__cont">
             <label>Your Story :) :</label>
-            <textarea id="aboutinvi" rows="4" cols="50" placeholder="We met at a bar down the alley..." required></textarea>
+            <textarea id="aboutinvi" rows="4" cols="30" placeholder="We met at a bar down the alley..." required></textarea>
         </div>
         <div class="form__cont">
             <label>Venue :</label>

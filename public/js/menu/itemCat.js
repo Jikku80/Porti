@@ -35,7 +35,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -94,7 +94,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -166,7 +166,7 @@ window.addEventListener("load", async () => {
                                                 subItems.innerHTML +=
                                                     `
                                                         <div class="menu__card">
-                                                            <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}">
+                                                            <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                                 <p class="menu__card__price">${el.price}</p>
@@ -241,7 +241,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}">
+                                        <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.price}</p>
@@ -295,7 +295,7 @@ grabAll.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>

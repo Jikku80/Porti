@@ -196,7 +196,16 @@ body{
     padding-left: 1%;
     padding-right: 1%;
 }
-  
+
+.banner{
+    background-color: rgba(240, 204, 88, 0.637);
+    padding: 1.5%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 1.5rem;
+}
+
 .bdcb{
     color: gray;
 }
@@ -374,7 +383,8 @@ body{
 }
 
 .smallbtn{
-    padding: 2%;
+    padding: 1%;
+    margin: 1%;
 }
 
 .group__btn{
@@ -448,6 +458,7 @@ input::file-selector-button{
 .share__menu, .share__catalouge{
     text-align: left;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 .menu__link__displayer, .catalouge__link__displayer{
@@ -480,7 +491,9 @@ input::file-selector-button{
     .file_part input{
         width: 50%;
     }
-
+    .smallbtn{
+        padding: 2%;
+    }
     .menu__link__displayer{
         margin: 2%;
         padding: 2%;
@@ -490,6 +503,9 @@ input::file-selector-button{
 @media screen and (max-width: 600px){
     .breadcrumbs{
         font-size: 10px;
+    }
+    .smallbtn{
+        padding: 2%;
     }
     .form__bod{
         width: 80%;

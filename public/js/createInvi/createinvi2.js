@@ -29,7 +29,7 @@ inviTwoForm.innerHTML = `
         </div>
         <div class="form__cont">
             <label>Program Detail :</label>
-            <textarea id="aboutinvi2" rows="4" cols="50" placeholder="We gonna go all night wild..." required></textarea>
+            <textarea id="aboutinvi2" rows="4" cols="30" placeholder="We gonna go all night wild..." required></textarea>
         </div>
         <div class="form__cont">
             <label>Venue :</label>

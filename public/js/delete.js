@@ -3,12 +3,14 @@ let dlcf = document.querySelector(".dt__cf")
 let delPorti = document.getElementById("delPort");
 let deel = document.querySelector(".del__port");
 let landPorti = document.querySelector(".land__update")
+let addPrevSec = document.querySelector(".portfolio__tweaks");
 let portidelid = document.getElementById("portidelid").innerText;
 
 delPorti.addEventListener("click", () => {
     landCont.classList.add("hidden");
     deel.classList.add("hidden");
     landPorti.classList.add("hidden");
+    addPrevSec.classList.add("hidden");
     dlcf.classList.remove("hidden");
 })
 
@@ -17,15 +19,17 @@ abrt.addEventListener("click", () => {
     dlcf.classList.add("hidden");
     landCont.classList.remove("hidden");
     landPorti.classList.remove("hidden");
+    addPrevSec.classList.remove("hidden");
     deel.classList.remove("hidden");
 })
 
 let yesConfirm = document.querySelector(".yesDelete");
+
 yesConfirm.addEventListener('click', async function (e) {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    const endpoint = '/api/v1/portfolio/deletePorti'
+    const endpoint = `/api/v1/portfolio/${yesConfirm.id}/deletePorti`
     try {
         await fetch((endpoint), {
             method: 'DELETE',

@@ -14,10 +14,10 @@ router.get('/logout', authController.logout);
 router.patch('/passwordreset', authController.resetPassword);
 
 
-router.get('/:user/portfolio/:id/a9993e364706816aba3e25717850c26c9cd0d89d', viewsController.layoutFirst);
-router.get('/:user/portfolio/:id/589c22335a381f122d129225f5c0ba3056ed5811', viewsController.layoutSecond);
-router.get('/:user/portfolio/:id/481743d632b80d39bc2771d19be3ca3005b3f8af', viewsController.layoutThird);
-router.get('/:user/portfolio/:id/d798d4338adeb553a1089a58e61e18c2fcdf77bb', viewsController.layoutFourth);
+router.get('/:user/portfolio/:userid/tm/a9993e364706816aba3e25717850c26c9cd0d89d/:id', viewsController.layoutFirst);
+router.get('/:user/portfolio/:userid/tm/589c22335a381f122d129225f5c0ba3056ed5811/:id', viewsController.layoutSecond);
+router.get('/:user/portfolio/:userid/tm/481743d632b80d39bc2771d19be3ca3005b3f8af/:id', viewsController.layoutThird);
+router.get('/:user/portfolio/:userid/tm/d798d4338adeb553a1089a58e61e18c2fcdf77bb/:id', viewsController.layoutFourth);
 router.get('/:user/portfolio/:id/da98568d1b2005611973ad49868b38aa8ae68fd7', viewsController.layoutFifth);
 router.get('/:user/portfolio/:id/836b9b955a98e0f2e2d678c179696d6ac53356eb', viewsController.layoutSixth);
 
@@ -41,7 +41,7 @@ router.patch('/updateport', authController.protect, authController.restrictTo('a
 router.patch('/updateportSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);
 router.patch('/updateportSix', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortSix);
 
-router.patch('/updateportImg', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadPortImages, portController.resizeNewPortImages, viewsController.removePortiOldImg, viewsController.updatePortImgData);
+router.patch('/updateportImg', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadPortfolioCoverImage, portController.resizeNewPortImages, viewsController.removePortiOldImg, viewsController.updatePortImgData);
 router.patch('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadImages, portController.resizePortImages, viewsController.removePortiOldImgColl, viewsController.updatePortImgCollec);
 router.get('/myportfolio/:id', viewsController.myPort);
 router.get('/myinvi/:id', viewsController.myInvi);

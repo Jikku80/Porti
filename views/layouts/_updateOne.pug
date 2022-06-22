@@ -49,33 +49,20 @@
                 textarea#upwork(rows="5" cols="50" name="previous" required)= portfolio.previous
             button#updateBtn.redbtn.bigbtn Update
     
-    button#update_Img.redbtn.upMarg Update Portfolio Images
-    #update_ImgForm.hidden.upform
-        .upform__head 
-            h1 Update Your Port Images
-            img.cancl(src="/images/cancel.png", alt="cancel_img")
-        form#upImage
-            .form__bod.file_part
-                input#img1(type="file" accept="image/*" name="img1", required)
-                label Heading: 
-                input#firstImg(type="text" value= `${portfolio.firstImgHead}` name="firstImgHead")
-            .form__bod.file_part
-                input#img2(type="file" accept="image/*" name="img2", required)
-                label Heading: 
-                input#secondImg(type="text" value= `${portfolio.secondImgHead}` name="secondImgHead")
-            .form__bod.file_part
-                input#img3(type="file" accept="image/*" name="img3", required)
-                label Heading: 
-                input#thirdImg(type="text" value= `${portfolio.thirdImgHead}` name="thirdImgHead")
-            .form__bod.file_part
-                input#img4(type="file" accept="image/*" name="img4", required)
-                label Heading: 
-                input#fourthImg(type="text" value= `${portfolio.fourthImgHead}` name="fourthImgHead")
-            .form__bod.file_part
-                input#img5(type="file" accept="image/*" name="img5", required)
-                label Heading: 
-                input#fifthImg(type="text" value= `${portfolio.fifthImgHead}` name="fifthImgHead")
+    if (portfolio.theme !== 'a9993e364706816aba3e25717850c26c9cd0d89d' && portfolio.theme !== '481743d632b80d39bc2771d19be3ca3005b3f8af')
+        button#update_Img.redbtn.upMarg Update Portfolio Cover Image
+        #update_ImgForm.hidden.upform
+            .upform__head 
+                h1 Update Your Portfolio Cover Image
+                img.cancl(src="/images/cancel.png", alt="cancel_img")
+            form#upImage
+                .form__bod.file_part
+                    input#img1(type="file" accept="image/*" name="img1", required)
+                button#updateImgBtn.redbtn.bigbtn Update
+    else 
+        #update_Img.hidden 
+        .cancl.hidden
+        #updateImgBtn.hidden
 
-            button#updateImgBtn.redbtn.bigbtn Update
 
 script(src="/js/layouts/landing.js") 

@@ -4,8 +4,8 @@ html{
 }
 
 body{
-    background-color: black;
     color:white;
+    background-image: rgb(44, 44, 44);
     margin-top: 0;
 }
 
@@ -43,8 +43,7 @@ p{
 }
 
 .land__goto{
-    background-color: rgba(245, 129, 129, 0.116);
-    border: 1px solid crimson;
+    background-color: rgba(0, 0, 0, 0.411);
     border-radius: 1rem;
     padding: 2%;
     margin: 2vh;
@@ -71,8 +70,8 @@ p{
 }
 
 .port_link, .invi_link{
-    font-size: small;
-    background-color: crimson;
+    font-size: 12px;
+    background-color: rgba(220, 20, 60, 0.411);
     color: white;
     padding: 1%;
     overflow-x: auto;
@@ -82,16 +81,25 @@ p{
     text-align: left;
 }
 
-.redbtn{
-    border: 2px solid crimson;
+.redbtn, .ygbtn{
+    border: 2px solid rgba(220, 20, 60, 0.411);
     background-color: transparent;
     color: white;
     cursor: pointer;
     padding: 1.5%;
 }
 
+.ygbtn{
+    border: 2px solid rgba(153, 205, 50, 0.774);
+}
+
 .redbtn:hover{
-    background-color: crimson;
+    background-color: rgba(220, 20, 60, 0.411);
+    color: white;
+}
+
+.ygbtn:hover{
+    background-color: rgba(153, 205, 50, 0.774);
     color: white;
 }
 
@@ -185,7 +193,7 @@ p{
     padding: 0;
 }
 
-#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input, .inviF input, #upInviImage input{
+#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input, .inviF input, #upInviImage input, .addPortiImages input{
     border: 2px solid crimson;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -459,12 +467,12 @@ input::file-selector-button{
   }
 
 .breadcrumbs{
-    font-size: 8px;
     background-color: rgba(0, 0, 0, 0.247);
     padding: 2%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 12px;
     width: auto;
     font-family: monospace;
 }
@@ -473,6 +481,15 @@ input::file-selector-button{
     text-decoration: none;
     padding-left: 1%;
     padding-right: 1%;
+}
+
+.banner{
+    background-color: rgba(240, 204, 88, 0.637);
+    padding: 1.5%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 1.5rem;
 }
   
 .bdcb{
@@ -497,7 +514,120 @@ input::file-selector-button{
     height: 50vh;
 }
 
+.addHeading{
+    text-align: center;
+    font-weight: bolder;
+    font-family: monospace;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.addHeading a{
+    color: white;
+    text-decoration: none;
+}
+
+#addImg{
+    width: 15%;
+    text-align: center;
+    padding-left: 5rem;
+    margin: 1%;
+}
+
+#addName{
+    border-top: 0px;
+    transition: transform .2s;
+    margin: 1%;
+    outline: 0;
+}
+
+#addName:focus{
+    transform: scale(1.2);
+}
+
+.addPortiImages{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portImage__tweak__sec h2{
+    text-align: center;
+    color: white;
+}
+
+.port__card__main {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.port__images{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    padding: 1%;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.port_img{
+    height: 20rem;
+    cursor: pointer;
+}
+
+.group__btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.paginate__addimg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.del__img__sec{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(220, 20, 60, 0.822);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    text-align: center;
+}
+
+.group__delbtn{
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+}
+
+.delbtn{
+    background-color: transparent;
+    color: white;
+    font-weight: bolder;
+    padding: 2%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.delbtn:hover{
+    background-color: white;
+    color: rgba(220, 20, 60, 0.822);
+}
+
 @media (min-width: 601px) and (max-width: 900px){
+    .breadcrumbs{
+        font-size: 10px;
+    }
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
     }
@@ -506,9 +636,18 @@ input::file-selector-button{
         font-size: 7px;
         padding: 2%;
     }
+
+    .banner{
+        font-size: 12px;
+    }
     input[type='file']{
         width: 70%;
       }
+
+    #addImg{
+        width: 20%;
+        padding-left: 5rem;
+    }
 
     #themes, #themeSec, #themeSix{
         width: 40vw;
@@ -517,9 +656,20 @@ input::file-selector-button{
     #upFb, #upFbsec, #upFbSix{
         width: 40vw;
     }
+
+    .port__images{
+        width: 35%;
+    }
 }
 
 @media screen and (max-width: 600px){
+    .breadcrumbs{
+        font-size: 8px;
+    }
+    .banner{
+        font-size: 10px;
+    }
+
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
     }
@@ -530,6 +680,10 @@ input::file-selector-button{
     input[type='file']{
         width: 50%;
       }
+    #addImg{
+        width: 50%;
+        padding-left: 4rem;
+    }
 
     .rowConv{
         display: flex;
@@ -564,6 +718,16 @@ input::file-selector-button{
     .file_part{
         display: flex;
         flex-direction: column;
+    }
+    .port__card__main {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    .port__images{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
     }
 }
 

@@ -140,7 +140,7 @@ layout5.addEventListener("click", () => {
                     }, 400);
                 } else {
                     console.log(response);
-                    errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                    errorAlert("Invalid input, Check Your Email Address!!!")
                 }
             })
         }

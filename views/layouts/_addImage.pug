@@ -1,0 +1,17 @@
+.addImage#addImageToPortfolio 
+    .addHeading
+        h2 Add Previous Images
+        h2
+            a(href="#port_name") Portfolio Link
+    form.addPortiImages
+        .form__bod.file_part
+            input#addImg(type="file" accept="image/*" required)
+        .form__bod
+            label Accomplishment Detail (optional):
+            input#addName(type="text")
+        button#addImageBtn.redbtn.bigbtn Add Image
+        button#updatePortfolioImageBtn.hidden.redbtn.bigbtn Update Image
+
+script(src="/js/layouts/addPortImage.js") 
+
+            

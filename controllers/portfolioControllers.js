@@ -3,8 +3,10 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const Portfolio = require('./../models/portfolioModel');
+const PortfolioImage = require('./../models/portfolioImageModel')
 const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
+const APIFeatures = require('./../utils/apiFeatures');
 
 const multerStorage = multer.memoryStorage();
 
@@ -21,13 +23,9 @@ const upload = multer({
     fileFilter: multerFilter
 });
 
-exports.uploadPortImages = upload.fields([
-    { name: 'imageCover', maxCount: 1 },
-    { name: 'imageSecond', maxCount: 1 },
-    { name: 'imageThird', maxCount: 1 },
-    { name: 'imageFourth', maxCount: 1 },
-    { name: 'imageFifth', maxCount: 1 }
-]);
+exports.uploadPortImages = upload.single('addImage')
+
+exports.uploadPortfolioCoverImage = upload.single('imageCover');
 
 exports.uploadImages = upload.fields([
     { name: 'images', maxCount: 20 }
@@ -36,47 +34,29 @@ exports.uploadImages = upload.fields([
 
 exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
 
-    if (!req.files) return next();
+    if (!req.file) return next();
+    let img = req.file;
 
-    let img = req.files.imageCover[0];
-
-    img.originalname = `port-${img.fieldname}-${Date.now()}-previous-work.jpeg`;
+    img.originalname = `port-${req.user.name}-${Date.now()}-coverImage.jpeg`;
     await sharp(img.buffer)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/images/ports/imageCover/${img.originalname}`);
 
-    let img2 = req.files.imageSecond[0];
+    next();
+});
 
-    img2.originalname = `port-${img2.fieldname}-${Date.now()}-previous-work.jpeg`;
-    await sharp(img2.buffer)
+exports.resizeNewPortAddImages = catchAsync(async (req, res, next) => {
+
+    if (!req.file) return next();
+    let img = req.file;
+
+    img.originalname = `port-${req.user.name}-${Date.now()}-previous-work.jpeg`;
+    await sharp(img.buffer)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/imageSecond/${img2.originalname}`);
+        .toFile(`public/images/ports/addedImages/${img.originalname}`);
 
-    let img3 = req.files.imageThird[0];
-
-    img3.originalname = `port-${img3.fieldname}-${Date.now()}-previous-work.jpeg`;
-    await sharp(img3.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/imageThird/${img3.originalname}`);
-
-    let img4 = req.files.imageFourth[0];
-
-    img4.originalname = `port-${img4.fieldname}-${Date.now()}-previous-work.jpeg`;
-    await sharp(img4.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/imageFourth/${img4.originalname}`);
-
-    let img5 = req.files.imageFifth[0];
-
-    img5.originalname = `port-${img5.fieldname}-${Date.now()}-previous-work.jpeg`;
-    await sharp(img5.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/imageFifth/${img5.originalname}`);
     next();
 });
 
@@ -109,37 +89,13 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createMe = catchAsync(async (req, res, next) => {
-    const doc = await Portfolio.create({
+    const doc = await PortfolioImage.create({
         name: req.body.name,
         user: req.user.id,
-        email: req.body.email,
-        fb: req.body.fb,
-        location: req.body.location,
-        phn_no: req.body.phn_no,
-        showNo: req.body.showNo,
-        about: req.body.about,
-        what: req.body.what,
-        why: req.body.why,
-        previous: req.body.previous,
-        theme: req.body.theme,
-        firstImgHead: req.body.firstImgHead,
-        secondImgHead: req.body.secondImgHead,
-        thirdImgHead: req.body.thirdImgHead,
-        fourthImgHead: req.body.fourthImgHead,
-        fifthImgHead: req.body.fifthImgHead,
-        imageCover: req.files.imageCover[0].originalname,
-        imageSecond: req.files.imageSecond[0].originalname,
-        imageThird: req.files.imageThird[0].originalname,
-        imageFourth: req.files.imageFourth[0].originalname,
-        imageFifth: req.files.imageFifth[0].originalname
+        addImage: req.file.originalname,
     });
 
-    res.status(201).json({
-        status: 'success',
-        data: {
-            data: doc
-        }
-    })
+    res.status(201).json(doc)
 })
 
 exports.createImgColl = catchAsync(async (req, res, next) => {
@@ -173,32 +129,47 @@ exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
 exports.makePorti = factory.createOne(Portfolio);
 
+exports.removePrevOldImg = catchAsync(async (req, res, next) => {
+    const item = await PortfolioImage.findByIdAndUpdate(req.params.id)
+    if (fs.existsSync(`public/images/ports/addedImages/${item.addImage}`)) {
+        if (item.addImage.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/addedImages/${item.addImage}`);
+        }
+    }
+
+    next();
+})
+
+exports.updatePrevImgData = catchAsync(async (req, res, next) => {
+    const updatedPortfolioImage = await PortfolioImage.findByIdAndUpdate(
+        req.params.id,
+        {
+            addImage: req.file.originalname,
+            name: req.body.name
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+    res.status(200).json({
+        status: 'success',
+        portImage: updatedPortfolioImage
+    })
+});
+
 exports.deletePorti = catchAsync(async (req, res, next) => {
     const item = await Portfolio.findByIdAndDelete(req.body.id);
+    const addItem = await PortfolioImage.deleteMany({ user: req.params.uid });
 
     if (fs.existsSync(`public/images/ports/imageCover/${item.imageCover}`)) {
         if (item.imageCover.length !== 0) {
             await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
         }
     }
-    if (fs.existsSync(`public/images/ports/imageSecond/${item.imageSecond}`)) {
-        if (item.imageSecond.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageSecond/${item.imageSecond}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageThird/${item.imageThird}`)) {
-        if (item.imageThird.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageThird/${item.imageThird}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageFourth/${item.imageFourth}`)) {
-        if (item.imageFourth.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageFourth/${item.imageFourth}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/imageFifth/${item.imageFifth}`)) {
-        if (item.imageFifth.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageFifth/${item.imageFifth}`);
+    if (fs.existsSync(`public/images/ports/addedImages/${addItem.addImage}`)) {
+        if (addItem.addImage.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/addedImages/${addItem.addImage}`);
         }
     }
 
@@ -220,3 +191,40 @@ exports.deletePorti = catchAsync(async (req, res, next) => {
         }
     })
 })
+
+exports.deletePortiImage = catchAsync(async (req, res, next) => {
+    const item = await PortfolioImage.findByIdAndDelete(req.params.id);
+    if (fs.existsSync(`public/images/ports/addedImages/${item.addImage}`)) {
+        if (item.addImage.length !== 0) {
+            await fs.promises.unlink(`public/images/ports/addedImages/${item.addImage}`);
+        }
+    }
+
+    if (!item) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+})
+
+exports.paginatePortImage = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    const pg = req.params.page
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 4, page: pg }).paginate();
+    await features.query.then((items) => {
+        res.status(200).json(items)
+    })
+})
+
+exports.paginatePortImageTwl = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id
+    const pg = req.params.page
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    await features.query.then((items) => {
+        res.status(200).json(items)
+    })
+})
+

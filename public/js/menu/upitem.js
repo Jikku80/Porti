@@ -20,7 +20,7 @@ async function getOneItem() {
                     let item = result.data.data
                     menuCard.innerHTML =
                         `
-                            <img class="menu__card__img" src="/images/menu-pic/${item.coverImage}">
+                            <img class="menu__card__img" src="/images/menu-pic/${item.coverImage}" alt="item__image">
                             <div class="menu__card__det">
                                 <h3 class="menu__card__head">${item.name}</h3>
                                 <p class="menu__card__price">${item.price}</p>

@@ -24,19 +24,19 @@ block content
                 h2.items__head Update Item Detail
                 form.upItem
                     .form__bod
-                        label Food Name:
+                        label(for="upitemname") Food Name:
                         input#upitemname(type="text" value=menu.name required)
                     .form__bod
-                        label Price: 
+                        label(for="upitemprice") Price: 
                         input#upitemprice(type="text" value=menu.price required)
                     .form__bod
-                        label Category: 
+                        label(for="upitemcat") Category: 
                         input#upitemcat(type="text" value=menu.category required)
                     .form__bod
-                        label Detail (optional):
+                        label(for="upitemdetail") Detail (optional):
                         textarea#upitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
                     .form__bod 
-                        label Theme:
+                        label(for="upitemtheme") Theme:
                         select#upitemtheme
                             option.opt(hidden selected)= menu.theme 
                     .group__btn
@@ -46,6 +46,7 @@ block content
                 h2.items__head Update Items Image
                 form.upItem
                     .form__bod.file_part
+                        label(for="upcoverimage") Update Item Image
                         input#upcoverimage(type="file" accept="image/*" required)
                     .group__btn
                         button#upImgItemBtn.smallbtn.ygbtn Update Item Image  

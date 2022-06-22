@@ -1,9 +1,16 @@
 extends baselayout
 
 block content 
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
     .main
         .bgCover 
-            img#bgcv(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="bgCover")
+            if (!portfolio.imageCover)
+                img#bgcv(src=`/images/party.jpg`, alt="cover__pic")
+            else 
+                img#bgcv(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="bgCover")
             ul.bg__list
                 li 
                     a#hm(href="#") Home 
@@ -28,18 +35,20 @@ block content
                     h2 Previous Accomplishment Details
                     p= portfolio.previous
                     .prev__cont
-                        .prev__cont__sub
-                            img.imgsnd.imgFull(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img", srcset="")
-                            h3#first__head= portfolio.secondImgHead
-                        .prev__cont__sub
-                            img.imgsnd.imgFull(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img", srcset="")
-                            h3#second__head= portfolio.thirdImgHead
-                        .prev__cont__sub
-                            img.imgsnd.imgFull(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img", srcset="")
-                            h3#third__head= portfolio.fourthImgHead
-                        .prev__cont__sub
-                            img.imgsnd.imgFull(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img", srcset="")
-                            h3#fourth__head= portfolio.fifthImgHead
+                            if (portImage.length === 0)
+                                p.no__img No Previous Accomplishment Images Uploaded Yet!!!
+                                .prev__addimgSec.hidden 
+                                .next__addimgSec.hidden
+                            else
+                                .prev__cont__sub
+                                    each item in portImage
+                                        .port__images
+                                            img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                                            h3.first__head= item.name
+                                .paginate__addimg
+                                    .group__delbtn
+                                        button.redbtn.prev__addimgSec Prev
+                                        button.redbtn.next__addimgSec Next
             .sec
                 #contat 
                     h2= `Contact ${portfolio.name}`
@@ -63,6 +72,8 @@ block content
                 img(src="/images/rup.png", alt="go_up")
 
     script(src="/js/imgFull.js") 
+    script(src="/js/alert.js") 
+    script(src="/js/layouts/paginate.js")
                     
 
 

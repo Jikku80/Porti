@@ -188,7 +188,7 @@ layout6.addEventListener("click", () => {
                     }, 400);
                 } else {
                     console.log(response);
-                    errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")
+                    errorAlert("Invalid input, Check Your Email Address!!!")
                 }
             })
         }
@@ -196,20 +196,6 @@ layout6.addEventListener("click", () => {
             console.log(err);
             errorAlert('Sorry! Something went wrong', err);
         };
-        yourname.value = "",
-            youremail.value = "",
-            fb.value = "",
-            loction.value = "",
-            yourno.value = "",
-            aboutyou.value = "",
-            what.value = "",
-            why.value = "",
-            yourwork.value = "",
-            hd1.value = "",
-            hd2.value = "",
-            hd3.value = "",
-            hd4.value = "",
-            hd5.value = ""
     })
 })
 

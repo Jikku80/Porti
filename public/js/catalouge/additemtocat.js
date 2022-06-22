@@ -50,7 +50,7 @@
                         let fResult = item.data.data
                         yourItems.innerHTML += `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${fResult.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${fResult.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${fResult.name}</h3>
                                         <p class="catalouge__card__head">${fResult.serialno}</p>
@@ -113,7 +113,7 @@ async function getAllCatalougeItem() {
                             subItems.innerHTML +=
                                 `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
                                         <p class="catalouge__card__head">${el.serialno}</p>
@@ -199,7 +199,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
                                         <p class="catalouge__card__head">${el.serialno}</p>
@@ -265,7 +265,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}">
+                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head">${el.name}</h3>
                                         <p class="catalouge__card__head">${el.serialno}</p>

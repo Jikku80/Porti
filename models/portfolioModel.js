@@ -41,10 +41,6 @@ const portfolioSchema = new mongoose.Schema({
         trim: true
     },
     imageCover: String,
-    imageSecond: String,
-    imageThird: String,
-    imageFourth: String,
-    imageFifth: String,
     images: [String],
     firstImgHead: {
         type: String,

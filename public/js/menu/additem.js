@@ -45,7 +45,7 @@ additembtn.addEventListener("click", async (e) => {
                     let fResult = item.data.data
                     subItems.innerHTML += `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}">
+                                    <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${fResult.name}</h3>
                                         <p class="menu__card__price">${fResult.price}</p>
@@ -101,7 +101,7 @@ async function getAllItem() {
                             subItems.innerHTML +=
                                 `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -178,7 +178,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -240,7 +240,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}">
+                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>

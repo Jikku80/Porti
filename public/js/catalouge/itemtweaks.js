@@ -20,7 +20,7 @@ async function getOneCatalougeItem() {
                     let item = result.data.data
                     catalougeCard.innerHTML =
                         `
-                            <img class="catalouge__card__img" src="/images/catalouge/${item.coverImage}">
+                            <img class="catalouge__card__img" src="/images/catalouge/${item.coverImage}" alt="catalouge__item__image">
                             <div class="catalouge__card__det">
                                 <h3 class="catalouge__card__head">${item.name}</h3>
                                 <p class="catalouge__card__price">${item.serialno}</p>
