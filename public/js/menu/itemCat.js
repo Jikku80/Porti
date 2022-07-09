@@ -27,6 +27,7 @@ next.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -44,6 +45,7 @@ next.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#foodItem"
                     if (sub.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -86,6 +88,7 @@ prev.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -103,6 +106,7 @@ prev.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#foodItem"
                 })
             } else {
                 console.log(response);

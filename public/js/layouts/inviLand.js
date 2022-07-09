@@ -9,7 +9,7 @@ let invithemepoint = document.getElementById('invitetheme').innerText;
 // let invisearchPoint = location.search.slice(1);
 
 inviteurl.innerHTML = `
-<button id="openinvite" class="redbtn" href="">My Invitation</button>
+<button id="openinvite" class="redbtn">My Invitation</button>
 <p class="xsf">Share your Invitation with the link below</p>
 <p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}/${invithemepoint}</p>
 `
@@ -71,6 +71,7 @@ async function getinviQRCode(resdata) {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
+        window.location.hash = "#qrLandingSec"
         let qrItem = document.querySelector(".qr__sec");
         await resdata.then(item => {
             load.classList.add('hidden');

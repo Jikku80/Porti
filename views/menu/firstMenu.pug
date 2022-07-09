@@ -24,11 +24,11 @@ block content
                 .menu__bod
                     h3.grab__all ALL
                     .category
-                .sub__item__bod
+                .sub__item__bod#foodItem
                     .sub__items.row__items
                         each menu in menus 
                             .menu__card
-                                img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}` loading="lazy" alt="menu__item__img")
+                                img.menu__card__img(src=`/images/menu-pic/${menu.coverImage}`  alt="menu__item__img")
                                 .menu__card__det
                                     h3.menu__card__head= menu.name
                                     p.menu__card__price= menu.price

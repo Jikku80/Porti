@@ -2,7 +2,11 @@ extends base
 
 block content 
     .main__content 
-        h2.presents.hidden Tech Mafia Presents PORTi
+        h2.presents.hidden Tech  
+            span.maf Mafia 
+            span.mid  Presents 
+            img.porti__off__img(src="/images/portii.png", alt="porti__img")
+            span.grn Porti
         .main__content__log
             if (!user)
                 a#log.fkAncky.norot(href="/login" title="Login | SignUp") Login | SignUp
@@ -14,6 +18,7 @@ block content
                     span.lst  Mafia 
             if (!user)
                 a.crPr(href="/porti-highlights") View Porti-Features
+                #go__create.hidden
             else
                 a.crPr(href="/porti")
                     p#go__create Unleash The Power
@@ -30,22 +35,25 @@ block content
             #abtPorti.padder
                 h2 About 
                     span.mid Porti
-                p Tech Mafia Presents Porti. Are your Interviews Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. 
+                p Tech Mafia Presents Porti. In Spanish "Por ti" means "For You". The website is practically for you. In this age of Technology, where things are easy acces via internet then sotring it locally or using it physically, Porti is here to help you with situations that can really be a drag.
                 h3 Why Porti?
-                p Skip the waste of time on making CV's, Porti Brings you varities of Theme Select and Theme Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
-                h3 Who Porti is For?
+                p Is your Interview Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. Just answer the questions given and your all set.
+                p Is a big event coming and dont want to waste time energy and money on making invitation card. Well with porti you can create Invitation card. Create it share it to your guests.
+                p Do you have to change price and details of your Menu every now and then. Then Go for Porti, Create your menu, easily update it any time.
+                p Porti is here for Business owners who are selling products or services. If you have alot of items or services use our catalog feature.
+                p Porti Brings you varities of Theme Select and Just Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
+                p With the help of Porti sharing is more easy, forget the hassle of saving storing and printing your CV, Invitation, Menu, Catalouge. Access them with your QR code or Link. Also showing your previous works gets easy, updating your details gets easy. 
+                h3 Who Porti is For :
                 ul  
-                    li For Students, Make your portfolio add your tasks, certificates, ace the interview 
-                    li For Graduates Who is about to take a interview, Create Your portfolio, Share your Portfolio link to the compayn set back relax and wait for the response.
-                    li For Artists, If you have alot of your art pictures, Create A portfolio, Add your art work pictures and share it to your desire location 
-                    li For Freelancers, Create Your portfolio add your previous works, Share it to your clients
-                    li Basically For Anyone | Everyone who needs a portfolio
-                h3 What Else Can You Do in Porti?
-                p You can create Invitation, Create Your Invitation Share it to your loved onces | friends | staffs, Invite them to your Party | Function | Meetings
-                h3 Does Porti Guarantee Your Ace In Interview?
-                p Well That's all upto You, Neither does your CV guarantee it, How you describe yourself | sell yourself | show your work, how good you are on what you do can make a diference. 
+                    li Applying For Work | Showcasing Your Work
+                    li Hosting A Party | Organizing A Event
+                    li Restaurant | Food | Drinks Cafe Owner
+                    li Business Owner | Shop Owner
+                    li For Anyone | Everyone who needs a Portfolio, Invitation Card, Food Menu, Catalogue
+                h3 Will A Portolio From Porti Guarantee Your Ace In Interview?
+                p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
                 h3 Is Porti Free To Use?
-                p Yes! Porti is completely Free, Feel free to signup and create your portfolio.
+                p Yes! Porti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your porti account as there are lots of free themes :)
             #guidePorti.padder 
                 h2 Create Your First 
                     span.mid Portfolio 
@@ -186,6 +194,12 @@ block content
                                 span.lodmid Mafia
                                     span.lodend ...
                         img#ok.hidden(src="/images/ok.png", alt="loader")
+
+            #devSection.padder 
+                h2 Become a 
+                    span.mid Tech 
+                    span.lst Mafia Hitman
+                button#becomeDeveloper.greybtn Load it
 
     script(src="/js/alert.js")
     script(src="/js/home.js")  

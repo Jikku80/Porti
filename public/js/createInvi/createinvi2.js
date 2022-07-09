@@ -53,6 +53,7 @@ mkForm2.classList.add("hidden");
 inid2 = document.getElementById("uiId").innerText;
 
 invi2.addEventListener("click", () => {
+    location.hash = "#portNav"
     portBod2.classList.add("hidden");
     inviBod2.classList.add("hidden");
     menuBod2.classList.add("hidden");
@@ -128,13 +129,6 @@ invi2.addEventListener("click", () => {
             console.log(err);
             errorAlert('Sorry! Something went wrong', err);
         };
-        yourname.value = "",
-            secname.value = "",
-            aboutyou.value = "",
-            what.value = "",
-            why.value = "",
-            yourwork.value = "",
-            yourno.value = ""
     })
 
 })
@@ -146,4 +140,5 @@ cancelInvite2.addEventListener("click", () => {
     inviBod2.classList.remove("hidden");
     menuBod2.classList.remove("hidden");
     catBod2.classList.remove("hidden");
+    location.hash = "#crtInvi";
 })

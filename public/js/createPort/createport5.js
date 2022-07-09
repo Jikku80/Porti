@@ -64,6 +64,7 @@ let layoutFive = document.querySelector(".formLayout5")
 layoutFive.classList.add("hidden");
 
 layout5.addEventListener("click", () => {
+    location.hash = "#portNav"
     portBod5.classList.add("hidden");
     inviSec5.classList.add("hidden");
     menuSec5.classList.add("hidden");
@@ -167,4 +168,5 @@ clFiveCreate.addEventListener("click", () => {
     inviSec5.classList.remove("hidden");
     menuSec5.classList.remove("hidden");
     catSec5.classList.remove("hidden");
+    location.hash = "#crtPort";
 })

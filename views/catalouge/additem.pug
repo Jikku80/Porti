@@ -27,7 +27,7 @@ block content
                     p.name__tag Signout
             .port__nav__sub 
                 a.crpt.smallest__cont(href="/porti", title="porti")
-                    img(src="/images/plus.png", alt="view_port")
+                    img(src="/images/smalport.png", alt="view_port")
                     p.name__tag Porti
                 a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
@@ -42,12 +42,12 @@ block content
                     span#catuiId.hidden= user._id
                     p.name__tag Food Menu
             .breadcrumbs 
-                a.bdcb(href="#" title="additemstomenu") You Are Here |
+                .bdcb(title="additemstomenu") You Are Here |
                 a.bdcb(href="/") Home 
-                a.bdcb(href="#") &#8680;
+                .bdcb.arr &#8680;
                 a.bdcb(href="/porti") Porti
-                a.bdcb(href="#") &#8680;   
-                a.cur(href="#") Add Items To Catalouge
+                .bdcb.arr &#8680;   
+                .cur Add Items To Catalouge
         if (!company[0])
             h2.banner.up__place__det You Have Not Updated Your Enterprise Detail, Update Your Enterprise Details!!!
         #item__form
@@ -78,7 +78,7 @@ block content
                     label(for="catcoverimage") Item Image:
                     input#catcoverimage(type="file" name="catcoverimage" accept="image/*"  required)
                 button#cataddItemBtn.blackbtn Add Item
-        .your__item__sec
+        .your__item__sec#CatalogeItemSec
             h2.items__head Your Items 
             p.currentuid.hidden= user._id
             .your__item__bod
@@ -116,6 +116,9 @@ block content
             .form__bod
                 label(for="company_slogan") Company Slogan (optional): 
                 input#compslogan(type="text", placeholder="Eat Burger Save Time")
+            .form__bod 
+                label(for="company_color") Pick a theme color (optional);
+                input#companyColor(type="color" value="#1A9ACC")
             p.comp__len.hidden= company.length
             if (company.length !== 0)
                 p.comp__id.hidden= company[0]._id

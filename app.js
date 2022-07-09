@@ -17,6 +17,7 @@ const userRouter = require('./routes/userRoutes');
 const menuRouter = require('./routes/menuRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const catalougeRouter = require('./routes/catalougeRoutes')
+const themeRouter = require('./routes/themeRoutes')
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use(function (req, res, next) {
 
 app.use('/', viewRouter);
 app.use('/api/users', userRouter);
+app.use('/api/themes', themeRouter);
 app.use('/api/v1/portfolio', portfolioRouter);
 app.use('/api/v1/invite', inviteRouter);
 app.use('/api/v1/message', messageRouter);

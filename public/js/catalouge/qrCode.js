@@ -7,7 +7,7 @@
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            page.classList.remove("hidden");
+            // page.classList.remove("hidden");
             const endpoint = `/scan`
             await fetch((endpoint), {
                 method: 'POST',
@@ -39,7 +39,8 @@
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
-            page.classList.remove("hidden");
+            // page.classList.remove("hidden");
+            window.location.hash = "#catalqrcode";
             let qrItem = document.getElementById("catalqrcode");
             await resdata.then(item => {
                 load.classList.add('hidden');

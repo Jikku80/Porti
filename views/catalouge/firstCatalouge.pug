@@ -21,6 +21,9 @@ block content
         .navigator
             if (company)
                 h1.blackbg= company.name
+                p.comp__color.hidden= company.themecolor
+            else
+                p.comp__color.hidden #1A9ACC
             a.go__to__catalouge(href="#compcatalouge") Go To Catalouge
     .search__catalouge 
         form.catal__search
@@ -63,8 +66,8 @@ block content
                                 .catal__card__head Detail: 
                                 .card__dark__text= item.detail
     .paginate 
-        button(type="button" name="prev__catal").prev__catal.blue Previous
-        button(type="button" name="next__catal").next__catal.blue Next
+        button(type="button" name="prev__catal").prev__catal.pag__btn.blue Previous
+        button(type="button" name="next__catal").next__catal.pag__btn.blue Next
     if (company)
         .company__footer 
             .footer__bod

@@ -259,7 +259,8 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         locationLink: req.body.locationLink,
         slogan: req.body.slogan,
         contact: req.body.contact,
-        Address: req.body.Address
+        Address: req.body.Address,
+        themecolor: req.body.themecolor
     });
 
     res.status(201).json({

@@ -16,14 +16,19 @@ function Validate(inpt, cont, info) {
 }
 
 loginBtn.addEventListener('click', async function (e) {
+    let pwdLen = pwd.value.length
     if (emailAdd.value < 1 || emailAdd.value == "" || emailAdd.value == null) {
         return false;
     }
     if (pwd.value == "" || pwd.value == null) {
         return false;
     }
+    if (pwdLen < 9) {
+        e.preventDefault();
+        errorAlert("Password Must be 9 Characters Long")
+        return false;
+    }
     e.preventDefault();
-    console.log(emailAdd.value)
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     const endpoint = '/login'
@@ -54,6 +59,4 @@ loginBtn.addEventListener('click', async function (e) {
     catch (err) {
         errorAlert('Sorry! Something went wrong', err);
     };
-    emailAdd.value = "";
-    pwd.value = "";
 })

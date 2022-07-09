@@ -1,4 +1,5 @@
 let catalougeSearchBar = document.querySelector("#catalougeSearch");
+let compColor = document.querySelector(".comp__color").innerText;
 
 catalougeSearchBar.addEventListener("keypress", async (e) => {
     if (catalougeSearchBar.value < 1 || catalougeSearchBar.value == "" || catalougeSearchBar.value == null) {
@@ -61,6 +62,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
 
 (function () {
     allItems = document.querySelector('.get__all__items');
+    allItems.style.backgroundColor = compColor;
     allItems.addEventListener("click", () => {
         location.reload();
     })
@@ -94,6 +96,7 @@ window.addEventListener("load", async () => {
                     let catalougeItems = document.querySelectorAll(".catalouge__cate__list");
 
                     catalougeItems.forEach(item => {
+                        item.style.backgroundColor = compColor;
                         item.addEventListener("click", async (e) => {
                             e.preventDefault();
                             let cate = item.innerText;
@@ -120,6 +123,7 @@ window.addEventListener("load", async () => {
                                                     let subItemHeader = document.querySelector(".sub__cat__head ");
                                                     subItemHeader.innerText = cate + " Sub Categories | SGroup"
                                                     subItm.innerHTML += `<h3 class="catalouge__subcate__list">${item}</h3>`
+                                                    subItemHeader.style.color = compColor;
                                                 }
                                                 else {
                                                     let catalougeItems = document.querySelector(".catalouge__items");
@@ -130,6 +134,12 @@ window.addEventListener("load", async () => {
                                             })
                                             let subCateList = document.querySelectorAll(".catalouge__subcate__list")
                                             subCateList.forEach(item => {
+                                                item.addEventListener("mouseover", () => {
+                                                    item.style.color = compColor;
+                                                })
+                                                item.addEventListener("mouseout", () => {
+                                                    item.style.color = "white";
+                                                })
                                                 item.addEventListener("click", async (e) => {
                                                     e.preventDefault();
                                                     subItemModel.classList.add("hidden");
@@ -295,6 +305,7 @@ modelCanceler.addEventListener("click", () => {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -302,6 +313,7 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
+                        window.location.hash = "#compcatalouge"
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -346,6 +358,7 @@ modelCanceler.addEventListener("click", () => {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -353,6 +366,7 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
+                        window.location.hash = "#compcatalouge"
                     })
                 } else {
                     console.log(response);
@@ -367,4 +381,28 @@ modelCanceler.addEventListener("click", () => {
     });
 
 
+})();
+
+(function () {
+    let footer = document.querySelector(".company__footer");
+    let btns = document.querySelectorAll(".pag__btn");
+
+    btns.forEach(item => {
+        item.style.color = compColor;
+        item.style.border = `2px solid ${compColor}`;
+
+        item.addEventListener("mouseover", () => {
+            item.style.backgroundColor = compColor;
+            item.style.color = "white";
+        })
+
+        item.addEventListener("mouseout", () => {
+            item.style.color = compColor;
+            item.style.backgroundColor = "transparent"
+        })
+    })
+
+    catalougeSearchBar.style.color = compColor;
+    catalougeSearchBar.style.borderBottom = `2px solid ${compColor}`;
+    footer.style.backgroundColor = compColor;
 })();

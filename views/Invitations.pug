@@ -9,8 +9,8 @@ block content
             span.lodmid Mafia
                 span.lodend ...
     if (invites.length == "" || invites.length == null || invites.length == undefined)
-        .confirm__pg 
-            h1 You have not Created Any Invitation YET!!! Create One and Come Back 
+        .four0four 
+            h2 You have not Created Any Invitation YET!!! Create One and Come Back 
             a.redbtn(href="/porti#crtInvi") Create One 
     else
         if (user)
@@ -31,7 +31,7 @@ block content
                         p.name__tag Signout
                 .port__nav__sub 
                     a.crpt.smallest__cont(href="/porti" title="porti")
-                        img(src="/images/plus.png", alt="view_port")
+                        img(src="/images/smalport.png", alt="view_port")
                         p.name__tag Porti
                     a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                         img(src="/images/porti.png", alt="view_port")
@@ -43,12 +43,12 @@ block content
                         img(src="/images/catalouge.png", alt="items__catalouge")
                         p.name__tag Catalouge
                 .breadcrumbs 
-                        a.bdcb(href="#" title="All Invitation") You Are Here |
+                        .bdcb(title="All Invitation") You Are Here |
                         a.bdcb(href="/") Home 
-                        a.bdcb(href="#") &#8680;  
+                        .bdcb.arr &#8680;  
                         a.bdcb(href="/porti") Porti 
-                        a.bdcb(href="#") &#8680;  
-                        a.cur(href="#") All Invitations
+                        .bdcb.arr &#8680;  
+                        .cur All Invitations
                 .invi__grp
                     .card__main 
                         each invite in invites

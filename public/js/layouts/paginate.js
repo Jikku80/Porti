@@ -32,6 +32,7 @@
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -45,6 +46,7 @@
                                 </div>
                             `
                         });
+                        window.location.hash = "#imgCont"
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -86,6 +88,7 @@
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -99,6 +102,7 @@
                                 </div>
                             `
                         });
+                        window.location.hash = "#imgCont"
                     })
                 } else {
                     console.log(response);

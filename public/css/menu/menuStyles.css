@@ -8,7 +8,7 @@ html{
   }
 
 body{
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(26, 26, 26);
     color: white;
     padding: 0;
     margin: 0;
@@ -188,6 +188,8 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    padding: 0;
     width: auto;
 }
   
@@ -208,6 +210,10 @@ body{
 
 .bdcb{
     color: gray;
+}
+
+.arr{
+    margin: 1%;
 }
   
 .cur{
@@ -502,7 +508,7 @@ input::file-selector-button{
 
 @media screen and (max-width: 600px){
     .breadcrumbs{
-        font-size: 10px;
+        font-size: 12px;
     }
     .smallbtn{
         padding: 2%;

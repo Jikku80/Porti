@@ -8,9 +8,9 @@ block content
             .main__prev__bod 
                 p= portfolio.previous
                 h2= `${portfolio.name} ran into a problem`
-                p= portfolio.firstImgHead 
+                p= portfolio.problem 
                 h2= `How ${portfolio.name} solved the problem?`
-                p= portfolio.secondImgHead
+                p= portfolio.solution
         .main__sixth__about 
             h1 About 
                 span= `${portfolio.name}`
@@ -21,11 +21,11 @@ block content
                 h2= `Why ${portfolio.name} Do it?`
                 p= portfolio.why
                 h2= `How ${portfolio.name} deals with Failure?`
-                p= portfolio.fourthImgHead
+                p= portfolio.failure
                 h2= `How ${portfolio.name} stays motivated?`
-                p= portfolio.thirdImgHead
+                p= portfolio.motivation
                 h2= `${portfolio.name} Message`
-                p= portfolio.fifthImgHead
+                p= portfolio.msg
 
         .main__sixth__cont
             h1 Get in 

@@ -27,7 +27,7 @@ block content
                     p.name__tag Signout
             .port__nav__sub 
                 a.crpt.smallest__cont(href="/porti", title="porti")
-                    img(src="/images/plus.png", alt="view_port")
+                    img(src="/images/smalport.png", alt="view_port")
                     p.name__tag Porti
                 a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
@@ -41,12 +41,12 @@ block content
                     img(src="/images/catalouge.png", alt="items__catalouge")
                     p.name__tag Catalouge
             .breadcrumbs 
-                a.bdcb(href="#" title="additemstomenu") You Are Here |
+                .bdcb(title="additemstomenu") You Are Here |
                 a.bdcb(href="/") Home 
-                a.bdcb(href="#") &#8680;
+                .bdcb.arr &#8680;
                 a.bdcb(href="/porti") Porti
-                a.bdcb(href="#") &#8680;   
-                a.cur(href="#") Add Items To Menu
+                .bdcb.arr &#8680;   
+                .cur Add Items To Menu
         if (!restro[0])
             h2.banner.up__place__det You haven't Updated Your Restro Details, Update Your Restro Details!
         #item__form
@@ -71,7 +71,7 @@ block content
                     label(for="coverimage") Food Image:
                     input#coverimage(type="file" accept="image/*"  required)
                 button#addItemBtn.blackbtn Add Item
-        .your__item__sec
+        .your__item__sec#foodItemSec
             h2.items__head Your Items 
             p.currentid.hidden= user._id
             .sub__item__bod

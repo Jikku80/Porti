@@ -5,13 +5,15 @@ html{
     padding: 0px;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.274) rgba(0, 0, 0, 0.274);
   }
   
   body{
-    background-image: linear-gradient(to bottom right, rgb(44, 44, 44) , crimson);
+    /* background-image: linear-gradient(to bottom right, rgb(44, 44, 44) , crimson); */
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(26, 26,26);
     color: white;
     margin: 0px;
     padding: 0px;
@@ -27,12 +29,12 @@ html{
   }
    
   ::-webkit-scrollbar-thumb {
-    background: rgb(160, 159, 159); 
+  background: rgba(0, 0, 0, 0.411); 
     border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #a7a6a6; 
+    background:rgba(0, 0, 0, 0.411); 
   }
 
 .hidden{
@@ -147,10 +149,6 @@ html{
   padding: 1%;
 }
 
-.rs_form{
-  padding-bottom: 50vh;
-}
-
 .login__form{
   min-height: 100vh;
 }
@@ -192,10 +190,6 @@ html{
   height: 3.5rem;
   width: 3.5rem;
   cursor: pointer;
-}
-
-#reset__form{
-  margin-top: 20vh;
 }
 
 #upInfo h2, #upPass h2{
@@ -260,6 +254,11 @@ html{
   font-family: monospace;
 }
 
+.rmtxtdec{
+  text-decoration: none;
+  text-align: center;
+}
+
 .creation__body{
   display: flex;
   flex-direction: column-reverse;
@@ -268,7 +267,7 @@ html{
 
 .port__bod, .invi__section, .menu__section, .newsec{
   margin: 4%;
-  background-color: rgba(255, 255, 255, 0.103);  
+  background-color: rgba(0, 0, 0, 0.411);  
   backdrop-filter: blur(5px);
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
@@ -279,8 +278,8 @@ html{
   font-size: 12px;
 }
 
-.port__bod h2, .invi__section h2{
-  font-size: large;
+.cr__bod__headr{
+  font-size: medium;
 }
 
 .layout__main{
@@ -307,7 +306,7 @@ html{
   -webkit-filter: blur(8px);
 }
 
-.unl{
+.unl, .portunl{
   border-radius: 1rem;
   overflow: hidden;
   padding: 1%;
@@ -327,7 +326,7 @@ html{
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   padding: 2%;
-  padding-left: 30vw;
+  /* padding-left: 30vw; */
   margin: 2%;
   height: auto;
 }
@@ -353,11 +352,13 @@ html{
 .form__cont{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .form__cont label{
   margin: 1%;
+  font-size: 2rem;
   color: white;
 }
 
@@ -369,6 +370,7 @@ html{
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   margin: 1%;
+  width: 348px;
 }
 
 .form__cont textarea{
@@ -429,36 +431,12 @@ input::file-selector-button{
   display: none;
 }
 
-.check{
-  display: flex;
-  align-items: center;
-}
-
 .checkbox{
   cursor: pointer;
   display: absolute;
   width: 5vw;
   height: 5vh;
   background: transparent;
-}
-
-input[type="checkbox"]:checked ~ .customCheck{
-  transform: rotate(45deg);
-  width: 11px;
-  border-color: #24c78e;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-radius: 0;
-}
-
-.customCheck{
-  display: block;
-  width: 3.5vw;
-  height: 3.5vh;
-  margin-left: 15px;
-  border: 2px solid rgba(220, 20, 60, 0.74);
-  border-radius: 6px;
-  transition: all 0.375s;
 }
 
 ::-webkit-file-upload-button{
@@ -550,15 +528,15 @@ input[type="checkbox"]:checked ~ .customCheck{
 
 .four0four{
   text-align: center;
-  height: 100vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .four0four h1{
   font-size: 4rem;
-  margin-bottom: 4%;
 }
 
 #four0{
@@ -567,6 +545,8 @@ input[type="checkbox"]:checked ~ .customCheck{
 
 .four0four a{
   text-decoration: none;
+  font-size: 16px;
+  font-weight: bolder;
   color: white;
   border: 1px solid hotpink;
   padding: 2%;
@@ -703,8 +683,10 @@ input[type="checkbox"]:checked ~ .customCheck{
   padding: 2%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content:center;
+  align-items: center;
   width: auto;
+  padding: 0;
 }
 
 .breadcrumbs a{
@@ -717,6 +699,10 @@ input[type="checkbox"]:checked ~ .customCheck{
   color: gray;
 }
 
+.arr{
+  margin: 1%;
+}
+
 .cur{
   color: white;
 }
@@ -726,6 +712,26 @@ input[type="checkbox"]:checked ~ .customCheck{
   font-size: monospace;
 }
 
+.noti__sec{
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.warn{
+  color: rgb(255, 142, 142);
+}
+
+.sticky__section{
+  /* background-color:; */
+  padding: 1%;
+  text-align: center;
+  width: fit-content;
+  border-radius: 2rem;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.555);
+}
 
 @media (min-width: 601px) and (max-width: 900px){
   .comp__form{
@@ -736,7 +742,16 @@ input[type="checkbox"]:checked ~ .customCheck{
     height: 2.5rem;
   }
 
-  .un_layout img, .unl img{
+  .form__cont label{
+    font-size: 1.8rem;
+    width: 40%;
+  }
+
+  .form__cont input, .form__cont textarea{
+    width: 345px;
+  }
+
+  .un_layout img, .unl img, .portunl img{
       width: 80vw;
       height: 40vh;
       margin-top: 4%;
@@ -744,6 +759,10 @@ input[type="checkbox"]:checked ~ .customCheck{
 
   .un_layout{
       padding-left: 0;
+    }
+
+    .un_layout img, .un_layout_log img{
+      height: 25rem;
     }
 
   .card{
@@ -771,12 +790,19 @@ input[type="checkbox"]:checked ~ .customCheck{
   .form__sub input{
     height: auto;
   }
+  .form__cont label{
+    font-size: 1.5rem;
+    width: 40%;
+  }
+  .form__cont input, .form__cont textarea{
+    width: 200px;
+  }
 
   .small__nav{
     font-size: .7rem;
   }
 
-  .un_layout img, .unl img{
+  .un_layout img, .unl img, .portunl img{
     width: 80vw;
     height: 30vh;
     margin-top: 4%;
@@ -790,6 +816,10 @@ input[type="checkbox"]:checked ~ .customCheck{
   .un_layout{
     padding-left: 0;
   }
+
+  .un_layout img, .un_layout_log img{
+    height: 20rem;
+  }
   
   .card__main{
     display: flex;
@@ -802,6 +832,10 @@ input[type="checkbox"]:checked ~ .customCheck{
     padding: 2%;
     text-align: center;
     font-size: small;
+  }
+
+  .form__input{
+    padding: 4%;
   }
 
   input[type='file']{

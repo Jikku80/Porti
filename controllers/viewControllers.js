@@ -8,6 +8,11 @@ const User = require('./../models/userModel');
 const APIFeatures = require('./../utils/apiFeatures')
 
 const Portfolio = require('./../models/portfolioModel');
+const PortfolioImages = require('./../models/portfolioImageModel');
+const Restaurant = require('./../models/restaurantDetailModel');
+const Menu = require('./../models/menuModel');
+const Catalouge = require('./../models/catalougeModel');
+const Company = require("./../models/companyModel");
 const Invite = require('./../models/inviteModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -45,15 +50,26 @@ exports.newMsg = catchAsync(async (req, res, next) => {
 
 exports.portiHighlights = catchAsync(async (req, res, next) => {
     res.status(200).render('highlights', {
+        title: "Porti Highlights"
     })
 })
 
 exports.gotoPort = catchAsync(async (req, res, next) => {
 
-    const portfolio = await Portfolio.find({ user: req.user.id })
+    const portfolio = await Portfolio.findOne({ user: req.user.id })
+    const portfolioImage = await PortfolioImage.findOne({ user: req.user.id })
+    const menu = await Menu.findOne({ user: req.user.id })
+    const catalouge = await Catalouge.findOne({ user: req.user.id })
+    const restro = await Restaurant.findOne({ user: req.user.id })
+    const company = await Company.findOne({ user: req.user.id })
     res.status(200).render('create', {
-        title: 'create',
-        portfolio: portfolio[0]
+        title: 'Unleash The Power',
+        portfolio,
+        portfolioImage,
+        menu,
+        catalouge,
+        restro,
+        company
     })
 })
 

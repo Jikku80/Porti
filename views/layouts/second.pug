@@ -24,23 +24,23 @@ block content
                 a#prevWork(href="#pre") Previous
             .sec
                 #abt 
-                    h2= `About ${portfolio.name}`
-                    p= portfolio.about 
-                    h2= `What ${portfolio.name} Do?`
-                    p= portfolio.what 
-                    h2= `Why ${portfolio.name} Do It?`
-                    p= portfolio.why
+                    h3= `About ${portfolio.name}`
+                    pre= portfolio.about 
+                    h3= `What ${portfolio.name} Do?`
+                    pre= portfolio.what 
+                    h3= `Why ${portfolio.name} Do It?`
+                    pre= portfolio.why
             .sec
                 #pre 
                     h2 Previous Accomplishment Details
-                    p= portfolio.previous
+                    pre= portfolio.previous
                     .prev__cont
                             if (portImage.length === 0)
                                 p.no__img No Previous Accomplishment Images Uploaded Yet!!!
                                 .prev__addimgSec.hidden 
                                 .next__addimgSec.hidden
                             else
-                                .prev__cont__sub
+                                .prev__cont__sub#imgCont
                                     each item in portImage
                                         .port__images
                                             img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
@@ -51,7 +51,7 @@ block content
                                         button.redbtn.next__addimgSec Next
             .sec
                 #contat 
-                    h2= `Contact ${portfolio.name}`
+                    h3= `Contact ${portfolio.name}`
 
                     .cont__boxbg
                         if (portfolio.showNo === true)

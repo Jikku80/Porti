@@ -170,6 +170,7 @@ next.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#";
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -190,6 +191,7 @@ next.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#foodItemSec"
                     if (sub.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -232,6 +234,7 @@ prev.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -252,6 +255,7 @@ prev.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#foodItemSec"
                 })
             } else {
                 console.log(response);
@@ -300,11 +304,11 @@ prev.addEventListener("click", async () => {
     let updateRestroBtn = document.getElementById("updateResBtn");
     let addRestroBtn = document.getElementById("addResBtn");
     if (restroId >= 1) {
-        addRestroBtn.classList.add("hide")
-        updateRestroBtn.classList.remove("hide");
+        addRestroBtn.classList.add("hidden")
+        updateRestroBtn.classList.remove("hidden");
     } else {
-        updateRestroBtn.classList.add("hide");
-        addRestroBtn.classList.remove('hide');
+        updateRestroBtn.classList.add("hidden");
+        addRestroBtn.classList.remove('hidden');
     }
 })();
 

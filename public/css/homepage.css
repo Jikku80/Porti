@@ -1,5 +1,5 @@
 .main__content, .bod{
-    background-color:rgb(26, 26, 26);
+    background-color:rgb(15, 15, 15);
     font-family: 'Arial Narrow Bold', sans-serif, Times, serif;
     font-size: 16px;
     margin: 0px;
@@ -14,12 +14,29 @@
     left: 50%;
     transform: translate(-50%, 0);
     animation: present 4s ease-in-out;
+    display: flex;
+    align-items: center;
 }
+
+.maf{
+    color: crimson;
+}
+
+.grn{
+    color: rgb(54, 219, 54);
+}
+
+.porti__off__img{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 
 .main__content__log{
     position: absolute;
     top: 25vh;
     left: 50%;
+    font-weight: bolder;
     transform: translate(-58%, 0);
     animation: tm 4s infinite ease-in-out;
 }
@@ -77,12 +94,16 @@
 }
 
 .crPr{
-    color: crimson;
+    color: rgb(245, 63, 100);
     text-decoration: none;
     font-variant: small-caps;
     font-size: larger;
     letter-spacing: 2px;
     text-align: center;
+}
+
+.crPr:hover{
+    color: crimson;
 }
 
 .main__content__nav{
@@ -92,6 +113,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    font-weight: bolder;
 }
 
 .main__content__learn {
@@ -415,7 +437,8 @@
         background-color: crimson;
     }
     100%{
-        background-image: linear-gradient(to bottom, rgb(44, 44, 44) , crimson);
+        /* background-image: linear-gradient(to bottom, black , crimson); */
+        background-color: rgb(26, 26, 26);
     }
     
 }
@@ -428,7 +451,7 @@
         background-color: crimson;
     }
     100%{
-        background-color: crimson;
+        background-color: rgb(26, 26, 26);
     }
     
 }

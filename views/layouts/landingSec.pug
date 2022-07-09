@@ -40,26 +40,26 @@ block content
                             img(src="/images/catalouge.png", alt="items__catalouge")
                             p.name__tag Catalouge
                     .breadcrumbs 
-                        a.bdcb(href="#" title=`${invite.fname} Invitation`) You Are Here |
+                        .bdcb(title=`${invite.fname} Invitation`) You Are Here |
                         a.bdcb(href="/") Home 
-                        a.bdcb(href="#") &#8680;  
+                        .bdcb.arr &#8680;  
                         a.bdcb(href="/porti") Porti 
-                        a.bdcb(href="#") &#8680;  
+                        .bdcb.arr &#8680;  
                         a.bdcb(href=`/invitations/${user._id}`) All Invitations
-                        a.bdcb(href="#") &#8680;  
-                        a.cur(href="#")= `${invite.fname} invitation`
+                        .bdcb.arr &#8680;  
+                        .cur= `${invite.fname} invitation`
                 .land__goto
                     h1#invite_name= `${invite.fname} and ${invite.sname}`
                     p.xsf View Your Invitation
                     .port__link
-                        a#inviteurlLink
+                        #inviteurlLink
                             span#inviteendpoint= `${invite._id}`
                             span#invitetheme= invite.theme    
                     .copy__link 
                         button#copyinviteLink.redbtn Copy Link
                         button#geninviqr.redbtn Generate QRCode
                         button#downinviqr.redbtn.hidden Download QRCode
-                .qr__sec 
+                .qr__sec#qrLandingSec 
             .sec__land__bod
                 .del__port#delinvi 
                     .del__bod

@@ -11,10 +11,10 @@ block content
     if (user)
         include _header
         .breadcrumbs 
-                a.bdcb(href="#" title="Your Account") You Are Here |
+                p.bdcb(title="Your Account") You Are Here |
                 a.bdcb(href="/") Home 
-                a.bdcb(href="#") &#8680;  
-                a.cur(href="#") Your Account 
+                p.bdcb.arr &#8680;  
+                p.cur Your Account 
         .update__account__form 
             form#upAccImg
                 if (user.photo)
@@ -38,6 +38,7 @@ block content
                 label.form__label(for='password') Current Password 
                 input#pwdCurrent.form__input(type='password', placeholder='********', required, minlength='8')
                 label.form__label(for='password') New Password 
+                p Note: Password Must be atleast 9 Characters long
                 input#up_password.form__input(type='password', placeholder='********', required, minlength='8')
                 label.form__label(for='password') Confirm Password
                 input#up_passwordConfirm.form__input(type='password', placeholder='********', required, minlength='8')

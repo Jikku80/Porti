@@ -14,24 +14,22 @@ block content
             span Mafia
     if (!user)
         a.crpt.smallest__cont(href="/porti-highlights" title="porti")
-            img(src="/images/plus.png", alt="view_port")
+            img(src="/images/smalport.png", alt="view_port")
             p.name__tag Porti
     else
         a.crpt.smallest__cont(href="/porti" title="porti")
-            img(src="/images/plus.png", alt="view_port")
+            img(src="/images/smalport.png", alt="view_port")
             p.name__tag Porti
   form#reset__form.rs_form
     h2#reset__head Reset Your Password
     p Check your mail for token
     label.form__label(for='text') Token 
     input#rtoken.form__input(type='text', name='token' placeholder='Enter Your Token', required)
-    br
     label.form__label(for='password') New Password 
+    p Note: Password Must be atleast 9 Characters long
     input#rpwd.form__input(type='password',  placeholder='********', required, minlength='8')
-    br
     label.form__label(for='password') Confirm Password 
     input#rpwdC.form__input(type='password',  placeholder='********', required, minlength='8')
-    br
     button.btn__reset.redbtn Reset Password
 
   script(src="/js/alert.js") 

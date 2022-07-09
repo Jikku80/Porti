@@ -37,6 +37,9 @@ const companySchema = new mongoose.Schema({
     coverImage: {
         type: String
     },
+    themecolor: {
+        type: String
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

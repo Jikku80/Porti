@@ -10,6 +10,7 @@ let signCancel = document.getElementById("signCancel");
 
 clickme.addEventListener('click', () => {
     sign__up.classList.remove('hidden');
+    window.location.hash = "#signUpForm"
 })
 
 signCancel.addEventListener("click", () => {
@@ -17,6 +18,8 @@ signCancel.addEventListener("click", () => {
 })
 
 signup.addEventListener('click', async (e) => {
+    let mpwdLen = mpassword.value.length;
+
     if (mname.value < 1 || mname.value == "" || mname.value == null) {
         return false;
     }
@@ -27,6 +30,18 @@ signup.addEventListener('click', async (e) => {
         return false;
     }
     if (pwdConfirm.value < 1 || pwdConfirm.value == "" || pwdConfirm.value == null) {
+        return false;
+    }
+
+    if (mpwdLen < 9) {
+        e.preventDefault();
+        errorAlert("Password must be 9 Characters long")
+        return false;
+    }
+
+    if (mpassword.value !== pwdConfirm.value) {
+        e.preventDefault();
+        errorAlert("Password Does not Match!!! Check Again");
         return false;
     }
     e.preventDefault();
@@ -53,7 +68,7 @@ signup.addEventListener('click', async (e) => {
                     location.assign('/me');
                 }, 400);
             } else {
-                errorAlert("Email or Password is not Valid!! Use a different One")
+                errorAlert("The Given Email already has a account! Use Forget Password to change your password")
             }
         })
     }
@@ -61,9 +76,5 @@ signup.addEventListener('click', async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-    mname.value = "";
-    memail.value = "";
-    mpassword.value = "";
-    pwdConfirm.value = "";
 })
 

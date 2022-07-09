@@ -4,8 +4,8 @@ html{
 }
 
 body{
+    background-color: rgb(26,26,26) !important;
     color:white;
-    background-image: rgb(44, 44, 44);
     margin-top: 0;
 }
 
@@ -472,15 +472,21 @@ input::file-selector-button{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     font-size: 12px;
     width: auto;
     font-family: monospace;
+    padding: 0;
 }
   
 .breadcrumbs a{
     text-decoration: none;
     padding-left: 1%;
     padding-right: 1%;
+}
+
+.arr{
+    margin: 1%;
 }
 
 .banner{
@@ -626,7 +632,7 @@ input::file-selector-button{
 
 @media (min-width: 601px) and (max-width: 900px){
     .breadcrumbs{
-        font-size: 10px;
+        font-size: 12px;
     }
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
@@ -664,7 +670,7 @@ input::file-selector-button{
 
 @media screen and (max-width: 600px){
     .breadcrumbs{
-        font-size: 8px;
+        font-size: 9px;
     }
     .banner{
         font-size: 10px;

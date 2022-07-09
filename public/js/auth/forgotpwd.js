@@ -6,6 +6,7 @@ let closeBtn = document.getElementById("closeBtn")
 
 fgtPwd.addEventListener("click", () => {
     fgPwd.classList.remove("hidden");
+    window.location.hash = "#forgotPwd"
 })
 
 closeBtn.addEventListener("click", () => {
@@ -32,9 +33,9 @@ forgotpwd.addEventListener("click", async (e) => {
         }).then((response) => {
             load.classList.add("hidden");
             if (response.status === 200) {
-                successAlert("TechMafia has sent a Token! Please Check your Mail :)");
+                successAlert("A Token Has been sent to your email address! Please Check your Mail :)");
             } else {
-                errorAlert("Email is not Valid!! Use a different One")
+                errorAlert("Email is not Valid!! Use your Accounts Email Address")
             }
         })
     }

@@ -11,7 +11,7 @@ let user_id = btoa(user__id)
 // let searchPoint = location.search.slice(1);
 
 url.innerHTML = `
-<button id="openport" class="redbtn" href="">My Portfolio</button>
+<button id="openport" class="redbtn">My Portfolio</button>
 <p class="xsf">Share your potfolio with the link below</p>
 <p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${user_id}/tm/${portithemepoint}/${end}</p>
 `
@@ -74,6 +74,7 @@ async function getportiQRCode(resdata) {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
+        window.location.hash = "#qrLanding"
         let qrItem = document.querySelector(".qr__sec");
         await resdata.then(item => {
             load.classList.add('hidden');
@@ -132,6 +133,7 @@ function downloadportiQRCode(file) {
         let pg = ++x
         prev.classList.remove("hidden");
         try {
+
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
@@ -146,6 +148,7 @@ function downloadportiQRCode(file) {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -172,6 +175,7 @@ function downloadportiQRCode(file) {
                             next.classList.add("hidden");
                             subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
                         }
+                        window.location.hash = "#PrevSection"
                         upImgItem();
                         delImgItem();
                     })
@@ -208,6 +212,7 @@ function downloadportiQRCode(file) {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
+                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -225,6 +230,7 @@ function downloadportiQRCode(file) {
                                 </div>
                             `
                         });
+                        window.location.hash = "#PrevSection"
                         upImgItem();
                         delImgItem();
                     })

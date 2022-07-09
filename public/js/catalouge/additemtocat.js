@@ -191,6 +191,7 @@ next.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -213,6 +214,7 @@ next.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#CatalougeItemSec"
                     if (subItems.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -257,6 +259,7 @@ prev.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
+            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
@@ -279,6 +282,7 @@ prev.addEventListener("click", async () => {
                                 </div>
                             `
                     });
+                    window.location.hash = "#CatalougeItemSec"
                 })
             } else {
                 console.log(response);
@@ -331,11 +335,11 @@ prev.addEventListener("click", async () => {
     let updateRestroBtn = document.getElementById("updateCompBtn");
     let addRestroBtn = document.getElementById("addCompBtn");
     if (restroId >= 1) {
-        addRestroBtn.classList.add("hide")
-        updateRestroBtn.classList.remove("hide");
+        addRestroBtn.classList.add("hidden")
+        updateRestroBtn.classList.remove("hidden");
     } else {
-        updateRestroBtn.classList.add("hide");
-        addRestroBtn.classList.remove('hide');
+        updateRestroBtn.classList.add("hidden");
+        addRestroBtn.classList.remove('hidden');
     }
 })();
 
@@ -348,6 +352,7 @@ prev.addEventListener("click", async () => {
     let resAddress = document.getElementById("compaddress");
     let compcontact = document.getElementById("compcontact");
     let resSlogan = document.getElementById("compslogan");
+    let tmcolor = document.getElementById("companyColor");
 
     addRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -380,7 +385,8 @@ prev.addEventListener("click", async () => {
                     locationLink: comploc.value,
                     slogan: resSlogan.value,
                     Address: resAddress.value,
-                    contact: compcontact.value
+                    contact: compcontact.value,
+                    themecolor: tmcolor.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");
@@ -413,6 +419,7 @@ prev.addEventListener("click", async () => {
     let compemail = document.getElementById("compemail");
     let compsocial = document.getElementById("compsocial");
     let comploc = document.getElementById("complocationLink");
+    let compcolor = document.getElementById("companyColor");
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -445,7 +452,8 @@ prev.addEventListener("click", async () => {
                     locationLink: comploc.value,
                     slogan: resSlogan.value,
                     Address: resAddress.value,
-                    contact: compcontact.value
+                    contact: compcontact.value,
+                    themecolor: compcolor.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

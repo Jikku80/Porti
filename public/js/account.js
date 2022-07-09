@@ -54,6 +54,9 @@ updateBtn.addEventListener("click", async (e) => {
 })
 
 pwdUpdate.addEventListener("click", async (e) => {
+    let uppwdLen = uppwd.value.length;
+    let pwdCurLen = pwdCurrent.value.length;
+
     if (pwdCurrent.value < 1 || pwdCurrent.value == "" || pwdCurrent.value == null) {
         return false;
     }
@@ -63,6 +66,19 @@ pwdUpdate.addEventListener("click", async (e) => {
     if (uppwdcfm.value < 1 || uppwdcfm.value == "" || uppwdcfm.value == null) {
         return false;
     }
+
+    if (uppwdLen < 9 || pwdCurLen < 9) {
+        e.preventDefault();
+        errorAlert("password must be 9 characters long!!!")
+        return false
+    }
+
+    if (uppwd.value !== uppwdcfm.value) {
+        e.preventDefault();
+        errorAlert("your new passwords doesn't match, Please check again!!!")
+        return false;
+    }
+
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
@@ -86,7 +102,7 @@ pwdUpdate.addEventListener("click", async (e) => {
                     location.assign('/me');
                 }, 400);
             } else {
-                errorAlert("Password not Valid!! Use a different One :(")
+                errorAlert("Your old password doesnt match!! Use your old password :(")
             }
         })
     }

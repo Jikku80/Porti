@@ -49,9 +49,9 @@ addImageBtn.addEventListener("click", async (e) => {
                 //     }
                 // }
 
-                // if (secAccess) {
-                //     secAccess.classList.add("hidden");
-                // }
+                if (secAccess) {
+                    secAccess.classList.add("hidden");
+                }
 
             } else {
                 errorAlert("Invalid input!!!")

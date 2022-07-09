@@ -42,23 +42,23 @@ const portfolioSchema = new mongoose.Schema({
     },
     imageCover: String,
     images: [String],
-    firstImgHead: {
+    problem: {
         type: String,
         trim: true
     },
-    secondImgHead: {
+    solution: {
         type: String,
         trim: true
     },
-    thirdImgHead: {
+    failure: {
         type: String,
         trim: true
     },
-    fourthImgHead: {
+    motivation: {
         type: String,
         trim: true
     },
-    fifthImgHead: {
+    msg: {
         type: String,
         trim: true
     },
