@@ -27,13 +27,22 @@ p{
 
 #port_name, #invite_name{
     text-align: center;
-    font-size: medium;
+    /* font-size: medium; */
     font-family: cursive;
 }
 
 .land__nav__main{
     display: flex;
     flex-direction: column;
+}
+
+.porti__off__img{
+    margin-left: 1%;
+    margin-right: 4%;
+}
+
+.nocaps{
+    font-variant: normal;
 }
 
 .land__nav__sub{
@@ -66,7 +75,7 @@ p{
 }
 
 .xsf{
-    font-size: small;
+    font-size: 2rem;
 }
 
 .port_link, .invi_link{
@@ -156,51 +165,50 @@ p{
   }
 
 .port_sec_head{
-    font-size: 1rem;
     text-decoration: none;
     color: white;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant: small-caps;
+    display: flex;
+    align-items: center;
 }
   
 .port_sec_head span{
-    color: rgb(245, 63, 100);
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.grn{
+    color: rgb(54, 219, 54);
 }
 
 .upform{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
-    height: 100vh;
+    background-color: rgba(37, 37, 37, 0.356);  
+    padding: 2%;
+    margin: 2%;
 }
 
-#upPort, #upPortSec, #upPortSec, #upImageCollec, #update_ImgForm, .inviF{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-#upPort label, #upImage label, #upPortSec label, #upImageCollec label, #upPortSix label, .inviF label, #upInviImage label{
-    /* margin-right: 2%; */
+#upPort label, #upImage label, #upPortSec label, #upImageCollec label, .inviF label, #upInviImage label{
+    font-size: 2rem;
     color: gray;
 }
 
-#upPort p, #upImage p, #upPortSec p, #upImageCollec p, #upPortSix p, .inviF p{
+#upPort p, #upImage p, #upPortSec p, #upImageCollec p, .inviF p{
     font-size: xx-small;
     margin-top: 0;
     color: gray;
     padding: 0;
 }
 
-#upPort input, #upImage input, #upPortSec input, #upImageCollec input, #upPortSix input, .inviF input, #upInviImage input, .addPortiImages input{
+#upPort input, #upImage input, #upPortSec input, #upImageCollec input, .inviF input, #upInviImage input, .addPortiImages input{
     border: 2px solid crimson;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: transparent;
     color: white;
-    /* padding: 1%; */
-    margin: 3%;
+    padding: 1%;
+    width: 348px;
 }
 
 #upFb, #upFbSec, #upFbSix{
@@ -209,7 +217,7 @@ p{
     border-bottom-left-radius: 5px;
 }
 
-#upPort textarea, #upPortSec textarea, #upPortSix textarea, .inviF textarea{
+#upPort textarea, #upPortSec textarea, .inviF textarea{
     border: 2px solid crimson;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -217,14 +225,29 @@ p{
     color: white;
     padding: 1%;
     resize: none;
+    width: 348px;
 }
 
 .form__bod{
-    margin:1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2%;
+    font-size: 2rem;
+}
+
+.form__add__bod{
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    justify-content: center;
+    margin: 1%;
+}
+
+.form__add__bod input{
+    width: 100%;
+    margin: 2%;
 }
 
 .rowConv{
@@ -389,6 +412,7 @@ input::file-selector-button{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     color: gray;
+    width: 348px;
 }
 
 .notifier{
@@ -460,8 +484,12 @@ input::file-selector-button{
     color: white;
     animation: blink 1.5s infinite linear;
   }
-  
+
   .lodmid{
+    color: white;
+  }
+  
+  .lodtl{
     color: rgb(240, 64, 99);
     font-weight: bolder;
   }
@@ -518,6 +546,13 @@ input::file-selector-button{
 
 .qr__img{
     height: 50vh;
+}
+
+#editTheme{
+    background-color: rgba(0, 0, 0, 0.411);
+    margin: 1%;
+    padding: 2%;
+    border-radius: 2rem;
 }
 
 .addHeading{
@@ -646,25 +681,42 @@ input::file-selector-button{
     .banner{
         font-size: 12px;
     }
+
+    #upPort label, #upImage label, #upPortSec label, #upImageCollec label, .inviF label, #upInviImage label{
+        font-size: 1.8rem;
+    }
+
     input[type='file']{
         width: 70%;
-      }
+    }
+
+    .xsf{
+        font-size: 1.8rem;
+    }
+
+    #editTheme{
+        margin: 3%;
+        padding: 2%;
+    }
 
     #addImg{
         width: 20%;
         padding-left: 5rem;
     }
 
-    #themes, #themeSec, #themeSix{
-        width: 40vw;
-    }
-
-    #upFb, #upFbsec, #upFbSix{
-        width: 40vw;
-    }
-
     .port__images{
         width: 35%;
+    }
+    .form__bod label{
+        font-size: 1.8rem;
+        width: 40%;
+    }
+    
+    .form__bod input, .form__bod textarea{
+        width: 300px !important;
+    }
+    #themes, #themeSec, #themeSix{
+        width: 300px;
     }
 }
 
@@ -679,13 +731,23 @@ input::file-selector-button{
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
     }
+
     #upPort, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm{
         padding: 0;
     }
 
+    #upPort label, #upImage label, #upPortSec label, #upImageCollec label, .inviF label, #upInviImage label{
+        font-size: 1.2rem;
+    }
+
     input[type='file']{
         width: 50%;
-      }
+    }
+
+    #editTheme{
+        margin: 4%;
+        padding: 2%;
+    }
     #addImg{
         width: 50%;
         padding-left: 4rem;
@@ -697,24 +759,24 @@ input::file-selector-button{
     }
 
     .xsf{
-        font-size: xx-small;
+        font-size: 1.2rem;
     }
 
     .port_link, .invi_link{
         font-size: 3px;
         padding: 2%;
     }
+    .form__bod label{
+        font-size: 1.2rem;
+        width: 40%;
+    }
+    
+    .form__bod input, .form__bod textarea{
+        width: 170px !important;
+    }
 
     #themes, #themeSec, #themeSix{
-        width: 50vw;
-    }
-
-    #upPort label, #upPortSec label, #upPortSix label{
-        font-size: x-small;
-    }
-
-    #upPort textarea, #upPortSec textarea, #upPortSix textarea{
-        width: 60vw;
+        width: 170px;
     }
 
     .del__port{

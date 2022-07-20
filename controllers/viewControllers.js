@@ -21,7 +21,7 @@ const PortfolioImage = require('../models/portfolioImageModel');
 
 exports.homePage = catchAsync(async (req, res, next) => {
     res.status(200).render('homepage', {
-        title: 'Home'
+        title: 'LakheyDeTech'
     })
 })
 
@@ -90,7 +90,7 @@ exports.myPort = catchAsync(async (req, res) => {
     const portImage = await features.query
     await Portfolio.findOne({ user: id }).populate('user').then(portfolio => {
         res.status(200).render('layouts/landing', {
-            title: 'Porti Detail',
+            title: 'Portfolio Detail',
             portfolio,
             portImage
         })
@@ -240,40 +240,12 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             about: req.body.about,
             what: req.body.what,
             why: req.body.why,
-            previous: req.body.previous
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-    res.status(200).json({
-        status: 'success',
-        updatedPortfolio
-    });
-});
-
-exports.updatePortSix = catchAsync(async (req, res, next) => {
-
-    const updatedPortfolio = await Portfolio.findByIdAndUpdate(
-        req.body.id,
-        {
-            name: req.body.name,
-            email: req.body.email,
-            fb: req.body.fb,
-            location: req.body.location,
-            phn_no: req.body.phn_no,
-            showNo: req.body.showNo,
-            theme: req.body.theme,
-            about: req.body.about,
-            what: req.body.what,
-            why: req.body.why,
             previous: req.body.previous,
-            firstImgHead: req.body.firstImgHead,
-            secondImgHead: req.body.secondImgHead,
-            thirdImgHead: req.body.thirdImgHead,
-            fourthImgHead: req.body.fourthImgHead,
-            fifthImgHead: req.body.fifthImgHead
+            failure: req.body.failure,
+            motivation: req.body.motivation,
+            msg: req.body.msg,
+            problem: req.body.problem,
+            solution: req.body.solution
         },
         {
             new: true,
@@ -384,6 +356,19 @@ exports.qrCodeGen = catchAsync(async (req, res, next) => {
             src
         });
     })
+})
+
+exports.urlShortner = catchAsync(async (req, res, next) => {
+    const longurl = req.body.longurl;
+    if (longurl.length === 0) res.send('Empty Data!');
+
+    // shortUrl.short(longurl, (err, url) => {
+    //     if (err) res.send('Error Occured');
+    //     res.status(201).json({
+    //         status: 'success',
+    //         url
+    //     })
+    // })
 })
 
 

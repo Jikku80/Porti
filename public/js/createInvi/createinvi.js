@@ -73,7 +73,7 @@ mkForm.classList.add("hidden");
 inid1 = document.getElementById("uiId").innerText;
 
 invi1.addEventListener("click", () => {
-    location.hash = "#portNav"
+    location.hash = "#portNav";
     portBod.classList.add("hidden");
     inviBod.classList.add("hidden");
     menuBod.classList.add("hidden");

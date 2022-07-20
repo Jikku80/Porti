@@ -4,6 +4,7 @@ let delPorti = document.getElementById("delPort");
 let deel = document.querySelector(".del__port");
 let landPorti = document.querySelector(".land__update")
 let addPrevSec = document.querySelector(".portfolio__tweaks");
+let tweakHead = document.querySelector(".tweak__head");
 let portidelid = document.getElementById("portidelid").innerText;
 
 delPorti.addEventListener("click", () => {
@@ -11,6 +12,7 @@ delPorti.addEventListener("click", () => {
     deel.classList.add("hidden");
     landPorti.classList.add("hidden");
     addPrevSec.classList.add("hidden");
+    tweakHead.classList.add("hidden");
     dlcf.classList.remove("hidden");
 })
 
@@ -20,6 +22,7 @@ abrt.addEventListener("click", () => {
     landCont.classList.remove("hidden");
     landPorti.classList.remove("hidden");
     addPrevSec.classList.remove("hidden");
+    tweakHead.classList.remove("hidden");
     deel.classList.remove("hidden");
 })
 

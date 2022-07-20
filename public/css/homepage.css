@@ -22,6 +22,10 @@
     color: crimson;
 }
 
+.gry{
+    color: gray;
+}
+
 .grn{
     color: rgb(54, 219, 54);
 }
@@ -297,13 +301,17 @@
     text-align: center;
     font-family: monospace;
     font-size: 12px;
-    color: white;
     animation: blink 1.5s infinite linear;
   }
-  
+
   .lodmid{
+    color: white;
+  }
+  
+  .lodtl{
     color: rgb(240, 64, 99);
     font-weight: bolder;
+    font-family: monospace;
   }
 
   .error__cont{

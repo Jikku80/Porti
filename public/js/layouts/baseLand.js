@@ -109,7 +109,39 @@ function downloadportiQRCode(file) {
     qrimg.click()
     successAlert('Your QRCode Has Been Downloaded! :)')
     document.body.removeChild(qrimg);
-}
+};
+
+// (async function () {
+//     try {
+//         let load = document.querySelector('.loader');
+//         load.classList.remove("hidden")
+//         const endpoint = `/urlShortner`
+//         await fetch((endpoint), {
+//             method: 'POST',
+//             headers: {
+//                 Accept: "application/json, text/plain, */*",
+//                 'Content-type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 longurl: portiqrurl
+//             })
+//         }).then((response) => {
+//             load.classList.add("hidden");
+//             let res = response.json();
+//             if (response.status === 201) {
+//                 console.log(res);
+//             } else {
+//                 console.log(response);
+//                 errorAlert("Error")
+//             }
+//         })
+//     }
+//     catch (err) {
+//         console.log(err);
+//         errorAlert('Sorry! Something went wrong', err);
+//     };
+// })();
+
 
 (function () {
     let next = document.querySelector(".next__addimg");

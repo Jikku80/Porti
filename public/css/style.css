@@ -90,7 +90,13 @@ html{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  font-variant: small-caps;
   margin: 1%;
+  align-items: center;
+}
+
+.port__nav__second h1{
+  display: flex;
   align-items: center;
 }
 
@@ -112,20 +118,32 @@ html{
 }
 
 .port_sec_head{
-  font-size: 1rem;
   text-decoration: none;
   color: white;
   font-family:Arial, Helvetica, sans-serif;
+  font-variant: small-caps;
+  display: flex;
+  align-items: center;
 }
 
 .port_sec_head span{
-  color: rgb(245, 63, 100);
+  font-size: 2rem;
+  font-weight: bold;
+}
+.nocaps{
+  font-variant: normal;
+  font-size: 1.8rem !important;
+}
+
+.wite{
+  color: white;
 }
 
 .login__head {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
 }
 
@@ -133,10 +151,11 @@ html{
   text-decoration: none;
   color: whitesmoke;
   font-size: large;
+  font-weight: bolder; 
 }
 
 .login:hover{
-  color: crimson;
+  color: green;
 }
 
 .login__form, .fg__form, #reset__form, #upInfo, #upPass, #upAccImg{

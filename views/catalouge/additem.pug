@@ -6,8 +6,8 @@ block content
         .out__load
             .inn__load
                 .inner__loader
-        p.lodtl Tech 
-            span.lodmid Mafia
+        p.lodtl Lakhey
+            span.lodmid Tech
                 span.lodend ...
     if (user)
         .port__nav
@@ -20,15 +20,17 @@ block content
                         img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
                         p.name__tag Account
                 a.port_sec_head.hm(href="/" title="home")
-                    h1 Tech 
-                        span Mafia
+                    img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+                    span Por
+                    span.grn t
+                    span.nocaps i
                 .logout.smallest__cont
                     img.pointer(src="/images/poweroff.png", alt="signout" title="Signout")
                     p.name__tag Signout
             .port__nav__sub 
-                a.crpt.smallest__cont(href="/porti", title="porti")
-                    img(src="/images/smalport.png", alt="view_port")
-                    p.name__tag Porti
+                a.crpt.smallest__cont(href="/porti", title="layouts")
+                    img(src="/images/portal.png", alt="view_port")
+                    p.name__tag Layouts
                 a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                     img(src="/images/porti.png", alt="view_port")
                     span#catusId.hidden= user._id

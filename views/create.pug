@@ -5,8 +5,8 @@ block content
         .out__load
             .inn__load
                 .inner__loader
-        p.lodtl Tech 
-            span.lodmid Mafia
+        p.lodtl Lakhey
+            span.lodmid Tech
                 span.lodend ...
     if (!user)
         .confirm__pg
@@ -23,8 +23,10 @@ block content
                         img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
                         p.name__tag Account
                 a.port_sec_head.hm(href="/" title="home")
-                    h1 Tech 
-                        span Mafia
+                    img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+                    span Por
+                    span.grn t
+                    span.nocaps i
                 #logout.logout.smallest__cont
                     img(src="/images/poweroff.png", alt="signout" title="Signout")
                     p.name__tag Signout
@@ -44,12 +46,13 @@ block content
                     img(src="/images/catalouge.png", alt="items__catalouge")
                     p.name__tag Catalouge
             .breadcrumbs 
-                .bdcb(title="porti") You Are Here |
-                a.bdcb(href="/") Home 
+                .bdcb(title="layouts") You Are Here |
+                a.bdcb(href="/") Porti 
                 .bdcb.arr &#8680;  
                 .cur
-                    img.porti__off__img(src="/images/smalport.png" alt="porti__img")
-                span.grn Porti  
+                    //- img.porti__off__img(src="/images/smalport.png" alt="porti__img")
+                //- span.grn Porti
+                span Layouts  
         .creation__body
             .catalouge__section.newsec
                 if (!company && !catalouge)

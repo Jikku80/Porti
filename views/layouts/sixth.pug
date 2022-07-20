@@ -1,35 +1,35 @@
 extends baselayout 
 
 block content
-    .main__sixth
-        .main__sixth__prev
-            h1  Prior 
-                span Detail
-            .main__prev__bod 
-                p= portfolio.previous
-                h2= `${portfolio.name} ran into a problem`
-                p= portfolio.problem 
-                h2= `How ${portfolio.name} solved the problem?`
-                p= portfolio.solution
-        .main__sixth__about 
-            h1 About 
-                span= `${portfolio.name}`
+    .main__sixth(id=`${portfolio.backColor}`)
+        .main__sixth__prev(id=`${portfolio.fontColor}`)
+            h1.firstHalf  Prior 
+                span.otherHalf.fcolor(id=`${portfolio.focusColor}`) Detail
+            .main__prev__bod(id=`${portfolio.headColor}`) 
+                pre.ans= portfolio.previous
+                h2.secHead= `${portfolio.name} ran into a problem`
+                pre.ans= portfolio.problem 
+                h2.secHead= `How ${portfolio.name} solved the problem?`
+                pre.ans= portfolio.solution
+        .main__sixth__about(id=`${portfolio.secHeadColor}`)
+            h1.firstHalf About 
+                span.otherHalf= `${portfolio.name}`
             .main__about__bod 
-                p= portfolio.about 
-                h2= `What ${portfolio.name} Do?`
-                p= portfolio.what
-                h2= `Why ${portfolio.name} Do it?`
-                p= portfolio.why
-                h2= `How ${portfolio.name} deals with Failure?`
-                p= portfolio.failure
-                h2= `How ${portfolio.name} stays motivated?`
-                p= portfolio.motivation
-                h2= `${portfolio.name} Message`
-                p= portfolio.msg
+                pre.ans= portfolio.about 
+                h2.secHead= `What ${portfolio.name} Do?`
+                pre.ans= portfolio.what
+                h2.secHead= `Why ${portfolio.name} Do it?`
+                pre.ans= portfolio.why
+                h2.secHead= `How ${portfolio.name} deals with Failure?`
+                pre.ans= portfolio.failure
+                h2.secHead= `How ${portfolio.name} stays motivated?`
+                pre.ans= portfolio.motivation
+                h2.secHead= `${portfolio.name} Message`
+                pre.ans= portfolio.msg
 
-        .main__sixth__cont
-            h1 Get in 
-                span Touch
+        .main__sixth__cont(id=`${portfolio.fontFam}`)
+            h1.firstHalf Get in 
+                span.otherHalf Touch
             .cont__boxbg.main__cont__bod
                 if (portfolio.showNo === true)
                     .cont__box.sixth__box
@@ -45,3 +45,6 @@ block content
                                 img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
                 .cont__box.sixth__box
                     p= `Address: ${portfolio.location}`
+
+
+    script(src="/js/layouts/sixth.js") 

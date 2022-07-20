@@ -15,6 +15,7 @@ updateInvi2.addEventListener('click', () => {
     delInvi2.classList.add("hidden");
     inviqrsec2.classList.add("hidden");
     updateInviForm2.classList.remove('hidden');
+    location.hash = "#"
 })
 
 updateInviImg2.addEventListener("click", () => {
@@ -25,6 +26,7 @@ updateInviImg2.addEventListener("click", () => {
     delInvi2.classList.add("hidden");
     inviqrsec2.classList.add("hidden");
     updateInviImgForm2.classList.remove('hidden');
+    location.hash = "#"
 })
 
 let cancelInvi2 = document.querySelector(".cancelInvi2");

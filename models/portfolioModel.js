@@ -78,6 +78,24 @@ const portfolioSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    fontColor: {
+        type: String
+    },
+    headColor: {
+        type: String
+    },
+    secHeadColor: {
+        type: String
+    },
+    backColor: {
+        type: String
+    },
+    focusColor: {
+        type: String
+    },
+    fontFam: {
+        type: String
+    },
     createdAt: {
         type: Date,
         default: Date.now(),

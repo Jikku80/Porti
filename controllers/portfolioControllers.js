@@ -129,6 +129,28 @@ exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
 exports.makePorti = factory.createOne(Portfolio);
 
+exports.updatePortfolioTheme = catchAsync(async (req, res, next) => {
+    const updatedPortfolioTheme = await Portfolio.findByIdAndUpdate(
+        req.params.id,
+        {
+            fontColor: req.body.fontColor,
+            headColor: req.body.headColor,
+            secHeadColor: req.body.secHeadColor,
+            backColor: req.body.backColor,
+            focusColor: req.body.focusColor,
+            fontFam: req.body.fontFam
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+    res.status(200).json({
+        status: 'success',
+        updatedPortfolioTheme
+    })
+});
+
 exports.removePrevOldImg = catchAsync(async (req, res, next) => {
     const item = await PortfolioImage.findByIdAndUpdate(req.params.id)
     if (fs.existsSync(`public/images/ports/addedImages/${item.addImage}`)) {

@@ -7,6 +7,7 @@ let updateImg = document.getElementById("update_Img");
 let delFirst = document.getElementById("delPp");
 let portiqrsec = document.querySelector(".qr__sec");
 let addItemSec = document.querySelector(".portfolio__tweaks");
+let editThemeSec = document.getElementById("editTheme");
 
 updatePort.addEventListener('click', () => {
     headGo.classList.add('hidden');
@@ -16,7 +17,9 @@ updatePort.addEventListener('click', () => {
     delFirst.classList.add("hidden");
     portiqrsec.classList.add("hidden");
     addItemSec.classList.add("hidden");
+    editThemeSec.classList.add("hidden");
     updateForm.classList.remove('hidden');
+    location.hash = "#"
 })
 
 updateImg.addEventListener("click", () => {
@@ -27,7 +30,9 @@ updateImg.addEventListener("click", () => {
     delFirst.classList.add("hidden");
     portiqrsec.classList.add("hidden");
     addItemSec.classList.add("hidden");
+    editThemeSec.classList.add("hidden");
     updateImgForm.classList.remove('hidden');
+    location.hash = "#"
 })
 
 let cancel = document.querySelector(".cancel");
@@ -41,6 +46,7 @@ cancel.addEventListener("click", () => {
     delFirst.classList.remove("hidden");
     portiqrsec.classList.remove("hidden");
     addItemSec.classList.remove("hidden");
+    editThemeSec.classList.remove("hidden");
     updateForm.classList.add('hidden');
 })
 
@@ -52,6 +58,7 @@ cancl.addEventListener("click", () => {
     delFirst.classList.remove("hidden");
     portiqrsec.classList.remove("hidden");
     addItemSec.classList.remove("hidden");
+    editThemeSec.classList.remove("hidden");
     updateImgForm.classList.add('hidden');
 })
 
@@ -69,16 +76,11 @@ let upLoc = document.getElementById("upLoc");
 let upwork = document.getElementById("upwork");
 let updBtn = document.getElementById("updateBtn");
 let upImgBtn = document.getElementById("updateImgBtn");
-let img1 = document.querySelector('#img1');
-let hd1 = document.getElementById("firstImg");
-let img2 = document.getElementById("img2");
-let hd2 = document.getElementById("secondImg");
-let img3 = document.getElementById("img3");
-let hd3 = document.getElementById("thirdImg");
-let img4 = document.getElementById("img4");
-let hd4 = document.getElementById("fourthImg");
-let img5 = document.getElementById("img5")
-let hd5 = document.getElementById("fifthImg");
+let hd1 = document.getElementById("upfailure");
+let hd2 = document.getElementById("upmoti");
+let hd3 = document.getElementById("upmsg");
+let hd4 = document.getElementById("upproblem");
+let hd5 = document.getElementById("upsoln");
 let id = document.getElementById('endpoint').innerText;
 let themes = document.getElementById("themes");
 
@@ -107,7 +109,12 @@ updBtn.addEventListener("click", async (e) => {
                 email: upemail.value,
                 fb: upFb.value,
                 location: upLoc.value,
-                previous: upwork.value
+                previous: upwork.value,
+                failure: hd1.value,
+                motivation: hd2.value,
+                msg: hd3.value,
+                problem: hd4.value,
+                solution: hd5.value
             })
         }).then((response) => {
             load.classList.add("hidden");

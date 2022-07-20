@@ -17,6 +17,15 @@
             .form__bod
                 label Why You Do It:
                 textarea#upwhy(rows="5" cols="50" name="why" required)= portfolio.why
+            .form__bod
+                    label How You deal with Failure? 
+                    textarea#upfailure(type="text" rows="4" cols="30" name="failure")= portfolio.failure
+            .form__bod
+                label  How you motivate yourself?
+                textarea#upmoti(type="text" rows="4" cols="30" name="motivation")= portfolio.motivation
+            .form__bod
+                label You Message: 
+                textarea#upmsg(type="text" rows="4" cols="30" name="mesage")= portfolio.msg
             label Contact Details:
             .form__bod
                 label Phone Number: 
@@ -47,9 +56,16 @@
             .form__bod
                 label Detail:
                 textarea#upwork(rows="5" cols="50" name="previous" required)= portfolio.previous
+            .form__bod
+                label Problem You faced? 
+                textarea#upproblem(type="text" rows="4" cols="30"  name="problem")= portfolio.problem
+            .form__bod
+                label How you solved that problem?
+                textarea#upsoln(type="text" rows="4" cols="30" name="soln")= portfolio.solution
             button#updateBtn.redbtn.bigbtn Update
+            
     
-    if (portfolio.theme !== 'a9993e364706816aba3e25717850c26c9cd0d89d' && portfolio.theme !== '481743d632b80d39bc2771d19be3ca3005b3f8af')
+    if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
         button#update_Img.redbtn.upMarg Update Portfolio Cover Image
         #update_ImgForm.hidden.upform
             .upform__head 

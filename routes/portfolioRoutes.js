@@ -17,6 +17,8 @@ router.post('/makePorti', authController.restrictTo('user', 'admin'), portContro
 router.delete('/:uid/deletePorti', authController.restrictTo('user', 'admin'), portController.deletePorti)
 router.delete('/:id/deletePortiImage', authController.restrictTo('user', 'admin'), portController.deletePortiImage)
 
+router.patch('/:id/updatePortfolioTheme', authController.restrictTo('user', 'admin'), portController.updatePortfolioTheme);
+
 router.get('/:id/paginate/:page', authController.restrictTo('user', 'admin'), portController.paginatePortImage)
 router.get('/:id/pagination/:page', authController.restrictTo('user', 'admin'), portController.paginatePortImageTwl)
 

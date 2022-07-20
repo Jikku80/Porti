@@ -6,6 +6,8 @@ let updateImgFormCollec = document.getElementById('update_ImgFormCollec');
 let updateImgCollec = document.getElementById("update_ImgCollec");
 let delSec = document.getElementById("delPp");
 let portiqrsec2 = document.querySelector(".qr__sec");
+let editThemeSec2 = document.getElementById("editTheme");
+
 
 updatePortSec.addEventListener('click', () => {
     headGoSec.classList.add('hidden');
@@ -14,7 +16,9 @@ updatePortSec.addEventListener('click', () => {
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
     portiqrsec2.classList.add("hidden");
+    editThemeSec2.classList.add("hidden");
     updateFormSec.classList.remove('hidden');
+    location.hash = "#"
 })
 
 updateImgCollec.addEventListener("click", () => {
@@ -24,7 +28,9 @@ updateImgCollec.addEventListener("click", () => {
     updateImgCollec.classList.add("hidden");
     delSec.classList.add("hidden");
     portiqrsec2.classList.add("hidden");
+    editThemeSec2.classList.add("hidden");
     updateImgFormCollec.classList.remove('hidden');
+    location.hash = "#"
 })
 
 let cancelSec = document.querySelector(".cancelSec");
@@ -37,6 +43,7 @@ cancelSec.addEventListener("click", () => {
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
     portiqrsec2.classList.remove("hidden");
+    editThemeSec2.classList.remove("hidden");
     updateFormSec.classList.add('hidden');
 })
 
@@ -47,6 +54,7 @@ canclSec.addEventListener("click", () => {
     updateImgCollec.classList.remove("hidden");
     delSec.classList.remove("hidden");
     portiqrsec2.classList.remove("hidden");
+    editThemeSec2.classList.remove("hidden");
     updateImgFormCollec.classList.add('hidden');
 })
 

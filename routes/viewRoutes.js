@@ -33,13 +33,14 @@ router.post('/sendmsg', viewsController.newMsg);
 router.use(authController.isLoggedIn);
 router.get('/', viewsController.homePage);
 router.post('/scan', viewsController.qrCodeGen);
+router.post('/urlShortner', viewsController.urlShortner);
 
 router.post('/login', authController.login);
 router.get('/resetpassword', viewsController.restForm);
 
 router.patch('/updateport', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortData);
 router.patch('/updateportSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);
-router.patch('/updateportSix', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortSix);
+// router.patch('/updateportSix', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortSix);
 
 router.patch('/updateportImg', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadPortfolioCoverImage, portController.resizeNewPortImages, viewsController.removePortiOldImg, viewsController.updatePortImgData);
 router.patch('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadImages, portController.resizePortImages, viewsController.removePortiOldImgColl, viewsController.updatePortImgCollec);
