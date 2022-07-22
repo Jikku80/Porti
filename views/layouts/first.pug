@@ -19,6 +19,12 @@ block content
                     p#abwhat= portfolio.what
                     h3= `Why ${portfolio.name} Do It?`
                     p#abwhy= portfolio.why
+                    h3.headFont= `How ${portfolio.name} deals with Failure?`
+                    pre.ansFont= portfolio.failure
+                    h3.headFont= `How ${portfolio.name} stays motivated?`
+                    pre.ansFont= portfolio.motivation
+                    h3.headFont= `${portfolio.name} Message`
+                    pre.ansFont= portfolio.msg
         .first
             #previous
                 .prev
@@ -34,7 +40,11 @@ block content
                                 h3.head= item.name
         .first
             #contact
-                h2 Contact
+                h3.headFont= `${portfolio.name} ran into a problem`
+                pre.ansFont= portfolio.problem 
+                h3.headFont= `How ${portfolio.name} solved the problem?`
+                pre.ansFont= portfolio.solution
+                h3.headFont= `Contact ${portfolio.name}`
                 .bgbox
                     if (portfolio.showNo === true)
                         .contbox

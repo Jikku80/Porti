@@ -5,41 +5,41 @@ block content
         .out__load
             .inn__load
                 .inner__loader
-    .main
-        .bgCover 
+    .main(id=`${portfolio.headColor}`)
+        .bgCover(id=`${portfolio.fontColor}`) 
             if (!portfolio.imageCover)
                 img#bgcv(src=`/images/party.jpg`, alt="cover__pic")
             else 
                 img#bgcv(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="bgCover")
             ul.bg__list
+                li
+                    a#hm(href="#").home Home 
+                li
+                    a(href="#abt").headFont About
                 li 
-                    a#hm(href="#") Home 
-                li 
-                    a(href="#abt") About
-                li 
-                    a(href="#contat") Contact
-            .mid
-                h1= 'Welcome, this is '
-                    span= portfolio.name
+                    a(href="#contat").headFont Contact
+            .mid(id=`${portfolio.secHeadColor}`)
+                h1.headFont.fontFam(id=`${portfolio.fontFam}`)= 'Welcome, this is '
+                    span.portName(id=`${portfolio.focusColor}`)= portfolio.name
                 a#prevWork(href="#pre") Previous
-            .sec
+            .sec(id=`${portfolio.backColor}`)
                 #abt 
-                    h3= `About ${portfolio.name}`
-                    pre= portfolio.about 
-                    h3= `What ${portfolio.name} Do?`
-                    pre= portfolio.what 
-                    h3= `Why ${portfolio.name} Do It?`
-                    pre= portfolio.why
-                    h3= `How ${portfolio.name} deals with Failure?`
-                    pre= portfolio.failure
-                    h3= `How ${portfolio.name} stays motivated?`
-                    pre= portfolio.motivation
-                    h3= `${portfolio.name} Message`
-                    pre= portfolio.msg
+                    h3.headFont= `About ${portfolio.name}`
+                    pre.ansFont= portfolio.about 
+                    h3.headFont= `What ${portfolio.name} Do?`
+                    pre.ansFont= portfolio.what 
+                    h3.headFont= `Why ${portfolio.name} Do It?`
+                    pre.ansFont= portfolio.why
+                    h3.headFont= `How ${portfolio.name} deals with Failure?`
+                    pre.ansFont= portfolio.failure
+                    h3.headFont= `How ${portfolio.name} stays motivated?`
+                    pre.ansFont= portfolio.motivation
+                    h3.headFont= `${portfolio.name} Message`
+                    pre.ansFont= portfolio.msg
             .sec
                 #pre 
-                    h3 Previous Accomplishment Details
-                    pre= portfolio.previous
+                    h3.headFont Previous Accomplishment Details
+                    pre.ansFont= portfolio.previous
                     .prev__cont
                             if (portImage.length === 0)
                                 p.no__img No Previous Accomplishment Images Uploaded Yet!!!
@@ -57,11 +57,11 @@ block content
                                         button.redbtn.next__addimgSec Next
             .sec
                 #contat 
-                    h3= `${portfolio.name} ran into a problem`
-                    pre= portfolio.problem 
-                    h3= `How ${portfolio.name} solved the problem?`
-                    pre= portfolio.solution
-                    h3= `Contact ${portfolio.name}`
+                    h3.headFont= `${portfolio.name} ran into a problem`
+                    pre.ansFont= portfolio.problem 
+                    h3.headFont= `How ${portfolio.name} solved the problem?`
+                    pre.ansFont= portfolio.solution
+                    h3.headFont= `Contact ${portfolio.name}`
 
                     .cont__boxbg
                         if (portfolio.showNo === true)
