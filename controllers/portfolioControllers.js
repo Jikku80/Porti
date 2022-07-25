@@ -99,28 +99,51 @@ exports.createMe = catchAsync(async (req, res, next) => {
 })
 
 exports.createImgColl = catchAsync(async (req, res, next) => {
+    if (!req.body.images) {
+        const doc = await Portfolio.create({
+            name: req.body.name,
+            user: req.user.id,
+            about: req.body.about,
+            what: req.body.what,
+            why: req.body.why,
+            email: req.body.email,
+            fb: req.body.fb,
+            location: req.body.location,
+            phn_no: req.body.phn_no,
+            showNo: req.body.showNo,
+            theme: req.body.theme,
+        })
+        res.status(201).json({
+            status: 'success',
+            data: {
+                data: doc
+            }
+        })
+    }
 
-    const doc = await Portfolio.create({
-        name: req.body.name,
-        user: req.user.id,
-        about: req.body.about,
-        what: req.body.what,
-        why: req.body.why,
-        email: req.body.email,
-        fb: req.body.fb,
-        location: req.body.location,
-        phn_no: req.body.phn_no,
-        showNo: req.body.showNo,
-        theme: req.body.theme,
-        images: req.body.images
-    });
+    else {
+        const doc = await Portfolio.create({
+            name: req.body.name,
+            user: req.user.id,
+            about: req.body.about,
+            what: req.body.what,
+            why: req.body.why,
+            email: req.body.email,
+            fb: req.body.fb,
+            location: req.body.location,
+            phn_no: req.body.phn_no,
+            showNo: req.body.showNo,
+            theme: req.body.theme,
+            images: req.body.images
+        });
+        res.status(201).json({
+            status: 'success',
+            data: {
+                data: doc
+            }
+        })
+    }
 
-    res.status(201).json({
-        status: 'success',
-        data: {
-            data: doc
-        }
-    })
 })
 
 exports.getAllPort = factory.getAll(Portfolio);

@@ -1,16 +1,20 @@
 extends baselayout
 
 block content 
-    .main
-        .bg__imgCov
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+    .main(id=`${portfolio.fontColor}`)
+        .bg__imgCov(id=`${portfolio.fontFam}`)
             if (!portfolio.imageCover)
                 img(src=`/images/party.jpg`, alt="cover__pic")
             else
                 img(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="cover__img") 
-            h1.fourth__head= portfolio.name
-        .main__header
-            .header__round
-            .header__round__inner
+            h1.fourth__head(id=`${portfolio.focusColor}`)= portfolio.name
+        .main__header(id=`${portfolio.backColor}`)
+            .header__round(id=`${portfolio.headColor}`)
+            .header__round__inner(id=`${portfolio.secHeadColor}`)
                     img.anc__first(src="/images/home.png", alt="home__img") 
                     img.anc.anc__second(src="/images/about.png", alt="about__img") 
                     img.anc.anc__third(src="/images/work.png", alt="work__img") 
@@ -18,37 +22,50 @@ block content
 
         .main__about__section.hide 
             .main__about__head
-                h2 About 
+                h2.secHead About 
                     span= `${portfolio.name}`
                 img#fourthClose(src="/images/cancel.png", alt="cancel__img")
-            p= portfolio.about 
-            h2= `What ${portfolio.name} Do?`
-            p= portfolio.what 
-            h2= `Why ${portfolio.name} Do it?`
-            p= portfolio.why
+            pre.ansFont= portfolio.about 
+            h3.headFont= `What ${portfolio.name} Do?`
+            pre.ansFont= portfolio.what 
+            h3.headFont= `Why ${portfolio.name} Do it?`
+            pre.ansFont= portfolio.why
+            h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
+            pre.ansFont= portfolio.failure
+            h3.headFont= `How ${portfolio.name} stays motivated?`
+            pre.ansFont= portfolio.motivation
+            h3.headFont= `${portfolio.name} Message`
+            pre.ansFont= portfolio.msg
 
         .main__prev__section.hide 
             .main__prev__head 
-                h2 Prior Accomplishments
+                h2.secHead Prior Accomplishments
                 img#fourthSecClose(src="/images/cancel.png", alt="cancel__img")
-            p= portfolio.previous 
+            pre.ansFont= portfolio.previous 
             .prev__cont
-                .prev__cont__sub
-                    img.imgsnd.imgFull(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img", srcset="")
-                    h3#first__head= portfolio.secondImgHead
-                .prev__cont__sub
-                    img.imgsnd.imgFull(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img", srcset="")
-                    h3#second__head= portfolio.thirdImgHead
-                .prev__cont__sub
-                    img.imgsnd.imgFull(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img", srcset="")
-                    h3#third__head= portfolio.fourthImgHead
-                .prev__cont__sub
-                    img.imgsnd.imgFull(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img", srcset="")
-                    h3#fourth__head= portfolio.fifthImgHead
+                .prev__cont__sub#fourthImgCont
+                    if (portImage.length === 0)
+                        p No Previous Accomplishment Images Yet!!!
+                        .firstPrev.hidden 
+                        .firstNext.hidden
+                    else 
+                        .accomp__cont
+                            each item in portImage
+                                .accomp__cont__card
+                                    img.imgsnd.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy", alt="previous_image")
+                                    h3.head= item.name
+                        .paginate__addimg
+                            .group__delbtn 
+                                button.redbtn.firstPrev Prev
+                                button.redbtn.firstNext Next 
+            h3.headFont.dyF= `${portfolio.name} ran into a problem`
+            pre.ansFont= portfolio.problem 
+            h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
+            pre.ansFont= portfolio.solution
 
         .main__cont__section.hide 
             .main__cont__head 
-                h2 Contact 
+                h2.secHead Contact 
                 img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
             .cont__boxbg
                 if (portfolio.showNo === true)
@@ -66,5 +83,7 @@ block content
                 .cont__box.fourth__cont
                     p= `Address: ${portfolio.location}`
 
+        script(src="/js/alert.js") 
+        script(src="/js/layouts/paginate.js") 
         script(src="/js/layouts/fourth.js") 
  

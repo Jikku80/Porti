@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.get('/:fileName/createFolder/:folderName', themeController.createDir);
+router.route('/').get(authController.restrictTo('admin'), themeController.getAllTheme).post(authController.restrictTo('user', 'admin'), themeController.setUsersId, themeController.uploadThemeImage, themeController.resizeThemeImage, themeController.createTheme);
 
 module.exports = router;

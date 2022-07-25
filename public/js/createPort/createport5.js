@@ -54,7 +54,7 @@ formLayoutFive.innerHTML = `
     <p>You can Upload Upto 20 Images At Once</p>
     <div class="form__cont small__form">
         <label>Upload Images</label>
-        <input type="file" id="fifthimg1" multiple name="img1" accept="image/*" required />
+        <input type="file" id="fifthimg1" multiple name="img1" accept="image/*"/>
     </div>
     <button id="fifthformbtn" class="redbtn">Create</button>
 </form>
@@ -107,9 +107,9 @@ layout5.addEventListener("click", () => {
         if (loction.value < 1 || loction.value == "" || loction.value == null) {
             return false;
         }
-        if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
-            return false;
-        }
+        // if (img1.files[0] < 1 || img1.files[0] == "" || img1.files[0] == null) {
+        //     return false;
+        // }
         e.preventDefault();
         try {
             let load = document.querySelector('.loader');

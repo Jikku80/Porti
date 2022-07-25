@@ -339,20 +339,32 @@ html{
   transform: scale(1.15);
 }
 
-.comp__form{
+.comp__form__main{
+  display: flex;
+  justify-content: center;
+}
+
+.comp__form, .com__form{
   background-color: rgba(37, 37, 37, 0.356);  
   backdrop-filter: blur(5px);
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   padding: 2%;
-  /* padding-left: 30vw; */
   margin: 2%;
-  height: auto;
+  width: auto;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  /* justify-content: center; */
+}
+
+.com__form{
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .form__head, .forgt__head, .signup__head{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 #closeBtn, #signCancel, .pointer{
@@ -370,30 +382,90 @@ html{
 
 .form__cont{
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
+  margin: 1%;
 }
 
-.form__cont label{
+.portForm{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form__cont label, .portForm label{
   margin: 1%;
   font-size: 2rem;
   color: white;
 }
 
-.form__cont textarea, .form__cont input{
+.form__cont textarea, .form__cont input, .portForm textarea, .portForm input{
   background-color: transparent;
   color: white;
   padding: 1%;
   border: 2px solid crimson;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
-  margin: 1%;
-  width: 348px;
 }
 
-.form__cont textarea{
+.portForm input, .portForm textarea{
+  padding: 3%;
+  border: 2px solid teal;
+  width: 18vw;
+}
+
+.portForm textarea{
+  height: 10vh !important;
+}
+
+.form__cont textarea, .portForm textarea{
   resize: none;
+}
+
+.form__first__cont{
+  height: 50%;
+  background-color: teal;
+  border-radius: 1rem;
+  padding: 2%;
+  margin-bottom: 4%;
+  overflow-y: auto;
+}
+
+.form__sec__cont{
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.port__info{
+  margin-left: 2%;
+  font-size: 1.5rem;
+}
+
+.btnGroup{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 4%;
+}
+
+.port__form__btn{
+  border: 2px solid teal;
+  padding: 14px;
+  color: white;
+  background-color: transparent;
+}
+
+.port__form__btn:hover{
+  background-color: teal;
+  color: white;
+  cursor: pointer;  
+}
+
+.portSubmit{
+  margin: 4%;
 }
 
 .cancel__create, .cancelcreate, .closecreate, .clcreate, .clFivecreate, .clSixthcreate{
@@ -754,20 +826,23 @@ input::file-selector-button{
 
 @media (min-width: 601px) and (max-width: 900px){
   .comp__form{
-    padding-left: 10vw;
+    width: 75%;
   }
-
   .form__sub input{
     height: 2.5rem;
   }
 
-  .form__cont label{
+  .form__cont label, .portForm label{
     font-size: 1.8rem;
     width: 40%;
   }
 
-  .form__cont input, .form__cont textarea{
-    width: 345px;
+  .form__cont textarea, .form__cont input{
+    width: 70vw;
+  }
+
+  .portForm textarea, .portForm input{
+    width: 70vw;
   }
 
   .un_layout img, .unl img, .portunl img{
@@ -803,19 +878,21 @@ input::file-selector-button{
 
 @media screen and (max-width: 600px){
   .comp__form{
-    padding-left: 2%;
+    padding: 4%;
+    width: 80%;
   }
-
   .form__sub input{
     height: auto;
   }
-  .form__cont label{
+  .form__cont label, .portForm label{
     font-size: 1.5rem;
     width: 40%;
   }
-  .form__cont input, .form__cont textarea{
-    width: 200px;
-  }
+
+.form__cont textarea, .form__cont input, .portForm textarea, .portForm input{
+  width: 70vw;
+  padding: 3%;
+}
 
   .small__nav{
     font-size: .7rem;

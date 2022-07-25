@@ -32,14 +32,14 @@
                 load.classList.add("hidden");
                 if (response.status === 200) {
                     successAlert("Your Portfolio Theme has been updated :)");
-                    window.setTimeout(() => {
-                        headGo.classList.remove('hidden');
-                        landNav.classList.remove('hidden');
-                        updatePort.classList.remove('hidden');
-                        updateImg.classList.remove("hidden");
-                        delFirst.classList.remove("hidden");
-                        updateForm.classList.add('hidden');
-                    }, 400);
+                    // window.setTimeout(() => {
+                    //     headGo.classList.remove('hidden');
+                    //     landNav.classList.remove('hidden');
+                    //     updatePort.classList.remove('hidden');
+                    //     updateImg.classList.remove("hidden");
+                    //     delFirst.classList.remove("hidden");
+                    //     updateForm.classList.add('hidden');
+                    // }, 400);
                 } else {
                     errorAlert("Invalid input, Input error!!!")
                     console.log(response);

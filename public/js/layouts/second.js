@@ -14,6 +14,8 @@
     let headFont = document.querySelectorAll(".headFont");
     let ansFont = document.querySelectorAll(".ansFont");
     let contBox = document.querySelectorAll(".cont__box");
+    let prevBtn = document.querySelector(".prev__addimgSec");
+    let nextBtn = document.querySelector(".next__addimgSec");
 
     mainBod.style.backgroundColor = bgColor;
     mainBod.style.fontFamily = fontFam;
@@ -60,4 +62,28 @@
     })
 
     preSec.style.backgroundColor = secHeadColor;
+
+    nextBtn.style.color = fontColor;
+    nextBtn.style.borderColor = headColor;
+
+    nextBtn.addEventListener("mouseover", () => {
+        nextBtn.style.backgroundColor = headColor;
+    })
+
+    nextBtn.addEventListener("mouseout", () => {
+        nextBtn.style.backgroundColor = "transparent";
+    })
+
+    prevBtn.style.color = fontColor;
+    prevBtn.style.borderColor = headColor;
+
+    prevBtn.addEventListener("mouseover", () => {
+        prevBtn.style.backgroundColor = headColor;
+    })
+
+    prevBtn.addEventListener("mouseout", () => {
+        prevBtn.style.backgroundColor = "transparent";
+    })
 })();
+
+paginate(".next__addimgSec", ".prev__addimgSec", ".prev__cont__sub", "port__images", "#imgCont")

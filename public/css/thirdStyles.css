@@ -21,11 +21,13 @@
 #left__next, #prevl__next, #cleft__next{
     margin-left: 4%;
     cursor: pointer;
+    filter: grayscale(1.5);
 }
 
 #right__next, #prevr__next, #cright__next{
     margin-left: 75%;
     cursor: pointer;
+    filter: grayscale(1.5);
 }
 
 .about__first, .contact__first, .prev__first{

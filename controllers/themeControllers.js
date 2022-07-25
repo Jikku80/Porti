@@ -1,33 +1,64 @@
 const fs = require('fs');
-const { STATUS_CODES } = require('http');
+
+const multer = require('multer');
+const sharp = require('sharp');
+const Theme = require('./../models/themeModel');
+const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
+const APIFeatures = require('./../utils/apiFeatures');
 
+const multerStorage = multer.memoryStorage();
 
-exports.createDir = catchAsync(async (req, res, next) => {
-    const folder = `views/${req.params.folderName}`
-    const fileName = `views/${req.params.folderName}/${req.params.fileName}`
-    fs.access(folder, (error) => {
-        if (error) {
-            fs.mkdir(folder, (error) => {
-                if (error) {
-                    console.log(error);
-                }
-                else {
-                    console.log("New Directory created");
-                    fs.appendFile(fileName, 'user-added', function (err) {
-                        if (err) throw err;
-                        console.log('File Saved!');
-                    })
-                    res.status(200).send({
-                        success: "successfully created"
-                    });
-                }
-            });
-        } else {
-            console.log("Given Directory already exists!!");
-            res.status(409).send({
-                error: "Name conflict"
-            });
-        }
-    })
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+        cb(null, true);
+    } else {
+        cb(new AppError('Not an image! Please upload only images.', 400), false);
+    }
+};
+
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: multerFilter
+});
+
+exports.uploadThemeImage = upload.single('picture');
+
+exports.resizeThemeImage = catchAsync(async (req, res, next) => {
+
+    if (!req.file) return next();
+    let img = req.file;
+
+    img.originalname = `port-${req.user.name}-${Date.now()}-themeImage.jpeg`;
+    await sharp(img.buffer)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`public/images/themeImage/${img.originalname}`);
+
+    next();
+});
+
+exports.setUsersId = (req, res, next) => {
+    if (!req.body.user) req.body.user = req.user.id;
+    next();
+}
+
+exports.createTheme = catchAsync(async (req, res, next) => {
+    if (!req.file.originalname) {
+        const doc = await Theme.create(req.body)
+        res.status(201).json(doc)
+
+    }
+    else {
+        const doc = await Theme.create({
+            name: req.body.name,
+            picutre: req.file.originalname,
+            themeType: req.body.themeType,
+            price: req.body.price,
+        });
+        res.status(201).json(doc)
+    }
+
 })
+
+exports.getAllTheme = factory.getAll(Theme);

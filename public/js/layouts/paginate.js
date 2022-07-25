@@ -1,10 +1,10 @@
-(function () {
-    let next = document.querySelector(".next__addimgSec");
-    let prev = document.querySelector(".prev__addimgSec");
+function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
+    let next = document.querySelector(nextVal);
+    let prev = document.querySelector(prevVal);
     let fullpath = location.pathname
     let resultpath = fullpath.match("/portfolio/(.*)/tm")
     let user__id = atob(resultpath[1])
-    let subItems = document.querySelector(".prev__cont__sub")
+    let subItems = document.querySelector(contVal)
 
     if (subItems) {
         if (subItems.children.length < 4) {
@@ -40,13 +40,13 @@
                         items.forEach(el => {
                             subItems.innerHTML +=
                                 `
-                                <div class="port__images"> 
+                                <div class=${cardVal}> 
                                     <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", loading="lazy" alt="second_img", srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                 </div>
                             `
                         });
-                        window.location.hash = "#imgCont"
+                        window.location.hash = locVal;
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -96,13 +96,13 @@
                         items.forEach(el => {
                             subItems.innerHTML +=
                                 `
-                                <div class="port__images"> 
+                                <div class=${cardVal}> 
                                     <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", alt="second_img", loading="lazy" srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                 </div>
                             `
                         });
-                        window.location.hash = "#imgCont"
+                        window.location.hash = locVal;
                     })
                 } else {
                     console.log(response);
@@ -115,4 +115,4 @@
             errorAlert('Sorry! Something went wrong', err);
         };
     });
-})();
+};

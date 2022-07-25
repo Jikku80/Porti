@@ -78,10 +78,21 @@ body{
     clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 99%, 52% 82%);
 }
 
-.prev img{
-    width: 50vw;
-    height: 50vh;
-    border-radius: 2rem;
+.accomp__cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.accomp__cont__card{
+    margin: 1%;
+    font-size: 1rem;
+}
+
+.accomp__cont__card img{
+    width: 15vw;
+    height: 30vh;
+    border-radius: 1rem;
 }
 
 #contact{
@@ -170,6 +181,11 @@ body{
         width: 90vw;
     }
 
+    .accomp__cont__card img{
+        width: 70vw;
+        height: 30vh;
+    }
+
     #gtop{
         position: fixed;
         align-items: flex-end;
@@ -181,6 +197,10 @@ body{
 @media (min-width: 601px) and (max-width: 900px){
     #about, #previous, #contact{
         width: 90vw;
+    }
+    .accomp__cont__card img{
+        width: 25vw;
+        height: 25vh;
     }
     #gtop{
         position: fixed;

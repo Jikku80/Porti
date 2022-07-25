@@ -1,25 +1,29 @@
 extends baselayout
 
 block content
-    .main
-        .navbar
-            ul.navbar__list
-                <li class="navbar__list__li"> <a href="#about">About</a> </li>
-                <li class="navbar__list__li"> <a href="#previous">Previous Works</a> </li>
-                <li class="navbar__list__li"> <a href="#contact">Contact</a> </li>
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+    .main(id=`${portfolio.fontColor}`)
+        .navbar(id=`${portfolio.fontFam}`)
+            ul.navbar__list(id=`${portfolio.backColor}`)
+                <li class="navbar__list__li"> <a class="headFont" href="#about">About</a> </li>
+                <li class="navbar__list__li"> <a class="headFont" href="#previous">Previous Works</a> </li>
+                <li class="navbar__list__li"> <a class="headFont" href="#contact">Contact</a> </li>
             #heading
-                h1= portfolio.name
-        .first
+                h1.portfoName.headFont(id=`${portfolio.headColor}`)= portfolio.name
+        .first.topFirst(id=`${portfolio.focusColor}`)
             #about
-                .about__body
-                    h2= `About ${portfolio.name}`
-                    p#abdetail= portfolio.about
+                .about__body(id=`${portfolio.secHeadColor}`)
+                    h2.headFont= `About ${portfolio.name}`
+                    pre#abdetail.ansFont= portfolio.about
                     
-                    h3= `What ${portfolio.name} Do?`
-                    p#abwhat= portfolio.what
-                    h3= `Why ${portfolio.name} Do It?`
-                    p#abwhy= portfolio.why
-                    h3.headFont= `How ${portfolio.name} deals with Failure?`
+                    h3.headFont= `What ${portfolio.name} Do?`
+                    pre#abwhat.ansFont= portfolio.what
+                    h3.headFont= `Why ${portfolio.name} Do It?`
+                    pre#abwhy.ansFont= portfolio.why
+                    h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
                     pre.ansFont= portfolio.failure
                     h3.headFont= `How ${portfolio.name} stays motivated?`
                     pre.ansFont= portfolio.motivation
@@ -28,23 +32,32 @@ block content
         .first
             #previous
                 .prev
-                    h2 Previous Accomplishment Details
-                    p= portfolio.previous
+                    h2.headFont Previous Accomplishment Details
+                    pre.ansFont= portfolio.previous
                 .prev__cont
-                    .prev__cont__sub
+                    .prev__cont__sub#firstImgCont
                         if (portImage.length === 0)
                             p No Previous Accomplishment Images Yet!!!
+                            .firstPrev.hidden 
+                            .firstNext.hidden
                         else 
-                            each item in portImage
-                                img.imgsnd.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy", alt="previous_image")
-                                h3.head= item.name
+                            .accomp__cont
+                                each item in portImage
+                                    .accomp__cont__card
+                                        img.imgsnd.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy", alt="previous_image")
+                                        h3.head= item.name
+                            .paginate__addimg
+                                .group__delbtn 
+                                    button.redbtn.firstPrev Prev
+                                    button.redbtn.firstNext Next 
+
         .first
             #contact
-                h3.headFont= `${portfolio.name} ran into a problem`
+                h3.headFont.dyF= `${portfolio.name} ran into a problem`
                 pre.ansFont= portfolio.problem 
-                h3.headFont= `How ${portfolio.name} solved the problem?`
+                h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
                 pre.ansFont= portfolio.solution
-                h3.headFont= `Contact ${portfolio.name}`
+                h3.headFont.dyF= `Contact ${portfolio.name}`
                 .bgbox
                     if (portfolio.showNo === true)
                         .contbox
@@ -62,9 +75,12 @@ block content
                         p= `Address: ${portfolio.location}`
 
         #footer 
-            p= `${portfolio.name} portfolio`
+            p.ansFont= `${portfolio.name} portfolio`
             a#gtop(href="#")
                 img(src="/images/bup.png", alt="up_arrow")
 
+    script(src="/js/alert.js") 
+    script(src="/js/imgFull.js") 
+    script(src="/js/layouts/paginate.js") 
     script(src=`/js/layouts/first.js`) 
     //- script(src=`/js/disFt.js`) 

@@ -1,59 +1,74 @@
 extends baselayout
 
 block content 
-    .main
-        .about__sec
+    .loader
+        .out__load
+            .inn__load
+                .inner__loader
+    .main(id=`${portfolio.fontColor}`)
+        .about__sec(id=`${portfolio.fontFam}`)
             .about__next 
                 img#left__next(src="/images/left.png", alt="left__next")
                 img#right__next(src="/images/right.png", alt="right__next")
             .about__first
-                h1 Greetings! From 
-                    span=  portfolio.name
-            .about__sec__other
-                h2 About me
-                p= portfolio.about
-                h2= `What ${portfolio.name} Do?`
-                p= portfolio.what 
-                h2= `Why ${portfolio.name} Do It?`
-                p= portfolio.why
+                h1.secHead Greetings! From 
+                    span.topHead=  portfolio.name
+            .about__sec__other(id=`${portfolio.backColor}`)
+                h3.headFont About me
+                pre.ansFont= portfolio.about
+                h3.headFont= `What ${portfolio.name} Do?`
+                pre.ansFont= portfolio.what 
+                h3.headFont= `Why ${portfolio.name} Do It?`
+                pre.ansFont= portfolio.why
+                h3.headFont= `How ${portfolio.name} deals with Failure?`
+                pre.ansFont= portfolio.failure
+                h3.headFont= `How ${portfolio.name} stays motivated?`
+                pre.ansFont= portfolio.motivation
+                h3.headFont= `${portfolio.name} Message`
+                pre.ansFont= portfolio.msg
 
         .prev__sec.hidden
-            .prev__next 
+            .prev__next(id=`${portfolio.headColor}`)
                 img#prevl__next(src="/images/left.png", alt="left__next")
                 img#prevr__next(src="/images/right.png", alt="right__next")
-            .prev__first
-                h1= portfolio.name 
-                    span  Accomplishments
-            .prev__sec__other
-                h2 Accomplishments
-                p= portfolio.previous
+            .prev__first(id=`${portfolio.secHeadColor}`)
+                h1.topHead= portfolio.name 
+                    span.secHead  Accomplishments
+            .prev__sec__other(id=`${portfolio.focusColor}`)
+                h3.headFont Accomplishments
+                pre.ansFont= portfolio.previous
                 .prev__cont
-                    .prev__cont__sub
-                        img.imgsnd.imgFull(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="firs_image")
-                        h3#zr__head= portfolio.firstImgHead
-                    .prev__cont__sub
-                        img.imgsnd.imgFull(src=`/images/ports/imageSecond/${portfolio.imageSecond}`, alt="second_img")
-                        h3#fst__head= portfolio.secondImgHead
-                    .prev__cont__sub
-                        img.imgsnd.imgFull(src=`/images/ports/imageThird/${portfolio.imageThird}`, alt="third_img")
-                        h3#send__head= portfolio.thirdImgHead
-                    .prev__cont__sub
-                        img.imgsnd.imgFull(src=`/images/ports/imageFourth/${portfolio.imageFourth}`, alt="fourth_img")
-                        h3#thrd__head= portfolio.fourthImgHead
-                    .prev__cont__sub
-                        img.imgsnd.imgFull(src=`/images/ports/imageFifth/${portfolio.imageFifth}`, alt="fifth_img")
-                        h3#forth__head= portfolio.fifthImgHead
+                    .prev__cont__sub#thirdImgCont
+                        if (portImage.length === 0)
+                            p No Previous Accomplishment Images Yet!!!
+                            .firstPrev.hidden 
+                            .firstNext.hidden
+                        else 
+                            .accomp__cont
+                                each item in portImage
+                                    .accomp__cont__card
+                                        img.imgsnd.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy", alt="previous_image")
+                                        h3.head= item.name
+                            .paginate__addimg
+                                .group__delbtn 
+                                    button.redbtn.firstPrev Prev
+                                    button.redbtn.firstNext Next
+                        
+                h3.headFont= `${portfolio.name} ran into a problem`
+                pre.ansFont= portfolio.problem 
+                h3.headFont= `How ${portfolio.name} solved the problem?`
+                pre.ansFont= portfolio.solution
 
         .contact__sec.hidden
             .contact__next 
                 img#cleft__next(src="/images/left.png", alt="left__next")
                 img#cright__next(src="/images/right.png", alt="right__next")
             .contact__first
-                h1 Contact 
-                    span=  portfolio.name
+                h1.secHead Contact 
+                    span.topHead=  portfolio.name
             .contact__sec__other
                 .cont__boxbg
-                    h2 Get In Touch
+                    h2.headFont Get In Touch
                     if (portfolio.showNo === true)
                         .cont__box.contact__sec__box
                             p= `Phone: ${portfolio.phn_no}` 
@@ -69,6 +84,6 @@ block content
                     .cont__box.contact__sec__box
                         p= `Address: ${portfolio.location}`
 
-
+    script(src="/js/alert.js") 
+    script(src="/js/layouts/paginate.js") 
     script(src="/js/layouts/third.js") 
-    script(src="/js/imgFull.js") 
