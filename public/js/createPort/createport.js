@@ -39,6 +39,7 @@ layout1.forEach(item => {
         let msg = document.getElementById("yourMsg");
         let submit = document.getElementById("form__btn");
         let theme = item.id;
+
         submit.addEventListener("click", async (e) => {
             if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
                 return false;

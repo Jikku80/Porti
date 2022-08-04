@@ -8,17 +8,25 @@ const themeSchema = new mongoose.Schema({
         required: [true, 'Name should be provided!']
     },
     picture: String,
+    themeId: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: [true, 'Theme must have a unique themeId']
+    },
     themeType: {
         type: String,
     },
+    themeCategory: String,
     price: {
-        type: String,
+        type: Number,
         trim: true
     },
     paid: {
         type: Boolean,
         default: false
     },
+    validUser: [String],
     createdAt: {
         type: Date,
         default: Date.now()

@@ -15,7 +15,7 @@
     mainSec.style.backgroundColor = secHeadColor;
 
     about.forEach(item => {
-
+        item.style.fontFamily = fontFam;
         item.style.backgroundColor = backColor;
     })
 
@@ -35,6 +35,7 @@
 
     nav.forEach(item => {
         item.style.color = focusColor;
+        item.style.fontFamily = fontFam;
     })
 
     mainSec.style.color = fontColor;

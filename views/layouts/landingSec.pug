@@ -1,13 +1,11 @@
 extends baselayout
 
 block content
-    .loader
-        .out__load
-            .inn__load
-                .inner__loader
-        p.lodtl Lakhey
-            span.lodmid Tech
-                span.lodend ...
+    h1.loader
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
     if (user)
         if (invite.user.id == user._id)
             .land__content
@@ -45,7 +43,7 @@ block content
                         .bdcb(title=`${invite.fname} Invitation`) You Are Here |
                         a.bdcb(href="/") Home 
                         .bdcb.arr &#8680;  
-                        a.bdcb(href="/porti") Porti 
+                        a.bdcb(href="/porti") Layouts 
                         .bdcb.arr &#8680;  
                         a.bdcb(href=`/invitations/${user._id}`) All Invitations
                         .bdcb.arr &#8680;  

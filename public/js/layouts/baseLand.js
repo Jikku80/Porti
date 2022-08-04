@@ -13,13 +13,13 @@ let user_id = btoa(user__id)
 url.innerHTML = `
 <button id="openport" class="redbtn">My Portfolio</button>
 <p class="xsf">Share your potfolio with the link below</p>
-<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${user_id}/tm/${portithemepoint}/${end}</p>
+<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${user_id}/${end}</p>
 `
 
 openport = document.getElementById("openport");
 
 openport.addEventListener("click", () => {
-    let myurl = `/${portName}/portfolio/${user_id}/tm/${portithemepoint}/${end}`
+    let myurl = `/${portName}/portfolio/${user_id}/${end}`
     window.open(myurl);
 })
 

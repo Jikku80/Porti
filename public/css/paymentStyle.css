@@ -1,0 +1,152 @@
+html{
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-size: 10px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav__head{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.lay__img{
+    margin-bottom: 0;
+    padding-bottom: 0%;
+}
+
+.name__tag{
+    color: white;
+    margin: 0;
+    font-size: 8px;
+}
+
+.porti__head{
+    font-variant: small-caps;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.grn{
+    color: rgb(54, 219, 54);
+}
+
+.nocaps{
+    font-variant: normal;
+}
+
+.bigcont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.paymentLogo{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 10rem;
+}
+
+.payment__cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pay__img{
+    width: 350px;
+    height: 200px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.grn{
+    color: rgb(54, 219, 54);
+}
+
+.cdred{
+    color: crimson;
+}
+
+.loader{
+    background-color: rgba(0, 0, 0, 0.562);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant: small-caps;
+    scroll-behavior: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blink 1.5s infinite linear;
+  }
+
+.success__main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.success__cont{
+    position: fixed;
+    top: 40vh;
+    background-color: rgba(0, 128, 0, 0.452);
+    padding: 5vh;
+    text-align: center;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    font-size: small;
+    z-index: 1;
+}
+  
+.error__cont{
+    position: fixed;
+    top: 40vh;
+    background-color: rgba(220, 20, 60, 0.527);
+    padding: 5vh;
+    text-align: center;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    font-size: small;
+    z-index: 1;
+}
+
+.hidden{
+    display: none;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+}
+
+@media screen and (max-width: 600px){
+}
+
+@keyframes blink {
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

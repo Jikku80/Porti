@@ -1,0 +1,27 @@
+extends basePayment 
+
+block content 
+    h1.loader
+        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
+
+    if (!user)
+        include _navbar
+        .payment__cont
+            h1 Please Sign in to your account! 
+
+    else 
+        .main__cont
+            include _navbar
+            .payment__cont
+                img.pay__img(src=`/images/themeImage/${theme.picture}`, alt="theme__img")
+                p.item__name= theme.name 
+                p.item__uid(id=`${theme.themeId}`)
+
+                h1.grn= `${theme.name} is now unlocked :)`
+
+    script(src="/js/alert.js") 
+    script(src="/js/payment/success.js") 
+

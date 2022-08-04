@@ -1,10 +1,11 @@
 extends baselayout
 
 block content 
-    .loader
-        .out__load
-            .inn__load
-                .inner__loader
+    h1.loader
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
     .main(id=`${portfolio.headColor}`)
         .bgCover(id=`${portfolio.fontColor}`) 
             if (!portfolio.imageCover)

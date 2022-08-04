@@ -1,6 +1,11 @@
 extends baseinvi 
 
 block content 
+    h1.loader
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
     .invite__main 
         img.mrg__cover(src=`/images/invites/imageCover/${invite.imgCover}`, alt="cover__pic")
         .invite__main__sub
@@ -25,6 +30,7 @@ block content
                     h4.partyVenue= `Contact: ${invite.phn_no}` 
                     h4.partyTime= `Time: ${invite.ptime}`
 
+    script(src="/js/alert.js") 
     script(src="/js/imgFull.js") 
 
 

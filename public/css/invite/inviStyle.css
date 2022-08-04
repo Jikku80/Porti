@@ -28,3 +28,79 @@ body{
   ::-webkit-scrollbar-thumb:hover {
     background: #a7a6a6; 
   }
+
+  .grn{
+    color: rgb(54, 219, 54);
+}  
+
+.nocaps{
+  font-variant: normal;
+}
+
+.loader{
+  background-color: rgba(0, 0, 0, 0.562);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-variant: small-caps;
+  scroll-behavior: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blink 1.5s infinite linear;
+}
+
+.success__main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success__cont{
+  position: fixed;
+  top: 40vh;
+  background-color: rgba(0, 128, 0, 0.452);
+  padding: 5vh;
+  text-align: center;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  font-weight: 800;
+  font-size: small;
+  z-index: 1;
+}
+
+.error__cont{
+  position: fixed;
+  top: 40vh;
+  background-color: rgba(220, 20, 60, 0.527);
+  padding: 5vh;
+  text-align: center;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  font-weight: 800;
+  font-size: small;
+  z-index: 1;
+}
+
+.hidden{
+  display: none;
+}
+
+
+  @keyframes blink {
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

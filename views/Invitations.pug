@@ -1,13 +1,11 @@
 extends base
 
 block content
-    .loader
-        .out__load
-            .inn__load
-                .inner__loader
-        p.lodtl Lakhey
-            span.lodmid Tech
-                span.lodend ...
+    h1.loader
+        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
     if (invites.length == "" || invites.length == null || invites.length == undefined)
         .four0four 
             h2 You have not Created Any Invitation YET!!! Create One and Come Back 
@@ -33,8 +31,8 @@ block content
                         p.name__tag Signout
                 .port__nav__sub 
                     a.crpt.smallest__cont(href="/porti" title="porti")
-                        img(src="/images/smalport.png", alt="view_port")
-                        p.name__tag Porti
+                        img(src="/images/portal.png", alt="view_port")
+                        p.name__tag Layouts
                     a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
                         img(src="/images/porti.png", alt="view_port")
                         p.name__tag Portfolio
@@ -48,7 +46,7 @@ block content
                         .bdcb(title="All Invitation") You Are Here |
                         a.bdcb(href="/") Home 
                         .bdcb.arr &#8680;  
-                        a.bdcb(href="/porti") Porti 
+                        a.bdcb(href="/porti") Layouts 
                         .bdcb.arr &#8680;  
                         .cur All Invitations
                 .invi__grp
@@ -66,3 +64,4 @@ block content
                 a.redbtn(href="/login") LogIn
 
     script(src="/js/alert.js") 
+    script(src="/js/logout.js") 

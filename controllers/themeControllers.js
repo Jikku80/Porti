@@ -44,21 +44,76 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createTheme = catchAsync(async (req, res, next) => {
-    if (!req.file.originalname) {
-        const doc = await Theme.create(req.body)
+    if (!req.file) {
+        const doc = await Theme.create({
+            name: req.body.themename,
+            themeId: req.body.themeId,
+            themeType: req.body.themeType,
+            themeCategory: req.body.themeCategory,
+            price: req.body.themeprice,
+            paid: req.body.paid,
+            validUser: req.body.validUser
+        })
         res.status(201).json(doc)
 
     }
     else {
         const doc = await Theme.create({
-            name: req.body.name,
-            picutre: req.file.originalname,
+            name: req.body.themename,
+            themeId: req.body.themeId,
+            picture: req.file.originalname,
             themeType: req.body.themeType,
-            price: req.body.price,
+            themeCategory: req.body.themeCategory,
+            price: req.body.themeprice,
+            paid: req.body.paid,
+            validUser: req.body.validUser
         });
         res.status(201).json(doc)
     }
 
+});
+
+exports.updateTheme = catchAsync(async (req, res, next) => {
+    const updatedTheme = await Theme.updateOne({ themeId: req.params.id }, {
+        $set: { paid: false },
+        $push: {
+            validUser: req.user.id
+        }
+    },
+        {
+            new: true,
+            runValidators: true
+        })
+
+    res.status(200).json({
+        status: 'success',
+        updatedTheme
+    });
+});
+
+// exports.updateTheme = catchAsync(async (req, res, next) => {
+//     const updatedTheme = await Theme.findByIdAndUpdate(
+//         req.params.id,
+//         {
+//             paid: req.body.paid,
+//             validUser: req.body.validUser
+//         },
+//         {
+//             new: true,
+//             runValidators: true
+//         }
+//     );
+
+//     res.status(200).json({
+//         status: 'success',
+//         updatedTheme
+//     });
+// });
+
+exports.themeForm = catchAsync(async (req, res, next) => {
+    res.status(200).render('tweakTheme', {
+        title: "Tweak Theme"
+    })
 })
 
 exports.getAllTheme = factory.getAll(Theme);

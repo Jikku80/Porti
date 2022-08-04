@@ -1,0 +1,44 @@
+extends base
+
+block content 
+    h1.loader
+        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
+
+    form.theme__form
+        .comp__form
+            h2 Add Theme 
+            .form__cont
+                label.form__label(for='themeName') Theme Name
+                input.form__input(type='text', name="themename", id="themename" placeholder='Rk Layouts', required)
+            .form__cont
+                label.form__label(for='themeName') Theme Unique ID
+                input.form__input(type='text', name="themeId", id="themeId" placeholder='XCV12R4ASDFAW12312', required)
+            .form__cont
+                label.form__label(for='themePrice') Price 
+                input.form__input(type='number', name="themeprice", id="themeprice" placeholder='500', required)
+            .form__cont
+                label.form__label(for='themeCategory') Theme Category 
+                select.form__select(type='select', name="themeCategory", id="themeCategory")
+                        option(value="Portfolio") Portfolio
+                        option(value="Invitation") Invitation  
+                        option(value="Menu") Menu  
+                        option(value="Cataloge") Cataloge 
+            .form__cont
+                label.form__label(for='themeType') Theme Type 
+                select.form__select(type='select', name="themeType", id="themeType")
+                        option(value="Free") Free
+                        option(value="Paid") Paid  
+            .form__cont
+                label.form__label(for='paid') Theme Type 
+                select.form__select(type='select', name="paid", id="paid")
+                        option(value="false") Unpaid
+                        option(value="true") Paid  
+            .form__cont.file_part
+                input(type="file" accept="image/*" name="picture" id="pictur")
+            button#crTheme.redbtn Create Theme
+
+    script(src="/js/alert.js") 
+    script(src="/js/tweakTheme.js") 

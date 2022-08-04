@@ -17,7 +17,8 @@ const userRouter = require('./routes/userRoutes');
 const menuRouter = require('./routes/menuRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const catalougeRouter = require('./routes/catalougeRoutes')
-const themeRouter = require('./routes/themeRoutes')
+const themeRouter = require('./routes/themeRoutes');
+const paymentRouter = require('./routes/paymentRoutes');
 
 const app = express();
 
@@ -29,7 +30,68 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 app.options('*', cors());
 
-app.use(helmet());
+// app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: false,
+        "block-all-mixed-content": true,
+        "upgrade-insecure-requests": true,
+        directives: {
+            "default-src": [
+                "'self'",
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/payment_gateway_widget.html"
+            ],
+            "base-uri": "'self'",
+            "font-src": [
+                "'self'",
+                "https:",
+                "data:"
+            ],
+            "frame-ancestors": [
+                "'self'"
+            ],
+            "img-src": [
+                "'self'",
+                "data:",
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/icons/infinity-loader.svg"
+            ],
+            "object-src": [
+                "'none'"
+            ],
+            "script-src": [
+                "'self'",
+                "'unsafe-inline'",
+                "https://cdnjs.cloudflare.com",
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"
+            ],
+            "script-src-attr": "'none'",
+            "style-src": [
+                "'self'",
+                "'unsafe-inline'",
+                "https://cdnjs.cloudflare.com",
+                "https://fonts.googleapis.com",
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"
+            ]
+        },
+    }),
+    helmet.dnsPrefetchControl({
+        allow: true
+    }),
+    helmet.frameguard({
+        action: "deny"
+    }),
+    helmet.hidePoweredBy(),
+    helmet.hsts({
+        maxAge: 123456,
+        includeSubDomains: false
+    }),
+    helmet.ieNoOpen(),
+    helmet.noSniff(),
+    helmet.referrerPolicy({
+        policy: ["origin", "unsafe-url"]
+    }),
+    helmet.xssFilter()
+);
 app.use(mongoSanitize());
 app.use(xss());
 app.use(compression());
@@ -56,6 +118,7 @@ app.use(function (req, res, next) {
 app.use('/', viewRouter);
 app.use('/api/users', userRouter);
 app.use('/api/themes', themeRouter);
+app.use('/paywith', paymentRouter);
 app.use('/api/v1/portfolio', portfolioRouter);
 app.use('/api/v1/invite', inviteRouter);
 app.use('/api/v1/message', messageRouter);

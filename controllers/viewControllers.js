@@ -14,6 +14,7 @@ const Menu = require('./../models/menuModel');
 const Catalouge = require('./../models/catalougeModel');
 const Company = require("./../models/companyModel");
 const Invite = require('./../models/inviteModel');
+const Theme = require('./../models/themeModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const atob = require('./../utils/decode');
@@ -28,7 +29,7 @@ exports.homePage = catchAsync(async (req, res, next) => {
 exports.getOverview = catchAsync(async (req, res, next) => {
 
     res.status(200).render('overview', {
-        title: 'Login | SignUp',
+        title: 'Login | SignUp'
     })
 })
 
@@ -62,6 +63,7 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
     const catalouge = await Catalouge.findOne({ user: req.user.id })
     const restro = await Restaurant.findOne({ user: req.user.id })
     const company = await Company.findOne({ user: req.user.id })
+    const theme = await Theme.find().sort('-createdAt');
     res.status(200).render('create', {
         title: 'Unleash The Power',
         portfolio,
@@ -69,7 +71,8 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
         menu,
         catalouge,
         restro,
-        company
+        company,
+        theme
     })
 })
 
@@ -107,7 +110,7 @@ exports.myInvi = catchAsync(async (req, res) => {
     }).catch(err => console.log(err));
 })
 
-exports.layoutFirst = catchAsync(async (req, res, next) => {
+exports.layoutTally = catchAsync(async (req, res, next) => {
     const port_id = atob(req.params.id)
     const user_id = atob(req.params.userid)
     const pg = 1;
@@ -115,83 +118,55 @@ exports.layoutFirst = catchAsync(async (req, res, next) => {
     const portImage = await features.query
     await Portfolio.findById(port_id).populate('user').then(portfolio => {
 
-        res.status(200).render('layouts/first', {
-            title: portfolio.name,
-            portfolio,
-            portImage
-        })
+        let theme = portfolio.theme
+
+        switch (theme) {
+            case "a9993e364706816aba3e25717850c26c9cd0d89d":
+                res.status(200).render('layouts/first', {
+                    title: portfolio.name,
+                    portfolio,
+                    portImage
+                })
+                break;
+            case "589c22335a381f122d129225f5c0ba3056ed5811":
+                res.status(200).render('layouts/second', {
+                    title: portfolio.name,
+                    portfolio,
+                    portImage
+                })
+                break;
+            case "481743d632b80d39bc2771d19be3ca3005b3f8af":
+                res.status(200).render('layouts/third', {
+                    title: portfolio.name,
+                    portfolio,
+                    portImage
+                })
+                break;
+            case "d798d4338adeb553a1089a58e61e18c2fcdf77bb":
+                res.status(200).render('layouts/fourth', {
+                    title: portfolio.name,
+                    portfolio,
+                    portImage
+                });
+                break;
+            case "da98568d1b2005611973ad49868b38aa8ae68fd7":
+                res.status(200).render('layouts/fifth', {
+                    title: portfolio.name,
+                    portfolio
+                })
+                break;
+            case "836b9b955a98e0f2e2d678c179696d6ac53356eb":
+                res.status(200).render('layouts/sixth', {
+                    title: portfolio.name,
+                    portfolio
+                });
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
+
     })
-})
-
-exports.layoutSecond = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    const user_id = atob(req.params.userid)
-    const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
-    const portImage = await features.query
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
-
-        res.status(200).render('layouts/second', {
-            title: portfolio.name,
-            portfolio,
-            portImage
-        })
-    })
-})
-
-exports.layoutThird = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    const user_id = atob(req.params.userid)
-    const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
-    const portImage = await features.query
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
-
-        res.status(200).render('layouts/third', {
-            title: portfolio.name,
-            portfolio,
-            portImage
-        })
-    })
-})
-
-exports.layoutFourth = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    const user_id = atob(req.params.userid)
-    const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
-    const portImage = await features.query
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
-
-        res.status(200).render('layouts/fourth', {
-            title: portfolio.name,
-            portfolio,
-            portImage
-        })
-    })
-})
-
-exports.layoutFifth = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
-
-        res.status(200).render('layouts/fifth', {
-            title: portfolio.name,
-            portfolio
-        })
-    })
-})
-
-exports.layoutSixth = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
-
-        res.status(200).render('layouts/sixth', {
-            title: portfolio.name,
-            portfolio
-        })
-    })
-})
+});
 
 exports.getAccount = (req, res) => {
     res.status(200).render('account', {

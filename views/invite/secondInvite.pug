@@ -1,5 +1,10 @@
 extends baseinvi
 block content
+    h1.loader
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
     .ini__invi__main 
         if (invite.imgs == "")
             img.invi__cover(src="/images/party.jpg", alt="cover__img")
@@ -21,3 +26,5 @@ block content
                 h3= `Time : ${invite.ptime}`
             .ini__invi__ven 
                 h3= `Contact : ${invite.phn_no}`
+
+    script(src="/js/alert.js") 

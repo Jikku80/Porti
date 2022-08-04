@@ -1,13 +1,12 @@
 extends base
 
 block content
-    .loader
-        .out__load
-            .inn__load
-                .inner__loader
-        p.lodtl Lakhey
-            span.lodmid Tech
-                span.lodend ...
+    h1.loader
+        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
+
     if (!user)
         .confirm__pg
             h1 Please Sign In To Your Account !
@@ -58,12 +57,17 @@ block content
                 if (!company && !catalouge)
                     h2 Create Catalouge For Your Business 
                     p Pick any of the layouts below and buid a Catalouge 
-                    .layout__main
+                    .gGroup 
+                        .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
+                        .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
+                    .layout__main#freeCatalgSec
                         #catal1.unl
                             .un_layout_log
                                 a(href=`/catalouge/${user._id}/additems`)
                                     img(src="/images/catal1.png", loading="lazy", alt="catalouge1")
                                 p CT Layout
+                    .layout__main#lockedCatalgSec 
+                        .unl
                 else 
                     .noti__sec
                         .sticky__section
@@ -75,20 +79,30 @@ block content
                         if (!catalouge)
                             .sticky__section 
                                 h2.warn You Haven't added items to your cataloge!
-                    .layout__main 
+                    .gGroup 
+                        .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
+                        .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
+                    .layout__main#freeCatalgSec 
                         .un_layout 
                             img(src="/images/catal1.png", loading="lazy", alt="invi2")
                             p CT Layout
+                    .layuot__main#lockedCatalgSec 
+                        .un_layout
             .menu__section
                 if (!restro && !menu)
                     h2 Create Menu For Your Restro 
                     p Pick any of the layouts below and buid a menu for your restro 
-                    .layout__main
+                    .gGroup 
+                        .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
+                        .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
+                    .layout__main#freeMenuSec
                         #menu1.unl
                             .un_layout_log
                                 a(href=`/menu/${user._id}/additemstomenu`)
                                     img(src="/images/menu1.png", loading="lazy", alt="menu1")
                                 p DC Layout
+                    .layout__main#lockedMenuSec 
+                        .unl
                 else 
                     .noti__sec
                         .sticky__section
@@ -100,14 +114,22 @@ block content
                         if (!menu)
                             .sticky__section 
                                 h2.warn You Haven't added items to your menu!
-                    .layout__main
+                    .gGroup 
+                        .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
+                        .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
+                    .layout__main#freeMenuSec
                         .un_layout
                             img(src="/images/menu1.png", loading="lazy", alt="menu1")
                             p DC Layout
+                    .layout__main#lockedMenuSec 
+                        .un_layout
             .invi__section#crtInvi
                 h2 Create Invitation
                 p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
-                .layout__main
+                .gGroup 
+                    .freeSec.whitebtn.invitebtn#freeInviBtn Unlocked
+                    .paidSec.whitebtn.invitebtn#lockedInviBtn Locked
+                .layout__main#freeInviSec
                     #invi1.unl
                         .un_layout_log
                             img(src="/images/invi1.png", loading="lazy", alt="invi1")
@@ -116,6 +138,8 @@ block content
                         .un_layout_log
                             img(src="/images/invi2.png", loading="lazy", alt="invi2")
                             p INI Layout (1 | No Image required)
+                .layout__main#lockedInviSec 
+                    .unl
             if (portfolio)
                 .port__bod.port__section
                     .noti__sec
@@ -128,61 +152,64 @@ block content
                                     h2.warn You Haven't Uploaded Any Previous Work Image 
                     p Need tips Creating Your Portfolio Go To 
                         a.portDet(href="/#portiHelper") Porti Helper
-                    .layout__main
-                        .un_layout
-                            img(src="/images/layout1.png", loading="lazy", alt="layout1")
-                            p PL Layout
-                        .un_layout
-                            img(src="/images/layout2.png", loading="lazy", alt="layout2")
-                            p BG Layout
-                        .un_layout
-                            img(src="/images/layout3.png", loading="lazy", alt="layout3")
-                            p ST Layout
-                        .un_layout 
-                            img(src="/images/layout4.png", loading="lazy", alt="layout1")
-                            p BS Layout
+                    .gGroup 
+                        .freeSec.whitebtn.glassbtn#freePortSec Unlocked
+                        .paidSec.whitebtn.glassbtn#lockedPortSec Locked
+                    .layout__main#freeItems
+                        each item in theme
+                            if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
+                                .un_layout
+                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                    p= item.name
                         .un_layout
                             img(src="/images/layout5.png", loading="lazy", alt="layout5")
                             p AT Layout (you can upload upto 20 images)
-                        .un_layout
-                            img(src="/images/layout6.png", loading="lazy", alt="layout6")
-                            p NI Layout (no image required)
-
+                    .layout__main#lockedItems
+                        each item in theme
+                            if (item.themeCategory === "Portfolio" && item.paid === false)
+                                if (!item.validUser.includes(user.id))
+                                    .un_layout
+                                        a(href=`/paywith/${item.themeId}`)
+                                            img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                        p= item.name
+                                        p.layout__price= item.price
+                                        a.redbtn(href=`/paywith/${item.themeId}`) Unlock
             else
                 .port__bod.port__section#crtPort
                     h2 Create a portfolio
                     p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
                     p Need tips Creating Your Portfolio Go To 
                         a.portDet(href="/#portiHelper") Porti Helper
-                    .layout__main
-                        .portunl(id="a9993e364706816aba3e25717850c26c9cd0d89d")
-                            .un_layout_log
-                                img(src="/images/layout1.png", loading="lazy", alt="layout1")
-                                p.layout__name(id="PL Layout") PL Layout
-                        .portunl(id="589c22335a381f122d129225f5c0ba3056ed5811")
-                            .un_layout_log
-                                img(src="/images/layout2.png", loading="lazy", alt="layout2")
-                                p.layout__name(id="BG Layout") BG Layout
-                        .portunl(id="481743d632b80d39bc2771d19be3ca3005b3f8af")
-                            .un_layout_log
-                                img(src="/images/layout3.png", loading="lazy", alt="layout3")
-                                p.layout__name(id="ST Layout") ST Layout
-                        .portunl(id="d798d4338adeb553a1089a58e61e18c2fcdf77bb")
-                            .un_layout_log
-                                img(src="/images/layout4.png", loading="lazy", alt="layout4")
-                                p.layout__name(id="BS Layout") BS Layout
+                    .gGroup 
+                        .freeSec.whitebtn.glassbtn#freePortSec Unlocked
+                        .paidSec.whitebtn.glassbtn#lockedPortSec Locked
+                    .layout__main#freeItems
+                        each item in theme
+                            if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
+                                .portunl(id=`${item.themeId}`)
+                                    .un_layout_log
+                                        img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                        p.layout__name(id=`${item.name}`)= item.name
                         #layout5.unl
                             .un_layout_log
                                 img(src="/images/layout5.png", loading="lazy", alt="layout5")
                                 p AT Layout (you can upload upto 20 images)
-                        .portunl(id="836b9b955a98e0f2e2d678c179696d6ac53356eb")
-                            .un_layout_log
-                                img(src="/images/layout6.png", loading="lazy", alt="layout6")
-                                p.layout__name(id="NI Layout") NI Layout (No Image required)
+
+                    .layout__main#lockedItems
+                        each item in theme
+                            if (item.themeCategory === "Portfolio" && item.paid === false)
+                                if (!item.validUser.includes(user.id))
+                                    .un_layout 
+                                        a(href=`/paywith/${item.themeId}`)
+                                            img(src=`/images/themeImage/${item.picture}`)
+                                        p.layout__name= item.name 
+                                        p.layout__price= item.price
+                                        a.redbtn(href=`/paywith/${item.themeId}`) Unlock
                 script(src="/js/createPort/createForm.js") 
                 script(src="/js/createPort/createport.js")
                 script(src="/js/createPort/createport5.js")  
             script(src="/js/createInvi/createinvi.js")
             script(src="/js/createInvi/createinvi2.js")  
-            script(src="/js/logout.js")  
+            script(src="/js/logout.js")
+    script(src="/js/layouts/portForAll.js") 
     script(src="/js/alert.js")
