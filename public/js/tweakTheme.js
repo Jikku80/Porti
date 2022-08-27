@@ -8,6 +8,9 @@
     let img1 = document.getElementById("pictur");
     let submit = document.getElementById("crTheme");
     let validUser = "";
+    let validInviUser = "";
+    let validMenuUser = "";
+    let validCatalogeUser = "";
     submit.addEventListener("click", async (e) => {
         e.preventDefault();
         let load = document.querySelector('.loader');
@@ -20,6 +23,9 @@
         formData.append("themeprice", what.value);
         formData.append("paid", paid.value);
         formData.append("validUser", validUser);
+        formData.append("validInviUser", validInviUser);
+        formData.append("validMenuUser", validMenuUser);
+        formData.append("validCatalogeUser", validCatalogeUser);
         formData.append("picture", img1.files[0]);
         const endpoint = '/api/themes'
         try {

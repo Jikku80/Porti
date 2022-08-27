@@ -5,19 +5,19 @@ let endI = document.getElementById('inviteendpoint');
 let endinvi = endI.innerText;
 endinvi = btoa(endinvi);
 
-let invithemepoint = document.getElementById('invitetheme').innerText;
+// let invithemepoint = document.getElementById('invitetheme').innerText;
 // let invisearchPoint = location.search.slice(1);
 
 inviteurl.innerHTML = `
 <button id="openinvite" class="redbtn">My Invitation</button>
 <p class="xsf">Share your Invitation with the link below</p>
-<p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}/${invithemepoint}</p>
+<p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}</p>
 `
 
 openinvite = document.getElementById("openinvite");
 
 openinvite.addEventListener("click", () => {
-    let myurl = `/${inviteName}/invitation/${endinvi}/${invithemepoint}`
+    let myurl = `/${inviteName}/invitation/${endinvi}`
     window.open(myurl);
 })
 

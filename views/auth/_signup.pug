@@ -16,7 +16,15 @@ button#signup.redbtn SignUp
                 input#m_password.form__input(type='password', name="m_password", placeholder='********', required, minlength='8')
                 label.form__label(for='password') Confirm Password
                 input#passwordConfirm.form__input(type='password', name="passwordConfirm", placeholder='********', required, minlength='8')
+                .terms__cond
+                    input#termbox(type="checkbox", required)
+                    label#termsandcond I agree to all of the given Terms and Conditions
                 button.btn__signup.redbtn SignUp
+
+    .termsandconditions.hidden 
+        h3 Terms and Conditions
+        img#termCancel.pointer(src="/images/cancel.png" alt="cancel_img") 
+
 
 script(src="js/alert.js") 
 script(src="js/auth/signup.js")

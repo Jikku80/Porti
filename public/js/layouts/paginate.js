@@ -2,7 +2,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
     let next = document.querySelector(nextVal);
     let prev = document.querySelector(prevVal);
     let fullpath = location.pathname
-    let resultpath = fullpath.match("/portfolio/(.*)/tm")
+    let resultpath = fullpath.match("/portfolio/(.*)/ldt")
     let user__id = atob(resultpath[1])
     let subItems = document.querySelector(contVal)
 

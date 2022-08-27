@@ -27,6 +27,9 @@ const themeSchema = new mongoose.Schema({
         default: false
     },
     validUser: [String],
+    validInviUser: [String],
+    validMenuUser: [String],
+    validCatalogeUser: [String],
     createdAt: {
         type: Date,
         default: Date.now()

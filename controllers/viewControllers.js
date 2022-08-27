@@ -91,11 +91,13 @@ exports.myPort = catchAsync(async (req, res) => {
     const pg = 1;
     const features = new APIFeatures(PortfolioImage.find({ user: id }), { limit: 4, page: pg }).paginate();
     const portImage = await features.query
+    const theme = await Theme.find({ themeCategory: "Portfolio" })
     await Portfolio.findOne({ user: id }).populate('user').then(portfolio => {
         res.status(200).render('layouts/landing', {
             title: 'Portfolio Detail',
             portfolio,
-            portImage
+            portImage,
+            theme
         })
     }).catch(err => console.log(err));
 })

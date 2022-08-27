@@ -186,6 +186,29 @@ html{
   backdrop-filter: blur(5px);
 }
 
+.terms__cond{
+  margin-top: 2%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#termbox{
+  width: 4vw;
+  height: 4vh;
+  cursor: pointer;
+}
+
+#termsandcond{
+  cursor: pointer;
+  color: greenyellow;
+  font-weight: bold;
+}
+
+#termsandcond:hover{
+  color: gray;
+}
+
 #acHead{
   color: white;
   text-align: center;

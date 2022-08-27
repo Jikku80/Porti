@@ -4,6 +4,7 @@ let mname = document.querySelector("#m_name");
 let memail = document.getElementById("m_email");
 let mpassword = document.getElementById("m_password");
 let pwdConfirm = document.getElementById("passwordConfirm");
+let termbox = document.getElementById("termbox");
 
 let sign__up = document.querySelector(".sign__up")
 let signCancel = document.getElementById("signCancel");
@@ -44,6 +45,11 @@ signup.addEventListener('click', async (e) => {
         errorAlert("Password Does not Match!!! Check Again");
         return false;
     }
+
+    if (termbox.checked === false) {
+        e.preventDefault();
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
@@ -58,7 +64,8 @@ signup.addEventListener('click', async (e) => {
                 name: mname.value,
                 email: memail.value,
                 password: mpassword.value,
-                passwordConfirm: pwdConfirm.value
+                passwordConfirm: pwdConfirm.value,
+                termsandconditionagreed: termbox.checked
             })
         }).then((response) => {
             load.classList.add("hidden");
@@ -78,3 +85,15 @@ signup.addEventListener('click', async (e) => {
     };
 })
 
+
+let termsandcond = document.getElementById("termsandcond");
+let tac = document.querySelector(".termsandconditions");
+let termcancel = document.getElementById("termCancel");
+
+termsandcond.addEventListener("click", () => {
+    tac.classList.remove("hidden");
+})
+
+termcancel.addEventListener("click", () => {
+    tac.classList.add('hidden');
+})

@@ -106,33 +106,6 @@ exports.setUserId = (req, res, next) => {
     next();
 }
 
-
-exports.createInvi = catchAsync(async (req, res, next) => {
-    const doc = await Invite.create({
-        fname: req.body.fname,
-        sname: req.body.sname,
-        user: req.user.id,
-        about: req.body.about,
-        address: req.body.address,
-        pdate: req.body.pdate,
-        ptime: req.body.ptime,
-        phn_no: req.body.phn_no,
-        theme: req.body.theme,
-        imgCover: req.files.imgCover[0].originalname,
-        imgSecond: req.files.imgSecond[0].originalname,
-        imgThird: req.files.imgThird[0].originalname,
-        imgFourth: req.files.imgFourth[0].originalname,
-        imgFifth: req.files.imgFifth[0].originalname
-    });
-
-    res.status(201).json({
-        status: 'success',
-        data: {
-            data: doc
-        }
-    })
-})
-
 exports.createInviImgColl = catchAsync(async (req, res, next) => {
 
     const doc = await Invite.create({

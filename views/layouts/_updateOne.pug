@@ -40,11 +40,9 @@
                 label Change Theme 
                 select#themes
                     option.opt(hidden selected)= portfolio.theme 
-                    option.opt(value="a9993e364706816aba3e25717850c26c9cd0d89d") PL Layout 
-                    option.opt(value="589c22335a381f122d129225f5c0ba3056ed5811") BG Layout
-                    option.opt(value="481743d632b80d39bc2771d19be3ca3005b3f8af") ST Layout
-                    option.opt(value="d798d4338adeb553a1089a58e61e18c2fcdf77bb") BS Layout
-                    option.opt(value="836b9b955a98e0f2e2d678c179696d6ac53356eb") NI Layout
+                    each item in theme 
+                        if (item.themeType === 'Free' || item.validUser.includes(user.id))
+                            option.opt(value=`${item.themeId}`)= item.name
             .form__bod
                 label Email Address:
                 input#upemail(type="email" value=`${portfolio.email}` name="email" required)

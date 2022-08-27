@@ -52,7 +52,10 @@ exports.createTheme = catchAsync(async (req, res, next) => {
             themeCategory: req.body.themeCategory,
             price: req.body.themeprice,
             paid: req.body.paid,
-            validUser: req.body.validUser
+            validUser: req.body.validUser,
+            validInviUser: req.body.validInviUser,
+            validMenuUser: req.body.validMenuUser,
+            validCatalogeUser: req.body.validCatalogeUser
         })
         res.status(201).json(doc)
 
@@ -66,7 +69,10 @@ exports.createTheme = catchAsync(async (req, res, next) => {
             themeCategory: req.body.themeCategory,
             price: req.body.themeprice,
             paid: req.body.paid,
-            validUser: req.body.validUser
+            validUser: req.body.validUser,
+            validInviUser: req.body.validInviUser,
+            validMenuUser: req.body.validMenuUser,
+            validCatalogeUser: req.body.validCatalogeUser
         });
         res.status(201).json(doc)
     }

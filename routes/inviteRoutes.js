@@ -10,7 +10,7 @@ const router = express.Router({ mergeParams: true });
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
 
-router.route('/').get(authController.restrictTo('admin'), inviController.getAllInvi).post(authController.restrictTo('user', 'admin'), inviController.setUserId, inviController.uploadInviteImg, inviController.resizeNewInviteImg, inviController.createInvi);
+// router.route('/').get(authController.restrictTo('admin'), inviController.getAllInvi).post(authController.restrictTo('user', 'admin'), inviController.setUserId, inviController.uploadInviteImg, inviController.resizeNewInviteImg, inviController.createInvi);
 router.post('/createInviCollec', authController.restrictTo('user', 'admin'), inviController.setUserId, inviController.uploadInviteImages, inviController.resizeInviteImages, inviController.createInviImgColl);
 router.post('/makeInvi', authController.restrictTo('user', 'admin'), inviController.setUserId, inviController.makeInvi);
 

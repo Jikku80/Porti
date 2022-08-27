@@ -130,14 +130,12 @@ block content
                     .freeSec.whitebtn.invitebtn#freeInviBtn Unlocked
                     .paidSec.whitebtn.invitebtn#lockedInviBtn Locked
                 .layout__main#freeInviSec
-                    #invi1.unl
-                        .un_layout_log
-                            img(src="/images/invi1.png", loading="lazy", alt="invi1")
-                            p MRG Layout (5 Images required)
-                    #invi2.unl
-                        .un_layout_log
-                            img(src="/images/invi2.png", loading="lazy", alt="invi2")
-                            p INI Layout (1 | No Image required)
+                    each item in theme
+                        if (item.themeCategory === "Invitation" && item.themeType === 'Free' || item.validInviUser.includes(user.id))
+                            .unl.invi__layouts(id=`${item.themeId}`)
+                                .un_layout_log
+                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="invi1")
+                                    p= item.name
                 .layout__main#lockedInviSec 
                     .unl
             if (portfolio)
@@ -208,8 +206,8 @@ block content
                 script(src="/js/createPort/createForm.js") 
                 script(src="/js/createPort/createport.js")
                 script(src="/js/createPort/createport5.js")  
+            script(src="/js/createInvi/createInviForm.js") 
             script(src="/js/createInvi/createinvi.js")
-            script(src="/js/createInvi/createinvi2.js")  
             script(src="/js/logout.js")
     script(src="/js/layouts/portForAll.js") 
     script(src="/js/alert.js")
