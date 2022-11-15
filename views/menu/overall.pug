@@ -8,110 +8,73 @@ block content
         span.grn t
         span.nocaps i
     if (user)
-        .port__nav
-            .port__nav__first
-                a.port__head.act.smallest__cont(href="/me")
-                    if (user.photo)
-                        img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
-                        p.name__tag Account
+        include ../_header
+        .whole__menu__sec
+            .menu__section
+                if (!restro[0])
+                    h2.banner.up__place__det You haven't Updated Your Restro Details, Update Your Restro Details!
+                #item__form
+                    .itemform__head 
+                        h2 Add Items To Menu
+                        h2
+                            a(href="#openMenu") Menu Link
+                    form#addItem
+                        .form__bod
+                            label Food Name:
+                            input#itemname(type="text" required placeholder="Chicken Burger")
+                        .form__bod
+                            label Price: 
+                            input#itemprice(type="text" required placeholder="Rs. 150")
+                        .form__bod
+                            label Category: 
+                            input#itemcat(type="text", required placeholder="Burger")
+                        .form__bod
+                            label Detail (optional):
+                            textarea#itemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
+                        .form__bod.file_part
+                            label(for="coverimage") Food Image:
+                            input#coverimage(type="file" accept="image/*"  required)
+                        button#addItemBtn.blackbtn Add Item
+                .your__item__sec#foodItemSec
+                    h2.items__head Your Items 
+                    p.currentid.hidden= user._id
+                    .sub__item__bod
+                        .sub__items.sec__items
+                        .paginate 
+                            button.prev Previous
+                            button.next.hidden Next
+                .share__menu 
+                    h2 Share your menu 
+                    p.uname__menu.hidden= user.name
+                    p.share__link
+
+                .qrcode__menu 
+                    #qrcode 
+                .itemform__head 
+                    h2 Update Restaurant Detail
+                form#upRestro.upItem
+                    .form__bod
+                        label Restaurant Name:
+                        input#resname(type="text" required placeholder="Kings Burger")
+                    .form__bod
+                        label Address: 
+                        input#resaddress(type="text" required placeholder="Heavens Hell")
+                    .form__bod
+                        label Slogan (optional): 
+                        input#resslogan(type="text", placeholder="Eat Burger Save Time")
+                    p.restro__len.hidden= restro.length
+                    if (restro.length !== 0)
+                        p.restro__id.hidden= restro[0]._id
                     else 
-                        img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
-                        p.name__tag Account
-                a.port_sec_head.hm(href="/" title="home")
-                    img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                    span Por
-                    span.grn t
-                    span.nocaps i
-                .logout.smallest__cont
-                    img.pointer(src="/images/poweroff.png", alt="signout" title="Signout")
-                    p.name__tag Signout
-            .port__nav__sub 
-                a.crpt.smallest__cont(href="/porti", title="layouts")
-                    img(src="/images/portal.png", alt="view_port")
-                    p.name__tag Layouts
-                a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
-                    img(src="/images/porti.png", alt="view_port")
-                    span#usId.hidden= user._id
-                    p.name__tag Portfolio
-                a.yin.smallest__cont(href=`/invitations/${user._id}` title="your invitations")
-                    img(src="/images/invite.png", alt="view_port")
-                    span#uiId.hidden= user._id
-                    p.name__tag Invitations
-                a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
-                    img(src="/images/catalouge.png", alt="items__catalouge")
-                    p.name__tag Catalouge
-            .breadcrumbs 
-                .bdcb(title="additemstomenu") You Are Here |
-                a.bdcb(href="/") Home 
-                .bdcb.arr &#8680;
-                a.bdcb(href="/porti") Porti
-                .bdcb.arr &#8680;   
-                .cur Add Items To Menu
-        if (!restro[0])
-            h2.banner.up__place__det You haven't Updated Your Restro Details, Update Your Restro Details!
-        #item__form
-            .itemform__head 
-                h2 Add Items To Menu
-                h2
-                    a(href="#openMenu") Menu Link
-            form#addItem
-                .form__bod
-                    label Food Name:
-                    input#itemname(type="text" required placeholder="Chicken Burger")
-                .form__bod
-                    label Price: 
-                    input#itemprice(type="text" required placeholder="Rs. 150")
-                .form__bod
-                    label Category: 
-                    input#itemcat(type="text", required placeholder="Burger")
-                .form__bod
-                    label Detail (optional):
-                    textarea#itemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
-                .form__bod.file_part
-                    label(for="coverimage") Food Image:
-                    input#coverimage(type="file" accept="image/*"  required)
-                button#addItemBtn.blackbtn Add Item
-        .your__item__sec#foodItemSec
-            h2.items__head Your Items 
-            p.currentid.hidden= user._id
-            .sub__item__bod
-                .sub__items.sec__items
-                .paginate 
-                    button.prev Previous
-                    button.next.hidden Next
-        .share__menu 
-            h2 Share your menu 
-            p.uname__menu.hidden= user.name
-            p.share__link
+                        p.restro__id.hidden
+                    button#updateResBtn.blackbtn Update now
 
-        .qrcode__menu 
-            #qrcode 
-        .itemform__head 
-            h2 Update Restaurant Detail
-        form#upRestro.upItem
-            .form__bod
-                label Restaurant Name:
-                input#resname(type="text" required placeholder="Kings Burger")
-            .form__bod
-                label Address: 
-                input#resaddress(type="text" required placeholder="Heavens Hell")
-            .form__bod
-                label Slogan (optional): 
-                input#resslogan(type="text", placeholder="Eat Burger Save Time")
-            p.restro__len.hidden= restro.length
-            if (restro.length !== 0)
-                p.restro__id.hidden= restro[0]._id
-            else 
-                p.restro__id.hidden
-            button#updateResBtn.blackbtn Update now
-
-            button#addResBtn.blackbtn Update
+                    button#addResBtn.blackbtn Update
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
 
     script(src="/js/alert.js") 
-    script(src="/js/logout.js") 
     script(src="/js/menu/additem.js") 
     script(src="/js/qr.js")

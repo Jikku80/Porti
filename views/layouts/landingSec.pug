@@ -8,72 +8,36 @@ block content
         span.nocaps i
     if (user)
         if (invite.user.id == user._id)
-            .land__content
+            include ../_header
+            .whole__invi__content
                 .land__nav__main
-                    .land__nav
-                        a.land__head.act.smallest__cont(href="/me")
-                            if (user.photo)
-                                img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
-                                p.name__tag Account
-                            else 
-                                img.userdp.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
-                                p.name__tag Account
-                        a.port_sec_head.hm(href="/", title="home")
-                            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                            span Por
-                            span.grn t
-                            span.nocaps i
-                        #logout.logout.smallest__cont
-                            img(src="/images/poweroff.png", alt="signout", title="Signout")
-                            p.name__tag Signout
-                    .land__nav__sub 
-                        a.yin.smallest__cont(href=`/invitations/${user._id}` title="All invitation")
-                            img(src="/images/invite.png", alt="view_port")
-                            p.name__tag Invitations
-                        a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
-                            img(src="/images/porti.png", alt="view_port")
-                            p.name__tag Portfolio
-                        a.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
-                            img(src="/images/menu.png", alt="items__menu")
-                            p.name__tag Food Menu
-                        a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
-                            img(src="/images/catalouge.png", alt="items__catalouge")
-                            p.name__tag Catalouge
-                    .breadcrumbs 
-                        .bdcb(title=`${invite.fname} Invitation`) You Are Here |
-                        a.bdcb(href="/") Home 
-                        .bdcb.arr &#8680;  
-                        a.bdcb(href="/porti") Layouts 
-                        .bdcb.arr &#8680;  
-                        a.bdcb(href=`/invitations/${user._id}`) All Invitations
-                        .bdcb.arr &#8680;  
-                        .cur= `${invite.fname} invitation`
-                .land__goto
-                    h1#invite_name= `${invite.fname} and ${invite.sname}`
-                    p.xsf View Your Invitation
-                    .port__link
-                        #inviteurlLink
-                            span#inviteendpoint= `${invite._id}`
-                            span#invitetheme= invite.theme    
-                    .copy__link 
-                        button#copyinviteLink.redbtn Copy Link
-                        button#geninviqr.redbtn Generate QRCode
-                        button#downinviqr.redbtn.hidden Download QRCode
-                .qr__sec#qrLandingSec 
-            .sec__land__bod
-                .del__port#delinvi 
-                    .del__bod
-                        button#delInvite.redbtn Delete Invitation
-                .dt__cf#dt__cf.hidden
-                    h1 Are you sure you want to delete Your Invitation?
-                    p.inviId.hidden= invite.id
-                    .delete__Confirm
-                        .yesDelete#yesdel.redbtn Confrim
-                        .noDelete#nodel.redbtn Abort
-                if (invite.theme == '4dc50fc3bc007be011b5445f3f79298b9eeb51b7')
-                    include _updateInviOne.pug
-                else 
-                    include _updateInviTwo.pug
+                .land__content
+                    .land__goto
+                        h1#invite_name= `${invite.fname} and ${invite.sname}`
+                        p.xsf View Your Invitation
+                        .port__link
+                            #inviteurlLink
+                                span#inviteendpoint= `${invite._id}`
+                                span#invitetheme= invite.theme    
+                        .copy__link 
+                            button#copyinviteLink.redbtn Copy Link
+                            button#geninviqr.redbtn Generate QRCode
+                            button#downinviqr.redbtn.hidden Download QRCode
+                    .qr__sec#qrLandingSec 
+                .sec__land__bod
+                    .del__port#delinvi 
+                        .del__bod
+                            button#delInvite.redbtn Delete Invitation
+                    .dt__cf#dt__cf.hidden
+                        h1 Are you sure you want to delete Your Invitation?
+                        p.inviId.hidden= invite.id
+                        .delete__Confirm
+                            .yesDelete#yesdel.redbtn Confrim
+                            .noDelete#nodel.redbtn Abort
+                    if (invite.theme == '4dc50fc3bc007be011b5445f3f79298b9eeb51b7')
+                        include _updateInviOne.pug
+                    else 
+                        include _updateInviTwo.pug
         else 
             .notifier
                 h1 You Dont Belong Here! GET LOST!
@@ -86,4 +50,3 @@ block content
     script(src="/js/alert.js")
     script(src="/js/layouts/inviLand.js")      
     script(src="/js/createInvi/delInvi.js") 
-    script(src="/js/logout.js")

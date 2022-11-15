@@ -9,54 +9,18 @@ block content
     if (invites.length == "" || invites.length == null || invites.length == undefined)
         .four0four 
             h2 You have not Created Any Invitation YET!!! Create One and Come Back 
-            a.redbtn(href="/porti#crtInvi") Create One 
+            a.limebtn(href="/porti#crtInvi") Create One 
     else
         if (user)
-            .port__nav
-                .port__nav__first
-                    a.port__head.act.smallest__cont(href="/me")
-                        if (user.photo)
-                            img.userDp.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
-                            p.name__tag Account
-                        else 
-                            img.userDp.profPic.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
-                            p.name__tag Account
-                    a.port_sec_head.hm(href="/" title="home")
-                        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                        span Por
-                        span.grn t
-                        span.nocaps i
-                    #logout.logout.smallest__cont
-                        img(src="/images/poweroff.png", alt="signout", title="signout")
-                        p.name__tag Signout
-                .port__nav__sub 
-                    a.crpt.smallest__cont(href="/porti" title="porti")
-                        img(src="/images/portal.png", alt="view_port")
-                        p.name__tag Layouts
-                    a.ypf.smallest__cont(href=`/myportfolio/${user._id}` title="your portfolio")
-                        img(src="/images/porti.png", alt="view_port")
-                        p.name__tag Portfolio
-                    a.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
-                        img(src="/images/menu.png", alt="items__menu")
-                        p.name__tag Food Menu
-                    a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
-                        img(src="/images/catalouge.png", alt="items__catalouge")
-                        p.name__tag Catalouge
-                .breadcrumbs 
-                        .bdcb(title="All Invitation") You Are Here |
-                        a.bdcb(href="/") Home 
-                        .bdcb.arr &#8680;  
-                        a.bdcb(href="/porti") Layouts 
-                        .bdcb.arr &#8680;  
-                        .cur All Invitations
-                .invi__grp
-                    .card__main 
-                        each invite in invites
-                            if (invite.user.id == user._id)
-                                a.card(href=`/myinvi/${invite._id}`)
-                                    .card__head
-                                        h1= invite.fname
-                                        p View Invitation
+            include _header
+            .invi__grp
+                .card__main 
+                    each invite in invites
+                        if (invite.user.id == user._id)
+                            a.card(href=`/myinvi/${invite._id}`)
+                                .card__head
+                                    h1= invite.fname
+                                    p View Invitation
 
         else
             .confirm__pg 

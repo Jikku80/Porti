@@ -6,11 +6,13 @@ let closeBtn = document.getElementById("closeBtn")
 
 fgtPwd.addEventListener("click", () => {
     fgPwd.classList.remove("hidden");
+    fgtPwd.classList.add('hidden');
     window.location.hash = "#forgotPwd"
 })
 
 closeBtn.addEventListener("click", () => {
     fgPwd.classList.add("hidden");
+    fgtPwd.classList.remove('hidden');
 })
 
 forgotpwd.addEventListener("click", async (e) => {

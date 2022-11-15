@@ -9,137 +9,103 @@ block content
     if (!portfolio)
         .notifier
             h1 You have not created a portfolio YET! Create and come back
-            a.redbtn(href="/porti#crtPort") Create Portfolio
+            a.limebtn(href="/porti#crtPort") Create Portfolio
     else
         if (user)
             if (portfolio.user.id == user._id)
-                .land__content
-                    .land__nav__main
-                        .land__nav
-                            a.land__head.act.smallest__cont(href="/me")
-                                if (user.photo)
-                                    img.userdp(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
-                                    p.name__tag Account
+                include ../_header
+                .land__whole__sec
+                    .land__content
+                        .land__nav__main
+                        if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
+                            if (portImage.length === 0)
+                                h1.banner.second__access No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
+                            .portfolio__tweaks
+                                include _addImage.pug
+                                if (portImage.length !== 0)
+                                    
+                                    .portImage__tweak__sec#portImageTweakSec
+                                        h2#PrevSection Your Previous Images Tweak Section
+                                        .port__card__main
+                                            each item in portImage 
+                                                .port__images 
+                                                    img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                                                    h3.first__head.portfolio__item__name= item.name
+                                                    .group__btn
+                                                        button(type="button" id=`${item._id}` name=`${item.name}`).upPortImageBtn.ygbtn Update
+                                                        button(type="button" id=`${item._id}`).delPortImageBtn.redbtn Delete
+                                    .paginate__addimg
+                                        .group__delbtn
+                                            button.redbtn.prev__addimg Prev
+                                            button.redbtn.next__addimg Next
                                 else 
-                                    img.userdp.satProf(src="/images/hitman.png", alt="prof__pic", title=`${user.name}`)
-                                    p.name__tag Account
-                            a.port_sec_head.hm(href="/" title="home")
-                                img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                                span Por
-                                span.grn t
-                                span.nocaps i
-                            #logout.logout.smallest__cont
-                                img(src="/images/poweroff.png", alt="signout", title="Signout")
-                                p.name__tag Signout
-                        .land__nav__sub 
-                            a.crpt.smallest__cont(href="/porti", title="layouts")
-                                img(src="/images/portal.png", alt="view_port")
-                                p.name__tag Layouts
-                            a.yin.smallest__cont(href=`/invitations/${user.id}`, title="your invitations")
-                                img(src="/images/invite.png", alt="view_port")
-                                p.name__tag Invitations
-                            a.smallest__cont(href=`/menu/${user._id}/additemstomenu` title="your menu")
-                                img(src="/images/menu.png", alt="items__menu")
-                                p.name__tag Food Menu
-                            a.smallest__cont(href=`/catalouge/${user._id}/additems` title="your catalouge")
-                                img(src="/images/catalouge.png", alt="items__catalouge")
-                                p.name__tag Catalouge
-                        .breadcrumbs 
-                            .bdcb(title="your portfolio") You Are Here |
-                            a.bdcb(href="/") Home 
-                            .bdcb.arr &#8680;  
-                            a.bdcb(href="/porti") Porti 
-                            .bdcb.arr &#8680;  
-                            .cur Your Portfolio
-                    if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
-                        if (portImage.length === 0)
-                            h1.banner.second__access No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
-                        .portfolio__tweaks
-                            include _addImage.pug
-                            if (portImage.length !== 0)
-                                
-                                .portImage__tweak__sec#portImageTweakSec
-                                    h2#PrevSection Your Previous Images Tweak Section
-                                    .port__card__main
-                                        each item in portImage 
-                                            .port__images 
-                                                img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
-                                                h3.first__head.portfolio__item__name= item.name
-                                                .group__btn
-                                                    button(type="button" id=`${item._id}` name=`${item.name}`).upPortImageBtn.ygbtn Update
-                                                    button(type="button" id=`${item._id}`).delPortImageBtn.redbtn Delete
-                                .paginate__addimg
-                                    .group__delbtn
-                                        button.redbtn.prev__addimg Prev
-                                        button.redbtn.next__addimg Next
-                            else 
-                                p.no__img.rm_no_img You have not Uploaded Any Images Yet :'(
-                                .next__addimg.hidden
-                                .prev__addimg.hidden
-                    else 
-                        .portfolio__tweaks
-                        .port__card__main
-                        .next__addimg.hidden
-                        .prev__addimg.hidden
-                    .del__img__sec.hidden 
-                        h1 Are You Sure you want to delete it?
-                        .group__delbtn
-                            button#confirmImgDelete.delbtn Delete 
-                            button#cancelImgDelete.delbtn Cancel
-                    .land__goto
-                        h1#port_name= `${portfolio.name}`
-                        p.xsf Go to your portfolio
-                        .port__link
-                            #urlLink
-                                span#endpoint= `${portfolio._id}`
-                                span#user__id= user._id
-                                span#portitheme= portfolio.theme   
-                        .copy__link 
-                            button#copyLink.redbtn Copy Link
-                            button#genportiqr.redbtn Generate QRCode
-                            button#downportiqr.redbtn.hidden Download QRCode 
-                    .qr__sec#qrLanding 
-                    form.theme__edit#editTheme
-                        h2 Edit Theme Preference
-                        .form__bod 
-                            label Background Color:
-                            input#portBackColor(type="color" value="#1A1A1A")
-                        .form__bod
-                            label Font Color:
-                            input#portFontColor(type="color" value="#808080")
-                        .form__bod 
-                            label Heading text Color:
-                            input#portHeadColor(type="color" value="#ffffff")
-                        .form__bod 
-                            label Color Second:
-                            input#portSecHeadColor(type="color" value="#ACA547")
-                        .form__bod 
-                            label Focus Color:
-                            input#portFocusColor(type="color" value="#6B8E23")
-                        .form__bod 
-                            label Font Family 
-                            select#portFontFam
-                                option.opt(hidden selected) Cambria
-                                option.opt(value="cursive") Cursive 
-                                option.opt(value="monospace") Monospace
-                                option.opt(value="Arial") Arial
-                                option.opt(value="Impact") Impact
-                        button#changeTheme.redbtn Update Theme 
-                .sec__land__bod
-                    .del__port#delPp 
-                        .del__bod
-                            #portidelid.hidden= `${portfolio._id}`
-                            button#delPort.redbtn Delete Portfolio
-                    .dt__cf.hidden
-                        h1 Are you sure you want to delete Your Portfolio?
-                        .delete__Confirm
-                            .yesDelete.redbtn(id=`${user._id}`) Confrim
-                            .noDelete.redbtn Abort
-                    if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7')
-                        include _updateOne.pug
-                    else
-                        include _updateTwo.pug
-                    h2.tweak__head Portoflio Content Tweaks
+                                    p.no__img.rm_no_img You have not Uploaded Any Images Yet :'(
+                                    .next__addimg.hidden
+                                    .prev__addimg.hidden
+                        else 
+                            .portfolio__tweaks
+                            .port__card__main
+                            .next__addimg.hidden
+                            .prev__addimg.hidden
+                        .del__img__sec.hidden 
+                            h1 Are You Sure you want to delete it?
+                            .group__delbtn
+                                button#confirmImgDelete.delbtn Delete 
+                                button#cancelImgDelete.delbtn Cancel
+                        .land__goto
+                            h1#port_name= `${portfolio.name}`
+                            p.xsf Go to your portfolio
+                            .port__link
+                                #urlLink
+                                    span#endpoint= `${portfolio._id}`
+                                    span#user__id= user._id
+                                    span#portitheme= portfolio.theme   
+                            .copy__link 
+                                button#copyLink.redbtn Copy Link
+                                button#genportiqr.redbtn Generate QRCode
+                                button#downportiqr.redbtn.hidden Download QRCode 
+                        .qr__sec#qrLanding 
+                        form.theme__edit#editTheme
+                            h2 Edit Theme Preference
+                            .form__bod 
+                                label Background Color:
+                                input#portBackColor(type="color" value="#1A1A1A")
+                            .form__bod
+                                label Font Color:
+                                input#portFontColor(type="color" value="#808080")
+                            .form__bod 
+                                label Heading text Color:
+                                input#portHeadColor(type="color" value="#ffffff")
+                            .form__bod 
+                                label Color Second:
+                                input#portSecHeadColor(type="color" value="#ACA547")
+                            .form__bod 
+                                label Focus Color:
+                                input#portFocusColor(type="color" value="#6B8E23")
+                            .form__bod 
+                                label Font Family 
+                                select#portFontFam
+                                    option.opt(hidden selected) Cambria
+                                    option.opt(value="cursive") Cursive 
+                                    option.opt(value="monospace") Monospace
+                                    option.opt(value="Arial") Arial
+                                    option.opt(value="Impact") Impact
+                            button#changeTheme.redbtn Update Theme 
+                    .sec__land__bod
+                        .del__port#delPp 
+                            .del__bod
+                                #portidelid.hidden= `${portfolio._id}`
+                                button#delPort.redbtn Delete Portfolio
+                        .dt__cf.hidden
+                            h1 Are you sure you want to delete Your Portfolio?
+                            .delete__Confirm
+                                .yesDelete.redbtn(id=`${user._id}`) Confrim
+                                .noDelete.redbtn Abort
+                        if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7')
+                            include _updateOne.pug
+                        else
+                            include _updateTwo.pug
+                        h2.tweak__head Portoflio Content Tweaks
             else 
                 .notifier
                     h1 You Dont Belong Here, GET LOST!!!
@@ -149,9 +115,9 @@ block content
                 h1 You are not Logged In! Please Log In 
                 a.redbtn(href="/login") Log In
 
-        script(src="/js/alert.js")
         script(src="/js/layouts/baseLand.js")      
         script(src="/js/delete.js")
         script(src="/js/layouts/upPortTheme.js")  
-    script(src="/js/logout.js")
+    script(src="/js/alert.js")
+    //- script(src="/js/logout.js")
      

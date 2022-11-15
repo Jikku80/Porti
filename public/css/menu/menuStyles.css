@@ -8,7 +8,8 @@ html{
   }
 
 body{
-    background-color: rgb(26, 26, 26);
+    /* background-color: rgb(26, 26, 26); */
+    background-color: rgb(0, 26, 0);
     color: white;
     padding: 0;
     margin: 0;
@@ -65,8 +66,68 @@ body{
     margin-right: 4%;
 }
 
+.menu__bar {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu__size{
+    width: 40vw;
+    animation: shine 4s ease-in-out forwards infinite;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 2%;
+  }
+
+.menu__bar a {
+    font-size: 2em;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: none;
+}
+
+.main__navigation{
+    display: flex;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+  }
+  
+  .navigation {
+    background-color: rgb(0, 26, 0);
+    animation: shine 4s ease-in-out forwards infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    font-variant: small-caps;
+    width: 15vw;
+  }
+  
+  .navigation a{
+    text-decoration: none;
+    color: white;
+  }
+
 .nocaps{
     font-variant: normal;
+}
+
+.whole__menu__sec{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.menu__section{
+    width: 80vw;
+}
+
+.logout{
+    color: orangered !important;
+    text-decoration: none;
 }
   
 .port__head{
@@ -150,25 +211,6 @@ body{
     font-size: 8px;
     font-weight: 100;
     font-family: monospace;
-}
-
-.breadcrumbs{
-    font-size: medium;
-    font-family: monospace;
-    background-color: rgba(0, 0, 0, 0.247);
-    padding: 2%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    width: auto;
-}
-  
-.breadcrumbs a{
-    text-decoration: none;
-    padding-left: 1%;
-    padding-right: 1%;
 }
 
 .banner{
@@ -328,6 +370,22 @@ body{
     background-color: rgba(255, 255, 255, 0.363);
 }
 
+.limebtn{
+    background-color: transparent;
+    color: rgb(54, 219, 54);
+    border: 1px solid rgb(54, 219, 54);
+    padding: 2%;
+    text-decoration: none;
+    font-weight: bolder;
+    font-variant: small-caps;
+    cursor: pointer;
+}
+
+.limebtn:hover{
+    background-color: rgb(54, 219, 54);
+    color: rgb(0, 26, 0);
+}
+
 .ygbtn{
     background-color: transparent;
     border: 2px solid yellowgreen;
@@ -479,8 +537,28 @@ input::file-selector-button{
 }
 
 @media screen and (max-width: 600px){
-    .breadcrumbs{
-        font-size: 12px;
+    .menu__bar{
+        position: sticky;
+        top: 0;
+    }
+    .main__navigation{
+        position: relative;
+        justify-content: center;
+    }
+
+    .navigation{
+        width: 90%;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        height: auto;
+    }
+
+    .whole__menu__sec{
+        align-items: center;
+    }
+
+    .menu__section{
+        width: 100%;
     }
     .smallbtn{
         padding: 2%;
@@ -534,5 +612,29 @@ input::file-selector-button{
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes shine {
+    0%{
+        box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
+    }
+    10%{
+        box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.171);
+    }
+    25%{
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.171);
+    }
+    50%{
+        box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.171);
+    }
+    75%{
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.171);
+    }
+    90%{
+        box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.171);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
     }
   }

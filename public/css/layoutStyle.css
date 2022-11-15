@@ -4,13 +4,35 @@ html{
 }
 
 body{
-    background-color: rgb(26,26,26) !important;
+    /* background-color: rgb(26,26,26) !important; */
+    background-color: rgb(0, 26, 0) !important;
     color:white;
     margin-top: 0;
 }
 
 p{
     text-align: justify;
+}
+
+.menu__bar {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu__size{
+    width: 40vw;
+    animation: shine 4s ease-in-out forwards infinite;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 2%;
+  }
+
+.menu__bar a {
+    font-size: 2em;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: none;
 }
 
 .land__nav{
@@ -21,7 +43,7 @@ p{
 }
 
 .logout{
-    color: white;
+    color: orangered !important;
     text-decoration: none;
 }
 
@@ -34,6 +56,20 @@ p{
 .land__nav__main{
     display: flex;
     flex-direction: column;
+}
+
+.land__whole__sec, .whole__invi__content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.sec__land__bod{
+    width: 80vw;
+}
+
+.land__content{
+    width: 85vw;
 }
 
 .porti__off__img{
@@ -112,6 +148,22 @@ p{
     color: white;
 }
 
+.limebtn{
+    background-color: transparent;
+    color: rgb(54, 219, 54);
+    border: 1px solid rgb(54, 219, 54);
+    padding: 2%;
+    text-decoration: none;
+    font-weight: bolder;
+    font-variant: small-caps;
+    cursor: pointer;
+}
+
+.limebtn:hover{
+    background-color: rgb(54, 219, 54);
+    color: rgb(0, 26, 0);
+}
+
 .land__update{
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -174,13 +226,37 @@ p{
 }
   
 .port_sec_head span{
-    font-size: 2em;
+    font-size: 1em;
     font-weight: bold;
 }
 
 .grn{
     color: rgb(54, 219, 54);
 }
+
+.main__navigation{
+    display: flex;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+  }
+  
+  .navigation {
+    background-color: rgb(0, 26, 0);
+    animation: shine 4s ease-in-out forwards infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    font-variant: small-caps;
+    width: 15vw;
+  }
+  
+.navigation a{
+    text-decoration: none;
+    color: white;
+  }
 
 .upform{
     width: 100%;
@@ -447,25 +523,6 @@ input::file-selector-button{
     animation: blink 1.5s infinite linear;
   }
 
-.breadcrumbs{
-    background-color: rgba(0, 0, 0, 0.247);
-    padding: 2%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    width: auto;
-    font-family: monospace;
-    padding: 0;
-}
-  
-.breadcrumbs a{
-    text-decoration: none;
-    padding-left: 1%;
-    padding-right: 1%;
-}
-
 .arr{
     margin: 1%;
 }
@@ -674,9 +731,33 @@ input::file-selector-button{
 }
 
 @media screen and (max-width: 600px){
-    .breadcrumbs{
-        font-size: 9px;
+    .menu__bar{
+        position: sticky;
+        top: 0;
     }
+    .main__navigation{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    .land__whole__sec{
+        flex-direction: column;
+    }
+
+    .navigation{
+        width: 90%;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        height: auto;
+      }
+    
+    .land__whole__sec{
+        align-items: center;
+    }
+
+      .land__content, .sec__land__bod{
+        width: 100vw;
+      }
     .banner{
         font-size: 10px;
     }
@@ -788,5 +869,29 @@ input::file-selector-button{
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes shine {
+    0%{
+        box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
+    }
+    10%{
+        box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.171);
+    }
+    25%{
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.171);
+    }
+    50%{
+        box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.171);
+    }
+    75%{
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.171);
+    }
+    90%{
+        box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.171);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
     }
   }

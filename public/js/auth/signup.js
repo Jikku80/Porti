@@ -11,11 +11,13 @@ let signCancel = document.getElementById("signCancel");
 
 clickme.addEventListener('click', () => {
     sign__up.classList.remove('hidden');
+    clickme.classList.add('hidden');
     window.location.hash = "#signUpForm"
 })
 
 signCancel.addEventListener("click", () => {
     sign__up.classList.add('hidden');
+    clickme.classList.remove('hidden');
 })
 
 signup.addEventListener('click', async (e) => {

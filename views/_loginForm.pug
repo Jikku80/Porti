@@ -7,13 +7,11 @@
     .login__head 
         a.port_sec_head.hm(href="/" title="home")
             img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-            span Por
-            span.grn t
+            h1 Por
+            h1.grn t
             span.nocaps i
         if (!user)
-            a.rmtxtdec.crpt(href="/porti-highlights" title="layouts")
-                img(src="/images/portal.png", alt="view_port")
-                p.name__tag Layouts
+            a.bold.nodeco.wite.nocaps(href="/porti-highlights" title="layouts") Layouts
         else
             a.rmtxtdec.crpt(href="/porti" title="porti")
                 img(src="/images/smalport.png", alt="view_port")

@@ -9,17 +9,13 @@ block content
   .login__head 
     a.port_sec_head.hm(href="/" title="home")
         img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
+        h1 Por
+        h1.grn t
         span.nocaps i
     if (!user)
-        a.crpt.smallest__cont(href="/porti-highlights" title="porti")
-            img(src="/images/portal.png", alt="view_port")
-            p.name__tag Layouts
+        a.bold.nocaps.nodeco.wite(href="/porti-highlights" title="porti") Layouts
     else
-        a.crpt.smallest__cont(href="/porti" title="layouts")
-            img(src="/images/portal.png", alt="view_port")
-            p.name__tag Layouts
+        a.bold.nocaps.nodeco.wite(href="/porti" title="layouts") Layouts
   form#reset__form.rs_form
     h2#reset__head Reset Your Password
     p Check your mail for token

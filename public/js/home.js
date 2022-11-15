@@ -63,3 +63,23 @@ homelogin.addEventListener("mouseout", () => {
         }
     })
 })();
+
+let futbtn = document.querySelector('.futuristic-button');
+let tp = document.querySelector(".top");
+let bottom = document.querySelector(".bottom");
+let parallelogramleft = document.querySelector(".parallelogram-left");
+let parallelogramright = document.querySelector(".parallelogram-right");
+
+futbtn.addEventListener("mouseover", (function () {
+    tp.classList.add('active');
+    bottom.classList.add('active');
+    parallelogramleft.classList.add('active');
+    parallelogramright.classList.add('active');
+}));
+futbtn.addEventListener("mouseout", (function () {
+    tp.classList.remove('active');
+    bottom.classList.remove('active');
+    parallelogramleft.classList.remove('active');
+    parallelogramright.classList.remove('active');
+}));
+

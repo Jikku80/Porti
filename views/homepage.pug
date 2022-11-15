@@ -13,34 +13,74 @@ block content
             span.nocaps.wite i
         .main__content__log
             if (!user)
-                a#log.fkAncky.norot(href="/login" title="Login | SignUp") Login | SignUp
+                a#log(href="/login" title="Login | SignUp") 
+                    .futuristic-button
+                        .top 
+                        .parallelogram-left
+                        .parallelogram-right
+                        .bottom 
+                        .button-text Login | SignUp
             else 
-                a#log.fkAncky.norot(href="/me" title="Your Account") Your Account
+                a#log.fkAncky.norot(href="/me" title="Your Account")
+                    if (!user.photo)
+                        img.accpic(src=`/images/hitman.png`, alt="dp")
+                    else
+                        img.accpic(src=`/images/users/${user.photo}`) 
+                    span= user.name
         .main__content__nav
             a.fkAncky(href="#aboutTM") About 
-                span.mid Lakhey 
+                span.maf Lakhey 
                     span.lst De 
-                        span.lst Tech
+                        span.mid Tech
             if (!user)
-                a.crPr(href="/porti-highlights") View Porti-Features
+                a.crPr.button-89(href="/porti-highlights") Por
+                    span.grn t
+                    span.crPr i-
+                    span.orng Features
                 #go__create.hidden
             else
-                a.crPr(href="/porti")
-                    p#go__create Let's Start Burning
+                a.crPr.button-89(href="/porti")
+                    p#go__create Let's Start 
+                        span.orng Burning
             .fkAncky
                 a.opst(href="#contactTM") Reach  
-                    span.mid  Lakhey 
+                    span.maf  Lakhey 
                         span.lst De 
-                            span.lst Tech
+                            span.mid Tech
         .main__content__learn
             .learn__content 
-                a.greybtn(href="#abtPorti") Learn About Porti 
-                a.greybtn(href="#guidePorti") Porti Guidence
+                a.button-49(href="#abtPorti") 
+                    span.whte About 
+                    span Porti 
+                a.button-49(href="#guidePorti") Porti 
+                    span.whte Guide
+        .main__content__logo 
+            .logo__grp 
+                img.porti__off__img(src="/images/portii.png", alt="porti__img")
+                span.wite Por
+                span.grn t
+                span.nocaps.wite i
     .bod 
         .view__tm 
-            #abtPorti.padder
-                h2 About 
-                    span.mid Porti
+            #abtPorti.padder.darkgreen
+                .bottom__nav
+                    h2 About 
+                        span.mid Por
+                        span.grn t
+                        span.mid i
+                    if (!user)
+                        a.bottom__anch(href="/login") 
+                            h3 Login | SignUp
+                    else
+                        .bottom__nav__inner 
+                            a.bottom__anch.text__shadow(href=`/myportfolio/${user._id}`) 
+                                h3 Portfolio
+                            a.bottom__anch.text__shadow(href=`/invitations/${user._id}`) 
+                                h3 Invitation
+                            a.bottom__anch.text__shadow(href=`/menu/${user._id}/additemstomenu`) 
+                                h3 Menu
+                            a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
+                                h3 Catalouge
                 p Lakhey Tech Presents Porti. In Spanish "Por ti" means "For You". The website is practically for you. In this age of Technology, where things are easy acces via internet then sotring it locally or using it physically, Porti is here to help you with situations that can really be a drag.
                 h3 Why Porti?
                 p Is your Interview Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. Just answer the questions given and your all set.
@@ -60,9 +100,12 @@ block content
                 p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
                 h3 Is Porti Free To Use?
                 p Yes! Porti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your porti account as there are lots of free themes :)
-            #guidePorti.padder 
+            #guidePorti.padder.darkgreen 
                 h2 To Start Using  
-                    span.mid Porti Services 
+                    span.mid Por
+                    span.grn t
+                    span.mid i 
+                    span.gry Services 
                     span.lst ?
                 .guide__box
                     .gbox 
@@ -89,7 +132,8 @@ block content
                         .gbox__bod
                             p To view your created porti Click on My Portfolio || My Invitation || My Menu || My Cataloge 
                             p To share your portfolio click copy link and share it or you can click generate qrcode and share your qrcode
-                h3.mid#portiHelper Portfolio 
+            #portiHelper.padder
+                h3.mid Portfolio 
                     span.lst Helper
                 p Do not Know What To Write In Your Portfolio? Here are Few Tips
                 p Just the tips cause only you can tell the world who you really are ;) 
@@ -146,7 +190,8 @@ block content
                     span.mid Invitation 
                         span.lst ?
                 p Follow the Same procedure and you are all set!
-                h3.mid#portimenuHelper Food Menu 
+            #portimenuHelper.darkgreen.padder
+                h3.mid Food Menu 
                     span.lst Helper
                 h4 Creating a Restaurant 
                 .guide__box
@@ -200,7 +245,8 @@ block content
                             p you can use the link copy paste it to browser and open your menu.
                             p you can use my menu button to open your menu directly.
                             p you can click generate qrcode button to get your menu qr code, just scan it and open your menu.
-                h3.mid#porticatalogeHelper Cataloge 
+            #porticatalogeHelper.padder.darkgreen
+                h3.mid Cataloge 
                     span.lst Helper
                 h4 Creating a Company 
                 .guide__box
@@ -283,8 +329,8 @@ block content
                             p you can use the link copy paste it to browser and open your cataloge.
                             p you can use my cataloge button to open your cataloge directly.
                             p you can click generate qrcode button to get your cataloge qr code, just scan it and open your cataloge.
-            #aboutTM.padder
-                h2 About 
+            #aboutTM.padder.darkgreen
+                h2.gry About 
                     span.maf Lakhey 
                         span.gry De 
                             span.mid Tech
@@ -301,8 +347,8 @@ block content
                 h3 Copyright Notice 
                 p The entire Porti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The porti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
                 p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
-            #contactTM.padder 
-                h2 Contact 
+            #contactTM.padder.darkgreen 
+                h2.gry Contact 
                     span.maf Lakhey 
                         span.gry De 
                             span.mid Tech

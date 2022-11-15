@@ -1,20 +1,25 @@
-.head__main
-    a#createporti.crpt.smallest__cont(href="/porti" title="layouts")
-        img(src="/images/portal.png", alt="add__img")
-        p.name__tag Layouts
-    a.port_sec_head.hm(href="/" title="home")
-        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
-    #logout.logout.smallest__cont
-        img(src="/images/poweroff.png", alt="signout" title="Signout")
-        p.name__tag Signout
-h1.loader
-    img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-    span Por
-    span.grn t
-    span.nocaps i
+.menu__bar 
+    .menu__size
+        a(href="#") &#9830; &#9830; &#9830;
+#side__bar.main__navigation
+    .navigation 
+        a.port_sec_head.hm(href="/" title="home")
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+        a(href="/me")
+            if (user.photo)
+                img.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+            else 
+                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
+        a(href="/porti" title="layouts") Layouts
+        a(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
+        a(href=`/invitations/${user._id}` title="your invitation") Invitaions
+        a(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+        a(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+        a#logout.logout SignOut
 
 script(src="/js/alert.js")  
 script(src="/js/logout.js") 
+script(src="/js/menubar.js") 
