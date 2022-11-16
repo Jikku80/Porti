@@ -51,19 +51,22 @@ block content
                             p CT Layout
                     .layuot__main#lockedCatalgSec 
                         .un_layout
-            .menu__section
-                if (!restro && !menu)
-                    h2 Create Menu For Your Restro 
-                    p Pick any of the layouts below and buid a menu for your restro 
+            .menu__section#crtMenu
+                if (!restro)
+                    h2 Create Restro for your Menu 
+                    p Pick any of the layouts below and build a menu for your restro 
                     .gGroup 
                         .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
                         .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
                     .layout__main#freeMenuSec
                         #menu1.unl
                             .un_layout_log
-                                a(href=`/menu/${user._id}/additemstomenu`)
-                                    img(src="/images/menu1.png", loading="lazy", alt="menu1")
-                                p DC Layout
+                                each item in theme
+                                    if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
+                                        .unl.menu_layouts(id=`${item.themeId}`)
+                                            .un_layout_log
+                                                img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
+                                                p= item.name
                     .layout__main#lockedMenuSec 
                         .unl
                 else 
@@ -71,9 +74,6 @@ block content
                         .sticky__section
                             h2 You Already have A Menu!
                             p.warn You can't have more than one Menu!
-                        if (!restro)
-                            .sticky__section 
-                                h2.warn You Haven't Updated Your Restro Details! 
                         if (!menu)
                             .sticky__section 
                                 h2.warn You Haven't added items to your menu!
@@ -81,9 +81,11 @@ block content
                         .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
                         .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
                     .layout__main#freeMenuSec
-                        .un_layout
-                            img(src="/images/menu1.png", loading="lazy", alt="menu1")
-                            p DC Layout
+                        each item in theme
+                            if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
+                                .un_layout
+                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
+                                    p= item.name
                     .layout__main#lockedMenuSec 
                         .un_layout
             .invi__section#crtInvi
@@ -171,6 +173,8 @@ block content
                 script(src="/js/createPort/createport5.js")  
             script(src="/js/createInvi/createInviForm.js") 
             script(src="/js/createInvi/createinvi.js")
+            script(src="/js/createrestro/createRestroForm.js")  
+            script(src="/js/createrestro/createRestro.js")
             //- script(src="/js/logout.js")
     script(src="/js/layouts/portForAll.js") 
     script(src="/js/alert.js")

@@ -1,5 +1,5 @@
 let fullpath = location.pathname
-let resultpath = fullpath.match("/menu/(.*)/")
+let resultpath = fullpath.match("/menu/(.*)")
 let page = document.querySelector(".paginate");
 let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");

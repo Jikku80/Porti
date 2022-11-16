@@ -19,7 +19,7 @@ router.get('/:user/invitation/:id', inlayoutController.inviFirst);
 // router.get('/:user/invitation/:id/4dc50fc3bc007be011b5445f3f79298b9eeb51b7', inlayoutController.inviFirst);
 // router.get('/:user/invitation/:id/c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7', inlayoutController.inviSecond);
 
-router.get('/:user/menu/:id/40bd001563085fc35165329ea1ff5c5ecbdbbeef', menuController.menuFirst);
+router.get('/:user/menu/:id', menuController.menuFirst);
 router.get('/:user/catalouge/:id/51eac6b471a284d3341d8c0c63d0f1a286262a18', catalougeController.firstCatalouge);
 
 

@@ -273,10 +273,11 @@ prev.addEventListener("click", async () => {
     let shareLink = document.querySelector(".share__link");
     let uname = document.querySelector(".uname__menu").innerText;
     let nm = uname.replace(/\s/g, '')
+    // let restroId = document.querySelector(".restro__id").innerText;
     shareLink.innerHTML += `
         <div class="menu__link">
             <p class="head">Your Menu Link</p>
-            <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/${nm}/menu/${resultpath[1]}/${itheme}</p>
+            <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/${nm}/menu/${resultpath[1]}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
             <button class="ygbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
@@ -285,7 +286,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openMenu");
     openMenu.addEventListener("click", () => {
-        window.open(`/${nm}/menu/${resultpath[1]}/${itheme}`)
+        window.open(`/${nm}/menu/${resultpath[1]}`)
     })
 
     let menuLinkDis = document.querySelector(".menu__link__displayer");
@@ -298,69 +299,6 @@ prev.addEventListener("click", async () => {
         successAlert("Link Copied")
     })
 })();
-
-(function () {
-    let restroId = document.querySelector(".restro__len").innerText;
-    let updateRestroBtn = document.getElementById("updateResBtn");
-    let addRestroBtn = document.getElementById("addResBtn");
-    if (restroId >= 1) {
-        addRestroBtn.classList.add("hidden")
-        updateRestroBtn.classList.remove("hidden");
-    } else {
-        updateRestroBtn.classList.add("hidden");
-        addRestroBtn.classList.remove('hidden');
-    }
-})();
-
-(function () {
-    let addRestroBtn = document.getElementById("addResBtn");
-    let resName = document.getElementById("resname");
-    let resAddress = document.getElementById("resaddress");
-    let resSlogan = document.getElementById("resslogan");
-
-    addRestroBtn.addEventListener("click", async (e) => {
-        if (resName.value < 1 || resName.value == "" || resName.value == null) {
-            return false;
-        }
-        if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
-            return false;
-        }
-        e.preventDefault();
-        try {
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const endpoint = `/api/v1/menu/createRestaurant`
-            await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: resName.value,
-                    slogan: resSlogan.value,
-                    Address: resAddress.value
-                })
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 201) {
-                    successAlert("Restro Details Updated Successfully :)");
-                    window.setTimeout(() => {
-                        location.reload();
-                    }, 400);
-                } else {
-                    console.log(response);
-                    errorAlert("Invalid input, Duplication Input error!!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-    })
-})();
-
 
 (function () {
     let updateRestroBtn = document.getElementById("updateResBtn");

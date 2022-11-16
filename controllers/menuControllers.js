@@ -103,7 +103,9 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
         name: req.body.name,
         user: req.user.id,
         slogan: req.body.slogan,
-        Address: req.body.Address
+        Address: req.body.Address,
+        theme: req.body.theme,
+        phn_no: req.body.phn_no
     });
 
     res.status(201).json({
@@ -162,13 +164,20 @@ exports.itemTweaks = catchAsync(async (req, res) => {
 exports.menuFirst = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate();
-    const restro = await Restaurant.find({ user: user_id })
-    await features.query.populate('user').then(menus => {
-        res.status(200).render('menu/firstMenu', {
-            title: "menu",
-            menus,
-            restro
-        })
+    const menus = await features.query
+    await Restaurant.find({ user: user_id }).populate('user').then(restro => {
+        let theme = restro[0].theme
+        switch (theme) {
+            case "40bd001563085fc35165329ea1ff5c5ecbdbbeef":
+                res.status(200).render('menu/firstMenu', {
+                    title: "menu",
+                    restro,
+                    menus
+                })
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
     })
 
 })
