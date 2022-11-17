@@ -60,13 +60,13 @@ block content
                     form#upRestro.upItem
                         .form__bod
                             label Restaurant Name:
-                            input#resname(type="text" required placeholder="Kings Burger")
+                            input#resname(type="text" required placeholder=restro[0].name)
                         .form__bod
                             label Address: 
-                            input#resaddress(type="text" required placeholder="Heavens Hell")
+                            input#resaddress(type="text" required placeholder=restro[0].Address)
                         .form__bod
                             label Slogan (optional): 
-                            input#resslogan(type="text", placeholder="Eat Burger Save Time")
+                            input#resslogan(type="text", placeholder=restro[0].slogan)
                         p.restro__len.hidden= restro.length
                         if (restro.length !== 0)
                             p.restro__id.hidden= restro[0]._id

@@ -34,7 +34,7 @@
         formData.append("category", icat.value);
         formData.append("subcategory", subcat.value);
         formData.append("detail", idetail.value);
-        formData.append("theme", itheme);
+
         formData.append("coverImage", icimg.files[0]);
         const endpoint = '/api/v1/catalouge/'
         try {
@@ -302,12 +302,11 @@ prev.addEventListener("click", async () => {
     let resultpath = fullpath.match("/catalouge/(.*)/")
     let uname = document.querySelector(".uname__catal").innerText;
     let nm = uname.replace(/\s/g, '')
-    let itheme = "51eac6b471a284d3341d8c0c63d0f1a286262a18"
 
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head">Your Catalouge Link</p>
-            <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/${nm}/catalouge/${resultpath[1]}/${itheme}</p>
+            <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/${nm}/catalouge/${resultpath[1]}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
             <button class="ygbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
@@ -316,7 +315,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openmycatal");
     openMenu.addEventListener("click", () => {
-        window.open(`/${nm}/catalouge/${resultpath[1]}/${itheme}`)
+        window.open(`/${nm}/catalouge/${resultpath[1]}`)
     })
 
     let menuLinkDis = document.querySelector(".catalouge__link__displayer");
@@ -330,83 +329,83 @@ prev.addEventListener("click", async () => {
     })
 })();
 
-(function () {
-    let restroId = document.querySelector(".comp__len").innerText;
-    let updateRestroBtn = document.getElementById("updateCompBtn");
-    let addRestroBtn = document.getElementById("addCompBtn");
-    if (restroId >= 1) {
-        addRestroBtn.classList.add("hidden")
-        updateRestroBtn.classList.remove("hidden");
-    } else {
-        updateRestroBtn.classList.add("hidden");
-        addRestroBtn.classList.remove('hidden');
-    }
-})();
+// (function () {
+//     let restroId = document.querySelector(".comp__len").innerText;
+//     let updateRestroBtn = document.getElementById("updateCompBtn");
+//     let addRestroBtn = document.getElementById("addCompBtn");
+//     if (restroId >= 1) {
+//         addRestroBtn.classList.add("hidden")
+//         updateRestroBtn.classList.remove("hidden");
+//     } else {
+//         updateRestroBtn.classList.add("hidden");
+//         addRestroBtn.classList.remove('hidden');
+//     }
+// })();
 
-(function () {
-    let addRestroBtn = document.getElementById("addCompBtn");
-    let resName = document.getElementById("compname");
-    let compemail = document.getElementById("compemail");
-    let compsocial = document.getElementById("compsocial");
-    let comploc = document.getElementById("complocationLink");
-    let resAddress = document.getElementById("compaddress");
-    let compcontact = document.getElementById("compcontact");
-    let resSlogan = document.getElementById("compslogan");
-    let tmcolor = document.getElementById("companyColor");
+// (function () {
+//     let addRestroBtn = document.getElementById("addCompBtn");
+//     let resName = document.getElementById("compname");
+//     let compemail = document.getElementById("compemail");
+//     let compsocial = document.getElementById("compsocial");
+//     let comploc = document.getElementById("complocationLink");
+//     let resAddress = document.getElementById("compaddress");
+//     let compcontact = document.getElementById("compcontact");
+//     let resSlogan = document.getElementById("compslogan");
+//     let tmcolor = document.getElementById("companyColor");
 
-    addRestroBtn.addEventListener("click", async (e) => {
-        if (resName.value < 1 || resName.value == "" || resName.value == null) {
-            return false;
-        }
-        if (compemail.value < 1 || compemail.value == "" || compemail.value == null) {
-            return false;
-        }
-        if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
-            return false;
-        }
-        if (compcontact.value < 1 || compcontact.value == "" || compcontact.value == null) {
-            return false;
-        }
-        e.preventDefault();
-        try {
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const endpoint = `/api/v1/catalouge/createCompany`
-            await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: resName.value,
-                    email: compemail.value,
-                    social: compsocial.value,
-                    locationLink: comploc.value,
-                    slogan: resSlogan.value,
-                    Address: resAddress.value,
-                    contact: compcontact.value,
-                    themecolor: tmcolor.value
-                })
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 201) {
-                    successAlert("Company Details Updated Successfully :)");
-                    window.setTimeout(() => {
-                        location.reload();
-                    }, 400);
-                } else {
-                    console.log(response);
-                    errorAlert("Invalid input!!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-    })
-})();
+//     addRestroBtn.addEventListener("click", async (e) => {
+//         if (resName.value < 1 || resName.value == "" || resName.value == null) {
+//             return false;
+//         }
+//         if (compemail.value < 1 || compemail.value == "" || compemail.value == null) {
+//             return false;
+//         }
+//         if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
+//             return false;
+//         }
+//         if (compcontact.value < 1 || compcontact.value == "" || compcontact.value == null) {
+//             return false;
+//         }
+//         e.preventDefault();
+//         try {
+//             let load = document.querySelector('.loader');
+//             load.classList.remove("hidden")
+//             const endpoint = `/api/v1/catalouge/createCompany`
+//             await fetch(endpoint, {
+//                 method: 'POST',
+//                 headers: {
+//                     Accept: "application/json, text/plain, */*",
+//                     'Content-type': 'application/json',
+//                 },
+//                 body: JSON.stringify({
+//                     name: resName.value,
+//                     email: compemail.value,
+//                     social: compsocial.value,
+//                     locationLink: comploc.value,
+//                     slogan: resSlogan.value,
+//                     Address: resAddress.value,
+//                     contact: compcontact.value,
+//                     themecolor: tmcolor.value
+//                 })
+//             }).then((response) => {
+//                 load.classList.add("hidden");
+//                 if (response.status === 201) {
+//                     successAlert("Company Details Updated Successfully :)");
+//                     window.setTimeout(() => {
+//                         location.reload();
+//                     }, 400);
+//                 } else {
+//                     console.log(response);
+//                     errorAlert("Invalid input!!!")
+//                 }
+//             })
+//         }
+//         catch (err) {
+//             console.log(err);
+//             errorAlert('Sorry! Something went wrong', err);
+//         };
+//     })
+// })();
 
 
 (function () {

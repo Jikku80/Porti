@@ -167,24 +167,33 @@ exports.updateCompanyImg = catchAsync(async (req, res, next) => {
 
 exports.addItemsPage = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
-
+    const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate()
+    const catalouges = await features.query
     const company = await Company.find({ user: user_id })
     res.status(200).render('catalouge/additem', {
         title: 'Add Items To Catalouge',
-        company
+        company,
+        catalouges
     })
 })
 
 exports.firstCatalouge = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate()
-    const company = await Company.find({ user: user_id })
-    await features.query.populate('user').then(catalouges => {
-        res.status(200).render('catalouge/firstCatalouge', {
-            title: "Catalouge",
-            catalouges,
-            company: company[0]
-        })
+    const catalouges = await features.query
+    await Company.find({ user: user_id }).populate('user').then(company => {
+        let theme = company[0].theme
+        switch (theme) {
+            case "51eac6b471a284d3341d8c0c63d0f1a286262a18":
+                res.status(200).render('catalouge/firstCatalouge', {
+                    title: "Catalouge",
+                    catalouges,
+                    company: company[0]
+                })
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
     })
 
 })
@@ -260,7 +269,8 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         slogan: req.body.slogan,
         contact: req.body.contact,
         Address: req.body.Address,
-        themecolor: req.body.themecolor
+        themecolor: req.body.themecolor,
+        theme: req.body.theme
     });
 
     res.status(201).json({

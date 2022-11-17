@@ -16,8 +16,8 @@ block content
         #usId.hidden= user._id
         #uiId.hidden= user._id
         .creation__body
-            .catalouge__section.newsec
-                if (!company && !catalouge)
+            .catalouge__section.newsec#crtCataloge
+                if (!company)
                     h2 Create Catalouge For Your Business 
                     p Pick any of the layouts below and buid a Catalouge 
                     .gGroup 
@@ -26,9 +26,12 @@ block content
                     .layout__main#freeCatalgSec
                         #catal1.unl
                             .un_layout_log
-                                a(href=`/catalouge/${user._id}/additems`)
-                                    img(src="/images/catal1.png", loading="lazy", alt="catalouge1")
-                                p CT Layout
+                                each item in theme
+                                    if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
+                                        .unl.cataloge_layouts(id=`${item.themeId}`)
+                                            .un_layout_log
+                                                img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
+                                                p= item.name
                     .layout__main#lockedCatalgSec 
                         .unl
                 else 
@@ -36,9 +39,6 @@ block content
                         .sticky__section
                             h2 You Already have A Catalouge!
                             p.warn You can't have more than one Catalouge!
-                        if (!company)
-                            .sticky__section 
-                                h2.warn You Haven't Updated Your Company Details! 
                         if (!catalouge)
                             .sticky__section 
                                 h2.warn You Haven't added items to your cataloge!
@@ -46,9 +46,11 @@ block content
                         .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
                         .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
                     .layout__main#freeCatalgSec 
-                        .un_layout 
-                            img(src="/images/catal1.png", loading="lazy", alt="invi2")
-                            p CT Layout
+                        each item in theme
+                            if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
+                                .un_layout
+                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
+                                    p= item.name
                     .layuot__main#lockedCatalgSec 
                         .un_layout
             .menu__section#crtMenu
@@ -175,6 +177,8 @@ block content
             script(src="/js/createInvi/createinvi.js")
             script(src="/js/createrestro/createRestroForm.js")  
             script(src="/js/createrestro/createRestro.js")
+            script(src="/js/createcompany/createCatalogeForm.js")
+            script(src="/js/createcompany/createcataloge.js")  
             //- script(src="/js/logout.js")
     script(src="/js/layouts/portForAll.js") 
     script(src="/js/alert.js")

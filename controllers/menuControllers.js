@@ -103,7 +103,7 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
         name: req.body.name,
         user: req.user.id,
         slogan: req.body.slogan,
-        Address: req.body.Address,
+        Address: req.body.address,
         theme: req.body.theme,
         phn_no: req.body.phn_no
     });
@@ -170,7 +170,7 @@ exports.menuFirst = catchAsync(async (req, res, next) => {
         switch (theme) {
             case "40bd001563085fc35165329ea1ff5c5ecbdbbeef":
                 res.status(200).render('menu/firstMenu', {
-                    title: "menu",
+                    title: "Menu",
                     restro,
                     menus
                 })

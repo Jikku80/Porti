@@ -20,7 +20,7 @@ router.get('/:user/invitation/:id', inlayoutController.inviFirst);
 // router.get('/:user/invitation/:id/c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7', inlayoutController.inviSecond);
 
 router.get('/:user/menu/:id', menuController.menuFirst);
-router.get('/:user/catalouge/:id/51eac6b471a284d3341d8c0c63d0f1a286262a18', catalougeController.firstCatalouge);
+router.get('/:user/catalouge/:id', catalougeController.firstCatalouge);
 
 
 router.post('/sendmsg', viewsController.newMsg);

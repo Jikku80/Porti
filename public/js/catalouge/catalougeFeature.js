@@ -15,7 +15,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
-            let resultpath = fullpath.match("/catalouge/(.*)/")
+            let resultpath = fullpath.match("/catalouge/(.*)")
             const endpoint = `/api/v1/catalouge/${resultpath[1]}/searchCatalouge`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -75,7 +75,7 @@ window.addEventListener("load", async () => {
         let subItemModel = document.querySelector(".sub__cat__list");
         subItemModel.classList.add("hidden");
         let fullpath = location.pathname
-        let resultpath = fullpath.match("/catalouge/(.*)/")
+        let resultpath = fullpath.match("/catalouge/(.*)")
         const endpoint = `/api/v1/catalouge/allCatalougeCategories/${resultpath[1]}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -295,7 +295,7 @@ modelCanceler.addEventListener("click", () => {
             let subItems = document.querySelector(".catalouge__items")
             subItems.innerHTML = "";
             let fullpath = location.pathname
-            let resultpath = fullpath.match("/catalouge/(.*)/")
+            let resultpath = fullpath.match("/catalouge/(.*)")
             const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -348,7 +348,7 @@ modelCanceler.addEventListener("click", () => {
             let subItems = document.querySelector(".catalouge__items")
             subItems.innerHTML = "";
             let fullpath = location.pathname
-            let resultpath = fullpath.match("/catalouge/(.*)/")
+            let resultpath = fullpath.match("/catalouge/(.*)")
             const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')

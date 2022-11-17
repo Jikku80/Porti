@@ -46,6 +46,9 @@ const companySchema = new mongoose.Schema({
         unique: true,
         required: [true, 'Company must belong to a User']
     },
+    theme: {
+        type: String
+    },
     createdAt: {
         type: Date,
         default: Date.now()
