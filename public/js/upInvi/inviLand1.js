@@ -62,6 +62,7 @@ let upinwhat = document.getElementById('upinwhat');
 let upinwhy = document.getElementById("upinwhy");
 let upinno = document.getElementById("upinno");
 let upinwork = document.getElementById("upinwork");
+let upintheme = document.getElementById("upinTheme")
 let updinBtn = document.getElementById("updateinBtn");
 let upinImgBtn = document.getElementById("updateinImgBtn");
 let inimg1 = document.querySelector('#inimg1');
@@ -70,7 +71,7 @@ let inimg3 = document.getElementById("inimg3");
 let inimg4 = document.getElementById("inimg4");
 let inimg5 = document.getElementById("inimg5")
 let inid = document.getElementById('inviteendpoint').innerText;
-let inthemes = document.getElementById("inthemes");
+// let inthemes = document.getElementById("inthemes");
 
 updinBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -93,8 +94,8 @@ updinBtn.addEventListener("click", async (e) => {
                 address: upinwhat.value,
                 pdate: upinwhy.value,
                 phn_no: upinno.value,
-                theme: inthemes.value,
-                ptime: upinwork.value
+                ptime: upinwork.value,
+                theme: upintheme.value
             })
         }).then((response) => {
             load.classList.add("hidden");

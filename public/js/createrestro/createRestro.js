@@ -1,4 +1,5 @@
 create_portR = document.querySelector(".create_port")
+footerBodR = document.querySelector(".footer")
 portBodR = document.querySelector(".port__section");
 inviBodR = document.querySelector(".invi__section");
 menuBodR = document.querySelector('.menu__section');
@@ -20,6 +21,7 @@ menuLayouts.forEach(item => {
     item.addEventListener("click", () => {
         location.hash = "#portNav";
         portBodR.classList.add("hidden");
+        footerBodR.classList.add("hidden");
         inviBodR.classList.add("hidden");
         menuBodR.classList.add("hidden");
         catBodR.classList.add("hidden");
@@ -82,6 +84,7 @@ let cancelRestro = document.querySelector(".cancel__restro");
 cancelRestro.addEventListener("click", () => {
     mkRestroForm.classList.add("hidden");
     portBodR.classList.remove("hidden");
+    footerBodR.classList.remove("hidden");
     inviBodR.classList.remove("hidden");
     menuBodR.classList.remove("hidden");
     catBodR.classList.remove("hidden");

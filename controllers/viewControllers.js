@@ -104,10 +104,12 @@ exports.myPort = catchAsync(async (req, res) => {
 
 exports.myInvi = catchAsync(async (req, res) => {
     const id = req.params.id
+    const theme = await Theme.find({ themeCategory: "Invitation" })
     await Invite.findOne({ _id: id }).populate('user').then(invite => {
         res.status(200).render('layouts/landingSec', {
             title: 'Invitation Detail',
-            invite
+            invite,
+            theme
         })
     }).catch(err => console.log(err));
 })

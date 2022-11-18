@@ -520,6 +520,76 @@ input::file-selector-button{
     visibility: hidden;
 }
 
+.to__left{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.wite{
+    color:White;
+}
+
+.footer{
+    width: 85%;
+    margin-top: 2vh;
+    font-weight: bold;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    color:gray;
+    font-size: 1.2em;
+}
+
+.footer a{
+    color: rgba(245, 245, 245, 0.651);
+    text-decoration: none;
+  }
+  
+  .footer a:hover{
+    color: greenyellow;
+  }
+  
+  .footer__bod{
+    width: 95%;
+  }
+  
+  .footer__top{
+    display: flex;
+    width: 100%;
+  }
+  
+  .footer__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    font-size: .8em;
+  }
+  
+  .footer__first__bod{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer__contact__detail{
+    width: 50%;
+    text-align: left;
+  }
+  
+  .footer__contact__bod{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    padding-left: 50%;
+  }
+
+.footer__sec__bod{
+    display: flex;
+    justify-content: space-around;
+    font-size: .8em;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .form__bod{
         width: 50%;
@@ -573,6 +643,36 @@ input::file-selector-button{
         font-size: 5px;
         margin: 2%;
         padding: 2%;
+    }
+
+    .footer{
+        width: 100%;
+      }
+    
+      .footer__top{
+        flex-direction: column;
+        font-size: .8em;
+      }
+      
+      .footer__row{
+        width: 100%;
+      }
+    
+      .footer__contact__detail{
+        width: 100%;
+        font-size: .8em;
+      }
+      
+      .footer__contact__bod{
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+      }
+
+    .footer__first__bod, .footer__sec__bod{
+        flex-direction: column;
+        text-align: center;
+        font-size: .8em;
     }
 }
   

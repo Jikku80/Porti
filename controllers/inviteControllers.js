@@ -190,12 +190,12 @@ exports.updateInviData = catchAsync(async (req, res, next) => {
         {
             fname: req.body.fname,
             sname: req.body.sname,
-            theme: req.body.theme,
             about: req.body.about,
             address: req.body.address,
             ptime: req.body.ptime,
             phn_no: req.body.phn_no,
-            pdate: req.body.pdate
+            pdate: req.body.pdate,
+            theme: req.body.theme
         },
         {
             new: true,
@@ -240,7 +240,6 @@ exports.removeInviOldImg = catchAsync(async (req, res, next) => {
 })
 
 exports.updateInviImgData = catchAsync(async (req, res, next) => {
-
     const updatedInvite = await Invite.findByIdAndUpdate(
         req.body.id,
         {

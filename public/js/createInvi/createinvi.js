@@ -1,4 +1,5 @@
 create_port = document.querySelector(".create_port")
+footerBod = document.querySelector(".footer")
 portBod = document.querySelector(".port__section");
 inviBod = document.querySelector(".invi__section");
 menuBod = document.querySelector('.menu__section');
@@ -20,6 +21,7 @@ inviLayouts.forEach(item => {
     item.addEventListener("click", () => {
         location.hash = "#portNav";
         portBod.classList.add("hidden");
+        footerBod.classList.add("hidden");
         inviBod.classList.add("hidden");
         menuBod.classList.add("hidden");
         catBod.classList.add("hidden");
@@ -103,6 +105,7 @@ let cancelInvite = document.querySelector(".cancel__invite");
 cancelInvite.addEventListener("click", () => {
     mkForm.classList.add("hidden");
     portBod.classList.remove("hidden");
+    footerBod.classList.remove("hidden");
     inviBod.classList.remove("hidden");
     menuBod.classList.remove("hidden");
     catBod.classList.remove("hidden");

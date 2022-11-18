@@ -1,4 +1,4 @@
-create_port = document.querySelector(".create_port")
+footer__first = document.querySelector(".footer")
 portBod = document.querySelector(".port__bod");
 inviSec = document.querySelector('.invi__section');
 menuSec = document.querySelector('.menu__section');
@@ -17,6 +17,7 @@ crForm.classList.add("hidden");
 layout1.forEach(item => {
     item.addEventListener("click", () => {
         location.hash = "#portNav";
+        footer__first.classList.add("hidden");
         portBod.classList.add("hidden");
         inviSec.classList.add("hidden");
         menuSec.classList.add("hidden");
@@ -141,6 +142,7 @@ layout1.forEach(item => {
 let cancelCreate = document.querySelector(".cancel__create");
 cancelCreate.addEventListener("click", () => {
     crForm.classList.add("hidden");
+    footer__first.classList.remove("hidden");
     portBod.classList.remove("hidden");
     inviSec.classList.remove("hidden");
     menuSec.classList.remove("hidden");

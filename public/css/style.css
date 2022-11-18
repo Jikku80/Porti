@@ -357,7 +357,7 @@ html{
 
 .port__bod, .invi__section, .menu__section, .newsec{
   margin: 1%;
-  background-color: rgba(0, 0, 0, 0.411);  
+  /* background-color: rgba(0, 0, 0, 0.411);   */
   backdrop-filter: blur(5px);
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
@@ -373,7 +373,7 @@ html{
 
 .port__highlights__bod,.invi__highlights__section,.menu__highlights__section, .catalouge__highlights__section{
   margin: 1%;
-  background-color: rgba(0, 0, 0, 0.411);  
+  /* background-color: rgba(0, 0, 0, 0.411);   */
   backdrop-filter: blur(5px);
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
@@ -887,6 +887,63 @@ input::file-selector-button{
   color: rgb(0, 26, 0);
 }
 
+.footer{
+  width: 83%;
+  margin-top: 2vh;
+  font-size: 1.2em;
+  font-family: monospace;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color:gray;
+}
+
+.footer a{
+  color: rgba(245, 245, 245, 0.651);
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: greenyellow;
+}
+
+.footer__bod{
+  width: 95%;
+}
+
+.footer__top{
+  display: flex;
+}
+
+.footer__row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.footer__first__bod{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__contact__detail{
+  width: 50%;
+  text-align: left;
+}
+
+.footer__contact__bod{
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  padding-left: 50%;
+}
+
+.footer__sec__bod{
+  display: flex;
+  justify-content: space-around;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
   .term__main{
     width: 80%;
@@ -1038,6 +1095,33 @@ input::file-selector-button{
   input[type='file']{
     width: 50%;
   }
+
+  .footer{
+    width: 100%;
+  }
+
+  .footer__top{
+    flex-direction: column;
+  }
+  
+  .footer__row{
+    width: 100%;
+  }
+
+  .footer__contact__detail{
+    width: 100%;
+  }
+  
+  .footer__contact__bod{
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+  }
+
+  .footer__first__bod, .footer__sec__bod{
+    flex-direction: column;
+    text-align: center;
+}
 
 }
 

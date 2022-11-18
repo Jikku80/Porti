@@ -1,4 +1,5 @@
 layout5 = document.querySelector("#layout5")
+footer5 = document.querySelector(".footer")
 portBod5 = document.querySelector(".port__bod");
 inviSec5 = document.querySelector('.invi__section');
 menuSec5 = document.querySelector('.menu__section');
@@ -66,6 +67,7 @@ layoutFive.classList.add("hidden");
 layout5.addEventListener("click", () => {
     location.hash = "#portNav"
     portBod5.classList.add("hidden");
+    footer5.classList.add("hidden");
     inviSec5.classList.add("hidden");
     menuSec5.classList.add("hidden");
     catSec5.classList.add("hidden");
@@ -165,6 +167,7 @@ let clFiveCreate = document.querySelector(".clFivecreate")
 clFiveCreate.addEventListener("click", () => {
     layoutFive.classList.add("hidden");
     portBod5.classList.remove("hidden");
+    footer5.classList.remove("hidden");
     inviSec5.classList.remove("hidden");
     menuSec5.classList.remove("hidden");
     catSec5.classList.remove("hidden");

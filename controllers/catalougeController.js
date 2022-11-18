@@ -4,6 +4,8 @@ const multer = require('multer');
 const sharp = require('sharp');
 const Catalouge = require('./../models/catalougeModel');
 const Company = require('./../models/companyModel');
+const Theme = require('./../models/themeModel');
+
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
@@ -170,10 +172,12 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
     const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate()
     const catalouges = await features.query
     const company = await Company.find({ user: user_id })
+    const theme = await Theme.find({ themeCategory: "Cataloge" })
     res.status(200).render('catalouge/additem', {
         title: 'Add Items To Catalouge',
         company,
-        catalouges
+        catalouges,
+        theme
     })
 })
 

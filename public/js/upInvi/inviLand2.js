@@ -60,6 +60,7 @@ let upinabout2 = document.getElementById("upinabout2");
 let upinwhat2 = document.getElementById('upinwhat2');
 let upinwhy2 = document.getElementById("upinwhy2");
 let upinwork2 = document.getElementById("upinwork2");
+let upintheme2 = document.getElementById("upinTheme2")
 let updinBtn2 = document.getElementById("updateinBtn2");
 let upinImgBtn2 = document.getElementById("updateinImgBtn2");
 let in2img = document.querySelector('#in2img');
@@ -85,8 +86,8 @@ updinBtn2.addEventListener("click", async (e) => {
                 about: upinabout2.value,
                 address: upinwhat2.value,
                 pdate: upinwhy2.value,
-                theme: inthemes2.value,
-                ptime: upinwork2.value
+                ptime: upinwork2.value,
+                theme: upintheme2.value
             })
         }).then((response) => {
             load.classList.add("hidden");

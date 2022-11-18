@@ -67,12 +67,23 @@ block content
                         .form__bod
                             label Slogan (optional): 
                             input#resslogan(type="text", placeholder=restro[0].slogan)
+                        .form__bod
+                            label Contact: 
+                            input#resContact(type="number", placeholder=restro[0].phn_no)
+                        .form__bod 
+                            label Change Theme (optional):
+                            select#menuThemes
+                                option.opt(hidden selected)= restro[0].theme 
+                                each item in theme 
+                                    if (item.themeType === 'Free' || item.validMenuUser.includes(user.id))
+                                        option.opt(value=`${item.themeId}`)= item.name
                         p.restro__len.hidden= restro.length
                         if (restro.length !== 0)
                             p.restro__id.hidden= restro[0]._id
                         else 
                             p.restro__id.hidden
                         button#updateResBtn.blackbtn Update Restaurant
+                include ../_footer
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !

@@ -574,7 +574,7 @@
 }
 
 
-  .error__cont{
+.error__cont{
     position: fixed;
     top: 40vh;
     background-color: rgba(220, 20, 60, 0.527);
@@ -587,6 +587,22 @@
     font-size: small;
     z-index: 1;
   }
+
+  .fot_sec{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: .7em;
+  }
+
+.footer__first__bod{
+    width: 50%;
+}
+
+.footer__contact__bod{
+    padding-left: 45%;
+}
+
 
 @media (max-height: 600px) {
     .main__content__log{
@@ -693,6 +709,10 @@
     .msg__form input, .msg__form textarea, .msg__form select{
         margin: 4%;
         padding: 4%;
+    }
+
+    .footer__contact__bod{
+        padding-left: 0;
     }
 }
 

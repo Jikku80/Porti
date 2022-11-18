@@ -11,9 +11,9 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
         </div>
         <div class="form__cont">
             <label>Second Person Name:</label>
-            <p>If its a marriage use your loved ones name, else use organizer or any name</p>
             <input id=${val1} type="text" placeholder="Juliet" required/>
         </div>
+        <p>If its a marriage use your loved ones name, else use organizer or any name</p>
         <div class="form__cont">
             <label>Your Story :) :</label>
             <textarea id=${val2} rows="4" cols="30" placeholder="We met at a bar down the alley..." required></textarea>

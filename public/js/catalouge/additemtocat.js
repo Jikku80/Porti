@@ -329,85 +329,6 @@ prev.addEventListener("click", async () => {
     })
 })();
 
-// (function () {
-//     let restroId = document.querySelector(".comp__len").innerText;
-//     let updateRestroBtn = document.getElementById("updateCompBtn");
-//     let addRestroBtn = document.getElementById("addCompBtn");
-//     if (restroId >= 1) {
-//         addRestroBtn.classList.add("hidden")
-//         updateRestroBtn.classList.remove("hidden");
-//     } else {
-//         updateRestroBtn.classList.add("hidden");
-//         addRestroBtn.classList.remove('hidden');
-//     }
-// })();
-
-// (function () {
-//     let addRestroBtn = document.getElementById("addCompBtn");
-//     let resName = document.getElementById("compname");
-//     let compemail = document.getElementById("compemail");
-//     let compsocial = document.getElementById("compsocial");
-//     let comploc = document.getElementById("complocationLink");
-//     let resAddress = document.getElementById("compaddress");
-//     let compcontact = document.getElementById("compcontact");
-//     let resSlogan = document.getElementById("compslogan");
-//     let tmcolor = document.getElementById("companyColor");
-
-//     addRestroBtn.addEventListener("click", async (e) => {
-//         if (resName.value < 1 || resName.value == "" || resName.value == null) {
-//             return false;
-//         }
-//         if (compemail.value < 1 || compemail.value == "" || compemail.value == null) {
-//             return false;
-//         }
-//         if (resAddress.value < 1 || resAddress.value == "" || resAddress.value == null) {
-//             return false;
-//         }
-//         if (compcontact.value < 1 || compcontact.value == "" || compcontact.value == null) {
-//             return false;
-//         }
-//         e.preventDefault();
-//         try {
-//             let load = document.querySelector('.loader');
-//             load.classList.remove("hidden")
-//             const endpoint = `/api/v1/catalouge/createCompany`
-//             await fetch(endpoint, {
-//                 method: 'POST',
-//                 headers: {
-//                     Accept: "application/json, text/plain, */*",
-//                     'Content-type': 'application/json',
-//                 },
-//                 body: JSON.stringify({
-//                     name: resName.value,
-//                     email: compemail.value,
-//                     social: compsocial.value,
-//                     locationLink: comploc.value,
-//                     slogan: resSlogan.value,
-//                     Address: resAddress.value,
-//                     contact: compcontact.value,
-//                     themecolor: tmcolor.value
-//                 })
-//             }).then((response) => {
-//                 load.classList.add("hidden");
-//                 if (response.status === 201) {
-//                     successAlert("Company Details Updated Successfully :)");
-//                     window.setTimeout(() => {
-//                         location.reload();
-//                     }, 400);
-//                 } else {
-//                     console.log(response);
-//                     errorAlert("Invalid input!!!")
-//                 }
-//             })
-//         }
-//         catch (err) {
-//             console.log(err);
-//             errorAlert('Sorry! Something went wrong', err);
-//         };
-//     })
-// })();
-
-
 (function () {
     let updateRestroBtn = document.getElementById("updateCompBtn");
     let restroId = document.querySelector(".comp__id").innerText;
@@ -419,6 +340,7 @@ prev.addEventListener("click", async () => {
     let compsocial = document.getElementById("compsocial");
     let comploc = document.getElementById("complocationLink");
     let compcolor = document.getElementById("companyColor");
+    let compTheme = document.getElementById("compTheme")
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -452,6 +374,7 @@ prev.addEventListener("click", async () => {
                     slogan: resSlogan.value,
                     Address: resAddress.value,
                     contact: compcontact.value,
+                    theme: compTheme.value,
                     themecolor: compcolor.value
                 })
             }).then((response) => {

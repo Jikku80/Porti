@@ -22,8 +22,11 @@
                 input#upinwhy2(name="why" value= `${invite.pdate}` required)
             .form__bod 
                 label Change Theme 
-                select#inthemes2.thim
-                    option.opt(hidden selected)= invite.theme 
+                select#upinTheme2
+                    option.opt(hidden selected)= `${invite.theme}` 
+                    each item in theme 
+                        if (item.themeType === 'Free' || item.validInviUser.includes(user.id))
+                            option.opt(value=`${item.themeId}`)= item.name 
             .form__bod
                 label Time:
                 input#upinwork2(name="previous" value= `${invite.ptime}` required)

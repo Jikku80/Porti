@@ -84,6 +84,13 @@ block content
                             label(for="company_slogan") Company Slogan (optional): 
                             input#compslogan(type="text", placeholder=company[0].slogan)
                         .form__bod 
+                            label Change Theme (optional):
+                            select#compTheme
+                                option.opt(hidden selected)= company[0].theme 
+                                each item in theme 
+                                    if (item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
+                                        option.opt(value=`${item.themeId}`)= item.name
+                        .form__bod 
                             label(for="company_color") Pick a theme color (optional);
                             input#companyColor(type="color" value="#1A9ACC")
                         p.comp__len.hidden= company.length
@@ -107,6 +114,8 @@ block content
                         .compimg__id.hidden
                         #compcoverimage
                         #compUpdateImgBtn
+            .to__left
+                include ../_footer
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !

@@ -1,4 +1,5 @@
 create_portC = document.querySelector(".create_port")
+footerBodC = document.querySelector(".footer")
 portBodC = document.querySelector(".port__section");
 inviBodC = document.querySelector(".invi__section");
 menuBodC = document.querySelector('.menu__section');
@@ -20,6 +21,7 @@ catalogeLayouts.forEach(item => {
     item.addEventListener("click", () => {
         location.hash = "#portNav";
         portBodC.classList.add("hidden");
+        footerBodC.classList.add("hidden");
         inviBodC.classList.add("hidden");
         menuBodC.classList.add("hidden");
         catBodC.classList.add("hidden");
@@ -94,6 +96,7 @@ let cancelCataloge = document.querySelector(".cancel__cataloge");
 cancelCataloge.addEventListener("click", () => {
     mkCForm.classList.add("hidden");
     portBodC.classList.remove("hidden");
+    footerBodC.classList.remove("hidden");
     inviBodC.classList.remove("hidden");
     menuBodC.classList.remove("hidden");
     catBodC.classList.remove("hidden");

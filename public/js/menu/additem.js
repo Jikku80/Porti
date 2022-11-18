@@ -306,6 +306,8 @@ prev.addEventListener("click", async () => {
     let resName = document.getElementById("resname");
     let resAddress = document.getElementById("resaddress");
     let resSlogan = document.getElementById("resslogan");
+    let resTheme = document.getElementById("menuThemes");
+    let resContact = document.getElementById("resContact")
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -328,7 +330,9 @@ prev.addEventListener("click", async () => {
                 body: JSON.stringify({
                     name: resName.value,
                     slogan: resSlogan.value,
-                    Address: resAddress.value
+                    Address: resAddress.value,
+                    theme: resTheme.value,
+                    phn_no: resContact.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");
