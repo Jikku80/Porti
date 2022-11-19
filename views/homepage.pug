@@ -379,7 +379,7 @@ block content
                     li We will add new features in our updates to make things easy for you.
                 h3 What Lakhey De Tech Do It For?
                 ul 
-                    li . 
+                    li Lakhey De Tech wants to help you guys as much as possible 
                 h3 Copyright Notice 
                 p The entire Porti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The porti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
                 p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
@@ -388,33 +388,42 @@ block content
                     span.maf Lakhey 
                         span.gry De 
                             span.mid Tech
-                .sender
-                    .msg-form
-                        h3.heading-secondary.ma-bt-lg Send Message To Lakhey De Tech
-                        form.msg__form
-                            label.form__label(for='name') Name
-                            input#msgname.form__input(type='text', name="name", placeholder='your name', required)
-                            label.form__label(for='email') Email address
-                            input#msgemail.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
-                            label.form__label(for='siteType') Site Type 
-                            select.form__select(type='select', name="siteType", id="siteType")
-                                    option(value="E-commerce") E-commerce
-                                    option(value="Logistic") Logistic 
-                                    option(value="Blog") Blog 
-                                    option(value="E-learning") E-learning 
-                                    option(value="Media") Media 
-                                    option(value="Other") Other
-                            label.form__label(for='message') Message 
-                            textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="30", required)
-                            .form__group
-                            button.send__msg.greybtn Send
+                if (!user)
+                    p You need to Login || SignUp to message Us.  
+                    br  
+                    a.greybtn(href="/login") Login || SignUp
+                    .send__msg 
+                    .loader.hidden
+                else
+                    p Please feel free to rate, give us your feedback. Your feedbacks will help Porti get better ;)
+                    .sender
+                        .msg-form
+                            h3.heading-secondary.ma-bt-lg Send Message To Lakhey De Tech
+                            form.msg__form
+                                label.form__label(for='name') Name
+                                input#msgname.form__input(type='text', name="name", placeholder='your name', required)
+                                label.form__label(for='email') Email address
+                                input#msgemail.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
+                                label.form__label(for='siteType') Query Type 
+                                select.form__select(type='select', name="siteType", id="siteType")
+                                        option(value="query") Query
+                                        option(value="review") Review
+                                        option(value="bug") Bug report 
+                                        option(value="payment") Payment Problem 
+                                        option(value="theme") Theme Problem
+                                        option(value="unlock") Theme Unlock Problem 
+                                        option(value="Other") Other
+                                label.form__label(for='message') Message 
+                                textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="30", required)
+                                .form__group
+                                button.send__msg.greybtn Send
 
-                        h1.loader
-                            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                            span Por
-                            span.grn t
-                            span.nocaps i
-                        img#ok.hidden(src="/images/ok.png", alt="loader")
+                            h1.loader
+                                img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+                                span Por
+                                span.grn t
+                                span.nocaps i
+                            img#ok.hidden(src="/images/ok.png", alt="loader")
 
             #devSection.padder 
                 h2 Become a 

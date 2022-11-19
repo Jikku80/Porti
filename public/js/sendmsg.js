@@ -29,7 +29,7 @@ sendMsg.addEventListener("click", async (e) => {
             body: JSON.stringify({
                 name: msgfullName.value,
                 email: msgemail.value,
-                siteType: msgsiteType.value,
+                queryType: msgsiteType.value,
                 message: msgmessage.value
             })
         }).then((response) => {

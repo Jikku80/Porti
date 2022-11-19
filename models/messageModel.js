@@ -13,10 +13,10 @@ const messageSchema = new mongoose.Schema({
         lowercase: true,
         validate: [validator.isEmail, 'please provide a valid email address!']
     },
-    siteType: {
+    queryType: {
         type: String,
-        enum: ['E-commerce', 'Logistic', 'Blog', 'E-learning', 'Media', 'Other'],
-        default: 'E-commerce'
+        enum: ['query', 'review', 'bug', 'payment', 'theme', 'unlock', 'Other'],
+        default: 'query'
     },
     message: {
         type: String,
