@@ -66,7 +66,6 @@ window.addEventListener("load", async () => {
     let price = document.getElementById("upitemprice");
     let cat = document.getElementById("upitemcat");
     let detail = document.getElementById("upitemdetail");
-    let theme = document.getElementById("upitemtheme");
     upItemBtn.addEventListener("click", async (e) => {
         if (name.value < 1 || name.value == "" || name.value == null) {
             return false;
@@ -92,8 +91,7 @@ window.addEventListener("load", async () => {
                     name: name.value,
                     price: price.value,
                     category: cat.value,
-                    detail: detail.value,
-                    theme: theme.value
+                    detail: detail.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

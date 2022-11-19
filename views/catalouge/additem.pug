@@ -64,25 +64,25 @@ block content
                     form#upCompany.upItem
                         .form__bod
                             label(for="company_name") Company Name:
-                            input#compname(type="text" required placeholder=company[0].name)
+                            input#compname(type="text" required value=company[0].name)
                         .form__bod
                             label(for="company_email") Company Email: 
-                            input#compemail(type="email" required placeholder=company[0].email)
+                            input#compemail(type="email" required value=company[0].email)
                         .form__bod
                             label(for="comapny_social_account") Company Social Account Link (optional): 
-                            input#compsocial(type="text" placeholder=company[0].social)
+                            input#compsocial(type="text" value=company[0].social)
                         .form__bod
                             label(for="company_address") Company Address: 
-                            input#compaddress(type="text" required placeholder=company[0].Address)
+                            input#compaddress(type="text" required value=company[0].Address)
                         .form__bod
                             label(for="company_address_link") Address Link (optional): 
-                            input#complocationLink(type="text" placeholder=company[0].locationLink)
+                            input#complocationLink(type="text" value=company[0].locationLink)
                         .form__bod
                             label(for="company_contact") Company Contact: 
-                            input#compcontact(type="text" required placeholder=company[0].contact)
+                            input#compcontact(type="text" required value=company[0].contact)
                         .form__bod
                             label(for="company_slogan") Company Slogan (optional): 
-                            input#compslogan(type="text", placeholder=company[0].slogan)
+                            input#compslogan(type="text", value=company[0].slogan)
                         .form__bod 
                             label Change Theme (optional):
                             select#compTheme

@@ -70,7 +70,6 @@ window.addEventListener("load", async () => {
     let cat = document.getElementById("upcatalitemcat");
     let subcat = document.getElementById("upcatalitemsubcat");
     let detail = document.getElementById("upcatalitemdetail");
-    let theme = document.getElementById("upcatalitemtheme");
     upItemBtn.addEventListener("click", async (e) => {
         if (name.value < 1 || name.value == "" || name.value == null) {
             return false;
@@ -98,8 +97,7 @@ window.addEventListener("load", async () => {
                     price: price.value,
                     category: cat.value,
                     subcategory: subcat.value,
-                    detail: detail.value,
-                    theme: theme.value
+                    detail: detail.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

@@ -1,3 +1,8 @@
+html{
+    scrollbar-width: thin;
+    font-size: 10px;
+}
+
 .your__item__bod{
     display: flex;
     justify-content: center;

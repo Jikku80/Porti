@@ -12,7 +12,7 @@ block content
             p.curusrid.hidden= user.id
             .itemform__head 
                 a.blackbtn(href=`/catalouge/${user._id}/additems` title="Add Items") Go Back
-                a.blackbtn(href=`/${user.name}/catalouge/${user._id}/51eac6b471a284d3341d8c0c63d0f1a286262a18` title="My Menu") My Catalouge
+                a.blackbtn(href=`/${user.name}/catalouge/${user._id}` title="My Menu") My Catalouge
             .center
                 .your__items__bod
                     .your__items
@@ -38,10 +38,6 @@ block content
                     .form__bod
                         label Detail (optional):
                         textarea#upcatalitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= catalouge.detail
-                    .form__bod 
-                        label Theme:
-                        select#upcatalitemtheme
-                            option.opt(hidden selected)= catalouge.theme 
                     .group__btn
                         button#upcatalItemBtn.smallbtn.ygbtn Update Item
                         a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel

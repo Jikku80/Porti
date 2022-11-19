@@ -60,16 +60,16 @@ block content
                     form#upRestro.upItem
                         .form__bod
                             label Restaurant Name:
-                            input#resname(type="text" required placeholder=restro[0].name)
+                            input#resname(type="text" required value=restro[0].name)
                         .form__bod
                             label Address: 
-                            input#resaddress(type="text" required placeholder=restro[0].Address)
+                            input#resaddress(type="text" required value=restro[0].Address)
                         .form__bod
                             label Slogan (optional): 
-                            input#resslogan(type="text", placeholder=restro[0].slogan)
+                            input#resslogan(type="text", value=restro[0].slogan)
                         .form__bod
                             label Contact: 
-                            input#resContact(type="number", placeholder=restro[0].phn_no)
+                            input#resContact(type="number", value=restro[0].phn_no)
                         .form__bod 
                             label Change Theme (optional):
                             select#menuThemes

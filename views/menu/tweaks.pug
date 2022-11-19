@@ -13,7 +13,7 @@ block content
             p.curid.hidden= user.id
             .itemform__head 
                 a.blackbtn(href=`/menu/${user._id}/additemstomenu` title="Add Items") Go Back
-                a.blackbtn(href=`/${user.name}/menu/${user._id}/40bd001563085fc35165329ea1ff5c5ecbdbbeef` title="My Menu") My Menu
+                a.blackbtn(href=`/${user.name}/menu/${user._id}` title="My Menu") My Menu
             .center
                 .sub__items__bod
                     .sub__items
@@ -33,10 +33,6 @@ block content
                     .form__bod
                         label(for="upitemdetail") Detail (optional):
                         textarea#upitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
-                    .form__bod 
-                        label(for="upitemtheme") Theme:
-                        select#upitemtheme
-                            option.opt(hidden selected)= menu.theme 
                     .group__btn
                         button#upItemBtn.smallbtn.ygbtn Update Item
                         a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel

@@ -10,14 +10,14 @@
             span.nocaps i
         a(href="/me")
             if (user.photo)
-                img.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
+                img#menuImg.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)
             else 
-                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
-        a(href="/porti" title="layouts") Layouts
-        a(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
-        a(href=`/invitations/${user._id}` title="your invitation") Invitaions
-        a(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
-        a(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+                img#menuImg.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
+        a#menuLayouts.anavi(href="/porti" title="layouts") Layouts
+        a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
+        a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
+        a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+        a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
         #logout.logout.pointer SignOut
 
 script(src="/js/alert.js")  
