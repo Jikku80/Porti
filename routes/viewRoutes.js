@@ -13,14 +13,12 @@ const router = express.Router();
 router.get('/logout', authController.logout);
 router.patch('/passwordreset', authController.resetPassword);
 
-router.get('/:user/portfolio/:userid/ldt/:id', viewsController.layoutTally);
+router.get('/profile/:username', viewsController.layoutTally);
 
-router.get('/:user/invitation/:id', inlayoutController.inviFirst);
-// router.get('/:user/invitation/:id/4dc50fc3bc007be011b5445f3f79298b9eeb51b7', inlayoutController.inviFirst);
-// router.get('/:user/invitation/:id/c71c0e24cd20e4b25ae8e3d9e35337500a44a8f7', inlayoutController.inviSecond);
+router.get('/invitation/:user/:id', inlayoutController.inviFirst);
 
-router.get('/:user/menu/:id', menuController.menuFirst);
-router.get('/:user/catalouge/:id', catalougeController.firstCatalouge);
+router.get('/menu/:user', menuController.menuFirst);
+router.get('/catalog/:user', catalougeController.firstCatalouge);
 
 
 router.post('/sendmsg', viewsController.newMsg);
@@ -45,8 +43,8 @@ router.get('/menu/:id/additemstomenu', menuController.newMenu);
 router.get('/catalouge/:id/additems', catalougeController.addItemsPage);
 
 
-router.get('/:id/tweaks', menuController.itemTweaks);
-router.get('/:id/catalougetweaks', catalougeController.itemTweaks);
+router.get('/tweaks/:id', menuController.itemTweaks);
+router.get('/catalougetweaks/:id', catalougeController.itemTweaks);
 
 
 router.get('/login', viewsController.getOverview);

@@ -34,12 +34,26 @@ const createSendToken = (user, statusCode, req, res) => {
 }
 
 exports.signup = catchAsync(async (req, res, next) => {
+    const UserList = await User.find();
+    let newUserName = req.body.name;
+    let inun = newUserName.toLowerCase()
+    // let newUserEmail = req.body.email;
+    let allUserNames = []
+    UserList.forEach((item) => {
+        userNames = item.name
+        allUserNames.push(userNames.toLowerCase())
+    })
+
+    if (allUserNames.includes(inun)) {
+        return next(new AppError('User with this username already exits', 409));
+    }
     const newUser = await User.create({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
         termsandconditionagreed: req.body.termsandconditionagreed
+
     });
 
     const url = `${req.protocol}://${req.get('host')}/me`;

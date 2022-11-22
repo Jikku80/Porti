@@ -5,11 +5,14 @@ const sharp = require('sharp');
 const Catalouge = require('./../models/catalougeModel');
 const Company = require('./../models/companyModel');
 const Theme = require('./../models/themeModel');
+const User = require('./../models/userModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
 const APIFeatures = require('./../utils/apiFeatures');
+
+const atob = require('./../utils/decode');
 
 const multerStorage = multer.memoryStorage();
 
@@ -182,15 +185,16 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
 })
 
 exports.firstCatalouge = catchAsync(async (req, res, next) => {
-    const user_id = req.params.id
-    const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate()
+    const user_name = req.params.user
+    const usr = await User.find({ name: user_name });
+    const features = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate()
     const catalouges = await features.query
-    await Company.find({ user: user_id }).populate('user').then(company => {
+    await Company.find({ user: usr[0]._id }).populate('user').then(company => {
         let theme = company[0].theme
         switch (theme) {
             case "51eac6b471a284d3341d8c0c63d0f1a286262a18":
                 res.status(200).render('catalouge/firstCatalouge', {
-                    title: "Catalouge",
+                    title: `${company[0].name}`,
                     catalouges,
                     company: company[0]
                 })

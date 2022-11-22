@@ -506,6 +506,11 @@ html{
   border-bottom-left-radius: 1rem;
 }
 
+.inpt__disable{
+  border: 2px solid gray;
+  color: gray;
+}
+
 .portForm input, .portForm textarea{
   padding: 3%;
   border: 2px solid teal;

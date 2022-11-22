@@ -4,7 +4,7 @@ let icat = document.getElementById("itemcat");
 let idetail = document.getElementById("itemdetail");
 let icimg = document.getElementById("coverimage");
 let additembtn = document.getElementById("addItemBtn");
-let itheme = "40bd001563085fc35165329ea1ff5c5ecbdbbeef"
+// let itheme = "40bd001563085fc35165329ea1ff5c5ecbdbbeef"
 
 additembtn.addEventListener("click", async (e) => {
     if (iname.value < 1 || iname.value == "" || iname.value == null) {
@@ -28,7 +28,6 @@ additembtn.addEventListener("click", async (e) => {
     formData.append("price", iprice.value);
     formData.append("category", icat.value);
     formData.append("detail", idetail.value);
-    formData.append("theme", itheme);
     formData.append("coverImage", icimg.files[0]);
     const endpoint = '/api/v1/menu'
     try {
@@ -41,7 +40,6 @@ additembtn.addEventListener("click", async (e) => {
                 successAlert("You Just Added a Item to your Menu :)");
                 let result = response.json();
                 result.then(item => {
-                    console.log(item.data);
                     let fResult = item.data.data
                     subItems.innerHTML += `
                                 <div class="menu__card">
@@ -51,8 +49,8 @@ additembtn.addEventListener("click", async (e) => {
                                         <p class="menu__card__price">${fResult.price}</p>
                                         <p class="menu__card__cat">${fResult.category}</p>
                                         <p class="menu__card__detail">${fResult.detail}</p>
-                                        <a href="/${fResult._id}/tweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${fResult._id}/tweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/tweaks/${fResult._id}?update" class="ygbtn">Update</a>
+                                        <a href="/tweaks/${fResult._id}?delete" class="redbtn">Delete</a>
                                         </div>
                                     </div>
                         `
@@ -107,8 +105,8 @@ async function getAllItem() {
                                         <p class="menu__card__price">${el.price}</p>
                                         <p class="menu__card__cat">${el.category}</p>
                                         <p class="menu__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/tweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/tweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -185,8 +183,8 @@ next.addEventListener("click", async () => {
                                         <p class="menu__card__price">${el.price}</p>
                                         <p class="menu__card__cat">${el.category}</p>
                                         <p class="menu__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/tweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/tweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -249,8 +247,8 @@ prev.addEventListener("click", async () => {
                                         <p class="menu__card__price">${el.price}</p>
                                         <p class="menu__card__cat">${el.category}</p>
                                         <p class="menu__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/tweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/tweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -271,13 +269,12 @@ prev.addEventListener("click", async () => {
 
 (function () {
     let shareLink = document.querySelector(".share__link");
-    let uname = document.querySelector(".uname__menu").innerText;
-    let nm = uname.replace(/\s/g, '')
-    // let restroId = document.querySelector(".restro__id").innerText;
+    let nm = document.querySelector(".uname__menu").innerText;
+    // let nm = uname.replace(/\s/g, '')
     shareLink.innerHTML += `
         <div class="menu__link">
             <p class="head">Your Menu Link</p>
-            <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/${nm}/menu/${resultpath[1]}</p>
+            <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/menu/${nm}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
             <button class="ygbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
@@ -286,7 +283,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openMenu");
     openMenu.addEventListener("click", () => {
-        window.open(`/${nm}/menu/${resultpath[1]}`)
+        window.open(`/menu/${nm}`)
     })
 
     let menuLinkDis = document.querySelector(".menu__link__displayer");

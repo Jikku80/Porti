@@ -1,25 +1,17 @@
 let url = document.getElementById('urlLink');
-let portName = document.getElementById('port_name').innerText;
-portName = portName.replace(/\s/g, '');
-let endP = document.getElementById('endpoint');
-let end = endP.innerText;
-end = btoa(end);
-let portithemepoint = document.getElementById('portitheme').innerText;
-
-let user__id = document.getElementById('user__id').innerText;
-let user_id = btoa(user__id)
+let portName = document.getElementById('user__nam').innerText;
 // let searchPoint = location.search.slice(1);
 
 url.innerHTML = `
 <button id="openport" class="redbtn">My Portfolio</button>
 <p class="xsf">Share your potfolio with the link below</p>
-<p class="port_link">${location.protocol}://${location.host}/${portName}/portfolio/${user_id}/ldt/${end}</p>
+<p class="port_link nocaps">${location.protocol}://${location.host}/profile/${portName}</p>
 `
 
 openport = document.getElementById("openport");
 
 openport.addEventListener("click", () => {
-    let myurl = `/${portName}/portfolio/${user_id}/ldt/${end}`
+    let myurl = `/profile/${portName}`
     window.open(myurl);
 })
 

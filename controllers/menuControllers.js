@@ -3,6 +3,7 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const Menu = require('./../models/menuModel');
+const User = require('./../models/userModel')
 const Restaurant = require('./../models/restaurantDetailModel');
 const Theme = require('./../models/themeModel');
 
@@ -10,6 +11,8 @@ const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
 const APIFeatures = require('./../utils/apiFeatures');
+
+const atob = require('./../utils/decode');
 
 const multerStorage = multer.memoryStorage();
 
@@ -164,15 +167,16 @@ exports.itemTweaks = catchAsync(async (req, res) => {
 })
 
 exports.menuFirst = catchAsync(async (req, res, next) => {
-    const user_id = req.params.id
-    const features = new APIFeatures(Menu.find({ user: user_id }), { limit: 12, page: req.query.page }).paginate();
+    const username = req.params.user
+    const usr = await User.find({ name: username });
+    const features = new APIFeatures(Menu.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate();
     const menus = await features.query
-    await Restaurant.find({ user: user_id }).populate('user').then(restro => {
+    await Restaurant.find({ user: usr[0]._id }).populate('user').then(restro => {
         let theme = restro[0].theme
         switch (theme) {
             case "40bd001563085fc35165329ea1ff5c5ecbdbbeef":
                 res.status(200).render('menu/firstMenu', {
-                    title: "Menu",
+                    title: `${restro[0].name}`,
                     restro,
                     menus
                 })

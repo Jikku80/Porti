@@ -13,7 +13,27 @@ window.addEventListener("load", () => {
 })
 
 updateBtn.addEventListener("click", async (e) => {
+    let same = document.querySelector(".sami__user__warn");
+    let whiteSpace = document.querySelector(".whiti__space");
+    let specialCharac = document.querySelector(".onallowed__charc");
+    let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+
+
+    same.classList.add("hidden");
+    whiteSpace.classList.add("hidden");
+    specialCharac.classList.add("hidden");
+
     if (upname.value < 1 || upname.value == "" || upname.value == null) {
+        return false;
+    }
+    if (/\s/.test(upname.value)) {
+        e.preventDefault();
+        whiteSpace.classList.remove("hidden");
+        return false;
+    }
+    if (pattern.test(upname.value)) {
+        e.preventDefault();
+        specialCharac.classList.remove("hidden");
         return false;
     }
     if (upemail.value < 1 || upemail.value == "" || upemail.value == null) {
@@ -40,8 +60,14 @@ updateBtn.addEventListener("click", async (e) => {
                 window.setTimeout(() => {
                     location.assign('/me');
                 }, 400);
-            } else {
-                errorAlert("Email or Name is not Valid!! Use a different One :(")
+            }
+            else if (response.status === 409) {
+                errorAlert("User with this name already exists! Use Different Name!")
+                same.classList.remove("hidden");
+            }
+            else {
+                console.log(response)
+                errorAlert("Email is not Valid!! Use a different One :(")
             }
         })
     }
@@ -49,8 +75,6 @@ updateBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong :(', err);
     };
-    upname.value = "";
-    upemail.value = "";
 })
 
 pwdUpdate.addEventListener("click", async (e) => {

@@ -11,13 +11,13 @@ endinvi = btoa(endinvi);
 inviteurl.innerHTML = `
 <button id="openinvite" class="redbtn">My Invitation</button>
 <p class="xsf">Share your Invitation with the link below</p>
-<p class="invi_link">${location.protocol}://${location.host}/${inviteName}/invitation/${endinvi}</p>
+<p class="invi_link nocaps">${location.protocol}://${location.host}/invitation/${inviteName}/${endinvi}</p>
 `
 
 openinvite = document.getElementById("openinvite");
 
 openinvite.addEventListener("click", () => {
-    let myurl = `/${inviteName}/invitation/${endinvi}`
+    let myurl = `/invitation/${inviteName}/${endinvi}`
     window.open(myurl);
 })
 

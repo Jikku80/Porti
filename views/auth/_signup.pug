@@ -9,8 +9,12 @@ button#signup.redbtn SignUp
             .signup__bod
                 label.form__label(for='text') Name
                 input#m_name.form__input(type='text', name="email_add", placeholder='Your Name', required)
+                p.same__user__warn.maf.hidden User with this name already exits. Please use a different one!
+                p.white__space.maf.hidden You cannot use space in name!!!
+                p.unallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
                 label.form__label(for='email') Email Address
                 input#m_email.form__input(type='email', name="m_email", placeholder='you@example.com', required)
+                p.same__email__warn.maf.hidden Email already in Use. Please use a different one or go to Forgot Password!
                 label.form__label(for='password') Password 
                 p Note: Password Must be atleast 9 Characters long
                 input#m_password.form__input(type='password', name="m_password", placeholder='********', required, minlength='8')

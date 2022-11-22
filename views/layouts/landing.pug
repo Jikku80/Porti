@@ -21,7 +21,7 @@ block content
                             if (portImage.length === 0)
                                 h1.banner.second__access No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
                             .portfolio__tweaks
-                                include _addImage.pug
+                                include _addImage
                                 if (portImage.length !== 0)
                                     
                                     .portImage__tweak__sec#portImageTweakSec
@@ -58,7 +58,7 @@ block content
                             .port__link
                                 #urlLink
                                     span#endpoint= `${portfolio._id}`
-                                    span#user__id= user._id
+                                    span#user__nam= portfolio.user.name
                                     span#portitheme= portfolio.theme   
                             .copy__link 
                                 button#copyLink.redbtn Copy Link

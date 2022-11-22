@@ -43,6 +43,7 @@ block content
                 h2.secHead Prior Accomplishments
                 img#fourthSecClose(src="/images/cancel.png", alt="cancel__img")
             pre.ansFont= portfolio.previous 
+            p.prof__user__id.hidden= portfolio.user._id
             .prev__cont
                 .prev__cont__sub#fourthImgCont
                     if (portImage.length === 0)

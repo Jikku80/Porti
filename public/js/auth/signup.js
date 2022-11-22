@@ -21,9 +21,29 @@ signCancel.addEventListener("click", () => {
 })
 
 signup.addEventListener('click', async (e) => {
+    let sameE = document.querySelector(".same__email__warn");
+    let same = document.querySelector(".same__user__warn");
+    let whiteSpace = document.querySelector(".white__space");
+    let specialCharac = document.querySelector(".unallowed__charc");
+    let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+    sameE.classList.add("hidden");
+    same.classList.add("hidden");
+    whiteSpace.classList.add("hidden");
+    specialCharac.classList.add("hidden");
+
     let mpwdLen = mpassword.value.length;
 
     if (mname.value < 1 || mname.value == "" || mname.value == null) {
+        return false;
+    }
+    if (/\s/.test(mname.value)) {
+        e.preventDefault();
+        whiteSpace.classList.remove("hidden");
+        return false;
+    }
+    if (pattern.test(mname.value)) {
+        e.preventDefault();
+        specialCharac.classList.remove("hidden");
         return false;
     }
     if (memail.value < 1 || memail.value == "" || memail.value == null) {
@@ -76,8 +96,15 @@ signup.addEventListener('click', async (e) => {
                 window.setTimeout(() => {
                     location.assign('/me');
                 }, 400);
-            } else {
+            }
+            else if (response.status === 409) {
+                errorAlert("User with this name already exists! Use Different Name!")
+                same.classList.remove("hidden");
+            }
+            else {
+                console.log(response)
                 errorAlert("The Given Email already has a account! Use Forget Password to change your password")
+                sameE.classList.remove("hidden");
             }
         })
     }

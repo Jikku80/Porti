@@ -115,12 +115,13 @@ exports.myInvi = catchAsync(async (req, res) => {
 })
 
 exports.layoutTally = catchAsync(async (req, res, next) => {
-    const port_id = atob(req.params.id)
-    const user_id = atob(req.params.userid)
+    const user_name = req.params.username
+    const usr = await User.find({ name: user_name });
+
     const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 12, page: pg }).paginate();
     const portImage = await features.query
-    await Portfolio.findById(port_id).populate('user').then(portfolio => {
+    await Portfolio.findOne({ user: usr[0]._id }).populate('user').then(portfolio => {
 
         let theme = portfolio.theme
 
@@ -180,6 +181,19 @@ exports.getAccount = (req, res) => {
 
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
+    const UserList = await User.find();
+    let newUserName = req.body.name;
+    let inun = newUserName.toLowerCase()
+    let allUserNames = []
+    UserList.forEach((item) => {
+        userNames = item.name
+        allUserNames.push(userNames.toLowerCase())
+    })
+
+    if (allUserNames.includes(inun)) {
+        return next(new AppError('User with this username already exits', 409));
+    }
+
     const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
         {

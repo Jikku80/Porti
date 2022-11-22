@@ -128,6 +128,10 @@ p{
     text-align: left;
 }
 
+.port_link{
+    font-size: 2em;
+}
+
 .redbtn, .ygbtn{
     border: 2px solid crimson;
     background-color: transparent;
@@ -766,6 +770,10 @@ input::file-selector-button{
         padding: 2%;
     }
 
+    .port_link{
+        font-size: 1.5em;
+    }
+
     .banner{
         font-size: 12px;
     }
@@ -881,6 +889,9 @@ input::file-selector-button{
     .port_link, .invi_link{
         font-size: 3px;
         padding: 2%;
+    }
+    .port_link{
+        font-size: 1.2em;
     }
     .form__bod label{
         font-size: 1.2rem;

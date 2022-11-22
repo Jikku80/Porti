@@ -38,6 +38,7 @@ block content
             .prev__sec__other(id=`${portfolio.focusColor}`)
                 h3.headFont Accomplishments
                 pre.ansFont= portfolio.previous
+                p.prof__user__id.hidden= portfolio.user._id
                 .prev__cont
                     .prev__cont__sub#thirdImgCont
                         if (portImage.length === 0)

@@ -20,9 +20,12 @@ block content
             form#upInfo
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name
-                input#upname.form__input(type='text', placeholder=`${user.name}`, required)
+                input#upname.form__input(type='text', value=`${user.name}`, required)
+                p.sami__user__warn.maf.hidden User with this name already exits. Please use a different one!
+                p.whiti__space.maf.hidden You cannot use space in name!!!
+                p.onallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
                 label.form__label(for='email') Email Address 
-                input#upemail.form__input(type='email', placeholder=`${user.email}`, required)
+                input#upemail.form__input.inpt__disable(type='email', value=`${user.email}`, disabled, required)
                 button.update__account.redbtn Update Info
 
             .update__account__password

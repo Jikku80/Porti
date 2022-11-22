@@ -19,6 +19,7 @@ block content
             if (company)
                 h1.blackbg= company.name
                 p.comp__color.hidden= company.themecolor
+                p.comp__user__id.hidden= company.user._id
             else
                 p.comp__color.hidden #1A9ACC
             a.go__to__catalouge(href="#compcatalouge") Go To Catalouge

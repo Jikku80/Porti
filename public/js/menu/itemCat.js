@@ -1,5 +1,5 @@
 let fullpath = location.pathname
-let resultpath = fullpath.match("/menu/(.*)")
+let resultpath = document.querySelector(".menu__user__id").innerText;
 let page = document.querySelector(".paginate");
 let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");
@@ -18,7 +18,7 @@ next.addEventListener("click", async () => {
         load.classList.remove("hidden")
         let subItems = document.querySelector(".sub__items")
         subItems.innerHTML = "";
-        const endpoint = `/api/v1/menu/${resultpath[1]}/paginate/${pg}`
+        const endpoint = `/api/v1/menu/${resultpath}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
         myHeaders.get('Content-Type');
@@ -79,7 +79,7 @@ prev.addEventListener("click", async () => {
         next.classList.remove("hidden");
         let subItems = document.querySelector(".sub__items")
         subItems.innerHTML = "";
-        const endpoint = `/api/v1/menu/${resultpath[1]}/paginate/${pg}`
+        const endpoint = `/api/v1/menu/${resultpath}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
         myHeaders.get('Content-Type');
@@ -124,7 +124,7 @@ window.addEventListener("load", async () => {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        const endpoint = `/api/v1/menu/allCategories/${resultpath[1]}`
+        const endpoint = `/api/v1/menu/allCategories/${resultpath}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
         myHeaders.get('Content-Type');
@@ -153,7 +153,7 @@ window.addEventListener("load", async () => {
                                 load.classList.remove("hidden")
                                 page.classList.add("hidden");
                                 subItems.innerHTML = "";
-                                const endpoint = `/api/v1/menu/${resultpath[1]}/findbycate/${cate}`
+                                const endpoint = `/api/v1/menu/${resultpath}/findbycate/${cate}`
                                 let myHeaders = new Headers();
                                 myHeaders.append('Content-Type', 'image/jpeg/png')
                                 myHeaders.get('Content-Type');
@@ -223,7 +223,7 @@ searchBar.addEventListener("keypress", async (e) => {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
-            const endpoint = `/api/v1/menu/${resultpath[1]}/searchItems`
+            const endpoint = `/api/v1/menu/${resultpath}/searchItems`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');
@@ -282,7 +282,7 @@ grabAll.addEventListener("click", async () => {
         page.classList.remove("hidden");
         let subItems = document.querySelector(".sub__items")
         subItems.innerHTML = "";
-        const endpoint = `/api/v1/menu/${resultpath[1]}/paginate/${pg}`
+        const endpoint = `/api/v1/menu/${resultpath}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
         myHeaders.get('Content-Type');

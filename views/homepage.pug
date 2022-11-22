@@ -401,9 +401,9 @@ block content
                             h3.heading-secondary.ma-bt-lg Send Message To Lakhey De Tech
                             form.msg__form
                                 label.form__label(for='name') Name
-                                input#msgname.form__input(type='text', name="name", placeholder='your name', required)
+                                input#msgname.form__input(type='text', name="name", value=user.name, disabled,  required)
                                 label.form__label(for='email') Email address
-                                input#msgemail.form__input(type='email', name="email", placeholder='youremail@gmail.com', required)
+                                input#msgemail.form__input(type='email', name="email", value=user.email, disabled, required)
                                 label.form__label(for='siteType') Query Type 
                                 select.form__select(type='select', name="siteType", id="siteType")
                                         option(value="query") Query
@@ -414,7 +414,7 @@ block content
                                         option(value="unlock") Theme Unlock Problem 
                                         option(value="Other") Other
                                 label.form__label(for='message') Message 
-                                textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="30", required)
+                                textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="40", required)
                                 .form__group
                                 button.send__msg.greybtn Send
 

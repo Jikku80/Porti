@@ -7,7 +7,7 @@
     let idetail = document.getElementById("catitemdetail");
     let icimg = document.getElementById("catcoverimage");
     let additembtn = document.getElementById("cataddItemBtn");
-    let itheme = "51eac6b471a284d3341d8c0c63d0f1a286262a18"
+    // let itheme = "51eac6b471a284d3341d8c0c63d0f1a286262a18"
     let yourItems = document.querySelector(".your__items");
 
     additembtn.addEventListener("click", async (e) => {
@@ -58,8 +58,8 @@
                                         <p class="catalouge__card__cat">${fResult.category}</p>
                                         <p class="catalouge__card__cat">${fResult.subcategory}</p>
                                         <p class="catalouge__card__detail">${fResult.detail}</p>
-                                        <a href="/${fResult._id}/catalougetweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${fResult._id}/catalougetweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/catalougetweaks/${fResult._id}?update" class="ygbtn">Update</a>
+                                        <a href="/catalougetweaks/${fResult._id}?delete" class="redbtn">Delete</a>
                                         </div>
                                     </div>
                         `
@@ -121,8 +121,8 @@ async function getAllCatalougeItem() {
                                         <p class="catalouge__card__cat">${el.category}</p>
                                         <p class="catalouge__card__cat">${el.subcategory}</p>
                                         <p class="catalouge__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/catalougetweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/catalougetweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -208,8 +208,8 @@ next.addEventListener("click", async () => {
                                         <p class="catalouge__card__cat">${el.category}</p>
                                         <p class="catalouge__card__cat">${el.subcategory}</p>
                                         <p class="catalouge__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/catalougetweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/catalougetweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -276,8 +276,8 @@ prev.addEventListener("click", async () => {
                                         <p class="catalouge__card__cat">${el.category}</p>
                                         <p class="catalouge__card__cat">${el.subcategory}</p>
                                         <p class="catalouge__card__detail">${el.detail}</p>
-                                        <a href="/${el._id}/catalougetweaks?update" class="ygbtn">Update</a>
-                                        <a href="/${el._id}/catalougetweaks?delete" class="redbtn">Delete</a>
+                                        <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
                                 </div>
                             `
@@ -298,15 +298,13 @@ prev.addEventListener("click", async () => {
 
 (function () {
     let shareLink = document.querySelector(".share__catal__link");
-    let fullpath = location.pathname
-    let resultpath = fullpath.match("/catalouge/(.*)/")
-    let uname = document.querySelector(".uname__catal").innerText;
-    let nm = uname.replace(/\s/g, '')
+    let nm = document.querySelector(".uname__catal").innerText;
+    // let nm = uname.replace(/\s/g, '')
 
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head">Your Catalouge Link</p>
-            <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/${nm}/catalouge/${resultpath[1]}</p>
+            <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/catalog/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
             <button class="ygbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
@@ -315,7 +313,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openmycatal");
     openMenu.addEventListener("click", () => {
-        window.open(`/${nm}/catalouge/${resultpath[1]}`)
+        window.open(`/catalog/${nm}`)
     })
 
     let menuLinkDis = document.querySelector(".catalouge__link__displayer");

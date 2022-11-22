@@ -49,8 +49,6 @@ sendMsg.addEventListener("click", async (e) => {
         console.log(err);
         erroralert('Sorry! Something went wrong', err);
     };
-    msgfullName.value = "";
-    msgemail.value = "";
-    msgsiteType.value = "E-commerce";
+    msgsiteType.value = "query";
     msgmessage.value = "";
 })

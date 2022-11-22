@@ -1,5 +1,6 @@
 let catalougeSearchBar = document.querySelector("#catalougeSearch");
 let compColor = document.querySelector(".comp__color").innerText;
+let catalogeUserId = document.querySelector(".comp__user__id").innerText;
 
 catalougeSearchBar.addEventListener("keypress", async (e) => {
     if (catalougeSearchBar.value < 1 || catalougeSearchBar.value == "" || catalougeSearchBar.value == null) {
@@ -7,7 +8,6 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
     }
     if (e.key == "Enter" || e.key == "Search") {
         let searchValue = catalougeSearchBar.value;
-        let fullpath = location.pathname
         let searchLowNam = searchValue.toLowerCase();
         let subItems = document.querySelector(".catalouge__items");
         try {
@@ -15,8 +15,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
-            let resultpath = fullpath.match("/catalouge/(.*)")
-            const endpoint = `/api/v1/catalouge/${resultpath[1]}/searchCatalouge`
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/searchCatalouge`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');
@@ -33,12 +32,14 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
                             let name = el.name
                             let cat = el.category
                             let subcat = el.subcategory
+                            let seno = el.serialno
                             let lowCat = cat.toLowerCase();
+                            let lowSeno = seno.toLowerCase();
                             let lowSubCat = subcat.toLowerCase();
                             let lowNam = name.toLowerCase();
                             // let sval = lowNam.match(searchLowNam)
                             // console.log(sval);
-                            if (lowNam == searchLowNam || lowCat == searchLowNam || lowSubCat == searchLowNam) {
+                            if (lowNam == searchLowNam || lowCat == searchLowNam || lowSubCat == searchLowNam || lowSeno == searchLowNam) {
                                 addCardElem(el);
                             }
                         });
@@ -74,9 +75,7 @@ window.addEventListener("load", async () => {
         load.classList.remove("hidden")
         let subItemModel = document.querySelector(".sub__cat__list");
         subItemModel.classList.add("hidden");
-        let fullpath = location.pathname
-        let resultpath = fullpath.match("/catalouge/(.*)")
-        const endpoint = `/api/v1/catalouge/allCatalougeCategories/${resultpath[1]}`
+        const endpoint = `/api/v1/catalouge/allCatalougeCategories/${catalogeUserId}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
         myHeaders.get('Content-Type');
@@ -105,7 +104,7 @@ window.addEventListener("load", async () => {
                                 load.classList.remove("hidden")
                                 let subItm = document.querySelector(".sub__categories__catalouge");
                                 subItm.innerHTML = "";
-                                const endpoint = `/api/v1/catalouge/${resultpath[1]}/findsubcate/${cate}`
+                                const endpoint = `/api/v1/catalouge/${catalogeUserId}/findsubcate/${cate}`
                                 let myHeaders = new Headers();
                                 myHeaders.append('Content-Type', 'image/jpeg/png')
                                 myHeaders.get('Content-Type');
@@ -148,7 +147,7 @@ window.addEventListener("load", async () => {
                                                         load.classList.remove("hidden");
                                                         let catalougeItems = document.querySelector(".catalouge__items");
                                                         catalougeItems.innerHTML = "";
-                                                        const endpoint = `/api/v1/catalouge/${resultpath[1]}/finditems/${subcate}/${cate}`
+                                                        const endpoint = `/api/v1/catalouge/${catalogeUserId}/finditems/${subcate}/${cate}`
                                                         let myHeaders = new Headers();
                                                         myHeaders.append('Content-Type', 'image/jpeg/png')
                                                         myHeaders.get('Content-Type');
@@ -294,9 +293,7 @@ modelCanceler.addEventListener("click", () => {
             load.classList.remove("hidden")
             let subItems = document.querySelector(".catalouge__items")
             subItems.innerHTML = "";
-            let fullpath = location.pathname
-            let resultpath = fullpath.match("/catalouge/(.*)")
-            const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');
@@ -347,9 +344,7 @@ modelCanceler.addEventListener("click", () => {
             next.classList.remove("hidden");
             let subItems = document.querySelector(".catalouge__items")
             subItems.innerHTML = "";
-            let fullpath = location.pathname
-            let resultpath = fullpath.match("/catalouge/(.*)")
-            const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');

@@ -13,6 +13,7 @@ block content
                 if (restro[0])
                     h1.menu__head.res__name= restro[0].name
                     p.menu__head.res__add= restro[0].Address
+                    p.menu__user__id.hidden= restro[0].user.id
                 h1.menu__head Me n u
                 form.search
                     input.searchbar(type="text", required, placeholder="Search Items...")
