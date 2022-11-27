@@ -37,6 +37,12 @@
                 else
                     input#upCheck.checkbox(type="checkbox") 
             .form__bod 
+                label Show your Portfolio in Search
+                if (portfolio.searchVisible === true)
+                    input#upSearchVisible.checkbox(type="checkbox" checked="checked")
+                else
+                    input#upSearchVisible.checkbox(type="checkbox")
+            .form__bod 
                 label Change Theme 
                 select#themes
                     option.opt(hidden selected)= portfolio.theme 

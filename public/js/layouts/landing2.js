@@ -74,6 +74,7 @@ let pImgBtn = document.getElementById("updateImgBtnCollec");
 let pimg1 = document.querySelector('#img1Collec');
 let pid = document.getElementById('endpoint').innerText;
 let pthemes = document.getElementById("themeSec");
+let searchVisiSec = document.getElementById("upSearchVisibleSec");
 
 pdBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -99,7 +100,8 @@ pdBtn.addEventListener("click", async (e) => {
                 theme: pthemes.value,
                 email: pemail.value,
                 fb: pFb.value,
-                location: pLoc.value
+                location: pLoc.value,
+                searchVisible: searchVisiSec.checked
             })
         }).then((response) => {
             load.classList.add("hidden");

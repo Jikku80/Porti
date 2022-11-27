@@ -437,6 +437,69 @@
     /* border: 1px solid grey; */
 }
 
+.nocapsB{
+    font-variant: normal;
+    font-size: .7em;
+}
+
+.containr{
+    display: flex;
+    width: 100%;
+    font-variant: small-caps;
+}
+
+.first__half__cont{
+    width: 50%;
+    font-size: 4.5em;
+}
+
+.second__half__cont{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.second__half__head{
+    text-align: right;
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+
+.to__left{
+    text-align: left !important;
+}
+
+.shwbtn{
+    padding: 2%;
+    border: 2px solid rgb(54, 219, 54);
+    color: rgb(54, 219, 54);
+    background-color:rgb(0, 26, 0);
+    font-weight: bolder;
+    font-size: 2em;
+    font-variant: small-caps;
+    cursor: pointer;
+}
+
+.shwbtn:hover{
+    background-color: rgb(54, 219, 54);
+    color :rgb(0, 26, 0);
+}
+
+.link__format{
+    display: flex;
+    justify-content: center;
+}
+
+.porti_all_link{
+    background-color: chartreuse;
+    width: fit-content;
+    font-size: 2em;
+    color:rgb(0, 26, 0);
+    border-radius: 2rem;
+    padding: 1% !important;
+}
+
 .bottom__nav{
     display: flex;
     flex: row;
@@ -599,7 +662,29 @@
     z-index: 1;
   }
 
-  .fot_sec{
+.go__top{
+    background-color: hotpink;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 8rem;
+    position: fixed;
+    align-items: flex-end;
+    top:90%;
+    left: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    text-decoration: none;
+    animation: transform .5s;
+}
+
+.go__top:hover{
+    transform: scale(1.1);
+}
+
+.fot_sec{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -690,6 +775,24 @@
         font-size: 14px;
     }
 
+    .containr{
+        flex-direction: column;
+    }
+
+    .first__half__cont{
+        width: 100%;
+        font-size: 3em;
+    }
+
+    .second__half__cont{
+        width: 100%;
+    }
+
+    .second__half__head{
+        margin-top: 0;
+        margin-bottom: 5vh;
+    }
+
     .bottom__nav h2{
         font-size: 16px;
     }
@@ -713,6 +816,10 @@
         margin: 2% 0 2% 0;
     }
 
+    .porti_all_link{
+        font-size: 1.2em;
+    }
+
     .msg__form label{
         margin: 2%;
     }
@@ -721,6 +828,11 @@
         margin: 4%;
         padding: 4%;
         width: 70vw;
+    }
+
+    .go__top{
+        top:90%;
+        left: 82%;
     }
 
     .footer__contact__bod{
@@ -754,6 +866,24 @@
         text-align: center;
     }
 
+    .containr{
+        flex-direction: column;
+    }
+
+    .first__half__cont{
+        width: 100%;
+    }
+
+    .second__half__cont{
+        width: 100%;
+    }
+
+    .second__half__head{
+        margin-top: 0;
+        margin-bottom: 5vh;
+    }
+
+
     .greybtn{
         padding: 4%;
     }
@@ -766,6 +896,11 @@
         margin: 4%;
         padding: 4%;
         width: 40vw;
+    }
+
+    .go__top{
+        top:90%;
+        left: 89%;
     }
 }
 

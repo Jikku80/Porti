@@ -83,6 +83,7 @@ let hd4 = document.getElementById("upproblem");
 let hd5 = document.getElementById("upsoln");
 let id = document.getElementById('endpoint').innerText;
 let themes = document.getElementById("themes");
+let searchVisi = document.getElementById("upSearchVisible");
 
 updBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -114,7 +115,8 @@ updBtn.addEventListener("click", async (e) => {
                 motivation: hd2.value,
                 msg: hd3.value,
                 problem: hd4.value,
-                solution: hd5.value
+                solution: hd5.value,
+                searchVisible: searchVisi.checked
             })
         }).then((response) => {
             load.classList.add("hidden");

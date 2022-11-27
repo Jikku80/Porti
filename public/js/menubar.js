@@ -18,6 +18,7 @@
 
 (function () {
     let layouts = document.getElementById("menuLayouts");
+    let search = document.getElementById("portiSearch");
     let portfolio = document.getElementById("menuPortfolio");
     let invitation = document.getElementById("menuInvitation");
     let menu = document.getElementById("menuMenu");
@@ -25,6 +26,12 @@
     let menuImg = document.getElementById("menuImg");
 
     let pathName = window.location.pathname;
+
+    if (pathName === "/search") {
+        search.style.color = "greenyellow";
+        search.style.fontWeight = "bold";
+        search.style.borderBottom = "2px solid white"
+    }
 
     if (pathName === "/me") {
         menuImg.style.filter = "grayscale(.7)";

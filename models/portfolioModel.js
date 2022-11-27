@@ -96,6 +96,10 @@ const portfolioSchema = new mongoose.Schema({
     fontFam: {
         type: String
     },
+    searchVisible: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: Date.now(),

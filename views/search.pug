@@ -1,0 +1,25 @@
+extends base
+
+block content
+    h1.loader
+        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
+    include _header
+    .search__section
+        .search__body
+            .search__box
+                input#portisearch.search_bar(type="text", placeholder="Search")
+            .search__groups
+                h1 Portfolio Search Results
+                .found__values.search__values
+                h1 Menu Search Results
+                .found__menu__values.search__values 
+                h1 Catalog Search Results
+                .found__catalog__values.search__values 
+
+
+
+
+    script(src="/js/portiSearch.js") 

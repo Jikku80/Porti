@@ -900,6 +900,68 @@ input::file-selector-button{
   color: rgb(0, 26, 0);
 }
 
+.search__section{
+  display: flex;
+  justify-content:flex-end;
+}
+
+.search__body{
+  display: flex;
+  width: 83%;
+  flex-direction: column;
+  /* background-color: red; */
+  margin-right: 1%;
+}
+
+.search__box{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.search_bar{
+  border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid chartreuse;
+    padding: 1%;
+    margin-bottom: 2%;
+    width: 40vw;
+    outline: 0;
+    background-color: transparent;
+    color: chartreuse;
+    transition: transform .2s;
+}
+
+.search_bar:focus{
+  transform: scale(1.2);
+}
+
+.search__values{
+  display: flex;
+  flex-direction: column;
+}
+
+.search__results{
+  
+}
+
+.search__results a{
+  color: white;
+  text-decoration: none;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  animation: shine 4s ease-in-out forwards infinite;
+  border-radius: 2rem;
+  margin: 2vw;
+}
+
+.search__results a:hover{
+  background-color: gray;
+  border-color: gray;
+}
+
 .footer{
   width: 83%;
   margin-top: 2vh;
@@ -1107,6 +1169,12 @@ input::file-selector-button{
 
   input[type='file']{
     width: 50%;
+  }
+
+  .search__body{
+    margin-top: 5vh;
+    width: 100%;
+    padding: 2vw;
   }
 
   .footer{

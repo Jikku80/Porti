@@ -24,13 +24,13 @@ const observer = new IntersectionObserver(entries => {
 
 observer.observe(cont, prv, abt);
 
-const fullImg = document.querySelectorAll('.imgFull');
+// const fullImg = document.querySelectorAll('.imgFull');
 
-fullImg.forEach(img => {
-    img.addEventListener("click", () => {
-        window.open(img.src)
-    })
-});
+// fullImg.forEach(img => {
+//     img.addEventListener("click", () => {
+//         window.open(img.src)
+//     })
+// });
 
 (function () {
     let fontColor = document.querySelector(".main").id;

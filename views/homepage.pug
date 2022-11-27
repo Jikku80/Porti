@@ -27,6 +27,7 @@ block content
                     else
                         img.accpic(src=`/images/users/${user.photo}`) 
                     span= user.name
+                .futuristic-button.hidden
         .main__content__nav
             a.fkAncky(href="#aboutTM") About 
                 span.maf Lakhey 
@@ -81,342 +82,480 @@ block content
                                 h3 Menu
                             a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
                                 h3 Catalouge
-                p Lakhey Tech Presents Porti. In Spanish "Por ti" means "For You". The website is practically for you. In this age of Technology, where things are easy acces via internet then sotring it locally or using it physically, Porti is here to help you with situations that can really be a drag.
-                h3 Why Porti?
-                p Is your Interview Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. Just answer the questions given and your all set.
-                p Is a big event coming and dont want to waste time energy and money on making invitation card. Well with porti you can create Invitation card. Create it share it to your guests.
-                p Do you have to change price and details of your Menu every now and then. Then Go for Porti, Create your menu, easily update it any time.
-                p Porti is here for Business owners who are selling products or services. If you have alot of items or services use our catalog feature.
-                p Porti Brings you varities of Theme Select and Just Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
-                p With the help of Porti sharing is more easy, forget the hassle of saving storing and printing your CV, Invitation, Menu, Catalouge. Access them with your QR code or Link. Also showing your previous works gets easy, updating your details gets easy. 
-                h3 Who Porti is For :
-                ul  
-                    li Applying For Work | Showcasing Your Work
-                    li Hosting A Party | Organizing A Event
-                    li Restaurant | Food | Drinks Cafe Owner
-                    li Business Owner | Shop Owner
-                    li For Anyone | Everyone who needs a Portfolio, Invitation Card, Food Menu, Catalogue
-                h3 Will A Portolio From Porti Guarantee Your Ace In Interview?
-                p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
-                h3 Is Porti Free To Use?
-                p Yes! Porti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your porti account as there are lots of free themes :)
-            #guidePorti.padder.darkgreen 
-                h2 To Start Using  
-                    span.mid Por
-                    span.grn t
-                    span.mid i 
-                    span.gry Services 
-                    span.lst ?
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 Step 1
-                        .gbox__bod
-                            p Create Your Account, Go to Login | SignUp to create Your Account 
-                            p Password must be 9 Characters long
-                    .gbox 
-                        .gbox__head 
-                            h3 Step 2
-                        .gbox__bod
-                            p You will be redirected to your account, Click on Layouts from nav bar 
-                            p Browse Through the theme and select one
-                    .gbox 
-                        .gbox__head 
-                            h3 Step 3
-                        .gbox__bod
-                            p After Selecting a theme, Fill up the form 
-                            p Hit Create And You are All Set!
-                    .gbox 
-                        .gbox__head 
-                            h3 Step 4
-                        .gbox__bod
-                            p To view your created porti Click on My Portfolio || My Invitation || My Menu || My Cataloge 
-                            p To share your portfolio click copy link and share it or you can click generate qrcode and share your qrcode
-            #portiHelper.padder
-                h3.mid Portfolio 
-                    span.lst Helper
-                p Do not Know What To Write In Your Portfolio? Here are Few Tips
-                p Just the tips cause only you can tell the world who you really are ;) 
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 About You
-                        .gbox__bod
-                            p Describe yourself detaily. About Who you are Porfessionally
-                            p If the theme | form has no your strength weakness option include these in about me section.
-                    .gbox 
-                        .gbox__head 
-                            h3 What You Do?
-                        .gbox__bod
-                            p Describe What you professionally Do.  
-                            p Show you are fully aware of what you do and can handle the task if given in this position.
-                    .gbox 
-                        .gbox__head 
-                            h3 Why You Do it?
-                        .gbox__bod
-                            p Describe Why you do what you professionally Do.  
-                            p Tell Why you do it? May be you love doing it, may be you were born for it, may be you see lots of money in this line of profession be honest and tell your story.
-                    .gbox 
-                        .gbox__head 
-                            h3 Your Failoure | Probelem You faced While Doing What you do?
-                        .gbox__bod
-                            p Describe The time when you hit rock bottom and how you got yourself back up This kind of points shows how mentally strong you are, how you dont run away from your problems.  
-                            p If the form | Theme doesnt have this section feel free to add it in About me section.
-                    .gbox 
-                        .gbox__head 
-                            h3 Previous Work | Accomplishments
-                        .gbox__bod
-                            p Describe What you have done, achieved so far in your line of carreer.  
-                            p If you have acheived nothing, flex out your certificates, degrees, your prides your glory days relevent to your profession.
-                    .gbox 
-                        .gbox__head 
-                            h3 Image Section
-                        .gbox__bod
-                            p You can add image from add image section after creating your portfolio.
-                            p If your theme has cover image, To update your cover image go to update cover image button and you will be able to change your portfolio cover image.
-                    .gbox 
-                        .gbox__head 
-                            h3 Image Heading Section
-                        .gbox__bod
-                            p Give your Image a heading or if you want to price your art work you can type in Rs. Amount  
-                    .gbox
-                        .gbox__head 
-                            h3 Access your portfolio
-                        .gbox__bod
-                            p you can use the link copy paste it to browser and open your protfolio.
-                            p you can use my portfolio button to open your portfoio directly.
-                            p you can click generate qrcode button to get your portfolio qr code, just scan it and open your portfolio.
-            #portiinviHelper.darkgreen.padder
-                h3.mid Invitation 
-                    span.lst Helper
-                p Follow these steps below and you are all set!
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 First Person Name
-                        .gbox__bod
-                            p Provide your name
-                    .gbox 
-                        .gbox__head 
-                            h3 Second Person Name
-                        .gbox__bod
-                            p If its your marriage or some function that include your mate, bud, use his or her name else use the organizer name 
-                    .gbox 
-                        .gbox__head 
-                            h3 Your Story
-                        .gbox__bod
-                            p Tell us about your story, if marriage about your love life, if other function, describe about the function 
-                    .gbox 
-                        .gbox__head 
-                            h3 Venue
-                        .gbox__bod
-                            p Place where you are organizing your party/function
-                    .gbox 
-                        .gbox__head 
-                            h3 Date
-                        .gbox__bod
-                            p Function Date. when is the party 
-                    .gbox 
-                        .gbox__head 
-                            h3 Time onwards
-                        .gbox__bod
-                            p At what time do you want your guests to arrive? fill In accordingly 
-                    .gbox 
-                        .gbox__head 
-                            h3 Phone Number
-                        .gbox__bod
-                            p Just incase if your guests gets lost or wants more detail provide your phone number
-            #portimenuHelper.darkgreen.padder
-                h3.mid Food Menu 
-                    span.lst Helper
-                h4 Creating a Restaurant 
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 Restaurant Name
-                        .gbox__bod
-                            p Your registered Restaurant Name.
-                    .gbox 
-                        .gbox__head 
-                            h3 Restaurant Address
-                        .gbox__bod
-                            p Provide your restaurant location.
-                    .gbox 
-                        .gbox__head 
-                            h3 Restaurant Slogan
-                        .gbox__bod
-                            p If your restaurant has any slogan you can use it but this field is optional you can leave it blank.
-                h4 Adding Items to Menu.
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 Food Name
-                        .gbox__bod
-                            p First give your food a name.
-                    .gbox
-                        .gbox__head 
-                            h3 Food Price 
-                        .gbox__bod 
-                            p Please provide a price to your food. You can use Rs. 150 or $150 your country currency and price.
-                    .gbox 
-                        .gbox__head 
-                            h3 Food Category 
-                        .gbox__bod 
-                            p In category section use the category of the food, "Burger", "Pizza".
-                            p Use same category "Burger" for all burgers ("chicken burger", "veg buger"). Note: the category spelling must be exactly same. you cant use burger for chicken burger and burgers for veg burger. use the same spelling.
-                    .gbox   
-                        .gbox__head 
-                            h3 Food Details 
-                        .gbox__bod
-                            p Detail section is optional you can add detail of the food you are presenting or you can just leave it blank. 
-                    .gbox 
-                        .gbox__head 
-                            h3 Food Image 
-                        .gbox__bod
-                            p Food Image section, its more appealing if you provide the exact image to the food.
-                    .gbox
-                        .gbox__head 
-                            h3 Access your menu
-                        .gbox__bod
-                            p you can use the link copy paste it to browser and open your menu.
-                            p you can use my menu button to open your menu directly.
-                            p you can click generate qrcode button to get your menu qr code, just scan it and open your menu.
-            #porticatalogeHelper.padder.darkgreen
-                h3.mid Cataloge 
-                    span.lst Helper
-                h4 Creating a Company 
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Name
-                        .gbox__bod
-                            p Your Registered Company name.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Email
-                        .gbox__bod
-                            p Your Company Email Address.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Social Account Link
-                        .gbox__bod
-                            p Your company social media link where people can find you. Like Facebook, LinkediN, instagram, twitter etc.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Address
-                        .gbox__bod
-                            p Your Company Location.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Address Link
-                        .gbox__bod
-                            p This field is a optional field but if you want to add then copy your location link from map and paste it here. It will help people find you easily.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Contact
-                        .gbox__bod
-                            p Your Company Contact details, phone number or mobile number.
-                    .gbox 
-                        .gbox__head 
-                            h3 Company Slogan
-                        .gbox__bod
-                            p This field is a optional field so if only if your company is using a slong add it here.
-                h4 Adding Items to your Cataloge.
-                .guide__box
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Name
-                        .gbox__bod
-                            p First give your product a name
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Price
-                        .gbox__bod
-                            p Please provide a price to your prodct. You can use Rs. 150 or $150 your country currency and price.
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Serial No.
-                        .gbox__bod
-                            p If your product has a serial no then use it else. you can leave it blank.
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Category
-                        .gbox__bod
-                            p In the category section use your product category, "Tiles" for all the types of tiles. the category spelling for all the tiles must be same, you cant use tile for porcelian tile and tiles for graphite tile. if you want all the different tiles to show up in same tiles use the same spelling.
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Sub-Category
-                        .gbox__bod
-                            p In sub-category section use your product sub category, if it belongs to "Tiles" and its sub category can be "porcelian tile". please use the same spelling for all types of porcelian tile, so that it show up in porcelian tile when user clicks it.
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Detail
-                        .gbox__bod
-                            p item detail is a optional field if you want to add detail about the product then use it else you can leave it blank.
-                    .gbox 
-                        .gbox__head 
-                            h3 Product Image
-                        .gbox__bod
-                            p item image section, it helps user to see what the product looks like so its good to use the product image.
-                    .gbox
-                        .gbox__head 
-                            h3 Access your cataloge
-                        .gbox__bod
-                            p you can use the link copy paste it to browser and open your cataloge.
-                            p you can use my cataloge button to open your cataloge directly.
-                            p you can click generate qrcode button to get your cataloge qr code, just scan it and open your cataloge.
-            #aboutTM.padder.darkgreen
-                h2.gry About 
-                    span.maf Lakhey 
-                        span.gry De 
-                            span.mid Tech
-                p Lakhey De Tech is the creator of PORTi. 
-                h3 Things You Should Know 
-                p Lakhey De Tech provides you the facility to make things easy for you and doesnot assure your success in interviews, growth in business.
-                h3 What We Do?
-                ul 
-                    li We are constantly creating new Themes || skin for the features we provide.  
-                    li We will add new features in our updates to make things easy for you.
-                h3 What Lakhey De Tech Do It For?
-                ul 
-                    li Lakhey De Tech wants to help you guys as much as possible 
-                h3 Copyright Notice 
-                p The entire Porti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The porti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
-                p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
-            #contactTM.padder.darkgreen 
-                h2.gry Contact 
-                    span.maf Lakhey 
-                        span.gry De 
-                            span.mid Tech
-                if (!user)
-                    p You need to Login || SignUp to message Us.  
-                    br  
-                    a.greybtn(href="/login") Login || SignUp
-                    .send__msg 
-                    .loader.hidden
-                else
-                    p Please feel free to rate, give us your feedback. Your feedbacks will help Porti get better ;)
-                    .sender
-                        .msg-form
-                            h3.heading-secondary.ma-bt-lg Send Message To Lakhey De Tech
-                            form.msg__form
-                                label.form__label(for='name') Name
-                                input#msgname.form__input(type='text', name="name", value=user.name, disabled,  required)
-                                label.form__label(for='email') Email address
-                                input#msgemail.form__input(type='email', name="email", value=user.email, disabled, required)
-                                label.form__label(for='siteType') Query Type 
-                                select.form__select(type='select', name="siteType", id="siteType")
-                                        option(value="query") Query
-                                        option(value="review") Review
-                                        option(value="bug") Bug report 
-                                        option(value="payment") Payment Problem 
-                                        option(value="theme") Theme Problem
-                                        option(value="unlock") Theme Unlock Problem 
-                                        option(value="Other") Other
-                                label.form__label(for='message') Message 
-                                textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="40", required)
-                                .form__group
-                                button.send__msg.greybtn Send
+                .first__abt__cont.containr 
+                    .first__half__cont 
+                        h1 About 
+                            span.wite Por
+                            span.grn t
+                            span.mid.nocapsB i
+                    .second__half__cont
+                        .second__half__head
+                            h2.gry CREATE 
+                                span.wite PORTFOLIO, 
+                            h2.wite INVITATION, MENU, CATALOG 
+                            h2.gry FOR 
+                                span.wite FREE
+                        button#showAboutPorti.shwbtn Know About Porti
+                #abtPortiSection.second__abt__cont.hidden
+                    p Lakhey Tech Presents Porti. In Spanish "Por ti" means "For You". The website is practically for you. In this age of Technology, where things are easy acces via internet then sotring it locally or using it physically, Porti is here to help you with situations that can really be a drag.
+                    h3 Why Porti?
+                    p Is your Interview Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! PORTI is here to save the day :). Create Your portfolio within few minutes. Just answer the questions given and your all set.
+                    p Is a big event coming and dont want to waste time energy and money on making invitation card. Well with porti you can create Invitation card. Create it share it to your guests.
+                    p Do you have to change price and details of your Menu every now and then. Then Go for Porti, Create your menu, easily update it any time.
+                    p Porti is here for Business owners who are selling products or services. If you have alot of items or services use our catalog feature.
+                    p Porti Brings you varities of Theme Select and Just Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
+                    p With the help of Porti sharing is more easy, forget the hassle of saving storing and printing your CV, Invitation, Menu, Catalouge. Access them with your QR code or Link. Also showing your previous works gets easy, updating your details gets easy. 
+                    h3 Who Porti is For :
+                    ul  
+                        li Applying For Work | Showcasing Your Work
+                        li Hosting A Party | Organizing A Event
+                        li Restaurant | Food | Drinks Cafe Owner
+                        li Business Owner | Shop Owner
+                        li For Anyone | Everyone who needs a Portfolio, Invitation Card, Food Menu, Catalogue
+                    h3 Will A Portolio From Porti Guarantee Your Ace In Interview?
+                    p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
+                    h3 Is Porti Free To Use?
+                    p Yes! Porti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your porti account as there are lots of free themes :)
+            .padder.darkgreen
+                .containr 
+                    .second__half__cont 
+                        .second__half__head.to__left
+                            h1 Easy 
+                                span.grn Share 
+                            h1 No 
+                                span.maf Domain, 
+                                span No 
+                                span.maf Hosting
+                            h1 Short Easy 
+                                span.grn Link
+                        button#showGuide.shwbtn Porti Processes 
+                    .first__half__cont 
+                        h1.wite 
+                            span Por
+                            span.grn t
+                            span.mid.nocapsB i
+                        h1.gry Guide
+                #guidePorti.hidden 
+                    h2 To Start Using  
+                        span.mid Por
+                        span.grn t
+                        span.mid i 
+                        span.gry Services 
+                        span.lst ?
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Step 1
+                            .gbox__bod
+                                p Create Your Account, Go to Login | SignUp to create Your Account 
+                                p Password must be 9 Characters long
+                        .gbox 
+                            .gbox__head 
+                                h3 Step 2
+                            .gbox__bod
+                                p You will be redirected to your account, Click on Layouts from nav bar 
+                                p Browse Through the theme and select one
+                        .gbox 
+                            .gbox__head 
+                                h3 Step 3
+                            .gbox__bod
+                                p After Selecting a theme, Fill up the form 
+                                p Hit Create And You are All Set!
+                        .gbox 
+                            .gbox__head 
+                                h3 Step 4
+                            .gbox__bod
+                                p To view your created porti Click on My Portfolio || My Invitation || My Menu || My Cataloge 
+                                p To share your portfolio click copy link and share it or you can click generate qrcode and share your qrcode
+            .padder
+                .containr 
+                    .first__half__cont 
+                        h1.wite Port
+                            span.gry  folio 
+                            span Helper
+                    .second__half__cont
+                        .second__half__head
+                            h2.gry CREATE 
+                                span.wite PORTFOLIO 
+                            h2 Interview 
+                                span.wite Solution
+                            h2.gry Your Work 
+                                span.wite Showcase
+                            h2 Your Business 
+                                span.wite Profile
+                        button#showPortHelper.shwbtn Portfolio Helper
+                #portiHelper.hidden
+                    h3.mid Portfolio 
+                        span.lst Helper
+                    p Do not Know What To Write In Your Portfolio? Here are Few Tips
+                    p Just the tips cause only you can tell the world who you really are ;) 
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 About You
+                            .gbox__bod
+                                p Describe yourself detaily. About Who you are Porfessionally
+                                p If the theme | form has no your strength weakness option include these in about me section.
+                        .gbox 
+                            .gbox__head 
+                                h3 What You Do?
+                            .gbox__bod
+                                p Describe What you professionally Do.  
+                                p Show you are fully aware of what you do and can handle the task if given in this position.
+                        .gbox 
+                            .gbox__head 
+                                h3 Why You Do it?
+                            .gbox__bod
+                                p Describe Why you do what you professionally Do.  
+                                p Tell Why you do it? May be you love doing it, may be you were born for it, may be you see lots of money in this line of profession be honest and tell your story.
+                        .gbox 
+                            .gbox__head 
+                                h3 Your Failoure | Probelem You faced While Doing What you do?
+                            .gbox__bod
+                                p Describe The time when you hit rock bottom and how you got yourself back up This kind of points shows how mentally strong you are, how you dont run away from your problems.  
+                                p If the form | Theme doesnt have this section feel free to add it in About me section.
+                        .gbox 
+                            .gbox__head 
+                                h3 Previous Work | Accomplishments
+                            .gbox__bod
+                                p Describe What you have done, achieved so far in your line of carreer.  
+                                p If you have acheived nothing, flex out your certificates, degrees, your prides your glory days relevent to your profession.
+                        .gbox 
+                            .gbox__head 
+                                h3 Image Section
+                            .gbox__bod
+                                p You can add image from add image section after creating your portfolio.
+                                p If your theme has cover image, To update your cover image go to update cover image button and you will be able to change your portfolio cover image.
+                        .gbox 
+                            .gbox__head 
+                                h3 Image Heading Section
+                            .gbox__bod
+                                p Give your Image a heading or if you want to price your art work you can type in Rs. Amount  
+                        .gbox
+                            .gbox__head 
+                                h3 Access your portfolio
+                            .gbox__bod
+                                p you can use the link copy paste it to browser and open your protfolio.
+                                p you can use my portfolio button to open your portfoio directly.
+                                p you can click generate qrcode button to get your portfolio qr code, just scan it and open your portfolio.
+                    .link__helper 
+                        h2 You Portfolio link will be 
+                            span.mid.nocaps /profile/yourusername
+                        .link__format
+                            p.porti_all_link www.porti.com/profile/username
+            .darkgreen.padder
+                .containr 
+                    .second__half__cont
+                        .second__half__head.to__left
+                            h2.gry CREATE 
+                                span.wite INVITATION 
+                            h2 Party, Function 
+                                span.wite Solution
+                            h2.gry Create 
+                                span.wite Unlimited Invitation
+                            h2.wite Easy, No Hassle, Unique
+                        button#showInviHelper.shwbtn Invitation Helper
+                    .first__half__cont 
+                        h1.wite Invi
+                            span.gry  tation 
+                            span Helper
+                #portiinviHelper.hidden
+                    h3.mid Invitation 
+                        span.lst Helper
+                    p Follow these steps below and you are all set!
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 First Person Name
+                            .gbox__bod
+                                p Provide your name
+                        .gbox 
+                            .gbox__head 
+                                h3 Second Person Name
+                            .gbox__bod
+                                p If its your marriage or some function that include your mate, bud, use his or her name else use the organizer name 
+                        .gbox 
+                            .gbox__head 
+                                h3 Your Story
+                            .gbox__bod
+                                p Tell us about your story, if marriage about your love life, if other function, describe about the function 
+                        .gbox 
+                            .gbox__head 
+                                h3 Venue
+                            .gbox__bod
+                                p Place where you are organizing your party/function
+                        .gbox 
+                            .gbox__head 
+                                h3 Date
+                            .gbox__bod
+                                p Function Date. when is the party 
+                        .gbox 
+                            .gbox__head 
+                                h3 Time onwards
+                            .gbox__bod
+                                p At what time do you want your guests to arrive? fill In accordingly 
+                        .gbox 
+                            .gbox__head 
+                                h3 Phone Number
+                            .gbox__bod
+                                p Just incase if your guests gets lost or wants more detail provide your phone number
+            .darkgreen.padder
+                .containr 
+                    .first__half__cont 
+                        h1.wite Menu 
+                            span.gry Helper
+                    .second__half__cont
+                        .second__half__head
+                            h2.gry CREATE 
+                                span.wite Menu 
+                            h2 Restaurant 
+                                span.wite Solution
+                            h2.gry Your Food 
+                                span.wite Showcase
+                            h2 Easy, No Hassle 
+                        button#showMenuHelper.shwbtn Menu Helper
+                #portimenuHelper.hidden
+                    h3.mid Food Menu 
+                        span.lst Helper
+                    h4 Creating a Restaurant 
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Restaurant Name
+                            .gbox__bod
+                                p Your registered Restaurant Name.
+                        .gbox 
+                            .gbox__head 
+                                h3 Restaurant Address
+                            .gbox__bod
+                                p Provide your restaurant location.
+                        .gbox 
+                            .gbox__head 
+                                h3 Restaurant Slogan
+                            .gbox__bod
+                                p If your restaurant has any slogan you can use it but this field is optional you can leave it blank.
+                    h4 Adding Items to Menu.
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Food Name
+                            .gbox__bod
+                                p First give your food a name.
+                        .gbox
+                            .gbox__head 
+                                h3 Food Price 
+                            .gbox__bod 
+                                p Please provide a price to your food. You can use Rs. 150 or $150 your country currency and price.
+                        .gbox 
+                            .gbox__head 
+                                h3 Food Category 
+                            .gbox__bod 
+                                p In category section use the category of the food, "Burger", "Pizza".
+                                p Use same category "Burger" for all burgers ("chicken burger", "veg buger"). Note: the category spelling must be exactly same. you cant use burger for chicken burger and burgers for veg burger. use the same spelling.
+                        .gbox   
+                            .gbox__head 
+                                h3 Food Details 
+                            .gbox__bod
+                                p Detail section is optional you can add detail of the food you are presenting or you can just leave it blank. 
+                        .gbox 
+                            .gbox__head 
+                                h3 Food Image 
+                            .gbox__bod
+                                p Food Image section, its more appealing if you provide the exact image to the food.
+                        .gbox
+                            .gbox__head 
+                                h3 Access your menu
+                            .gbox__bod
+                                p you can use the link copy paste it to browser and open your menu.
+                                p you can use my menu button to open your menu directly.
+                                p you can click generate qrcode button to get your menu qr code, just scan it and open your menu.
+                    .link__helper 
+                        h2 You Menu link will be 
+                            span.mid.nocaps /menu/yourusername
+                        .link__format
+                            p.porti_all_link www.porti.com/menu/username
+            .padder.darkgreen
+                .containr 
+                    .second__half__cont
+                        .second__half__head.to__left
+                            h2.gry CREATE 
+                                span.wite Catalog 
+                            h2 Your Product 
+                                span.wite Solution
+                            h2.gry Your Product 
+                                span.wite Showcase
+                            h2 Your Business 
+                                span.wite Growth
+                        button#showCatalogHelper.shwbtn Catalog Helper
+                    .first__half__cont 
+                        h1.wite Cata  
+                            span.gry log  
+                            span.gry Helper
+                #porticatalogeHelper.hidden
+                    h3.mid Cataloge 
+                        span.lst Helper
+                    h4 Creating a Company 
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Name
+                            .gbox__bod
+                                p Your Registered Company name.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Email
+                            .gbox__bod
+                                p Your Company Email Address.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Social Account Link
+                            .gbox__bod
+                                p Your company social media link where people can find you. Like Facebook, LinkediN, instagram, twitter etc.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Address
+                            .gbox__bod
+                                p Your Company Location.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Address Link
+                            .gbox__bod
+                                p This field is a optional field but if you want to add then copy your location link from map and paste it here. It will help people find you easily.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Contact
+                            .gbox__bod
+                                p Your Company Contact details, phone number or mobile number.
+                        .gbox 
+                            .gbox__head 
+                                h3 Company Slogan
+                            .gbox__bod
+                                p This field is a optional field so if only if your company is using a slong add it here.
+                    h4 Adding Items to your Cataloge.
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Name
+                            .gbox__bod
+                                p First give your product a name
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Price
+                            .gbox__bod
+                                p Please provide a price to your prodct. You can use Rs. 150 or $150 your country currency and price.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Serial No.
+                            .gbox__bod
+                                p If your product has a serial no then use it else. you can leave it blank.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Category
+                            .gbox__bod
+                                p In the category section use your product category, "Tiles" for all the types of tiles. the category spelling for all the tiles must be same, you cant use tile for porcelian tile and tiles for graphite tile. if you want all the different tiles to show up in same tiles use the same spelling.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Sub-Category
+                            .gbox__bod
+                                p In sub-category section use your product sub category, if it belongs to "Tiles" and its sub category can be "porcelian tile". please use the same spelling for all types of porcelian tile, so that it show up in porcelian tile when user clicks it.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Detail
+                            .gbox__bod
+                                p item detail is a optional field if you want to add detail about the product then use it else you can leave it blank.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Image
+                            .gbox__bod
+                                p item image section, it helps user to see what the product looks like so its good to use the product image.
+                        .gbox
+                            .gbox__head 
+                                h3 Access your cataloge
+                            .gbox__bod
+                                p you can use the link copy paste it to browser and open your cataloge.
+                                p you can use my cataloge button to open your cataloge directly.
+                                p you can click generate qrcode button to get your cataloge qr code, just scan it and open your cataloge.
+                    .link__helper 
+                        h2 You Catalog link will be 
+                            span.mid.nocaps /catalog/yourusername
+                        .link__format
+                            p.porti_all_link www.porti.com/catalog/username
+            .padder.darkgreen
+                .containr 
+                    .first__half__cont 
+                        h1 About 
+                            span.maf Lakhey  
+                            span.gry De 
+                            span.wite Tech
+                    .second__half__cont
+                        .second__half__head
+                            h2.gry We Make Things Happen 
+                            h2 We are at your service
+                        button#showLDT.shwbtn Show More
+                #aboutTM.hidden
+                    h2.gry About 
+                        span.maf Lakhey 
+                            span.gry De 
+                                span.mid Tech
+                    p Lakhey De Tech is the creator of PORTi. 
+                    h3 Things You Should Know 
+                    p Lakhey De Tech provides you the facility to make things easy for you and doesnot assure your success in interviews, growth in business.
+                    h3 What We Do?
+                    ul 
+                        li We are constantly creating new Themes || skin for the features we provide.  
+                        li We will add new features in our updates to make things easy for you.
+                    h3 What Lakhey De Tech Do It For?
+                    ul 
+                        li Lakhey De Tech wants to help you guys as much as possible 
+                    h3 Copyright Notice 
+                    p The entire Porti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The porti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
+                    p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
+            .padder.darkgreen 
+                .containr 
+                    .second__half__cont
+                        .second__half__head.to__left
+                            h2.gry Feel Free To Message Us 
+                            h2 We Are Here For You
+                        button#showContactTM.shwbtn Message Us
+                    .first__half__cont 
+                        h1 Reach 
+                            span.maf Lakhey 
+                            span.gry De 
+                            span.wite Tech
+                #contactTM.hidden
+                    h2.gry Contact 
+                        span.maf Lakhey 
+                            span.gry De 
+                                span.mid Tech
+                    if (!user)
+                        p You need to Login || SignUp to message Us.  
+                        br  
+                        a.greybtn(href="/login") Login || SignUp
+                        .send__msg 
+                        .loader.hidden
+                    else
+                        p Please feel free to rate, give us your feedback. Your feedbacks will help Porti get better ;)
+                        .sender
+                            .msg-form
+                                h3.heading-secondary.ma-bt-lg Send Message To Lakhey De Tech
+                                form.msg__form
+                                    label.form__label(for='name') Name
+                                    input#msgname.form__input(type='text', name="name", value=user.name, disabled,  required)
+                                    label.form__label(for='email') Email address
+                                    input#msgemail.form__input(type='email', name="email", value=user.email, disabled, required)
+                                    label.form__label(for='siteType') Query Type 
+                                    select.form__select(type='select', name="siteType", id="siteType")
+                                            option(value="query") Query
+                                            option(value="review") Review
+                                            option(value="bug") Bug report 
+                                            option(value="payment") Payment Problem 
+                                            option(value="theme") Theme Problem
+                                            option(value="unlock") Theme Unlock Problem 
+                                            option(value="Other") Other
+                                    label.form__label(for='message') Message 
+                                    textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="40", required)
+                                    .form__group
+                                    button.send__msg.greybtn Send
 
                             h1.loader
                                 img.porti__off__img(src="/images/smalport.png", alt="porti__img")
@@ -432,6 +571,9 @@ block content
                 button#becomeDeveloper.greybtn Load it
             .fot_sec
                 include _footer
+     
+    a.go__top(href="#" title="go to top")
+        h1 &#916;
 
     script(src="/js/alert.js")
     script(src="/js/home.js")  

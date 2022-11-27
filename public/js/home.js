@@ -83,3 +83,75 @@ futbtn.addEventListener("mouseout", (function () {
     parallelogramright.classList.remove('active');
 }));
 
+
+(function () {
+    let showPorti = document.getElementById("showAboutPorti");
+    let abtPort = document.getElementById('abtPortiSection');
+    let showGuide = document.getElementById("showGuide");
+    let guidePort = document.getElementById("guidePorti");
+    let showPortHelp = document.getElementById("showPortHelper");
+    let portHelper = document.getElementById("portiHelper");
+    let showInviHelp = document.getElementById("showInviHelper");
+    let inviHelper = document.getElementById("portiinviHelper");
+    let showmenuHelp = document.getElementById("showMenuHelper");
+    let menuHelper = document.getElementById("portimenuHelper");
+    let showcatalogHelp = document.getElementById("showCatalogHelper");
+    let catalogHelper = document.getElementById("porticatalogeHelper");
+    let showLdt = document.getElementById("showLDT");
+    let aboutLdt = document.getElementById("aboutTM");
+    let showContact = document.getElementById("showContactTM");
+    let contactLdt = document.getElementById("contactTM");
+
+
+    showPorti.addEventListener("click", () => {
+        abtPort.classList.toggle("hidden");
+        if (!(abtPort.classList.contains("hidden"))) {
+            window.location.href = "#abtPortiSection"
+        }
+    })
+    showGuide.addEventListener("click", () => {
+        guidePort.classList.toggle("hidden");
+        if (!(guidePort.classList.contains("hidden"))) {
+            window.location.href = "#guidePorti"
+        }
+    })
+    showPortHelp.addEventListener("click", () => {
+        portHelper.classList.toggle("hidden");
+        if (!(portHelper.classList.contains("hidden"))) {
+            window.location.href = "#portiHelper"
+        }
+    })
+
+    showInviHelp.addEventListener("click", () => {
+        inviHelper.classList.toggle("hidden");
+        if (!(inviHelper.classList.contains("hidden"))) {
+            window.location.href = "#portiinviHelper"
+        }
+    })
+    showmenuHelp.addEventListener("click", () => {
+        menuHelper.classList.toggle("hidden");
+        if (!(menuHelper.classList.contains("hidden"))) {
+            window.location.href = "#portimenuHelper"
+        }
+    })
+    showcatalogHelp.addEventListener("click", () => {
+        catalogHelper.classList.toggle("hidden");
+        if (!(catalogHelper.classList.contains("hidden"))) {
+            window.location.href = "#porticatalogeHelper"
+        }
+    })
+
+    showLdt.addEventListener("click", () => {
+        aboutLdt.classList.toggle("hidden");
+        if (!(aboutLdt.classList.contains("hidden"))) {
+            window.location.href = "#aboutTM"
+        }
+    })
+
+    showContact.addEventListener("click", () => {
+        contactLdt.classList.toggle("hidden");
+        if (!(contactLdt.classList.contains("hidden"))) {
+            window.location.href = "#contactTM"
+        }
+    })
+})();

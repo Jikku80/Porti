@@ -17,8 +17,9 @@ const Invite = require('./../models/inviteModel');
 const Theme = require('./../models/themeModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
-const atob = require('./../utils/decode');
 const PortfolioImage = require('../models/portfolioImageModel');
+const { compareSync } = require('bcryptjs');
+const { constants } = require('crypto');
 
 exports.homePage = catchAsync(async (req, res, next) => {
     res.status(200).render('homepage', {
@@ -238,7 +239,8 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             motivation: req.body.motivation,
             msg: req.body.msg,
             problem: req.body.problem,
-            solution: req.body.solution
+            solution: req.body.solution,
+            searchVisible: req.body.searchVisible
         },
         {
             new: true,
@@ -265,7 +267,8 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
-            theme: req.body.theme
+            theme: req.body.theme,
+            searchVisible: req.body.searchVisible
         },
         {
             new: true,
@@ -351,17 +354,94 @@ exports.qrCodeGen = catchAsync(async (req, res, next) => {
     })
 })
 
-exports.urlShortner = catchAsync(async (req, res, next) => {
-    const longurl = req.body.longurl;
-    if (longurl.length === 0) res.send('Empty Data!');
 
-    // shortUrl.short(longurl, (err, url) => {
-    //     if (err) res.send('Error Occured');
-    //     res.status(201).json({
-    //         status: 'success',
-    //         url
-    //     })
-    // })
+exports.searchPorti = catchAsync(async (req, res, next) => {
+    const values = req.params.values;
+    const lowVals = values.toLowerCase();
+
+    if (lowVals == "portfolio" || lowVals == "portfolios" || lowVals == "profile" || lowVals == "profiles") {
+        const portfolio = await Portfolio.find({ searchVisible: true })
+        res.status(200).json({ status: 'success', portfolio })
+        return;
+    }
+
+    if (lowVals == "menu" || lowVals == "food menu" || lowVals == "menues" || lowVals == "menus" || lowVals == "Restaurant" || lowVals == "Resraurants" || lowVals == "restro") {
+        const restro = await Restaurant.find();
+        res.status(200).json({ status: 'success', restro })
+        return;
+    }
+
+    if (lowVals == "catalog" || lowVals == "cataloges" || lowVals == "catalouge" || lowVals == "catalogs" || lowVals == "cataloge" || lowVals == "catalouges" || lowVals == "company" || lowVals == "companies") {
+        const company = await Company.find();
+        res.status(200).json({ status: 'success', company })
+        return;
+    }
+
+    const portfolio = await Portfolio.find().then(ports => {
+        const por = ports.filter(item => {
+            let lownam = (item.name).toLowerCase();
+            if (lownam.includes(lowVals) && item.searchVisible == true) {
+                let searchVal = Portfolio.find({ name: item.name })
+                return searchVal
+            }
+            return false
+        });
+        return por
+    })
+
+    const restro = await Restaurant.find().then(resto => {
+        const restr = resto.filter(item => {
+            let lownam = (item.name).toLowerCase();
+            if (lownam.includes(lowVals)) {
+                let searchVal = Restaurant.find({ name: item.name })
+                return searchVal
+            }
+            return false
+        });
+        return restr
+    })
+
+    const company = await Company.find().then(comp => {
+        const comps = comp.filter(item => {
+            let lownam = (item.name).toLowerCase();
+            if (lownam.includes(lowVals)) {
+                let searchVal = Company.find({ name: item.name })
+                return searchVal
+            }
+            return false
+        });
+        return comps
+    })
+    res.status(200).json({
+        status: 'success',
+        portfolio,
+        restro,
+        company
+    });
+
+})
+
+exports.toPage = catchAsync(async (req, res, next) => {
+    const user_id = req.params.user_id;
+    const types = req.params.types;
+    await User.findOne({ _id: user_id }).then((user) => {
+        user_name = user.name
+        if (types == "portfolio") {
+            res.redirect(`/profile/${user_name}`)
+        }
+        if (types == "restro") {
+            res.redirect(`/menu/${user_name}`)
+        }
+        if (types == "company") {
+            res.redirect(`/catalog/${user_name}`)
+        }
+    });
+})
+
+exports.searchPage = catchAsync(async (req, res, next) => {
+    res.status(200).render('search', {
+        title: 'Search'
+    })
 })
 
 
