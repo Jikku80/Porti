@@ -26,44 +26,6 @@ homelogin.addEventListener("mouseout", () => {
     homebod.classList.remove("crim");
 });
 
-
-(function () {
-    let loadIt = document.getElementById("becomeDeveloper");
-    loadIt.addEventListener("click", async () => {
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden")
-        try {
-            const foldName = "my-folder"
-            const fileName = "home.pug"
-            const endpoint = `/api/themes/${fileName}/createFolder/${foldName}`
-
-            await fetch((endpoint), {
-                method: 'GET',
-                headers: {
-                    'Content-type': 'application/json',
-                }
-            }).then((response) => {
-
-                load.classList.add("hidden");
-                if (response.status === 200) {
-                    successAlert("Your Folder has been Added :)");
-                }
-                else if (response.status === 409) {
-                    errorAlert("Folder with name already exists, Use other")
-                }
-                else {
-                    console.log(response);
-                    errorAlert("Addition Error!!!")
-                }
-
-            })
-        } catch (err) {
-            errorAlert("Ooops, System Error")
-            console.log(err);
-        }
-    })
-})();
-
 let futbtn = document.querySelector('.futuristic-button');
 let tp = document.querySelector(".top");
 let bottom = document.querySelector(".bottom");
@@ -154,4 +116,85 @@ futbtn.addEventListener("mouseout", (function () {
             window.location.href = "#contactTM"
         }
     })
+})();
+
+(function () {
+    let theme = document.querySelector(".usrTheme").innerText;
+    let upAccForm = document.querySelector(".main__content");
+    let bod = document.querySelector(".bod");
+    let padder = document.querySelectorAll(".padder");
+    let lime = document.querySelectorAll(".shwbtn");
+    let maf = document.querySelectorAll(".maf");
+    let wite = document.querySelectorAll(".wite");
+    let anch = document.querySelectorAll(".bottom__anch");
+    let nocb = document.querySelectorAll(".nocapsB");
+    let inpt = document.querySelectorAll(".form__input");
+    let label = document.querySelectorAll(".form__label");
+    let selec = document.querySelector(".form__select");
+    let got = document.querySelector(".go__top");
+
+    if (theme == "red") {
+        upAccForm.style.backgroundColor = "crimson";
+        bod.style.backgroundColor = "crimson";
+        selec.style.backgroundColor = "crimson";
+        padder.forEach(item => {
+            item.style.backgroundColor = "crimson";
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        maf.forEach(item => {
+            item.style.color = "black";
+        })
+        lime.forEach(item => {
+            item.style.backgroundColor = "crimson";
+        })
+        upAccForm.style.color = "white";
+    }
+    else if (theme == "dark") {
+        upAccForm.style.backgroundColor = "black";
+        bod.style.backgroundColor = "black";
+        selec.style.backgroundColor = "black";
+        padder.forEach(item => {
+            item.style.backgroundColor = "black";
+        })
+        lime.forEach(item => {
+            item.style.backgroundColor = "black";
+        })
+    }
+    else if (theme == "white") {
+        upAccForm.style.backgroundColor = "white";
+        bod.style.backgroundColor = "white";
+        selec.style.backgroundColor = "white";
+        selec.style.borderColor = "black";
+        selec.style.color = "black";
+        bod.style.color = "black";
+        upAccForm.style.color = "black";
+        got.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        got.style.color = "black";
+        padder.forEach(item => {
+            item.style.backgroundColor = "white";
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        lime.forEach(item => {
+            item.style.backgroundColor = "white";
+        })
+        wite.forEach(item => {
+            item.style.color = "black";
+        })
+        anch.forEach(item => {
+            item.style.color = "black";
+        })
+        nocb.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+            item.style.borderColor = "black"
+        })
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+    }
+    else {
+        console.log("Hola from Porti")
+    }
 })();

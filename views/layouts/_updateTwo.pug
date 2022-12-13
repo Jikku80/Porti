@@ -6,46 +6,49 @@
             img.cancelSec(src="/images/cancel.png", alt="cancel_img")
         form#upPortSec
             .form__bod
-                label Portfolio Name:
-                input#upnameSec(type="text" name="name" value=`${portfolio.name}` required)
+                label.form__label Portfolio Name:
+                input#upnameSec.form__input(type="text" name="name" value=`${portfolio.name}` required)
             .form__bod
-                label About You:
-                textarea#upaboutSec(rows="4" cols="50" name="about" required)= portfolio.about
+                label.form__label About You:
+                textarea#upaboutSec.form__input(rows="4" cols="50" name="about" required)= portfolio.about
             .form__bod
-                label What You Do:
-                textarea#upwhatSec(rows="4" cols="50" name="what" required)= portfolio.what
+                label.form__label What You Do:
+                textarea#upwhatSec.form__input(rows="4" cols="50" name="what" required)= portfolio.what
             .form__bod
-                label Why You Do It:
-                textarea#upwhySec(rows="4" cols="50" name="why" required)= portfolio.why
+                label.form__label Why You Do It:
+                textarea#upwhySec.form__input(rows="4" cols="50" name="why" required)= portfolio.why
             label Contact Details:
             .form__bod
-                label Phone Number: 
-                input#upnoSec(type="number" value= `${portfolio.phn_no}` name="phn_no" required)
+                label.form__label Phone Number: 
+                input#upnoSec.form__input(type="number" value= `${portfolio.phn_no}` name="phn_no" required)
             .form__bod
-                label Show Your Phone Number: 
+                label.form__label Show Your Phone Number: 
                 if (portfolio.showNo === true)
                     input#upCheckSec.checkbox(type="checkbox" checked="checked")
                 else
                     input#upCheckSec.checkbox(type="checkbox") 
+            .form__bod
+                label.form__label Occupation:
+                input#upoccSec.form__input(type="text" name="name" value=`${portfolio.role}` required)
             .form__bod 
-                label Show your Portfolio in Search
+                label.form__label Show your Portfolio in Search
                 if (portfolio.searchVisible === true)
                     input#upSearchVisibleSec.checkbox(type="checkbox" checked="checked")
                 else
                     input#upSearchVisibleSec.checkbox(type="checkbox")
             .form__bod 
-                label Change Theme 
+                label.form__label Change Theme 
                 select#themeSec
                     option.opt(hidden selected)= portfolio.theme
             .form__bod
-                label Email Address:
-                input#upemailSec(type="email" value=`${portfolio.email}` name="email" required)
+                label.form__label Email Address:
+                input#upemailSec.form__input(type="email" value=`${portfolio.email}` name="email" required)
             .form__bod
-                label Your Social Media Profile Link: 
-                input#upFbSec(type="text" value=`${portfolio.fb}`)
+                label.form__label Your Social Media Profile Link: 
+                input#upFbSec.form__input(type="text" value=`${portfolio.fb}`)
             .form__bod
-                label Address: 
-                input#upLocSec(type="text" value=`${portfolio.location}`)
+                label.form__label Address: 
+                input#upLocSec.form__input(type="text" value=`${portfolio.location}`)
             button#updateBtnSec.redbtn.bigbtn Update
 
     button#update_ImgCollec.redbtn.upMarg Update Portfolio Images

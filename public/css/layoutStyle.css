@@ -4,8 +4,6 @@ html{
 }
 
 body{
-    /* background-color: rgb(26,26,26) !important; */
-    background-color: rgb(0, 26, 0) !important;
     color:white;
     margin-top: 0;
     font-family: Arial, Helvetica, sans-serif !important;
@@ -63,6 +61,7 @@ p{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    background-color: rgb(0, 26, 0);
 }
 
 .sec__land__bod{
@@ -1018,5 +1017,29 @@ input::file-selector-button{
     }
     100% {
         box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
+    }
+  }
+
+  @keyframes blackShine {
+    0%{
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.171);
+    }
+    10%{
+        box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.171);
+    }
+    25%{
+        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
+    }
+    50%{
+        box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.171);
+    }
+    75%{
+        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
+    }
+    90%{
+        box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.171);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.171);
     }
   }

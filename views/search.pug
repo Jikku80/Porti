@@ -6,20 +6,35 @@ block content
         span Por
         span.grn t
         span.nocaps i
-    include _header
-    .search__section
-        .search__body
-            .search__box
-                input#portisearch.search_bar(type="text", placeholder="Search")
-            .search__groups
-                h1 Portfolio Search Results
-                .found__values.search__values
-                h1 Menu Search Results
-                .found__menu__values.search__values 
-                h1 Catalog Search Results
-                .found__catalog__values.search__values 
-
-
-
+    if (!user)
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a.limebtn(href="/login") Sign In
+    else
+        include _header
+        p.hidden.themeIid= user.theme
+        .search__section
+            .search__body
+                .search__box
+                    input#portisearch.search_bar(type="text", placeholder="Search")
+                .search__groups.hidden
+                    .search__head 
+                        h1.res Search Results
+                        img#cancelSearch.pointer(src="/images/cancel.png", alt="cancel search" title="cancel search")
+                    h1.res Portfolio
+                    .found__values.search__values
+                        p.gry You can type Profile or Profiles or Portfolio or Portfolios to get all available portfolio
+                        p.gry You can also search Profile with occupation eg:- Doctor, Engineer, Director, CEO, etc
+                    h1.res Menu
+                    .found__menu__values.search__values 
+                        p.gry You can type Menu or Menus or food menu or restro or restaurants to get all available menu
+                        p.gry You can also search Menu with Restaurant Type eg:- Bakery, Cafe, Bar, Club, etc
+                    h1.res Catalog
+                    .found__catalog__values.search__values 
+                        p.gry You can type Companies or Company or Catalog or Catalogue or Catalog to get all available catalog
+                        p.gry You can also search Catalogs with Company Type eg:- Tiles Company, Clothing, etc
+        .creation__body
+            include _footer
 
     script(src="/js/portiSearch.js") 
+    script(src="/js/alert.js")

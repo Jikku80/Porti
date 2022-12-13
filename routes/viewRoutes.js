@@ -52,7 +52,7 @@ router.get('/porti-highlights', viewsController.portiHighlights);
 router.get('/porti', authController.protect, viewsController.gotoPort);
 router.get('/invitations/:id', viewsController.gotoInviMid);
 
-router.get('/search', viewsController.searchPage);
+router.get('/inspire', viewsController.searchPage);
 router.get('/search/:values', viewsController.searchPorti);
 router.get('/toprofile/:user_id/:types', viewsController.toPage)
 

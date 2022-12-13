@@ -13,6 +13,7 @@ block content
     else
         if (user)
             include _header
+            p.hidden.uthemer= user.theme
             .invi__grp
                 .card__main 
                     each invite in invites
@@ -27,5 +28,5 @@ block content
                 h1 You are not logged In!
                 a.redbtn(href="/login") LogIn
 
-    script(src="/js/alert.js") 
-    //- script(src="/js/logout.js") 
+    script(src="/js/alert.js")
+    script(src="/js/inviall.js")  

@@ -16,46 +16,46 @@ formLayoutFive.innerHTML = `
         <img src="/images/cancel.png" alt="cancel_img" class="clFivecreate" />
     </div>
     <div class="form__cont">
-        <label>Portfolio Name:</label>
-        <input id="fifthname" type="text" placeholder="TechMafia" required/>
+        <label class="form__label">Portfolio Name:</label>
+        <input id="fifthname" class="form__input" type="text" placeholder="TechMafia" required/>
     </div>
     <div class="form__cont">
-        <label>About Your Portfolio</label>
-        <textarea id="fifthabout" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
+        <label class="form__label">About Your Portfolio</label>
+        <textarea id="fifthabout" class="form__input" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
     </div>
     <div class="form__cont">
-        <label>What You Do:</label>
-        <textarea id="fifthwhat" rows="4" cols="50" placeholder="what techmafia do is...." required></textarea>
+        <label class="form__label">What You Do:</label>
+        <textarea id="fifthwhat" class="form__input" rows="4" cols="50" placeholder="what techmafia do is...." required></textarea>
     </div>
     <div class="form__cont">
-        <label>Why You Do it:</label>
-        <textarea id="fifthwhy" rows="4" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
+        <label class="form__label">Why You Do it:</label>
+        <textarea id="fifthwhy" class="form__input" rows="4" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
     </div>
     <label>Contact Details:</label>
     <div class="form__cont">
-        <label>Phn Number:</label>
-        <input id="fifthno" type="number" placeholder="9999888899" required/>
+        <label class="form__label">Phone Number:</label>
+        <input id="fifthno" class="form__input" type="number" placeholder="9999888899" required/>
     </div>
     <div class="form__cont">
-        <label>Show Number:</label>
-        <input id="fifthCheck" class="checkbox" type="checkbox" />
+        <label class="form__label">Show Number:</label>
+        <input id="fifthCheck"  class="checkbox form__input" type="checkbox" />
     </div>
     <div class="form__cont">
-        <label>Email Address:</label>
-        <input id="fifthemail" type="email" placeholder="techmafia@gmail.com" required/>
+        <label class="form__label">Email Address:</label>
+        <input id="fifthemail" class="form__input" type="email" placeholder="techmafia@gmail.com" required/>
     </div>
     <div class="form__cont">
-        <label>Your Social Media Profile Link</label>
-        <input id="fifthFb" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
+        <label class="form__label">Your Social Media Profile Link</label>
+        <input id="fifthFb" class="form__input" type="text" placeholder="https://www.facebook.com/instagram.com/" required />
     </div>
     <div class="form__cont">
-        <label>Address</label>
-        <input id="fifthLoc" type="text" placeholder="your location" required />
+        <label class="form__label">Address</label>
+        <input id="fifthLoc" class="form__input" type="text" placeholder="your location" required />
     </div>
     <p>You can Upload Upto 20 Images At Once</p>
     <div class="form__cont small__form">
-        <label>Upload Images</label>
-        <input type="file" id="fifthimg1" multiple name="img1" accept="image/*"/>
+        <label class="form__label">Upload Images</label>
+        <input type="file" class="form__input" id="fifthimg1" multiple name="img1" accept="image/*"/>
     </div>
     <button id="fifthformbtn" class="redbtn">Create</button>
 </form>

@@ -304,7 +304,8 @@ prev.addEventListener("click", async () => {
     let resAddress = document.getElementById("resaddress");
     let resSlogan = document.getElementById("resslogan");
     let resTheme = document.getElementById("menuThemes");
-    let resContact = document.getElementById("resContact")
+    let resContact = document.getElementById("resContact");
+    let resType = document.getElementById("resType");
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -329,7 +330,8 @@ prev.addEventListener("click", async () => {
                     slogan: resSlogan.value,
                     Address: resAddress.value,
                     theme: resTheme.value,
-                    phn_no: resContact.value
+                    phn_no: resContact.value,
+                    resType: resType.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

@@ -14,7 +14,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val1} name=${val1} type="text" placeholder="TechMafia" required/>
+                        <input id=${val1} name=${val1} class="form__input" type="text" placeholder="TechMafia" required/>
                         <div class="btnGroup">
                             <button id="portNameNext" type="button" class="port__form__btn">Next</button>
                         </div>
@@ -57,7 +57,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea id=${val2} class="about__portfolio" name=${val2} rows="6" cols="50" placeholder="TechMafia is a ...." required></textarea>
+                        <textarea id=${val2} class="about__portfolio form__input" name=${val2} rows="6" cols="50" placeholder="TechMafia is a ...." required></textarea>
                         <div class="btnGroup">
                             <button id="portAboutPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portAboutNext" type="button" class="port__form__btn">Next</button>
@@ -80,7 +80,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea id=${val3} name=${val3} rows="6" cols="50" placeholder="what techmafia do is...." required></textarea>
+                        <textarea id=${val3} name=${val3} class="form__input" rows="6" cols="50" placeholder="what techmafia do is...." required></textarea>
                         <div class="btnGroup">
                             <button id="portWhatPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portWhatNext" type="button" class="port__form__btn">Next</button>
@@ -109,7 +109,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea id=${val4} name=${val4} rows="6" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
+                        <textarea id=${val4} name=${val4} class="form__input" rows="6" cols="50" placeholder="Why TechMafia do it ...." required></textarea>
                         <div class="btnGroup">
                             <button id="portWhyPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portWhyNext" type="button" class="port__form__btn">Next</button>
@@ -138,7 +138,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea type="text" id=${failValue} name=${failValue} rows="6" cols="50" placeholder="i failed i get up dividing my problem findinf the solution...." required></textarea>
+                        <textarea type="text" id=${failValue} name=${failValue} class="form__input" rows="6" cols="50" placeholder="i failed i get up dividing my problem findinf the solution...." required></textarea>
                         <div class="btnGroup">
                             <button id="portFailPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portFailNext" type="button" class="port__form__btn">Next</button>
@@ -161,7 +161,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea type="text" id=${motiValue} name=${motiValue} rows="6" cols="50" placeholder="When ever i go out of track...." required></textarea>
+                        <textarea type="text" id=${motiValue} name=${motiValue} class="form__input" rows="6" cols="50" placeholder="When ever i go out of track...." required></textarea>
                         <div class="btnGroup">
                             <button id="portMotiPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portMotiNext" type="button" class="port__form__btn">Next</button>
@@ -187,7 +187,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea type="text" id=${msgValue} name=${msgValue} rows="6" cols="50" placeholder="My Message to everyone..." required></textarea>
+                        <textarea type="text" id=${msgValue} name=${msgValue} class="form__input" rows="6" cols="50" placeholder="My Message to everyone..." required></textarea>
                         <div class="btnGroup">
                             <button id="portMsgPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portMsgNext" type="button" class="port__form__btn">Next</button>
@@ -210,7 +210,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val5} name=${val5} type="number" placeholder="9999888899" required/>
+                        <input id=${val5} name=${val5} class="form__input" type="number" placeholder="9999888899" required/>
                         <div class="btnGroup">
                             <button id="portPhnPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portPhnNext" type="button" class="port__form__btn">Next</button>
@@ -230,7 +230,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val6} name=${val6} class="checkbox" type="checkbox" />
+                        <input id=${val6} name=${val6} class="checkbox form__input" type="checkbox" />
                         <div class="btnGroup">
                             <button id="portShowPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portShowNext" type="button" class="port__form__btn">Next</button>
@@ -253,7 +253,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val7} name=${val7} type="email" placeholder="techmafia@gmail.com" required/>
+                        <input id=${val7} name=${val7} class="form__input" type="email" placeholder="techmafia@gmail.com" required/>
                         <div class="btnGroup">
                             <button id="portEmailPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portEmailNext" type="button" class="port__form__btn">Next</button>
@@ -276,7 +276,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val8} name=${val8} type="text" placeholder="https://www.facebook.com/instagram.com/linkedin.com" />
+                        <input id=${val8} name=${val8} class="form__input" type="text" placeholder="https://www.facebook.com/instagram.com/linkedin.com" />
                         <div class="btnGroup">
                             <button id="portSocialPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portSocialNext" type="button" class="port__form__btn">Next</button>
@@ -296,7 +296,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <input id=${val9} name=${val9} type="text" placeholder="your location" required />
+                        <input id=${val9} name=${val9} class="form__input" type="text" placeholder="your location" required />
                         <div class="btnGroup">
                             <button id="portAddressPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portAddressNext" type="button" class="port__form__btn">Next</button>
@@ -322,7 +322,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea id=${val10} name=${val10} rows="6" cols="50" placeholder="TechMafia has done..." required></textarea>
+                        <textarea id=${val10} name=${val10} class="form__input" rows="6" cols="50" placeholder="TechMafia has done..." required></textarea>
                         <div class="btnGroup">
                             <button id="portAccompPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portAccompNext" type="button" class="port__form__btn">Next</button>
@@ -342,7 +342,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea type="text" id=${probValue} name=${probValue} rows="6" cols="50" placeholder="The biggest problem i faced while i worked or was learning...." required></textarea>
+                        <textarea type="text" id=${probValue} class="form__input" name=${probValue} rows="6" cols="50" placeholder="The biggest problem i faced while i worked or was learning...." required></textarea>
                         <div class="btnGroup">
                             <button id="portProbPrev" type="button" class="port__form__btn">Previous</button>
                             <button id="portProbNext" type="button" class="port__form__btn">Next</button>
@@ -362,7 +362,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         </div>
                     </div>
                     <div class="form__sec__cont">
-                        <textarea type="text" id=${solveValue} name=${solveValue} rows="6" cols="50" placeholder="I just dont give up easy..." required></textarea>
+                        <textarea type="text" id=${solveValue} class="form__input" name=${solveValue} rows="6" cols="50" placeholder="I just dont give up easy..." required></textarea>
                         <div class="btnGroup">
                             <button id="portSolnPrevious" type="button" class="port__form__btn">Previous</button>
                         </div>

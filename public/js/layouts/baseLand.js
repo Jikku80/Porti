@@ -4,7 +4,7 @@ let portName = document.getElementById('user__nam').innerText;
 
 url.innerHTML = `
 <button id="openport" class="redbtn">My Portfolio</button>
-<p class="xsf">Share your potfolio with the link below</p>
+<p class="xsf">Share your portfolio with the link below</p>
 <p class="port_link nocaps">${location.protocol}://${location.host}/profile/${portName}</p>
 `
 
@@ -372,3 +372,41 @@ function delImgItem() {
     })
 }
 delImgItem();
+
+(function () {
+    let theme = document.querySelector(".urTheme").innerText;
+    let bodsec = document.querySelector(".land__whole__sec");
+    let sec = document.querySelectorAll(".redbtn");
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+
+    if (theme == "red") {
+        bodsec.style.backgroundColor = "crimson";
+        inpt.forEach(item => {
+            item.style.borderColor = "white";
+        })
+        sec.forEach(item => {
+            item.style.borderColor = "white";
+        })
+    }
+    else if (theme == "dark") {
+        bodsec.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        bodsec.style.backgroundColor = "white";
+        sec.forEach(item => {
+            item.style.color = "black";
+        })
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
+})();

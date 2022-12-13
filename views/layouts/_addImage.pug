@@ -1,14 +1,14 @@
 .addImage#addImageToPortfolio 
     .addHeading
-        h2 Add Previous Images
+        h2.form__label Add Previous Images
         h2
-            a(href="#port_name") Portfolio Link
+            a.form__label(href="#port_name") Portfolio Link
     form.addPortiImages
         .form__add__bod.file_part
-            input#addImg(type="file" accept="image/*" required)
+            input#addImg.form__input(type="file" accept="image/*" required)
         .form__add__bod
-            label Accomplishment Detail (optional):
-            input#addName(type="text")
+            label.form__label Accomplishment Detail (optional):
+            input#addName.form__input(type="text" placeholder="my marksheet")
         button#addImageBtn.redbtn.bigbtn Add Image
         button#updatePortfolioImageBtn.hidden.redbtn.bigbtn Update Image
 

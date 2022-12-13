@@ -8,8 +8,10 @@
 
 .main__sixth__prev{
     border: 1px solid olivedrab;
+    font-size: 16px;
     width: 100%;
     margin: 1%;
+    padding: 1%;
     margin-top: 10%;
     margin-bottom: 10%;
     text-align: center;
@@ -19,8 +21,10 @@
 
 .main__sixth__about{
     border: 1px solid olivedrab;
+    font-size: 16px;
     width: 100%;
     margin: 1%;
+    padding: 1%;
     text-align: center;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -32,11 +36,12 @@
 
 .main__sixth h2{
     color:rgb(172, 165, 71);
-    font-size: 1rem;
+    font-size: 14px;
+    text-align: left;
 }
 
 .main__sixth p{
-    font-size: 13px;
+    font-size: 16px;
     padding: 10px;
     text-align: justify;
 

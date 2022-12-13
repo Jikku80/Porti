@@ -2,13 +2,14 @@
     .menu__size
         a(href="#") &#9830; &#9830; &#9830;
 #side__bar.main__navigation
+    p.hidden.userTheme= user.theme
     .navigation 
         a.port_sec_head.hm(href="/" title="home")
             img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-            span Por
+            span.chr Por
             span.grn t
-            span.nocaps i
-        a#portiSearch.anavi.search__button(href="/search" title="search") Search
+            span.nocaps.chr i
+        a#portiSearch.anavi.search__button(href="/inspire" title="search") Inspire
         a(href="/me")
             if (user.photo)
                 img#menuImg.profPic(src=`/images/users/${user.photo}`, alt="prof__pic", title=`${user.name}`)

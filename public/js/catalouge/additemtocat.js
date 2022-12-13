@@ -338,7 +338,8 @@ prev.addEventListener("click", async () => {
     let compsocial = document.getElementById("compsocial");
     let comploc = document.getElementById("complocationLink");
     let compcolor = document.getElementById("companyColor");
-    let compTheme = document.getElementById("compTheme")
+    let compTheme = document.getElementById("compTheme");
+    let compType = document.getElementById("compType");
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -373,7 +374,8 @@ prev.addEventListener("click", async () => {
                     Address: resAddress.value,
                     contact: compcontact.value,
                     theme: compTheme.value,
-                    themecolor: compcolor.value
+                    themecolor: compcolor.value,
+                    compType: compType.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

@@ -6,67 +6,70 @@
             img.cancel(src="/images/cancel.png", alt="cancel_img")
         form#upPort
             .form__bod
-                label Portfolio Name:
-                input#upname(type="text" name="name" value=`${portfolio.name}` required)
+                label.form__label Portfolio Name:
+                input#upname.form__input(type="text" name="name" value=`${portfolio.name}` required)
             .form__bod
-                label About You:
-                textarea#upabout(rows="5" cols="50" name="about" required)= portfolio.about
+                label.form__label About You:
+                textarea#upabout.form__input(rows="5" cols="50" name="about" required)= portfolio.about
             .form__bod
-                label What You Do:
-                textarea#upwhat(rows="5" cols="50" name="what" required)= portfolio.what
+                label.form__label What You Do:
+                textarea#upwhat.form__input(rows="5" cols="50" name="what" required)= portfolio.what
             .form__bod
-                label Why You Do It:
-                textarea#upwhy(rows="5" cols="50" name="why" required)= portfolio.why
+                label.form__label Why You Do It:
+                textarea#upwhy.form__input(rows="5" cols="50" name="why" required)= portfolio.why
             .form__bod
-                    label How You deal with Failure? 
-                    textarea#upfailure(type="text" rows="4" cols="30" name="failure")= portfolio.failure
+                label.form__label How You deal with Failure? 
+                textarea#upfailure.form__input(type="text" rows="4" cols="30" name="failure")= portfolio.failure
             .form__bod
-                label  How you motivate yourself?
-                textarea#upmoti(type="text" rows="4" cols="30" name="motivation")= portfolio.motivation
+                label.form__label  How you motivate yourself?
+                textarea#upmoti.form__input(type="text" rows="4" cols="30" name="motivation")= portfolio.motivation
             .form__bod
-                label You Message: 
-                textarea#upmsg(type="text" rows="4" cols="30" name="mesage")= portfolio.msg
+                label.form__label You Message: 
+                textarea#upmsg.form__input(type="text" rows="4" cols="30" name="mesage")= portfolio.msg
             label Contact Details:
             .form__bod
-                label Phone Number: 
-                input#upno(type="number" value= `${portfolio.phn_no}` name="phn_no" required)
+                label.form__label Phone Number: 
+                input#upno.form__input(type="number" value= `${portfolio.phn_no}` name="phn_no" required)
             .form__bod
-                label Show Your Phone Number: 
+                label.form__label Show Your Phone Number: 
                 if (portfolio.showNo === true)
                     input#upCheck.checkbox(type="checkbox" checked="checked")
                 else
                     input#upCheck.checkbox(type="checkbox") 
+            .form__bod
+                label.form__label Occupation:
+                input#upocc.form__input(type="text" name="name" value=`${portfolio.role}` required)
             .form__bod 
-                label Show your Portfolio in Search
+                label.form__label Show your Portfolio in Search
                 if (portfolio.searchVisible === true)
                     input#upSearchVisible.checkbox(type="checkbox" checked="checked")
                 else
                     input#upSearchVisible.checkbox(type="checkbox")
             .form__bod 
-                label Change Theme 
+                label.form__label Change Theme 
                 select#themes
                     option.opt(hidden selected)= portfolio.theme 
                     each item in theme 
                         if (item.themeType === 'Free' || item.validUser.includes(user.id))
                             option.opt(value=`${item.themeId}`)= item.name
             .form__bod
-                label Email Address:
-                input#upemail(type="email" value=`${portfolio.email}` name="email" required)
+                label.form__label Email Address:
+                input#upemail.form__input(type="email" value=`${portfolio.email}` name="email" required)
             .form__bod
-                label Your Social Media Profile Link: 
-                input#upFb(type="text" value=`${portfolio.fb}`)
+                label.form__label Your Social Media Profile Link: 
+                input#upFb.form__input(type="text" value=`${portfolio.fb}`)
             .form__bod
-                label Address: 
-                input#upLoc(type="text" value=`${portfolio.location}`)
+                label.form__label Address: 
+                input#upLoc.form__input(type="text" value=`${portfolio.location}`)
             .form__bod
-                label Detail:
-                textarea#upwork(rows="5" cols="50" name="previous" required)= portfolio.previous
+                label.form__label Detail:
+                textarea#upwork.form__input(rows="5" cols="50" name="previous" required)= portfolio.previous
             .form__bod
-                label Problem You faced? 
-                textarea#upproblem(type="text" rows="4" cols="30"  name="problem")= portfolio.problem
+                label.form__label Problem You faced? 
+                textarea#upproblem.form__input(type="text" rows="4" cols="30"  name="problem")= portfolio.problem
             .form__bod
-                label How you solved that problem?
-                textarea#upsoln(type="text" rows="4" cols="30" name="soln")= portfolio.solution
+                label.form__label How you solved that problem?
+                textarea#upsoln.form__input(type="text" rows="4" cols="30" name="soln")= portfolio.solution
             button#updateBtn.redbtn.bigbtn Update
             
     

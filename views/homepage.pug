@@ -29,10 +29,10 @@ block content
                     span= user.name
                 .futuristic-button.hidden
         .main__content__nav
-            a.fkAncky(href="#aboutTM") About 
+            a.fkAncky(href="#aTM") About 
                 span.maf Lakhey 
                     span.lst De 
-                        span.mid Tech
+                        span.wite Tech
             if (!user)
                 a.crPr.button-89(href="/porti-highlights") Por
                     span.grn t
@@ -41,19 +41,19 @@ block content
                 #go__create.hidden
             else
                 a.crPr.button-89(href="/porti")
-                    p#go__create Let's Start 
-                        span.orng Burning
+                    p#go__create.wite Let's  
+                        span.orng Suit Up
             .fkAncky
-                a.opst(href="#contactTM") Reach  
+                a.opst(href="#cTM") Reach  
                     span.maf  Lakhey 
                         span.lst De 
-                            span.mid Tech
+                            span.wite Tech
         .main__content__learn
             .learn__content 
                 a.button-49(href="#abtPorti") 
                     span.whte About 
                     span Porti 
-                a.button-49(href="#guidePorti") Porti 
+                a.button-49(href="#pGuide") Porti 
                     span.whte Guide
         .main__content__logo 
             .logo__grp 
@@ -66,13 +66,15 @@ block content
             #abtPorti.padder.darkgreen
                 .bottom__nav
                     h2 About 
-                        span.mid Por
+                        span.wite Por
                         span.grn t
-                        span.mid i
+                        span.wite i
                     if (!user)
+                        p.usrTheme.hidden
                         a.bottom__anch(href="/login") 
                             h3 Login | SignUp
                     else
+                        p.usrTheme.hidden= user.theme
                         .bottom__nav__inner 
                             a.bottom__anch.text__shadow(href=`/myportfolio/${user._id}`) 
                                 h3 Portfolio
@@ -82,7 +84,7 @@ block content
                                 h3 Menu
                             a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
                                 h3 Catalouge
-                .first__abt__cont.containr 
+                .first__abt__cont.containr#apS 
                     .first__half__cont 
                         h1 About 
                             span.wite Por
@@ -116,7 +118,7 @@ block content
                     p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
                     h3 Is Porti Free To Use?
                     p Yes! Porti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your porti account as there are lots of free themes :)
-            .padder.darkgreen
+            .padder.darkgreen#pGuide
                 .containr 
                     .second__half__cont 
                         .second__half__head.to__left
@@ -126,6 +128,8 @@ block content
                                 span.maf Domain, 
                                 span No 
                                 span.maf Hosting
+                            h1 No 
+                                span.maf Hassle
                             h1 Short Easy 
                                 span.grn Link
                         button#showGuide.shwbtn Porti Processes 
@@ -133,13 +137,13 @@ block content
                         h1.wite 
                             span Por
                             span.grn t
-                            span.mid.nocapsB i
-                        h1.gry Guide
+                            span.mid.nocapsB i  
+                            span.gry Guide
                 #guidePorti.hidden 
                     h2 To Start Using  
-                        span.mid Por
+                        span.wite Por
                         span.grn t
-                        span.mid i 
+                        span.wite i 
                         span.gry Services 
                         span.lst ?
                     .guide__box
@@ -167,7 +171,7 @@ block content
                             .gbox__bod
                                 p To view your created porti Click on My Portfolio || My Invitation || My Menu || My Cataloge 
                                 p To share your portfolio click copy link and share it or you can click generate qrcode and share your qrcode
-            .padder
+            .padder#pHelper
                 .containr 
                     .first__half__cont 
                         h1.wite Port
@@ -185,7 +189,7 @@ block content
                                 span.wite Profile
                         button#showPortHelper.shwbtn Portfolio Helper
                 #portiHelper.hidden
-                    h3.mid Portfolio 
+                    h3.wite Portfolio 
                         span.lst Helper
                     p Do not Know What To Write In Your Portfolio? Here are Few Tips
                     p Just the tips cause only you can tell the world who you really are ;) 
@@ -243,7 +247,7 @@ block content
                             span.mid.nocaps /profile/yourusername
                         .link__format
                             p.porti_all_link www.porti.com/profile/username
-            .darkgreen.padder
+            .darkgreen.padder#iHelper
                 .containr 
                     .second__half__cont
                         .second__half__head.to__left
@@ -260,7 +264,7 @@ block content
                             span.gry  tation 
                             span Helper
                 #portiinviHelper.hidden
-                    h3.mid Invitation 
+                    h3.wite Invitation 
                         span.lst Helper
                     p Follow these steps below and you are all set!
                     .guide__box
@@ -299,7 +303,7 @@ block content
                                 h3 Phone Number
                             .gbox__bod
                                 p Just incase if your guests gets lost or wants more detail provide your phone number
-            .darkgreen.padder
+            .darkgreen.padder#mHelper
                 .containr 
                     .first__half__cont 
                         h1.wite Menu 
@@ -315,7 +319,7 @@ block content
                             h2 Easy, No Hassle 
                         button#showMenuHelper.shwbtn Menu Helper
                 #portimenuHelper.hidden
-                    h3.mid Food Menu 
+                    h3.wite Food Menu 
                         span.lst Helper
                     h4 Creating a Restaurant 
                     .guide__box
@@ -374,7 +378,7 @@ block content
                             span.mid.nocaps /menu/yourusername
                         .link__format
                             p.porti_all_link www.porti.com/menu/username
-            .padder.darkgreen
+            .padder.darkgreen#cHelper
                 .containr 
                     .second__half__cont
                         .second__half__head.to__left
@@ -392,7 +396,7 @@ block content
                             span.gry log  
                             span.gry Helper
                 #porticatalogeHelper.hidden
-                    h3.mid Cataloge 
+                    h3.wite Cataloge 
                         span.lst Helper
                     h4 Creating a Company 
                     .guide__box
@@ -480,7 +484,7 @@ block content
                             span.mid.nocaps /catalog/yourusername
                         .link__format
                             p.porti_all_link www.porti.com/catalog/username
-            .padder.darkgreen
+            .padder.darkgreen#aTM
                 .containr 
                     .first__half__cont 
                         h1 About 
@@ -510,7 +514,7 @@ block content
                     h3 Copyright Notice 
                     p The entire Porti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The porti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
                     p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
-            .padder.darkgreen 
+            .padder.darkgreen#cTM
                 .containr 
                     .second__half__cont
                         .second__half__head.to__left
@@ -553,7 +557,7 @@ block content
                                             option(value="unlock") Theme Unlock Problem 
                                             option(value="Other") Other
                                     label.form__label(for='message') Message 
-                                    textarea#msgmessage.form__input(type="text", name="message", placeholder="i want you to build me a ecom site with this and that...", rows="5", cols="40", required)
+                                    textarea#msgmessage.form__input(type="text", name="message", placeholder="Porti is this and that...", rows="5", cols="40", required)
                                     .form__group
                                     button.send__msg.greybtn Send
 
@@ -563,12 +567,6 @@ block content
                                 span.grn t
                                 span.nocaps i
                             img#ok.hidden(src="/images/ok.png", alt="loader")
-
-            #devSection.padder 
-                h2 Become a 
-                    span.mid Lakhey
-                    span.lst Tech Hitman
-                button#becomeDeveloper.greybtn Load it
             .fot_sec
                 include _footer
      

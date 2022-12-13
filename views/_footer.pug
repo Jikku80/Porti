@@ -2,31 +2,39 @@
     .footer__bod
         .footer__top
             .footer__row
+                if (!user)
+                    p.hidden.ueserTheme
+                else
+                    p.hidden.ueserTheme= user.theme
                 .footer__first__bod 
-                    a(href="/#guidePorti")
+                    a.footer__anch(href="/#pGuide")
                         p Porti Guide
-                    a(href="/#portiHelper")
+                    a.footer__anch(href="/#pHelper")
                         p Portfolio Helper 
-                    a(href="/#portiinviHelper")
+                    a.footer__anch(href="/#iHelper")
                         p Invitation Helper
-                    a(href="/#portimenuHelper")
+                    a.footer__anch(href="/#mHelper")
                         p Menu Helper
-                    a(href="/#porticatalogeHelper")
+                    a.footer__anch(href="/#cHelper")
                         p Cataloge Helper
                 .footer__first__bod
-                    a(href="/#abtPorti")
+                    a.footer__anch(href="/#apS")
                         p About Porti
-                    a(href="/#contactTM") 
+                    a.footer__anch(href="/#cTM") 
                         p Message Lakhey De Tech
-                    a(href="/#aboutTM")
+                    a.footer__anch(href="/#aTM")
                         p About Lakhey De Tech
-                    a(href="/privacy")
-                        p privacy policy
+                    a.footer__anch(href="/privacy")
+                        p Privacy Policy
+                    a.footer__anch(href="#")
+                        p Careers
             .footer__contact__detail
                 .footer__contact__bod
-                    p.wite Contact: 
+                    p.wite.footer__anch Contact: 
                         span.grn +977 9813719909
                     p.grn Email: 
-                        span.wite lakheydetech@gmail.com
+                        span.wite.footer__anch lakheydetech@gmail.com
         .footer__sec__bod
             p Copyright &#169; 2022
+
+script(src="/js/footer.js") 

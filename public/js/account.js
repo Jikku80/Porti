@@ -175,3 +175,187 @@ upProfPic.addEventListener("click", async (e) => {
     };
     profPic.value = ""
 })
+
+let currentid = document.getElementById("currentId").innerText;
+let portiBack = document.getElementById("defaultBack");
+let darkBack = document.getElementById("darkBack");
+let whiteBack = document.getElementById("whiteBack");
+let lakheyBack = document.getElementById("redBack");
+
+
+portiBack.addEventListener("click", async (e) => {
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden")
+    try {
+        const endpoint = `/api/users/updateUser/${currentid}`
+        await fetch((endpoint), {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                theme: 'porti'
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Your Theme has been Updated :)");
+                window.setTimeout(() => {
+                    location.assign('/me');
+                }, 400);
+            }
+            else {
+                console.log(response)
+                errorAlert("Error Updating Theme :(")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong :(', err);
+    };
+})
+
+darkBack.addEventListener("click", async (e) => {
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden")
+    try {
+        const endpoint = `/api/users/updateUser/${currentid}`
+        await fetch((endpoint), {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                theme: 'dark'
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Your Theme has been Updated :)");
+                window.setTimeout(() => {
+                    location.assign('/me');
+                }, 400);
+            }
+            else {
+                console.log(response)
+                errorAlert("Error Updating Theme :(")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong :(', err);
+    };
+})
+
+whiteBack.addEventListener("click", async (e) => {
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden")
+    try {
+        const endpoint = `/api/users/updateUser/${currentid}`
+        await fetch((endpoint), {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                theme: 'white'
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Your Theme has been Updated :)");
+                window.setTimeout(() => {
+                    location.assign('/me');
+                }, 400);
+            }
+            else {
+                console.log(response)
+                errorAlert("Error Updating Theme :(")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong :(', err);
+    };
+})
+
+lakheyBack.addEventListener("click", async (e) => {
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden")
+    try {
+        const endpoint = `/api/users/updateUser/${currentid}`
+        await fetch((endpoint), {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                theme: 'red'
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Your Theme has been Updated :)");
+                window.setTimeout(() => {
+                    location.assign('/me');
+                }, 400);
+            }
+            else {
+                console.log(response)
+                errorAlert("Error Updating Theme :(")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong :(', err);
+    };
+});
+
+(function () {
+    let theme = document.querySelector(".backTheme").innerText;
+    let upAccForm = document.querySelector(".update__account__form ");
+    let labels = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+    let btn = document.querySelectorAll(".redbtn");
+    let warn = document.querySelectorAll(".warn");
+    let hd = document.getElementById("acHead");
+
+    if (theme == "red") {
+        upAccForm.style.backgroundColor = "crimson";
+        upAccForm.style.color = "white";
+        inpt.forEach(item => {
+            item.style.borderColor = "white"
+        })
+        warn.forEach(item => {
+            item.style.color = "goldenrod"
+        })
+    }
+    else if (theme == "dark") {
+        upAccForm.style.backgroundColor = "black";
+    }
+    else if (theme == "white") {
+        upAccForm.style.backgroundColor = "white";
+        upAccForm.style.color = "black";
+        hd.style.color = "black";
+        labels.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+        btn.forEach(item => {
+            item.style.color = "black";
+        })
+    }
+    else {
+        console.log("Hola from Porti")
+    }
+})();

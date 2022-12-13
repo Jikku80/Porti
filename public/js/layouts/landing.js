@@ -70,6 +70,7 @@ let upwhat = document.getElementById('upwhat');
 let upwhy = document.getElementById("upwhy");
 let upno = document.getElementById("upno");
 let upshowNo = document.getElementById("upCheck");
+let upocc = document.getElementById("upocc");
 let upemail = document.getElementById("upemail");
 let upFb = document.getElementById("upFb");
 let upLoc = document.getElementById("upLoc");
@@ -105,6 +106,7 @@ updBtn.addEventListener("click", async (e) => {
                 what: upwhat.value,
                 why: upwhy.value,
                 phn_no: upno.value,
+                role: upocc.value,
                 showNo: upshowNo.checked,
                 theme: themes.value,
                 email: upemail.value,

@@ -110,3 +110,51 @@
         catalgbtn[1].style.color = "black";
     })
 })();
+
+(function () {
+    let theme = document.getElementById("uTheme").innerText;
+    let sec = document.querySelectorAll('.shinesec');
+    let btn = document.querySelectorAll(".whitebtn");
+    let rbtn = document.querySelectorAll(".redbtn");
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+    let det = document.querySelectorAll(".portDet");
+
+
+    if (theme == "red") {
+        document.body.style.backgroundColor = "crimson";
+        sec.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+    }
+    else if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        document.body.style.backgroundColor = "white";
+        sec.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+            item.style.color = "black";
+        })
+        btn.forEach(item => {
+            item.style.borderColor = "black";
+        })
+        rbtn.forEach(item => {
+            item.style.color = "black";
+        })
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+        det.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
+})();

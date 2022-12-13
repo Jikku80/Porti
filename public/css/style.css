@@ -104,7 +104,7 @@ html{
 .menu__bar a{
   text-decoration: none;
   color: white;
-  font-size: 2em;
+  font-size: 2vw;
   font-variant: small-caps;
 }
 
@@ -305,6 +305,46 @@ html{
   flex-direction: column;
   margin: 1%;
   align-items: center;
+}
+
+.update__account__form {
+  margin-left: 10vw;
+}
+
+.update__background{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bg__fix {
+  width: 90%;
+  margin: 2%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.up__bg{
+  border: 2px solid gray;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2rem;
+  /* padding: 1%; */
+}
+
+.up__bg img{
+  border-radius: 2rem;
+}
+
+.up__bg:hover{
+  filter: invert(1);
+  background-color: gray;
+  color: rgb(0, 26, 0)
+}
+
+.bg__opt{
+  width: 10vw;
+  height: 10vh;
 }
 
 #logout, #view, #viewInvites{
@@ -937,17 +977,28 @@ input::file-selector-button{
   transform: scale(1.2);
 }
 
+.search__head {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search__groups{
+  animation: shine 4s ease-in-out forwards infinite;
+  padding: 2%;
+}
+
+.res{
+  font-variant: small-caps;
+  color:rgba(255, 255, 255, 0.171);
+}
+
 .search__values{
   display: flex;
   flex-direction: column;
 }
 
-.search__results{
-  
-}
-
 .search__results a{
-  color: white;
+  color: goldenrod;
   text-decoration: none;
   font-size: 2em;
   display: flex;
@@ -960,6 +1011,7 @@ input::file-selector-button{
 .search__results a:hover{
   background-color: gray;
   border-color: gray;
+  color: white;
 }
 
 .footer{
@@ -1020,8 +1072,30 @@ input::file-selector-button{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+  .navigation a{
+    font-size: 1.8vw;
+  }
+
+  .profPic{
+    width: 6rem;
+    height: 6rem;
+  }
   .term__main{
     width: 80%;
+  }
+
+  .update__background{
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .bg__fix{
+    width: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .bg__opt{
+    width: 15vw;
   }
   .comp__form{
     width: 75%;
@@ -1044,7 +1118,7 @@ input::file-selector-button{
   }
 
   .un_layout img, .unl img, .portunl img{
-      width: 80vw;
+      width: 60vw;
       height: 40vh;
       margin-top: 4%;
     }
@@ -1098,8 +1172,24 @@ input::file-selector-button{
   }
 
   .update__account__form{
+    margin-left: 0;
     align-items:center;
     padding: 2vw;
+  }
+
+  .update__background{
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .bg__fix{
+    width: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .bg__opt{
+    width: 25vw;
   }
 
   .port__bod, .invi__section, .menu__section, .newsec{
@@ -1265,5 +1355,29 @@ input::file-selector-button{
   }
   100% {
       box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.171);
+  }
+}
+
+@keyframes blackShine {
+  0%{
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.171);
+  }
+  10%{
+      box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.171);
+  }
+  25%{
+      box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
+  }
+  50%{
+      box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.171);
+  }
+  75%{
+      box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
+  }
+  90%{
+      box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.171);
+  }
+  100% {
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.171);
   }
 }

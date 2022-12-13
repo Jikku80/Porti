@@ -30,6 +30,10 @@ const companySchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    compType: {
+        type: String,
+        trim: true
+    },
     contact: {
         type: String,
         trim: true,

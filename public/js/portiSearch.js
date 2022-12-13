@@ -1,7 +1,19 @@
+(function () {
+    let SearchBar = document.getElementById("portisearch");
+    let grps = document.querySelector(".search__groups");
+    let cancel = document.getElementById("cancelSearch");
 
+    SearchBar.addEventListener("click", () => {
+        grps.classList.remove("hidden");
+    })
+
+    cancel.addEventListener("click", () => {
+        grps.classList.add("hidden");
+    })
+})();
 (function () {
 
-    SearchBar = document.getElementById("portisearch");
+    let SearchBar = document.getElementById("portisearch");
 
     SearchBar.addEventListener("keypress", async (e) => {
         if (SearchBar.value < 1 || SearchBar.value == "" || SearchBar.value == null) {
@@ -12,6 +24,10 @@
             let subItems = document.querySelector(".found__values");
             let menuItems = document.querySelector(".found__menu__values");
             let compItems = document.querySelector(".found__catalog__values");
+            let loadPort = document.querySelector(".load__portfolio");
+            let loadMenu = document.querySelector(".load__menu");
+            let loadCatalog = document.querySelector(".load__catalog");
+
             subItems.innerHTML = "";
             menuItems.innerHTML = "";
             compItems.innerHTML = "";
@@ -41,12 +57,12 @@
                                     subItems.innerHTML += `<div class="search__results">
                                                                 <a class="anc" href="/toprofile/${el.user._id}/portfolio">
                                                                     <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />
-                                                                    <p>${el.name}</p>
+                                                                    ${el.name}
                                                                 </a> 
                                                             </div>   
                                         `
                                 });
-                                if (subItems.children.length == 0) {
+                                if (profiles.length == 0) {
                                     subItems.innerHTML += `
                                     <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                                 }
@@ -62,10 +78,12 @@
                                     
                                     `
                                 });
-                                if (menuItems.children.length == 0) {
+                                if (restro.length == 0) {
                                     menuItems.innerHTML += `
                                     <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                                 }
+
+
                             }
                             if (company) {
                                 company.forEach(el => {
@@ -77,10 +95,26 @@
                                                             </div>
                                     `
                                 });
-                                if (compItems.children.length == 0) {
+                                if (company.length == 0) {
                                     compItems.innerHTML += `
                                     <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                                 }
+
+                            }
+                            if (!profiles) {
+                                subItems.innerHTML = `
+                                        <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+
+                            }
+                            if (!restro) {
+                                menuItems.innerHTML = `
+                                        <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+
+                            }
+                            if (!company) {
+                                compItems.innerHTML = `
+                                        <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+
                             }
 
                         })
@@ -97,4 +131,36 @@
             SearchBar.value = "";
         }
     });
+})();
+
+(function () {
+    let theme = document.querySelector(".themeIid").innerText;
+    let srch = document.querySelector(".search__groups");
+    let res = document.querySelectorAll(".res");
+    let bar = document.querySelector(".search_bar");
+    let anc = document.querySelectorAll(".anc");
+
+    if (theme == "red") {
+        document.body.style.backgroundColor = "crimson";
+        srch.style.animation = "blackShine 4s ease-in-out forwards infinite";
+    }
+    else if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        document.body.style.backgroundColor = "white";
+        srch.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        res.forEach(item => {
+            item.style.color = "black";
+        })
+        anc.forEach(item => {
+            item.style.color = "black";
+        })
+        bar.style.color = "crimson";
+        bar.style.borderColor = "crimson";
+    }
+    else {
+        console.log("Hola from Porti")
+    }
 })();

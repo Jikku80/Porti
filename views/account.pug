@@ -9,6 +9,7 @@ block content
             span.nocaps i
         include _header
         .update__account__form 
+            p.hidden.backTheme= user.theme
             form#upAccImg
                 if (user.photo)
                     img.profPic(src=`images/users/${user.photo}`, alt="prof__pic")
@@ -21,9 +22,9 @@ block content
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name
                 input#upname.form__input(type='text', value=`${user.name}`, required)
-                p.sami__user__warn.maf.hidden User with this name already exits. Please use a different one!
-                p.whiti__space.maf.hidden You cannot use space in name!!!
-                p.onallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
+                p.sami__user__warn.maf.warn.hidden User with this name already exits. Please use a different one!
+                p.whiti__space.maf.warn.hidden You cannot use space in name!!!
+                p.onallowed__charc.maf.warn.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
                 label.form__label(for='email') Email Address 
                 input#upemail.form__input.inpt__disable(type='email', value=`${user.email}`, disabled, required)
                 button.update__account.redbtn Update Info
@@ -38,13 +39,28 @@ block content
                     input#up_password.form__input(type='password', placeholder='********', required, minlength='8')
                     label.form__label(for='password') Confirm Password
                     input#up_passwordConfirm.form__input(type='password', placeholder='********', required, minlength='8')
-                    button.btn__pwd.redbtn Update
-
+                    button.btn__pwd.redbtn Update        
+            h2 Change Background Color
+            p.hidden#currentId= user.id
+            .update__background 
+                .bg__fix
+                    #defaultBack.up__bg
+                        img.bg__opt(src="/images/grn.png", alt="grn__background")
+                        p Porti Background
+                    #darkBack.up__bg
+                        img.bg__opt(src="/images/dark.png", alt="grn__background")
+                        p Dark Background
+                    #whiteBack.up__bg
+                        img.bg__opt(src="/images/white.png", alt="grn__background")
+                        p White Background
+                    #redBack.up__bg
+                        img.bg__opt(src="/images/red.png", alt="grn__background")
+                        p Lakhey Background
             h1#acHead= `Greetings, ${user.name}`
-
     else 
         h1 You are not Logged In, Please Log In 
         a.redbtn(href="/login") LogIn
+        p.hidden#currentId
 
     script(src="/js/alert.js") 
     script(src="/js/account.js") 

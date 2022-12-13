@@ -20,6 +20,10 @@ const restaurantSchema = new mongoose.Schema({
         unique: true,
         required: [true, 'Restaurante must belong to a User']
     },
+    resType: {
+        type: String,
+        trim: true
+    },
     theme: {
         type: String
     },

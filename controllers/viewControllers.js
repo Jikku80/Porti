@@ -66,7 +66,7 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
     const company = await Company.findOne({ user: req.user.id })
     const theme = await Theme.find().sort('-createdAt');
     res.status(200).render('create', {
-        title: 'Unleash The Power',
+        title: `Let's Suit Up`,
         portfolio,
         portfolioImage,
         menu,
@@ -230,6 +230,7 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
+            role: req.body.role,
             theme: req.body.theme,
             about: req.body.about,
             what: req.body.what,
@@ -264,6 +265,7 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             why: req.body.why,
             email: req.body.email,
             fb: req.body.fb,
+            role: req.body.role,
             location: req.body.location,
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
@@ -380,7 +382,8 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     const portfolio = await Portfolio.find().then(ports => {
         const por = ports.filter(item => {
             let lownam = (item.name).toLowerCase();
-            if (lownam.includes(lowVals) && item.searchVisible == true) {
+            let lowrole = (item.role).toLowerCase();
+            if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
                 let searchVal = Portfolio.find({ name: item.name })
                 return searchVal
             }
@@ -392,7 +395,8 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     const restro = await Restaurant.find().then(resto => {
         const restr = resto.filter(item => {
             let lownam = (item.name).toLowerCase();
-            if (lownam.includes(lowVals)) {
+            let lowtype = (item.resType).toLowerCase();
+            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
                 let searchVal = Restaurant.find({ name: item.name })
                 return searchVal
             }
@@ -404,7 +408,8 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     const company = await Company.find().then(comp => {
         const comps = comp.filter(item => {
             let lownam = (item.name).toLowerCase();
-            if (lownam.includes(lowVals)) {
+            let lowtype = (item.compType).toLowerCase();
+            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
                 let searchVal = Company.find({ name: item.name })
                 return searchVal
             }
@@ -440,7 +445,7 @@ exports.toPage = catchAsync(async (req, res, next) => {
 
 exports.searchPage = catchAsync(async (req, res, next) => {
     res.status(200).render('search', {
-        title: 'Search'
+        title: 'Discover'
     })
 })
 

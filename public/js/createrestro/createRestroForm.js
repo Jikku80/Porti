@@ -6,20 +6,20 @@ function createRestro(val, val1, val2, val3, val4) {
             <img src="/images/cancel.png" alt="cancel_img" class="cancel__restro pointer" />
         </div>
         <div class="form__cont">
-            <label>Name:</label>
-            <input id=${val} type="text" placeholder="Romeo Restro" required/>
+            <label class="form__label">Name:</label>
+            <input id=${val} class="form__input" type="text" placeholder="Romeo Restro" required/>
         </div>
         <div class="form__cont">
-            <label>Address:</label>
-            <input id=${val1} type="text" placeholder="Julietilante madagascar" required/>
+            <label class="form__label">Address:</label>
+            <input id=${val1} class="form__input" type="text" placeholder="Julietilante madagascar" required/>
         </div>
         <div class="form__cont">
-            <label>Slogan :</label>
-            <input id=${val2} placeholder="You eat we serve" required />
+            <label class="form__label">Slogan :</label>
+            <input id=${val2} class="form__input" placeholder="You eat we serve" required />
         </div>
         <div class="form__cont">
-            <label>Phone Number: </label>
-            <input id=${val3} placeholder="999999998" required />
+            <label class="form__label">Phone Number: </label>
+            <input id=${val3} class="form__input" placeholder="999999998" required />
         </div>
         <button id=${val4} class="redbtn">Create</button>
     </form>

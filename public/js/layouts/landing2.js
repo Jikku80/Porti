@@ -68,6 +68,7 @@ let pno = document.getElementById("upnoSec");
 let pshowNo = document.getElementById("upCheckSec");
 let pemail = document.getElementById("upemailSec");
 let pFb = document.getElementById("upFbSec");
+let pOcc = document.getElementById("upoccSec")
 let pLoc = document.getElementById("upLocSec");
 let pdBtn = document.getElementById("updateBtnSec");
 let pImgBtn = document.getElementById("updateImgBtnCollec");
@@ -96,6 +97,7 @@ pdBtn.addEventListener("click", async (e) => {
                 what: pwhat.value,
                 why: pwhy.value,
                 phn_no: pno.value,
+                role: pOcc.value,
                 showNo: pshowNo.checked,
                 theme: pthemes.value,
                 email: pemail.value,

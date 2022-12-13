@@ -23,6 +23,10 @@ const portfolioSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    role: {
+        type: String,
+        trim: true
+    },
     fb: {
         type: String
     },

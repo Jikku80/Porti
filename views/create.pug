@@ -17,12 +17,13 @@ block content
         #uiId.hidden= user._id
         .creation__body
             include _footer
-            .catalouge__section.newsec#crtCataloge
+            #uTheme.hidden= user.theme
+            .catalouge__section.newsec.shinesec#crtCataloge
                 if (!company)
                     h2 Create Catalouge For Your Business 
                     p Pick any of the layouts below and buid a Catalouge 
                     p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#porticatalogeHelper") Cataloge Helper
+                        a.portDet(href="/#cHelper") Cataloge Helper
                     .gGroup 
                         .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
                         .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
@@ -56,12 +57,12 @@ block content
                                     p= item.name
                     .layuot__main#lockedCatalgSec 
                         .un_layout
-            .menu__section#crtMenu
+            .menu__section#crtMenu.shinesec
                 if (!restro)
                     h2 Create Restro for your Menu 
                     p Pick any of the layouts below and build a menu for your restro 
                     p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#portimenuHelper") Menu Helper
+                        a.portDet(href="/#mHelper") Menu Helper
                     .gGroup 
                         .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
                         .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
@@ -95,11 +96,11 @@ block content
                                     p= item.name
                     .layout__main#lockedMenuSec 
                         .un_layout
-            .invi__section#crtInvi
+            .invi__section#crtInvi.shinesec
                 h2 Create Invitation
                 p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
                 p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#portiinviHelper") Invitation Helper
+                        a.portDet(href="/#iHelper") Invitation Helper
                 .gGroup 
                     .freeSec.whitebtn.invitebtn#freeInviBtn Unlocked
                     .paidSec.whitebtn.invitebtn#lockedInviBtn Locked
@@ -113,7 +114,7 @@ block content
                 .layout__main#lockedInviSec 
                     .unl
             if (portfolio)
-                .port__bod.port__section
+                .port__bod.port__section.shinesec
                     .noti__sec
                         .sticky__section
                             h2 You Already have A Portfolio!
@@ -123,7 +124,7 @@ block content
                                 .sticky__section 
                                     h2.warn You Haven't Uploaded Any Previous Work Image 
                     p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#portiHelper") Porti Helper
+                        a.portDet(href="/#pHelper") Porti Helper
                     .gGroup 
                         .freeSec.whitebtn.glassbtn#freePortSec Unlocked
                         .paidSec.whitebtn.glassbtn#lockedPortSec Locked
@@ -147,11 +148,11 @@ block content
                                         p.layout__price= item.price
                                         a.redbtn(href=`/paywith/${item.themeId}`) Unlock
             else
-                .port__bod.port__section#crtPort
+                .port__bod.port__section#crtPort.shinesec
                     h2 Create a portfolio
                     p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
                     p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#portiHelper") Portfolio Helper
+                        a.portDet(href="/#pHelper") Portfolio Helper
                     .gGroup 
                         .freeSec.whitebtn.glassbtn#freePortSec Unlocked
                         .paidSec.whitebtn.glassbtn#lockedPortSec Locked
