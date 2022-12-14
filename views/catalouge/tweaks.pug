@@ -8,6 +8,7 @@ block content
         span.nocaps i
     if (user)
         if (catalouge.user.id == user.id)
+            p.hidden.themeUssr= user.theme
             p.itemid.hidden= catalouge.id
             p.curusrid.hidden= user.id
             .itemform__head 
@@ -21,23 +22,23 @@ block content
                 h2.items__head Update Item Detail
                 form.upItem
                     .form__bod
-                        label Items Name:
-                        input#upcatalitemname(type="text" value=catalouge.name required)
+                        label.form__label Items Name:
+                        input#upcatalitemname.form__input(type="text" value=catalouge.name required)
                     .form__bod
-                        label Items Price: 
-                        input#upcatalitemprice(type="text" value=catalouge.price required)
+                        label.form__label Items Price: 
+                        input#upcatalitemprice.form__input(type="text" value=catalouge.price required)
                     .form__bod
-                        label Items Serial No: 
-                        input#upcatalitemserialno(type="text" value=catalouge.serialno)
+                        label.form__label Items Serial No: 
+                        input#upcatalitemserialno.form__input(type="text" value=catalouge.serialno)
                     .form__bod
-                        label Items Category: 
-                        input#upcatalitemcat(type="text" value=catalouge.category required)
+                        label.form__label Items Category: 
+                        input#upcatalitemcat.form__input(type="text" value=catalouge.category required)
                     .form__bod
-                        label Items Sub Category: 
-                        input#upcatalitemsubcat(type="text" value=catalouge.subcategory)
+                        label.form__label Items Sub Category: 
+                        input#upcatalitemsubcat.form__input(type="text" value=catalouge.subcategory)
                     .form__bod
-                        label Detail (optional):
-                        textarea#upcatalitemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= catalouge.detail
+                        label.form__label Detail (optional):
+                        textarea#upcatalitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= catalouge.detail
                     .group__btn
                         button#upcatalItemBtn.smallbtn.ygbtn Update Item
                         a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel
@@ -45,7 +46,7 @@ block content
                 h2.items__head Update Items Image
                 form.upItem
                     .form__bod.file_part
-                        input#upcatalcoverimage(type="file" accept="image/*" required)
+                        input#upcatalcoverimage.form__input(type="file" accept="image/*" required)
                     .group__btn
                         button#upcatalImgItemBtn.smallbtn.ygbtn Update Item Image  
                         a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel  

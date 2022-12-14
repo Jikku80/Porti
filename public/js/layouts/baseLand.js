@@ -382,6 +382,7 @@ delImgItem();
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
         inpt.forEach(item => {
             item.style.borderColor = "white";
         })
@@ -391,10 +392,15 @@ delImgItem();
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
 
+    }
+    else if (theme == "porti") {
+        document.body.style.backgroundColor = "rgb(0, 26,0)"
     }
     else if (theme == "white") {
         bodsec.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
         sec.forEach(item => {
             item.style.color = "black";
         })

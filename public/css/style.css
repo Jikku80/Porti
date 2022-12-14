@@ -314,6 +314,7 @@ html{
 .update__background{
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-end;
 }
 
@@ -1085,14 +1086,14 @@ input::file-selector-button{
   }
 
   .update__background{
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-around;
   }
-
+  
   .bg__fix{
-    width: auto;
+    width: 80%;
+    height: fit-content;
     flex-wrap: nowrap;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   .bg__opt{
     width: 15vw;
@@ -1177,19 +1178,18 @@ input::file-selector-button{
     padding: 2vw;
   }
 
-  .update__background{
-    justify-content: center;
-    height: 100vh;
-  }
-
   .bg__fix{
-    width: auto;
-    flex-wrap: nowrap;
-    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
-
+  
   .bg__opt{
     width: 25vw;
+  }
+  
+  .up__bg{
+    margin-top: 4%;
   }
 
   .port__bod, .invi__section, .menu__section, .newsec{

@@ -135,6 +135,7 @@ futbtn.addEventListener("mouseout", (function () {
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
         bod.style.backgroundColor = "crimson";
         selec.style.backgroundColor = "crimson";
         padder.forEach(item => {
@@ -151,6 +152,7 @@ futbtn.addEventListener("mouseout", (function () {
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
         bod.style.backgroundColor = "black";
         selec.style.backgroundColor = "black";
         padder.forEach(item => {
@@ -163,6 +165,7 @@ futbtn.addEventListener("mouseout", (function () {
     else if (theme == "white") {
         upAccForm.style.backgroundColor = "white";
         bod.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
         selec.style.backgroundColor = "white";
         selec.style.borderColor = "black";
         selec.style.color = "black";

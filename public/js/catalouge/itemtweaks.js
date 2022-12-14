@@ -22,12 +22,12 @@ async function getOneCatalougeItem() {
                         `
                             <img class="catalouge__card__img" src="/images/catalouge/${item.coverImage}" alt="catalouge__item__image">
                             <div class="catalouge__card__det">
-                                <h3 class="catalouge__card__head">${item.name}</h3>
-                                <p class="catalouge__card__price">${item.serialno}</p>
-                                <p class="catalouge__card__price">${item.price}</p>
-                                <p class="catalouge__card__cat">${item.category}</p>
-                                <p class="catalouge__card__cat">${item.subcategory}</p>
-                                <p class="catalouge__card__detail">${item.detail}</p>
+                                <h3 class="catalouge__card__head goldn">${item.name}</h3>
+                                <p class="catalouge__card__price goldn">${item.serialno}</p>
+                                <p class="catalouge__card__price goldn">${item.price}</p>
+                                <p class="catalouge__card__cat goldn">${item.category}</p>
+                                <p class="catalouge__card__cat goldn">${item.subcategory}</p>
+                                <p class="catalouge__card__detail goldn">${item.detail}</p>
                             </div>
                             `
                 })
@@ -183,4 +183,34 @@ window.addEventListener("load", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     })
+})();
+
+(function () {
+    let theme = document.querySelector(".themeUssr").innerText;
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+
+    if (theme == "red") {
+        document.body.style.backgroundColor = "crimson";
+        inpt.forEach(item => {
+            item.style.borderColor = "white";
+        })
+    }
+    else if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        document.body.style.backgroundColor = "white";
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
 })();

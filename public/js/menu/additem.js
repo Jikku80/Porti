@@ -45,10 +45,10 @@ additembtn.addEventListener("click", async (e) => {
                                 <div class="menu__card">
                                     <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${fResult.name}</h3>
-                                        <p class="menu__card__price">${fResult.price}</p>
-                                        <p class="menu__card__cat">${fResult.category}</p>
-                                        <p class="menu__card__detail">${fResult.detail}</p>
+                                        <h3 class="menu__card__head goldn">${fResult.name}</h3>
+                                        <p class="menu__card__price goldn">${fResult.price}</p>
+                                        <p class="menu__card__cat goldn">${fResult.category}</p>
+                                        <p class="menu__card__detail goldn">${fResult.detail}</p>
                                         <a href="/tweaks/${fResult._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${fResult._id}?delete" class="redbtn">Delete</a>
                                         </div>
@@ -101,10 +101,10 @@ async function getAllItem() {
                                 <div class="menu__card">
                                     <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
-                                        <p class="menu__card__cat">${el.category}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                                        <h3 class="menu__card__head goldn">${el.name}</h3>
+                                        <p class="menu__card__price goldn">${el.price}</p>
+                                        <p class="menu__card__cat goldn">${el.category}</p>
+                                        <p class="menu__card__detail goldn">${el.detail}</p>
                                         <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -112,7 +112,7 @@ async function getAllItem() {
                             `
                     });
                     if (subItems.children.length == 0) {
-                        sub.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+                        sub.innerHTML = `<h3 class="center items__head">Oopsie!!! No Items Found!!! :(</h3>`
                     }
 
                     if (sub.children.length === 12) {
@@ -179,10 +179,10 @@ next.addEventListener("click", async () => {
                                 <div class="menu__card">
                                     <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
-                                        <p class="menu__card__cat">${el.category}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                                        <h3 class="menu__card__head goldn">${el.name}</h3>
+                                        <p class="menu__card__price goldn">${el.price}</p>
+                                        <p class="menu__card__cat goldn">${el.category}</p>
+                                        <p class="menu__card__detail goldn">${el.detail}</p>
                                         <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -197,7 +197,7 @@ next.addEventListener("click", async () => {
                     }
                     if (subItems.innerHTML == "") {
                         next.classList.add("hidden");
-                        subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
+                        subItems.innerHTML = `<h3 class="go__back center items__head">Oops!! Thats All You've Added So Far :)</h3>`
                     }
                 })
             } else {
@@ -243,10 +243,10 @@ prev.addEventListener("click", async () => {
                                 <div class="menu__card">
                                     <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
-                                        <p class="menu__card__cat">${el.category}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                                        <h3 class="menu__card__head goldn">${el.name}</h3>
+                                        <p class="menu__card__price goldn">${el.price}</p>
+                                        <p class="menu__card__cat goldn">${el.category}</p>
+                                        <p class="menu__card__detail goldn">${el.detail}</p>
                                         <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -273,7 +273,7 @@ prev.addEventListener("click", async () => {
     // let nm = uname.replace(/\s/g, '')
     shareLink.innerHTML += `
         <div class="menu__link">
-            <p class="head">Your Menu Link</p>
+            <p class="head form__label">Your Menu Link</p>
             <p class="menu__link__displayer qrLink">${location.protocol}//${location.host}/menu/${nm}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
@@ -348,4 +348,38 @@ prev.addEventListener("click", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     })
-})()
+})();
+
+(function () {
+    let theme = document.querySelector(".themeUser").innerText;
+    let bodsec = document.querySelector(".whole__menu__sec");
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+
+    if (theme == "red") {
+        bodsec.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
+        inpt.forEach(item => {
+            item.style.borderColor = "white";
+        })
+    }
+    else if (theme == "dark") {
+        bodsec.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        bodsec.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
+})();

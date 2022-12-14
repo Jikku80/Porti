@@ -92,6 +92,8 @@
     let cataloge = document.getElementById("menuCataloge");
     let menuImg = document.getElementById("menuImg");
 
+    let menusiz = document.querySelector(".menu__size");
+
     let pathName = window.location.pathname;
 
     if (theme == "red") {
@@ -99,6 +101,7 @@
         upAccForm.style.color = "white";
         hd.style.color = "white";
         upAccForm.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        menusiz.style.animation = "blackShine 4s ease-in-out forwards infinite";
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
@@ -107,6 +110,7 @@
         upAccForm.style.backgroundColor = "white";
         upAccForm.style.color = "black";
         upAccForm.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        menusiz.style.animation = "blackShine 4s ease-in-out forwards infinite";
         labels.forEach(item => {
             item.style.color = "black";
         })

@@ -330,6 +330,7 @@ lakheyBack.addEventListener("click", async (e) => {
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
         upAccForm.style.color = "white";
         inpt.forEach(item => {
             item.style.borderColor = "white"
@@ -340,9 +341,11 @@ lakheyBack.addEventListener("click", async (e) => {
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
     }
     else if (theme == "white") {
         upAccForm.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
         upAccForm.style.color = "black";
         hd.style.color = "black";
         labels.forEach(item => {

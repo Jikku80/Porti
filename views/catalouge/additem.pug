@@ -13,37 +13,38 @@ block content
                 a(href="/porti#crtCataloge") Create Enterprise
         else
             include ../_header
+            p.hidden.themeUsr= user.theme
             .whole__menu__sec 
                 .menu__section
                     if (catalouges.length === 0)
-                        h2.banner.up__place__det You haven't Added Items to your Catalouge, Add Few Items!
+                        h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form
                         .itemform__head 
-                            h2 Add Items To Catalouge
+                            h2.form__label Add Items To Catalouge
                             h2
-                                a(href="#openCatalouge") Catalouge Link
+                                a.form__label(href="#openCatalouge") Catalouge Link
                         form#addCatItem.upItem
                             .form__bod
-                                label(for="item_name") Item Name:
-                                input#catitemname(type="text" required placeholder="Graphite Tile")
+                                label.form__label(for="item_name") Item Name:
+                                input#catitemname.form__input(type="text" required placeholder="Graphite Tile")
                             .form__bod
-                                label(for="item_price") Item Price: 
-                                input#catitemprice(type="text" required placeholder="Rs. 400 per ft / $ 4 per piece")
+                                label.form__label(for="item_price") Item Price: 
+                                input#catitemprice.form__input(type="text" required placeholder="Rs. 400 per ft / $ 4 per piece")
                             .form__bod
-                                label(for="item_serialno") Item Serial No. (optional): 
-                                input#catitemsn(type="text" placeholder="CA10050")
+                                label.form__label(for="item_serialno") Item Serial No. (optional): 
+                                input#catitemsn.form__input(type="text" placeholder="CA10050")
                             .form__bod
-                                label(for="item_category") Item Category: 
-                                input#catitemcat(type="text", required placeholder="Tiles")
+                                label.form__label(for="item_category") Item Category: 
+                                input#catitemcat.form__input(type="text", required placeholder="Tiles")
                             .form__bod
-                                label(for="item_subcategory") Item Sub-Category (optional): 
-                                input#subcatitemcat(type="text", placeholder="Japanese Tiles")
+                                label.form__label(for="item_subcategory") Item Sub-Category (optional): 
+                                input#subcatitemcat.form__input(type="text", placeholder="Japanese Tiles")
                             .form__bod
-                                label(for="item_detail") Item Detail (optional):
-                                textarea#catitemdetail(rows="4" cols="50" placeholder="You can Describe about your Item only if you want to, this field is optional...")
+                                label.form__label(for="item_detail") Item Detail (optional):
+                                textarea#catitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your Item only if you want to, this field is optional...")
                             .form__bod.file_part
-                                label(for="catcoverimage") Item Image:
-                                input#catcoverimage(type="file" name="catcoverimage" accept="image/*"  required)
+                                label.form__label(for="catcoverimage") Item Image:
+                                input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*"  required)
                             button#cataddItemBtn.blackbtn Add Item
                     .your__item__sec#CatalogeItemSec
                         h2.items__head Your Items 
@@ -54,48 +55,48 @@ block content
                             button.prev__catal Previous
                             button.next__catal.hidden Next
                     .share__catalouge#openCatalouge 
-                        h2 Share your Catalouge 
+                        h2.form__label Share your Catalouge 
                         p.uname__catal.hidden= user.name
                         p.share__catal__link
                     .qrcode__menu 
                         #catalqrcode 
                     .itemform__head 
-                        h2 Update Enterprise Detail
+                        h2.form__label Update Enterprise Detail
                     form#upCompany.upItem
                         .form__bod
-                            label(for="company_name") Company Name:
-                            input#compname(type="text" required value=company[0].name)
+                            label.form__label(for="company_name") Company Name:
+                            input#compname.form__input(type="text" required value=company[0].name)
                         .form__bod
-                            label(for="company_email") Company Email: 
-                            input#compemail(type="email" required value=company[0].email)
+                            label.form__label(for="company_email") Company Email: 
+                            input#compemail.form__input(type="email" required value=company[0].email)
                         .form__bod
-                            label(for="comapny_social_account") Company Social Account Link (optional): 
-                            input#compsocial(type="text" value=company[0].social)
+                            label.form__label(for="comapny_social_account") Company Social Account Link (optional): 
+                            input#compsocial.form__input(type="text" value=company[0].social)
                         .form__bod
-                            label(for="company_address") Company Address: 
-                            input#compaddress(type="text" required value=company[0].Address)
+                            label.form__label(for="company_address") Company Address: 
+                            input#compaddress.form__input(type="text" required value=company[0].Address)
                         .form__bod
-                            label(for="company_address_link") Address Link (optional): 
-                            input#complocationLink(type="text" value=company[0].locationLink)
+                            label.form__label(for="company_address_link") Address Link (optional): 
+                            input#complocationLink.form__input(type="text" value=company[0].locationLink)
                         .form__bod
-                            label(for="company_contact") Company Contact: 
-                            input#compcontact(type="text" required value=company[0].contact)
+                            label.form__label(for="company_contact") Company Contact: 
+                            input#compcontact.form__input(type="text" required value=company[0].contact)
                         .form__bod
-                            label(for="company_slogan") Company Slogan (optional): 
-                            input#compslogan(type="text", value=company[0].slogan)
+                            label.form__label(for="company_slogan") Company Slogan (optional): 
+                            input#compslogan.form__input(type="text", value=company[0].slogan)
                         .form__bod
-                            label(for="company_slogan") Company Type: 
-                            input#compType(type="text", value=company[0].compType)
+                            label.form__label(for="company_slogan") Company Type: 
+                            input#compType.form__input(type="text", value=company[0].compType)
                         .form__bod 
-                            label Change Theme (optional):
+                            label.form__label Change Theme (optional):
                             select#compTheme
                                 option.opt(hidden selected)= company[0].theme 
                                 each item in theme 
                                     if (item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                         option.opt(value=`${item.themeId}`)= item.name
                         .form__bod 
-                            label(for="company_color") Pick a theme color (optional);
-                            input#companyColor(type="color" value="#1A9ACC")
+                            label.form__label(for="company_color") Pick a theme color (optional);
+                            input#companyColor.form__input(type="color" value="#1A9ACC")
                         p.comp__len.hidden= company.length
                         if (company.length !== 0)
                             p.comp__id.hidden= company[0]._id
@@ -106,12 +107,12 @@ block content
                         //- button#addCompBtn.blackbtn Update
                     if (company.length !== 0)
                         .itemform__head 
-                            h2 Update Enterprise Cover Image
+                            h2.form__label Update Enterprise Cover Image
                             p.compimg__id.hidden= company[0]._id
                         form#upCompanyImage.upItem
                             .form__bod.file_part
-                                label(for="compcoverimage") Catalouge Cover Image:
-                                input#compcoverimage(type="file" accept="image/*"  required)
+                                label.form__label(for="compcoverimage") Catalouge Cover Image:
+                                input#compcoverimage.form__input(type="file" accept="image/*"  required)
                             button#compUpdateImgBtn.blackbtn Update Cover Image
                     else 
                         .compimg__id.hidden

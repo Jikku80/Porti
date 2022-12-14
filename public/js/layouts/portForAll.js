@@ -131,6 +131,9 @@
         document.body.style.backgroundColor = "black";
 
     }
+    else if (theme == "porti") {
+        document.body.style.backgroundColor = "rgb(0, 26,0)"
+    }
     else if (theme == "white") {
         document.body.style.backgroundColor = "white";
         sec.forEach(item => {

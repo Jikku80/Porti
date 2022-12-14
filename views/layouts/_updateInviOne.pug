@@ -6,34 +6,34 @@
             img.cancelInvi.pointer(src="/images/cancel.png", alt="cancel_img")
         form#upInvite.inviF
             .form__bod
-                label First Person Name:
-                input#upinname(type="text" name="name" value=`${invite.fname}` required)
+                label.form__label First Person Name:
+                input#upinname.form__input(type="text" name="name" value=`${invite.fname}` required)
             .form__bod
-                label Second Person Name:
-                input#upinsname(type="text" name="name" value=`${invite.sname}` required)
+                label.form__label Second Person Name:
+                input#upinsname.form__input(type="text" name="name" value=`${invite.sname}` required)
             .form__bod
-                label Your Story:
-                textarea#upinabout(rows="4" cols="30" name="about" required)= invite.about
+                label.form__label Your Story:
+                textarea#upinabout.form__input(rows="4" cols="30" name="about" required)= invite.about
             .form__bod
-                label Venue:
-                input#upinwhat( name="what" value=`${invite.address}` required)
+                label.form__label Venue:
+                input#upinwhat.form__input( name="what" value=`${invite.address}` required)
             .form__bod
-                label Date:
-                input#upinwhy(name="why" value= `${invite.pdate}` required)
+                label.form__label Date:
+                input#upinwhy.form__input(name="why" value= `${invite.pdate}` required)
             label Contact Details:
             .form__bod
-                label Phone Number: 
-                input#upinno(type="number" value= `${invite.phn_no}` name="phn_no" required)
+                label.form__label Phone Number: 
+                input#upinno.form__input(type="number" value= `${invite.phn_no}` name="phn_no" required)
             .form__bod 
-                label Change Theme 
+                label.form__label Change Theme 
                 select#upinTheme
                     option.opt(hidden selected)= `${invite.theme}` 
                     each item in theme 
                         if (item.themeType === 'Free' || item.validInviUser.includes(user.id))
                             option.opt(value=`${item.themeId}`)= item.name 
             .form__bod
-                label Time:
-                input#upinwork(name="previous" value= `${invite.ptime}` required)
+                label.form__label Time:
+                input#upinwork.form__input(name="previous" value= `${invite.ptime}` required)
             button#updateinBtn.redbtn.bigbtn Update
     
     button#update_InviImg.redbtn.upMarg Update Invitation Images
@@ -43,10 +43,10 @@
                 h1 Update Your Invitation Images
                 img.canclInvi.pointer(src="/images/cancel.png", alt="cancel_img")
             .form__bod.file_part
-                label Cover Image:
+                label.form__label Cover Image:
                 input#inimg1(type="file" accept="image/*" name="img1", required)
             .form__bod.file_part
-                label Images:
+                label.form__label Images:
                 input#inimg2(type="file" accept="image/*" name="img2", required)
             .form__bod.file_part
                 input#inimg3(type="file" accept="image/*" name="img3", required)

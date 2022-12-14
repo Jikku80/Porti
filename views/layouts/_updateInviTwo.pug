@@ -6,30 +6,30 @@
             img.cancelInvi2.pointer(src="/images/cancel.png", alt="cancel_img")
         form#upInvite2.inviF
             .form__bod
-                label First Person Name:
-                input#upinname2(type="text" name="name" value=`${invite.fname}` required)
+                label.form__label First Person Name:
+                input#upinname2.form__input(type="text" name="name" value=`${invite.fname}` required)
             .form__bod
-                label Second Person Name:
-                input#upinsname2(type="text" name="name" value=`${invite.sname}` required)
+                label.form__label Second Person Name:
+                input#upinsname2.form__input(type="text" name="name" value=`${invite.sname}` required)
             .form__bod
-                label Your Story:
-                textarea#upinabout2(rows="4" cols="30" name="about" required)= invite.about
+                label.form__label Your Story:
+                textarea#upinabout2.form__input(rows="4" cols="30" name="about" required)= invite.about
             .form__bod
-                label Venue:
-                input#upinwhat2( name="what" value=`${invite.address}` required)
+                label.form__label Venue:
+                input#upinwhat2.form__input( name="what" value=`${invite.address}` required)
             .form__bod
-                label Date:
-                input#upinwhy2(name="why" value= `${invite.pdate}` required)
+                label.form__label Date:
+                input#upinwhy2.form__input(name="why" value= `${invite.pdate}` required)
             .form__bod 
-                label Change Theme 
+                label.form__label Change Theme 
                 select#upinTheme2
                     option.opt(hidden selected)= `${invite.theme}` 
                     each item in theme 
                         if (item.themeType === 'Free' || item.validInviUser.includes(user.id))
                             option.opt(value=`${item.themeId}`)= item.name 
             .form__bod
-                label Time:
-                input#upinwork2(name="previous" value= `${invite.ptime}` required)
+                label.form__label Time:
+                input#upinwork2.form__input(name="previous" value= `${invite.ptime}` required)
             button#updateinBtn2.redbtn.bigbtn Update
     
     button#update_InviImg2.redbtn.upMarg Update Cover Image

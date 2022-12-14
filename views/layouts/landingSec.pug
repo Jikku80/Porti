@@ -9,6 +9,7 @@ block content
     if (user)
         if (invite.user.id == user._id)
             include ../_header
+            p.hidden.useerTheme= user.theme
             .whole__invi__content
                 .land__nav__main
                 .land__content

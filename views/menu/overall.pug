@@ -14,31 +14,32 @@ block content
                     a(href="/porti#crtMenu") Create Restaurante
         else
             include ../_header
+            p.themeUser.hidden= user.theme
             .whole__menu__sec
                 .menu__section
                     if (menus.length === 0)
-                        h2.banner.up__place__det You haven't Added Items to your Menu, Add Few Items!
+                        h2.banner.up__place__det.form__label You haven't Added Items to your Menu, Add Few Items!
                     #item__form
                         .itemform__head 
-                            h2 Add Items To Menu
+                            h2.form__label Add Items To Menu
                             h2
-                                a(href="#openMenu") Menu Link
+                                a.form__label(href="#openMenu") Menu Link
                         form#addItem
                             .form__bod
-                                label Food Name:
-                                input#itemname(type="text" required placeholder="Chicken Burger")
+                                label.form__label Food Name:
+                                input#itemname.form__input(type="text" required placeholder="Chicken Burger")
                             .form__bod
-                                label Price: 
-                                input#itemprice(type="text" required placeholder="Rs. 150")
+                                label.form__label Price: 
+                                input#itemprice.form__input(type="text" required placeholder="Rs. 150")
                             .form__bod
-                                label Category: 
-                                input#itemcat(type="text", required placeholder="Burger")
+                                label.form__label Category: 
+                                input#itemcat.form__input(type="text", required placeholder="Burger")
                             .form__bod
-                                label Detail (optional):
-                                textarea#itemdetail(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
+                                label.form__label Detail (optional):
+                                textarea#itemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
                             .form__bod.file_part
-                                label(for="coverimage") Food Image:
-                                input#coverimage(type="file" accept="image/*"  required)
+                                label.form__label(for="coverimage") Food Image:
+                                input#coverimage.form__input(type="file" accept="image/*"  required)
                             button#addItemBtn.blackbtn Add Item
                     .your__item__sec#foodItemSec
                         h2.items__head Your Items 
@@ -49,32 +50,32 @@ block content
                                 button.prev Previous
                                 button.next.hidden Next
                     .share__menu 
-                        h2 Share your menu 
+                        h2.form__label Share your menu 
                         p.uname__menu.hidden= user.name
                         p.share__link
 
                     .qrcode__menu 
                         #qrcode 
                     .itemform__head 
-                        h2 Update Restaurant Detail
+                        h2.form__label Update Restaurant Detail
                     form#upRestro.upItem
                         .form__bod
-                            label Restaurant Name:
-                            input#resname(type="text" required value=restro[0].name)
+                            label.form__label Restaurant Name:
+                            input#resname.form__input(type="text" required value=restro[0].name)
                         .form__bod
-                            label Address: 
-                            input#resaddress(type="text" required value=restro[0].Address)
+                            label.form__label Address: 
+                            input#resaddress.form__input(type="text" required value=restro[0].Address)
                         .form__bod
-                            label Slogan (optional): 
-                            input#resslogan(type="text", value=restro[0].slogan)
+                            label.form__label Slogan (optional): 
+                            input#resslogan.form__input(type="text", value=restro[0].slogan)
                         .form__bod
-                            label Restaurant Type: 
-                            input#resType(type="text", value=restro[0].resType)
+                            label.form__label Restaurant Type: 
+                            input#resType.form__input(type="text", value=restro[0].resType)
                         .form__bod
-                            label Contact: 
-                            input#resContact(type="number", value=restro[0].phn_no)
+                            label.form__label Contact: 
+                            input#resContact.form__input(type="number", value=restro[0].phn_no)
                         .form__bod 
-                            label Change Theme (optional):
+                            label.form__label Change Theme (optional):
                             select#menuThemes
                                 option.opt(hidden selected)= restro[0].theme 
                                 each item in theme 

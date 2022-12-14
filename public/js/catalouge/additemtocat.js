@@ -52,12 +52,12 @@
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${fResult.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head">${fResult.name}</h3>
-                                        <p class="catalouge__card__head">${fResult.serialno}</p>
-                                        <p class="catalouge__card__price">${fResult.price}</p>
-                                        <p class="catalouge__card__cat">${fResult.category}</p>
-                                        <p class="catalouge__card__cat">${fResult.subcategory}</p>
-                                        <p class="catalouge__card__detail">${fResult.detail}</p>
+                                        <h3 class="catalouge__card__head goldn">${fResult.name}</h3>
+                                        <p class="catalouge__card__head goldn">${fResult.serialno}</p>
+                                        <p class="catalouge__card__price goldn">${fResult.price}</p>
+                                        <p class="catalouge__card__cat goldn">${fResult.category}</p>
+                                        <p class="catalouge__card__cat goldn">${fResult.subcategory}</p>
+                                        <p class="catalouge__card__detail goldn">${fResult.detail}</p>
                                         <a href="/catalougetweaks/${fResult._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${fResult._id}?delete" class="redbtn">Delete</a>
                                         </div>
@@ -115,12 +115,12 @@ async function getAllCatalougeItem() {
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head">${el.name}</h3>
-                                        <p class="catalouge__card__head">${el.serialno}</p>
-                                        <p class="catalouge__card__price">${el.price}</p>
-                                        <p class="catalouge__card__cat">${el.category}</p>
-                                        <p class="catalouge__card__cat">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail">${el.detail}</p>
+                                        <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                        <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                        <p class="catalouge__card__price goldn">${el.price}</p>
+                                        <p class="catalouge__card__cat goldn">${el.category}</p>
+                                        <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
                                         <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -129,7 +129,7 @@ async function getAllCatalougeItem() {
                     });
 
                     if (subItems.children.length == 0) {
-                        subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+                        subItems.innerHTML = `<h3 class="center goldn">Oopsie!!! No Items Found!!! :(</h3>`
                     }
 
                     if (subItems.children.length === 12) {
@@ -202,12 +202,12 @@ next.addEventListener("click", async () => {
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head">${el.name}</h3>
-                                        <p class="catalouge__card__head">${el.serialno}</p>
-                                        <p class="catalouge__card__price">${el.price}</p>
-                                        <p class="catalouge__card__cat">${el.category}</p>
-                                        <p class="catalouge__card__cat">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail">${el.detail}</p>
+                                        <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                        <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                        <p class="catalouge__card__price goldn">${el.price}</p>
+                                        <p class="catalouge__card__cat goldn">${el.category}</p>
+                                        <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
                                         <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -222,7 +222,7 @@ next.addEventListener("click", async () => {
                     }
                     if (subItems.innerHTML == "") {
                         next.classList.add("hidden");
-                        subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
                     }
                 })
             } else {
@@ -270,12 +270,12 @@ prev.addEventListener("click", async () => {
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head">${el.name}</h3>
-                                        <p class="catalouge__card__head">${el.serialno}</p>
-                                        <p class="catalouge__card__price">${el.price}</p>
-                                        <p class="catalouge__card__cat">${el.category}</p>
-                                        <p class="catalouge__card__cat">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail">${el.detail}</p>
+                                        <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                        <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                        <p class="catalouge__card__price goldn">${el.price}</p>
+                                        <p class="catalouge__card__cat goldn">${el.category}</p>
+                                        <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
                                         <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
                                     </div>
@@ -303,7 +303,7 @@ prev.addEventListener("click", async () => {
 
     shareLink.innerHTML += `
         <div class="catalouge__link">
-            <p class="head">Your Catalouge Link</p>
+            <p class="head form__label">Your Catalouge Link</p>
             <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/catalog/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
@@ -427,4 +427,38 @@ prev.addEventListener("click", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     })
+})();
+
+(function () {
+    let theme = document.querySelector(".themeUsr").innerText;
+    let bodsec = document.querySelector(".whole__menu__sec");
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+
+    if (theme == "red") {
+        bodsec.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
+        inpt.forEach(item => {
+            item.style.borderColor = "white";
+        })
+    }
+    else if (theme == "dark") {
+        bodsec.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        bodsec.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
 })();

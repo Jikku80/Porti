@@ -22,10 +22,10 @@ async function getOneItem() {
                         `
                             <img class="menu__card__img" src="/images/menu-pic/${item.coverImage}" alt="item__image">
                             <div class="menu__card__det">
-                                <h3 class="menu__card__head">${item.name}</h3>
-                                <p class="menu__card__price">${item.price}</p>
-                                <p class="menu__card__cat">${item.category}</p>
-                                <p class="menu__card__detail">${item.detail}</p>
+                                <h3 class="menu__card__head goldn">${item.name}</h3>
+                                <p class="menu__card__price goldn">${item.price}</p>
+                                <p class="menu__card__cat goldn">${item.category}</p>
+                                <p class="menu__card__detail goldn">${item.detail}</p>
                             </div>
                             `
                 })
@@ -179,3 +179,32 @@ window.addEventListener("load", async () => {
     })
 })();
 
+(function () {
+    let theme = document.querySelector(".themeUs").innerText;
+    let label = document.querySelectorAll(".form__label");
+    let inpt = document.querySelectorAll(".form__input");
+
+    if (theme == "red") {
+        document.body.style.backgroundColor = "crimson";
+        inpt.forEach(item => {
+            item.style.borderColor = "white";
+        })
+    }
+    else if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+
+    }
+    else if (theme == "white") {
+        document.body.style.backgroundColor = "white";
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        inpt.forEach(item => {
+            item.style.color = "black";
+        })
+
+    }
+    else {
+        console.log("Hola from Porti")
+    }
+})();
