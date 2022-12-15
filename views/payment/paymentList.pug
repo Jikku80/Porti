@@ -7,28 +7,39 @@ block content
         span Por
         span.grn t
         span.nocaps i
-    .main__cont
-        include _navbar
-        .payment__cont
-            img.pay__img(src=`/images/themeImage/${theme.picture}`, alt="theme__img")
-            p.item__name= theme.name 
-            p Rs. 
-                span.item__price= theme.price
-            p.item__id(id=`${theme.themeId}`)
-            p.__usrid(id=`${user.id}`)
+    if (user)
+        include ../_header
+        .main__cont
+            .inner__cont
+                p.hidden.payUsrTheme= user.theme
+                .payment__cont
+                    h1 Unlock Theme
+                    img.pay__img(src=`/images/themeImage/${theme.picture}`, alt="theme__img")
+                    p.item__name= theme.name 
+                    p Rs. 
+                        span.item__price= theme.price
+                    p.item__id(id=`${theme.themeId}`)
+                    p.__usrid(id=`${user.id}`)
 
-        h1 Pay with any of the servies below to unlock theme
-        .bigcont 
-            .smallcont.pointer
-                .khalti(id="payment-button") 
-                    img.paymentLogo(src="/images/khaltilogo.jpeg", alt="khalti__logo") 
-                p Pay With Khalti
-            .smallcont.pointer
-                .esewa.pointer(id="esewa__btn") 
-                    img.paymentLogo(src="/images/esewaLogo.jpeg", alt="esewa__logo") 
-                p Pay With E-sewa
+                h2.grn.centr Pay with any of the servies below to unlock theme
+                .bigcont 
+                    .smallcont.pointer
+                        .khalti(id="payment-button") 
+                            img.paymentLogo(src="/images/khaltilogo.jpeg", alt="khalti__logo") 
+                        p Pay With Khalti
+                    .smallcont.pointer
+                        .esewa.pointer(id="esewa__btn") 
+                            img.paymentLogo(src="/images/esewaLogo.jpeg", alt="esewa__logo") 
+                        p Pay With E-sewa
+
+            include ../_footer
+    else
+        .four0four 
+            h1 You are not signedIn please signin and come back
+            a.limebtn(href="/login")
 
     script(src="/js/alert.js") 
+    script(src="/js/payment/payconfig.js") 
     script(src="/js/payment/khalti.js") 
     script(src="/js/payment/esewa.js") 
         

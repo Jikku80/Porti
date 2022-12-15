@@ -35,7 +35,7 @@ block content
                                         .unl.cataloge_layouts(id=`${item.themeId}`)
                                             .un_layout_log
                                                 img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
-                                                p= item.name
+                                                p.portDet= item.name
                     .layout__main#lockedCatalgSec 
                         .unl
                 else 
@@ -54,7 +54,7 @@ block content
                             if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                 .un_layout
                                     img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
-                                    p= item.name
+                                    p.portDet= item.name
                     .layuot__main#lockedCatalgSec 
                         .un_layout
             .menu__section#crtMenu.shinesec
@@ -74,7 +74,7 @@ block content
                                         .unl.menu_layouts(id=`${item.themeId}`)
                                             .un_layout_log
                                                 img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
-                                                p= item.name
+                                                p.portDet= item.name
                     .layout__main#lockedMenuSec 
                         .unl
                 else 
@@ -93,7 +93,7 @@ block content
                             if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
                                 .un_layout
                                     img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
-                                    p= item.name
+                                    p.portDet= item.name
                     .layout__main#lockedMenuSec 
                         .un_layout
             .invi__section#crtInvi.shinesec
@@ -110,7 +110,7 @@ block content
                             .unl.invi__layouts(id=`${item.themeId}`)
                                 .un_layout_log
                                     img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="invi1")
-                                    p= item.name
+                                    p.portDet= item.name
                 .layout__main#lockedInviSec 
                     .unl
             if (portfolio)
@@ -133,7 +133,7 @@ block content
                             if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
                                 .un_layout
                                     img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
-                                    p= item.name
+                                    p.portDet= item.name
                         .un_layout
                             img(src="/images/layout5.png", loading="lazy", alt="layout5")
                             p AT Layout (you can upload upto 20 images)
@@ -144,8 +144,8 @@ block content
                                     .un_layout
                                         a(href=`/paywith/${item.themeId}`)
                                             img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
-                                        p= item.name
-                                        p.layout__price= item.price
+                                        p.portDet= item.name
+                                        p.layout__price.portDet= item.price
                                         a.redbtn(href=`/paywith/${item.themeId}`) Unlock
             else
                 .port__bod.port__section#crtPort.shinesec
@@ -162,7 +162,7 @@ block content
                                 .portunl(id=`${item.themeId}`)
                                     .un_layout_log
                                         img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
-                                        p.layout__name(id=`${item.name}`)= item.name
+                                        p.layout__name.portDet(id=`${item.name}`)= item.name
                         #layout5.unl
                             .un_layout_log
                                 img(src="/images/layout5.png", loading="lazy", alt="layout5")
@@ -175,8 +175,8 @@ block content
                                     .un_layout 
                                         a(href=`/paywith/${item.themeId}`)
                                             img(src=`/images/themeImage/${item.picture}`)
-                                        p.layout__name= item.name 
-                                        p.layout__price= item.price
+                                        p.layout__name.portDet= item.name 
+                                        p.layout__price.portDet= item.price
                                         a.redbtn(href=`/paywith/${item.themeId}`) Unlock
     
                 script(src="/js/createPort/createForm.js") 
