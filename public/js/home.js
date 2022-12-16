@@ -6,24 +6,24 @@ prest = document.querySelector(".presents");
 
 bgChanger.addEventListener("mouseover", () => {
     homeCont.classList.add("bg__changer");
-    homebod.classList.add("crim");
+    homebod.classList.add("bg__changer");
     prest.classList.remove("hidden");
 })
 
 bgChanger.addEventListener("mouseout", () => {
     homeCont.classList.remove("bg__changer");
-    homebod.classList.remove("crim");
+    homebod.classList.remove("bg__changer");
     prest.classList.add("hidden");
 })
 
 homelogin.addEventListener("mouseover", () => {
     homeCont.classList.add("bg__changer");
-    homebod.classList.add("crim");
+    homebod.classList.add("bg__changer");
 })
 
 homelogin.addEventListener("mouseout", () => {
     homeCont.classList.remove("bg__changer");
-    homebod.classList.remove("crim");
+    homebod.classList.remove("bg__changer");
 });
 
 let futbtn = document.querySelector('.futuristic-button');
@@ -132,9 +132,12 @@ futbtn.addEventListener("mouseout", (function () {
     let label = document.querySelectorAll(".form__label");
     let selec = document.querySelector(".form__select");
     let got = document.querySelector(".go__top");
+    let lod = document.querySelector(".loader");
+    let td = document.querySelectorAll(".td");
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         document.body.style.backgroundColor = "crimson";
         bod.style.backgroundColor = "crimson";
         selec.style.backgroundColor = "crimson";
@@ -149,9 +152,31 @@ futbtn.addEventListener("mouseout", (function () {
             item.style.backgroundColor = "crimson";
         })
         upAccForm.style.color = "white";
+        bgChanger.addEventListener("mouseover", () => {
+            homeCont.classList.add("red__changer");
+            homebod.classList.add("red__changer");
+            prest.classList.remove("hidden");
+        })
+
+        bgChanger.addEventListener("mouseout", () => {
+            homeCont.classList.remove("red__changer");
+            homebod.classList.remove("red__changer");
+            prest.classList.add("hidden");
+        })
+
+        homelogin.addEventListener("mouseover", () => {
+            homeCont.classList.add("red__changer");
+            homebod.classList.add("red__changer");
+        })
+
+        homelogin.addEventListener("mouseout", () => {
+            homeCont.classList.remove("red__changer");
+            homebod.classList.remove("red__changer");
+        });
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
+        lod.style.backgroundColor = "black";
         document.body.style.backgroundColor = "black";
         bod.style.backgroundColor = "black";
         selec.style.backgroundColor = "black";
@@ -161,9 +186,31 @@ futbtn.addEventListener("mouseout", (function () {
         lime.forEach(item => {
             item.style.backgroundColor = "black";
         })
+        bgChanger.addEventListener("mouseover", () => {
+            homeCont.classList.add("black__changer");
+            homebod.classList.add("black__changer");
+            prest.classList.remove("hidden");
+        })
+
+        bgChanger.addEventListener("mouseout", () => {
+            homeCont.classList.remove("black__changer");
+            homebod.classList.remove("black__changer");
+            prest.classList.add("hidden");
+        })
+
+        homelogin.addEventListener("mouseover", () => {
+            homeCont.classList.add("black__changer");
+            homebod.classList.add("black__changer");
+        })
+
+        homelogin.addEventListener("mouseout", () => {
+            homeCont.classList.remove("black__changer");
+            homebod.classList.remove("black__changer");
+        });
     }
     else if (theme == "white") {
         upAccForm.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         bod.style.backgroundColor = "white";
         document.body.style.backgroundColor = "white";
         selec.style.backgroundColor = "white";
@@ -196,6 +243,30 @@ futbtn.addEventListener("mouseout", (function () {
         label.forEach(item => {
             item.style.color = "black";
         })
+        td.forEach(item => {
+            item.style.color = "black";
+        })
+        bgChanger.addEventListener("mouseover", () => {
+            homeCont.classList.add("white__changer");
+            homebod.classList.add("white__changer");
+            prest.classList.remove("hidden");
+        })
+
+        bgChanger.addEventListener("mouseout", () => {
+            homeCont.classList.remove("white__changer");
+            homebod.classList.remove("white__changer");
+            prest.classList.add("hidden");
+        })
+
+        homelogin.addEventListener("mouseover", () => {
+            homeCont.classList.add("white__changer");
+            homebod.classList.add("white__changer");
+        })
+
+        homelogin.addEventListener("mouseout", () => {
+            homeCont.classList.remove("white__changer");
+            homebod.classList.remove("white__changer");
+        });
     }
     else {
         console.log("Hola from Porti")

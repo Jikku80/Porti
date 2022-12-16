@@ -119,15 +119,20 @@
     let label = document.querySelectorAll(".form__label");
     let inpt = document.querySelectorAll(".form__input");
     let det = document.querySelectorAll(".portDet");
-
+    let lod = document.querySelector(".loader");
 
     if (theme == "red") {
         document.body.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         sec.forEach(item => {
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
+        rbtn.forEach(item => {
+            item.style.borderColor = "white";
+        })
     }
     else if (theme == "dark") {
+        lod.style.backgroundColor = "black";
         document.body.style.backgroundColor = "black";
 
     }
@@ -136,6 +141,7 @@
     }
     else if (theme == "white") {
         document.body.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         sec.forEach(item => {
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
             item.style.color = "black";

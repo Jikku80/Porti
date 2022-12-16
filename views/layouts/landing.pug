@@ -2,13 +2,16 @@ extends baselayout
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (!portfolio)
+        p.hidden.urTheme= user.theme
+        .land__whole__sec.hidden
         .notifier
-            h1 You have not created a portfolio YET! Create and come back
+            h1.grn You have not created a portfolio YET! Create and come back
             a.limebtn(href="/porti#crtPort") Create Portfolio
     else
         if (user)
@@ -122,4 +125,5 @@ block content
         script(src="/js/delete.js")
         script(src="/js/layouts/upPortTheme.js")  
     script(src="/js/alert.js")
+    script(src="/js/layouts/landThemeConfig.js") 
      

@@ -114,9 +114,12 @@ function downloadinviQRCode(file) {
     let sec = document.querySelectorAll(".redbtn");
     let label = document.querySelectorAll(".form__label");
     let inpt = document.querySelectorAll(".form__input");
+    let lod = document.querySelector(".loader");
+    let td = document.querySelectorAll(".td");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         document.body.style.backgroundColor = "crimson";
         inpt.forEach(item => {
             item.style.borderColor = "white";
@@ -127,6 +130,7 @@ function downloadinviQRCode(file) {
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
+        lod.style.backgroundColor = "black";
         document.body.style.backgroundColor = "black";
 
     }
@@ -135,6 +139,7 @@ function downloadinviQRCode(file) {
     }
     else if (theme == "white") {
         bodsec.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         document.body.style.backgroundColor = "white";
         sec.forEach(item => {
             item.style.color = "black";
@@ -143,6 +148,9 @@ function downloadinviQRCode(file) {
             item.style.color = "black";
         })
         inpt.forEach(item => {
+            item.style.color = "black";
+        })
+        td.forEach(item => {
             item.style.color = "black";
         })
 

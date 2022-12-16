@@ -644,10 +644,20 @@
     animation-fill-mode: forwards;
 }
 
-.crim{
-    animation: clCrim 1.5s ease-in-out forwards;
+.white__changer{
+    animation: clwChanger 1.5s ease-in-out;
+    animation-fill-mode: forwards;
 }
 
+.red__changer{
+    animation: clrChanger 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.black__changer{
+    animation: clbChanger 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
 
 .error__cont{
     position: fixed;
@@ -944,13 +954,12 @@
         background-color: rgb(26, 26, 26);
     }
     100%{
-        /* background-image: linear-gradient(to bottom, black , crimson); */
         background-color: rgb(0, 26, 0);
     }
     
 }
 
-@keyframes clCrim {
+@keyframes clwChanger {
     0%{
         background-color: white;
     }
@@ -958,7 +967,33 @@
         background-color: rgb(26, 26, 26);
     }
     100%{
-        background-color: rgb(0, 26, 0);
+        background-color: white;
+    }
+    
+}
+
+@keyframes clrChanger {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: rgb(26, 26, 26);
+    }
+    100%{
+        background-color: crimson;
+    }
+    
+}
+
+@keyframes clbChanger {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: rgb(26, 26, 26);
+    }
+    100%{
+        background-color: black;
     }
     
 }

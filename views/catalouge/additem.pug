@@ -2,15 +2,29 @@ extends baseCatalouge
 
 block content 
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (user)
         if (!company[0])
+            p.hidden.themeUsr= user.theme
+            #cataddItemBtn.hidden 
+            #updateCompBtn.hidden
+            .uname__catal.hidden
+            .prev__catal.hidden 
+            .next__catal.hidden
+            .share__catal__link.hidden
+            .comp__id.hidden
+            .compimg__id.hidden
+            .your__items.hidden 
+            #compUpdateImgBtn.hidden
+            .whole__menu__sec.hidden
+            .currentuid.hidden
             .confirm__pg
-                h1 You have not created your enterprise! Create one and come back
-                a(href="/porti#crtCataloge") Create Enterprise
+                h1.td You have not created your enterprise! Create one and come back
+                a.lbtn(href="/porti#crtCataloge") Create Enterprise
         else
             include ../_header
             p.hidden.themeUsr= user.theme

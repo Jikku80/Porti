@@ -2,10 +2,11 @@ extends baseCatalouge
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (user)
         if (catalouge.user.id == user.id)
             p.hidden.themeUssr= user.theme
@@ -64,5 +65,5 @@ block content
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
 
-    script(src="/js/alert.js")
+    //- script(src="/js/alert.js")
     script(src="/js/catalouge/itemtweaks.js") 

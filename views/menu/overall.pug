@@ -3,15 +3,27 @@ extends baseMenu
 block content 
 
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (user)
         if (!restro[0])
+            p.themeUser.hidden= user.theme
+            #addItemBtn.hidden
+            .prev.hidden 
+            .next.hidden
+            .sub__items.hidden
+            .uname__menu.hidden
+            .share__link.hidden
+            .restro__id.hidden
+            #updateResBtn.hidden
+            #qrcode
+            .whole__menu__sec.hidden
             .confirm__pg
-                h1 You have not created a restaurant! Create and come back
-                    a(href="/porti#crtMenu") Create Restaurante
+                h1.td You have not created a restaurant! Create and come back
+                    a.lbtn(href="/porti#crtMenu") Create Restaurante
         else
             include ../_header
             p.themeUser.hidden= user.theme
@@ -93,6 +105,6 @@ block content
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
 
-    script(src="/js/alert.js") 
+    //- script(src="/js/alert.js") 
     script(src="/js/menu/additem.js") 
     script(src="/js/qr.js")

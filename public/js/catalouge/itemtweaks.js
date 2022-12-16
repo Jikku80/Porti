@@ -189,23 +189,30 @@ window.addEventListener("load", async () => {
     let theme = document.querySelector(".themeUssr").innerText;
     let label = document.querySelectorAll(".form__label");
     let inpt = document.querySelectorAll(".form__input");
+    let lod = document.querySelector(".loader");
+    let td = document.querySelectorAll(".td");
 
     if (theme == "red") {
         document.body.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         inpt.forEach(item => {
             item.style.borderColor = "white";
         })
     }
     else if (theme == "dark") {
         document.body.style.backgroundColor = "black";
-
+        lod.style.backgroundColor = "black";
     }
     else if (theme == "white") {
         document.body.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         label.forEach(item => {
             item.style.color = "black";
         })
         inpt.forEach(item => {
+            item.style.color = "black";
+        })
+        td.forEach(item => {
             item.style.color = "black";
         })
 

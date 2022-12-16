@@ -355,9 +355,13 @@ prev.addEventListener("click", async () => {
     let bodsec = document.querySelector(".whole__menu__sec");
     let label = document.querySelectorAll(".form__label");
     let inpt = document.querySelectorAll(".form__input");
+    let td = document.querySelectorAll(".td");
+    // let lbtn = document.querySelector(".lbtn");
+    let lod = document.querySelector(".loader");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         document.body.style.backgroundColor = "crimson";
         inpt.forEach(item => {
             item.style.borderColor = "white";
@@ -365,12 +369,18 @@ prev.addEventListener("click", async () => {
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
+        lod.style.backgroundColor = "black";
         document.body.style.backgroundColor = "black";
 
     }
     else if (theme == "white") {
         bodsec.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         document.body.style.backgroundColor = "white";
+        td.forEach(item => {
+            item.style.color = "black";
+        })
+        // lbtn.style.color = "black";
         label.forEach(item => {
             item.style.color = "black";
         })

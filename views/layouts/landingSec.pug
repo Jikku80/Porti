@@ -2,10 +2,11 @@ extends baselayout
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (user)
         if (invite.user.id == user._id)
             include ../_header

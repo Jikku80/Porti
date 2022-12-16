@@ -13,6 +13,10 @@ p{
     text-align: justify;
 }
 
+.hidden{
+    display: none !important;
+}
+
 .menu__bar {
     text-align: center;
     display: flex;
@@ -522,7 +526,7 @@ input::file-selector-button{
 }
 
 .loader{
-    background-color: rgba(0, 0, 0, 0.562);
+    background-color: rgb(0, 26, 0);
     position: fixed;
     top: 0;
     left: 0;
@@ -535,8 +539,13 @@ input::file-selector-button{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.bink{
     animation: blink 1.5s infinite linear;
-  }
+}
 
 .arr{
     margin: 1%;

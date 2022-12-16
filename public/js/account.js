@@ -7,11 +7,6 @@ let pwdCurrent = document.querySelector("#pwdCurrent");
 let uppwd = document.getElementById("up_password");
 let uppwdcfm = document.getElementById("up_passwordConfirm");
 
-window.addEventListener("load", () => {
-    let loads = document.querySelector('.loader');
-    loads.classList.add("hidden");
-})
-
 updateBtn.addEventListener("click", async (e) => {
     let same = document.querySelector(".sami__user__warn");
     let whiteSpace = document.querySelector(".whiti__space");
@@ -327,9 +322,12 @@ lakheyBack.addEventListener("click", async (e) => {
     let btn = document.querySelectorAll(".redbtn");
     let warn = document.querySelectorAll(".warn");
     let hd = document.getElementById("acHead");
+    let td = document.querySelectorAll(".td");
+    let lod = document.querySelector(".loader");
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
+        lod.style.backgroundColor = "crimson";
         document.body.style.backgroundColor = "crimson";
         upAccForm.style.color = "white";
         inpt.forEach(item => {
@@ -338,16 +336,24 @@ lakheyBack.addEventListener("click", async (e) => {
         warn.forEach(item => {
             item.style.color = "goldenrod"
         })
+        btn.forEach(item => {
+            item.style.borderColor = "white";
+        })
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
+        lod.style.backgroundColor = "black";
         document.body.style.backgroundColor = "black";
     }
     else if (theme == "white") {
         upAccForm.style.backgroundColor = "white";
+        lod.style.backgroundColor = "white";
         document.body.style.backgroundColor = "white";
         upAccForm.style.color = "black";
         hd.style.color = "black";
+        td.forEach(item => {
+            item.style.color = "black";
+        })
         labels.forEach(item => {
             item.style.color = "black";
         })

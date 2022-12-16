@@ -3,10 +3,11 @@ extends basePayment
 block content 
 
     h1.loader
-        img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
     if (user)
         include ../_header
         .main__cont
@@ -21,7 +22,7 @@ block content
                     p.item__id(id=`${theme.themeId}`)
                     p.__usrid(id=`${user.id}`)
 
-                h2.grn.centr Pay with any of the servies below to unlock theme
+                h2.grn.centr Pay with any of the services below to unlock theme
                 .bigcont 
                     .smallcont.pointer
                         .khalti(id="payment-button") 
