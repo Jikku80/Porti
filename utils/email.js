@@ -8,7 +8,7 @@ module.exports = class Email {
         this.firstName = user.name.split(' ')[0];
         this.url = url;
         this.token = token;
-        this.from = `TechMafia <${process.env.EMAIL_FROM}>`;
+        this.from = `Porti <${process.env.EMAIL_FROM}>`;
     }
 
     newTransport() {
@@ -54,7 +54,7 @@ module.exports = class Email {
     }
 
     async sendWelcome() {
-        await this.send('welcome', 'Welcome to the Mafia Family!');
+        await this.send('welcome', 'Welcome to Lakhey Family!');
     }
 
     async sendPasswordReset() {

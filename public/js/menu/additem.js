@@ -356,7 +356,7 @@ prev.addEventListener("click", async () => {
     let label = document.querySelectorAll(".form__label");
     let inpt = document.querySelectorAll(".form__input");
     let td = document.querySelectorAll(".td");
-    // let lbtn = document.querySelector(".lbtn");
+    let lbtn = document.querySelector(".lbtn");
     let lod = document.querySelector(".loader");
 
     if (theme == "red") {
@@ -380,7 +380,7 @@ prev.addEventListener("click", async () => {
         td.forEach(item => {
             item.style.color = "black";
         })
-        // lbtn.style.color = "black";
+        lbtn.style.color = "black";
         label.forEach(item => {
             item.style.color = "black";
         })

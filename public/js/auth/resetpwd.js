@@ -1,14 +1,10 @@
 let btnReset = document.querySelector('.btn__reset');
-let resetToken = document.getElementById("rtoken");
 let rpwd = document.getElementById("rpwd");
 let rpwdC = document.getElementById('rpwdC');
+let tokenId = window.location.search.replace('?', '');
 
 btnReset.addEventListener('click', async (e) => {
     let resetPwdLen = rpwd.value.length
-
-    if (resetToken.value < 1 || resetToken.value == "" || resetToken.value == null) {
-        return false;
-    }
     if (rpwd.value < 1 || rpwd.value == "" || rpwd.value == null) {
         return false;
     }
@@ -29,14 +25,13 @@ btnReset.addEventListener('click', async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     try {
-        const endpoint = '/passwordreset'
+        const endpoint = `/passwordreset/${tokenId}`
         await fetch((endpoint), {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                token: resetToken.value,
                 password: rpwd.value,
                 passwordConfirm: rpwdC.value
             })

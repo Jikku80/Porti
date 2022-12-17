@@ -1,8 +1,8 @@
 extends baseEmail
 
 block content
-  p Hi #{firstName},
-  p Welcome to Porti, we're glad to have you on board 🎉
+  h1 Hi #{firstName},
+  h2 Welcome to Porti, we're glad to have you on board 🎉
   p Porti is here to bring your application to reality, Use the Free feature to build yourself an amazing portfolio, invitations, menu, cataloge etc!
   table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
     tbody
@@ -13,5 +13,7 @@ block content
               tr
                 td
                   a(href=`${url}`, target='_blank') Explore Porti
-  p If you want to build a custom website feel free to message Porti!
-  p - Porti
+  p Start Exploring Porti!
+  p - 
+    img(src="/images/smalport.png", alt="icon")
+    span Porti

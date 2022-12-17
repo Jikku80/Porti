@@ -180,7 +180,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 })
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-    const hashedToken = crypto.createHash('sha256').update(req.body.token).digest('hex');
+    const hashedToken = crypto.createHash('sha256').update(req.params.tokenId).digest('hex');
     const user = await User.findOne({
         passwordResetToken: hashedToken,
         passwordResetExpires: { $gt: Date.now() }

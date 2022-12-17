@@ -623,6 +623,10 @@ input::file-selector-button{
         padding: 2%;
         font-size: 1.5em;
     }
+    .footer__contact__detail{
+        width: 100%;
+        font-size: .8em;
+      }
 }
 
 @media screen and (max-width: 600px){

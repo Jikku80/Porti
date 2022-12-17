@@ -693,7 +693,15 @@ input::file-selector-button{
   color: white;
 }
 
+.invi__grp{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .card__main{
+  width: 83%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1130,8 +1138,21 @@ input::file-selector-button{
       height: 25rem;
     }
 
+    .invi__grp{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+  .card__main{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 20%;
+  }
+
   .card{
-      width: 35vw;
+      width: 30vw;
       padding: 4%;
       font-size: small;
     }
@@ -1236,6 +1257,12 @@ input::file-selector-button{
 
   .un_layout img, .un_layout_log img{
     height: 20rem;
+  }
+
+  .invi__grp{
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .card__main{

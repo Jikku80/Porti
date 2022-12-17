@@ -11,7 +11,7 @@ const catalougeController = require('../controllers/catalougeController');
 const router = express.Router();
 
 router.get('/logout', authController.logout);
-router.patch('/passwordreset', authController.resetPassword);
+router.patch('/passwordreset/:tokenId', authController.resetPassword);
 
 router.get('/profile/:username', viewsController.layoutTally);
 
@@ -26,10 +26,9 @@ router.post('/sendmsg', viewsController.newMsg);
 router.use(authController.isLoggedIn);
 router.get('/', viewsController.homePage);
 router.post('/scan', viewsController.qrCodeGen);
-// router.post('/urlShortner', viewsController.urlShortner);
 
 router.post('/login', authController.login);
-router.get('/resetpassword', viewsController.restForm);
+router.get('/resetpassword?:tokenId', viewsController.restForm);
 
 router.patch('/updateport', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortData);
 router.patch('/updateportSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);

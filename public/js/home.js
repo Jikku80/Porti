@@ -64,7 +64,6 @@ futbtn.addEventListener("mouseout", (function () {
     let showContact = document.getElementById("showContactTM");
     let contactLdt = document.getElementById("contactTM");
 
-
     showPorti.addEventListener("click", () => {
         abtPort.classList.toggle("hidden");
         if (!(abtPort.classList.contains("hidden"))) {
@@ -134,6 +133,7 @@ futbtn.addEventListener("mouseout", (function () {
     let got = document.querySelector(".go__top");
     let lod = document.querySelector(".loader");
     let td = document.querySelectorAll(".td");
+    let btn89 = document.querySelector(".button-89");
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
@@ -145,6 +145,7 @@ futbtn.addEventListener("mouseout", (function () {
             item.style.backgroundColor = "crimson";
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
+        got.style.animation = "blackShine 4s ease-in-out forwards infinite";
         maf.forEach(item => {
             item.style.color = "black";
         })
@@ -246,6 +247,7 @@ futbtn.addEventListener("mouseout", (function () {
         td.forEach(item => {
             item.style.color = "black";
         })
+        btn89.style.background = "conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,black 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p))"
         bgChanger.addEventListener("mouseover", () => {
             homeCont.classList.add("white__changer");
             homebod.classList.add("white__changer");
