@@ -51,7 +51,7 @@ loginBtn.addEventListener('click', async function (e) {
             else {
                 successAlert("You are now LoggedIn :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/porti');
                 }, 400);
             }
         })
