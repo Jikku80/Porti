@@ -1,4 +1,5 @@
 const fs = require('fs');
+const formidable = require('formidable');
 
 const multer = require('multer');
 const sharp = require('sharp');
@@ -7,6 +8,10 @@ const PortfolioImage = require('./../models/portfolioImageModel')
 const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
 const APIFeatures = require('./../utils/apiFeatures');
+
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 const multerStorage = multer.memoryStorage();
 
@@ -89,60 +94,99 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createMe = catchAsync(async (req, res, next) => {
-    const doc = await PortfolioImage.create({
-        name: req.body.name,
-        user: req.user.id,
-        addImage: req.file.originalname,
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-    res.status(201).json(doc)
+    const containerName = 'portfolioimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.portImage.filepath;
+        const blobName = `${req.user.name}-portfolioimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await PortfolioImage.create({
+            name: fields.portImageName,
+            user: req.user.id,
+            addImage: blockBlobClient.url,
+        });
+
+        res.redirect(`/myportfolio/${req.user.id}`)
+    })
 })
 
 exports.createImgColl = catchAsync(async (req, res, next) => {
-    if (!req.body.images) {
-        const doc = await Portfolio.create({
-            name: req.body.name,
-            user: req.user.id,
-            about: req.body.about,
-            what: req.body.what,
-            why: req.body.why,
-            email: req.body.email,
-            fb: req.body.fb,
-            location: req.body.location,
-            phn_no: req.body.phn_no,
-            showNo: req.body.showNo,
-            theme: req.body.theme,
-        })
-        res.status(201).json({
-            status: 'success',
-            data: {
-                data: doc
-            }
-        })
-    }
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-    else {
-        const doc = await Portfolio.create({
-            name: req.body.name,
-            user: req.user.id,
-            about: req.body.about,
-            what: req.body.what,
-            why: req.body.why,
-            email: req.body.email,
-            fb: req.body.fb,
-            location: req.body.location,
-            phn_no: req.body.phn_no,
-            showNo: req.body.showNo,
-            theme: req.body.theme,
-            images: req.body.images
-        });
-        res.status(201).json({
-            status: 'success',
-            data: {
-                data: doc
-            }
-        })
-    }
+    const containerName = 'portfolioimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm({ multiples: true });
+    form.parse(req, async function (err, fields, files) {
+
+        const imgs = [];
+        let cont;
+        if (fields.shownumber == "on") {
+            cont = true;
+        }
+        else {
+            cont = false;
+        }
+        let imagefiles = files.uploadimages;
+
+        await Promise.all(
+            imagefiles.map(async (file, i) => {
+                const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
+                const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+                const filePath = file.filepath;
+                await blockBlobClient.uploadFile(filePath)
+                imgs.push(blockBlobClient.url);
+            })
+        );
+
+        if (imgs.length == 0) {
+            await Portfolio.create({
+                name: fields.portname,
+                about: fields.aboutyou,
+                what: fields.whatyoudo,
+                user: req.user.id,
+                why: fields.whyyoudo,
+                email: fields.emailaddress,
+                fb: fields.social,
+                location: fields.address,
+                phn_no: fields.phonenumber,
+                showNo: cont,
+                theme: fields.theme,
+            })
+            res.redirect(`/myportfolio/${req.user.id}`)
+        }
+
+        else {
+            await Portfolio.create({
+                name: fields.portname,
+                about: fields.aboutyou,
+                what: fields.whatyoudo,
+                why: fields.whyyoudo,
+                user: req.user.id,
+                email: fields.emailaddress,
+                fb: fields.social,
+                location: fields.address,
+                phn_no: fields.phonenumber,
+                showNo: cont,
+                theme: fields.theme,
+                images: imgs
+            });
+            res.redirect(`/myportfolio/${req.user.id}`)
+        }
+
+    })
 
 })
 
@@ -174,32 +218,37 @@ exports.updatePortfolioTheme = catchAsync(async (req, res, next) => {
     })
 });
 
-exports.removePrevOldImg = catchAsync(async (req, res, next) => {
-    const item = await PortfolioImage.findByIdAndUpdate(req.params.id)
-    if (fs.existsSync(`public/images/ports/addedImages/${item.addImage}`)) {
-        if (item.addImage.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/addedImages/${item.addImage}`);
-        }
-    }
-
-    next();
-})
-
 exports.updatePrevImgData = catchAsync(async (req, res, next) => {
-    const updatedPortfolioImage = await PortfolioImage.findByIdAndUpdate(
-        req.params.id,
-        {
-            addImage: req.file.originalname,
-            name: req.body.name
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-    res.status(200).json({
-        status: 'success',
-        portImage: updatedPortfolioImage
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
+
+    const containerName = 'portfolioimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.upportImage.filepath;
+        const blobName = `${req.user.name}-portfolioimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await PortfolioImage.findByIdAndUpdate(
+            fields.upId,
+            {
+                addImage: blockBlobClient.url,
+                name: fields.upportImageName
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+
+        res.redirect(`/myportfolio/${req.user.id}`)
     })
 });
 

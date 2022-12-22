@@ -49,7 +49,7 @@ block content
                             .accomp__cont
                                 each item in portImage
                                     .accomp__cont__card
-                                        img.imgsnd.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy", alt="previous_image")
+                                        img.imgsnd.imgFull(src=`${item.addImage}`, loading="lazy", alt="previous_image")
                                         h3.head= item.name
                             .paginate__addimg
                                 .group__delbtn 
@@ -80,9 +80,9 @@ block content
                         .cont
                             a(href=`${portfolio.fb}`)
                                 if (portfolio.user.photo)
-                                    img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                                    img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                                 else 
-                                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                                    img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
                     .cont__box.contact__sec__box
                         p= `Address: ${portfolio.location}`
 

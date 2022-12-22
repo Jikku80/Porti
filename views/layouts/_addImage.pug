@@ -3,15 +3,22 @@
         h2.form__label Add Previous Images
         h2
             a.form__label(href="#port_name") Portfolio Link
-    form.addPortiImages
+    form.addPortiImages#addPortImg(action="/api/v1/portfolio" method="post" enctype="multipart/form-data")
         .form__add__bod.file_part
-            input#addImg.form__input(type="file" accept="image/*" required)
+            input#addImg.form__input(type="file" accept="image/*" name="portImage" required)
         .form__add__bod
             label.form__label Accomplishment Detail (optional):
-            input#addName.form__input(type="text" placeholder="my marksheet")
+            input#addName.form__input(type="text" name="portImageName" placeholder="my marksheet")
         button#addImageBtn.redbtn.bigbtn Add Image
-        button#updatePortfolioImageBtn.hidden.redbtn.bigbtn Update Image
 
-script(src="/js/layouts/addPortImage.js") 
+    form.addPortiImages.hidden#upPortImg(action=`/api/v1/portfolio/portfolioImage` method="post" enctype="multipart/form-data")
+        .form__add__bod.file_part
+            input#upaddImg.form__input(type="file" accept="image/*" name="upportImage" required)
+        .form__add__bod
+            label.form__label Accomplishment Detail (optional):
+            input#upaddName.form__input(type="text" name="upportImageName" placeholder="my marksheet")
+            input#upId.hidden.form__input(type="text" name="upId")
+        button#updatePortfolioImageBtn.redbtn.bigbtn Update Image
+
 
             

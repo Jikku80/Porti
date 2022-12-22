@@ -418,7 +418,7 @@ input[type='file']{
     font-size:16px;
     font-family: monospace;
     cursor: pointer;
-    background-image: url('/images/upload.png');
+    background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/upload.png');
     background-repeat: no-repeat;
     background-size: contain;
     padding: 1%;

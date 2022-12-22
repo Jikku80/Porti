@@ -34,8 +34,8 @@ router.patch('/updateport', authController.protect, authController.restrictTo('a
 router.patch('/updateportSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);
 // router.patch('/updateportSix', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortSix);
 
-router.patch('/updateportImg', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadPortfolioCoverImage, portController.resizeNewPortImages, viewsController.removePortiOldImg, viewsController.updatePortImgData);
-router.patch('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), portController.uploadImages, portController.resizePortImages, viewsController.removePortiOldImgColl, viewsController.updatePortImgCollec);
+router.post('/updateportImg/:id', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortImgData);
+router.post('/updateportImgCollec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortImgCollec);
 router.get('/myportfolio/:id', viewsController.myPort);
 router.get('/myinvi/:id', viewsController.myInvi);
 router.get('/menu/:id/additemstomenu', menuController.newMenu);

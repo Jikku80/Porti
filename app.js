@@ -39,7 +39,8 @@ app.use(
         directives: {
             "default-src": [
                 "'self'",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/payment_gateway_widget.html"
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/payment_gateway_widget.html",
+                "https://portiblobstorage.blob.core.windows.net"
             ],
             "base-uri": "'self'",
             "font-src": [
@@ -53,16 +54,18 @@ app.use(
             "img-src": [
                 "'self'",
                 "data:",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/icons/infinity-loader.svg"
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/icons/infinity-loader.svg",
+                "https://portiblobstorage.blob.core.windows.net"
             ],
             "object-src": [
-                "'none'"
+                "'none'",
             ],
             "script-src": [
                 "'self'",
                 "'unsafe-inline'",
                 "https://cdnjs.cloudflare.com",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
+                "https://portiblobstorage.blob.core.windows.net"
             ],
             "script-src-attr": "'none'",
             "style-src": [
@@ -70,7 +73,8 @@ app.use(
                 "'unsafe-inline'",
                 "https://cdnjs.cloudflare.com",
                 "https://fonts.googleapis.com",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"
+                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
+                "https://portiblobstorage.blob.core.windows.net"
             ]
         },
     }),

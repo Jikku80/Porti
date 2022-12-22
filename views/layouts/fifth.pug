@@ -2,10 +2,11 @@ extends baselayout
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
     .main__cont(id=`${portfolio.fontColor}`)
         .main__fifth__head(id=`${portfolio.fontFam}`)
             h1.ppname.headTop(id=`${portfolio.headColor}`)= portfolio.name
@@ -15,7 +16,7 @@ block content
         .main__pic(id=`${portfolio.focusColor}`)
             each img, i in portfolio.images
                 .picture-box
-                    img.picture-box__img.imgFull(src=`/images/ports/imageColl/${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
+                    img.picture-box__img.imgFull(src=`${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
     .fifth
         .about__bod#fifth__about
             h2.ppabt.headFont(id=`${portfolio.secHeadColor}`) About 
@@ -41,9 +42,9 @@ block content
                     .cont 
                         a(href=`${portfolio.fb}`)
                             if (portfolio.user.photo)
-                                img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                                img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                             else 
-                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                                img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
                 .cont__box.fif__box
                     p= `Address: ${portfolio.location}`
 
@@ -51,4 +52,5 @@ block content
         img(src="/images/yup.png", alt="go_up")
     
     script(src="/js/layouts/fifth.js") 
-    script(src="/js/imgFull.js") 
+    script(src="/js/imgFull.js")
+    script(src="/js/alert.js") 

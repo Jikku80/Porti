@@ -1,4 +1,5 @@
 const fs = require('fs');
+const formidable = require('formidable');
 
 const qr = require('qrcode');
 
@@ -20,6 +21,10 @@ const AppError = require('./../utils/appError');
 const PortfolioImage = require('../models/portfolioImageModel');
 const { compareSync } = require('bcryptjs');
 const { constants } = require('crypto');
+
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 exports.homePage = catchAsync(async (req, res, next) => {
     res.status(200).render('homepage', {
@@ -296,51 +301,78 @@ exports.removePortiOldImg = catchAsync(async (req, res, next) => {
 
 exports.updatePortImgData = catchAsync(async (req, res, next) => {
 
-    const updatedPortfolio = await Portfolio.findByIdAndUpdate(
-        req.body.id,
-        {
-            imageCover: req.file.originalname,
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-    res.status(200).render('layouts/landing', {
-        title: updatedPortfolio.name,
-        portfolio: updatedPortfolio
-    });
-});
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-exports.removePortiOldImgColl = catchAsync(async (req, res, next) => {
-    const item = await Portfolio.findByIdAndUpdate(req.body.id)
-    let imgs = item.images;
-    for (let i = 0; i < imgs.length; i++) {
-        if (fs.existsSync(`public/images/ports/imageColl/${item.images[i]}`)) {
-            if (item.images[i].length !== 0) {
-                await fs.promises.unlink(`public/images/ports/imageColl/${item.images[i]}`);
+    const containerName = 'portfolioimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.portcoverImage.filepath;
+        const blobName = `${req.user.name}-coverimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Portfolio.findByIdAndUpdate(
+            req.params.id,
+            {
+                imageCover: blockBlobClient.url,
+            },
+            {
+                new: true,
+                runValidators: true
             }
-        }
-    }
-    next();
-})
+        );
+
+        res.redirect(`/myportfolio/${req.user.id}`)
+    })
+
+});
 
 exports.updatePortImgCollec = catchAsync(async (req, res, next) => {
 
-    const updatedPortfolio = await Portfolio.findByIdAndUpdate(
-        req.body.id,
-        {
-            images: req.body.images
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-    res.status(200).render('layouts/landing', {
-        title: updatedPortfolio.name,
-        portfolio: updatedPortfolio
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
+
+    const containerName = 'portfolioimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm({ multiples: true });
+    form.parse(req, async function (err, fields, files) {
+
+        const imgs = [];
+        let imagefiles = files.upimagescollec;
+
+        await Promise.all(
+            imagefiles.map(async (file, i) => {
+                const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
+                const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+                const filePath = file.filepath;
+                await blockBlobClient.uploadFile(filePath)
+                imgs.push(blockBlobClient.url);
+            })
+        );
+
+
+        await Portfolio.findByIdAndUpdate(
+            fields.upportid,
+            {
+                images: imgs
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        res.redirect(`/myportfolio/${req.user.id}`)
+    })
+
 });
 
 exports.qrCodeGen = catchAsync(async (req, res, next) => {

@@ -56,9 +56,10 @@
         .upform__head 
             h1 Update Your Port Images
             img.canclCollec(src="/images/cancel.png", alt="cancel_img")
-        form#upImageCollec
+        form#upImageCollec(action="/updateportImgCollec" method="post" enctype="multipart/form-data")
             .form__bod.file_part
-                input#img1Collec(type="file" accept="image/*" multiple name="img1", required)
+                input#img1Collec(type="file" accept="image/*" multiple name="upimagescollec", required)
+                input.hidden(type="text" value=`${portfolio.id}` name="upportid" )
             button#updateImgBtnCollec.redbtn.bigbtn Update
 
 script(src="/js/layouts/landing2.js") 

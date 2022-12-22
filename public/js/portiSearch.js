@@ -56,7 +56,7 @@
                                 profiles.forEach(el => {
                                     subItems.innerHTML += `<div class="search__results">
                                                                 <a class="anc" href="/toprofile/${el.user._id}/portfolio">
-                                                                    <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />
+                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />
                                                                     ${el.name}
                                                                 </a> 
                                                             </div>   
@@ -71,7 +71,7 @@
                                 restro.forEach(el => {
                                     menuItems.innerHTML += `<div class="search__results">
                                                                 <a class="anc" href="/toprofile/${el.user._id}/restro">
-                                                                    <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />
+                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />
                                                                     ${el.name}
                                                                 </a>    
                                                             </div>
@@ -89,7 +89,7 @@
                                 company.forEach(el => {
                                     compItems.innerHTML += `<div class="search__results">
                                                                 <a class="anc" href="/toprofile/${el.user._id}/company">
-                                                                    <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />   
+                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />   
                                                                     ${el.name} 
                                                                 </a>
                                                             </div>

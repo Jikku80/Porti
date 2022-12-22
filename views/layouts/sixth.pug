@@ -45,9 +45,9 @@ block content
                     .cont
                         a(href=`${portfolio.fb}`)
                             if (portfolio.user.photo)
-                                img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                                img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                             else 
-                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                                img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
                 .cont__box.sixth__box
                     p= `Address: ${portfolio.location}`
 

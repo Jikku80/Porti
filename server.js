@@ -25,6 +25,7 @@ mongoose.connect(url,
         process.exit();
     });
 
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Tapai ko App ${port} port ma chalirako xa...`);

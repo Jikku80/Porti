@@ -3,7 +3,7 @@ extends base
 block content 
     h1.loader
         .bink
-            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -13,7 +13,7 @@ block content
                 span.gry De 
                     span.mid.td Tech 
                         span.gry Presents 
-            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
             span.wite Por
             span.grn t
             span.nocaps.wite i
@@ -29,9 +29,9 @@ block content
             else 
                 a#log.fkAncky.norot(href="/me" title="Your Account")
                     if (!user.photo)
-                        img.accpic(src=`/images/hitman.png`, alt="dp")
+                        img.accpic(src=`https://portiblobstorage.blob.core.windows.net/portithemeimage/hitman.png`, alt="dp")
                     else
-                        img.accpic(src=`/images/users/${user.photo}`) 
+                        img.accpic(src=`${user.photo}`) 
                     span= user.name
                 .futuristic-button.hidden
         .main__content__nav
@@ -63,7 +63,7 @@ block content
                     span.whte Guide
         .main__content__logo 
             .logo__grp 
-                img.porti__off__img(src="/images/portii.png", alt="porti__img")
+                img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/portii.png", alt="porti__img")
                 span.wite Por
                 span.grn t
                 span.nocaps.wite i
@@ -566,13 +566,6 @@ block content
                                     textarea#msgmessage.form__input(type="text", name="message", placeholder="Porti is this and that...", rows="5", cols="40", required)
                                     .form__group
                                     button.send__msg.greybtn Send
-
-                            h1.loader
-                                img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-                                span Por
-                                span.grn t
-                                span.nocaps i
-                            img#ok.hidden(src="/images/ok.png", alt="loader")
             .fot_sec
                 include _footer
      
@@ -581,4 +574,3 @@ block content
 
     script(src="/js/alert.js")
     script(src="/js/home.js")  
-    script(src="/js/sendmsg.js")

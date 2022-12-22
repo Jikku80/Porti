@@ -1,45 +1,14 @@
+const formidable = require('formidable');
 const fs = require('fs')
 
-const multer = require('multer');
-const sharp = require('sharp');
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
 
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError('Not an image! Please upload only images.', 400), false);
-    }
-};
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
-
-exports.uploadUserPhoto = upload.single('photo');
-
-exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-    if (!req.file) return next();
-
-
-    pic = req.file;
-
-    pic.originalname = `user-${req.user.name}-${Date.now()}.jpeg`;
-
-    await sharp(req.file.buffer)
-        .resize(500, 500)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/users/${pic.originalname}`);
-
-    next();
-});
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 exports.getMe = (req, res, next) => {
     req.params.id = req.user.id;
@@ -78,22 +47,31 @@ exports.removeUserOldImg = catchAsync(async (req, res, next) => {
 })
 
 exports.updateDP = catchAsync(async (req, res, next) => {
-    const updatedUser = await User.findByIdAndUpdate(
-        req.user.id,
-        {
-            photo: req.file.originalname
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    );
-    res.status(200).json({
-        status: 'success',
-        data: {
-            user: updatedUser
-        }
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
+
+    const containerName = 'userprofilepic822810c0-8056-11ed-b011-f529f415676d';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+    form.parse(req, async function (err, fields, files) {
+        const filePath = files.upPic.filepath;
+        const blobName = `${req.user.name}-profilepic-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+        await User.findByIdAndUpdate(
+            req.user.id,
+            {
+                photo: blockBlobClient.url
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+        res.redirect(`/me`)
+    })
 })
 
 exports.deleteMe = catchAsync(async (req, res, next) => {

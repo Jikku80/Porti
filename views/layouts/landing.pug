@@ -33,7 +33,7 @@ block content
                                         .port__card__main
                                             each item in portImage 
                                                 .port__images 
-                                                    img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                                                    img.port_img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
                                                     h3.first__head.portfolio__item__name= item.name
                                                     .group__btn
                                                         button(type="button" id=`${item._id}` name=`${item.name}`).upPortImageBtn.ygbtn Update

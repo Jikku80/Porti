@@ -9,9 +9,9 @@ block content
     .main(id=`${portfolio.headColor}`)
         .bgCover(id=`${portfolio.fontColor}`) 
             if (!portfolio.imageCover)
-                img#bgcv(src=`/images/party.jpg`, alt="cover__pic")
+                img#bgcv(src=`https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png`, alt="cover__pic")
             else 
-                img#bgcv(src=`/images/ports/imageCover/${portfolio.imageCover}`, alt="bgCover")
+                img#bgcv(src=`${portfolio.imageCover}`, alt="bgCover")
             ul.bg__list
                 li
                     a#hm(href="#").home Home 
@@ -51,7 +51,7 @@ block content
                                 .prev__cont__sub#imgCont
                                     each item in portImage
                                         .port__images
-                                            img.port_img.imgFull(src=`/images/ports/addedImages/${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                                            img.port_img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
                                             h3.first__head= item.name
                                 .paginate__addimg
                                     .group__delbtn
@@ -75,9 +75,9 @@ block content
                             .cont 
                                 a(href=`${portfolio.fb}`)
                                     if (portfolio.user.photo)
-                                        img.profPic(src=`/images/users/${portfolio.user.photo}`, alt="prof__pic")
+                                        img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                                     else 
-                                        img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                                        img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
                         .cont__box
                             p= `Address: ${portfolio.location}`
             a#goup(href="#") 

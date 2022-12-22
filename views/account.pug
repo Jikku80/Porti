@@ -4,7 +4,7 @@ block content
     if (user)
         h1.loader
             .bink
-                img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+                img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
                 span.td Por
                 span.grn t
                 span.nocaps.td i
@@ -16,25 +16,26 @@ block content
             .update__background 
                 .bg__fix
                     #defaultBack.up__bg
-                        img.bg__opt(src="/images/grn.png", alt="grn__background")
+                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/grn.png", alt="grn__background")
                         p Porti Background
                     #darkBack.up__bg
-                        img.bg__opt(src="/images/dark.png", alt="grn__background")
+                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/dark.png", alt="grn__background")
                         p Dark Background
                     #whiteBack.up__bg
-                        img.bg__opt(src="/images/white.png", alt="grn__background")
+                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/white.png", alt="grn__background")
                         p White Background
                     #redBack.up__bg
-                        img.bg__opt(src="/images/red.png", alt="grn__background")
+                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/red.png", alt="grn__background")
                         p Lakhey Background
-            form#upAccImg
+            #upAccImg
                 if (user.photo)
-                    img.profPic(src=`images/users/${user.photo}`, alt="prof__pic")
+                    img.profPic(src=`${user.photo}`, alt="prof__pic")
                 else 
-                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
-                label.form__label(for='upPic') Change DP
-                input#upPic.form__input(type="file" accept="image/*" name="upPic", required)
-                button#upProfPic.redbtn Update Picture 
+                    img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
+                form(action="/api/users/updateDP" method="post" enctype="multipart/form-data")
+                    label.form__label(for='upPic') Change DP
+                    input#upPic.form__input(type="file" accept="image/*" name="upPic", required)
+                    button#upProfPic.redbtn Update Picture 
             form#upInfo
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name

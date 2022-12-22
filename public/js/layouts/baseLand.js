@@ -273,52 +273,15 @@ function downloadportiQRCode(file) {
 
 function upImgItem() {
     let toUpdateItemImg = document.querySelectorAll(".upPortImageBtn");
-    let addImgBtn = document.getElementById("addImageBtn");
-    let updateImgBtn = document.getElementById("updatePortfolioImageBtn");
-    let prevName = document.getElementById("addName");
-    let prevImg = document.getElementById("addImg");
+    let addImg = document.getElementById("addPortImg");
+    let updateImg = document.getElementById("upPortImg");
+    let id = document.getElementById("upId");
     toUpdateItemImg.forEach(item => {
         item.addEventListener("click", () => {
             location.href = "#addImageToPortfolio"
-            addImgBtn.classList.add("hidden");
-            updateImgBtn.classList.remove("hidden");
-            prevName.value = item.name
-
-            updateImgBtn.addEventListener("click", async (e) => {
-                if (prevImg.files[0] < 1 || prevImg.files[0] == "" || prevImg.files[0] == null) {
-                    return false;
-                }
-                e.preventDefault();
-                let load = document.querySelector('.loader');
-                load.classList.remove("hidden")
-                const formData = new FormData();
-                formData.append("addImage", prevImg.files[0]);
-                formData.append("name", prevName.value);
-                const endpoint = `/api/v1/portfolio/${item.id}/portfolioImage`
-                try {
-                    await fetch(endpoint, {
-                        body: formData,
-                        method: 'PATCH'
-                    }).then((response) => {
-                        load.classList.add("hidden");
-                        if (response.status === 200) {
-                            successAlert("Your Previous Accomplisment Image has been Updated :)");
-                            setTimeout(() => {
-                                location.reload();
-                            }, 400)
-                        } else {
-                            errorAlert("Invalid input!!!")
-                        }
-                    })
-
-                }
-                catch (err) {
-                    console.log(err);
-                    errorAlert('Sorry! Something went wrong', err);
-                };
-                prevImg.value = "";
-                prevName.value = "";
-            })
+            addImg.classList.add("hidden");
+            updateImg.classList.remove("hidden");
+            id.value = item.id
         })
     })
 }

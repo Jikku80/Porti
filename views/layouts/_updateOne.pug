@@ -79,9 +79,9 @@
             .upform__head 
                 h1 Update Your Portfolio Cover Image
                 img.cancl(src="/images/cancel.png", alt="cancel_img")
-            form#upImage
+            form#upImage(action=`/updateportImg/${portfolio.id}` method="post" enctype="multipart/form-data")
                 .form__bod.file_part
-                    input#img1(type="file" accept="image/*" name="img1", required)
+                    input#img1(type="file" accept="image/*" name="portcoverImage", required)
                 button#updateImgBtn.redbtn.bigbtn Update
     else 
         #update_Img.hidden 
