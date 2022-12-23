@@ -3,7 +3,7 @@
     #update_inviform2.hidden.upform.land__farst
         .upform__head 
             h1 Update Invitation 
-            img.cancelInvi2.pointer(src="/images/cancel.png", alt="cancel_img")
+            img.cancelInvi2.pointer(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
         form#upInvite2.inviF
             .form__bod
                 label.form__label First Person Name:
@@ -34,13 +34,14 @@
     
     button#update_InviImg2.redbtn.upMarg Update Cover Image
     #update_ImgInviForm2.hidden.upform
-        form#upInviImage2.inviF
+        form#upInviImage2.inviF(action="/api/v1/invite/updateInviImgCollec" method="post" enctype="multipart/form-data")
             .upform__head 
                 h1 Update Your Invitation Images
-                img.canclInvi2.pointer(src="/images/cancel.png", alt="cancel_img")
+                img.canclInvi2.pointer(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
             .form__bod.file_part
                 label Cover Image:
-                input#in2img(type="file" accept="image/*" name="img1", required)
+                input#in2img(type="file" accept="image/*" name="coverimg" required)
+                input.hidden(type="text" value=`${invite.id}` name="uinviid" )
             button#updateinImgBtn2.redbtn.bigbtn Update
 
 script(src="/js/upInvi/inviLand2.js")

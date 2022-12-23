@@ -6,71 +6,71 @@ let icimg = document.getElementById("coverimage");
 let additembtn = document.getElementById("addItemBtn");
 // let itheme = "40bd001563085fc35165329ea1ff5c5ecbdbbeef"
 
-additembtn.addEventListener("click", async (e) => {
-    if (iname.value < 1 || iname.value == "" || iname.value == null) {
-        return false;
-    }
-    if (iprice.value < 1 || iprice.value == "" || iprice.value == null) {
-        return false;
-    }
-    if (icat.value < 1 || icat.value == "" || icat.value == null) {
-        return false;
-    }
-    if (icimg.value < 1 || icimg.value == "" || icimg.value == null) {
-        return false;
-    }
-    e.preventDefault();
-    let load = document.querySelector('.loader');
-    load.classList.remove("hidden")
-    let subItems = document.querySelector(".sub__items")
-    const formData = new FormData();
-    formData.append("name", iname.value);
-    formData.append("price", iprice.value);
-    formData.append("category", icat.value);
-    formData.append("detail", idetail.value);
-    formData.append("coverImage", icimg.files[0]);
-    const endpoint = '/api/v1/menu'
-    try {
-        await fetch((endpoint), {
-            body: formData,
-            method: 'POST'
-        }).then((response) => {
-            load.classList.add("hidden");
-            if (response.status === 201) {
-                successAlert("You Just Added a Item to your Menu :)");
-                let result = response.json();
-                result.then(item => {
-                    let fResult = item.data.data
-                    subItems.innerHTML += `
-                                <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}" alt="food_item_pic">
-                                    <div class="menu__card__det">
-                                        <h3 class="menu__card__head goldn">${fResult.name}</h3>
-                                        <p class="menu__card__price goldn">${fResult.price}</p>
-                                        <p class="menu__card__cat goldn">${fResult.category}</p>
-                                        <p class="menu__card__detail goldn">${fResult.detail}</p>
-                                        <a href="/tweaks/${fResult._id}?update" class="ygbtn">Update</a>
-                                        <a href="/tweaks/${fResult._id}?delete" class="redbtn">Delete</a>
-                                        </div>
-                                    </div>
-                        `
-                })
-            } else {
-                console.log(response)
-                errorAlert("Duplication Input error!!")
-            }
-        })
-    }
-    catch (err) {
-        console.log(err);
-        errorAlert('Sorry! Something went wrong', err);
-    };
-    iname.value = "",
-        iprice.value = "",
-        icat.value = "",
-        idetail.value = "",
-        icimg.value = ""
-});
+// additembtn.addEventListener("click", async (e) => {
+//     if (iname.value < 1 || iname.value == "" || iname.value == null) {
+//         return false;
+//     }
+//     if (iprice.value < 1 || iprice.value == "" || iprice.value == null) {
+//         return false;
+//     }
+//     if (icat.value < 1 || icat.value == "" || icat.value == null) {
+//         return false;
+//     }
+//     if (icimg.value < 1 || icimg.value == "" || icimg.value == null) {
+//         return false;
+//     }
+//     e.preventDefault();
+//     let load = document.querySelector('.loader');
+//     load.classList.remove("hidden")
+//     let subItems = document.querySelector(".sub__items")
+//     const formData = new FormData();
+//     formData.append("name", iname.value);
+//     formData.append("price", iprice.value);
+//     formData.append("category", icat.value);
+//     formData.append("detail", idetail.value);
+//     formData.append("coverImage", icimg.files[0]);
+//     const endpoint = '/api/v1/menu'
+//     try {
+//         await fetch((endpoint), {
+//             body: formData,
+//             method: 'POST'
+//         }).then((response) => {
+//             load.classList.add("hidden");
+//             if (response.status === 201) {
+//                 successAlert("You Just Added a Item to your Menu :)");
+//                 let result = response.json();
+//                 result.then(item => {
+//                     let fResult = item.data.data
+//                     subItems.innerHTML += `
+//                                 <div class="menu__card">
+//                                     <img class="menu__card__img" src="/images/menu-pic/${fResult.coverImage}" alt="food_item_pic">
+//                                     <div class="menu__card__det">
+//                                         <h3 class="menu__card__head goldn">${fResult.name}</h3>
+//                                         <p class="menu__card__price goldn">${fResult.price}</p>
+//                                         <p class="menu__card__cat goldn">${fResult.category}</p>
+//                                         <p class="menu__card__detail goldn">${fResult.detail}</p>
+//                                         <a href="/tweaks/${fResult._id}?update" class="ygbtn">Update</a>
+//                                         <a href="/tweaks/${fResult._id}?delete" class="redbtn">Delete</a>
+//                                         </div>
+//                                     </div>
+//                         `
+//                 })
+//             } else {
+//                 console.log(response)
+//                 errorAlert("Duplication Input error!!")
+//             }
+//         })
+//     }
+//     catch (err) {
+//         console.log(err);
+//         errorAlert('Sorry! Something went wrong', err);
+//     };
+//     iname.value = "",
+//         iprice.value = "",
+//         icat.value = "",
+//         idetail.value = "",
+//         icimg.value = ""
+// });
 
 
 async function getAllItem() {
@@ -99,7 +99,7 @@ async function getAllItem() {
                             subItems.innerHTML +=
                                 `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
+                                    <img class="menu__card__img" loading="lazy" src="${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.price}</p>
@@ -177,7 +177,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
+                                    <img class="menu__card__img" loading="lazy" src="${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.price}</p>
@@ -241,7 +241,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/menu-pic/${el.coverImage}" alt="food_item_pic">
+                                    <img class="menu__card__img" loading="lazy" src="${el.coverImage}" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.price}</p>

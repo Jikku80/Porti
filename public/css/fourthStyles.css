@@ -27,7 +27,7 @@
 }
 
 .header__round{
-    background-image: url('/images/fire.jpg');
+    background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/fire.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left;

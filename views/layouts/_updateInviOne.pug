@@ -3,7 +3,7 @@
     #update_inviform.hidden.upform.land__farst
         .upform__head 
             h1 Update Invitation
-            img.cancelInvi.pointer(src="/images/cancel.png", alt="cancel_img")
+            img.cancelInvi.pointer(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
         form#upInvite.inviF
             .form__bod
                 label.form__label First Person Name:
@@ -38,22 +38,18 @@
     
     button#update_InviImg.redbtn.upMarg Update Invitation Images
     #update_ImgInviForm.hidden.upform
-        form#upInviImage
+        form#upInviImage(action="/api/v1/invite/updateInviImg" method="post" enctype="multipart/form-data")
             .upform__head 
                 h1 Update Your Invitation Images
-                img.canclInvi.pointer(src="/images/cancel.png", alt="cancel_img")
+                img.canclInvi.pointer(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
+            .form__bod
+                label.form__label Your first image will be your Cover Image
+            .form__bod
+                label.form__label Upload upto 5 images
             .form__bod.file_part
                 label.form__label Cover Image:
-                input#inimg1(type="file" accept="image/*" name="img1", required)
-            .form__bod.file_part
-                label.form__label Images:
-                input#inimg2(type="file" accept="image/*" name="img2", required)
-            .form__bod.file_part
-                input#inimg3(type="file" accept="image/*" name="img3", required)
-            .form__bod.file_part
-                input#inimg4(type="file" accept="image/*" name="img4", required)
-            .form__bod.file_part
-                input#inimg5(type="file" accept="image/*" name="img5", required)
+                input#inimg1(type="file" accept="image/*" name="imgCollec", multiple required)
+                input.hidden(type="text" value=`${invite.id}` name="colelcId" )
             button#updateinImgBtn.redbtn.bigbtn Update
 
 script(src="/js/upInvi/inviLand1.js")

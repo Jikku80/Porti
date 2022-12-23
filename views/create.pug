@@ -3,7 +3,7 @@ extends base
 block content
     h1.loader
         .bink
-            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
             span.portDet Por
             span.grn t
             span.nocaps.portDet i
@@ -35,7 +35,7 @@ block content
                                     if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                         .unl.cataloge_layouts(id=`${item.themeId}`)
                                             .un_layout_log
-                                                img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
+                                                img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                                 p.portDet= item.name
                     .layout__main#lockedCatalgSec 
                         .unl
@@ -54,7 +54,7 @@ block content
                         each item in theme
                             if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                 .un_layout
-                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="cataloge1")
+                                    img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                     p.portDet= item.name
                     .layuot__main#lockedCatalgSec 
                         .un_layout
@@ -74,7 +74,7 @@ block content
                                     if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
                                         .unl.menu_layouts(id=`${item.themeId}`)
                                             .un_layout_log
-                                                img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
+                                                img(src=`${item.picture}`, loading="lazy", alt="menu1")
                                                 p.portDet= item.name
                     .layout__main#lockedMenuSec 
                         .unl
@@ -93,7 +93,7 @@ block content
                         each item in theme
                             if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
                                 .un_layout
-                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="menu1")
+                                    img(src=`${item.picture}`, loading="lazy", alt="menu1")
                                     p.portDet= item.name
                     .layout__main#lockedMenuSec 
                         .un_layout
@@ -110,7 +110,7 @@ block content
                         if (item.themeCategory === "Invitation" && item.themeType === 'Free' || item.validInviUser.includes(user.id))
                             .unl.invi__layouts(id=`${item.themeId}`)
                                 .un_layout_log
-                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="invi1")
+                                    img(src=`${item.picture}`, loading="lazy", alt="invi1")
                                     p.portDet= item.name
                 .layout__main#lockedInviSec 
                     .unl
@@ -133,10 +133,10 @@ block content
                         each item in theme
                             if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
                                 .un_layout
-                                    img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                    img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                     p.portDet= item.name
                         .un_layout
-                            img(src="/images/layout5.png", loading="lazy", alt="layout5")
+                            img(src="https://portiblobstorage.blob.core.windows.net/layoutimages/layout5.png", loading="lazy", alt="layout5")
                             p AT Layout (you can upload upto 20 images)
                     .layout__main#lockedItems
                         each item in theme
@@ -144,7 +144,7 @@ block content
                                 if (!item.validUser.includes(user.id))
                                     .un_layout
                                         a(href=`/paywith/${item.themeId}`)
-                                            img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                            img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                         p.portDet= item.name
                                         p.layout__price.portDet= item.price
                                         a.redbtn(href=`/paywith/${item.themeId}`) Unlock
@@ -162,11 +162,11 @@ block content
                             if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
                                 .portunl(id=`${item.themeId}`)
                                     .un_layout_log
-                                        img(src=`/images/themeImage/${item.picture}`, loading="lazy", alt="layout1")
+                                        img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                         p.layout__name.portDet(id=`${item.name}`)= item.name
                         #layout5.unl
                             .un_layout_log
-                                img(src="/images/layout5.png", loading="lazy", alt="layout5")
+                                img(src="https://portiblobstorage.blob.core.windows.net/layoutimages/layout5.png", loading="lazy", alt="layout5")
                                 p AT Layout (you can upload upto 20 images)
 
                     .layout__main#lockedItems
@@ -175,7 +175,7 @@ block content
                                 if (!item.validUser.includes(user.id))
                                     .un_layout 
                                         a(href=`/paywith/${item.themeId}`)
-                                            img(src=`/images/themeImage/${item.picture}`)
+                                            img(src=`${item.picture}`)
                                         p.layout__name.portDet= item.name 
                                         p.layout__price.portDet= item.price
                                         a.redbtn(href=`/paywith/${item.themeId}`) Unlock

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.route('/').get(authController.restrictTo('admin', 'user'), themeController.getAllTheme).post(authController.restrictTo('user', 'admin'), themeController.setUsersId, themeController.uploadThemeImage, themeController.resizeThemeImage, themeController.createTheme);
+router.route('/').get(authController.restrictTo('admin', 'user'), themeController.getAllTheme).post(authController.restrictTo('user', 'admin'), themeController.createTheme);
 
 router.route('/tweakTheme').get(authController.restrictTo('admin', 'user'), themeController.themeForm);
 

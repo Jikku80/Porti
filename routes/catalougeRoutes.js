@@ -12,15 +12,15 @@ router.get('/:id/searchCatalouge', catalougeController.lookupCatalouge);
 router.get('/:id/paginate/:count', catalougeController.paginateCatalouge);
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
-router.post('/', authController.restrictTo('user', 'admin'), catalougeController.setUsersId, catalougeController.uploadCatalougePhoto, catalougeController.resizeCatalougePhoto, catalougeController.createCatalouge);
+router.post('/', authController.restrictTo('user', 'admin'), catalougeController.createCatalouge);
 router.patch('/:id/updateItemDetail', authController.restrictTo('user', 'admin'), catalougeController.updateCatalouge);
 router.get('/:id/getItem', authController.restrictTo('user', 'admin'), catalougeController.getCatalouge);
-router.patch('/:id/updateItemImage', authController.restrictTo('user', 'admin'), catalougeController.setUsersId, catalougeController.uploadCatalougePhoto, catalougeController.resizeCatalougePhoto, catalougeController.removeCatalougeOldImg, catalougeController.updateCatalougeItemImg);
+router.post('/:id/updateItemImage', authController.restrictTo('user', 'admin'), catalougeController.updateCatalougeItemImg);
 router.delete('/:id/deleteItem', authController.restrictTo('user', 'admin'), catalougeController.delCatalouge);
 
 router.post('/createCompany', authController.restrictTo('user', 'admin'), catalougeController.createCompany);
 router.patch('/:id/updateCompany', authController.restrictTo('user', 'admin'), catalougeController.updateCompany);
-router.patch('/:id/updateCompanyImage', authController.restrictTo('user', 'admin'), catalougeController.setUsersId, catalougeController.uploadCompanyPhoto, catalougeController.resizeCompanyPhoto, catalougeController.removeCompanyOldImg, catalougeController.updateCompanyImg);
+router.post('/:id/updateCompanyImage', authController.restrictTo('user', 'admin'), catalougeController.updateCompanyImg);
 
 
 module.exports = router;

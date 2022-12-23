@@ -20,7 +20,7 @@ async function getOneItem() {
                     let item = result.data.data
                     menuCard.innerHTML =
                         `
-                            <img class="menu__card__img" src="/images/menu-pic/${item.coverImage}" alt="item__image">
+                            <img class="menu__card__img" src="${item.coverImage}" alt="item__image">
                             <div class="menu__card__det">
                                 <h3 class="menu__card__head goldn">${item.name}</h3>
                                 <p class="menu__card__price goldn">${item.price}</p>
@@ -97,40 +97,6 @@ window.addEventListener("load", async () => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
                     successAlert("Item Updated Successfully :)");
-                    getOneItem();
-                } else {
-                    console.log(response);
-                    errorAlert("Invalid input, Duplication Input error!!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-    })
-
-    let upImItemBtn = document.getElementById("upImgItemBtn");
-
-    let imgItem = document.getElementById("upcoverimage");
-    upImItemBtn.addEventListener("click", async (e) => {
-        if (imgItem.files[0] < 1 || imgItem.files[0] == "" || imgItem.files[0] == null) {
-            return false;
-        }
-        e.preventDefault();
-        try {
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const formData = new FormData();
-            formData.append("coverImage", imgItem.files[0]);
-            const endpoint = `/api/v1/menu/${id.innerText}/updateItemImage`
-            await fetch(endpoint, {
-                body: formData,
-                method: 'PATCH'
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 200) {
-                    successAlert("Item Image Updated Successfully :)");
                     getOneItem();
                 } else {
                     console.log(response);

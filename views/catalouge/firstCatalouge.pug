@@ -2,7 +2,7 @@ extends baseCatalouge
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
         span Por
         span.grn t
         span.nocaps i
@@ -10,11 +10,11 @@ block content
     .background__cover 
         if (company)
             if (company.coverImage)
-                img.company__cover(src=`/images/company/${company.coverImage}`, alt="cover image")
+                img.company__cover(src=`${company.coverImage}`, alt="cover image")
             else 
-                img.company__cover(src="/images/party.jpg", alt="cover image")
+                img.company__cover(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png", alt="cover image")
         else 
-            img.company__cover(src="/images/party.jpg", alt="cover image")
+            img.company__cover(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png", alt="cover image")
         .navigator
             if (company)
                 h1.blackbg= company.name
@@ -34,7 +34,7 @@ block content
     .sub__cat__list 
         .sub__cat__opt
             h2.sub__cat__head Sub Categories | SGroup
-            img.cancel__subModel(src="/images/cancel.png" alt="cancel")
+            img.cancel__subModel(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png" alt="cancel")
         .sub__categories__catalouge
     #compcatalouge
         if (company)
@@ -43,7 +43,7 @@ block content
             .catalouge__items 
                 each item in catalouges
                     .catal__card
-                        img(class="catal__card__img imgFull" loading="lazy" src=`/images/catalouge/${item.coverImage}` alt="catalouge__item__image")
+                        img(class="catal__card__img imgFull" loading="lazy" src=`${item.coverImage}` alt="catalouge__item__image")
                         .catal__card__det
                             .card__sub__sec
                                 .catal__card__head Name: 

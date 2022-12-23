@@ -4,7 +4,7 @@ block content
 
     h1.loader
         .bink
-            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -37,22 +37,22 @@ block content
                             h2.form__label Add Items To Menu
                             h2
                                 a.form__label(href="#openMenu") Menu Link
-                        form#addItem
+                        form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label Food Name:
-                                input#itemname.form__input(type="text" required placeholder="Chicken Burger")
+                                input#itemname.form__input(type="text"  name="menuname" required placeholder="Chicken Burger")
                             .form__bod
                                 label.form__label Price: 
-                                input#itemprice.form__input(type="text" required placeholder="Rs. 150")
+                                input#itemprice.form__input(type="text" name="menuprice" required placeholder="Rs. 150")
                             .form__bod
                                 label.form__label Category: 
-                                input#itemcat.form__input(type="text", required placeholder="Burger")
+                                input#itemcat.form__input(type="text", name="menucategory" required placeholder="Burger")
                             .form__bod
                                 label.form__label Detail (optional):
-                                textarea#itemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")
+                                textarea#itemdetail.form__input(rows="4" cols="50" name="menudetail" placeholder="You can Describe about your food only if you want to, this field is optional...")
                             .form__bod.file_part
                                 label.form__label(for="coverimage") Food Image:
-                                input#coverimage.form__input(type="file" accept="image/*"  required)
+                                input#coverimage.form__input(type="file" name="menuimage" accept="image/*"  required)
                             button#addItemBtn.blackbtn Add Item
                     .your__item__sec#foodItemSec
                         h2.items__head Your Items 

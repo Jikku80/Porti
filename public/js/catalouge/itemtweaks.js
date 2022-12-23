@@ -20,7 +20,7 @@ async function getOneCatalougeItem() {
                     let item = result.data.data
                     catalougeCard.innerHTML =
                         `
-                            <img class="catalouge__card__img" src="/images/catalouge/${item.coverImage}" alt="catalouge__item__image">
+                            <img class="catalouge__card__img" src="${item.coverImage}" alt="catalouge__item__image">
                             <div class="catalouge__card__det">
                                 <h3 class="catalouge__card__head goldn">${item.name}</h3>
                                 <p class="catalouge__card__price goldn">${item.serialno}</p>
@@ -103,40 +103,6 @@ window.addEventListener("load", async () => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
                     successAlert("Item Updated Successfully :)");
-                    getOneCatalougeItem();
-                } else {
-                    console.log(response);
-                    errorAlert("Invalid input, Duplication Input error!!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-    })
-
-    let upImItemBtn = document.getElementById("upcatalImgItemBtn");
-
-    let imgItem = document.getElementById("upcatalcoverimage");
-    upImItemBtn.addEventListener("click", async (e) => {
-        if (imgItem.files[0] < 1 || imgItem.files[0] == "" || imgItem.files[0] == null) {
-            return false;
-        }
-        e.preventDefault();
-        try {
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const formData = new FormData();
-            formData.append("coverImage", imgItem.files[0]);
-            const endpoint = `/api/v1/catalouge/${id.innerText}/updateItemImage`
-            await fetch(endpoint, {
-                body: formData,
-                method: 'PATCH'
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 200) {
-                    successAlert("Item Image Updated Successfully :)");
                     getOneCatalougeItem();
                 } else {
                     console.log(response);

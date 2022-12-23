@@ -36,7 +36,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
+                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -97,7 +97,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
+                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -170,7 +170,7 @@ window.addEventListener("load", async () => {
                                                 subItems.innerHTML +=
                                                     `
                                                         <div class="menu__card">
-                                                            <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
+                                                            <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                                 <p class="menu__card__price">${el.price}</p>
@@ -245,7 +245,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
+                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.price}</p>
@@ -299,7 +299,7 @@ grabAll.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/menu-pic/${el.coverImage}" alt="menu__item__image">
+                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -341,10 +341,10 @@ dark.addEventListener("click", () => {
     if (!bod.classList.contains('white__bg')) {
         bod.classList.add('white__bg');
         bod.style.color = "chocolate";
-        dark.innerHTML = `<img src="/images/off.png" />`
+        dark.innerHTML = `<img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/off.png" />`
     } else {
         bod.classList.remove('white__bg');
         bod.style.color = "goldenrod"
-        dark.innerHTML = `<img src="/images/on.png" />`
+        dark.innerHTML = `<img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/on.png" />`
     }
 })

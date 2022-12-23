@@ -1,4 +1,5 @@
 const fs = require('fs');
+const formidable = require('formidable');
 
 const multer = require('multer');
 const sharp = require('sharp');
@@ -6,6 +7,10 @@ const Theme = require('./../models/themeModel');
 const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
 const APIFeatures = require('./../utils/apiFeatures');
+
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 const multerStorage = multer.memoryStorage();
 
@@ -44,38 +49,32 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createTheme = catchAsync(async (req, res, next) => {
-    if (!req.file) {
-        const doc = await Theme.create({
-            name: req.body.themename,
-            themeId: req.body.themeId,
-            themeType: req.body.themeType,
-            themeCategory: req.body.themeCategory,
-            price: req.body.themeprice,
-            paid: req.body.paid,
-            validUser: req.body.validUser,
-            validInviUser: req.body.validInviUser,
-            validMenuUser: req.body.validMenuUser,
-            validCatalogeUser: req.body.validCatalogeUser
-        })
-        res.status(201).json(doc)
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-    }
-    else {
-        const doc = await Theme.create({
-            name: req.body.themename,
-            themeId: req.body.themeId,
-            picture: req.file.originalname,
-            themeType: req.body.themeType,
-            themeCategory: req.body.themeCategory,
-            price: req.body.themeprice,
-            paid: req.body.paid,
-            validUser: req.body.validUser,
-            validInviUser: req.body.validInviUser,
-            validMenuUser: req.body.validMenuUser,
-            validCatalogeUser: req.body.validCatalogeUser
+    const containerName = 'layoutimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.picture.filepath;
+        const blobName = `${req.user.name}-layoutthemeimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+        await Theme.create({
+            name: fields.themename,
+            themeId: fields.themeId,
+            themeType: fields.themeType,
+            themeCategory: fields.themeCategory,
+            price: fields.themeprice,
+            paid: fields.paid,
+            picture: blockBlobClient.url
         });
-        res.status(201).json(doc)
-    }
+        res.redirect(`/api/themes/tweaktheme`)
+    })
 
 });
 

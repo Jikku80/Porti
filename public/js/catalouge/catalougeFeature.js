@@ -208,7 +208,7 @@ function addCardElem(el) {
     catalougeItems.innerHTML +=
         `
         <div class="catal__card">
-            <img class="catal__card__img imgFull" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__image">
+            <img class="catal__card__img imgFull" src="${el.coverImage}" alt="catalouge__item__image">
             <div class="catal__card__det">
                 <div class="card__sub__sec">
                     <p class="catal__card__head">Name: </p>

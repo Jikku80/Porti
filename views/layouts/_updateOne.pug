@@ -3,7 +3,7 @@
     #update_form.hidden.upform.land__farst
         .upform__head 
             h1 Update Your Portfolio 
-            img.cancel(src="/images/cancel.png", alt="cancel_img")
+            img.cancel(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
         form#upPort
             .form__bod
                 label.form__label Portfolio Name:
@@ -78,7 +78,7 @@
         #update_ImgForm.hidden.upform
             .upform__head 
                 h1 Update Your Portfolio Cover Image
-                img.cancl(src="/images/cancel.png", alt="cancel_img")
+                img.cancl(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel_img")
             form#upImage(action=`/updateportImg/${portfolio.id}` method="post" enctype="multipart/form-data")
                 .form__bod.file_part
                     input#img1(type="file" accept="image/*" name="portcoverImage", required)

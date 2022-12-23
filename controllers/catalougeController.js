@@ -1,7 +1,6 @@
 const fs = require('fs');
+const formidable = require('formidable');
 
-const multer = require('multer');
-const sharp = require('sharp');
 const Catalouge = require('./../models/catalougeModel');
 const Company = require('./../models/companyModel');
 const Theme = require('./../models/themeModel');
@@ -12,81 +11,48 @@ const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
 const APIFeatures = require('./../utils/apiFeatures');
 
-const atob = require('./../utils/decode');
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError('Not an image! Please upload only images.', 400), false);
-    }
-};
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
-
-exports.uploadCatalougePhoto = upload.single('coverImage');
-exports.uploadCompanyPhoto = upload.single('coverImage');
-
-exports.resizeCatalougePhoto = catchAsync(async (req, res, next) => {
-    if (!req.file) return next();
-
-    pic = req.file;
-
-    pic.originalname = `user-${req.user.name}-${Date.now()}.jpeg`;
-
-    await sharp(req.file.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/catalouge/${pic.originalname}`);
-
-    next();
-});
-
-exports.resizeCompanyPhoto = catchAsync(async (req, res, next) => {
-    if (!req.file) return next();
-
-    pic = req.file;
-
-    pic.originalname = `user-${req.user.name}-${Date.now()}.jpeg`;
-
-    await sharp(req.file.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/company/${pic.originalname}`);
-
-    next();
-});
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 exports.setUsersId = (req, res, next) => {
     if (!req.body.user) req.body.user = req.user.id;
     next();
 }
 
-
 exports.createCatalouge = catchAsync(async (req, res, next) => {
-    const doc = await Catalouge.create({
-        name: req.body.name,
-        user: req.user.id,
-        serialno: req.body.serialno,
-        price: req.body.price,
-        detail: req.body.detail,
-        category: req.body.category,
-        subcategory: req.body.subcategory,
-        theme: req.body.theme,
-        coverImage: req.file.originalname
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-    res.status(201).json({
-        status: 'success',
-        data: {
-            data: doc
-        }
+    const containerName = 'catalogimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.catcoverimage.filepath;
+
+        const blobName = `${req.user.name}-catalogitemimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Catalouge.create({
+            name: fields.catalogname,
+            user: req.user.id,
+            serialno: fields.catalogserialno,
+            price: fields.catalogprice,
+            detail: fields.catalogdetail,
+            category: fields.catalogcategory,
+            subcategory: fields.catalogsubcategory,
+            theme: fields.catalogtheme,
+            coverImage: blockBlobClient.url
+        });
+
+        res.redirect(`/catalouge/${req.user.id}/additems`)
     })
+
 })
 
 exports.updateCatalouge = factory.updateOne(Catalouge);
@@ -94,9 +60,7 @@ exports.getCatalouge = factory.getOne(Catalouge);
 
 exports.delCatalouge = catchAsync(async (req, res, next) => {
     const doc = await Catalouge.findByIdAndDelete(req.params.id);
-    if (fs.existsSync(`public/images/Catalouge/${doc.coverImage}`)) {
-        await fs.promises.unlink(`public/images/Catalouge/${doc.coverImage}`);
-    }
+
     if (!doc) return next(new AppError('No document found with the given ID', 404));
 
     res.status(200).json({
@@ -118,56 +82,73 @@ exports.itemTweaks = catchAsync(async (req, res) => {
     })
 })
 
-exports.removeCatalougeOldImg = catchAsync(async (req, res, next) => {
-    const item = await Catalouge.findByIdAndUpdate(req.params.id)
-    if (fs.existsSync(`public/images/catalouge/${item.coverImage}`)) {
-        await fs.promises.unlink(`public/images/catalouge/${item.coverImage}`);
-    }
-    next();
-})
-
 exports.updateCatalougeItemImg = catchAsync(async (req, res, next) => {
 
-    const updatedItem = await Catalouge.findByIdAndUpdate(
-        req.params.id,
-        {
-            coverImage: req.file.originalname
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    )
-    res.status(200).json({
-        status: 'success',
-        catalouge: updatedItem
-    });
-})
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-exports.removeCompanyOldImg = catchAsync(async (req, res, next) => {
-    const item = await Company.findByIdAndUpdate(req.params.id)
-    if (fs.existsSync(`public/images/company/${item.coverImage}`)) {
-        await fs.promises.unlink(`public/images/company/${item.coverImage}`);
-    }
-    next();
+    const containerName = 'catalogimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.upcatalogimage.filepath;
+
+        const blobName = `${req.user.name}-updatedcatalogitemimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Catalouge.findByIdAndUpdate(
+            req.params.id,
+            {
+                coverImage: blockBlobClient.url
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        )
+        res.redirect(`/catalouge/${req.user.id}/additems`)
+    })
+
 })
 
 exports.updateCompanyImg = catchAsync(async (req, res, next) => {
 
-    const updatedItem = await Company.findByIdAndUpdate(
-        req.params.id,
-        {
-            coverImage: req.file.originalname
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    )
-    res.status(200).json({
-        status: 'success',
-        catalouge: updatedItem
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
+
+    const containerName = 'catalogimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.upcatalogcoverimage.filepath;
+
+        const blobName = `${req.user.name}-updatedcatalogitemimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Company.findByIdAndUpdate(
+            req.params.id,
+            {
+                coverImage: blockBlobClient.url
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        )
+
+        res.redirect(`/catalouge/${req.user.id}/additems`)
+    })
+
 })
 
 exports.addItemsPage = catchAsync(async (req, res, next) => {

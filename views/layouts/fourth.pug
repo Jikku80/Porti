@@ -2,7 +2,7 @@ extends baselayout
 
 block content 
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
         span Por
         span.grn t
         span.nocaps i
@@ -16,16 +16,16 @@ block content
         .main__header(id=`${portfolio.backColor}`)
             .header__round(id=`${portfolio.headColor}`)
             .header__round__inner(id=`${portfolio.secHeadColor}`)
-                    img.anc__first(src="/images/home.png", alt="home__img") 
-                    img.anc.anc__second(src="/images/about.png", alt="about__img") 
-                    img.anc.anc__third(src="/images/work.png", alt="work__img") 
-                    img.anc__last(src="/images/contact.png", alt="contact__img")
+                    img.anc__first(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/home.png", alt="home__img") 
+                    img.anc.anc__second(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/about.png", alt="about__img") 
+                    img.anc.anc__third(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/work.png", alt="work__img") 
+                    img.anc__last(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/contact.png", alt="contact__img")
 
         .main__about__section.hide 
             .main__about__head
                 h2.secHead About 
                     span= `${portfolio.name}`
-                img#fourthClose(src="/images/cancel.png", alt="cancel__img")
+                img#fourthClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
             pre.ansFont= portfolio.about 
             h3.headFont= `What ${portfolio.name} Do?`
             pre.ansFont= portfolio.what 
@@ -41,7 +41,7 @@ block content
         .main__prev__section.hide 
             .main__prev__head 
                 h2.secHead Prior Accomplishments
-                img#fourthSecClose(src="/images/cancel.png", alt="cancel__img")
+                img#fourthSecClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
             pre.ansFont= portfolio.previous 
             p.prof__user__id.hidden= portfolio.user._id
             .prev__cont
@@ -68,7 +68,7 @@ block content
         .main__cont__section.hide 
             .main__cont__head 
                 h2.secHead Contact 
-                img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
+                img#fourthThirdClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
             .cont__boxbg
                 if (portfolio.showNo === true)
                     .cont__box.fourth__cont

@@ -288,17 +288,6 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.removePortiOldImg = catchAsync(async (req, res, next) => {
-    const item = await Portfolio.findByIdAndUpdate(req.body.id)
-    if (fs.existsSync(`public/images/ports/imageCover/${item.imageCover}`)) {
-        if (item.imageCover.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
-        }
-    }
-
-    next();
-})
-
 exports.updatePortImgData = catchAsync(async (req, res, next) => {
 
     const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
@@ -347,30 +336,48 @@ exports.updatePortImgCollec = catchAsync(async (req, res, next) => {
 
         const imgs = [];
         let imagefiles = files.upimagescollec;
+        if (imagefiles.length >= 2) {
+            await Promise.all(
+                imagefiles.map(async (file, i) => {
+                    const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
+                    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+                    const filePath = file.filepath;
+                    await blockBlobClient.uploadFile(filePath)
+                    imgs.push(blockBlobClient.url);
+                })
+            );
 
-        await Promise.all(
-            imagefiles.map(async (file, i) => {
-                const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
-                const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-                const filePath = file.filepath;
-                await blockBlobClient.uploadFile(filePath)
-                imgs.push(blockBlobClient.url);
-            })
-        );
 
+            await Portfolio.findByIdAndUpdate(
+                fields.upportid,
+                {
+                    images: imgs
+                },
+                {
+                    new: true,
+                    runValidators: true
+                }
+            );
 
-        await Portfolio.findByIdAndUpdate(
-            fields.upportid,
-            {
-                images: imgs
-            },
-            {
-                new: true,
-                runValidators: true
-            }
-        );
-
-        res.redirect(`/myportfolio/${req.user.id}`)
+            res.redirect(`/myportfolio/${req.user.id}`)
+        }
+        else {
+            const filePath = files.upimagescollec.filepath;
+            const blobName = `${req.user.name}-imagecollection-${uuidv1()}.jpeg`;
+            const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+            await blockBlobClient.uploadFile(filePath)
+            await Portfolio.findByIdAndUpdate(
+                fields.upportid,
+                {
+                    images: blockBlobClient.url
+                },
+                {
+                    new: true,
+                    runValidators: true
+                }
+            );
+            res.redirect(`/myportfolio/${req.user.id}`)
+        }
     })
 
 });

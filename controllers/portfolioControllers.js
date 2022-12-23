@@ -1,8 +1,6 @@
 const fs = require('fs');
 const formidable = require('formidable');
 
-const multer = require('multer');
-const sharp = require('sharp');
 const Portfolio = require('./../models/portfolioModel');
 const PortfolioImage = require('./../models/portfolioImageModel')
 const factory = require('./handleFactory');
@@ -12,81 +10,6 @@ const APIFeatures = require('./../utils/apiFeatures');
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError('Not an image! Please upload only images.', 400), false);
-    }
-};
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
-
-exports.uploadPortImages = upload.single('addImage')
-
-exports.uploadPortfolioCoverImage = upload.single('imageCover');
-
-exports.uploadImages = upload.fields([
-    { name: 'images', maxCount: 20 }
-]);
-
-
-exports.resizeNewPortImages = catchAsync(async (req, res, next) => {
-
-    if (!req.file) return next();
-    let img = req.file;
-
-    img.originalname = `port-${req.user.name}-${Date.now()}-coverImage.jpeg`;
-    await sharp(img.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/imageCover/${img.originalname}`);
-
-    next();
-});
-
-exports.resizeNewPortAddImages = catchAsync(async (req, res, next) => {
-
-    if (!req.file) return next();
-    let img = req.file;
-
-    img.originalname = `port-${req.user.name}-${Date.now()}-previous-work.jpeg`;
-    await sharp(img.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/ports/addedImages/${img.originalname}`);
-
-    next();
-});
-
-
-exports.resizePortImages = catchAsync(async (req, res, next) => {
-
-    if (!req.files.images) return next();
-    let img = req.files.images
-
-    req.body.images = []
-
-    await Promise.all(
-        img.map(async (file, i) => {
-            const filename = `port-${req.user.name}-${Date.now()}-${i + 1}-imageCollec.jpeg`;
-
-            await sharp(file.buffer)
-                .toFormat('jpeg')
-                .jpeg({ quality: 90 })
-                .toFile(`public/images/ports/imageColl/${filename}`);
-
-            req.body.images.push(filename);
-        })
-    );
-    next();
-});
 
 exports.setUsersId = (req, res, next) => {
     if (!req.body.user) req.body.user = req.user.id;
@@ -140,35 +63,16 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
             cont = false;
         }
         let imagefiles = files.uploadimages;
-
-        await Promise.all(
-            imagefiles.map(async (file, i) => {
-                const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
-                const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-                const filePath = file.filepath;
-                await blockBlobClient.uploadFile(filePath)
-                imgs.push(blockBlobClient.url);
-            })
-        );
-
-        if (imgs.length == 0) {
-            await Portfolio.create({
-                name: fields.portname,
-                about: fields.aboutyou,
-                what: fields.whatyoudo,
-                user: req.user.id,
-                why: fields.whyyoudo,
-                email: fields.emailaddress,
-                fb: fields.social,
-                location: fields.address,
-                phn_no: fields.phonenumber,
-                showNo: cont,
-                theme: fields.theme,
-            })
-            res.redirect(`/myportfolio/${req.user.id}`)
-        }
-
-        else {
+        if (imagefiles.length >= 2) {
+            await Promise.all(
+                imagefiles.map(async (file, i) => {
+                    const blobName = `${req.user.name}-imagecollection-${uuidv1()}-${i + 1}.jpeg`;
+                    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+                    const filePath = file.filepath;
+                    await blockBlobClient.uploadFile(filePath)
+                    imgs.push(blockBlobClient.url);
+                })
+            );
             await Portfolio.create({
                 name: fields.portname,
                 about: fields.aboutyou,
@@ -185,7 +89,27 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
             });
             res.redirect(`/myportfolio/${req.user.id}`)
         }
-
+        else {
+            const filePath = files.uploadimages.filepath;
+            const blobName = `${req.user.name}-imagecollection-${uuidv1()}.jpeg`;
+            const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+            await blockBlobClient.uploadFile(filePath)
+            await Portfolio.create({
+                name: fields.portname,
+                about: fields.aboutyou,
+                what: fields.whatyoudo,
+                why: fields.whyyoudo,
+                user: req.user.id,
+                email: fields.emailaddress,
+                fb: fields.social,
+                location: fields.address,
+                phn_no: fields.phonenumber,
+                showNo: cont,
+                theme: fields.theme,
+                images: blockBlobClient.url
+            });
+            res.redirect(`/myportfolio/${req.user.id}`)
+        }
     })
 
 })
@@ -254,27 +178,6 @@ exports.updatePrevImgData = catchAsync(async (req, res, next) => {
 
 exports.deletePorti = catchAsync(async (req, res, next) => {
     const item = await Portfolio.findByIdAndDelete(req.body.id);
-    const addItem = await PortfolioImage.deleteMany({ user: req.params.uid });
-
-    if (fs.existsSync(`public/images/ports/imageCover/${item.imageCover}`)) {
-        if (item.imageCover.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/imageCover/${item.imageCover}`);
-        }
-    }
-    if (fs.existsSync(`public/images/ports/addedImages/${addItem.addImage}`)) {
-        if (addItem.addImage.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/addedImages/${addItem.addImage}`);
-        }
-    }
-
-    let imgs = item.images;
-    for (let i = 0; i < imgs.length; i++) {
-        if (fs.existsSync(`public/images/ports/imageColl/${item.images[i]}`)) {
-            if (item.images[i].length !== 0) {
-                await fs.promises.unlink(`public/images/ports/imageColl/${item.images[i]}`);
-            }
-        }
-    }
 
     if (!item) return next(new AppError('No document found with the given ID', 404));
 
@@ -288,11 +191,6 @@ exports.deletePorti = catchAsync(async (req, res, next) => {
 
 exports.deletePortiImage = catchAsync(async (req, res, next) => {
     const item = await PortfolioImage.findByIdAndDelete(req.params.id);
-    if (fs.existsSync(`public/images/ports/addedImages/${item.addImage}`)) {
-        if (item.addImage.length !== 0) {
-            await fs.promises.unlink(`public/images/ports/addedImages/${item.addImage}`);
-        }
-    }
 
     if (!item) return next(new AppError('No document found with the given ID', 404));
 

@@ -1,7 +1,6 @@
 const fs = require('fs');
+const formidable = require('formidable');
 
-const multer = require('multer');
-const sharp = require('sharp');
 const Menu = require('./../models/menuModel');
 const User = require('./../models/userModel')
 const Restaurant = require('./../models/restaurantDetailModel');
@@ -12,39 +11,9 @@ const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
 const APIFeatures = require('./../utils/apiFeatures');
 
-const atob = require('./../utils/decode');
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError('Not an image! Please upload only images.', 400), false);
-    }
-};
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
-
-exports.uploadMenuPhoto = upload.single('coverImage');
-
-exports.resizeMenuPhoto = catchAsync(async (req, res, next) => {
-    if (!req.file) return next();
-
-    pic = req.file;
-
-    pic.originalname = `user-${req.user.name}-${Date.now()}.jpeg`;
-
-    await sharp(req.file.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/menu-pic/${pic.originalname}`);
-
-    next();
-});
+const { BlobServiceClient } = require("@azure/storage-blob");
+const { v1: uuidv1 } = require("uuid");
+const { DefaultAzureCredential } = require("@azure/identity");
 
 exports.setUsersId = (req, res, next) => {
     if (!req.body.user) req.body.user = req.user.id;
@@ -53,48 +22,70 @@ exports.setUsersId = (req, res, next) => {
 
 
 exports.createMenu = catchAsync(async (req, res, next) => {
-    const doc = await Menu.create({
-        name: req.body.name,
-        user: req.user.id,
-        price: req.body.price,
-        detail: req.body.detail,
-        category: req.body.category,
-        theme: req.body.theme,
-        coverImage: req.file.originalname
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-    res.status(201).json({
-        status: 'success',
-        data: {
-            data: doc
-        }
+    const containerName = 'menuimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.menuimage.filepath;
+
+        const blobName = `${req.user.name}-menuitemimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Menu.create({
+            name: fields.menuname,
+            user: req.user.id,
+            price: fields.menuprice,
+            detail: fields.menudetail,
+            category: fields.menucategory,
+            theme: fields.menutheme,
+            coverImage: blockBlobClient.url
+        });
+
+        res.redirect(`/menu/${req.user.id}/additemstomenu`)
     })
-})
 
-exports.removeOldImg = catchAsync(async (req, res, next) => {
-    const item = await Menu.findByIdAndUpdate(req.params.id)
-    if (fs.existsSync(`public/images/menu-pic/${item.coverImage}`)) {
-        await fs.promises.unlink(`public/images/menu-pic/${item.coverImage}`);
-    }
-    next();
 })
 
 exports.updateItemImg = catchAsync(async (req, res, next) => {
 
-    const updatedItem = await Menu.findByIdAndUpdate(
-        req.params.id,
-        {
-            coverImage: req.file.originalname
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    )
-    res.status(200).json({
-        status: 'success',
-        menu: updatedItem
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    if (!accountName) throw Error('Azure Storage accountName not found');
+    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
+
+    const containerName = 'menuimages';
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, async function (err, fields, files) {
+
+        const filePath = files.upmenuimage.filepath;
+
+        const blobName = `${req.user.name}-updatedmenuitemimages-${uuidv1()}.jpeg`;
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        await blockBlobClient.uploadFile(filePath)
+
+        await Menu.findByIdAndUpdate(
+            fields.upmenuid,
+            {
+                coverImage: blockBlobClient.url
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        )
+        res.redirect(`/menu/${req.user.id}/additemstomenu`)
+    })
+
 })
 
 exports.getAllMenu = factory.getAll(Menu);
@@ -142,9 +133,6 @@ exports.updateRestaurant = catchAsync(async (req, res, next) => {
 
 exports.delMenu = catchAsync(async (req, res, next) => {
     const doc = await Menu.findByIdAndDelete(req.params.id);
-    if (fs.existsSync(`public/images/menu-pic/${doc.coverImage}`)) {
-        await fs.promises.unlink(`public/images/menu-pic/${doc.coverImage}`);
-    }
     if (!doc) return next(new AppError('No document found with the given ID', 404));
 
     res.status(200).json({

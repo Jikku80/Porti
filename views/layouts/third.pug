@@ -2,15 +2,15 @@ extends baselayout
 
 block content 
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
         span Por
         span.grn t
         span.nocaps i
     .main(id=`${portfolio.fontColor}`)
         .about__sec(id=`${portfolio.fontFam}`)
             .about__next 
-                img#left__next(src="/images/left.png", alt="left__next")
-                img#right__next(src="/images/right.png", alt="right__next")
+                img#left__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/left.png", alt="left__next")
+                img#right__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/right.png", alt="right__next")
             .about__first
                 h1.secHead Greetings! From 
                     span.topHead=  portfolio.name
@@ -30,8 +30,8 @@ block content
 
         .prev__sec.hidden
             .prev__next(id=`${portfolio.headColor}`)
-                img#prevl__next(src="/images/left.png", alt="left__next")
-                img#prevr__next(src="/images/right.png", alt="right__next")
+                img#prevl__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/left.png", alt="left__next")
+                img#prevr__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/right.png", alt="right__next")
             .prev__first(id=`${portfolio.secHeadColor}`)
                 h1.topHead= portfolio.name 
                     span.secHead  Accomplishments
@@ -63,8 +63,8 @@ block content
 
         .contact__sec.hidden
             .contact__next 
-                img#cleft__next(src="/images/left.png", alt="left__next")
-                img#cright__next(src="/images/right.png", alt="right__next")
+                img#cleft__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/left.png", alt="left__next")
+                img#cright__next(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/right.png", alt="right__next")
             .contact__first
                 h1.secHead Contact 
                     span.topHead=  portfolio.name

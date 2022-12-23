@@ -4,7 +4,7 @@ block content
 
     h1.loader
         .bink
-            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -40,10 +40,11 @@ block content
                         a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel
             .up__items__img
                 h2.items__head Update Items Image
-                form.upItem
+                form.upItem(action="/api/v1/menu/updateItemImage" method="post" enctype="multipart/form-data")
                     .form__bod.file_part
                         label.form__label(for="upcoverimage") Update Item Image
-                        input#upcoverimage.form__input(type="file" accept="image/*" required)
+                        input#upcoverimage.form__input(type="file" accept="image/*" name="upmenuimage" required)
+                        input.hidden.form__input(type="text" name="upmenuid" value=menu.id)
                     .group__btn
                         button#upImgItemBtn.smallbtn.ygbtn Update Item Image  
                         a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel  

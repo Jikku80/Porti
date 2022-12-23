@@ -1,89 +1,3 @@
-(function () {
-    let iname = document.getElementById("catitemname");
-    let iprice = document.getElementById('catitemprice');
-    let sn = document.getElementById('catitemsn');
-    let icat = document.getElementById("catitemcat");
-    let subcat = document.getElementById("subcatitemcat");
-    let idetail = document.getElementById("catitemdetail");
-    let icimg = document.getElementById("catcoverimage");
-    let additembtn = document.getElementById("cataddItemBtn");
-    // let itheme = "51eac6b471a284d3341d8c0c63d0f1a286262a18"
-    let yourItems = document.querySelector(".your__items");
-
-    additembtn.addEventListener("click", async (e) => {
-
-        if (iname.value < 1 || iname.value == "" || iname.value == null) {
-            return false;
-        }
-        if (iprice.value < 1 || iprice.value == "" || iprice.value == null) {
-            return false;
-        }
-        if (icat.value < 1 || icat.value == "" || icat.value == null) {
-            return false;
-        }
-        if (icimg.value < 1 || icimg.value == "" || icimg.value == null) {
-            return false;
-        }
-        e.preventDefault();
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden")
-        const formData = new FormData();
-        formData.append("name", iname.value);
-        formData.append("serialno", sn.value);
-        formData.append("price", iprice.value);
-        formData.append("category", icat.value);
-        formData.append("subcategory", subcat.value);
-        formData.append("detail", idetail.value);
-
-        formData.append("coverImage", icimg.files[0]);
-        const endpoint = '/api/v1/catalouge/'
-        try {
-            await fetch((endpoint), {
-                body: formData,
-                method: 'POST'
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 201) {
-                    successAlert("You Just Added a Item to your Catalouge :)");
-                    let result = response.json();
-                    result.then(item => {
-                        let fResult = item.data.data
-                        yourItems.innerHTML += `
-                                <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${fResult.coverImage}" alt="catalouge__item__img">
-                                    <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head goldn">${fResult.name}</h3>
-                                        <p class="catalouge__card__head goldn">${fResult.serialno}</p>
-                                        <p class="catalouge__card__price goldn">${fResult.price}</p>
-                                        <p class="catalouge__card__cat goldn">${fResult.category}</p>
-                                        <p class="catalouge__card__cat goldn">${fResult.subcategory}</p>
-                                        <p class="catalouge__card__detail goldn">${fResult.detail}</p>
-                                        <a href="/catalougetweaks/${fResult._id}?update" class="ygbtn">Update</a>
-                                        <a href="/catalougetweaks/${fResult._id}?delete" class="redbtn">Delete</a>
-                                        </div>
-                                    </div>
-                        `
-                    })
-                } else {
-                    console.log(response)
-                    errorAlert("Invalid error!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-        iname.value = "",
-            sn.value = "",
-            iprice.value = "",
-            icat.value = "",
-            subcat.value = "",
-            idetail.value = "",
-            icimg.value = ""
-    });
-})();
-
 async function getAllCatalougeItem() {
     let pg = 1
     let fullpath = location.pathname
@@ -113,7 +27,7 @@ async function getAllCatalougeItem() {
                             subItems.innerHTML +=
                                 `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
+                                    <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                         <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -152,14 +66,6 @@ async function getAllCatalougeItem() {
 };
 
 getAllCatalougeItem();
-
-// (function () {
-//     let subItems = document.querySelector(".your__items")
-
-//     if (subItems.children.length == 0) {
-//         subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
-//     }
-// })();
 
 let page = document.querySelector(".paginate");
 let next = document.querySelector(".next__catal");
@@ -200,7 +106,7 @@ next.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
+                                    <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                         <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -268,7 +174,7 @@ prev.addEventListener("click", async () => {
                         subItems.innerHTML +=
                             `
                                 <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="/images/catalouge/${el.coverImage}" alt="catalouge__item__img">
+                                    <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                         <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -386,41 +292,6 @@ prev.addEventListener("click", async () => {
                     errorAlert("Invalid input, Duplication Input error!!!")
                 }
             })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
-    })
-})();
-
-(function () {
-    const upImg = document.getElementById("compUpdateImgBtn");
-    const img = document.getElementById("compcoverimage");
-    const id = document.querySelector(".compimg__id").innerText;
-    upImg.addEventListener("click", async (e) => {
-        if (img.files[0] < 1 || img.files[0] == "" || img.files[0] == null) {
-            return false;
-        }
-        e.preventDefault();
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden")
-        const formData = new FormData();
-        formData.append("coverImage", img.files[0]);
-        const endpoint = `/api/v1/catalouge/${id}/updateCompanyImage`
-        try {
-            await fetch(endpoint, {
-                body: formData,
-                method: 'PATCH'
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 200) {
-                    successAlert("Your Company Cover Image has been updated :)");
-                } else {
-                    errorAlert("Invalid Image!!!")
-                }
-            })
-
         }
         catch (err) {
             console.log(err);
