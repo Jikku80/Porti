@@ -63,6 +63,7 @@ exports.portiHighlights = catchAsync(async (req, res, next) => {
 
 exports.gotoPort = catchAsync(async (req, res, next) => {
 
+
     const portfolio = await Portfolio.findOne({ user: req.user.id })
     const portfolioImage = await PortfolioImage.findOne({ user: req.user.id })
     const menu = await Menu.findOne({ user: req.user.id })

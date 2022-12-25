@@ -10,7 +10,8 @@ const mongoose = require('mongoose');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-url = process.env.DATABASE_LOCAL;
+// url = process.env.DATABASE_LOCAL;
+url = process.env.DATABASE;
 
 mongoose.Promise = global.Promise;
 
