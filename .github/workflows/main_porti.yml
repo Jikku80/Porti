@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'porti'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A812FE03DDAA47E39CB30E02668AD77A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D78D753351844808B3C7F0CDB8528B1 }}
           package: .
