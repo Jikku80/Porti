@@ -16,8 +16,7 @@ const portfolioSchema = new mongoose.Schema({
     },
     phn_no: {
         type: Number,
-        trim: true,
-        unique: true
+        trim: true
     },
     showNo: {
         type: Boolean,
@@ -102,7 +101,7 @@ const portfolioSchema = new mongoose.Schema({
     },
     searchVisible: {
         type: Boolean,
-        default: false
+        default: true
     },
     createdAt: {
         type: Date,

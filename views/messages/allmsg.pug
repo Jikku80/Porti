@@ -1,0 +1,28 @@
+extends baseMessage
+
+block content 
+
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
+    .message__bod__sec 
+        h1.head Messages
+        .logUserName.hidden= user.name
+        .logUserId.hidden= user._id
+        .message__cont
+            .message__user 
+            .message__user__second__sec
+                h2.message__user__name
+                .message__msg
+                .message__reply.hidden
+                    form.msg__inpt__sec
+                        p.msgboxUserId.hidden
+                        input#messageback(type="text" placeholder="Type Your Message")
+                        img(src="/images/send.png" id="messagebackbtn")
+
+    script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/message/msg.js")

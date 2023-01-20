@@ -10,7 +10,9 @@
         menubar.addEventListener("click", () => {
             menubar.classList.add("hidden");
             menu.classList.remove("hidden");
-            window.location.hash = "#side__bar"
+            window.setTimeout(() => {
+                window.location.hash = "#side__bar"
+            }, 200)
 
         })
     }
@@ -167,6 +169,6 @@
         }
     }
     else {
-        console.log("Hola from Porti")
+        return;
     }
 })();

@@ -2,14 +2,66 @@ extends baselayout
 
 block content 
     h1.loader
-        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    if(user)
+        if (user.id == portfolio.user.id)
+            .showeditbtn Edit Theme
+            .showEdit.hidden
+                .show__head 
+                    p Edit Theme
+                    img(src="/images/cancel.png" alt="cancel__btn").close__show.hidden 
+                .theme__edit
+                    #seventhid.hidden= portfolio.id
+                    form#seventhTheme
+                        h2 Edit Theme Preference
+                        .form__bod 
+                            label Background Color:
+                            input#sportBackColor(type="color" value="#333333")
+                        .form__bod
+                            label Font Color:
+                            input#sportFontColor(type="color" value="#808080")
+                        .form__bod 
+                            label Heading text Color:
+                            input#sportHeadColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Color Second:
+                            input#sportSecHeadColor(type="color" value="#000000")
+                        .form__bod 
+                            label Focus Color:
+                            input#sportFocusColor(type="color" value="#0E1C41")
+                        .form__bod 
+                            label Font Family 
+                            select#sportFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                        .grp_seventh_btn
+                            button#changeseventhTheme.redbtn Update Theme
+                            button#defaultseventhTheme.redbtn Default Theme 
+        else 
+            .showeditbtn.hidden 
+            .showEdit.hidden 
+            .close__show.hidden
+            #seventhid.hidden
+            #changeseventhTheme.hidden 
+            #defaultseventhTheme.hidden
+    else
+        .showeditbtn.hidden 
+        .showEdit.hidden 
+        .close__show.hidden
+        #seventhid.hidden
+        #changeseventhTheme.hidden 
+        #defaultseventhTheme.hidden
     .main(id=`${portfolio.headColor}`)
         .bgCover(id=`${portfolio.fontColor}`) 
             if (!portfolio.imageCover)
-                img#bgcv(src=`https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png`, alt="cover__pic")
+                img#bgcv(src=`/images/bg.png`, alt="cover__pic")
             else 
                 img#bgcv(src=`${portfolio.imageCover}`, alt="bgCover")
             ul.bg__list
@@ -25,26 +77,32 @@ block content
                 a#prevWork(href="#pre") Previous
             .sec(id=`${portfolio.backColor}`)
                 #abt 
-                    h3.headFont= `About ${portfolio.name}`
-                    pre.ansFont= portfolio.about 
-                    h3.headFont= `What ${portfolio.name} Do?`
-                    pre.ansFont= portfolio.what 
-                    h3.headFont= `Why ${portfolio.name} Do It?`
-                    pre.ansFont= portfolio.why
-                    h3.headFont= `How ${portfolio.name} deals with Failure?`
-                    pre.ansFont= portfolio.failure
-                    h3.headFont= `How ${portfolio.name} stays motivated?`
-                    pre.ansFont= portfolio.motivation
-                    h3.headFont= `${portfolio.name} Message`
-                    pre.ansFont= portfolio.msg
+                    if (portfolio.about !== "")
+                        h3.headFont= `About ${portfolio.name}`
+                        pre.ansFont= portfolio.about 
+                    if (portfolio.what !== "")
+                        h3.headFont= `What ${portfolio.name} Do?`
+                        pre.ansFont= portfolio.what 
+                    if (portfolio.why !== "")
+                        h3.headFont= `Why ${portfolio.name} Do It?`
+                        pre.ansFont= portfolio.why
+                    if (portfolio.failure !== "")
+                        h3.headFont= `How ${portfolio.name} deals with Failure?`
+                        pre.ansFont= portfolio.failure
+                    if (portfolio.motivation !== "")
+                        h3.headFont= `How ${portfolio.name} stays motivated?`
+                        pre.ansFont= portfolio.motivation
+                    if (portfolio.msg !== "")
+                        h3.headFont= `${portfolio.name} Message`
+                        pre.ansFont= portfolio.msg
             .sec
                 #pre 
-                    h3.headFont Previous Accomplishment Details
-                    pre.ansFont= portfolio.previous
+                    if (portfolio.previous !== "" || portImage.length !== 0)
+                        h3.headFont Previous Accomplishment Details
+                        pre.ansFont= portfolio.previous
                     p.prof__user__id.hidden= portfolio.user._id
                     .prev__cont
                             if (portImage.length === 0)
-                                p.no__img No Previous Accomplishment Images Uploaded Yet!!!
                                 .prev__addimgSec.hidden 
                                 .next__addimgSec.hidden
                             else
@@ -59,14 +117,16 @@ block content
                                         button.redbtn.next__addimgSec Next
             .sec
                 #contat 
-                    h3.headFont= `${portfolio.name} ran into a problem`
-                    pre.ansFont= portfolio.problem 
-                    h3.headFont= `How ${portfolio.name} solved the problem?`
-                    pre.ansFont= portfolio.solution
+                    if (portfolio.problem !== "")
+                        h3.headFont= `${portfolio.name} ran into a problem`
+                        pre.ansFont= portfolio.problem 
+                    if (portfolio.solution !== "")
+                        h3.headFont= `How ${portfolio.name} solved the problem?`
+                        pre.ansFont= portfolio.solution
                     h3.headFont= `Contact ${portfolio.name}`
 
                     .cont__boxbg
-                        if (portfolio.showNo === true)
+                        if (portfolio.showNo === true && portfolio.phn_no !== "")
                             .cont__box
                                 p= `Phone: ${portfolio.phn_no}` 
                         .cont__box
@@ -77,11 +137,18 @@ block content
                                     if (portfolio.user.photo)
                                         img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                                     else 
-                                        img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
-                        .cont__box
-                            p= `Address: ${portfolio.location}`
+                                        img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                        else 
+                            .cont
+                                if (portfolio.user.photo)
+                                    img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                                else 
+                                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                        if (portfolio.location !== "")
+                            .cont__box
+                                p= `Address: ${portfolio.location}`
             a#goup(href="#") 
-                img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/rup.png", alt="go_up")
+                img(src="/images/rup.png", alt="go_up")
 
     script(src="/js/imgFull.js") 
     script(src="/js/alert.js") 

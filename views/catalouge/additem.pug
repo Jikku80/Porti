@@ -3,7 +3,7 @@ extends baseCatalouge
 block content 
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -31,20 +31,49 @@ block content
             .lbtn.hidden
             .whole__menu__sec 
                 .menu__section
+                    .menu__messages__btn &#128722;
+                    .new__menu__msg.hidden
+                    .curcatid.hidden= company[0]._id
+                    audio#catmsgalert.hidden
+                        source(src="/noti/msg.mp3")
+                    .menu__message__secetion.hidden
+                        .menu__message__mid__sec
+                            .menu__message__head 
+                                h3 Messages (Last 50 Orders Made)
+                                img.cancel__msg__sec.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__message__bod
+                            .menu__message__bod__prev
+                        .menu__reveived__msg.hidden
+                            .menu__message__head 
+                                h3.tablename 
+                                img.cancel__reveived__msg.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__reveived__msg__bod
+                    .share__catalouge#openCatalouge 
+                        h2.form__label Share your Catalouge 
+                        p.uname__catal.hidden= user.name
+                        p.share__catal__link
+                    .qrcode__menu 
+                        #catalqrcode 
                     if (catalouges.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form
                         .itemform__head 
                             h2.form__label Add Items To Catalouge
                             h2
-                                a.form__label(href="#openCatalouge") Catalouge Link
+                                a.form__label(href=`/catalog/${company[0]._id}/companystat`) Catalouge Statistics
                         form#addCatItem.upItem(action="/api/v1/catalouge/" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label(for="item_name") Item Name:
                                 input#catitemname.form__input(type="text" name="catalogname" required placeholder="Graphite Tile")
                             .form__bod
+                                label.form__label(for="item_name") Currency Sign:
+                                if (catalouges[0])
+                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" required value=`${catalouges[0].currency}`)
+                                else
+                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" required placeholder="$ or Rs. or £")
+                            .form__bod
                                 label.form__label(for="item_price") Item Price: 
-                                input#catitemprice.form__input(type="text" name="catalogprice" required placeholder="Rs. 400 per ft / $ 4 per piece")
+                                input#catitemprice.form__input(type="number" name="catalogprice" required placeholder="400")
                             .form__bod
                                 label.form__label(for="item_serialno") Item Serial No. (optional): 
                                 input#catitemsn.form__input(type="text" name="catalogserialno" placeholder="CA10050")
@@ -57,24 +86,36 @@ block content
                             .form__bod
                                 label.form__label(for="item_detail") Item Detail (optional):
                                 textarea#catitemdetail.form__input(rows="4" cols="50" name="catalogdetail" placeholder="You can Describe about your Item only if you want to, this field is optional...")
+                            if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                                .form__bod 
+                                    label.form__label Apply Discount(optional):
+                                    input#catalitemdiscount.checkbox(type="checkbox" name="catalogdiscount")
+                                .form__bod 
+                                    label.form__label Stock Quantity (Number of items you have) :
+                                    input#catalStockQuantity.form__input(type="number" name="catalStockQuantity" placeholder="1" required)
+                                    p Leaving this blank will show out of stocks
+                            else 
+                                #catalitemdiscount.hidden
+                                #catalStockQuantity.hidden
                             .form__bod.file_part
                                 label.form__label(for="catcoverimage") Item Image:
-                                input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*"  required)
+                                input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
                             button#cataddItemBtn.blackbtn Add Item
                     .your__item__sec#CatalogeItemSec
                         h2.items__head Your Items 
                         p.currentuid.hidden= user._id
+                        if (banner[0])
+                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                p.itemdiscountpercent.hidden= banner[0].discountpercent
+                            else 
+                                p.itemdiscountpercent.hidden
+                        else 
+                            .itemdiscountpercent.hidden
                         .your__item__bod
                             .your__items.sec__items
                         .paginate 
                             button.prev__catal Previous
                             button.next__catal.hidden Next
-                    .share__catalouge#openCatalouge 
-                        h2.form__label Share your Catalouge 
-                        p.uname__catal.hidden= user.name
-                        p.share__catal__link
-                    .qrcode__menu 
-                        #catalqrcode 
                     .itemform__head 
                         h2.form__label Update Enterprise Detail
                     form#upCompany.upItem
@@ -109,30 +150,64 @@ block content
                                 each item in theme 
                                     if (item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                         option.opt(value=`${item.themeId}`)= item.name
-                        .form__bod 
-                            label.form__label(for="company_color") Pick a theme color (optional);
-                            input#companyColor.form__input(type="color" value="#1A9ACC")
-                        p.comp__len.hidden= company.length
-                        if (company.length !== 0)
-                            p.comp__id.hidden= company[0]._id
+                        if (company[0].theme == "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                            .form__bod 
+                                label.form__label(for="company_color") Pick a theme color (optional);
+                                input#companyColor.form__input(type="color" value="#1A9ACC")
+                                #compHomeDel.hidden
                         else 
-                            p.comp__id.hidden
+                            #companyColor.hidden
+                            .form__bod 
+                                label.form__label Home Delivery Service (optional):
+                                input#compHomeDel.checkbox(type="checkbox" name="cataloghomedel")
+                        p.comp__id.hidden= company[0]._id
                         button#updateCompBtn.blackbtn Update now
 
-                        //- button#addCompBtn.blackbtn Update
-                    if (company.length !== 0)
-                        .itemform__head 
-                            h2.form__label Update Enterprise Cover Image
-                            p.compimg__id.hidden= company[0]._id
-                        form#upCompanyImage.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
-                            .form__bod.file_part
-                                label.form__label(for="compcoverimage") Catalouge Cover Image:
-                                input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
-                            button#compUpdateImgBtn.blackbtn Update Cover Image
+                    .itemform__head 
+                        h2.form__label Update Enterprise Cover Image
+                        p.compimg__id.hidden= company[0]._id
+                    form#upCompanyImage.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
+                        .form__bod.file_part
+                            label.form__label(for="compcoverimage") Catalouge Cover Image:
+                            input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
+                        button#compUpdateImgBtn.blackbtn Update Cover Image
+                    if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                        .createBanner
+                            .itemform__head 
+                                h2.form__label Create A Banner
+                            form.upItem
+                                .form__bod 
+                                    label.form__label Banner Information 
+                                    if (!banner[0])
+                                        textarea.form__input#catalogbannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
+                                    else 
+                                        textarea.form__input#catalogbannerInfo(type="text" placeholder="You Can only have one Banner at a time" disabled)
+                                    label.form__label Discount Percentage(optional)
+                                    if (!banner[0])
+                                        input.form__input#discountpercent(type="number" placeholder="50 (you dont have to use % sign)")
+                                    else 
+                                        input.form__input#discountpercent(type="number" placeholder="You Can only have ony Banner at a time" disabled)
+                                button#catalogbannerbtn.blackbtn Create
+                            if (banner[0])
+                                .banner__sec 
+                                    h2= banner[0].bannerInfo
+                                    p#catalogbannerId.hidden= banner[0]._id
+                                    if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                        h2= `${banner[0].discountpercent}%`
+                                        p You will have to check apply discount to items, to use it in your product items
+                                    btn#catalogdeletebanner.blackbtn Delete
+                            else 
+                                .banner__sec 
+                                    h1 No Banner
+                                    #catalogdeletebanner.hidden
+                                    #catalogbannerId.hidden
                     else 
-                        .compimg__id.hidden
-                        #compcoverimage
-                        #compUpdateImgBtn
+                        #catalogbannerbtn.hidden 
+                        #discountpercent.hidden
+                        #catalogbannerInfo.hidden 
+                        #catalogbannerId.hidden 
+                        #catalogdeletebanner.hidden
+                        .bannerresid.hidden
             .to__left
                 include ../_footer
     else 
@@ -140,6 +215,7 @@ block content
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
     script(src="/js/alert.js")
+    script(src="/socket.io/socket.io.js") 
     script(src="/js/catalouge/additemtocat.js")
     script(src="/js/catalouge/qrCode.js")
 

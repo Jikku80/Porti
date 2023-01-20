@@ -3,7 +3,7 @@ extends base
 block content 
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -13,7 +13,7 @@ block content
                 span.gry De 
                     span.mid.td Tech 
                         span.gry Presents 
-            img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
             span.wite Por
             span.grn t
             span.nocaps.wite i
@@ -29,7 +29,7 @@ block content
             else 
                 a#log.fkAncky.norot(href="/me" title="Your Account")
                     if (!user.photo)
-                        img.accpic(src=`https://portiblobstorage.blob.core.windows.net/portithemeimage/hitman.png`, alt="dp")
+                        img.accpic(src=`/images/hitman.png`, alt="dp")
                     else
                         img.accpic(src=`${user.photo}`) 
                     span= user.name
@@ -63,7 +63,7 @@ block content
                     span.whte Guide
         .main__content__logo 
             .logo__grp 
-                img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/portii.png", alt="porti__img")
+                img.porti__off__img(src="/images/portii.png", alt="porti__img")
                 span.wite Por
                 span.grn t
                 span.nocaps.wite i

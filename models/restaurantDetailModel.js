@@ -31,6 +31,11 @@ const restaurantSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
+    homedelivery: {
+        type: Boolean,
+        default: false
+    },
+    coverImage: String,
     createdAt: {
         type: Date,
         default: Date.now()

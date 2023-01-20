@@ -7,49 +7,50 @@ block content
             span Por
             span.grn t
             span.nocaps i
-    .main__cont(id=`${portfolio.fontColor}`)
-        .main__fifth__head(id=`${portfolio.fontFam}`)
-            h1.ppname.headTop(id=`${portfolio.headColor}`)= portfolio.name
-            .main__fifth__sub(id=`${portfolio.backColor}`)
-                a.fifth__a.headTop(href="#fifth__about") About 
-                a.fifth__a.headTop(href="#fifth__cont") Contact 
-        .main__pic(id=`${portfolio.focusColor}`)
-            each img, i in portfolio.images
-                .picture-box
-                    img.picture-box__img.imgFull(src=`${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
-    .fifth
-        .about__bod#fifth__about
-            h2.ppabt.headFont(id=`${portfolio.secHeadColor}`) About 
-                span.headTop=`${portfolio.name}`
-            pre.ansFont= portfolio.about 
-            h2.headFont What 
-                span.headTop= `${portfolio.name} Do?`
-            pre.ansFont= portfolio.what 
-            h2.headFont why 
-                span.headTop= `${portfolio.name} Do It?`
-            pre.ansFont= portfolio.why
-    .fifth
-        .contact__bod#fifth__cont
-            h2.headFont Contact 
-                span.headTop= `${portfolio.name}`
-            .cont__boxbg
-                if (portfolio.showNo === true)
+    .main__bod__sec
+        .main__cont(id=`${portfolio.fontColor}`)
+            .main__fifth__head(id=`${portfolio.fontFam}`)
+                h1.ppname.headTop(id=`${portfolio.headColor}`)= portfolio.name
+                .main__fifth__sub(id=`${portfolio.backColor}`)
+                    a.fifth__a.headTop(href="#fifth__about") About 
+                    a.fifth__a.headTop(href="#fifth__cont") Contact 
+            .main__pic(id=`${portfolio.focusColor}`)
+                each img, i in portfolio.images
+                    .picture-box
+                        img.picture-box__img.imgFull(src=`${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
+        .fifth
+            .about__bod#fifth__about
+                h2.ppabt.headFont(id=`${portfolio.secHeadColor}`) About 
+                    span.headTop=`${portfolio.name}`
+                pre.ansFont= portfolio.about 
+                h2.headFont What 
+                    span.headTop= `${portfolio.name} Do?`
+                pre.ansFont= portfolio.what 
+                h2.headFont why 
+                    span.headTop= `${portfolio.name} Do It?`
+                pre.ansFont= portfolio.why
+        .fifth
+            .contact__bod#fifth__cont
+                h2.headFont Contact 
+                    span.headTop= `${portfolio.name}`
+                .cont__boxbg
+                    if (portfolio.showNo === true)
+                        .cont__box.fif__box
+                            p= `Phone: ${portfolio.phn_no}` 
                     .cont__box.fif__box
-                        p= `Phone: ${portfolio.phn_no}` 
-                .cont__box.fif__box
-                    p= `Email: ${portfolio.email}`
-                if (portfolio.fb != "")
-                    .cont 
-                        a(href=`${portfolio.fb}`)
-                            if (portfolio.user.photo)
-                                img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
-                            else 
-                                img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
-                .cont__box.fif__box
-                    p= `Address: ${portfolio.location}`
+                        p= `Email: ${portfolio.email}`
+                    if (portfolio.fb != "")
+                        .cont 
+                            a(href=`${portfolio.fb}`)
+                                if (portfolio.user.photo)
+                                    img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                                else 
+                                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    .cont__box.fif__box
+                        p= `Address: ${portfolio.location}`
 
-    a#goup(href="#") 
-        img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/rup.png", alt="go_up")
+        a#goup(href="#") 
+            img(src="/images/yup.png", alt="go_up")
     
     script(src="/js/layouts/fifth.js") 
     script(src="/js/imgFull.js")

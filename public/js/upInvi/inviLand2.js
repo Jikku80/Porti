@@ -15,7 +15,9 @@ updateInvi2.addEventListener('click', () => {
     delInvi2.classList.add("hidden");
     inviqrsec2.classList.add("hidden");
     updateInviForm2.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 updateInviImg2.addEventListener("click", () => {
@@ -26,7 +28,9 @@ updateInviImg2.addEventListener("click", () => {
     delInvi2.classList.add("hidden");
     inviqrsec2.classList.add("hidden");
     updateInviImgForm2.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 let cancelInvi2 = document.querySelector(".cancelInvi2");
@@ -61,6 +65,7 @@ let upinwhat2 = document.getElementById('upinwhat2');
 let upinwhy2 = document.getElementById("upinwhy2");
 let upinwork2 = document.getElementById("upinwork2");
 let upintheme2 = document.getElementById("upinTheme2")
+let upinno2 = document.getElementById("upinphn_no2");
 let updinBtn2 = document.getElementById("updateinBtn2");
 let upinImgBtn2 = document.getElementById("updateinImgBtn2");
 let in2img = document.querySelector('#in2img');
@@ -72,7 +77,7 @@ updinBtn2.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     let invitationName = document.getElementById("invite_name");
-    const endpoint = `/api/v1/invite/${inid2}`
+    const endpoint = '/api/v1/invite/updateInvi'
     try {
         await fetch(endpoint, {
             method: 'PATCH',
@@ -81,11 +86,13 @@ updinBtn2.addEventListener("click", async (e) => {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
+                id: inid2,
                 fname: upinname2.value,
                 sname: upinsname2.value,
                 about: upinabout2.value,
                 address: upinwhat2.value,
                 pdate: upinwhy2.value,
+                phn_no: upinno2.value,
                 ptime: upinwork2.value,
                 theme: upintheme2.value
             })
@@ -95,7 +102,7 @@ updinBtn2.addEventListener("click", async (e) => {
                 successAlert("Your Invitation has been updated :)");
                 let result = response.json();
                 result.then(item => {
-                    let invite = item.data.data
+                    let invite = item.updatedInvite
                     invitationName.innerHTML = `${invite.fname} and ${invite.sname}`
                 })
                 window.setTimeout(() => {

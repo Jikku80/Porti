@@ -37,6 +37,7 @@ exports.createMe = catchAsync(async (req, res, next) => {
             name: fields.portImageName,
             user: req.user.id,
             addImage: blockBlobClient.url,
+            createdAt: Date.now()
         });
 
         res.redirect(`/myportfolio/${req.user.id}`)
@@ -85,7 +86,8 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
                 phn_no: fields.phonenumber,
                 showNo: cont,
                 theme: fields.theme,
-                images: imgs
+                images: imgs,
+                createdAt: Date.now()
             });
             res.redirect(`/myportfolio/${req.user.id}`)
         }
@@ -106,7 +108,8 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
                 phn_no: fields.phonenumber,
                 showNo: cont,
                 theme: fields.theme,
-                images: blockBlobClient.url
+                images: blockBlobClient.url,
+                createdAt: Date.now()
             });
             res.redirect(`/myportfolio/${req.user.id}`)
         }

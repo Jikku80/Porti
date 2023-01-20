@@ -54,7 +54,11 @@ body{
     overflow-y: auto;
     scrollbar-width: thin;
     font-size: 1.5rem;
-    padding:1%
+    padding:1%;
+}
+
+pre{
+    white-space: pre-wrap;
 }
 
 .invite__bod__cont img{

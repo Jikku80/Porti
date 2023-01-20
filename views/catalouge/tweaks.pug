@@ -3,7 +3,7 @@ extends baseCatalouge
 block content
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -26,6 +26,9 @@ block content
                         label.form__label Items Name:
                         input#upcatalitemname.form__input(type="text" value=catalouge.name required)
                     .form__bod
+                        label.form__label(for="item_name") Currency Sign:        
+                        input#upcatalitemcurrency.form__input(type="text" required value=catalouge.currency)
+                    .form__bod
                         label.form__label Items Price: 
                         input#upcatalitemprice.form__input(type="text" value=catalouge.price required)
                     .form__bod
@@ -40,6 +43,25 @@ block content
                     .form__bod
                         label.form__label Detail (optional):
                         textarea#upcatalitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= catalouge.detail
+                    if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                        .form__bod 
+                            label.form__label Apply Discount (optional):
+                            if (catalouge.applydiscount === true)
+                                input#upcatalitemdiscount.checkbox(type="checkbox" checked="checked")
+                            else
+                                input#upcatalitemdiscount.checkbox(type="checkbox")
+                        .form__bod 
+                            label.form__label Mark it as Hot Item (optional):
+                            if (catalouge.hotItem === true)
+                                input#upcatalhotItem.checkbox(type="checkbox" checked="checked")
+                            else
+                                input#upcatalhotItem.checkbox(type="checkbox")
+                        .form__bod 
+                            label.form__label Stock Quantity :
+                            input#upcatalStockQuantity.form__input(type="number" value=catalouge.stockQuantity)
+                    else 
+                        #upcatalitemdiscount.hidden
+                        #upcatalhotItem.hidden
                     .group__btn
                         button#upcatalItemBtn.smallbtn.ygbtn Update Item
                         a(href=`/catalouge/${user._id}/additems`).smallbtn.redbtn Cancel

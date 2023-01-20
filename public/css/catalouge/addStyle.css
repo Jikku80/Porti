@@ -10,8 +10,8 @@ html{
 
 .your__items{
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -71,6 +71,9 @@ html{
 }
 
 @media screen and (max-width: 600px){
+    input, select, textarea{
+        font-size: 16px !important;
+    }
     .catalouge__card{
         width: 100%;
     }

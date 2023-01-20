@@ -18,6 +18,7 @@ next.addEventListener("click", async () => {
         load.classList.remove("hidden")
         let subItems = document.querySelector(".sub__items")
         subItems.innerHTML = "";
+        window.location.hash = "#"
         const endpoint = `/api/v1/menu/${resultpath}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -27,16 +28,29 @@ next.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
-            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        subItems.innerHTML +=
-                            `
+                        if (el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="menu__card">
+                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <div class="menu__card__det">
+                                            <h3 class="menu__card__head">${el.name}</h3>
+                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__detail">${el.detail}</p>
+                                        </div>
+                                    </div>
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                    <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -44,8 +58,11 @@ next.addEventListener("click", async () => {
                                     </div>
                                 </div>
                             `
+                        }
                     });
-                    window.location.hash = "#foodItem"
+                    window.setTimeout(() => {
+                        window.location.hash = "#foodItem"
+                    }, 200)
                     if (sub.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -79,6 +96,7 @@ prev.addEventListener("click", async () => {
         next.classList.remove("hidden");
         let subItems = document.querySelector(".sub__items")
         subItems.innerHTML = "";
+        window.location.hash = "#"
         const endpoint = `/api/v1/menu/${resultpath}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -88,25 +106,41 @@ prev.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
-            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        subItems.innerHTML +=
-                            `
-                                <div class="menu__card">
-                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
-                                    <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                        if (el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="menu__card">
+                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <div class="menu__card__det">
+                                            <h3 class="menu__card__head">${el.name}</h3>
+                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__detail">${el.detail}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            `
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="menu__card">
+                                        <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                        <div class="menu__card__det">
+                                            <h3 class="menu__card__head">${el.name}</h3>
+                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__detail">${el.detail}</p>
+                                        </div>
+                                    </div>
+                                `
+                        }
                     });
-                    window.location.hash = "#foodItem"
+                    window.setTimeout(() => {
+                        window.location.hash = "#foodItem"
+                    }, 200)
                 })
             } else {
                 console.log(response);
@@ -167,10 +201,24 @@ window.addEventListener("load", async () => {
                                         res.then(result => {
                                             let items = result.data
                                             items.forEach(el => {
-                                                subItems.innerHTML +=
-                                                    `
+                                                if (el.coverImage) {
+                                                    subItems.innerHTML +=
+                                                        `
+                                                            <div class="menu__card">
+                                                                <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                                                <div class="menu__card__det">
+                                                                    <h3 class="menu__card__head">${el.name}</h3>
+                                                                    <p class="menu__card__price">${el.price}</p>
+                                                                    <p class="menu__card__detail">${el.detail}</p>
+                                                                </div>
+                                                            </div>
+                                                        `
+                                                }
+                                                else {
+                                                    subItems.innerHTML +=
+                                                        `
                                                         <div class="menu__card">
-                                                            <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                                            <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                                 <p class="menu__card__price">${el.price}</p>
@@ -178,6 +226,7 @@ window.addEventListener("load", async () => {
                                                             </div>
                                                         </div>
                                                     `
+                                                }
                                             });
                                         })
                                     } else {
@@ -242,17 +291,32 @@ searchBar.addEventListener("keypress", async (e) => {
                             let lowCat = cat.toLowerCase();
                             let lowNam = name.toLowerCase();
                             if (lowNam == searchLowNam || lowCat == searchLowNam) {
-                                subItems.innerHTML +=
-                                    `
-                                    <div class="menu__card">
-                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
-                                        <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                if (el.coverImage) {
+                                    subItems.innerHTML +=
+                                        `
+                                        <div class="menu__card">
+                                            <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                            <div class="menu__card__det">
+                                                <h3 class="menu__card__head">${el.name}</h3>
+                                                <p class="menu__card__price">${el.price}</p>
+                                                <p class="menu__card__detail">${el.detail}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                `
+                                    `
+                                }
+                                else {
+                                    subItems.innerHTML +=
+                                        `
+                                        <div class="menu__card">
+                                            <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                            <div class="menu__card__det">
+                                                <h3 class="menu__card__head">${el.name}</h3>
+                                                <p class="menu__card__price">${el.price}</p>
+                                                <p class="menu__card__detail">${el.detail}</p>
+                                            </div>
+                                        </div>
+                                    `
+                                }
                             }
                         });
                         if (sub.children.length == 0) {
@@ -296,17 +360,32 @@ grabAll.addEventListener("click", async () => {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        subItems.innerHTML +=
-                            `
-                                <div class="menu__card">
-                                    <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
-                                    <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                        if (el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="menu__card">
+                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <div class="menu__card__det">
+                                            <h3 class="menu__card__head">${el.name}</h3>
+                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__detail">${el.detail}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            `
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="menu__card">
+                                        <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                        <div class="menu__card__det">
+                                            <h3 class="menu__card__head">${el.name}</h3>
+                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__detail">${el.detail}</p>
+                                        </div>
+                                    </div>
+                                `
+                        }
                     });
                     if (sub.children.length == 0) {
                         sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
@@ -341,10 +420,10 @@ dark.addEventListener("click", () => {
     if (!bod.classList.contains('white__bg')) {
         bod.classList.add('white__bg');
         bod.style.color = "chocolate";
-        dark.innerHTML = `<img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/off.png" />`
+        dark.innerHTML = `<img src="/images/off.png" />`
     } else {
         bod.classList.remove('white__bg');
         bod.style.color = "goldenrod"
-        dark.innerHTML = `<img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/on.png" />`
+        dark.innerHTML = `<img src="/images/on.png" />`
     }
 })

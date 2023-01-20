@@ -1,0 +1,277 @@
+extends baseCatalouge 
+
+block content
+    h1.loader
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+        span Por
+        span.grn t
+        span.nocaps i
+    .sec__cat 
+        .seccatThemeColor.hidden= company.themecolor
+        .seccatFontColor.hidden= company.fontColor 
+        .seccatFontFam.hidden= company.fontFam 
+        .seccatHeadColor.hidden= company.headColor 
+        .seccatSecHeadColor.hidden= company.secHeadColor 
+        .seccatfocusColor.hidden= company.focusColor 
+        .seccatPolygon.hidden= company.polygon
+        .seccatCovWidth.hidden= company.covWidth 
+        .seccatCovHeight.hidden= company.covHeight
+        if (!user)
+            #secCatid.hidden 
+            #changesecCatTheme.hidden 
+            #defaultsecCatTheme.hidden
+            .cancel__edit__dummy.hidden
+            .edit__sec__cat.hidden
+        else
+            if (user.id !== company.user.id)
+                #secCatid.hidden 
+                #changesecCatTheme.hidden 
+                #defaultsecCatTheme.hidden
+                .cancel__edit__dummy.hidden
+                .edit__sec__cat.hidden
+            else
+                .edit__sec__cat(title="Edit Theme") &#9881;
+                .edit__features__sec.hidden
+                    .edit__feat__head 
+                        h3 Edit Theme 
+                        img.cancel__edit__dummy.point(src="/images/cancel.png" alt="cancel__edit")
+                    .edit__feat__bod
+                        #secCatid.hidden= company._id
+                        form.feat_form_bod
+                            .form__bod__cat 
+                                label Background Color:
+                                input#secCatBackColor(type="color" value="#2c2c2c")
+                            .form__bod__cat 
+                                label Cover Image Style:  
+                                select#secCatPolygon
+                                    option.opt(hidden selected) Crack
+                                    option.opt(value="crack") Crack 
+                                    option.opt(value="full") Full
+                                    option.opt(value="right") Right Angle
+                                    option.opt(value="parallel") Parallel
+                                    option.opt(value="hexa") Hexa
+                            .form__bod__cat 
+                                label Cover Image Height:  
+                                select#secCatCovHeight
+                                    option.opt(hidden selected) 70
+                                    option.opt(value="hundred") 100 
+                                    option.opt(value="seventy") 70
+                                    option.opt(value="fifty") 50
+                                    option.opt(value="thirty") 30
+                                    option.opt(value="remove") 0
+                            .form__bod__cat 
+                                label Cover Image Width:  
+                                select#secCatCovWidth
+                                    option.opt(hidden selected) 100
+                                    option.opt(value="hundred") 100 
+                                    option.opt(value="seventy") 70
+                                    option.opt(value="fifty") 50
+                                    option.opt(value="thirty") 30
+                                    option.opt(value="remove") 0
+                            .form__bod__cat
+                                label Font Color:
+                                input#secCatFontColor(type="color" value="#808080")
+                            .form__bod__cat 
+                                label Heading text Color:
+                                input#secCatHeadColor(type="color" value="#ffffff")
+                            .form__bod__cat 
+                                label Color Second:
+                                input#secCatSecHeadColor(type="color" value="#674ea7")
+                            .form__bod__cat 
+                                label Focus Color:
+                                input#secCatFocusColor(type="color" value="#ffffff")
+                            .form__bod__cat 
+                                label Font Family 
+                                select#secCatFontFam
+                                    option.opt(hidden selected) Cambria
+                                    option.opt(value="cursive") Cursive 
+                                    option.opt(value="monospace") Monospace
+                                    option.opt(value="Arial") Arial
+                                    option.opt(value="Impact") Impact
+                                    option.opt(value="Cabin Sketch") Cabin Sketch
+                            .grp_sec_cat_btn
+                                button#changesecCatTheme.catbtn Update Theme
+                                button#defaultsecCatTheme.catbtn Default Theme 
+        .sec__cat__covimg__sec
+            if (company.coverImage)
+                img.sec__cat__coverpic(src=`${company.coverImage}`, alt="cover__img")
+            else 
+                img.sec__cat__coverpic(src="/images/catcov.jpg", alt="cover__img")
+        .resdetail(title="Product Categories") &#9776;
+        .restro__info.hidden
+            .catdeatilmidsec
+                h1.txtcent.headFont= company.name
+                .res__detail__head 
+                    h3 Categories 
+                    img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
+                .restro__info__bod.sec__cat__catg 
+            .sec__sub__item__modal
+                .sec__sub__head.res__detail__head
+                    h3.sec__sub__head__info 
+                    img.cancel__sub.point(src="/images/cancel.png" alt="cancel__btn")
+                .sec__cat__sub
+                    
+        #thiscurrentcompid.hidden= company._id
+        #thiscurrentcompusrname.hidden=company.user.name
+        #thiscurrentcompuserid.hidden= company.user._id
+        .resorder(title="order") &#128722;
+        .resorderfill.hidden
+        audio#seccompmsgalert.hidden
+            source(src="/noti/msg.mp3")
+        .resorder__info.hidden 
+            .restromidsec
+                .res__detail__head 
+                    p Order 
+                    img.cancel__order.point(src="/images/cancel.png" alt="cancel__btn")
+                if (user)
+                    #gotoLoginComp.hidden
+                    .restro__info__bod
+                        form
+                            .form__cont__order
+                                label.formFont Name :
+                                input#userno(type="text", name="tableno", value=user.name, disabled)
+                                #uniquecompusername.hidden= user.name
+                            .form__item__display__sec 
+                                
+                            .form__cont__order
+                                textarea#comordermsg.hidden(type="text", placeholder="Product Detail") 
+                                input#uniquecompname.hidden(type="text" value=`${company._id}`)
+                            .form__cont__order 
+                                label.formFont Address :
+                                input#comordadd(type="text", placeholder="your address")
+                            .form__cont__order 
+                                label.formFont Phone Number :
+                                input#comordphn(type="number", placeholder="976456132498")
+                            .form__cont__order
+                                button#sendcomorderreq.seccatbtn Order
+
+                        p.smallfnt Your last 10 orders
+                        .foods__order__his
+
+                else 
+                    .restro__info__bod 
+                        h4 You are Not Logged In Please Log in to Order Food 
+                        .lonbtn#gotoLoginComp Login || SignUp
+                        #sendcomorderreq.hidden 
+                        #uniquecompname.hidden
+                        #uniquecompusername.hidden
+                        #comordermsg.hidden
+                        .form__item__display__sec.hidden 
+                        .foods__order__his.hidden
+        .sec__menu__banner 
+            if (banner[0])
+                p.bannerinfo= banner[0].bannerInfo
+                p.bannerDisc.hidden= banner[0].discountpercent
+                img.removebanner.point(src="/images/cancel.png", alt="cancel__btn")
+            else 
+                .sec__menu__banner.hidden
+                .removebanner.hidden 
+                .bannerDisc.hidden
+        
+        .sec__search__items 
+            input.secSearchInput(type="text" placeholder="Search")
+        
+        if (hotItems[0])
+            h3.txtcent.headFont Hot Items
+        .sec__cat__hotitems 
+            for el in hotItems 
+                .sec__cat__item__card 
+                    if (el.coverImage)
+                        img.sec__cat__img(src=`${el.coverImage}` alt="item__img")
+                    else
+                        img.sec__cat__img(src="/images/noimg.png" alt="item__img")
+                    .sec__cat__item__info
+                        h3= `Name : ${el.name}`
+                        h3= `Price : ${el.currency} ${el.price}`
+                        if (el.applydiscount == true)
+                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                h3= `Discount : ${banner[0].discountpercent}%`
+                        if (el.stockQuantity === 0 || el.stockQuantity === null)
+                            h3.stock.rdstock= `Out Of Stock`
+                        else
+                            h3.stock= `Stock Quantity : ${el.stockQuantity}`
+                    if (el.stockQuantity === 0 || el.stockQuantity === null)
+                        .sec__cat__btn__grp
+                            button(name=el._id disabled).seccatbtn.addToCart Add To Cart
+                            button(id=el._id name=`${el.category}`).seccatbtn.viewProduct View
+                    else
+                        .sec__cat__btn__grp
+                            button(name=el._id).seccatbtn.addToCart Add To Cart
+                            button(id=el._id name=`${el.category}`).seccatbtn.viewProduct View
+        .cntre
+            h1.getAllSecCatItem.point.seccatbtn All Items
+        .sec__cat__items#secCatItems 
+            for item in catalouges
+                .sec__cat__item__card 
+                    if (item.coverImage)
+                        img.sec__cat__img(src=`${item.coverImage}` alt="item__img")
+                    else
+                        img.sec__cat__img(src="/images/noimg.png" alt="item__img")
+                    .sec__cat__item__info
+                        h3= `Name : ${item.name}`
+                        h3= `Price : ${item.currency} ${item.price}`
+                        if (item.applydiscount == true)
+                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                h3= `Discount : ${banner[0].discountpercent}%`
+                        if (item.stockQuantity === 0 || item.stockQuantity === null)
+                            h3.stock.rdstock= `Out Of Stock`
+                        else
+                            h3.stock= `Stock Quantity : ${item.stockQuantity}`
+                    if (item.stockQuantity === 0 || item.stockQuantity === null)
+                        .sec__cat__btn__grp
+                            button(name=item._id disabled).seccatbtn.addToCart Add To Cart
+                            button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
+                    else
+                        .sec__cat__btn__grp
+                            button(name=item._id).seccatbtn.addToCart Add To Cart
+                            button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
+        .productModal.hidden 
+            .productMidModal
+                .product__head#prodBod
+                    p.productHead 
+                    img.cancelProduct.point(src="/images/cancel.png" alt="cancel__btn")
+                .product__bod
+                h2 Similar Items
+                .similar__bod
+
+                if (user)
+                    h2.txtcent Add A Comment
+                    .thisuserid.hidden= user._id
+                    form
+                        .form__cont__order
+                            textarea#newComment(type="text" placeholder="Add a comment" required) 
+                        .form__cont__order
+                            button#createComment.seccatbtn Comment
+                    h3 Last 12 Comments
+                    .all__comment__sec
+                else 
+                    h2.txtcent Add A Comment
+                    .thisuserid.hidden
+                    form
+                        .form__cont__order
+                            textarea#newComment(type="text" disabled required) Log In To Comment
+                        .form__cont__order
+                            button(disabled)#createComment.seccatbtn Comment
+                    h3 Last 12 Comments
+                    .all__comment__sec
+                    
+        .paginate 
+            .seccataluserid.hidden= company.user._id
+            button(type="button").prev__seccatal.seccatbtn Previous
+            button(type="button").next__seccatal.seccatbtn Next
+        .contact__sec__catal__sec 
+            if (company.Address !== "")
+                p.headFont= company.Address
+            if (company.locationLink !== "")
+                a.headFont.comp__loc(href=`${company.locationLink}`)= `Open Location`
+            if (company.contact !== "")
+                p.headFont= company.contact
+            if (company.social !== "")
+                a.headFont.comp__loc(href=`${company.social}`)= `${company.social}`
+            if (company.email !== "")
+                p.headFont= company.email
+
+
+    script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/catalouge/secCatalouge.js") 

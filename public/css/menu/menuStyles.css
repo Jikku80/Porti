@@ -17,7 +17,7 @@ body{
 }
 
 ::-webkit-scrollbar {
-    width: 2px;
+    display: none;
 }
   
 ::-webkit-scrollbar-track {
@@ -121,6 +121,162 @@ body{
 
 .nocaps{
     font-variant: normal;
+}
+
+.menu__messages__btn{
+    position: fixed;
+    z-index: 1;
+    top: 2vh;
+    right: 2vw;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 12rem;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.774);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.new__menu__msg{
+    position: fixed;
+    z-index: 2;
+    top: 4vh;
+    right: 4vw;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: orangered;
+}
+
+.menu__message__secetion{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.menu__message__mid__sec, .menu__reveived__msg{
+    background-color: rgba(0, 0, 0, 0.897);
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 50%;
+    height: 90%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    border-radius: 2rem;
+}
+
+.menu__message__head{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu__message__bod, .menu__message__bod__prev{
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu__message__bod__prev{
+    flex-direction: column;
+}
+
+.menu__reveived__msg__bod{
+    width: 100%;
+}
+
+.menu__msg__table__list{
+    font-family: monospace;
+    font-size: 16px;
+    padding: 2%;
+    width: 90%;
+    border-radius: 2rem;
+    margin: 1%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu__msg__table__list{
+    background-color: rgb(15, 15, 15);
+    border: 1px solid gray;
+}
+
+.hmcolor{
+    background-color: rgba(20, 140, 220, 0.616);
+    border: 1px solid rgba(20, 140, 220, 0.616); 
+}
+
+.msg__table__bod{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oder__mesg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ordermsg{
+    font-size: 20px;
+    background-color: teal;
+    padding: 2%;
+    border-radius: 2rem;
+}
+
+.rdorng, .grncf, .rd{
+    font-size: 20px;
+    padding: 2%;
+    border-radius: 2rem;
+}
+
+.rdorng{
+    background-color: orangered;
+}
+
+.ordbtn{
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid teal;
+    color: teal;
+    padding: 2%
+}
+
+.ordbtn:hover{
+    background-color: teal;
+    color: black;
+}
+
+.grp__button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.usersmalltag{
+    font-size: 16px;
+    margin: 0;
+    color: gray;
+}
+
+.dotnoti{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: orangered;
 }
 
 .whole__menu__sec{
@@ -278,7 +434,7 @@ body{
     flex-direction: row;
     font-weight: 800;
     font-size: small;
-    z-index: 1;
+    z-index: 4;
 }
 
 .error__cont{
@@ -292,7 +448,7 @@ body{
     flex-direction: row;
     font-weight: 800;
     font-size: small;
-    z-index: 1;
+    z-index: 4;
 }
 
 .confirm__pg{
@@ -452,31 +608,28 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
-.file_part input{
+input[type=file]{
+    border: none !important;
+    cursor: pointer;
     background-color: transparent;
-    border: none;
-    width: 30%;
 }
 
-input[type='file']{
-    color: white;
-    font-size:16px;
-    font-family: monospace;
-    cursor: pointer;
-    background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/upload.png');
+input::file-selector-button, ::-webkit-file-upload-button{
+
+    background-image: url("/images/upload.png");
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 1%;
-    padding-left: 35px;
+    background-color: transparent;
+    height: 5vh;
+    width: fit-content;
+    border: none;
+    color: transparent;
 }
 
-input[type='file']:hover{
-    filter: grayscale(1.5);
-    color: gray;
-}
-
-input::file-selector-button{
-    display: none;
+.checkbox{
+    height: 5vh;
+    width: 5vw;
+    cursor: pointer;
 }
 
 #upitemtheme{
@@ -484,10 +637,6 @@ input::file-selector-button{
     color: white;
     border: 1px solid rgba(0, 0, 0, 0.247);
     padding: 2%;
-}
-
-::-webkit-file-upload-button{
-    display: none;
 }
 
 .sec__items{
@@ -508,16 +657,38 @@ input::file-selector-button{
     text-align: left;
     margin-left: 10px;
     margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.411);
+    padding: 2%;
+    border-radius: 2rem;
 }
 
 .menu__link__displayer, .catalouge__link__displayer{
-    border: 1px solid chocolate;
-    background-color: chocolate;
+    background-color: rgba(220, 20, 60, 0.411);
     margin: 2% 2% 0% 2%;
     padding: 1%;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     font-size: 2em;
+}
+
+.your__item__sec{
+    background-color:  rgba(0, 0, 0, 0.637);
+    padding: 2%;
+    border-radius: 2rem;
+}
+
+.createBanner{
+    background-color:  rgba(0, 0, 0, 0.411);
+    padding: 2%;
+    border-radius: 2rem;
+}
+
+.banner__sec {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .qr__displayer{
@@ -609,12 +780,14 @@ input::file-selector-button{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+    .new__menu__msg{
+        top: 3vh;
+        right: 3vw;
+    }
     .form__bod{
         width: 50%;
     }
-    .file_part input{
-        width: 50%;
-    }
+
     .smallbtn{
         padding: 2%;
     }
@@ -630,6 +803,21 @@ input::file-selector-button{
 }
 
 @media screen and (max-width: 600px){
+    input, select, textarea{
+        font-size: 16px !important;
+    }
+    .checkbox{
+        height: 10vh;
+        width: 10vw;
+    }
+    .new__menu__msg{
+        top: 4vh;
+        right: 4vw;
+    }
+    .menu__message__mid__sec, .menu__reveived__msg{
+        width: 90%;
+        height: 90%;
+    }
     .menu__bar{
         position: sticky;
         top: 0;
@@ -659,9 +847,7 @@ input::file-selector-button{
     .form__bod{
         width: 80%;
     }
-    .file_part input{
-        width: 50%;
-    }
+
     .menu__link__displayer, .catalouge__link__displayer{
         font-size: 1em;
         margin: 2%;

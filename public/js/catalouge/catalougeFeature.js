@@ -10,12 +10,14 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
         let searchValue = catalougeSearchBar.value;
         let searchLowNam = searchValue.toLowerCase();
         let subItems = document.querySelector(".catalouge__items");
+        let pagi = document.querySelector(".paginate");
+        pagi.classList.add("hidden");
         try {
             e.preventDefault();
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
-            const endpoint = `/api/v1/catalouge/${catalogeUserId}/searchCatalouge`
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/searchCatalouge/${searchLowNam}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');
@@ -29,19 +31,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
                     res.then(result => {
                         let items = result
                         items.forEach(el => {
-                            let name = el.name
-                            let cat = el.category
-                            let subcat = el.subcategory
-                            let seno = el.serialno
-                            let lowCat = cat.toLowerCase();
-                            let lowSeno = seno.toLowerCase();
-                            let lowSubCat = subcat.toLowerCase();
-                            let lowNam = name.toLowerCase();
-                            // let sval = lowNam.match(searchLowNam)
-                            // console.log(sval);
-                            if (lowNam == searchLowNam || lowCat == searchLowNam || lowSubCat == searchLowNam || lowSeno == searchLowNam) {
-                                addCardElem(el);
-                            }
+                            addCardElem(el);
                         });
                         if (subItems.children.length == 0) {
                             subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
@@ -75,6 +65,10 @@ window.addEventListener("load", async () => {
         load.classList.remove("hidden")
         let subItemModel = document.querySelector(".sub__cat__list");
         subItemModel.classList.add("hidden");
+        let pagi = document.querySelector(".paginate");
+        if (pagi.classList.contains("hidden")) {
+            pagi.classList.remove("hidden");
+        }
         const endpoint = `/api/v1/catalouge/allCatalougeCategories/${catalogeUserId}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -106,6 +100,8 @@ window.addEventListener("load", async () => {
                                 subItm.innerHTML = "";
                                 const endpoint = `/api/v1/catalouge/${catalogeUserId}/findsubcate/${cate}`
                                 let myHeaders = new Headers();
+                                let pagi = document.querySelector(".paginate");
+                                pagi.classList.add("hidden");
                                 myHeaders.append('Content-Type', 'image/jpeg/png')
                                 myHeaders.get('Content-Type');
                                 await fetch((endpoint), {
@@ -205,38 +201,74 @@ window.addEventListener("load", async () => {
 
 function addCardElem(el) {
     let catalougeItems = document.querySelector(".catalouge__items");
-    catalougeItems.innerHTML +=
-        `
-        <div class="catal__card">
-            <img class="catal__card__img imgFull" src="${el.coverImage}" alt="catalouge__item__image">
-            <div class="catal__card__det">
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">Name: </p>
-                    <p class="card__dark__text catal__name">${el.name}</p>
-                </div>
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">S.No: </p>
-                    <p class="card__dark__text catal__sno">${el.serialno}</p>
-                </div>
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">Price: </p>
-                    <p class="card__dark__text catal__price">${el.price}</p>
-                </div>
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">Group: </p>
-                    <p class="card__dark__text catal__category">${el.category}</p>
-                </div>
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">SGroup: </p>
-                    <p class="card__dark__text catal__subcategory">${el.subcategory}</p>
-                </div>
-                <div class="card__sub__sec">
-                    <p class="catal__card__head">Detail: </p>
-                    <p class="card__dark__text catal__detail">${el.detail}</p>
+    if (el.coverImage) {
+        catalougeItems.innerHTML +=
+            `
+            <div class="catal__card">
+                <img class="catal__card__img imgFull" src="${el.coverImage}" alt="catalouge__item__image">
+                <div class="catal__card__det">
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Name: </p>
+                        <p class="card__dark__text catal__name">${el.name}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">S.No: </p>
+                        <p class="card__dark__text catal__sno">${el.serialno}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Price: </p>
+                        <p class="card__dark__text catal__price">${el.currency} ${el.price}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Group: </p>
+                        <p class="card__dark__text catal__category">${el.category}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">SGroup: </p>
+                        <p class="card__dark__text catal__subcategory">${el.subcategory}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Detail: </p>
+                        <p class="card__dark__text catal__detail">${el.detail}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    `
+        `
+    }
+    else {
+        catalougeItems.innerHTML +=
+            `
+            <div class="catal__card">
+                <img class="catal__card__img imgFull" src="/images/noimg.png" alt="catalouge__item__image">
+                <div class="catal__card__det">
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Name: </p>
+                        <p class="card__dark__text catal__name">${el.name}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">S.No: </p>
+                        <p class="card__dark__text catal__sno">${el.serialno}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Price: </p>
+                        <p class="card__dark__text catal__price">${el.currency} ${el.price}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Group: </p>
+                        <p class="card__dark__text catal__category">${el.category}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">SGroup: </p>
+                        <p class="card__dark__text catal__subcategory">${el.subcategory}</p>
+                    </div>
+                    <div class="card__sub__sec">
+                        <p class="catal__card__head">Detail: </p>
+                        <p class="card__dark__text catal__detail">${el.detail}</p>
+                    </div>
+                </div>
+            </div>
+        `
+    }
     fullPic()
 }
 
@@ -288,6 +320,7 @@ modelCanceler.addEventListener("click", () => {
     next.addEventListener("click", async () => {
         let pg = ++x
         prev.classList.remove("hidden");
+        location.hash = "#"
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -302,7 +335,6 @@ modelCanceler.addEventListener("click", () => {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
-                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -310,7 +342,9 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
-                        window.location.hash = "#compcatalouge"
+                        window.setTimeout(() => {
+                            location.hash = "#compcatalouge"
+                        }, 200)
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -337,6 +371,7 @@ modelCanceler.addEventListener("click", () => {
         let pg = --x
         try {
             let load = document.querySelector('.loader');
+            location.hash = "#"
             load.classList.remove("hidden")
             if (x == 1) {
                 prev.classList.add("hidden")
@@ -353,7 +388,6 @@ modelCanceler.addEventListener("click", () => {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
-                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -361,7 +395,9 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
-                        window.location.hash = "#compcatalouge"
+                        window.setTimeout(() => {
+                            location.hash = "#compcatalouge"
+                        }, 200)
                     })
                 } else {
                     console.log(response);

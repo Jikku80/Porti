@@ -21,6 +21,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
+            window.location.hash = "#"
             const endpoint = `/api/v1/portfolio/${user__id}/pagination/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -30,7 +31,6 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
-                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -44,7 +44,9 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                                 </div>
                             `
                         });
-                        window.location.hash = locVal;
+                        window.setTimeout(() => {
+                            window.location.hash = locVal;
+                        }, 200)
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -77,6 +79,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
             }
             next.classList.remove("hidden");
             subItems.innerHTML = "";
+            window.location.hash = "#"
             const endpoint = `/api/v1/portfolio/${user__id}/pagination/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
@@ -86,7 +89,6 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
-                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -100,7 +102,9 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                                 </div>
                             `
                         });
-                        window.location.hash = locVal;
+                        window.setTimeout(() => {
+                            window.location.hash = locVal;
+                        }, 200)
                     })
                 } else {
                     console.log(response);

@@ -1,0 +1,70 @@
+extends baseCatalouge
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
+
+    if (user)
+        include ../_header
+        .statUserTheme.hidden= user.theme
+        .restro__stat__sec
+            .restro__stat__bod
+                h1.txt.stathead= `${company[0].name} Statistics`
+                .restro__thirtyday__graph
+                    h2.txt Orders Made in Last 30 Days
+                    .chart__back
+                        canvas#myChart
+                .restro__allorders__chart 
+                    h2.txt All Time Order Chart 
+                    .txt.alltimetotalorder
+                    .restro__graph__grp
+                        canvas#myPie
+                        canvas#myBar.bar
+                h2.txt.txtcent View Your Orders Using the Filters Below
+                .restro__stat__btns 
+                    .currentrestroid.hidden= company[0]._id
+                    button#getPerDay.statbtn Today 
+                    button#getPerWeek.statbtn Last 7 Days
+                    button#getPerMonth.statbtn Last 30 Days
+                    button#getAllRestro.statbtn All Company Orders
+                h2.txt.txtcent Find By Month 
+                .restro__stat__month   
+                    .res__stat__inpt
+                        input#getyear(type="number", name="perdate" value="2023")
+                        select#months
+                            option.opt(hidden selected) ----
+                            option.opt(value="Jan") Jan
+                            option.opt(value="Feb") Feb
+                            option.opt(value="Mar") Mar
+                            option.opt(value="Apr") Apr
+                            option.opt(value="May") May
+                            option.opt(value="Jun") Jun
+                            option.opt(value="Jul") Jul
+                            option.opt(value="Aug") Aug
+                            option.opt(value="Sep") Sep
+                            option.opt(value="Oct") Oct
+                            option.opt(value="Nov") Nov
+                            option.opt(value="Dec") Dec
+                    button#getByMonth.statbtn Find
+                #restro__order__data
+                    .restro__order__count
+                    .pie__per__deman
+                        .restro__graph__grp#today__sec.hidden
+                        .restro__graph__grp#week__sec.hidden
+                        .restro__graph__grp#month__sec.hidden
+                        .restro__graph__grp#bymonths__pie.hidden
+
+                    .restro__order__list
+                include ../_footer
+    else
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/login") Sign In
+
+    script(type="module" src="https://cdn.jsdelivr.net/npm/chart.js")
+    script(src="/js/alert.js") 
+    script(type="text/javascript" src="/js/catalouge/stats.js") 

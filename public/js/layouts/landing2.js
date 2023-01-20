@@ -18,7 +18,9 @@ updatePortSec.addEventListener('click', () => {
     portiqrsec2.classList.add("hidden");
     editThemeSec2.classList.add("hidden");
     updateFormSec.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 updateImgCollec.addEventListener("click", () => {
@@ -30,7 +32,9 @@ updateImgCollec.addEventListener("click", () => {
     portiqrsec2.classList.add("hidden");
     editThemeSec2.classList.add("hidden");
     updateImgFormCollec.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 let cancelSec = document.querySelector(".cancelSec");

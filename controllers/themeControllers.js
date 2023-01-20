@@ -1,8 +1,6 @@
 const fs = require('fs');
 const formidable = require('formidable');
 
-const multer = require('multer');
-const sharp = require('sharp');
 const Theme = require('./../models/themeModel');
 const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
@@ -11,37 +9,6 @@ const APIFeatures = require('./../utils/apiFeatures');
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError('Not an image! Please upload only images.', 400), false);
-    }
-};
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
-
-exports.uploadThemeImage = upload.single('picture');
-
-exports.resizeThemeImage = catchAsync(async (req, res, next) => {
-
-    if (!req.file) return next();
-    let img = req.file;
-
-    img.originalname = `port-${req.user.name}-${Date.now()}-themeImage.jpeg`;
-    await sharp(img.buffer)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`public/images/themeImage/${img.originalname}`);
-
-    next();
-});
 
 exports.setUsersId = (req, res, next) => {
     if (!req.body.user) req.body.user = req.user.id;
@@ -71,7 +38,8 @@ exports.createTheme = catchAsync(async (req, res, next) => {
             themeCategory: fields.themeCategory,
             price: fields.themeprice,
             paid: fields.paid,
-            picture: blockBlobClient.url
+            picture: blockBlobClient.url,
+            createdAt: Date.now()
         });
         res.redirect(`/api/themes/tweaktheme`)
     })

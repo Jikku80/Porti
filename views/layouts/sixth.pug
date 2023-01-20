@@ -2,41 +2,100 @@ extends baselayout
 
 block content
     h1.loader
-        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    if(user)
+        if (user.id == portfolio.user.id)
+            .showeditbtn Edit Theme
+            .showEdit.hidden
+                .show__head 
+                    p Edit Theme
+                    img(src="/images/cancel.png" alt="cancel__btn").close__show.hidden 
+                .theme__edit
+                    #seventhid.hidden= portfolio.id
+                    form#seventhTheme
+                        h2 Edit Theme Preference
+                        .form__bod 
+                            label Background Color:
+                            input#sportBackColor(type="color" value="#2c2c2c")
+                        .form__bod
+                            label Font Color:
+                            input#sportFontColor(type="color" value="#808080")
+                        .form__bod 
+                            label Heading text Color:
+                            input#sportHeadColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Color Second:
+                            input#sportSecHeadColor(type="color" value="#ACA547")
+                        .form__bod 
+                            label Focus Color:
+                            input#sportFocusColor(type="color" value="#6B8E23")
+                        .form__bod 
+                            label Font Family 
+                            select#sportFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                        .grp_seventh_btn
+                            button#changeseventhTheme.redbtn Update Theme
+                            button#defaultseventhTheme.redbtn Default Theme 
+        else 
+            .showeditbtn.hidden 
+            .showEdit.hidden 
+            .close__show.hidden
+            #seventhid.hidden
+            #changeseventhTheme.hidden 
+            #defaultseventhTheme.hidden
+    else
+        .showeditbtn.hidden 
+        .showEdit.hidden 
+        .close__show.hidden
+        #seventhid.hidden
+        #changeseventhTheme.hidden 
+        #defaultseventhTheme.hidden
     .main__sixth(id=`${portfolio.backColor}`)
         .main__sixth__prev(id=`${portfolio.fontColor}`)
             h1.firstHalf  Prior 
                 span.otherHalf.fcolor(id=`${portfolio.focusColor}`) Detail
             .main__prev__bod(id=`${portfolio.headColor}`) 
                 pre.ans= portfolio.previous
-                h2.secHead= `${portfolio.name} ran into a problem`
-                pre.ans= portfolio.problem 
-                h2.secHead= `How ${portfolio.name} solved the problem?`
-                pre.ans= portfolio.solution
+                if (portfolio.problem !== "")
+                    h2.secHead= `${portfolio.name} ran into a problem`
+                    pre.ans= portfolio.problem 
+                if (portfolio.solution !== "")
+                    h2.secHead= `How ${portfolio.name} solved the problem?`
+                    pre.ans= portfolio.solution
         .main__sixth__about(id=`${portfolio.secHeadColor}`)
             h1.firstHalf About 
                 span.otherHalf= `${portfolio.name}`
             .main__about__bod 
                 pre.ans= portfolio.about 
-                h2.secHead= `What ${portfolio.name} Do?`
-                pre.ans= portfolio.what
-                h2.secHead= `Why ${portfolio.name} Do it?`
-                pre.ans= portfolio.why
-                h2.secHead= `How ${portfolio.name} deals with Failure?`
-                pre.ans= portfolio.failure
-                h2.secHead= `How ${portfolio.name} stays motivated?`
-                pre.ans= portfolio.motivation
-                h2.secHead= `${portfolio.name} Message`
-                pre.ans= portfolio.msg
+                if (portfolio.what !== "")
+                    h2.secHead= `What ${portfolio.name} Do?`
+                    pre.ans= portfolio.what
+                if (portfolio.why !== "")
+                    h2.secHead= `Why ${portfolio.name} Do it?`
+                    pre.ans= portfolio.why
+                if (portfolio.failure !== "")
+                    h2.secHead= `How ${portfolio.name} deals with Failure?`
+                    pre.ans= portfolio.failure
+                if (portfolio.motivation !== "")
+                    h2.secHead= `How ${portfolio.name} stays motivated?`
+                    pre.ans= portfolio.motivation
+                if (portfolio.msg !== "")
+                    h2.secHead= `${portfolio.name} Message`
+                    pre.ans= portfolio.msg
 
         .main__sixth__cont(id=`${portfolio.fontFam}`)
             h1.firstHalf Get in 
                 span.otherHalf Touch
             .cont__boxbg.main__cont__bod
-                if (portfolio.showNo === true)
+                if (portfolio.showNo === true && portfolio.phn_no !== "")
                     .cont__box.sixth__box
                         p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.sixth__box
@@ -47,9 +106,17 @@ block content
                             if (portfolio.user.photo)
                                 img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                             else 
-                                img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
-                .cont__box.sixth__box
-                    p= `Address: ${portfolio.location}`
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                else 
+                    .cont
+                        if (portfolio.user.photo)
+                            img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                        else 
+                            img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                if (portfolio.location !== "")
+                    .cont__box.sixth__box
+                        p= `Address: ${portfolio.location}`
 
 
     script(src="/js/layouts/sixth.js") 
+    script(src="/js/alert.js") 

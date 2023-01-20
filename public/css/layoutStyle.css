@@ -408,39 +408,29 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
     -moz-appearance:textfield;
-  }
+}
 
-input[type='file']{
-    background-color: transparent;
+input[type=file]{
     border: none !important;
-    width: 50%;
-    color: white;
-    font-size:16px;
-    font-family: monospace;
     cursor: pointer;
-    background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/upload.png');
+}
+
+input::file-selector-button, ::-webkit-file-upload-button{
+
+    background-image: url("/images/upload.png");
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 1%;
-    padding-left: 40px;
-}
-
-input[type='file']:hover{
-    filter: grayscale(1.5);
-    color: gray;
-}
-
-input::file-selector-button{
-    display: none;
-  }
-
-::-webkit-file-upload-button{
-    display: none;
+    background-color: transparent;
+    height: 5vh;
+    width: fit-content;
+    border: none;
+    color: transparent;
 }
 
 .checkbox{
     height: 5vh;
     width: 5vw;
+    background-color: transparent;
 }
 
 .bigbtn{
@@ -501,14 +491,8 @@ input::file-selector-button{
     margin-bottom: 2%;
 }
 
-#themes, #themeSec, #themeSix, #inthemes, .thim{
-    background-color: transparent;
-    border: 2px solid crimson;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    color: gray;
-    width: 348px;
-}
+/* #themes, #themeSec, #themeSix, #inthemes, .thim{
+} */
 
 .notifier{
     text-align: center;
@@ -790,10 +774,6 @@ input::file-selector-button{
         font-size: 1.8rem;
     }
 
-    input[type='file']{
-        width: 70%;
-    }
-
     .xsf{
         font-size: 1.8rem;
     }
@@ -829,6 +809,9 @@ input::file-selector-button{
 }
 
 @media screen and (max-width: 600px){
+    input, select, textarea{
+        font-size: 16px !important;
+    }
     .menu__bar{
         position: sticky;
         top: 0;
@@ -872,10 +855,6 @@ input::file-selector-button{
         font-size: 1.2rem;
     }
 
-    input[type='file']{
-        width: 50%;
-    }
-
     #editTheme{
         margin: 4%;
         padding: 2%;
@@ -901,13 +880,19 @@ input::file-selector-button{
     .port_link{
         font-size: 1.2em;
     }
+    
+    .form__bod{
+        display: flex;
+        flex-direction: column;
+    }
+
     .form__bod label{
         font-size: 1.2rem;
-        width: 40%;
+        width: fit-content;
     }
     
     .form__bod input, .form__bod textarea{
-        width: 170px !important;
+        width: 80% !important;
     }
 
     #themes, #themeSec, #themeSix{
@@ -918,10 +903,6 @@ input::file-selector-button{
         margin: 3%;
     }
 
-    .file_part{
-        display: flex;
-        flex-direction: column;
-    }
     .port__card__main {
         display: flex;
         flex-direction: column-reverse;

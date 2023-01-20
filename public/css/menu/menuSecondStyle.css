@@ -1,0 +1,459 @@
+.sec__menu__sec{
+    font-family: Londrina Sketch;
+    font-size: 16px;
+    background-color: white;
+}
+
+.sec__menu__cover{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.resname{
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 8vh;
+    text-align: center;
+    text-shadow:1px 1px 1px#2c2c2c;
+}
+
+.resdetail, .resorder{
+    position: absolute;
+    top: .5vh;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    padding: 2%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 12rem;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.514);
+    align-items: center;
+}
+
+.resdetail{
+    right: 2vw;
+}
+
+.resorder{
+    left: 2vw;
+    z-index: 4;
+}
+
+.resorderfill{
+    position: absolute;
+    top: 2vh;
+    left: 4vw;
+    z-index: 5;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: orangered;
+
+}
+
+.restro__info, .resorder__info{
+    position: absolute;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resorder__info{
+    z-index: 4;
+}
+
+.restromidsec, .restrodeatilmidsec{
+    background-color: rgba(0, 0, 0, 0.815);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+    width: fit-content;
+    height: fit-content;
+}
+
+.restrodeatilmidsec{
+    width: 60%;
+}
+
+.restromidsec{
+    width: 90%;
+    height: 90%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.res__detail__head {
+    display: flex;
+    justify-content: space-around;
+}
+
+.restro__info__bod {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.foods__order__his{
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: column-reverse; */
+}
+
+.form__cont__order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+}
+
+input, textarea{
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    height: 5vh;
+    padding: 2%;
+}
+
+.form__cont__order textarea{
+    height: 10vh;
+}
+
+.lonbtn{
+    margin: 2%;
+    background-color: transparent;
+    color: white;
+    font-family: Londrina Sketch;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.sec__menu__cover img{
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.sec__menu__cate {
+    position: absolute;
+    left: 3vw;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.514);
+    padding: 2%;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border-radius: 2rem;
+}
+
+.sec__menu__cate__first{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.point, .cancel__Cat, .cancel__allfood{
+    cursor: pointer;
+}
+
+.sec__menu__cate__names:hover{
+    text-shadow:1px 1px 1px#2c2c2c;
+}
+
+.sec__menu__viewall, .sec__menu__allfood{
+    position:absolute;
+    top:2vh;
+    left: 2.5vw;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    background-color: rgba(0, 0, 0, 0.822);
+    border-radius: 2rem;
+}
+
+.sec__menu__viewall__head, .sec__menu__allfood__head{
+    z-index: 1;
+    position:fixed;
+    top:2vh;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.sec__menu__viewall__bod, .sec__menu__allfood__bod{
+    position:absolute;
+    top:10vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 4%;
+    font-size: 25px;
+}
+
+.cancelitembtn{
+    position: absolute;
+    top: 1vh;
+    right: 0;
+    z-index: 1;
+}
+
+.menu_sec_card{
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.822);
+}
+
+.menu_sec_card_img{
+    width: 50vw;
+    height: 50vh;
+    border-radius: 2rem;
+}
+
+.menu_sec_card_det{
+    height: 50vh;
+    width: 80vw;
+    overflow-y: auto;
+    scrollbar-width: none;
+    font-size: 25px;
+}
+
+#ordernoid, .cart__product__quantity{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#ordernoid{
+    transition: transform .2x;
+    width: 10vw;
+    font-size: 20px;
+}
+
+#ordernoid:focus{
+    outline: none !important;
+    transform: scale(1.5);
+    margin-left: 4vw;
+}
+
+.form__item__display__sec{
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.form__inner__displayer{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 10px;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.cancelItemresOrder{
+    width: 4vw !important;
+    height: 4vw !important;
+}
+
+.form__item__display__sec{
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2rem;
+    padding: 1%;
+    background-color: #1b1b1b;
+    margin: 1%;
+}
+
+.cart__card__item{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.cart__card__img{
+    width: 10vw;
+    height: 10vh;
+}
+
+.cartItemQuantity{
+    width: 20%;
+}
+
+.food__order__list, .homeone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 2rem;
+    font-family: monospace;
+    padding: 2%;
+    margin: 2%;
+    width: 60vw;
+    text-align: center;
+}
+
+.food__order__list{
+    background-color: rgba(0, 128, 128, 0.685);
+}
+
+.homeone{
+    background-color: rgba(255, 68, 0, 0.87);
+}
+
+.faded{
+    color: wheat;
+    font-size: 10px;
+    margin: 0;
+}
+
+.info{
+    color: gold;
+}
+
+.sec__menu__banner{
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: teal;
+    font-size: 25px;
+    z-index: 2;
+}
+
+.bannerinfo{
+    width: 80%;
+    padding: 2%;
+    margin: 0;
+}
+
+.hminfo{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wait{
+    animation: blink 1.5s infinite linear;
+}
+
+#showHomeDelOpt{
+    border: 2px solid orangered;
+    color: orangered;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.smallfnt{
+    font-size: 16px;
+    margin: 0;
+}
+
+.like__dislike{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dis__like__sec, .like__sec{
+    text-align: center;
+}
+
+.likedislikeimg{
+    cursor: pointer;
+}
+
+.orgrd{
+    color: orangered;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .menu_sec_card_img{
+        width: 80vw;
+        height: 50vh;
+        border-radius: 2rem;
+    }
+
+    input, textarea{
+        height: 3vh;
+        padding: 2%;
+    }
+
+    .form__inner__displayer img{
+        width: 20vw;
+        height: 20vw;
+        border-radius: 2rem;
+    }
+    .sec__cat__img{
+        width: 30vw;
+        height: 20vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .sec__menu__viewall{
+        height: 95vh;
+    }
+    .menu_sec_card_img{
+        width: 80vw;
+        height: 50vh;
+        border-radius: 2rem;
+    }
+
+    .form__inner__displayer img{
+        width: 20vw;
+        height: 20vw;
+        border-radius: 2rem;
+    }
+
+    .cancelItemresOrder{
+        width: 8vw !important;
+        height: 8vw !important;
+    }
+    .cart__card__img{
+        width: 18vw;
+        height: 10vh;
+    }
+}

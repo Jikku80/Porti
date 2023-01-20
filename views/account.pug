@@ -4,7 +4,7 @@ block content
     if (user)
         h1.loader
             .bink
-                img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+                img.porti__off__img(src="/images/smalport.png", alt="porti__img")
                 span.td Por
                 span.grn t
                 span.nocaps.td i
@@ -16,26 +16,27 @@ block content
             .update__background 
                 .bg__fix
                     #defaultBack.up__bg
-                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/grn.png", alt="grn__background")
+                        img.bg__opt(src="/images/grn.png", alt="grn__background")
                         p Porti Background
                     #darkBack.up__bg
-                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/dark.png", alt="grn__background")
+                        img.bg__opt(src="/images/dark.png", alt="grn__background")
                         p Dark Background
                     #whiteBack.up__bg
-                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/white.png", alt="grn__background")
+                        img.bg__opt(src="/images/white.png", alt="grn__background")
                         p White Background
                     #redBack.up__bg
-                        img.bg__opt(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/red.png", alt="grn__background")
+                        img.bg__opt(src="/images/red.png", alt="grn__background")
                         p Lakhey Background
             #upAccImg
                 if (user.photo)
                     img.profPic(src=`${user.photo}`, alt="prof__pic")
                 else 
-                    img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
+                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
                 form(action="/api/users/updateDP" method="post" enctype="multipart/form-data")
-                    label.form__label(for='upPic') Change DP
-                    input#upPic.form__input(type="file" accept="image/*" name="upPic", required)
-                    button#upProfPic.redbtn Update Picture 
+                    .form__acc__dp
+                        label.form__label(for='upPic') Change DP
+                        input#upPic.form__input(type="file" accept="image/*" name="upPic", required)
+                        button#upProfPic.redbtn.btnpad Update Picture 
             form#upInfo
                 h2 Update Your Account Details 
                 label.form__label(for='name') Name
@@ -45,7 +46,7 @@ block content
                 p.onallowed__charc.maf.warn.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
                 label.form__label(for='email') Email Address 
                 input#upemail.form__input.inpt__disable(type='email', value=`${user.email}`, disabled, required)
-                button.update__account.redbtn Update Info
+                button.update__account.redbtn.btnpad Update Info
 
             .update__account__password
                 form#upPass
@@ -57,7 +58,7 @@ block content
                     input#up_password.form__input(type='password', placeholder='********', required, minlength='8')
                     label.form__label(for='password') Confirm Password
                     input#up_passwordConfirm.form__input(type='password', placeholder='********', required, minlength='8')
-                    button.btn__pwd.redbtn Update        
+                    button.btn__pwd.redbtn.btnpad Update        
             
             h1#acHead= `Greetings, ${user.name}`
             include _footer

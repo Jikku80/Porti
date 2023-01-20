@@ -1,3 +1,4 @@
+let discountedPercent = document.querySelector(".itemdiscountpercent").innerText;
 async function getAllCatalougeItem() {
     let pg = 1
     let fullpath = location.pathname
@@ -23,23 +24,97 @@ async function getAllCatalougeItem() {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        if (el.user._id === uid.innerText)
-                            subItems.innerHTML +=
-                                `
-                                <div class="catalouge__card">
-                                    <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
-                                    <div class="catalouge__card__det">
-                                        <h3 class="catalouge__card__head goldn">${el.name}</h3>
-                                        <p class="catalouge__card__head goldn">${el.serialno}</p>
-                                        <p class="catalouge__card__price goldn">${el.price}</p>
-                                        <p class="catalouge__card__cat goldn">${el.category}</p>
-                                        <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
-                                        <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
-                                        <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                        if (el.user._id === uid.innerText) {
+                            if (!el.coverImage) {
+                                if (el.applydiscount !== true) {
+                                    subItems.innerHTML +=
+                                        `
+                                        <div class="catalouge__card">
+                                            <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                            <div class="catalouge__card__det">
+                                                <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                                <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                                <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                                <p class="catalouge__card__disc hidden"></p>
+                                                <p class="catalouge__card__cat goldn">${el.category}</p>
+                                                <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                                <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                                <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
+                                        </div>
+                                    `
+                                }
+                                else {
+                                    let disper = discountedPercent / 100
+                                    let newp = el.price * disper;
+                                    let newprice = el.price - newp;
+                                    subItems.innerHTML +=
+                                        `
+                                        <div class="catalouge__card">
+                                            <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                            <div class="catalouge__card__det">
+                                                <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                                <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                                <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                                <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                                <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                                <p class="catalouge__card__cat goldn">${el.category}</p>
+                                                <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                                <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                                <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
+                                        </div>
+                                    `
+                                }
+                            }
+                            else {
+                                if (el.applydiscount !== true) {
+                                    subItems.innerHTML +=
+                                        `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__disc hidden"></p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
                                     </div>
-                                </div>
-                            `
+                                `
+                                }
+                                else {
+                                    let disper = discountedPercent / 100
+                                    let newp = el.price * disper;
+                                    let newprice = el.price - newp;
+                                    subItems.innerHTML +=
+                                        `
+                                        <div class="catalouge__card">
+                                            <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                            <div class="catalouge__card__det">
+                                                <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                                <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                                <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                                <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                                <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                                <p class="catalouge__card__cat goldn">${el.category}</p>
+                                                <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                                <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                                <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
+                                        </div>
+                                    `
+                                }
+                            }
+
+                        }
                     });
 
                     if (subItems.children.length == 0) {
@@ -81,6 +156,7 @@ if (x == 1) {
 next.addEventListener("click", async () => {
     let pg = ++x
     prev.classList.remove("hidden");
+    window.location.hash = "#"
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -97,20 +173,66 @@ next.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
-            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        subItems.innerHTML +=
-                            `
+                        if (!el.coverImage) {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__disc hidden"></p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                            else {
+                                let disper = discountedPercent / 100
+                                let newp = el.price * disper;
+                                let newprice = el.price - newp;
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                            <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                        }
+                        else {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                         <p class="catalouge__card__head goldn">${el.serialno}</p>
-                                        <p class="catalouge__card__price goldn">${el.price}</p>
+                                        <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                        <p class="catalouge__card__disc hidden"></p>
                                         <p class="catalouge__card__cat goldn">${el.category}</p>
                                         <p class="catalouge__card__cat goldn">${el.subcategory}</p>
                                         <p class="catalouge__card__detail goldn">${el.detail}</p>
@@ -119,8 +241,35 @@ next.addEventListener("click", async () => {
                                     </div>
                                 </div>
                             `
+                            }
+                            else {
+                                let disper = discountedPercent / 100
+                                let newp = el.price * disper;
+                                let newprice = el.price - newp;
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                            <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                        }
                     });
-                    window.location.hash = "#CatalougeItemSec"
+                    window.setTimeout(() => {
+                        location.hash = "#CatalogeItemSec"
+                    }, 200)
                     if (subItems.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -147,6 +296,7 @@ prev.addEventListener("click", async () => {
     let pg = --x
     try {
         let load = document.querySelector('.loader');
+        window.location.hash = "#"
         load.classList.remove("hidden")
         if (x == 1) {
             prev.classList.add("hidden")
@@ -165,20 +315,66 @@ prev.addEventListener("click", async () => {
             headers: myHeaders
         }).then((response) => {
             load.classList.add("hidden");
-            window.location.hash = "#"
             let res = response.json();
             if (response.status === 200) {
                 res.then(result => {
                     let items = result
                     items.forEach(el => {
-                        subItems.innerHTML +=
-                            `
+                        if (!el.coverImage) {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__disc hidden"></p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                            else {
+                                let disper = discountedPercent / 100
+                                let newp = el.price * disper;
+                                let newprice = el.price - newp;
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                            <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                        }
+                        else {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
                                 <div class="catalouge__card">
                                     <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
                                     <div class="catalouge__card__det">
                                         <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                         <p class="catalouge__card__head goldn">${el.serialno}</p>
-                                        <p class="catalouge__card__price goldn">${el.price}</p>
+                                        <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                        <p class="catalouge__card__disc hidden"></p>
                                         <p class="catalouge__card__cat goldn">${el.category}</p>
                                         <p class="catalouge__card__cat goldn">${el.subcategory}</p>
                                         <p class="catalouge__card__detail goldn">${el.detail}</p>
@@ -187,8 +383,35 @@ prev.addEventListener("click", async () => {
                                     </div>
                                 </div>
                             `
+                            }
+                            else {
+                                let disper = discountedPercent / 100
+                                let newp = el.price * disper;
+                                let newprice = el.price - newp;
+                                subItems.innerHTML +=
+                                    `
+                                    <div class="catalouge__card">
+                                        <img class="catalouge__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <p class="catalouge__card__head goldn">${el.serialno}</p>
+                                            <p class="catalouge__card__price goldn">${el.currency} ${el.price}</p>
+                                            <p class="catalouge__card__dis__per goldn">Discount : ${discountedPercent}%</p> 
+                                            <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
+                                            <p class="catalouge__card__cat goldn">${el.category}</p>
+                                            <p class="catalouge__card__cat goldn">${el.subcategory}</p>
+                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                `
+                            }
+                        }
                     });
-                    window.location.hash = "#CatalougeItemSec"
+                    window.setTimeout(() => {
+                        location.hash = "#CatalogeItemSec"
+                    }, 200)
                 })
             } else {
                 console.log(response);
@@ -210,7 +433,7 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head form__label">Your Catalouge Link</p>
-            <p class="catalouge__link__displayer catalqrLink">${location.protocol}//${location.host}/catalog/${nm}</p>
+            <p class="catalouge__link__displayer catalqrLink">${location.host}/catalog/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
             <button class="ygbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
@@ -246,6 +469,7 @@ prev.addEventListener("click", async () => {
     let compcolor = document.getElementById("companyColor");
     let compTheme = document.getElementById("compTheme");
     let compType = document.getElementById("compType");
+    let compHome = document.getElementById("compHomeDel");
 
     updateRestroBtn.addEventListener("click", async (e) => {
         if (resName.value < 1 || resName.value == "" || resName.value == null) {
@@ -281,7 +505,8 @@ prev.addEventListener("click", async () => {
                     contact: compcontact.value,
                     theme: compTheme.value,
                     themecolor: compcolor.value,
-                    compType: compType.value
+                    compType: compType.value,
+                    homedelivery: compHome.checked
                 })
             }).then((response) => {
                 load.classList.add("hidden");
@@ -340,6 +565,354 @@ prev.addEventListener("click", async () => {
 
     }
     else {
-        console.log("Hola from Porti")
+        return;
     }
 })();
+
+(function () {
+    let banerInfo = document.getElementById("catalogbannerInfo");
+    let discountpercent = document.getElementById("discountpercent");
+    let banerBtn = document.getElementById("catalogbannerbtn");
+    let deletebanner = document.getElementById("catalogdeletebanner");
+    let bannerId = document.getElementById("catalogbannerId").innerText;
+
+    banerBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (banerInfo.value == "") {
+            return false;
+        }
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/catalogbanner`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    bannerInfo: banerInfo.value,
+                    discountpercent: discountpercent.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Banner Created Successfully :)");
+                    banerInfo.value = "";
+                    discountpercent.value = "";
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000)
+                } else {
+                    console.log(response);
+                    errorAlert("Creation error, You Can't Have more than one banner!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    deletebanner.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/catalogbanner/${bannerId}`
+            await fetch(endpoint, {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Banner Has been Deleted !!!");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000)
+                } else {
+                    console.log(response);
+                    errorAlert("Deletion error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
+    const socket = io();
+
+    let menuMsgSec = document.querySelector(".menu__message__secetion");
+    let dummybtn = document.querySelector(".menu__messages__btn");
+    let curcatid = document.querySelector(".curcatid");
+    let openMsgBod = document.querySelector(".menu__messages__btn");
+    let cancelMsgBod = document.querySelector(".cancel__msg__sec");
+    let dot = document.querySelector(".new__menu__msg");
+
+    let alrt = document.getElementById("catmsgalert");
+
+    openMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.remove("hidden");
+        dummybtn.classList.add("hidden");
+        dot.classList.add("hidden");
+        getAllCatMsg();
+    })
+
+    socket.on("catorders", (catid) => {
+        if (curcatid.innerText == catid) {
+            getAllCatMsg();
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+    cancelMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.add("hidden");
+        dummybtn.classList.remove("hidden");
+        let dotnoti = document.querySelector(".dotnoti");
+        if (dotnoti) {
+            dot.classList.remove("hidden");
+        }
+        else {
+            dot.classList.add("hidden");
+        }
+    })
+})();
+
+async function getAllCatMsg() {
+    let curcatid = document.querySelector(".curcatid").innerText;
+    let menuMsgBod = document.querySelector(".menu__message__bod__prev");
+
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+        menuMsgBod.innerHTML = "";
+        const endpoint = `/api/v1/message/catOrders/${curcatid}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                let res = response.json();
+                res.then((item) => {
+                    let usrorders = item.comorders
+                    usrorders.forEach(el => {
+                        if (el.orderInfo) {
+                            menuMsgBod.innerHTML +=
+                                `
+                                <div class="menu__msg__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet" id="${el.name}">${el.name}</p>
+                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                    </div>
+                                    <p class="usersmalltag" id="${el.total}">${el.total}</p>
+                                    <p class="hidden" id="${el.address}"></p>
+                                    <p class="hidden" id="${el.phn_no}"></p>
+                                    <p class="hidden msgid" id="${el._id}"></p>
+                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
+                                    <p class="hidden" id="${el.company}"></p>
+                                </div>
+                            `
+                        }
+                        else {
+                            menuMsgBod.innerHTML +=
+                                `
+                                <div class="menu__msg__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet" id="${el.name}">${el.name}</p>
+                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                        <p class="dotnoti"></p>
+                                    </div>
+                                    <p class="usersmalltag" id="${el.total}">${el.total}</p>
+                                    <p class="hidden" id="${el.address}"></p>
+                                    <p class="hidden" id="${el.phn_no}"></p>
+                                    <p class="hidden msgid" id="${el._id}"></p>
+                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
+                                    <p class="hidden" id="${el.company}"></p>
+                                </div>
+                            `
+                        }
+                    })
+
+                    let msgTab = document.querySelectorAll(".menu__msg__table__list");
+                    let msgRev = document.querySelector(".menu__reveived__msg");
+                    let tablePlace = document.querySelector(".tablename");
+                    let msgRevbod = document.querySelector(".menu__reveived__msg__bod");
+                    let cancelmsgtab = document.querySelector(".cancel__reveived__msg");
+                    let msgmidsec = document.querySelector(".menu__message__mid__sec");
+
+                    cancelmsgtab.addEventListener("click", () => {
+                        msgRev.classList.add("hidden");
+                        msgmidsec.classList.remove("hidden");
+                    })
+
+                    msgTab.forEach(item => {
+                        item.addEventListener("click", () => {
+                            let msg = item.childNodes[1].childNodes[3].id;
+                            let usr = item.childNodes[1].childNodes[1].id;
+                            let total = item.childNodes[3].id;
+                            let add = item.childNodes[5].id;
+                            let phn = item.childNodes[7].id;
+                            let mid = item.childNodes[9].id;
+                            let ordInfo = item.childNodes[11].id;
+                            let companyID = item.childNodes[13].id;
+                            msgmidsec.classList.add("hidden");
+                            msgRev.classList.remove("hidden");
+                            tablePlace.innerText = usr;
+                            if (ordInfo !== "undefined") {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                            <p class="rdorng">Total Order Price : ${total}</p>
+                                            <p class="ordermsg">${msg}</p>
+                                            <p>Address : </p>
+                                            <p class="ordermsg">${add}</p>
+                                            <p>Phone No : </p>
+                                            <p class="ordermsg">${phn}</p>
+                                            <div class="grp__button hidden">
+                                                <button class="confirmord ordbtn">Confirm</button>
+                                                <button class="cancelord ordbtn">Cancel</button>
+                                            </div>
+                                            <p class="rdorng">${ordInfo}</p>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                            <p class="rdorng">Order Total : ${total} </p>
+                                            <p class="ordermsg">${msg}</p>
+                                            <p>Address : </p>
+                                            <p class="ordermsg">${add}</p>
+                                            <p>Phone No : </p>
+                                            <p class="ordermsg">${phn}</p>
+                                            <div class="grp__button">
+                                                <button class="confirmord ordbtn">Confirm</button>
+                                                <button class="cancelord ordbtn">Cancel</button>
+                                            </div>
+                                        </div>
+                                    `
+                            }
+                            let confirmord = document.querySelector(".confirmord");
+                            let cancelord = document.querySelector(".cancelord");
+                            let grpbtn = document.querySelector(".grp__button");
+                            const socket = io();
+
+                            confirmord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                itemorderConfirmed(grpbtn, mid);
+                                socket.emit("catorderreply", companyID, usr);
+                                menuMsgBod.innerHTML = "";
+                                getAllCatMsg();
+                            })
+
+                            cancelord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                itemorderCanceled(grpbtn, mid);
+                                socket.emit("catorderreply", companyID, usr);
+                                menuMsgBod.innerHTML = "";
+                                getAllCatMsg();
+                            })
+                        })
+                    })
+                })
+            } else {
+                console.log(response);
+                errorAlert("Fetching Data Failure!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function itemorderConfirmed(val, usr) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/message/itemOrderById/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                orderInfo: "confirmed"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("You Accepted a Order :)");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Order Accepted</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Order Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Creation error, You Can't Have more than one banner!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function itemorderCanceled(val, usr) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/message/itemOrderById/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                orderInfo: "canceled"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            console.log(response);
+            if (response.status === 200) {
+                successAlert("You cancelled a order :(");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Order Cancelled</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Order Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Creation error, You Can't Have more than one banner!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}

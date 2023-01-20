@@ -54,13 +54,24 @@
                             let restro = items.restro;
                             if (profiles) {
                                 profiles.forEach(el => {
-                                    subItems.innerHTML += `<div class="search__results">
-                                                                <a class="anc" href="/toprofile/${el.user._id}/portfolio">
-                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />
-                                                                    ${el.name}
-                                                                </a> 
-                                                            </div>   
-                                        `
+                                    if (el.user.photo) {
+                                        subItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/portfolio">
+                                                                        <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />
+                                                                        ${el.name}
+                                                                    </a> 
+                                                                </div>   
+                                            `
+                                    }
+                                    else {
+                                        subItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/portfolio">
+                                                                        <img class="profPic satProf" src="/images/bighitman.png", alt="hit__pic", title=${el.name} />
+                                                                        ${el.name}
+                                                                    </a> 
+                                                                </div>   
+                                            `
+                                    }
                                 });
                                 if (profiles.length == 0) {
                                     subItems.innerHTML += `
@@ -69,14 +80,26 @@
                             }
                             if (restro) {
                                 restro.forEach(el => {
-                                    menuItems.innerHTML += `<div class="search__results">
-                                                                <a class="anc" href="/toprofile/${el.user._id}/restro">
-                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />
-                                                                    ${el.name}
-                                                                </a>    
-                                                            </div>
-                                    
-                                    `
+                                    if (el.user.photo) {
+                                        menuItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/restro">
+                                                                        <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />
+                                                                        ${el.name}
+                                                                    </a>    
+                                                                </div>
+                                        
+                                        `
+                                    }
+                                    else {
+                                        menuItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/restro">
+                                                                        <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />
+                                                                        ${el.name}
+                                                                    </a>    
+                                                                </div>
+                                        
+                                        `
+                                    }
                                 });
                                 if (restro.length == 0) {
                                     menuItems.innerHTML += `
@@ -87,13 +110,24 @@
                             }
                             if (company) {
                                 company.forEach(el => {
-                                    compItems.innerHTML += `<div class="search__results">
-                                                                <a class="anc" href="/toprofile/${el.user._id}/company">
-                                                                    <img class="profPic satProf" src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=${el.name} />   
-                                                                    ${el.name} 
-                                                                </a>
-                                                            </div>
-                                    `
+                                    if (el.user.photo) {
+                                        compItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/company">
+                                                                        <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />   
+                                                                        ${el.name} 
+                                                                    </a>
+                                                                </div>
+                                        `
+                                    }
+                                    else {
+                                        compItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/toprofile/${el.user._id}/company">
+                                                                        <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />   
+                                                                        ${el.name} 
+                                                                    </a>
+                                                                </div>
+                                        `
+                                    }
                                 });
                                 if (company.length == 0) {
                                     compItems.innerHTML += `

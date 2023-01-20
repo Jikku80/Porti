@@ -22,19 +22,14 @@ exports.inviFirst = catchAsync(async (req, res, next) => {
                     invite
                 })
                 break;
+            case "5e334d18837e9d8249e70b891069884828f06b91":
+                res.status(200).render('invite/thirdInvite', {
+                    title: `${invite.fname}`,
+                    invite
+                })
+                break;
             default:
                 res.status(404).render('404.pug')
         }
     })
 })
-
-// exports.inviSecond = catchAsync(async (req, res, next) => {
-//     const invi_id = atob(req.params.id)
-//     await Invite.findById(invi_id).populate('user').then(invite => {
-
-//         res.status(200).render('invite/secondInvite', {
-//             title: `${invite.fname}`,
-//             invite
-//         })
-//     })
-// })

@@ -3,7 +3,7 @@ extends base
 block content
     h1.loader
         .bink
-            img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
             span.portDet Por
             span.grn t
             span.nocaps.portDet i
@@ -136,7 +136,7 @@ block content
                                     img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                     p.portDet= item.name
                         .un_layout
-                            img(src="https://portiblobstorage.blob.core.windows.net/layoutimages/layout5.png", loading="lazy", alt="layout5")
+                            img(src="/images/layout5.png", loading="lazy", alt="layout5")
                             p AT Layout (you can upload upto 20 images)
                     .layout__main#lockedItems
                         each item in theme
@@ -166,7 +166,7 @@ block content
                                         p.layout__name.portDet(id=`${item.name}`)= item.name
                         #layout5.unl
                             .un_layout_log
-                                img(src="https://portiblobstorage.blob.core.windows.net/layoutimages/layout5.png", loading="lazy", alt="layout5")
+                                img(src="/images/layout5.png", loading="lazy", alt="layout5")
                                 p AT Layout (you can upload upto 20 images)
 
                     .layout__main#lockedItems

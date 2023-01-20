@@ -5,7 +5,7 @@ let portName = document.getElementById('user__nam').innerText;
 url.innerHTML = `
 <button id="openport" class="redbtn">My Portfolio</button>
 <p class="xsf">Share your portfolio with the link below</p>
-<p class="port_link nocaps">${location.protocol}://${location.host}/profile/${portName}</p>
+<p class="port_link nocaps">${location.host}/profile/${portName}</p>
 `
 
 openport = document.getElementById("openport");
@@ -103,38 +103,6 @@ function downloadportiQRCode(file) {
     document.body.removeChild(qrimg);
 };
 
-// (async function () {
-//     try {
-//         let load = document.querySelector('.loader');
-//         load.classList.remove("hidden")
-//         const endpoint = `/urlShortner`
-//         await fetch((endpoint), {
-//             method: 'POST',
-//             headers: {
-//                 Accept: "application/json, text/plain, */*",
-//                 'Content-type': 'application/json',
-//             },
-//             body: JSON.stringify({
-//                 longurl: portiqrurl
-//             })
-//         }).then((response) => {
-//             load.classList.add("hidden");
-//             let res = response.json();
-//             if (response.status === 201) {
-//                 console.log(res);
-//             } else {
-//                 console.log(response);
-//                 errorAlert("Error")
-//             }
-//         })
-//     }
-//     catch (err) {
-//         console.log(err);
-//         errorAlert('Sorry! Something went wrong', err);
-//     };
-// })();
-
-
 (function () {
     let next = document.querySelector(".next__addimg");
     let prev = document.querySelector(".prev__addimg");
@@ -181,7 +149,7 @@ function downloadportiQRCode(file) {
                             subItems.innerHTML +=
                                 `
                                 <div class="port__images"> 
-                                    <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                    <img class="port_img imgFull" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                     <div class="group__btn">
                                         <button type="button" id="${el._id}" name="${el.name}" class="upPortImageBtn ygbtn">Update</button>
@@ -199,7 +167,9 @@ function downloadportiQRCode(file) {
                             next.classList.add("hidden");
                             subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
                         }
-                        window.location.hash = "#PrevSection"
+                        window.setTimeout(() => {
+                            window.location.hash = "#PrevSection"
+                        }, 200)
                         upImgItem();
                         delImgItem();
                     })
@@ -225,6 +195,7 @@ function downloadportiQRCode(file) {
             }
             next.classList.remove("hidden");
             subItems.innerHTML = "";
+            window.location.hash = "#"
             let fullpath = location.pathname
             let resultpath = fullpath.match("/myportfolio/(.*)")
             const endpoint = `/api/v1/portfolio/${resultpath[1]}/paginate/${pg}`
@@ -236,7 +207,6 @@ function downloadportiQRCode(file) {
                 headers: myHeaders
             }).then((response) => {
                 load.classList.add("hidden");
-                window.location.hash = "#"
                 let res = response.json();
                 if (response.status === 200) {
                     res.then(result => {
@@ -245,7 +215,7 @@ function downloadportiQRCode(file) {
                             subItems.innerHTML +=
                                 `
                                 <div class="port__images"> 
-                                    <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", alt="second_img", loading="lazy" srcset="" />
+                                    <img class="port_img imgFull" src="${el.addImage}", alt="second_img", loading="lazy" srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                     <div class="group__btn">
                                         <button type="button" id="${el._id}" name="${el.name}" class="upPortImageBtn ygbtn">Update</button>
@@ -254,7 +224,9 @@ function downloadportiQRCode(file) {
                                 </div>
                             `
                         });
-                        window.location.hash = "#PrevSection"
+                        window.setTimeout(() => {
+                            window.location.hash = "#PrevSection"
+                        }, 200)
                         upImgItem();
                         delImgItem();
                     })

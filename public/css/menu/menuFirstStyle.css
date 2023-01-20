@@ -109,8 +109,8 @@ html{
 
 .sub__items{
     display: flex;    
-    flex-direction: row-reverse;
-    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 }

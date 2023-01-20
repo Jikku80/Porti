@@ -4,7 +4,7 @@ block content
 
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -27,14 +27,34 @@ block content
                         label.form__label(for="upitemname") Food Name:
                         input#upitemname.form__input(type="text" value=menu.name required)
                     .form__bod
+                        label.form__label(for="upitemprice") Currency Sign: 
+                        input#upitemcurrency.form__input(type="text" value=menu.currency required)
+                    .form__bod
                         label.form__label(for="upitemprice") Price: 
-                        input#upitemprice.form__input(type="text" value=menu.price required)
+                        input#upitemprice.form__input(type="number" value=menu.price required)
                     .form__bod
                         label.form__label(for="upitemcat") Category: 
                         input#upitemcat.form__input(type="text" value=menu.category required)
                     .form__bod
                         label.form__label(for="upitemdetail") Detail (optional):
                         textarea#upitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
+                    if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                        .form__bod 
+                            label.form__label Apply Discount(optional) :
+                            if (menu.applydiscount === true)
+                                input#upitemdiscount.checkbox(type="checkbox" checked="checked")
+                            else
+                                input#upitemdiscount.checkbox(type="checkbox")
+                        .form__bod 
+                            label.form__label Available (optional) :
+                            if (menu.available === true)
+                                input#upitemavailable.checkbox(type="checkbox" checked="checked")
+                            else
+                                input#upitemavailable.checkbox(type="checkbox")
+                            p Unchecking it will show users, item is not available for today!!!
+                    else 
+                        #upcatalitemdiscount.hidden
+                        #upitemavailable.hidden
                     .group__btn
                         button#upItemBtn.smallbtn.ygbtn Update Item
                         a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel

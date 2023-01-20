@@ -2,7 +2,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
     return `
         <div class="form__head">
             <h1>${val}</h1>
-            <img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png" alt="cancel_img" class=${val0} />
+            <img src="/images/cancel.png" alt="cancel_img" class=${val0} />
         </div>
         <form class="comp__form__main">
             <div class="com__form">
@@ -11,6 +11,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         <label>Portfolio Name:</label>                    
                         <div class="port__info">
                             <p>Enter Your Real Name, Do not use made up or nickname</p>
+                            <p>Name field cannot be Empty!!!</p>
                         </div>
                     </div>
                     <div class="form__sec__cont">
@@ -241,6 +242,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                     <div class="form__first__cont">
                         <label>Email Address:</label>
                         <div class="port__info">
+                            <p>Email field cannot be Empty!!!</p>
                             <p>Provide your email address with requirements below</p>
                             <ul>
                                 <li>
@@ -305,7 +307,7 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                 </div>
                 <div class="port__accomp__cont hidden portForm">
                     <div class="form__first__cont">
-                        <label>Previous Accomplishments</label>
+                        <label>Previous Accomplishments or Experiences</label>
                         <div class="port__info">
                             <h3>If you dont know what to write ans these questions</h3>
                             <ul>

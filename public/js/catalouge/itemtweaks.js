@@ -20,16 +20,20 @@ async function getOneCatalougeItem() {
                     let item = result.data.data
                     catalougeCard.innerHTML =
                         `
-                            <img class="catalouge__card__img" src="${item.coverImage}" alt="catalouge__item__image">
+                            <img class="catalouge__card__img" src="/images/noimg.png" alt="catalouge__item__image">
                             <div class="catalouge__card__det">
                                 <h3 class="catalouge__card__head goldn">${item.name}</h3>
                                 <p class="catalouge__card__price goldn">${item.serialno}</p>
-                                <p class="catalouge__card__price goldn">${item.price}</p>
+                                <p class="catalouge__card__price goldn">${item.currency} ${item.price}</p>
                                 <p class="catalouge__card__cat goldn">${item.category}</p>
                                 <p class="catalouge__card__cat goldn">${item.subcategory}</p>
                                 <p class="catalouge__card__detail goldn">${item.detail}</p>
                             </div>
                             `
+                    if (item.coverImage) {
+                        let catalimgcard = document.querySelector(".catalouge__card__img");
+                        catalimgcard.src = item.coverImage;
+                    }
                 })
             } else {
                 console.log(response);
@@ -70,6 +74,11 @@ window.addEventListener("load", async () => {
     let cat = document.getElementById("upcatalitemcat");
     let subcat = document.getElementById("upcatalitemsubcat");
     let detail = document.getElementById("upcatalitemdetail");
+    let currency = document.getElementById("upcatalitemcurrency");
+    let disc = document.getElementById("upcatalitemdiscount");
+    let hot = document.getElementById("upcatalhotItem");
+    let stock = document.getElementById("upcatalStockQuantity");
+
     upItemBtn.addEventListener("click", async (e) => {
         if (name.value < 1 || name.value == "" || name.value == null) {
             return false;
@@ -97,7 +106,11 @@ window.addEventListener("load", async () => {
                     price: price.value,
                     category: cat.value,
                     subcategory: subcat.value,
-                    detail: detail.value
+                    detail: detail.value,
+                    currency: currency.value,
+                    applydiscount: disc.checked,
+                    hotItem: hot.checked,
+                    stockQuantity: stock.value
                 })
             }).then((response) => {
                 load.classList.add("hidden");

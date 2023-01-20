@@ -100,5 +100,7 @@ cancelCataloge.addEventListener("click", () => {
     inviBodC.classList.remove("hidden");
     menuBodC.classList.remove("hidden");
     catBodC.classList.remove("hidden");
-    location.hash = "#crtCataloge";
+    window.setTimeout(() => {
+        location.hash = "#crtCataloge";
+    }, 200)
 })

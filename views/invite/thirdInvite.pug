@@ -1,0 +1,39 @@
+extends baseinvi
+
+block content
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    .third__invi__sec 
+
+        .third__invi__card
+            .third__invi__border 
+                .third__invi__top-border
+                    img.corner(src="/images/corner.jpg")
+                    img.centre(src="/images/centr.png")
+                    img.corner__right(src="/images/corner.jpg")
+                .third__invi__half 
+                    h1.third__invi__head Invitation
+                    .eighth__invi__abt
+                        p= invite.about
+                .third__invi__sechalf
+                    .eighth__invi__bod__sub 
+                        h3= `${invite.fname} of `
+                            span.skin= invite.sname
+                    .eighth__invi__ven 
+                        h4= `Venue : ${invite.address}`
+                    .eighth__invi__dat 
+                        h4= `Date : ${invite.pdate}`
+                    .eighth__invi__tim 
+                        h4= `Time : ${invite.ptime}`
+                    .eighth__invi__ven 
+                        h4= `Contact : ${invite.phn_no}`
+                .third__invi__bottom-border
+                    img.corner-bottom(src="/images/corner.jpg")
+                    img.centre__bottom(src="/images/centr.png")
+                    img.corner__right-bottom(src="/images/corner.jpg")
+
+    script(src="/js/alert.js") 

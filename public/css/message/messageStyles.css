@@ -1,0 +1,206 @@
+body{
+    margin: 0;
+}
+
+.message__bod__sec {
+    background-color: rgb(14, 14, 14);
+    color: white;
+    height: 100vh;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.head{
+    margin:0;
+}
+
+.message__cont{
+    border: 1px solid gray;
+    height: 90vh;
+    border-radius: 1rem;
+    display: flex;
+}
+
+.message__user{
+    border-right: 1px solid gray;
+    width: 25%;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message__user__second__sec{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.message__user__name{
+    margin:0;
+    width: 100%;
+    text-align: center;
+}
+
+.message__msg{
+    width: 90%;
+    height: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message__user__small{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    width: 90%;
+    padding: 1%;
+    background-color: rgb(15, 15, 15);
+    cursor: pointer;
+    margin: 2%;
+    border-radius: 1rem;
+    border: 1px solid gray
+}
+
+.messageUserName{
+    width: 95%;
+}
+
+.msg__inpt__sec {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1%;
+}
+
+#messageback{
+    width: 70%;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    color: white;
+    padding: 2%;
+}
+
+#messagebackbtn{
+    width: 3vw;
+    height: 5vh;
+    cursor: pointer;
+}
+
+.dot{
+    width: .5rem;
+    height: .5rem;
+    border-radius: 8rem;
+    background-color: red;
+    display: flex;
+    align-items: flex-end;
+}
+
+.message__byuser__sec{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.sender__name{
+    color: teal;
+    margin: 0;
+}
+
+.me{
+    color: crimson;
+    margin: 0;
+}
+
+.timestamp{
+    font-size: 8px;
+    color: gray;
+    margin: 0;
+}
+
+.sender__msg{
+    margin: 0;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.loader{
+    background-color: rgb(0, 26, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant: small-caps;
+    scroll-behavior: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.bink{
+    animation: blink 1.5s infinite linear;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .message__user{
+        width: 45vw;
+    }
+    #messagebackbtn{
+        width: 7vw;
+        height: 5vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .message__cont{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .message__user {
+        width: 100%;
+        height: 40vh;
+        overflow-y: auto;
+        scrollbar-width: none;
+        border: none;
+    }
+
+    .message__msg{
+        width: 95%;
+        height: 40vh;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    #messagebackbtn{
+        width: 10vw;
+        height: 5vh;
+    }
+}
+
+@keyframes blink {
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}

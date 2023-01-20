@@ -1,0 +1,135 @@
+extends baseMenu 
+
+block content
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    .sec__menu__sec 
+        if (restro[0])
+            .sec__menu__usr__id.hidden= restro[0].user.id
+        else 
+            .sec__menu__usr__id.hidden
+        .resdetail(title="contact info") &#9743;
+        .restro__info.hidden
+            .restrodeatilmidsec
+                .res__detail__head 
+                    p Contact Us 
+                    img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
+                .restro__info__bod 
+                    p= restro[0].Address
+                    p= restro[0].phn_no
+        #thiscurrentrestroid.hidden= restro[0]._id
+        #thiscurrentrestrouser.hidden= restro[0].user.name
+        #thisusrid.hidden= user._id
+        .resorder(title="order") &#127869;
+        .resorderfill.hidden
+        audio#secmsgalert.hidden
+            source(src="/noti/msg.mp3")
+        .resorder__info.hidden 
+            .restromidsec
+                .res__detail__head 
+                    p Order 
+                    img.cancel__order.point(src="/images/cancel.png" alt="cancel__btn")
+                if (user)
+                    #gotoLogin.hidden
+                    .restro__info__bod
+                        form
+                            .form__cont__order
+                                label Tabel No :
+                                input#tableno(type="text", name="tableno", placeholder="rc11 Or Home Delivery")
+                                #uniqueusername.hidden= user.name
+                            .form__item__display__sec 
+                                
+                            .form__cont__order
+                                textarea#resordermsg.hidden(type="text", name="resordermsg", placeholder="1 Chicken Pizza") 
+                                input#uniquerestroname.hidden(type="text" value=`${restro[0]._id}`)
+                            if (restro[0].homedelivery === true)
+                                p.hminfo If Home Delivery click 
+                                    span#showHomeDelOpt Home Delivery
+                                .showhomesec.hidden
+                                    .form__cont__order 
+                                        label Address :
+                                        input#resordadd(type="text", placeholder="your address")
+                                    .form__cont__order 
+                                        label Phone Number :
+                                        input#resordphn(type="number", placeholder="976456132498")
+                            else 
+                                .showhomesec.hidden
+                                input#resordadd.hidden 
+                                input#resordphn.hidden
+                                #showHomeDelOpt.hidden
+                            .form__cont__order
+                                button#sendorderreq.lonbtn Order
+ 
+                        h3 Your Order
+                        p.smallfnt Your last 10 orders
+                        .foods__order__his
+
+                else 
+                    .restro__info__bod 
+                        h4 You are Not Logged In Please Log in to Order Food 
+                        .lonbtn#gotoLogin Login || SignUp
+                        #sendorderreq.hidden 
+                        #uniquerestroname.hidden
+                        #uniqueusername.hidden
+                        #resordermsg.hidden
+                        .form__item__display__sec.hidden 
+                        .foods__order__his.hidden
+        .sec__menu__banner 
+            if (banner[0])
+                p.bannerinfo= banner[0].bannerInfo
+                img.removebanner.point(src="/images/cancel.png", alt="cancel__btn")
+            else 
+                .sec__menu__banner.hidden
+                .removebanner.hidden 
+        .sec__menu__cover 
+            h1.resname= `${restro[0].name} Menu`
+            if (restro[0].coverImage)
+                img(src=`${restro[0].coverImage}`, alt="cover__img")
+            else
+                img(src="/images/menubacksmall.jpg", alt="cover__img")
+            .sec__menu__cate 
+                .sec__menu__cate__first
+                    if (allmenus.length >= "3")
+                        p.sec__menu__cate__names.point= allmenus[0]
+                        p.sec__menu__cate__names.point= allmenus[1]
+                        p.sec__menu__cate__names.point= allmenus[2]
+                    else 
+                        p.sec__menu__cate__names.point Add Item
+                        p.sec__menu__cate__names.point Add Item
+                        p.sec__menu__cate__names.point Add Item
+                p.viewallcate.point View All 
+        .sec__menu__viewall.hidden 
+            .sec__menu__viewall__head
+                p All Food Types 
+                img.cancel__Cat(src="/images/cancel.png", alt="cancel__btn")
+            .sec__menu__viewall__bod
+                if (allmenus[0])
+                    each menu in allmenus 
+                        p.sec__menu__cate__names.point= menu
+                else 
+                    p.sec__menu__cate__names.point Add Item
+        .sec__menu__allfood.hidden 
+            .sec__menu__allfood__head 
+            
+            .sec__menu__allfood__bod 
+
+        if (banner[0])
+            if (banner[0].bannerpercent || banner[0].discountpercent !== null)
+                p.bannerpercent.hidden= banner[0].discountpercent
+            else
+                .bannerpercent.hidden
+        else 
+            .bannerpercent.hidden
+        .sec__item__sec.hidden
+
+
+            
+    script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/menu/secmenu.js") 
+
+

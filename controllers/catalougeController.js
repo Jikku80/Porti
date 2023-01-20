@@ -5,6 +5,8 @@ const Catalouge = require('./../models/catalougeModel');
 const Company = require('./../models/companyModel');
 const Theme = require('./../models/themeModel');
 const User = require('./../models/userModel');
+const CatalogBanner = require('./../models/catalogBannerModel');
+const ComComment = require('./../models/comComment');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -21,38 +23,66 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createCatalouge = catchAsync(async (req, res, next) => {
-    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-    if (!accountName) throw Error('Azure Storage accountName not found');
-    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
-
-    const containerName = 'catalogimages';
-
-    const containerClient = blobServiceClient.getContainerClient(containerName);
     let form = new formidable.IncomingForm();
 
     form.parse(req, async function (err, fields, files) {
+        let catalogdiscount;
+        if (fields.catalogdiscount == "on") {
+            catalogdiscount = true
+        } else {
+            catalogdiscount = false
+        }
+        if (files.catcoverimage.originalFilename == "") {
+            await Catalouge.create({
+                name: fields.catalogname,
+                user: req.user.id,
+                serialno: fields.catalogserialno,
+                price: fields.catalogprice,
+                detail: fields.catalogdetail,
+                category: fields.catalogcategory,
+                subcategory: fields.catalogsubcategory,
+                currency: fields.catalogcurrency,
+                applydiscount: catalogdiscount,
+                stockQuantity: fields.catalStockQuantity,
+                createdAt: Date.now()
+            });
 
-        const filePath = files.catcoverimage.filepath;
+            res.redirect(`/catalouge/${req.user.id}/additems`)
+            return;
+        }
+        else {
+            const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+            if (!accountName) throw Error('Azure Storage accountName not found');
+            const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-        const blobName = `${req.user.name}-catalogitemimages-${uuidv1()}.jpeg`;
-        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-        await blockBlobClient.uploadFile(filePath)
+            const containerName = 'catalogimages';
 
-        await Catalouge.create({
-            name: fields.catalogname,
-            user: req.user.id,
-            serialno: fields.catalogserialno,
-            price: fields.catalogprice,
-            detail: fields.catalogdetail,
-            category: fields.catalogcategory,
-            subcategory: fields.catalogsubcategory,
-            theme: fields.catalogtheme,
-            coverImage: blockBlobClient.url
-        });
+            const containerClient = blobServiceClient.getContainerClient(containerName);
 
-        res.redirect(`/catalouge/${req.user.id}/additems`)
+            const filePath = files.catcoverimage.filepath;
+
+            const blobName = `${req.user.name}-catalogitemimages-${uuidv1()}.jpeg`;
+            const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+            await blockBlobClient.uploadFile(filePath)
+
+            await Catalouge.create({
+                name: fields.catalogname,
+                user: req.user.id,
+                serialno: fields.catalogserialno,
+                currency: fields.catalogcurrency,
+                price: fields.catalogprice,
+                detail: fields.catalogdetail,
+                category: fields.catalogcategory,
+                subcategory: fields.catalogsubcategory,
+                applydiscount: catalogdiscount,
+                stockQuantity: fields.catalStockQuantity,
+                coverImage: blockBlobClient.url,
+                createdAt: Date.now()
+            });
+
+            res.redirect(`/catalouge/${req.user.id}/additems`)
+        }
     })
-
 })
 
 exports.updateCatalouge = factory.updateOne(Catalouge);
@@ -73,11 +103,14 @@ exports.delCatalouge = catchAsync(async (req, res, next) => {
 
 exports.itemTweaks = catchAsync(async (req, res) => {
     const id = req.params.id
+
+    const company = await Company.find({ user: req.user.id })
     await Catalouge.findOne({ _id: id }).populate('user').then(catalouge => {
 
         res.status(200).render('catalouge/tweaks', {
             title: 'Catalouge Detail',
-            catalouge
+            catalouge,
+            company
         })
     })
 })
@@ -157,19 +190,32 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
     const catalouges = await features.query
     const company = await Company.find({ user: user_id })
     const theme = await Theme.find({ themeCategory: "Cataloge" })
+    const banner = await CatalogBanner.find({ user: user_id })
+
     res.status(200).render('catalouge/additem', {
         title: 'Add Items To Catalouge',
         company,
         catalouges,
-        theme
+        theme,
+        banner
     })
 })
 
 exports.firstCatalouge = catchAsync(async (req, res, next) => {
     const user_name = req.params.user
     const usr = await User.find({ name: user_name });
-    const features = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate()
+    const features = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
     const catalouges = await features.query
+    const banner = await CatalogBanner.find({ user: usr[0]._id })
+    const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
+        const items = el.filter(item => {
+            if (item.hotItem === true) {
+                return item
+            }
+        })
+        return items
+    })
+
     await Company.find({ user: usr[0]._id }).populate('user').then(company => {
         let theme = company[0].theme
         switch (theme) {
@@ -180,6 +226,15 @@ exports.firstCatalouge = catchAsync(async (req, res, next) => {
                     company: company[0]
                 })
                 break;
+            case "e8d4bd5004021ea34a450c4482093ab20853fe68":
+                res.status(200).render('catalouge/secondCatalouge', {
+                    title: `${company[0].name}`,
+                    catalouges,
+                    company: company[0],
+                    banner,
+                    hotItems
+                })
+                break;
             default:
                 res.status(404).render('404.pug')
         }
@@ -187,9 +242,43 @@ exports.firstCatalouge = catchAsync(async (req, res, next) => {
 
 })
 
+exports.listSimilarItems = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id;
+    let cate = req.params.category;
+    let itemId = req.params.itemId;
+
+    const similarItems = await Catalouge.find({ user: user_id }).then(arr => {
+
+        const items = arr.filter(item => {
+            if (item.id !== itemId && item.category == cate) {
+                return item
+            }
+        })
+        return items
+    })
+
+    limitedItems = similarItems.slice(0, 8)
+
+    res.status(200).json(limitedItems)
+})
+
 exports.lookupCatalouge = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
-    await Catalouge.find({ user: user_id }).then((items) => {
+    const searchLowNam = req.params.search
+    await Catalouge.find({ user: user_id }).then((data) => {
+        const items = data.filter(el => {
+            let name = el.name
+            let cat = el.category
+            let subcat = el.subcategory
+            let seno = el.serialno
+            let lowCat = cat.toLowerCase();
+            let lowSeno = seno.toLowerCase();
+            let lowSubCat = subcat.toLowerCase();
+            let lowNam = name.toLowerCase();
+            if (lowNam == searchLowNam || lowCat == searchLowNam || lowSubCat == searchLowNam || lowSeno == searchLowNam) {
+                return el;
+            }
+        })
         res.status(200).json(items)
     })
 })
@@ -241,7 +330,7 @@ exports.listBySubCategories = catchAsync(async (req, res, next) => {
 exports.paginateCatalouge = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const pg = req.params.count
-    const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const features = new APIFeatures(Catalouge.find({ user: user_id }), { limit: 12, page: pg }).paginate().srt();
     await features.query.then((items) => {
         res.status(200).json(items)
     })
@@ -259,7 +348,8 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         contact: req.body.contact,
         Address: req.body.Address,
         themecolor: req.body.themecolor,
-        theme: req.body.theme
+        theme: req.body.theme,
+        createdAt: Date.now()
     });
 
     res.status(201).json({
@@ -269,6 +359,47 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         }
     })
 })
+
+exports.newComment = catchAsync(async (req, res, next) => {
+
+    const comments = await ComComment.create({
+        name: req.body.name,
+        companyUserId: req.body.companyUserId,
+        productId: req.body.productId,
+        comment: req.body.comment,
+        createdAt: Date.now()
+    });
+
+    res.status(201).json({
+        status: 'success',
+        comments
+    })
+})
+
+exports.getLastComments = catchAsync(async (req, res, next) => {
+    const id = req.params.id;
+
+    const features = new APIFeatures(ComComment.find({ productId: id }), { limit: 12, page: req.query.page }).paginate().srt();
+    const comments = await features.query
+
+    res.status(200).json({
+        status: 'success',
+        comments
+    })
+})
+
+exports.deleteComment = catchAsync(async (req, res, next) => {
+    const doc = await ComComment.findByIdAndDelete(req.params.id);
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
 
 exports.updateCompany = catchAsync(async (req, res, next) => {
 
@@ -287,4 +418,31 @@ exports.updateCompany = catchAsync(async (req, res, next) => {
             company: updatedCompany
         }
     })
-})
+});
+
+exports.createCatalogBanner = catchAsync(async (req, res, next) => {
+
+    const banner = await CatalogBanner.create({
+        bannerInfo: req.body.bannerInfo,
+        discountpercent: req.body.discountpercent,
+        user: req.user.id
+    });
+
+    res.status(201).json({
+        status: 'success',
+        banner
+    })
+});
+
+exports.deleteCatalogBanner = catchAsync(async (req, res, next) => {
+    const doc = await CatalogBanner.findByIdAndDelete(req.params.id);
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+

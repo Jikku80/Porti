@@ -1,13 +1,15 @@
 extends baseinvi
+
 block content
     h1.loader
-        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
     .ini__invi__main 
         if (!invite.imgCover)
-            img.invi__cover(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png", alt="cover__img")
+            img.invi__cover(src="/images/bg.png", alt="cover__img")
         else 
             img.invi__cover(src=`${invite.imgCover}`, alt="cover__img")
         .ini__invi__bod

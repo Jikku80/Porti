@@ -6,8 +6,12 @@ const menuSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Name should be provided!']
     },
-    price: {
+    currency: {
         type: String,
+        trim: true
+    },
+    price: {
+        type: Number,
         trim: true,
         required: [true, 'Please provide Price to your item']
     },
@@ -19,6 +23,14 @@ const menuSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    applydiscount: {
+        type: Boolean,
+        default: false
+    },
+    available: {
+        type: Boolean,
+        default: true
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
@@ -28,24 +40,8 @@ const menuSchema = new mongoose.Schema({
         type: String
     },
     coverImage: String,
-    fontColor: {
-        type: String
-    },
-    headColor: {
-        type: String
-    },
-    secHeadColor: {
-        type: String
-    },
-    backColor: {
-        type: String
-    },
-    focusColor: {
-        type: String
-    },
-    fontFam: {
-        type: String
-    },
+    itemLike: [String],
+    itemDisLike: [String],
     createdAt: {
         type: Date,
         default: Date.now()

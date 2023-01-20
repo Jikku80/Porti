@@ -1,0 +1,198 @@
+.restro__stat__sec{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.restro__stat__bod{
+    width: 85%;
+}
+
+.stathead{
+    margin-left: 2%;
+}
+
+#getyear{
+    padding: 0;
+}
+
+.restro__thirtyday__graph, .restro__allorders__chart, .pie__per__deman{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart__back{
+    background-color: rgba(0, 0, 0, 0.438);
+    border-radius: 2rem;
+    padding: 1%;
+}
+
+#myChart{
+    width: 80vw !important;
+    height: 80vh !important;
+}
+
+.restro__graph__grp{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 4%;
+    background-color: rgba(0, 0, 0, 0.438);
+    border-radius: 2rem;
+    padding: 1%;
+    width: 80vw;
+}
+
+.grntag{
+    width: 100%;
+    padding: 1%;
+    border-radius: 2rem;
+    background-color: rgba(0, 0, 0, 0.849);
+    color: green;
+}
+
+.rdtag{
+    color: crimson;
+    background-color: rgba(0, 0, 0, 0.849);
+    width: 100%;
+    padding: 1%;
+    border-radius: 2rem;
+}
+
+#myBar, .bar{
+    width: 30vw !important;
+    height: 30vh !important;
+}
+
+#myPie, #todays__pie, .pie{
+    width: 25vw !important;
+    height: 25vw !important;
+}
+
+.txtcent{
+    text-align: center;
+}
+
+.restro__stat__btns{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.statbtn{
+    background-color: transparent;
+    border: 2px solid teal;
+    color: teal;
+    padding: 1%;
+    cursor: pointer;
+    margin: 2%;
+}
+
+.statbtn:hover{
+    background-color: teal;
+    color: white;
+}
+
+.restro__stat__month{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.res__stat__inpt{
+    display: flex;
+    justify-content: space-around;
+}
+
+#getyear{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid teal;
+    width: 50%;
+}
+
+#months{
+    background-color: transparent;
+    border: 1px solid teal;
+    color: teal;
+    cursor: pointer;
+}
+
+#getByMonth{
+    margin: 2%;
+}
+
+.restro__order__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.order__card{
+    background-color: antiquewhite;
+    color: black;
+    padding: 1%;
+    margin: 1%;
+    font-size: 16px;
+    width: fit-content;
+    border-radius: 2rem;
+}
+
+
+@media (min-width: 601px) and (max-width: 900px){
+
+    #myChart{
+        width: 80vw !important;
+        height: auto !important;
+    }
+    #myPie, #todays__pie, .pie{
+        width: 40vw !important;
+        height: 40vw !important;
+    }
+
+    #myBar, .bar{
+        width: 30vw !important;
+        height: 15vh !important;
+    }
+    .statbtn{
+        padding: 2%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    input, textarea{
+        font-size: 16px;
+    }
+    .restro__stat__bod{
+        width: 100%;
+    }
+    #myChart{
+        width: 90vw !important;
+        height: auto !important;
+    }
+
+    .restro__graph__grp{
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    #myPie, #todays__pie, .pie{
+        width: 60vw !important;
+        height: 60vw !important;
+        margin-bottom: 4%;
+    }
+
+    #myBar, .bar{
+        width: 80vw !important;
+        font-size: 16px !important;
+    }
+
+    .statbtn{
+        padding: 2%;
+    }
+}

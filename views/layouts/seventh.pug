@@ -1,0 +1,145 @@
+extends baselayout 
+
+block content
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i    
+    if (user)
+        if (user.id == portfolio.user.id)
+            .showeditbtn Edit Theme
+            .showEdit.hidden
+                .show__head 
+                    p Edit Theme
+                    img(src="/images/cancel.png" alt="cancel__btn").close__show.hidden 
+                .theme__edit
+                    #seventhid.hidden= portfolio.id
+                    form#seventhTheme
+                        h2 Edit Theme Preference
+                        .form__bod 
+                            label Background Color:
+                            input#sportBackColor(type="color" value="#ffffff")
+                        .form__bod
+                            label Font Color:
+                            input#sportFontColor(type="color" value="#808080")
+                        .form__bod 
+                            label Heading text Color:
+                            input#sportHeadColor(type="color" value="#DC143C")
+                        .form__bod 
+                            label Color Second:
+                            input#sportSecHeadColor(type="color" value="#000000")
+                        .form__bod 
+                            label Focus Color:
+                            input#sportFocusColor(type="color" value="#001f9c")
+                        .form__bod 
+                            label Font Family 
+                            select#sportFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                        .grp_seventh_btn
+                            button#changeseventhTheme.redbtn Update Theme
+                            button#defaultseventhTheme.redbtn Default Theme 
+        else 
+            .showeditbtn.hidden 
+            .showEdit.hidden 
+            .close__show.hidden
+            #seventhid.hidden
+            #changeseventhTheme.hidden 
+            #defaultseventhTheme.hidden
+    else    
+        .showeditbtn.hidden 
+        .showEdit.hidden
+        .close__show.hidden
+        #changeseventhTheme.hidden 
+        #defaultseventhTheme.hidden
+        #seventhid.hidden
+    .seventh__layout__body 
+        .lod.hidden
+        .fontColor.hidden= portfolio.fontColor 
+        .headColor.hidden= portfolio.headColor 
+        .secHeadColor.hidden= portfolio.secHeadColor
+        .backColor.hidden= portfolio.backColor 
+        .focusColor.hidden= portfolio.focusColor 
+        .fontFam.hidden= portfolio.fontFam
+        .seventh__sec 
+            .seventh__button
+                a.sev__btn(href="#seventhportfolio") View Portfolio
+            .seventh__firsthalf 
+                .seventh__coverimage 
+                    if (portfolio.imageCover)
+                        img.seventh__cover(src=`${portfolio.imageCover}`, alt="cover__pic")
+                    else 
+                        img.seventh__cover(src="/images/rbg.png", alt="cover__pic")
+                .seventh__about__sec#seventhportfolio.hidden
+                    h1.namefont= portfolio.name
+                    if (portfolio.about !== "")
+                        h3.headFont= `About ${portfolio.name}`
+                        pre.ansFont= portfolio.about 
+                    if (portfolio.what !== "")
+                        h3.headFont= `What ${portfolio.name} Do?`
+                        pre.ansFont= portfolio.what 
+                    if (portfolio.why !== "")
+                        h3.headFont= `Why ${portfolio.name} Do It?`
+                        pre.ansFont= portfolio.why
+                    if (portfolio.failure !== "")
+                        h3.headFont= `How ${portfolio.name} deals with Failure?`
+                        pre.ansFont= portfolio.failure
+                    if (portfolio.motivation !== "")
+                        h3.headFont= `How ${portfolio.name} stays motivated?`
+                        pre.ansFont= portfolio.motivation
+                    if (portfolio.msg !== "")
+                        h3.headFont= `${portfolio.name} Message`
+                        pre.ansFont= portfolio.msg
+                    if (portfolio.previous !== "" || portImage.length !== 0)
+                        h3.headFont Previous Accomplishment || Experiences
+                        pre.ansFont= portfolio.previous
+                    p.prof__user__id.hidden= portfolio.user._id
+                    .prev__cont
+                        if (portImage.length === 0)
+                            .prev__addimgSec.hidden 
+                            .next__addimgSec.hidden
+                        else
+                            .prev__cont__sub#imgCont
+                                each item in portImage
+                                    .port__images
+                                        img.port_img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                                        h3.first__head= item.name
+                            .paginate__addimg
+                                .group__delbtn
+                                    button.redbtn.prev__addimgSec Prev
+                                    button.redbtn.next__addimgSec Next
+                    if (portfolio.problem !== "")
+                        h3.headFont= `${portfolio.name} ran into a problem`
+                        pre.ansFont= portfolio.problem 
+                    if (portfolio.solution !== "")
+                        h3.headFont= `How ${portfolio.name} solved the problem?`
+                        pre.ansFont= portfolio.solution
+            .seventh__sechalf 
+                if (portfolio.fb != "")
+                    a(href=`${portfolio.fb}`)
+                        if (portfolio.user.photo)
+                            img.seven__pp(src=`${portfolio.user.photo}`, alt="user__pic")
+                        else
+                            img.seventh__img(src="/images/bighitman.png", alt="user__pic")
+                else
+                    if (portfolio.user.photo)
+                        img.seven__pp(src=`${portfolio.user.photo}`, alt="user__pic")
+                    else
+                        img.seventh__img(src="/images/bighitman.png", alt="user__pic")
+                .seventh__contact
+                    if (portfolio.showNo === true && portfolio.phn_no !== "")
+                        p.mkbold.headFont &#128222; : 
+                            span= portfolio.phn_no 
+                    p.mkbold.headFont &#128231; : 
+                        span= portfolio.email
+                    if (portfolio.location)
+                        p.mkbold.headFont &#127968; : 
+                            span= portfolio.location
+
+    script(src="/js/alert.js") 
+    script(src="/js/layouts/seventh.js") 

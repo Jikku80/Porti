@@ -1,3 +1,6 @@
+.main__bod__sec{
+    background-color: white;
+}
 .main__cont{
     padding: 2%;
     color: chocolate;
@@ -56,11 +59,8 @@
 }
 
 .contact__bod, .about__bod{
-    height: 100vh;
     width: 80vw;
     font-size: 16px;
-    overflow-y: auto;
-    scrollbar-width: thin;
 }
 
 .contact__bod h2, .about__bod{

@@ -177,7 +177,7 @@ html{
   color: green;
 }
 
-.login__form, .fg__form, #reset__form, #upInfo, #upPass, #upAccImg{
+.login__form, .fg__form, #reset__form, #upInfo, #upPass, #upAccImg, .form__acc__dp{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -185,6 +185,12 @@ html{
 
 #upInfo, #upAccImg{
   padding: 1%;
+}
+
+.btnpad{
+  width: fit-content;
+  padding: 4% !important;
+  margin: 4% !important;
 }
 
 .login__form{
@@ -538,13 +544,14 @@ html{
   color: white;
 }
 
-.form__cont textarea, .form__cont input, .portForm textarea, .portForm input{
+.form__cont textarea, .form__cont input{
   background-color: transparent;
   color: white;
   padding: 1%;
   border: 2px solid crimson;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
+  width: 18vw;
 }
 
 .inpt__disable{
@@ -558,7 +565,7 @@ html{
   width: 18vw;
 }
 
-.portForm textarea{
+.portForm textarea, .form__cont textarea{
   height: 10vh !important;
 }
 
@@ -642,28 +649,21 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
-input[type='file']{
-  background-color: transparent;
-  border: none;
-  width: 25%;
-  color: white;
-  font-size:16px;
-  font-family: monospace;
+input[type=file]{
+  border: none !important;
   cursor: pointer;
-  background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/upload.png');
+}
+
+input::file-selector-button, ::-webkit-file-upload-button{
+
+  background-image: url("/images/upload.png");
   background-repeat: no-repeat;
   background-size: contain;
-  padding: 1%;
-  padding-left: 50px;
-}
-
-input[type='file']:hover{
-  filter: grayscale(1.5);
-  color: gray;
-}
-
-input::file-selector-button{
-  display: none;
+  background-color: transparent;
+  height: 5vh;
+  width: fit-content;
+  border: none;
+  color: transparent;
 }
 
 .checkbox{
@@ -673,11 +673,6 @@ input::file-selector-button{
   height: 5vh;
   background: transparent;
 }
-
-::-webkit-file-upload-button{
-  display: none;
-}
-
 
 .redbtn{
   border: 2px solid crimson;
@@ -909,7 +904,8 @@ input::file-selector-button{
   text-align: center;
   width: fit-content;
   border-radius: 2rem;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.555);
+  font-family: Tourney;
+  /* text-shadow: 2px 2px rgba(0, 0, 0, 0.555); */
 }
 
 .gGroup{
@@ -958,6 +954,8 @@ input::file-selector-button{
   flex-direction: column;
   /* background-color: red; */
   margin-right: 1%;
+  justify-content: center;
+  align-items: center;
 }
 
 .search__box{
@@ -992,6 +990,7 @@ input::file-selector-button{
 .search__groups{
   animation: shine 4s ease-in-out forwards infinite;
   padding: 2%;
+  width: 70%;
 }
 
 .res{
@@ -1007,7 +1006,7 @@ input::file-selector-button{
 .search__results a{
   color: goldenrod;
   text-decoration: none;
-  font-size: 2em;
+  font-size: 1.5em;
   display: flex;
   align-items: center;
   animation: shine 4s ease-in-out forwards infinite;
@@ -1105,7 +1104,7 @@ input::file-selector-button{
     width: 15vw;
   }
   .comp__form{
-    width: 75%;
+    width: 92%;
   }
   .form__sub input{
     height: 2.5rem;
@@ -1136,6 +1135,10 @@ input::file-selector-button{
 
     .un_layout img, .un_layout_log img{
       height: 25rem;
+    }
+
+    #upPic{
+      height: fit-content;
     }
 
     .invi__grp{
@@ -1169,6 +1172,9 @@ input::file-selector-button{
 
 
 @media screen and (max-width: 600px){
+    input, select, textarea{
+      font-size: 16px !important;
+    }
   .term__main{
     width: 80%;
   }
@@ -1217,19 +1223,36 @@ input::file-selector-button{
 
   .comp__form{
     padding: 4%;
-    width: 80%;
+    width: 88%;
+  }
+  .form__cont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
   }
   .form__sub input{
     height: auto;
   }
   .form__cont label, .portForm label{
     font-size: 1.5rem;
-    width: 40%;
+    width: fit-content;
   }
 
   .form__cont textarea, .form__cont input, .portForm textarea, .portForm input{
     width: 70vw;
     padding: 3%;
+  }
+
+  .form__btn{
+    display: flex;
+    padding: 2vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .redbtn{
+    padding: 2vh;
   }
 
   .small__nav{
@@ -1282,8 +1305,8 @@ input::file-selector-button{
     padding: 4%;
   }
 
-  input[type='file']{
-    width: 50%;
+  #upAccImg{
+    width: 100%;
   }
 
   .search__body{

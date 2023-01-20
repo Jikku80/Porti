@@ -4,7 +4,7 @@ block content
 
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -21,6 +21,8 @@ block content
             #updateResBtn.hidden
             #qrcode
             .whole__menu__sec.hidden
+            .discountpercen.hidden
+            .menu__messages__btn.hidden
             .confirm__pg
                 h1.td You have not created a restaurant! Create and come back
                     a.lbtn(href="/porti#crtMenu") Create Restaurante
@@ -32,36 +34,24 @@ block content
                 .menu__section
                     if (menus.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Menu, Add Few Items!
-                    #item__form
-                        .itemform__head 
-                            h2.form__label Add Items To Menu
-                            h2
-                                a.form__label(href="#openMenu") Menu Link
-                        form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
-                            .form__bod
-                                label.form__label Food Name:
-                                input#itemname.form__input(type="text"  name="menuname" required placeholder="Chicken Burger")
-                            .form__bod
-                                label.form__label Price: 
-                                input#itemprice.form__input(type="text" name="menuprice" required placeholder="Rs. 150")
-                            .form__bod
-                                label.form__label Category: 
-                                input#itemcat.form__input(type="text", name="menucategory" required placeholder="Burger")
-                            .form__bod
-                                label.form__label Detail (optional):
-                                textarea#itemdetail.form__input(rows="4" cols="50" name="menudetail" placeholder="You can Describe about your food only if you want to, this field is optional...")
-                            .form__bod.file_part
-                                label.form__label(for="coverimage") Food Image:
-                                input#coverimage.form__input(type="file" name="menuimage" accept="image/*"  required)
-                            button#addItemBtn.blackbtn Add Item
-                    .your__item__sec#foodItemSec
-                        h2.items__head Your Items 
-                        p.currentid.hidden= user._id
-                        .sub__item__bod
-                            .sub__items.sec__items
-                            .paginate 
-                                button.prev Previous
-                                button.next.hidden Next
+                    
+                    .menu__messages__btn &#127869; 
+                    .new__menu__msg.hidden
+                    .curressid.hidden= restro[0]._id
+                    audio#msgalert.hidden
+                        source(src="/noti/msg.mp3")
+                    .menu__message__secetion.hidden
+                        .menu__message__mid__sec
+                            .menu__message__head 
+                                h3 Messages (Last 50 Orders Made)
+                                img.cancel__msg__sec.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__message__bod
+                            .menu__message__bod__prev
+                        .menu__reveived__msg.hidden
+                            .menu__message__head 
+                                h3.tablename 
+                                img.cancel__reveived__msg.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__reveived__msg__bod
                     .share__menu 
                         h2.form__label Share your menu 
                         p.uname__menu.hidden= user.name
@@ -69,6 +59,56 @@ block content
 
                     .qrcode__menu 
                         #qrcode 
+                    #item__form
+                        .itemform__head 
+                            h2.form__label Add Items To Menu
+                            a(href=`/menu/${restro[0]._id}/restrostat`) 
+                                h2 Restaurant Statistics
+                        form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
+                            .form__bod
+                                label.form__label Food Name:
+                                input#itemname.form__input(type="text"  name="menuname" required placeholder="Chicken Burger")
+                            .form__bod
+                                label.form__label Currency Sign: 
+                                if (menus[0])
+                                    input#itemcurrency.form__input(type="text" name="menucurrency" required value=menus[0].currency)
+                                else
+                                    input#itemcurrency.form__input(type="text" name="menucurrency" required placeholder="$ or Rs. or £")
+                            .form__bod
+                                label.form__label Price: 
+                                input#itemprice.form__input(type="number" name="menuprice" required placeholder="150")
+                            .form__bod
+                                label.form__label Category: 
+                                input#itemcat.form__input(type="text", name="menucategory" required placeholder="Burger")
+                            .form__bod
+                                label.form__label Detail (optional):
+                                textarea#itemdetail.form__input(rows="4" cols="50" name="menudetail" placeholder="You can Describe about your food only if you want to, this field is optional...")
+                            if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                                .form__bod 
+                                    label.form__label Apply Discount(optional):
+                                    input#itemdiscount.checkbox(type="checkbox" name="menudiscount")
+                            else 
+                                #upcatalitemdiscount.hidden
+                            .form__bod.file_part
+                                label.form__label(for="coverimage") Food Image:
+                                input#coverimage.form__input(type="file" name="menuimage" accept="image/*")
+                            button#addItemBtn.blackbtn Add Item
+                    .your__item__sec#foodItemSec
+                        h2.items__head Your Items 
+                        p.currentid.hidden= user._id
+                        if (banner[0])
+                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                p.discountpercen.hidden= banner[0].discountpercent
+                            else 
+                                p.discountpercen.hidden
+                        else 
+                            p.discountpercen.hidden
+                        .sub__item__bod
+                            .sub__items.sec__items
+                            .paginate 
+                                button.prev Previous
+                                button.next.hidden Next
+                    
                     .itemform__head 
                         h2.form__label Update Restaurant Detail
                     form#upRestro.upItem
@@ -87,6 +127,13 @@ block content
                         .form__bod
                             label.form__label Contact: 
                             input#resContact.form__input(type="number", value=restro[0].phn_no)
+                        .form__bod
+                            label.form__label Home Delivery:
+                            if (restro[0].homedelivery === true) 
+                                input#reshomedel.checkbox(type="checkbox", checked="checked")
+                            else 
+                                input#reshomedel.checkbox(type="checkbox")
+                            p Checking the box will update order form so people can add their personal details
                         .form__bod 
                             label.form__label Change Theme (optional):
                             select#menuThemes
@@ -100,12 +147,54 @@ block content
                         else 
                             p.restro__id.hidden
                         button#updateResBtn.blackbtn Update Restaurant
+                    form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem
+                        .form__bod.file_part
+                        label.form__label(for="upcoverimage") Update Restaurant Cover Image
+                        input.form__input(type="file" accept="image/*" name="upmenuimage" required)
+                        button.blackbtn Update Cover Image 
+                    if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                        .createBanner
+                            .itemform__head 
+                                h2.form__label Create A Banner
+                            form.upItem
+                                .form__bod 
+                                    label.form__label Banner Information 
+                                    if (!banner [0])
+                                        textarea.form__input#bannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
+                                    else 
+                                        textarea.form__input#bannerInfo(type="text" placeholder="You Can only have one Banner at a time" disabled)
+                                    label.form__label Discount Percentage(optional)
+                                    if (!banner[0])
+                                        input.form__input#dscountpercent(type="number" placeholder="50 (you dont have to use % sign)")
+                                    else 
+                                        input.form__input#dscountpercent(type="number" placeholder="You Can only have one Banner at a time" disabled)
+                                button#bannerbtn.blackbtn Create
+                            if (banner[0])
+                                .banner__sec 
+                                    h2= banner[0].bannerInfo
+                                    p#bannerId.hidden= banner[0]._id
+                                    if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                        h2= `${banner[0].discountpercent}%`
+                                        p You will have to check apply discount to items, to use it in your product items
+                                    btn#deletebanner.blackbtn Delete
+                            else 
+                                .banner__sec 
+                                    h1 No Banner
+                                    #deletebanner.hidden
+                                    #bannerId.hidden
+                    else 
+                        #bannerbtn.hidden 
+                        #dscountpercent.hidden
+                        #bannerInfo.hidden 
+                        #bannerId.hidden 
+                        #deletebanner.hidden
+                        .bannerresid.hidden
                 include ../_footer
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !
             a(href="/login") Sign In
 
-    //- script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
     script(src="/js/menu/additem.js") 
     script(src="/js/qr.js")

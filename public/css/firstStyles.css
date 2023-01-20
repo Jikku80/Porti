@@ -99,9 +99,6 @@ body{
     color: rgb(88, 233, 233);
     padding:2%;
     width: 80vw;
-    height: 100vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
 }
 
 #contact .bgbox{

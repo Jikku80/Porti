@@ -11,17 +11,18 @@ const catalougeSchema = new mongoose.Schema({
         trim: true
     },
     price: {
-        type: String,
-        trim: true,
+        type: Number,
         required: [true, 'Please provide Price to your item']
     },
     category: {
         type: String,
-        trim: true
+        trim: true,
+        uppercase: true
     },
     subcategory: {
         type: String,
-        trim: true
+        trim: true,
+        uppercase: true
     },
     detail: {
         type: String,
@@ -32,8 +33,21 @@ const catalougeSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, 'Catalouge must belong to a User']
     },
-    theme: {
-        type: String
+    currency: {
+        type: String,
+        trim: true
+    },
+    applydiscount: {
+        type: Boolean,
+        default: false
+    },
+    hotItem: {
+        type: Boolean,
+        default: false
+    },
+    stockQuantity: {
+        type: Number,
+        trim: true
     },
     coverImage: String,
     createdAt: {

@@ -760,6 +760,9 @@
 }
 
 @media screen and (max-width: 600px) {
+    input, select, textarea{
+        font-size: 16px !important;
+    }
 
     .main__content__log{
         transform: translate(-53%, 0);

@@ -3,7 +3,7 @@ extends baselayout
 block content
     h1.loader
         .bink
-            img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
             span.td Por
             span.grn t
             span.nocaps.td i
@@ -70,32 +70,36 @@ block content
                                 button#genportiqr.redbtn Generate QRCode
                                 button#downportiqr.redbtn.hidden Download QRCode 
                         .qr__sec#qrLanding 
-                        form.theme__edit#editTheme
-                            h2 Edit Theme Preference
-                            .form__bod 
-                                label Background Color:
-                                input#portBackColor(type="color" value="#1A1A1A")
-                            .form__bod
-                                label Font Color:
-                                input#portFontColor(type="color" value="#808080")
-                            .form__bod 
-                                label Heading text Color:
-                                input#portHeadColor(type="color" value="#ffffff")
-                            .form__bod 
-                                label Color Second:
-                                input#portSecHeadColor(type="color" value="#ACA547")
-                            .form__bod 
-                                label Focus Color:
-                                input#portFocusColor(type="color" value="#6B8E23")
-                            .form__bod 
-                                label Font Family 
-                                select#portFontFam
-                                    option.opt(hidden selected) Cambria
-                                    option.opt(value="cursive") Cursive 
-                                    option.opt(value="monospace") Monospace
-                                    option.opt(value="Arial") Arial
-                                    option.opt(value="Impact") Impact
-                            button#changeTheme.redbtn Update Theme 
+                        if (portfolio.theme == "a9993e364706816aba3e25717850c26c9cd0d89d" || portfolio.theme == "da98568d1b2005611973ad49868b38aa8ae68fd7")
+                            form.theme__edit#editTheme
+                                h2 Edit Theme Preference
+                                .form__bod 
+                                    label Background Color:
+                                    input#portBackColor(type="color" value="#1A1A1A")
+                                .form__bod
+                                    label Font Color:
+                                    input#portFontColor(type="color" value="#808080")
+                                .form__bod 
+                                    label Heading text Color:
+                                    input#portHeadColor(type="color" value="#ffffff")
+                                .form__bod 
+                                    label Color Second:
+                                    input#portSecHeadColor(type="color" value="#ACA547")
+                                .form__bod 
+                                    label Focus Color:
+                                    input#portFocusColor(type="color" value="#6B8E23")
+                                .form__bod 
+                                    label Font Family 
+                                    select#portFontFam
+                                        option.opt(hidden selected) Cambria
+                                        option.opt(value="cursive") Cursive 
+                                        option.opt(value="monospace") Monospace
+                                        option.opt(value="Arial") Arial
+                                        option.opt(value="Impact") Impact
+                                button#changeTheme.redbtn Update Theme 
+                        else 
+                            #changeTheme.hidden
+                            #editTheme.hidden
                     .sec__land__bod
                         .del__port#delPp 
                             .del__bod

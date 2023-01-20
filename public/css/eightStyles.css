@@ -1,0 +1,239 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.eighth__bod__section{
+    background-color: #2c2c2c;
+    font-size: 16px;
+    font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
+}
+
+.eigthname{
+    position: absolute;
+    top: 1vh;
+    left: 2vw;
+}
+
+.headFont{
+    color: #674ea7;
+}
+
+.scroll__info{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 2vh
+}
+
+.eighth__bod{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eighth__img__cont{
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* height: 70vh; */
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.imgeightcont{
+    width: 60vw;
+    height: 80vh;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.eighth__bod__img{
+    width: 60vw;
+    height: 70vh;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+
+.eighth__about__sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eighth__about__bod{
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 2rem;
+    width: 50%;
+    padding: 2%;
+}
+ 
+.eighth__contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.msg__user__btn{
+    position: fixed;
+    bottom: 0;
+    right: 1vw;
+    background-color: rgba(0, 0, 0, 0.829);
+    font-size: 20px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.msg__user__sec{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 25vw;
+    background-color: rgb(14, 14, 14);
+    border-radius: 1rem;
+    padding: 2%;
+}
+
+#cancelmsgusersec{
+    cursor: pointer;
+}
+
+.msg__user__head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.msg__user__bod {
+    height: 50vh;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    font-size: 16px;
+}
+
+.msg__inpt__sec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cur__user__msg{
+    display: flex;
+    flex-direction: column;
+}
+
+.cur__user__newmsg{
+    margin-bottom: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+.mytext{
+    color: teal;
+    margin:0;
+}
+
+.timstamp{
+    font-size: 8px;
+    color: gray;
+    margin: 0;
+}
+
+.me{
+    color: crimson;
+    margin: 0;
+}
+
+.mymessage{
+    margin: 0;
+}
+
+#curusermessage{
+    width: 70%;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    color: white;
+    padding: 2%;
+}
+
+#sendusermessagebtn{
+    width: 3vw;
+    height: 5vh;
+    cursor: pointer;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .imgeightcont{
+        width: 85vw;
+    }
+    
+    .eighth__bod__img{
+        width: 85vw;
+    }
+
+    .eighth__about__bod{
+        width: 80%;
+    }
+
+    .msg__user__sec{
+        width: 50vw;
+    }
+
+    .msg__user__bod {
+        height: 30vh;
+    }
+
+    #curusermessage{
+        width: 85%;
+    }
+
+    #sendusermessagebtn{
+        width: 7vw;
+        height: 5vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .scroll__info{
+        top: 4vh;
+    }
+
+    .imgeightcont{
+        width: 90vw;
+    }
+    
+    .eighth__bod__img{
+        width: 90vw;
+    }
+
+    .eighth__about__bod{
+        width: 90%;
+    }
+
+    .msg__user__sec{
+        width: 90vw;
+    }
+
+    #curusermessage{
+        width: 85%;
+    }
+
+    #sendusermessagebtn{
+        width: 10vw;
+        height: 5vh;
+    }
+}

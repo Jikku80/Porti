@@ -77,7 +77,8 @@ inviLayouts.forEach(item => {
                         phn_no: yourno.value,
                         pdate: why.value,
                         theme: theme,
-                        ptime: yourwork.value
+                        ptime: yourwork.value,
+                        createdAt: Date.now()
                     })
                 }).then((response) => {
                     load.classList.add("hidden");
@@ -109,5 +110,7 @@ cancelInvite.addEventListener("click", () => {
     inviBod.classList.remove("hidden");
     menuBod.classList.remove("hidden");
     catBod.classList.remove("hidden");
-    location.hash = "#crtInvi";
+    window.setTimeout(() => {
+        location.hash = "#crtInvi";
+    }, 200)
 })

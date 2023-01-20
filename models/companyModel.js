@@ -44,6 +44,34 @@ const companySchema = new mongoose.Schema({
     themecolor: {
         type: String
     },
+    fontColor: {
+        type: String
+    },
+    headColor: {
+        type: String
+    },
+    secHeadColor: {
+        type: String
+    },
+    focusColor: {
+        type: String
+    },
+    fontFam: {
+        type: String
+    },
+    polygon: {
+        type: String
+    },
+    covWidth: {
+        type: String
+    },
+    covHeight: {
+        type: String
+    },
+    homedelivery: {
+        type: Boolean,
+        default: false
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

@@ -1,0 +1,144 @@
+extends baselayout 
+
+block content
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    if(user)
+        if (user.id == portfolio.user.id)
+            .showeditbtn Edit Theme
+            .showEdit.hidden
+                .show__head 
+                    p Edit Theme
+                    img(src="/images/cancel.png" alt="cancel__btn").close__show.hidden 
+                .theme__edit
+                    #seventhid.hidden= portfolio.id
+                    form#seventhTheme
+                        h2 Edit Theme Preference
+                        .form__bod 
+                            label Background Color:
+                            input#sportBackColor(type="color" value="#2c2c2c")
+                        .form__bod
+                            label Font Color:
+                            input#sportFontColor(type="color" value="#808080")
+                        .form__bod 
+                            label Heading text Color:
+                            input#sportHeadColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Color Second:
+                            input#sportSecHeadColor(type="color" value="#674ea7")
+                        .form__bod 
+                            label Focus Color:
+                            input#sportFocusColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Font Family 
+                            select#sportFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                                option.opt(value="Cabin Sketch") Cabin Sketch
+                        .grp_seventh_btn
+                            button#changeseventhTheme.redbtn Update Theme
+                            button#defaultseventhTheme.redbtn Default Theme 
+        else 
+            .showeditbtn.hidden 
+            .showEdit.hidden 
+            .close__show.hidden
+            #seventhid.hidden
+            #changeseventhTheme.hidden 
+            #defaultseventhTheme.hidden
+    else
+        .showeditbtn.hidden 
+        .showEdit.hidden 
+        .close__show.hidden
+        #seventhid.hidden
+        #changeseventhTheme.hidden 
+        #defaultseventhTheme.hidden
+    h1.msg__user__btn &#9993;
+    .msg__user__sec.hidden 
+        .msg__user__head 
+            h2.portfoliouser= portfolio.user.name
+            p.curlogusername.hidden= user.name
+            p.curloguser.hidden= user._id 
+            img#cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+        .msg__user__bod 
+            .cur__user__msg
+        form.msg__inpt__sec
+            input#curusermessage(type="text" placeholder="type your message") 
+            img(src="/images/send.png" id="sendusermessagebtn")
+
+
+    .eighth__bod__section
+        h4.namefont.eigthname= `${portfolio.name} Portfolio`
+        h4.scroll__info.headFont &#8810; Scroll || Swipe &#8811;
+        .eighth__bod 
+            .eighth__img__cont
+                if (allPortImg.length === 0)
+                    .imgeightcont
+                        img.eighth__bod__img(src="/images/bg.png")
+                        h3.headFont Porti(You havent added your images)
+                    .imgeightcont
+                        img.eighth__bod__img(src="/images/rbg.png")
+                        h3.headFont Porti(You havent added your images)
+                    .imgeightcont
+                        img.eighth__bod__img(src="/images/bg.png")
+                        h3.headFont Porti(You havent added your images)
+                else
+                    each item in allPortImg
+                        .imgeightcont
+                            img.eighth__bod__img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
+                            h3.headFont= item.name
+        .eighth__about__sec 
+            .fontColor.hidden= portfolio.fontColor 
+            .headColor.hidden= portfolio.headColor 
+            .secHeadColor.hidden= portfolio.secHeadColor
+            .backColor.hidden= portfolio.backColor 
+            .focusColor.hidden= portfolio.focusColor 
+            .fontFam.hidden= portfolio.fontFam
+            .eighth__about__bod 
+                if (portfolio.about !== "")
+                    h3.headFont= `About ${portfolio.name}`
+                    pre.ansFont= portfolio.about 
+                if (portfolio.what !== "")
+                    h3.headFont= `What ${portfolio.name} Do?`
+                    pre.ansFont= portfolio.what 
+                if (portfolio.why !== "")
+                    h3.headFont= `Why ${portfolio.name} Do It?`
+                    pre.ansFont= portfolio.why
+                if (portfolio.failure !== "")
+                    h3.headFont= `How ${portfolio.name} deals with Failure?`
+                    pre.ansFont= portfolio.failure
+                if (portfolio.motivation !== "")
+                    h3.headFont= `How ${portfolio.name} stays motivated?`
+                    pre.ansFont= portfolio.motivation
+                if (portfolio.msg !== "")
+                    h3.headFont= `${portfolio.name} Message`
+                    pre.ansFont= portfolio.msg
+                if (portfolio.previous !== "")
+                    h3.headFont Previous Accomplishment Details
+                    pre.ansFont= portfolio.previous
+                .eighth__contact
+                    if (portfolio.showNo === true && portfolio.phn_no !== "")
+                        p.headFont= `Phone: ${portfolio.phn_no}` 
+                    p.headFont= `Email: ${portfolio.email}`
+                    if (portfolio.fb != "")
+                        a(href=`${portfolio.fb}`)
+                            if (portfolio.user.photo)
+                                img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                            else 
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    else 
+                        if (portfolio.user.photo)
+                            img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                        else 
+                            img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    if (portfolio.location !== "")
+                        p.headFont= `Address: ${portfolio.location}`
+    script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/layouts/eighth.js") 

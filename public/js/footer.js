@@ -9,6 +9,6 @@
         })
     }
     else {
-        console.log("Hola from Porti")
+        return;
     }
 })();

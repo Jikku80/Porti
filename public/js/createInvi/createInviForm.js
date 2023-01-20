@@ -3,14 +3,15 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
     <form class="comp__form">
         <div class="form__head">
             <h1>Create Invitation</h1>
-            <img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png" alt="cancel_img" class="cancel__invite pointer" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__invite pointer" />
         </div>
         <div class="form__cont">
-            <label class="form__label">First Person Name:</label>
-            <input id=${val} class="form__input" type="text" placeholder="Romeo" required/>
+            <label class="form__label">Person or Party Name:</label>
+            <input id=${val} class="form__input" type="text" placeholder="Romeo || Birthday Party" required/>
         </div>
+        <p>If its a marriage use your loved ones name, else use party type</p>
         <div class="form__cont">
-            <label class="form__label">Second Person Name:</label>
+            <label class="form__label">Person Name:</label>
             <input id=${val1} class="form__input" type="text" placeholder="Juliet" required/>
         </div>
         <p>If its a marriage use your loved ones name, else use organizer or any name</p>
@@ -34,8 +35,9 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
             <label class="form__label">Phone Number: </label>
             <input id=${val6} class="form__input" placeholder="999999998" required />
         </div>
-
-        <button id=${val7} class="redbtn">Create</button>
+        <div class="form__btn">
+            <button id=${val7} class="redbtn">Create</button>
+        </div>
     </form>
 `
 }

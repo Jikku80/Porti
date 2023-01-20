@@ -2,52 +2,108 @@ extends baselayout
 
 block content 
     h1.loader
-        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
-        span Por
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span Por
+            span.grn t
+            span.nocaps i
+    if(user)
+        if (user.id == portfolio.user.id)
+            .showeditbtn Edit Theme
+            .showEdit.hidden
+                .show__head 
+                    p Edit Theme
+                    img(src="/images/cancel.png" alt="cancel__btn").close__show.hidden 
+                .theme__edit
+                    #seventhid.hidden= portfolio.id
+                    form#seventhTheme
+                        h2 Edit Theme Preference
+                        .form__bod 
+                            label Background Color:
+                            input#sportBackColor(type="color" value="#2c2c2c")
+                        .form__bod
+                            label Font Color:
+                            input#sportFontColor(type="color" value="#808080")
+                        .form__bod 
+                            label Heading text Color:
+                            input#sportHeadColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Color Second:
+                            input#sportSecHeadColor(type="color" value="#ffffff")
+                        .form__bod 
+                            label Focus Color:
+                            input#sportFocusColor(type="color" value="#008080")
+                        .form__bod 
+                            label Font Family 
+                            select#sportFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                        .grp_seventh_btn
+                            button#changeseventhTheme.redbtn Update Theme
+                            button#defaultseventhTheme.redbtn Default Theme 
+        else 
+            .showeditbtn.hidden 
+            .showEdit.hidden 
+            .close__show.hidden
+            #seventhid.hidden
+            #changeseventhTheme.hidden 
+            #defaultseventhTheme.hidden
+    else
+        .showeditbtn.hidden 
+        .showEdit.hidden 
+        .close__show.hidden
+        #seventhid.hidden
+        #changeseventhTheme.hidden 
+        #defaultseventhTheme.hidden
     .main(id=`${portfolio.fontColor}`)
         .bg__imgCov(id=`${portfolio.fontFam}`)
             if (!portfolio.imageCover)
-                img(src=`https://portiblobstorage.blob.core.windows.net/portithemeimage/bg.png`, alt="cover__pic")
+                img(src=`/images/bg.png`, alt="cover__pic")
             else
                 img(src=`${portfolio.imageCover}`, alt="cover__img") 
             h1.fourth__head(id=`${portfolio.focusColor}`)= portfolio.name
         .main__header(id=`${portfolio.backColor}`)
             .header__round(id=`${portfolio.headColor}`)
             .header__round__inner(id=`${portfolio.secHeadColor}`)
-                    img.anc__first(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/home.png", alt="home__img") 
-                    img.anc.anc__second(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/about.png", alt="about__img") 
-                    img.anc.anc__third(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/work.png", alt="work__img") 
-                    img.anc__last(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/contact.png", alt="contact__img")
+                    img.anc__first(src="/images/home.png", alt="home__img") 
+                    img.anc.anc__second(src="/images/about.png", alt="about__img") 
+                    img.anc.anc__third(src="/images/work.png", alt="work__img") 
+                    img.anc__last(src="/images/contact.png", alt="contact__img")
 
         .main__about__section.hide 
             .main__about__head
                 h2.secHead About 
                     span= `${portfolio.name}`
-                img#fourthClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
+                img#fourthClose(src="/images/cancel.png", alt="cancel__img")
             pre.ansFont= portfolio.about 
-            h3.headFont= `What ${portfolio.name} Do?`
-            pre.ansFont= portfolio.what 
-            h3.headFont= `Why ${portfolio.name} Do it?`
-            pre.ansFont= portfolio.why
-            h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
-            pre.ansFont= portfolio.failure
-            h3.headFont= `How ${portfolio.name} stays motivated?`
-            pre.ansFont= portfolio.motivation
-            h3.headFont= `${portfolio.name} Message`
-            pre.ansFont= portfolio.msg
+            if (portfolio.what !== "")
+                h3.headFont= `What ${portfolio.name} Do?`
+                pre.ansFont= portfolio.what 
+            if (portfolio.why !== "")
+                h3.headFont= `Why ${portfolio.name} Do it?`
+                pre.ansFont= portfolio.why
+            if (portfolio.failure !== "")
+                h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
+                pre.ansFont= portfolio.failure
+            if (portfolio.motivation !== "")
+                h3.headFont= `How ${portfolio.name} stays motivated?`
+                pre.ansFont= portfolio.motivation
+            if (portfolio.msg !== "")
+                h3.headFont= `${portfolio.name} Message`
+                pre.ansFont= portfolio.msg
 
         .main__prev__section.hide 
             .main__prev__head 
                 h2.secHead Prior Accomplishments
-                img#fourthSecClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
+                img#fourthSecClose(src="/images/cancel.png", alt="cancel__img")
             pre.ansFont= portfolio.previous 
             p.prof__user__id.hidden= portfolio.user._id
             .prev__cont
                 .prev__cont__sub#fourthImgCont
                     if (portImage.length === 0)
-                        p No Previous Accomplishment Images Yet!!!
                         .firstPrev.hidden 
                         .firstNext.hidden
                     else 
@@ -60,17 +116,19 @@ block content
                             .group__delbtn 
                                 button.redbtn.firstPrev Prev
                                 button.redbtn.firstNext Next 
-            h3.headFont.dyF= `${portfolio.name} ran into a problem`
-            pre.ansFont= portfolio.problem 
-            h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
-            pre.ansFont= portfolio.solution
+            if (portfolio.problem !== "")
+                h3.headFont.dyF= `${portfolio.name} ran into a problem`
+                pre.ansFont= portfolio.problem 
+            if (portfolio.solution !== "")
+                h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
+                pre.ansFont= portfolio.solution
 
         .main__cont__section.hide 
             .main__cont__head 
                 h2.secHead Contact 
-                img#fourthThirdClose(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png", alt="cancel__img")
+                img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
             .cont__boxbg
-                if (portfolio.showNo === true)
+                if (portfolio.showNo === true && portfolio.phn_no !== "")
                     .cont__box.fourth__cont
                         p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.fourth__cont
@@ -81,9 +139,16 @@ block content
                             if (portfolio.user.photo)
                                 img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                             else 
-                                img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
-                .cont__box.fourth__cont
-                    p= `Address: ${portfolio.location}`
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                else 
+                    .cont 
+                        if (portfolio.user.photo)
+                            img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                        else 
+                            img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                if (portfolio.location !== "")
+                    .cont__box.fourth__cont
+                        p= `Address: ${portfolio.location}`
 
         script(src="/js/alert.js") 
         script(src="/js/layouts/paginate.js") 

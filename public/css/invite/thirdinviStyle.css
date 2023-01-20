@@ -1,0 +1,144 @@
+.third__invi__sec {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/images/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.third__invi__card{
+    width: 40%;
+    height: 90%;
+    background-color: #3A3D3E;
+    color: white;
+    padding: 1%;
+    font-size: 16px;
+    font-variant: small-caps;
+    text-align: center;
+    font-family: Felipa;
+}
+
+.centre{
+    width: 25vw;
+}
+
+.centre__bottom{
+    width: 25vw;
+    transform: rotate(180deg);
+}
+
+.third__invi__top-border{
+    display: flex;
+    justify-content: space-between;
+}
+
+.corner{
+    width: 5vw;
+    height: 10vh;
+}
+
+.corner__right{
+    width: 5vw;
+    height: 10vh;
+    transform: rotate(90deg);
+}
+
+.third__invi__bottom-border{
+    display: flex;
+    justify-content: space-between;
+}
+
+.corner-bottom{
+    width: 5vw;
+    height: 10vh;
+    transform: rotate(270deg);
+}
+
+.corner__right-bottom{
+    width: 5vw;
+    height: 10vh;
+    transform: rotate(180deg);
+}
+
+.third__invi__border{
+    border: 1px solid #DE9B72;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.third__invi__half{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.third__invi__head{
+    border-top: 4px solid #DE9B72;
+    border-bottom: 4px solid #DE9B72;
+    width: fit-content;
+    height: fit-content;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+}
+
+.eighth__invi__abt{
+    padding: 2%;
+}
+
+.third__invi__sechalf{
+    text-align: center;
+    height: 50vh;
+}
+
+.skin{
+    color: #DE9B72;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .third__invi__card{
+        width: 90%;
+        padding: 2%;
+        /* height: fit-content; */
+    }
+    .corner, .corner-bottom{
+        width: 20vw;
+        height: fit-content;
+    }
+
+    .centre, .centre__bottom{
+        width: 40vw;
+    }
+
+    .corner__right, .corner__right-bottom{
+        width: 20vw;
+        height: fit-content;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .third__invi__card{
+        width: 90%;
+        padding: 2%;
+        /* height: fit-content; */
+    }
+
+    .corner, .corner-bottom{
+        width: 20vw;
+        height: fit-content;
+    }
+
+    .centre, .centre__bottom{
+        width: 40vw;
+    }
+
+    .corner__right, .corner__right-bottom{
+        width: 20vw;
+        height: fit-content;
+    }
+}

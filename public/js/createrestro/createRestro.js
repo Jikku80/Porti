@@ -88,5 +88,7 @@ cancelRestro.addEventListener("click", () => {
     inviBodR.classList.remove("hidden");
     menuBodR.classList.remove("hidden");
     catBodR.classList.remove("hidden");
-    location.hash = "#crtMenu";
+    window.setTimeout(() => {
+        location.hash = "#crtMenu";
+    }, 200)
 })

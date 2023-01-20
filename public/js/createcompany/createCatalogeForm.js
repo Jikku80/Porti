@@ -3,7 +3,7 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7) {
     <form class="comp__form">
         <div class="form__head">
             <h1>Create Invitation</h1>
-            <img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png" alt="cancel_img" class="cancel__cataloge pointer" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__cataloge pointer" />
         </div>
         <div class="form__cont">
             <label class="form__label">Company Name:</label>
@@ -33,8 +33,9 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7) {
             <label class="form__label">Company Slogan: </label>
             <input id=${val5} class="form__input" placeholder="11:00 AM is not late" required />
         </div>
-
+        <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>
+        </div>
     </form>
 `
 }

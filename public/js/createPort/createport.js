@@ -45,45 +45,7 @@ layout1.forEach(item => {
             if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
                 return false;
             }
-            if (aboutyou.value < 1 || aboutyou.value == "" || aboutyou.value == null) {
-                return false;
-            }
-            if (what.value < 1 || what.value == "" || what.value == null) {
-                return false;
-            }
-            if (why.value < 1 || why.value == "" || why.value == null) {
-                return false;
-            }
-            if (yourno.value < 1 || yourno.value == "" || yourno.value == null) {
-                return false;
-            }
             if (youremail.value < 1 || youremail.value == "" || youremail.value == null) {
-                return false;
-            }
-            if (loction.value < 1 || loction.value == "" || loction.value == null) {
-                return false;
-            }
-            if (yourwork.value < 1 || yourwork.value == "" || yourwork.value == null) {
-                return false;
-            }
-            if (prob.value < 1 || prob.value == "" || prob.value == null) {
-                e.preventDefault();
-                return false;
-            }
-            if (soln.value < 1 || soln.value == "" || soln.value == null) {
-                e.preventDefault();
-                return false;
-            }
-            if (fail.value < 1 || fail.value == "" || fail.value == null) {
-                e.preventDefault();
-                return false;
-            }
-            if (moti.value < 1 || moti.value == "" || moti.value == null) {
-                e.preventDefault();
-                return false;
-            }
-            if (msg.value < 1 || msg.value == "" || msg.value == null) {
-                e.preventDefault();
                 return false;
             }
             e.preventDefault();
@@ -113,7 +75,8 @@ layout1.forEach(item => {
                         solution: soln.value,
                         failure: fail.value,
                         motivation: moti.value,
-                        msg: msg.value
+                        msg: msg.value,
+                        createdAt: Date.now()
                     })
                 }).then((response) => {
                     load.classList.add("hidden");
@@ -147,7 +110,9 @@ cancelCreate.addEventListener("click", () => {
     inviSec.classList.remove("hidden");
     menuSec.classList.remove("hidden");
     catSec.classList.remove("hidden");
-    location.hash = "#crtPort";
+    window.setTimeout(() => {
+        location.hash = "#crtPort";
+    }, 200)
 });
 
 function aboutHelper(about) {
@@ -204,20 +169,7 @@ function aboutHelper(about) {
     let solnPrev = document.getElementById("portSolnPrevious");
 
     let yourname = document.querySelector("#yourname");
-    let aboutyou = document.querySelector("#aboutyou");
-    let what = document.getElementById("what");
-    let why = document.getElementById("why");
-    let yourno = document.getElementById("yourno");
-    let showNo = document.getElementById("yourCheck");
     let youremail = document.getElementById("youremail");
-    let fb = document.getElementById("yourFb");
-    let loction = document.getElementById("yourLoc");
-    let yourwork = document.getElementById("yourwork");
-    let prob = document.getElementById("yourProb");
-    // let soln = document.getElementById("yourSoln");
-    let fail = document.getElementById("yourFail");
-    let moti = document.getElementById("yourMoti");
-    let msg = document.getElementById("yourMsg");
 
     next.addEventListener("click", () => {
         if (yourname.value < 1) {
@@ -228,9 +180,6 @@ function aboutHelper(about) {
     })
 
     aboutNext.addEventListener("click", () => {
-        if (aboutyou.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portAbout.classList.add("hidden");
         portWhat.classList.remove("hidden");
     });
@@ -241,9 +190,6 @@ function aboutHelper(about) {
     })
 
     whatNext.addEventListener("click", () => {
-        if (what.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portWhat.classList.add("hidden");
         portWhy.classList.remove("hidden");
     });
@@ -254,9 +200,6 @@ function aboutHelper(about) {
     })
 
     whyNext.addEventListener("click", () => {
-        if (why.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portWhy.classList.add("hidden");
         portFail.classList.remove("hidden");
     });
@@ -267,9 +210,6 @@ function aboutHelper(about) {
     });
 
     failNext.addEventListener("click", () => {
-        if (fail.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portFail.classList.add("hidden");
         portMoti.classList.remove("hidden");
     });
@@ -280,9 +220,6 @@ function aboutHelper(about) {
     });
 
     motiNext.addEventListener("click", () => {
-        if (moti.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portMoti.classList.add("hidden");
         portMsg.classList.remove("hidden");
     });
@@ -293,9 +230,6 @@ function aboutHelper(about) {
     });
 
     msgNext.addEventListener("click", () => {
-        if (msg.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portMsg.classList.add("hidden");
         portPhn.classList.remove("hidden");
     });
@@ -306,9 +240,6 @@ function aboutHelper(about) {
     });
 
     phnNext.addEventListener("click", () => {
-        if (yourno.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portPhn.classList.add("hidden");
         portShow.classList.remove("hidden");
     });
@@ -319,9 +250,6 @@ function aboutHelper(about) {
     });
 
     showNext.addEventListener("click", () => {
-        if (showNo.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portShow.classList.add("hidden");
         portEmail.classList.remove("hidden");
     });
@@ -345,9 +273,6 @@ function aboutHelper(about) {
     });
 
     socialNext.addEventListener("click", () => {
-        if (fb.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portSocial.classList.add("hidden");
         portAddress.classList.remove("hidden");
     });
@@ -358,9 +283,6 @@ function aboutHelper(about) {
     })
 
     addressNext.addEventListener("click", () => {
-        if (loction.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portAddress.classList.add("hidden");
         portAccomp.classList.remove("hidden");
     });
@@ -371,9 +293,6 @@ function aboutHelper(about) {
     })
 
     accompNext.addEventListener("click", () => {
-        if (yourwork.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portAccomp.classList.add("hidden");
         portProb.classList.remove("hidden");
     });
@@ -384,9 +303,6 @@ function aboutHelper(about) {
     });
 
     probNext.addEventListener("click", () => {
-        if (prob.value < 1 || yourname.value == "" || yourname.value == null) {
-            return false;
-        }
         portProb.classList.add("hidden");
         portSoln.classList.remove("hidden");
         portSubmit.classList.remove("hidden");

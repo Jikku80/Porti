@@ -25,10 +25,6 @@ const inviteSchema = new mongoose.Schema({
         trim: true
     },
     imgCover: String,
-    imgSecond: String,
-    imgThird: String,
-    imgFourth: String,
-    imgFifth: String,
     imgs: [String],
     about: {
         type: String,

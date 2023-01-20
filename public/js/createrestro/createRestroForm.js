@@ -3,7 +3,7 @@ function createRestro(val, val1, val2, val3, val4) {
     <form class="comp__form">
         <div class="form__head">
             <h1>Create Your Restaurante</h1>
-            <img src="https://portiblobstorage.blob.core.windows.net/portithemeimage/cancel.png" alt="cancel_img" class="cancel__restro pointer" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__restro pointer" />
         </div>
         <div class="form__cont">
             <label class="form__label">Name:</label>
@@ -21,7 +21,9 @@ function createRestro(val, val1, val2, val3, val4) {
             <label class="form__label">Phone Number: </label>
             <input id=${val3} class="form__input" placeholder="999999998" required />
         </div>
+        <div class="form__btn">
         <button id=${val4} class="redbtn">Create</button>
+        </div>
     </form>
 `
 }

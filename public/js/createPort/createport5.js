@@ -58,7 +58,10 @@ formLayoutFive.innerHTML = `
         <label class="form__label">Upload Images</label>
         <input type="file" class="form__input" id="fifthimg1" name="uploadimages" multiple accept="image/*" required/>
     </div>
+    <div class="form__btn">
     <button id="fifthformbtn" class="redbtn">Create</button>
+    </div>
+
 </form>
     `
 document.body.appendChild(formLayoutFive);
@@ -83,5 +86,7 @@ clFiveCreate.addEventListener("click", () => {
     inviSec5.classList.remove("hidden");
     menuSec5.classList.remove("hidden");
     catSec5.classList.remove("hidden");
-    location.hash = "#crtPort";
+    window.setTimeout(() => {
+        location.hash = "#crtPort";
+    }, 200)
 })

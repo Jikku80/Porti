@@ -11,6 +11,9 @@
     let headers = document.querySelectorAll(".headFont");
     let ans = document.querySelectorAll(".ansFont");
     let contbox = document.querySelectorAll(".fif__box");
+    let mainbodsec = document.querySelector(".main__bod__sec");
+
+    mainbodsec.style.backgroundColor = headColor;
 
     mainSec.style.backgroundColor = secHeadColor;
 

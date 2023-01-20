@@ -1,0 +1,230 @@
+
+.seventh__layout__body{
+    background-color: white;
+    color: black;
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.seventh__layout__body pre{
+    /* color: black; */
+}
+
+.seventh__layout__body h1{
+    color: crimson;
+    font-variant: small-caps;
+}
+
+.seventh__sec{
+    display: flex;
+}
+
+.seventh__firsthalf{
+    /* font-variant: small-caps; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.seventh__cover{
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 0); 
+    clip-path: polygon(0 0, 0 100%, 100% 0);
+}
+
+.sev__btn{
+    position: absolute;
+    bottom:12vw;
+    left: 40vw;
+    text-decoration: none;
+    border: 2px solid black;
+    color: white;
+    background-color: black;
+    padding: 2%;
+    font-variant: small-caps;
+    font-weight: bolder;
+    z-index: 1;
+}
+
+.sev__btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.lod{
+    animation: clChanger 1.5s ease-in-out forwards;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+}
+
+.hidden{
+    display: none;
+}
+
+.showeditbtn, .showEdit{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    padding: 1%;
+}
+
+.show__head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.grp_seventh_btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.seventh__about__sec{
+    width: 50%;
+    padding: 2%;
+    box-shadow: -20px 20px 20px -20px #001f9c inset;
+}
+
+.seventh__sechalf{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    left: 50vw;
+    top: 20vh;
+}
+
+.seventh__img{
+    width: 15vw;
+    filter: contrast(1.5);
+}
+
+.seven__pp{
+    width: 15vw;
+    height: 15vw;
+    border-radius: 12rem;
+}
+
+.mkbold{
+    font-weight: bolder;
+    color: black;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .seventh__sec{
+        flex-direction: column-reverse;
+    }
+
+    .seventh__firsthalf{
+        width: 100%;
+    }
+
+    .seventh__cover{
+        height: 50vh;
+        -webkit-clip-path: polygon(0 19%, 100% 0, 100% 79%, 0 100%); 
+        clip-path: polygon(0 19%, 100% 0, 100% 79%, 0 100%);
+        background-position: center;
+    }
+
+    .sev__btn{
+        height: fit-content;
+        top: 45vh;
+    }
+
+    .seventh__about__sec{
+        width: 95%;
+        box-shadow: none;
+    }
+    
+    .seventh__sechalf{
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    .seventh__img{
+        width: 25vw;
+    }
+
+    .seven__pp{
+        width: 25vw;
+        height: 25vw;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .seventh__sec{
+        flex-direction: column-reverse;
+    }
+    
+    .seventh__firsthalf{
+        width: 100%;
+    }
+
+    .seventh__cover{
+        height: 50vh;
+        -webkit-clip-path: polygon(0 19%, 100% 0, 100% 79%, 0 100%); 
+        clip-path: polygon(0 19%, 100% 0, 100% 79%, 0 100%);
+        background-position: center;
+    }
+
+    .sev__btn{
+        height: fit-content;
+        left: 30vw;
+        top: 45vh;
+    }
+    
+    .seventh__about__sec{
+        padding: 4%;
+        box-shadow: none;
+        width: 90%;
+    }
+
+    .seventh__sechalf{
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    .seventh__img{
+        width: 40vw;
+    }
+
+    .seven__pp{
+        width: 40vw;
+        height: 40vw;
+    }
+}
+
+@keyframes clChanger {
+    0%{
+        background-color: crimson;
+    }
+    50%{
+        background-color: rgb(26, 26, 26);
+    }
+    90%{
+        background-color: white;
+    }
+    100%{
+        background-color: transparent;
+    }
+}

@@ -128,6 +128,7 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
     const pg = 1;
     const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 12, page: pg }).paginate();
     const portImage = await features.query
+    const allPortImg = await PortfolioImage.find({ user: usr[0]._id })
     await Portfolio.findOne({ user: usr[0]._id }).populate('user').then(portfolio => {
 
         let theme = portfolio.theme
@@ -171,6 +172,20 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
                 res.status(200).render('layouts/sixth', {
                     title: portfolio.name,
                     portfolio
+                });
+                break;
+            case "f3106672cef9fa2b11e24a80049874404fc7d1c6":
+                res.status(200).render('layouts/seventh', {
+                    title: portfolio.name,
+                    portfolio,
+                    portImage
+                });
+                break;
+            case "fc40ac89c9100d87048e2603edcf58adfc94e6c3":
+                res.status(200).render('layouts/eighth', {
+                    title: portfolio.name,
+                    portfolio,
+                    allPortImg
                 });
                 break;
             default:

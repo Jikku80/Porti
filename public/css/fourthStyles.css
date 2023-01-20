@@ -27,7 +27,7 @@
 }
 
 .header__round{
-    background-image: url('https://portiblobstorage.blob.core.windows.net/portithemeimage/fire.jpg');
+    background-image: url('/images/fire.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left;
@@ -105,11 +105,11 @@
 }
 
 .main__cont__section{
-    width: 90vw;
+    width: fit-content;
 }
 
 .fourth__cont{
-    width: 50%;
+    width: fit-content;
 }
 
 .fourth__cont:hover{

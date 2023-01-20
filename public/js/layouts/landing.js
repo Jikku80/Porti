@@ -19,7 +19,9 @@ updatePort.addEventListener('click', () => {
     addItemSec.classList.add("hidden");
     editThemeSec.classList.add("hidden");
     updateForm.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 updateImg.addEventListener("click", () => {
@@ -32,7 +34,9 @@ updateImg.addEventListener("click", () => {
     addItemSec.classList.add("hidden");
     editThemeSec.classList.add("hidden");
     updateImgForm.classList.remove('hidden');
-    location.hash = "#"
+    window.setTimeout(() => {
+        location.hash = "#"
+    }, 200)
 })
 
 let cancel = document.querySelector(".cancel");

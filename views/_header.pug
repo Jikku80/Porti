@@ -5,7 +5,7 @@
     p.hidden.userTheme= user.theme
     .navigation 
         a.port_sec_head.hm(href="/" title="home")
-            img.porti__off__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
             span.chr Por
             span.grn t
             span.nocaps.chr i
@@ -14,12 +14,13 @@
             if (user.photo)
                 img#menuImg.profPic(src=`${user.photo}`, alt="prof__pic", title=`${user.name}`)
             else 
-                img#menuImg.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic", title=`${user.name}`)
+                img#menuImg.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
         a#menuLayouts.anavi(href="/porti" title="layouts") Layouts
         a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
         a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
         a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
         a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+        a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
         #logout.logout.pointer SignOut
 
 script(src="/js/alert.js")  

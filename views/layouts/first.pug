@@ -2,7 +2,7 @@ extends baselayout
 
 block content
     h1.loader
-        img.porti__of__img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/smalport.png", alt="porti__img")
+        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
         span Por
         span.grn t
         span.nocaps i
@@ -17,29 +17,34 @@ block content
         .first.topFirst(id=`${portfolio.focusColor}`)
             #about
                 .about__body(id=`${portfolio.secHeadColor}`)
-                    h2.headFont= `About ${portfolio.name}`
-                    pre#abdetail.ansFont= portfolio.about
-                    
-                    h3.headFont= `What ${portfolio.name} Do?`
-                    pre#abwhat.ansFont= portfolio.what
-                    h3.headFont= `Why ${portfolio.name} Do It?`
-                    pre#abwhy.ansFont= portfolio.why
-                    h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
-                    pre.ansFont= portfolio.failure
-                    h3.headFont= `How ${portfolio.name} stays motivated?`
-                    pre.ansFont= portfolio.motivation
-                    h3.headFont= `${portfolio.name} Message`
-                    pre.ansFont= portfolio.msg
+                    if (portfolio.about !== "")
+                        h2.headFont= `About ${portfolio.name}`
+                        pre#abdetail.ansFont= portfolio.about
+                    if (portfolio.what !== "")
+                        h3.headFont= `What ${portfolio.name} Do?`
+                        pre#abwhat.ansFont= portfolio.what
+                    if (portfolio.why !== "")
+                        h3.headFont= `Why ${portfolio.name} Do It?`
+                        pre#abwhy.ansFont= portfolio.why
+                    if (portfolio.failure !== "")
+                        h3.headFont.headFont= `How ${portfolio.name} deals with Failure?`
+                        pre.ansFont= portfolio.failure
+                    if (portfolio.motivation !== "")
+                        h3.headFont= `How ${portfolio.name} stays motivated?`
+                        pre.ansFont= portfolio.motivation
+                    if (portfolio.msg !== "")
+                        h3.headFont= `${portfolio.name} Message`
+                        pre.ansFont= portfolio.msg
         .first
             #previous
                 .prev
-                    h2.headFont Previous Accomplishment Details
                     p.prof__user__id.hidden= portfolio.user._id
-                    pre.ansFont= portfolio.previous
+                    if (portfolio.previous !== "" || portImage.length !== 0)
+                        h2.headFont Previous Accomplishment Details
+                        pre.ansFont= portfolio.previous
                 .prev__cont
                     .prev__cont__sub#firstImgCont
                         if (portImage.length === 0)
-                            p No Previous Accomplishment Images Yet!!!
                             .firstPrev.hidden 
                             .firstNext.hidden
                         else 
@@ -55,13 +60,15 @@ block content
 
         .first
             #contact
-                h3.headFont.dyF= `${portfolio.name} ran into a problem`
-                pre.ansFont= portfolio.problem 
-                h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
-                pre.ansFont= portfolio.solution
+                if (portfolio.problem !== "")
+                    h3.headFont.dyF= `${portfolio.name} ran into a problem`
+                    pre.ansFont= portfolio.problem 
+                if (portfolio.solution !== "")
+                    h3.headFont.dyF= `How ${portfolio.name} solved the problem?`
+                    pre.ansFont= portfolio.solution
                 h3.headFont.dyF= `Contact ${portfolio.name}`
                 .bgbox
-                    if (portfolio.showNo === true)
+                    if (portfolio.showNo === true && portfolio.phn_no !== "")
                         .contbox
                             p= `Phone: ${portfolio.phn_no}`
                     .contbox
@@ -72,14 +79,21 @@ block content
                                 if (portfolio.user.photo)
                                     img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
                                 else 
-                                    img.profPic.satProf(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/bighitman.png", alt="prof__pic")
-                    .contbox
-                        p= `Address: ${portfolio.location}`
+                                    img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    else 
+                        .cont 
+                            if (portfolio.user.photo)
+                                img.profPic(src=`${portfolio.user.photo}`, alt="prof__pic")
+                            else 
+                                img.profPic.satProf(src="/images/bighitman.png", alt="prof__pic")
+                    if (portfolio.location !== "")
+                        .contbox
+                            p= `Address: ${portfolio.location}`
 
         #footer 
             p.ansFont= `${portfolio.name} portfolio`
             a#gtop(href="#")
-                img(src="https://portiblobstorage.blob.core.windows.net/portithemeimage/rup.png", alt="up_arrow")
+                img(src="/images/rup.png", alt="up_arrow")
 
     script(src="/js/alert.js") 
     script(src="/js/imgFull.js") 

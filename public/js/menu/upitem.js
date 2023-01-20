@@ -18,16 +18,30 @@ async function getOneItem() {
             if (response.status === 200) {
                 res.then(result => {
                     let item = result.data.data
-                    menuCard.innerHTML =
-                        `
-                            <img class="menu__card__img" src="${item.coverImage}" alt="item__image">
-                            <div class="menu__card__det">
-                                <h3 class="menu__card__head goldn">${item.name}</h3>
-                                <p class="menu__card__price goldn">${item.price}</p>
-                                <p class="menu__card__cat goldn">${item.category}</p>
-                                <p class="menu__card__detail goldn">${item.detail}</p>
-                            </div>
+                    if (item.coverImage) {
+                        menuCard.innerHTML =
                             `
+                                <img class="menu__card__img" src="${item.coverImage}" alt="item__image">
+                                <div class="menu__card__det">
+                                    <h3 class="menu__card__head goldn">${item.name}</h3>
+                                    <p class="menu__card__price goldn">${item.currency} ${item.price}</p>
+                                    <p class="menu__card__cat goldn">${item.category}</p>
+                                    <p class="menu__card__detail goldn">${item.detail}</p>
+                                </div>
+                                `
+                    }
+                    else {
+                        menuCard.innerHTML =
+                            `
+                                <img class="menu__card__img" src="/images/noimg.png" alt="item__image">
+                                <div class="menu__card__det">
+                                    <h3 class="menu__card__head goldn">${item.name}</h3>
+                                    <p class="menu__card__price goldn">${item.currency} ${item.price}</p>
+                                    <p class="menu__card__cat goldn">${item.category}</p>
+                                    <p class="menu__card__detail goldn">${item.detail}</p>
+                                </div>
+                                `
+                    }
                 })
             } else {
                 console.log(response);
@@ -64,8 +78,12 @@ window.addEventListener("load", async () => {
 
     let name = document.getElementById("upitemname");
     let price = document.getElementById("upitemprice");
+    let currency = document.getElementById("upitemcurrency");
     let cat = document.getElementById("upitemcat");
     let detail = document.getElementById("upitemdetail");
+    let applydisc = document.getElementById("upitemdiscount");
+    let available = document.getElementById("upitemavailable");
+
     upItemBtn.addEventListener("click", async (e) => {
         if (name.value < 1 || name.value == "" || name.value == null) {
             return false;
@@ -91,7 +109,10 @@ window.addEventListener("load", async () => {
                     name: name.value,
                     price: price.value,
                     category: cat.value,
-                    detail: detail.value
+                    detail: detail.value,
+                    currency: currency.value,
+                    applydiscount: applydisc.checked,
+                    available: available.checked
                 })
             }).then((response) => {
                 load.classList.add("hidden");
