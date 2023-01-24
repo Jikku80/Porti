@@ -126,6 +126,7 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
         name: req.body.name,
         user: req.user.id,
         slogan: req.body.slogan,
+        country: req.body.country,
         Address: req.body.address,
         theme: req.body.theme,
         phn_no: req.body.phn_no,
@@ -445,8 +446,10 @@ exports.getMostLiked = catchAsync(async (req, res) => {
 
         const data = item.filter(el => {
             let like = el.itemLike
-            if (like.length === maxval) {
-                return el;
+            if (maxval !== 0) {
+                if (like.length === maxval) {
+                    return el;
+                }
             }
         })
         return data
@@ -468,8 +471,10 @@ exports.getMostLiked = catchAsync(async (req, res) => {
 
         const data = item.filter(el => {
             let like = el.itemDisLike
-            if (like.length === maxval) {
-                return el;
+            if (maxval !== 0) {
+                if (like.length === maxval) {
+                    return el;
+                }
             }
         })
         return data
@@ -480,4 +485,44 @@ exports.getMostLiked = catchAsync(async (req, res) => {
         mostLiked,
         mostDisLiked
     })
-})
+});
+
+exports.deleteUserRestro = catchAsync(async (req, res, next) => {
+    const doc = await Restaurant.findByIdAndDelete(req.params.id);
+
+    let data = []
+    await Menu.find({ user: req.params.user }).then(item => {
+        item.filter(el => {
+            data.push(el.id)
+        })
+    });
+
+    data.forEach(async (item) => {
+        await Menu.findByIdAndDelete(item)
+    })
+
+    await Banner.findOneAndDelete({ user: req.params.user })
+
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
+exports.redirectoTorestroStats = catchAsync(async (req, res, next) => {
+    let userId = req.params.id;
+
+    const restro = await Restaurant.findOne({ user: userId })
+
+    if (restro !== null) {
+        res.redirect(`/menu/${restro.id}/restrostat`)
+    }
+    else {
+        res.redirect('/layouts/porti')
+    }
+
+});

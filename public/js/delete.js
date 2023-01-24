@@ -47,7 +47,7 @@ yesConfirm.addEventListener('click', async function (e) {
             if (response.status === 200) {
                 successAlert("Your Portfolio has been deleted :)");
                 window.setTimeout(() => {
-                    location.assign('/porti');
+                    location.assign('/layouts/porti');
                 }, 400);
 
             } else {

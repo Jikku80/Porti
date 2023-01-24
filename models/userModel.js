@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
         validate: [validator.isEmail, 'Please provide a valid email-address!']
     },
     photo: String,
+    accountType: {
+        type: String,
+        trim: true
+    },
     theme: {
         type: String,
         default: 'porti'

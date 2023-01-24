@@ -181,8 +181,122 @@ html{
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
+
+.msg__user__btn{
+    position: fixed;
+    bottom: 0;
+    right: 1vw;
+    background-color: rgba(0, 0, 0, 0.829);
+    font-size: 20px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .msg__dot{
+    position: fixed;
+    bottom: 5.5vh;
+    right: 1.5vw;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: teal;
+    z-index: 1;
+  }
+  
+  .msg__user__sec{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 25vw;
+    background-color: rgb(14, 14, 14);
+    border-radius: 1rem;
+    padding: 2%;
+    z-index: 6;
+  }
+  
+  .cancelmsgusersec{
+    cursor: pointer;
+  }
+  
+  .msg__user__head{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .msg__user__bod {
+    height: 50vh;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    font-size: 16px;
+  }
+  
+  .msg__inpt__sec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cur__user__msg{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cur__user__newmsg{
+    margin-bottom: 10px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .mytext{
+    color: teal;
+    margin:0;
+  }
+  
+  .timstamp{
+    font-size: 8px;
+    color: gray;
+    margin: 0;
+  }
+  
+  .me{
+    color: crimson;
+    margin: 0;
+  }
+  
+  .mymessage{
+    margin: 0;
+  }
+  
+  .curusermessage{
+    width: 70%;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    color: white;
+    padding: 2%;
+  }
+  
+  .sendusermessagebtn{
+    width: 3vw;
+    height: 5vh;
+    cursor: pointer;
+  }
+  
+  .goToLoginPage{
+    color: crimson;
+    cursor: pointer;
+  }
 
 @media (min-width: 601px) and (max-width: 900px){
     .menu__card{
@@ -191,6 +305,27 @@ html{
     .darkmode{
         right: 55px;
         top: 40px;
+    }
+    .msg__user__sec{
+        width: 50vw;
+    }
+  
+    .msg__dot{
+        bottom: 3vh;
+        right: 2vw;
+    }
+  
+    .msg__user__bod {
+        height: 30vh;
+    }
+  
+    .curusermessage{
+        width: 85%;
+    }
+  
+    .sendusermessagebtn{
+        width: 7vw;
+        height: 5vh;
     }
 }
 
@@ -210,5 +345,22 @@ html{
     }
     .menu__card{
         width: 80vw;
+    }
+    .msg__dot{
+        bottom: 4.5vh;
+        right: 2.5vw;
+    }
+  
+    .msg__user__sec{
+        width: 90vw;
+    }
+  
+    .curusermessage{
+        width: 85%;
+    }
+  
+    .sendusermessagebtn{
+        width: 10vw;
+        height: 5vh;
     }
 }

@@ -260,6 +260,77 @@ html{
   justify-content: space-around;
 }
 
+.bottom__sec{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.select__account__type__sec{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.925);
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.account__types{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  justify-content: space-around;
+}
+
+.account_v_types{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50vw;
+  height: 50vh;
+  margin-right: 10vw;
+}
+
+.txt, .showSwitches{
+  margin-right: 10vw;
+}
+
+.rd{
+  color: red;
+}
+
+.acc__typ__card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  padding: 2%;
+  cursor: pointer;
+  font-variant: small-caps;
+}
+
+.portfolio{
+  background-color: rgba(0, 128, 128, 0.801);
+}
+
+.restaurant{
+  background-color: rgba(218, 165, 32, 0.76);
+}
+
+.business{
+  background-color: green;
+}
+
+.acc__typ__card:hover{
+  background-color: rgba(128, 128, 128, 0.699);
+}
+
 #acHead{
   color: white;
   text-align: center;
@@ -1177,6 +1248,13 @@ input::file-selector-button, ::-webkit-file-upload-button{
     }
   .term__main{
     width: 80%;
+  }
+
+  .account__types{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
   }
 
   .menu__bar{

@@ -1,5 +1,8 @@
 let catalougeSearchBar = document.querySelector("#catalougeSearch");
 let compColor = document.querySelector(".comp__color").innerText;
+let focusColor = document.querySelector(".focus__color").innerText;
+let fontColor = document.querySelector(".font__color").innerText;
+let fontFam = document.querySelector(".font__fam").innerText;
 let catalogeUserId = document.querySelector(".comp__user__id").innerText;
 
 catalougeSearchBar.addEventListener("keypress", async (e) => {
@@ -53,7 +56,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
 
 (function () {
     allItems = document.querySelector('.get__all__items');
-    allItems.style.backgroundColor = compColor;
+    allItems.style.backgroundColor = focusColor;
     allItems.addEventListener("click", () => {
         location.reload();
     })
@@ -89,7 +92,9 @@ window.addEventListener("load", async () => {
                     let catalougeItems = document.querySelectorAll(".catalouge__cate__list");
 
                     catalougeItems.forEach(item => {
-                        item.style.backgroundColor = compColor;
+                        item.style.backgroundColor = focusColor;
+                        item.style.color = fontColor;
+                        item.style.fontFamily = fontFam;
                         item.addEventListener("click", async (e) => {
                             e.preventDefault();
                             let cate = item.innerText;
@@ -118,7 +123,7 @@ window.addEventListener("load", async () => {
                                                     let subItemHeader = document.querySelector(".sub__cat__head ");
                                                     subItemHeader.innerText = cate + " Sub Categories | SGroup"
                                                     subItm.innerHTML += `<h3 class="catalouge__subcate__list">${item}</h3>`
-                                                    subItemHeader.style.color = compColor;
+                                                    subItemHeader.style.color = focusColor;
                                                 }
                                                 else {
                                                     let catalougeItems = document.querySelector(".catalouge__items");
@@ -129,11 +134,12 @@ window.addEventListener("load", async () => {
                                             })
                                             let subCateList = document.querySelectorAll(".catalouge__subcate__list")
                                             subCateList.forEach(item => {
+                                                item.style.fontFamily = fontFam;
                                                 item.addEventListener("mouseover", () => {
-                                                    item.style.color = compColor;
+                                                    item.style.color = focusColor;
                                                 })
                                                 item.addEventListener("mouseout", () => {
-                                                    item.style.color = "white";
+                                                    item.style.color = fontColor;
                                                 })
                                                 item.addEventListener("click", async (e) => {
                                                     e.preventDefault();
@@ -208,28 +214,28 @@ function addCardElem(el) {
                 <img class="catal__card__img imgFull" src="${el.coverImage}" alt="catalouge__item__image">
                 <div class="catal__card__det">
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Name: </p>
-                        <p class="card__dark__text catal__name">${el.name}</p>
+                        <p class="catal__card__head cardtxt">Name: </p>
+                        <p class="card__dark__text catal__name cardtxt">${el.name}</p>
                     </div>
-                    <div class="card__sub__sec">
-                        <p class="catal__card__head">S.No: </p>
+                    <div class="card__sub__sec serialsec">
+                        <p class="catal__card__head cardtxt">S.No: </p>
                         <p class="card__dark__text catal__sno">${el.serialno}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Price: </p>
+                        <p class="catal__card__head cardtxt">Price: </p>
                         <p class="card__dark__text catal__price">${el.currency} ${el.price}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Group: </p>
-                        <p class="card__dark__text catal__category">${el.category}</p>
+                        <p class="catal__card__head cardtxt">Group: </p>
+                        <p class="card__dark__text catal__category cardtxt">${el.category}</p>
                     </div>
-                    <div class="card__sub__sec">
-                        <p class="catal__card__head">SGroup: </p>
-                        <p class="card__dark__text catal__subcategory">${el.subcategory}</p>
+                    <div class="card__sub__sec subcatsec">
+                        <p class="catal__card__head cardtxt">SGroup: </p>
+                        <p class="card__dark__text catal__subcategory cardtxt">${el.subcategory}</p>
                     </div>
-                    <div class="card__sub__sec">
-                        <p class="catal__card__head">Detail: </p>
-                        <p class="card__dark__text catal__detail">${el.detail}</p>
+                    <div class="card__sub__sec detailsec">
+                        <p class="catal__card__head cardtxt">Detail: </p>
+                        <p class="card__dark__text catal__detail cardtxt">${el.detail}</p>
                     </div>
                 </div>
             </div>
@@ -242,33 +248,43 @@ function addCardElem(el) {
                 <img class="catal__card__img imgFull" src="/images/noimg.png" alt="catalouge__item__image">
                 <div class="catal__card__det">
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Name: </p>
-                        <p class="card__dark__text catal__name">${el.name}</p>
+                        <p class="catal__card__head cardtxt">Name: </p>
+                        <p class="card__dark__text catal__name cardtxt">${el.name}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">S.No: </p>
+                        <p class="catal__card__head cardtxt">S.No: </p>
                         <p class="card__dark__text catal__sno">${el.serialno}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Price: </p>
+                        <p class="catal__card__head cardtxt">Price: </p>
                         <p class="card__dark__text catal__price">${el.currency} ${el.price}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Group: </p>
-                        <p class="card__dark__text catal__category">${el.category}</p>
+                        <p class="catal__card__head cardtxt">Group: </p>
+                        <p class="card__dark__text catal__category cardtxt">${el.category}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">SGroup: </p>
-                        <p class="card__dark__text catal__subcategory">${el.subcategory}</p>
+                        <p class="catal__card__head cardtxt">SGroup: </p>
+                        <p class="card__dark__text catal__subcategory cardtxt">${el.subcategory}</p>
                     </div>
                     <div class="card__sub__sec">
-                        <p class="catal__card__head">Detail: </p>
-                        <p class="card__dark__text catal__detail">${el.detail}</p>
+                        <p class="catal__card__head cardtxt">Detail: </p>
+                        <p class="card__dark__text catal__detail cardtxt">${el.detail}</p>
                     </div>
                 </div>
             </div>
         `
     }
+    let catCard = document.querySelectorAll(".catal__card");
+    let catTxt = document.querySelectorAll(".cardtxt")
+    catCard.forEach(item => {
+        item.style.backgroundColor = focusColor
+        item.style.fontFamily = fontFam
+    })
+
+    catTxt.forEach(item => {
+        item.style.color = fontColor
+    })
     fullPic()
 }
 
@@ -415,25 +431,151 @@ modelCanceler.addEventListener("click", () => {
 })();
 
 (function () {
+    let editDummy = document.querySelector(".edit__sec__cat");
+    let editFeat = document.querySelector(".edit__features__sec");
+    let cancelDummy = document.querySelector(".cancel__edit__dummy");
+
+    cancelDummy.addEventListener("click", () => {
+        editFeat.classList.add('hidden');
+        editDummy.classList.remove("hidden");
+    })
+
+    editDummy.addEventListener("click", () => {
+        editFeat.classList.remove("hidden");
+        editDummy.classList.add("hidden");
+    })
+})();
+
+(function () {
+    let defaultBtn = document.getElementById("defaultfirstCatTheme");
+    let fontColor = "white";
+    let focusColor = "rgb(26, 154, 204)";
+    let backColor = "#2c2c2c";
+    let fontFam = "Arial";
+    let id = document.getElementById('firstCatid').innerText;
+
+    defaultBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/catalouge/${id}/updateCompany`
+        try {
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fontColor: fontColor,
+                    themecolor: backColor,
+                    focusColor: focusColor,
+                    fontFam: fontFam
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Catalog Theme has been updated to default :)");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    errorAlert("Invalid input, Input error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
+    let upPortTheme = document.getElementById("changefirstCatTheme");
+    let fontColor = document.getElementById("firstCatFontColor");
+    let focusColor = document.getElementById("firstCatFocusColor");
+    let backColor = document.getElementById("firstCatBackColor");
+    let fontFam = document.getElementById("firstCatFontFam");
+    let id = document.getElementById('firstCatid').innerText;
+
+    upPortTheme.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+
+        const endpoint = `/api/v1/catalouge/${id}/updateCompany`
+        try {
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fontColor: fontColor.value,
+                    themecolor: backColor.value,
+                    focusColor: focusColor.value,
+                    fontFam: fontFam.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Catalog Theme has been updated :)");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    errorAlert("Invalid input, Input error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
     let footer = document.querySelector(".company__footer");
     let btns = document.querySelectorAll(".pag__btn");
+    let card = document.querySelectorAll(".catal__card");
+    let ctxt = document.querySelectorAll(".cardtxt")
+    let sec = document.querySelector(".catalouge__one__sec");
+
+    sec.style.backgroundColor = compColor;
+
+    card.forEach(item => {
+        item.style.backgroundColor = focusColor;
+        item.style.fontFamily = fontFam
+    })
+
+    ctxt.forEach(item => {
+        item.style.color = fontColor;
+        item.style.fontFamily = fontFam;
+    })
 
     btns.forEach(item => {
-        item.style.color = compColor;
-        item.style.border = `2px solid ${compColor}`;
+        item.style.color = focusColor;
+        item.style.border = `2px solid ${focusColor}`;
 
         item.addEventListener("mouseover", () => {
-            item.style.backgroundColor = compColor;
-            item.style.color = "white";
+            item.style.backgroundColor = focusColor;
+            item.style.color = fontColor;
         })
 
         item.addEventListener("mouseout", () => {
-            item.style.color = compColor;
+            item.style.color = focusColor;
             item.style.backgroundColor = "transparent"
         })
     })
 
-    catalougeSearchBar.style.color = compColor;
-    catalougeSearchBar.style.borderBottom = `2px solid ${compColor}`;
-    footer.style.backgroundColor = compColor;
+    catalougeSearchBar.style.color = focusColor;
+    catalougeSearchBar.style.borderBottom = `2px solid ${focusColor}`;
+    footer.style.backgroundColor = focusColor;
 })();

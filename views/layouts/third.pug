@@ -58,6 +58,55 @@ block content
         #seventhid.hidden
         #changeseventhTheme.hidden 
         #defaultseventhTheme.hidden
+    if (user)
+        if (user.id !== portfolio.user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= portfolio.user.name
+                    p.portiuserid.hidden= portfolio.user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= portfolio.user.name 
+            .portiuserid.hidden= portfolio.user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= portfolio.user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden
+        .msg__user__btn.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
     .main(id=`${portfolio.fontColor}`)
         .about__sec(id=`${portfolio.fontFam}`)
             .about__next 
@@ -155,3 +204,5 @@ block content
     script(src="/js/alert.js") 
     script(src="/js/layouts/paginate.js") 
     script(src="/js/layouts/third.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/usermsg.js") 

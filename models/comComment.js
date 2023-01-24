@@ -5,6 +5,10 @@ const comCommentSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    userId: {
+        type: String,
+        trim: true
+    },
     companyUserId: {
         type: String,
         trim: true

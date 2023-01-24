@@ -750,9 +750,9 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
-    .breadcrumbs{
-        font-size: 12px;
-    }
+    .navigation a{
+        font-size: 1.8vw;
+      }
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
     }

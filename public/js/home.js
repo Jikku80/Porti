@@ -295,7 +295,7 @@ sendMsg.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     try {
-        const endpoint = '/sendmsg'
+        const endpoint = '/send/msg'
         await fetch((endpoint), {
             method: 'POST',
             headers: {

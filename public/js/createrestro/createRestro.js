@@ -9,7 +9,7 @@ menuLayouts = document.querySelectorAll(".menu_layouts");
 
 let restroOneForm = document.createElement("div");
 restroOneForm.classList.add("createRestro");
-restroOneForm.innerHTML = createRestro("name", "address", "slogan", "phn_no", "restro__form__btn")
+restroOneForm.innerHTML = createRestro("name", "address", "slogan", "phn_no", "restro__form__btn", "country")
 
 document.body.appendChild(restroOneForm);
 let mkRestroForm = document.querySelector('.createRestro');
@@ -29,7 +29,8 @@ menuLayouts.forEach(item => {
         let name = document.querySelector("#name");
         let address = document.getElementById("address");
         let slogan = document.getElementById("slogan");
-        let no = document.getElementById("phn_no")
+        let no = document.getElementById("phn_no");
+        let country = document.getElementById("country");
         let submit = document.getElementById("restro__form__btn");
         let theme = item.id;
 
@@ -38,6 +39,9 @@ menuLayouts.forEach(item => {
                 return false;
             }
             if (address.value < 1 || address.value == "" || address.value == null) {
+                return false;
+            }
+            if (country.vlaue < 1 || country.value == "") {
                 return false;
             }
             e.preventDefault();
@@ -57,6 +61,7 @@ menuLayouts.forEach(item => {
                         slogan: slogan.value,
                         phn_no: no.value,
                         theme: theme,
+                        country: country.value
                     })
                 }).then((response) => {
                     load.classList.add("hidden");
@@ -83,11 +88,11 @@ menuLayouts.forEach(item => {
 let cancelRestro = document.querySelector(".cancel__restro");
 cancelRestro.addEventListener("click", () => {
     mkRestroForm.classList.add("hidden");
-    portBodR.classList.remove("hidden");
+    // portBodR.classList.remove("hidden");
     footerBodR.classList.remove("hidden");
     inviBodR.classList.remove("hidden");
     menuBodR.classList.remove("hidden");
-    catBodR.classList.remove("hidden");
+    // catBodR.classList.remove("hidden");
     window.setTimeout(() => {
         location.hash = "#crtMenu";
     }, 200)

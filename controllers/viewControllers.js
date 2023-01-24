@@ -10,6 +10,8 @@ const APIFeatures = require('./../utils/apiFeatures')
 
 const Portfolio = require('./../models/portfolioModel');
 const PortfolioImages = require('./../models/portfolioImageModel');
+const Banner = require('./../models/bannerModel');
+const CatalogBanner = require('./../models/catalogBannerModel');
 const Restaurant = require('./../models/restaurantDetailModel');
 const Menu = require('./../models/menuModel');
 const Catalouge = require('./../models/catalougeModel');
@@ -124,15 +126,13 @@ exports.myInvi = catchAsync(async (req, res) => {
 exports.layoutTally = catchAsync(async (req, res, next) => {
     const user_name = req.params.username
     const usr = await User.find({ name: user_name });
-
     const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 12, page: pg }).paginate();
-    const portImage = await features.query
-    const allPortImg = await PortfolioImage.find({ user: usr[0]._id })
-    await Portfolio.findOne({ user: usr[0]._id }).populate('user').then(portfolio => {
-
+    const portfolio = await Portfolio.findOne({ user: usr[0]._id }).populate('user')
+    if (portfolio !== null) {
+        const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 12, page: pg }).paginate();
+        const portImage = await features.query
+        const allPortImg = await PortfolioImage.find({ user: usr[0]._id })
         let theme = portfolio.theme
-
         switch (theme) {
             case "a9993e364706816aba3e25717850c26c9cd0d89d":
                 res.status(200).render('layouts/first', {
@@ -191,8 +191,81 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
             default:
                 res.status(404).render('404.pug')
         }
+        return;
+    }
 
-    })
+    const restro = await Restaurant.find({ user: usr[0]._id }).populate('user')
+
+    if (restro.length !== 0) {
+        const feature = new APIFeatures(Menu.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
+        const menus = await feature.query
+        // const allmenus = await Menu.find({ user: usr[0]._id });
+        let allmenus = await Menu.find({ user: usr[0]._id }).then(arr => {
+            return distinctCat = [...new Set(arr.map(x => x.category))];
+        })
+
+        const banner = await Banner.find({ user: usr[0]._id })
+        let theme = restro[0].theme
+
+        switch (theme) {
+            case "40bd001563085fc35165329ea1ff5c5ecbdbbeef":
+                res.status(200).render('menu/firstMenu', {
+                    title: `${restro[0].name}`,
+                    restro,
+                    menus
+                })
+                break;
+            case "f7154fcf991cb48c394345221cf2f2d631cd4f15":
+                res.status(200).render('menu/secondMenu', {
+                    title: `${restro[0].name}`,
+                    restro,
+                    allmenus,
+                    banner
+                })
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
+        return;
+    }
+
+    const company = await Company.find({ user: usr[0]._id }).populate('user')
+
+    if (company.length !== 0) {
+        const featres = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
+        const catalouges = await featres.query
+        const banner = await CatalogBanner.find({ user: usr[0]._id })
+        const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
+            const items = el.filter(item => {
+                if (item.hotItem === true) {
+                    return item
+                }
+            })
+            return items
+        })
+        let theme = company[0].theme
+        switch (theme) {
+            case "51eac6b471a284d3341d8c0c63d0f1a286262a18":
+                res.status(200).render('catalouge/firstCatalouge', {
+                    title: `${company[0].name}`,
+                    catalouges,
+                    company: company[0]
+                })
+                break;
+            case "e8d4bd5004021ea34a450c4482093ab20853fe68":
+                res.status(200).render('catalouge/secondCatalouge', {
+                    title: `${company[0].name}`,
+                    catalouges,
+                    company: company[0],
+                    banner,
+                    hotItems
+                })
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
+        return;
+    }
 });
 
 exports.getAccount = (req, res) => {

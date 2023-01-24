@@ -5,13 +5,13 @@ let portName = document.getElementById('user__nam').innerText;
 url.innerHTML = `
 <button id="openport" class="redbtn">My Portfolio</button>
 <p class="xsf">Share your portfolio with the link below</p>
-<p class="port_link nocaps">${location.host}/profile/${portName}</p>
+<p class="port_link nocaps">${location.host}/${portName}</p>
 `
 
 openport = document.getElementById("openport");
 
 openport.addEventListener("click", () => {
-    let myurl = `/profile/${portName}`
+    let myurl = `/${portName}`
     window.open(myurl);
 })
 
@@ -35,7 +35,7 @@ portigen.addEventListener("click", async () => {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        const endpoint = `/scan`
+        const endpoint = `/scan/qr`
         await fetch((endpoint), {
             method: 'POST',
             headers: {

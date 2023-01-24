@@ -6,7 +6,7 @@ logout.forEach((logout) => {
         e.preventDefault();
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        endpoint = "/logout"
+        endpoint = "/account/logout"
         try {
             const res = fetch(endpoint, {
                 method: 'GET',

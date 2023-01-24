@@ -11,7 +11,7 @@ block content
         p.hidden.uthemer= user.theme
         .four0four 
             h2.head You have not Created Any Invitation YET!!! Create One and Come Back 
-            a.limebtn(href="/porti#crtInvi") Create One 
+            a.limebtn(href="/layouts/porti#crtInvi") Create One 
     else
         if (user)
             include _header
@@ -30,7 +30,7 @@ block content
         else
             .confirm__pg 
                 h1 You are not logged In!
-                a.redbtn(href="/login") LogIn
+                a.redbtn(href="/account/login") LogIn
 
     script(src="/js/alert.js")
     script(src="/js/inviall.js")  

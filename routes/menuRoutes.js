@@ -11,15 +11,18 @@ router.get('/:id/findbynam/:nam', menuController.findbyNam);
 router.get('/allCategories/:id', menuController.listCategories);
 router.get('/:id/searchItems', menuController.lookup);
 router.get('/:id/paginate/:count', menuController.paginate);
-router.use(authController.protect);
 router.use(authController.isLoggedIn);
+router.get('/:id/getItem', menuController.getMenu);
+router.use(authController.protect);
+
+router.get('/restrostat/:id', authController.restrictTo('user', 'admin'), menuController.redirectoTorestroStats);
 
 router.post('/', authController.restrictTo('user', 'admin'), menuController.createMenu);
 router.post('/createRestaurant', authController.restrictTo('user', 'admin'), menuController.createRestaurant);
 router.patch('/:id/updateRestaurant', authController.restrictTo('user', 'admin'), menuController.updateRestaurant);
+router.delete('/:id/deleteRestro/:user', authController.restrictTo('user', 'admin'), menuController.deleteUserRestro);
 
 router.patch('/:id/updateItemDetail', authController.restrictTo('user', 'admin'), menuController.updateMenu);
-router.get('/:id/getItem', authController.restrictTo('user', 'admin'), menuController.getMenu);
 router.post('/updateItemImage', authController.restrictTo('user', 'admin'), menuController.updateItemImg);
 router.post('/:id/updateResImage', authController.restrictTo('user', 'admin'), menuController.updateResImg);
 router.delete('/:id/deleteItem', authController.restrictTo('user', 'admin'), menuController.delMenu);

@@ -28,6 +28,7 @@ router.post('/usermessage', msgController.newUserMessage);
 router.get('/user/:userName/message/:name', msgController.getAllMessageFromUser);
 router.get('/messagesAll/:name', msgController.getMessagesAllUsers);
 router.get('/messageby/:name/user/:userName', msgController.getAllMessageByUser);
+router.patch('/update/:name/msg/:userName', msgController.updateUserMessage);
 router.delete('/deleteusermessage', msgController.deleteUserMessage);
 
 module.exports = router;

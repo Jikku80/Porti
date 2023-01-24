@@ -5,6 +5,10 @@ const comOrderSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    userId: {
+        type: String,
+        trim: true
+    },
     company: {
         type: String,
         trim: true

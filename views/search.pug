@@ -10,7 +10,7 @@ block content
     if (!user)
         .confirm__pg
             h1 Please Sign In To Your Account !
-            a.limebtn(href="/login") Sign In
+            a.limebtn(href="/account/login") Sign In
     else
         include _header
         p.hidden.themeIid= user.theme

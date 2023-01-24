@@ -7,6 +7,55 @@ block content
             span Por
             span.grn t
             span.nocaps i
+    if (user)
+        if (user.id !== restro[0].user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= restro[0].user.name
+                    p.portiuserid.hidden= restro[0].user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .msg__dot.hidden
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= restro[0].user.name 
+            .portiuserid.hidden= restro[0].user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= restro[0].user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
     .sec__menu__sec 
         if (restro[0])
             .sec__menu__usr__id.hidden= restro[0].user.id
@@ -23,7 +72,10 @@ block content
                     p= restro[0].phn_no
         #thiscurrentrestroid.hidden= restro[0]._id
         #thiscurrentrestrouser.hidden= restro[0].user.name
-        #thisusrid.hidden= user._id
+        if (user)
+            #thisusrid.hidden= user._id
+        else 
+            #thisusrid.hidden
         .resorder(title="order") &#127869;
         .resorderfill.hidden
         audio#secmsgalert.hidden
@@ -41,6 +93,7 @@ block content
                                 label Tabel No :
                                 input#tableno(type="text", name="tableno", placeholder="rc11 Or Home Delivery")
                                 #uniqueusername.hidden= user.name
+                                #uniqueuserid.hidden= user.id
                             .form__item__display__sec 
                                 
                             .form__cont__order
@@ -75,6 +128,7 @@ block content
                         #sendorderreq.hidden 
                         #uniquerestroname.hidden
                         #uniqueusername.hidden
+                        #uniqueuserid.hidden
                         #resordermsg.hidden
                         .form__item__display__sec.hidden 
                         .foods__order__his.hidden
@@ -131,5 +185,6 @@ block content
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/menu/secmenu.js") 
+    script(src="/js/usermsg.js") 
 
 

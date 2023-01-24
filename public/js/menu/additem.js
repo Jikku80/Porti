@@ -403,7 +403,7 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="menu__link">
             <p class="head form__label">Your Menu Link</p>
-            <p class="menu__link__displayer qrLink">${location.host}/menu/${nm}</p>
+            <p class="menu__link__displayer qrLink">${location.host}/${nm}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
             <button class="ygbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
@@ -412,7 +412,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openMenu");
     openMenu.addEventListener("click", () => {
-        window.open(`/menu/${nm}`)
+        window.open(`/${nm}`)
     })
 
     let menuLinkDis = document.querySelector(".menu__link__displayer");
@@ -521,7 +521,7 @@ prev.addEventListener("click", async () => {
 
     }
     else {
-        console.log("Hola from Porti")
+        return;
     }
 })();
 
@@ -610,17 +610,18 @@ async function getAllResMsg() {
                                 `
                                 <div class="menu__msg__table__list">
                                     <div class="msg__table__bod">
-                                        <p class="tabledet" id="${el.table}">${el.table}</p>
-                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                        <p class="tabledet">${el.table}</p>
+                                        <p class="ordermsg hidden">${el.message}</p>
                                         <p class="dotnoti"></p>
                                     </div>
-                                    <p class="usersmalltag" id="${el.name}">${el.name}</p>
-                                    <p class="hidden" id="${el.address}"></p>
-                                    <p class="hidden" id="${el.phn_no}"></p>
-                                    <p class="hidden msgid" id="${el._id}"></p>
-                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
-                                    <p class="hidden" id="${el.restro}"></p>
-                                    <p class="hidden" id="${el.total}"></p>
+                                    <p class="usersmalltag">${el.name}</p>
+                                    <p class="hidden">${el.address}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.orderInfo}</p>
+                                    <p class="hidden">${el.restro}</p>
+                                    <p class="hidden">${el.total}</p>
+                                    <p class="hidden">${el.userId}</p>
                                 </div>
                             `
                         }
@@ -640,15 +641,16 @@ async function getAllResMsg() {
 
                     msgTab.forEach(item => {
                         item.addEventListener("click", () => {
-                            let msg = item.childNodes[1].childNodes[3].id;
-                            let tabl = item.childNodes[1].childNodes[1].id;
-                            let usr = item.childNodes[3].id;
-                            let add = item.childNodes[5].id;
-                            let phn = item.childNodes[7].id;
-                            let mid = item.childNodes[9].id;
-                            let ordInfo = item.childNodes[11].id;
-                            let restroID = item.childNodes[13].id;
-                            let total = item.childNodes[15].id;
+                            let msg = item.childNodes[1].childNodes[3].innerText;
+                            let tabl = item.childNodes[1].childNodes[1].innerText;
+                            let usr = item.childNodes[3].innerText;
+                            let add = item.childNodes[5].innerText;
+                            let phn = item.childNodes[7].innerText;
+                            let mid = item.childNodes[9].innerText;
+                            let ordInfo = item.childNodes[11].innerText;
+                            let restroID = item.childNodes[13].innerText;
+                            let total = item.childNodes[15].innerText;
+                            let usrId = item.childNodes[17].innerText;
                             msgmidsec.classList.add("hidden");
                             msgRev.classList.remove("hidden");
                             tablePlace.innerText = tabl;
@@ -734,7 +736,7 @@ async function getAllResMsg() {
                             confirmord.addEventListener("click", (e) => {
                                 e.preventDefault();
                                 orderConfirmed(grpbtn, mid, "orderById");
-                                socket.emit("resorderreply", restroID, usr);
+                                socket.emit("resorderreply", restroID, usr, usrId);
                                 menuMsgBod.innerHTML = "";
                                 getAllResMsg();
                             })
@@ -742,7 +744,7 @@ async function getAllResMsg() {
                             cancelord.addEventListener("click", (e) => {
                                 e.preventDefault();
                                 orderCanceled(grpbtn, mid, "orderById");
-                                socket.emit("resorderreply", restroID, usr);
+                                socket.emit("resorderreply", restroID, usr, usrId);
                                 menuMsgBod.innerHTML = "";
                                 getAllResMsg();
                             })
@@ -915,4 +917,47 @@ async function orderCanceled(val, usr, route) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-}
+};
+
+(function () {
+    let delBtn = document.getElementById("deleteCompany");
+    let id = document.querySelector(".delrestroid").innerText;
+    let user = document.querySelector(".delmenuid").innerText;
+
+    delBtn.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/${id}/deleteRestro/${user}`
+            await fetch(endpoint, {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                console.log(response);
+                if (response.status === 200) {
+                    successAlert("Your Restaurant Has been Deleted :(");
+                    window.setTimeout(() => {
+                        location.assign(`/layouts/porti`);
+                    }, 300)
+                }
+                else if (response.status === 404) {
+                    errorAlert("No Resturant Found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Deletion Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();

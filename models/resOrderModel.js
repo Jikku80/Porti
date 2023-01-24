@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const resOrderSchema = new mongoose.Schema({
     name: {
         type: String,
-        trim: true,
+        trim: true
+    },
+    userId: {
+        type: String,
+        trim: true
     },
     restro: {
         type: String,

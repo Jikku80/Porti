@@ -25,7 +25,7 @@ block content
             .menu__messages__btn.hidden
             .confirm__pg
                 h1.td You have not created a restaurant! Create and come back
-                    a.lbtn(href="/porti#crtMenu") Create Restaurante
+                    a.lbtn(href="/layouts/porti#crtMenu") Create Restaurante
         else
             include ../_header
             p.themeUser.hidden= user.theme
@@ -189,11 +189,17 @@ block content
                         #bannerId.hidden 
                         #deletebanner.hidden
                         .bannerresid.hidden
+                .delete__sec 
+                    h2 Delete Restaurant 
+                    p It will delete Everything including all the Menu items
+                    .delrestroid.hidden= restro[0]._id
+                    .delmenuid.hidden= restro[0].user._id
+                    btn#deleteCompany.blackbtn Delete
                 include ../_footer
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !
-            a(href="/login") Sign In
+            a(href="/account/login") Sign In
 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/menu/additem.js") 

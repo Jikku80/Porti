@@ -10,6 +10,10 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    country: {
+        type: String,
+        trim: true
+    },
     Address: {
         type: String,
         trim: true,

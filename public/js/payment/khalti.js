@@ -26,7 +26,7 @@ var config = {
             buyIt();
             successAlert("Payment Successfull :)");
             window.setTimeout(() => {
-                location.assign(`/porti`);
+                location.assign(`/layouts/porti`);
             }, 400);
         },
         onError(error) {

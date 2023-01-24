@@ -56,7 +56,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         createdAt: Date.now()
     });
 
-    const url = `${req.protocol}://${req.get('host')}/me`;
+    const url = `${req.protocol}://${req.get('host')}/account/me`;
     await new Email(newUser, url).sendWelcome();
 
     createSendToken(newUser, 201, req, res);
@@ -160,9 +160,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
     try {
         if (process.env.NODE_ENV == 'development') {
-            resetURL = 'http://127.0.0.1:3000/resetpassword'
+            resetURL = 'http://127.0.0.1:3000/reset/password'
         } else {
-            resetURL = `${req.protocol}://${req.get('host')}/resetpassword`;
+            resetURL = `${req.protocol}://${req.get('host')}/reset/password`;
         }
         await new Email(user, resetURL, resetToken).sendPasswordReset();
 

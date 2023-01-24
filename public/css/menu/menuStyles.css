@@ -719,6 +719,12 @@ input::file-selector-button, ::-webkit-file-upload-button{
     color: goldenrod;
 }
 
+.delete__sec{
+    background-color: rgba(220, 20, 60, 0.877);
+    margin: 2%;
+    padding: 2%;
+}
+
 .footer{
     width: 85%;
     margin-top: 2vh;
@@ -780,6 +786,9 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+    .navigation a{
+        font-size: 1.8vw;
+      }
     .new__menu__msg{
         top: 3vh;
         right: 3vw;

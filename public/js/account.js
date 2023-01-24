@@ -38,7 +38,7 @@ updateBtn.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     try {
-        const endpoint = '/submit-user-data'
+        const endpoint = '/submit/user-data'
         await fetch((endpoint), {
             method: 'POST',
             headers: {
@@ -53,7 +53,7 @@ updateBtn.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Information has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else if (response.status === 409) {
@@ -102,7 +102,7 @@ pwdUpdate.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     try {
-        const endpoint = '/passwordUpdate'
+        const endpoint = '/password/Update'
         await fetch((endpoint), {
             method: 'POST',
             headers: {
@@ -118,7 +118,7 @@ pwdUpdate.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Password has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             } else {
                 errorAlert("Your old password doesnt match!! Use your old password :(")
@@ -160,7 +160,7 @@ portiBack.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Theme has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else {
@@ -194,7 +194,7 @@ darkBack.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Theme has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else {
@@ -228,7 +228,7 @@ whiteBack.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Theme has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else {
@@ -262,7 +262,7 @@ lakheyBack.addEventListener("click", async (e) => {
             if (response.status === 200) {
                 successAlert("Your Theme has been Updated :)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else {
@@ -287,11 +287,13 @@ lakheyBack.addEventListener("click", async (e) => {
     let hd = document.getElementById("acHead");
     let td = document.querySelectorAll(".td");
     let lod = document.querySelector(".loader");
+    let rd = document.querySelector(".rd");
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
         lod.style.backgroundColor = "crimson";
         document.body.style.backgroundColor = "crimson";
+        rd.style.color = "black"
         upAccForm.style.color = "white";
         inpt.forEach(item => {
             item.style.borderColor = "white"
@@ -330,4 +332,118 @@ lakheyBack.addEventListener("click", async (e) => {
     else {
         console.log("Hola from Porti")
     }
+})();
+
+(function () {
+    let personal = document.querySelector(".portfolio");
+    let restro = document.querySelector(".restaurant");
+    let business = document.querySelector(".business");
+    let btns = document.querySelector(".account_v_types")
+    let switchBtn = document.querySelector(".showSwitches");
+
+    switchBtn.addEventListener("click", () => {
+        btns.classList.toggle("hidden");
+    })
+
+    personal.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/users/updateAccount/${currentid}`
+            await fetch((endpoint), {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    accountType: 'portfolio'
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Portfolio Account has been set :)");
+                    window.setTimeout(() => {
+                        location.assign('/account/me');
+                    }, 400);
+                }
+                else {
+                    console.log(response)
+                    errorAlert("Error Updating Theme :(")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong :(', err);
+        };
+    });
+
+    restro.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/users/updateAccount/${currentid}`
+            await fetch((endpoint), {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    accountType: 'restaurant'
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Restaurant Account has been set :)");
+                    window.setTimeout(() => {
+                        location.assign('/account/me');
+                    }, 400);
+                }
+                else {
+                    console.log(response)
+                    errorAlert("Error Updating Theme :(")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong :(', err);
+        };
+    });
+
+    business.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/users/updateAccount/${currentid}`
+            await fetch((endpoint), {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    accountType: 'business'
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Business Account has been set :)");
+                    window.setTimeout(() => {
+                        location.assign('/account/me');
+                    }, 400);
+                }
+                else {
+                    console.log(response)
+                    errorAlert("Error Updating Theme :(")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong :(', err);
+        };
+    })
 })();

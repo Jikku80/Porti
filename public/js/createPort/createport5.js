@@ -84,8 +84,8 @@ clFiveCreate.addEventListener("click", () => {
     portBod5.classList.remove("hidden");
     footer5.classList.remove("hidden");
     inviSec5.classList.remove("hidden");
-    menuSec5.classList.remove("hidden");
-    catSec5.classList.remove("hidden");
+    // menuSec5.classList.remove("hidden");
+    // catSec5.classList.remove("hidden");
     window.setTimeout(() => {
         location.hash = "#crtPort";
     }, 200)

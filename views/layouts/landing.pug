@@ -12,7 +12,7 @@ block content
         .land__whole__sec.hidden
         .notifier
             h1.grn You have not created a portfolio YET! Create and come back
-            a.limebtn(href="/porti#crtPort") Create Portfolio
+            a.limebtn(href="/layouts/porti#crtPort") Create Portfolio
     else
         if (user)
             if (portfolio.user.id == user._id)
@@ -119,11 +119,11 @@ block content
             else 
                 .notifier
                     h1 You Dont Belong Here, GET LOST!!!
-                    a.redbtn(href="/porti") Go Back
+                    a.redbtn(href="/layouts/porti") Go Back
         else 
             .notifier
                 h1 You are not Logged In! Please Log In 
-                a.redbtn(href="/login") Log In
+                a.redbtn(href="/account/login") Log In
 
         script(src="/js/layouts/baseLand.js")      
         script(src="/js/delete.js")

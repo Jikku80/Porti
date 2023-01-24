@@ -31,7 +31,7 @@ loginBtn.addEventListener('click', async function (e) {
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
-    const endpoint = '/login'
+    const endpoint = '/account/login'
     try {
         await fetch((endpoint), {
             method: 'POST',
@@ -51,7 +51,7 @@ loginBtn.addEventListener('click', async function (e) {
             else {
                 successAlert("You are now LoggedIn :)");
                 window.setTimeout(() => {
-                    location.assign('/porti');
+                    location.assign('/layouts/porti');
                 }, 400);
             }
         })

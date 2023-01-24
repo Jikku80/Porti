@@ -56,7 +56,7 @@
         .upform__head 
             h1 Update Your Port Images
             img.canclCollec(src="/images/cancel.png", alt="cancel_img")
-        form#upImageCollec(action="/updateportImgCollec" method="post" enctype="multipart/form-data")
+        form#upImageCollec(action="/update/portImgCollec" method="post" enctype="multipart/form-data")
             .form__bod
                 input#img1Collec(type="file" accept="image/*" multiple name="upimagescollec", required)
                 input.hidden(type="text" value=`${portfolio.id}` name="upportid" )

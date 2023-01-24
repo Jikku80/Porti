@@ -11,7 +11,7 @@ block content
     if (!user)
         .confirm__pg
             h1 Please Sign In To Your Account !
-            a(href="/login") Sign In
+            a(href="/account/login") Sign In
     else 
         include _header
         #usId.hidden= user._id
@@ -19,84 +19,6 @@ block content
         .creation__body
             include _footer
             #uTheme.hidden= user.theme
-            .catalouge__section.newsec.shinesec#crtCataloge
-                if (!company)
-                    h2 Create Catalouge For Your Business 
-                    p Pick any of the layouts below and buid a Catalouge 
-                    p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#cHelper") Cataloge Helper
-                    .gGroup 
-                        .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
-                        .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
-                    .layout__main#freeCatalgSec
-                        #catal1.unl
-                            .un_layout_log
-                                each item in theme
-                                    if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
-                                        .unl.cataloge_layouts(id=`${item.themeId}`)
-                                            .un_layout_log
-                                                img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
-                                                p.portDet= item.name
-                    .layout__main#lockedCatalgSec 
-                        .unl
-                else 
-                    .noti__sec
-                        .sticky__section
-                            h2 You Already have A Catalouge!
-                            p.warn You can't have more than one Catalouge!
-                        if (!catalouge)
-                            .sticky__section 
-                                h2.warn You Haven't added items to your cataloge!
-                    .gGroup 
-                        .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
-                        .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
-                    .layout__main#freeCatalgSec 
-                        each item in theme
-                            if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
-                                .un_layout
-                                    img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
-                                    p.portDet= item.name
-                    .layuot__main#lockedCatalgSec 
-                        .un_layout
-            .menu__section#crtMenu.shinesec
-                if (!restro)
-                    h2 Create Restro for your Menu 
-                    p Pick any of the layouts below and build a menu for your restro 
-                    p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#mHelper") Menu Helper
-                    .gGroup 
-                        .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
-                        .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
-                    .layout__main#freeMenuSec
-                        #menu1.unl
-                            .un_layout_log
-                                each item in theme
-                                    if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
-                                        .unl.menu_layouts(id=`${item.themeId}`)
-                                            .un_layout_log
-                                                img(src=`${item.picture}`, loading="lazy", alt="menu1")
-                                                p.portDet= item.name
-                    .layout__main#lockedMenuSec 
-                        .unl
-                else 
-                    .noti__sec
-                        .sticky__section
-                            h2 You Already have A Menu!
-                            p.warn You can't have more than one Menu!
-                        if (!menu)
-                            .sticky__section 
-                                h2.warn You Haven't added items to your menu!
-                    .gGroup 
-                        .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
-                        .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
-                    .layout__main#freeMenuSec
-                        each item in theme
-                            if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
-                                .un_layout
-                                    img(src=`${item.picture}`, loading="lazy", alt="menu1")
-                                    p.portDet= item.name
-                    .layout__main#lockedMenuSec 
-                        .un_layout
             .invi__section#crtInvi.shinesec
                 h2 Create Invitation
                 p Pick any of the layouts below and build your Invitation Card in just minutes! Fill the Form and Your All Set
@@ -114,72 +36,178 @@ block content
                                     p.portDet= item.name
                 .layout__main#lockedInviSec 
                     .unl
-            if (portfolio)
-                .port__bod.port__section.shinesec
-                    .noti__sec
-                        .sticky__section
-                            h2 You Already have A Portfolio!
-                            p.warn You can't have more than one portfolio!
-                        if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
-                            if (!portfolioImage)
+            if (user.accountType === "business")
+                .catalouge__section.newsec.shinesec#crtCataloge
+                    if (!company)
+                        h2 Create Catalouge For Your Business 
+                        p Pick any of the layouts below and buid a Catalouge 
+                        p Need tips Creating Your Portfolio Go To 
+                            a.portDet(href="/#cHelper") Cataloge Helper
+                        .gGroup 
+                            .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
+                            .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
+                        .layout__main#freeCatalgSec
+                            //- #catal1.unl
+                            each item in theme
+                                if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
+                                    .unl.cataloge_layouts(id=`${item.themeId}`)
+                                        .un_layout_log
+                                            img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
+                                            p.portDet= item.name
+                        .layout__main#lockedCatalgSec 
+                            .unl
+                    else 
+                        .noti__sec
+                            .sticky__section
+                                h2 You Already have A Catalouge!
+                                p.warn You can't have more than one Catalouge!
+                            if (!catalouge)
                                 .sticky__section 
-                                    h2.warn You Haven't Uploaded Any Previous Work Image 
-                    p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#pHelper") Porti Helper
-                    .gGroup 
-                        .freeSec.whitebtn.glassbtn#freePortSec Unlocked
-                        .paidSec.whitebtn.glassbtn#lockedPortSec Locked
-                    .layout__main#freeItems
-                        each item in theme
-                            if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
-                                .un_layout
-                                    img(src=`${item.picture}`, loading="lazy", alt="layout1")
-                                    p.portDet= item.name
-                        .un_layout
-                            img(src="/images/layout5.png", loading="lazy", alt="layout5")
-                            p AT Layout (you can upload upto 20 images)
-                    .layout__main#lockedItems
-                        each item in theme
-                            if (item.themeCategory === "Portfolio" && item.paid === false)
-                                if (!item.validUser.includes(user.id))
+                                    h2.warn You Haven't added items to your cataloge!
+                        .gGroup 
+                            .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
+                            .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
+                        .layout__main#freeCatalgSec 
+                            each item in theme
+                                if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                     .un_layout
-                                        a(href=`/paywith/${item.themeId}`)
-                                            img(src=`${item.picture}`, loading="lazy", alt="layout1")
+                                        img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                         p.portDet= item.name
-                                        p.layout__price.portDet= item.price
-                                        a.redbtn(href=`/paywith/${item.themeId}`) Unlock
+                        .layuot__main#lockedCatalgSec 
+                            .un_layout
+            else 
+                #crtCataloge.hidden 
+                .catalgbtn.hidden
+                #lockedCatalgSec.hidden 
+                #freeCatalgSec.hidden 
+                #freeCatalgBtn.hidden 
+                #lockedCatalgBtn.hidden  
+                .catalouge__section.hidden
+            if (user.accountType === "restaurant")
+                .menu__section#crtMenu.shinesec
+                    if (!restro)
+                        h2 Create Restro for your Menu 
+                        p Pick any of the layouts below and build a menu for your restro 
+                        p Need tips Creating Your Portfolio Go To 
+                            a.portDet(href="/#mHelper") Menu Helper
+                        .gGroup 
+                            .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
+                            .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
+                        .layout__main#freeMenuSec
+                            //- #menu1.unl
+                            each item in theme
+                                if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
+                                    .unl.menu_layouts(id=`${item.themeId}`)
+                                        .un_layout_log
+                                            img(src=`${item.picture}`, loading="lazy", alt="menu1")
+                                            p.portDet= item.name
+                        .layout__main#lockedMenuSec 
+                            .unl
+                    else 
+                        .noti__sec
+                            .sticky__section
+                                h2 You Already have A Menu!
+                                p.warn You can't have more than one Menu!
+                            if (!menu)
+                                .sticky__section 
+                                    h2.warn You Haven't added items to your menu!
+                        .gGroup 
+                            .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
+                            .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
+                        .layout__main#freeMenuSec
+                            each item in theme
+                                if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
+                                    .un_layout
+                                        img(src=`${item.picture}`, loading="lazy", alt="menu1")
+                                        p.portDet= item.name
+                        .layout__main#lockedMenuSec 
+                            .un_layout
+            else 
+                #crtMenu.hidden
+                .menubtn.hidden
+                #lockedMenuSec.hidden 
+                #freeMenuSec.hidden 
+                #freeMenuBtn.hidden 
+                #lockedMenuBtn.hidden
+                .menu__section.hidden
+            
+            if (user.accountType !== "portfolio")
+                #crtPort.hidden 
+                #layout5.hidden
+                .glassbtn.hidden
+                #freePortSec.hidden 
+                #lockedPortSec.hidden 
+                #freeItems.hidden 
+                #lockedItems.hidden
+                .port__bod.hidden
+                .port__section.hidden
             else
-                .port__bod.port__section#crtPort.shinesec
-                    h2 Create a portfolio
-                    p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
-                    p Need tips Creating Your Portfolio Go To 
-                        a.portDet(href="/#pHelper") Portfolio Helper
-                    .gGroup 
-                        .freeSec.whitebtn.glassbtn#freePortSec Unlocked
-                        .paidSec.whitebtn.glassbtn#lockedPortSec Locked
-                    .layout__main#freeItems
-                        each item in theme
-                            if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
-                                .portunl(id=`${item.themeId}`)
-                                    .un_layout_log
+                if (portfolio)
+                    .port__bod.port__section.shinesec
+                        .noti__sec
+                            .sticky__section
+                                h2 You Already have A Portfolio!
+                                p.warn You can't have more than one portfolio!
+                            if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
+                                if (!portfolioImage)
+                                    .sticky__section 
+                                        h2.warn You Haven't Uploaded Any Previous Work Image 
+                        p Need tips Creating Your Portfolio Go To 
+                            a.portDet(href="/#pHelper") Porti Helper
+                        .gGroup 
+                            .freeSec.whitebtn.glassbtn#freePortSec Unlocked
+                            .paidSec.whitebtn.glassbtn#lockedPortSec Locked
+                        .layout__main#freeItems
+                            each item in theme
+                                if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
+                                    .un_layout
                                         img(src=`${item.picture}`, loading="lazy", alt="layout1")
-                                        p.layout__name.portDet(id=`${item.name}`)= item.name
-                        #layout5.unl
-                            .un_layout_log
+                                        p.portDet= item.name
+                            .un_layout
                                 img(src="/images/layout5.png", loading="lazy", alt="layout5")
                                 p AT Layout (you can upload upto 20 images)
+                        .layout__main#lockedItems
+                            each item in theme
+                                if (item.themeCategory === "Portfolio" && item.paid === false)
+                                    if (!item.validUser.includes(user.id))
+                                        .un_layout
+                                            a(href=`/paywith/${item.themeId}`)
+                                                img(src=`${item.picture}`, loading="lazy", alt="layout1")
+                                            p.portDet= item.name
+                                            p.layout__price.portDet= item.price
+                                            a.redbtn(href=`/paywith/${item.themeId}`) Unlock
+                else
+                    .port__bod.port__section#crtPort.shinesec
+                        h2 Create a portfolio
+                        p Pick any of the layouts below and build your portfolio in just minutes! Fill the Form and Your All Set
+                        p Need tips Creating Your Portfolio Go To 
+                            a.portDet(href="/#pHelper") Portfolio Helper
+                        .gGroup 
+                            .freeSec.whitebtn.glassbtn#freePortSec Unlocked
+                            .paidSec.whitebtn.glassbtn#lockedPortSec Locked
+                        .layout__main#freeItems
+                            each item in theme
+                                if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
+                                    .portunl(id=`${item.themeId}`)
+                                        .un_layout_log
+                                            img(src=`${item.picture}`, loading="lazy", alt="layout1")
+                                            p.layout__name.portDet(id=`${item.name}`)= item.name
+                            #layout5.unl
+                                .un_layout_log
+                                    img(src="/images/layout5.png", loading="lazy", alt="layout5")
+                                    p AT Layout (you can upload upto 20 images)
 
-                    .layout__main#lockedItems
-                        each item in theme
-                            if (item.themeCategory === "Portfolio" && item.paid === false)
-                                if (!item.validUser.includes(user.id))
-                                    .un_layout 
-                                        a(href=`/paywith/${item.themeId}`)
-                                            img(src=`${item.picture}`)
-                                        p.layout__name.portDet= item.name 
-                                        p.layout__price.portDet= item.price
-                                        a.redbtn(href=`/paywith/${item.themeId}`) Unlock
-    
+                        .layout__main#lockedItems
+                            each item in theme
+                                if (item.themeCategory === "Portfolio" && item.paid === false)
+                                    if (!item.validUser.includes(user.id))
+                                        .un_layout 
+                                            a(href=`/paywith/${item.themeId}`)
+                                                img(src=`${item.picture}`)
+                                            p.layout__name.portDet= item.name 
+                                            p.layout__price.portDet= item.price
+                                            a.redbtn(href=`/paywith/${item.themeId}`) Unlock
+                 
                 script(src="/js/createPort/createForm.js") 
                 script(src="/js/createPort/createport.js")
                 script(src="/js/createPort/createport5.js")  

@@ -185,9 +185,8 @@ pre{
 
 #goup{
     position: fixed;
-    align-items: flex-end;
-    top:90%;
-    left: 95%;
+    bottom:1vh;
+    left: 1vw;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -201,13 +200,6 @@ pre{
 
     .cont__box{
         padding: 2%;
-    }
-
-    #goup{
-        position: fixed;
-        align-items: flex-end;
-        top:90%;
-        left: 90%;
     }
     
 }
@@ -230,12 +222,5 @@ pre{
 
     .cont__box{
         padding: 2%;
-    }
-
-    #goup{
-        position: fixed;
-        align-items: flex-end;
-        top:90%;
-        left: 80%;
     }
 }

@@ -24,7 +24,7 @@ block content
             .currentuid.hidden
             .confirm__pg
                 h1.td You have not created your enterprise! Create one and come back
-                a.lbtn(href="/porti#crtCataloge") Create Enterprise
+                a.lbtn(href="/layouts/porti#crtCataloge") Create Enterprise
         else
             include ../_header
             p.hidden.themeUsr= user.theme
@@ -151,12 +151,8 @@ block content
                                     if (item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                         option.opt(value=`${item.themeId}`)= item.name
                         if (company[0].theme == "51eac6b471a284d3341d8c0c63d0f1a286262a18")
-                            .form__bod 
-                                label.form__label(for="company_color") Pick a theme color (optional);
-                                input#companyColor.form__input(type="color" value="#1A9ACC")
                                 #compHomeDel.hidden
                         else 
-                            #companyColor.hidden
                             .form__bod 
                                 label.form__label Home Delivery Service (optional):
                                 input#compHomeDel.checkbox(type="checkbox" name="cataloghomedel")
@@ -208,12 +204,19 @@ block content
                         #catalogbannerId.hidden 
                         #catalogdeletebanner.hidden
                         .bannerresid.hidden
+
+                .delete__sec 
+                    h2 Delete Company 
+                    p It will delete Everything including all the catalog items
+                    .delcompid.hidden= company[0]._id
+                    .delcatalid.hidden= company[0].user._id
+                    btn#deleteCompany.blackbtn Delete
             .to__left
                 include ../_footer
     else 
         .confirm__pg
             h1 Please Sign In To Your Account !
-            a(href="/login") Sign In
+            a(href="/account/login") Sign In
     script(src="/js/alert.js")
     script(src="/socket.io/socket.io.js") 
     script(src="/js/catalouge/additemtocat.js")

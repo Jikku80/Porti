@@ -108,8 +108,8 @@ cancelCreate.addEventListener("click", () => {
     footer__first.classList.remove("hidden");
     portBod.classList.remove("hidden");
     inviSec.classList.remove("hidden");
-    menuSec.classList.remove("hidden");
-    catSec.classList.remove("hidden");
+    // menuSec.classList.remove("hidden");
+    // catSec.classList.remove("hidden");
     window.setTimeout(() => {
         location.hash = "#crtPort";
     }, 200)

@@ -6,6 +6,55 @@ block content
         span Por
         span.grn t
         span.nocaps i
+    if (user)
+        if (user.id !== company.user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= company.user.name
+                    p.portiuserid.hidden= company.user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .msg__dot.hidden
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= company.user.name 
+            .portiuserid.hidden= company.user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= company.user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
     .sec__cat 
         .seccatThemeColor.hidden= company.themecolor
         .seccatFontColor.hidden= company.fontColor 
@@ -131,6 +180,7 @@ block content
                                 label.formFont Name :
                                 input#userno(type="text", name="tableno", value=user.name, disabled)
                                 #uniquecompusername.hidden= user.name
+                                #uniquecompuserid.hidden= user.id
                             .form__item__display__sec 
                                 
                             .form__cont__order
@@ -156,6 +206,7 @@ block content
                         #uniquecompname.hidden
                         #uniquecompusername.hidden
                         #comordermsg.hidden
+                        #uniquecompuserid.hidden
                         .form__item__display__sec.hidden 
                         .foods__order__his.hidden
         .sec__menu__banner 
@@ -275,3 +326,4 @@ block content
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/catalouge/secCatalouge.js") 
+    script(src="/js/usermsg.js") 

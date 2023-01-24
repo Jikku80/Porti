@@ -9,7 +9,7 @@ catalogeLayouts = document.querySelectorAll(".cataloge_layouts");
 
 let catalogeOneForm = document.createElement("div");
 catalogeOneForm.classList.add("createCataloge");
-catalogeOneForm.innerHTML = createCataloge("catalogesname", "catalogesemail", "catalogessocial", "catalogesaddress", "catalogesadd_link", "catalogesphn_no", "catalogesslogan", "cataloge__form__btn")
+catalogeOneForm.innerHTML = createCataloge("catalogesname", "catalogesemail", "catalogessocial", "catalogesaddress", "catalogesadd_link", "catalogesphn_no", "catalogesslogan", "cataloge__form__btn", "catalogecountry")
 
 document.body.appendChild(catalogeOneForm);
 let mkCForm = document.querySelector('.createCataloge');
@@ -34,6 +34,7 @@ catalogeLayouts.forEach(item => {
         let slogan = document.getElementById("catalogesslogan");
         let phn_no = document.getElementById("catalogesphn_no")
         let submit = document.getElementById("cataloge__form__btn");
+        let country = document.getElementById("catalogecountry");
         let theme = item.id;
 
         submit.addEventListener("click", async (e) => {
@@ -47,6 +48,9 @@ catalogeLayouts.forEach(item => {
                 return false;
             }
             if (phn_no.value < 1 || phn_no.value == "" || phn_no.value == null) {
+                return false;
+            }
+            if (country.value < 1 || country.value == "") {
                 return false;
             }
             e.preventDefault();
@@ -68,7 +72,8 @@ catalogeLayouts.forEach(item => {
                         slogan: slogan.value,
                         contact: phn_no.value,
                         theme: theme,
-                        Address: address.value
+                        Address: address.value,
+                        country: country.value
                     })
                 }).then((response) => {
                     load.classList.add("hidden");
@@ -95,10 +100,10 @@ catalogeLayouts.forEach(item => {
 let cancelCataloge = document.querySelector(".cancel__cataloge");
 cancelCataloge.addEventListener("click", () => {
     mkCForm.classList.add("hidden");
-    portBodC.classList.remove("hidden");
+    // portBodC.classList.remove("hidden");
     footerBodC.classList.remove("hidden");
     inviBodC.classList.remove("hidden");
-    menuBodC.classList.remove("hidden");
+    // menuBodC.classList.remove("hidden");
     catBodC.classList.remove("hidden");
     window.setTimeout(() => {
         location.hash = "#crtCataloge";

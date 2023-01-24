@@ -3,11 +3,13 @@ const factory = require('./handleFactory');
 const catchAsync = require('./../utils/catchAsync');
 const APIFeatures = require('./../utils/apiFeatures');
 
+const User = require('./../models/userModel');
 const ResOrder = require('./../models/resOrderModel');
 const ComOrder = require('./../models/comOrderModel');
 const UserMessage = require('./../models/userMessageModel')
 const Restaurant = require('./../models/restaurantDetailModel');
 const Company = require('./../models/companyModel');
+const e = require('express');
 
 exports.createResOrder = catchAsync(async (req, res, next) => {
     const newresorders = await ResOrder.create(req.body);
@@ -1055,20 +1057,20 @@ exports.newUserMessage = catchAsync(async (req, res) => {
 })
 
 exports.getAllMessageFromUser = catchAsync(async (req, res) => {
-    // const features = new APIFeatures(UserMessage.find({ user: req.params.id }), { limit: 100, page: "1" }).paginate().srt();
-    // const messages = await features.query
     let mname = req.params.name
-    const firstmessages = await UserMessage.find({ sentBy: req.params.userName }).then(item => {
+
+    const firstmessages = await UserMessage.find({ user: req.params.userName }).then(item => {
 
         const data = item.filter(el => {
-            return el.name === mname
+            return el.userName === mname
         })
         return data
     })
 
-    const secmessages = await UserMessage.find().then(item => {
+    const secmessages = await UserMessage.find({ userName: req.params.userName }).then(item => {
         const data = item.filter(el => {
-            if ((el.name === req.params.userName && el.sentBy === mname)) {
+
+            if (el.user == mname) {
                 return el;
             }
         })
@@ -1083,13 +1085,15 @@ exports.getAllMessageFromUser = catchAsync(async (req, res) => {
 })
 
 exports.getMessagesAllUsers = catchAsync(async (req, res) => {
-    const firstmessages = await UserMessage.find({ name: req.params.name }).then(arr => {
-        return distinctCat = [...new Set(arr.map(x => x.userName))];
+    let comMsg;
+    const firstmessages = await UserMessage.find({ userName: req.params.name }).then(arr => {
+        comMsg = [...arr];
+        return distinctCat = [...new Set(arr.map(x => x.sentBy))];
     })
 
     const secmessages = await UserMessage.find().then(arr => {
         let data = arr.filter(el => {
-            if (el.sentBy === req.params.name) {
+            if (el.user == req.params.name) {
                 return el
             }
         })
@@ -1097,29 +1101,50 @@ exports.getMessagesAllUsers = catchAsync(async (req, res) => {
     })
 
     msg = firstmessages.concat(secmessages)
+
     let messages = msg.filter(function (value, index, self) {
         return self.indexOf(value) === index;
     });
 
+    // let messages = []
+    // for (let i = 0; i < messages.length; i++) {
+    //     let names = await User.findOne({ name: messages[i] })
+    //     if (names === null) {
+    //         messages.splice(i, 1)
+    //     }
+    // }
+
     res.status(200).json({
         status: 'success',
-        messages
+        messages,
+        comMsg
     })
 })
 
 exports.getAllMessageByUser = catchAsync(async (req, res) => {
     let mname = req.params.name
-    const firstmessages = await UserMessage.find({ sentBy: req.params.userName }).then(item => {
+    const uid = await User.findOne({ name: req.params.userName }).then(item => {
+        if (item === null) {
+            return null
+        }
+        return item._id
+    })
+
+    if (uid === null) {
+        return (res.status(404).json({ status: 'success' }))
+    }
+
+    const firstmessages = await UserMessage.find({ user: uid }).then(item => {
 
         const data = item.filter(el => {
-            return el.name === mname
+            return el.userName == mname
         })
         return data
     })
 
     const secmessages = await UserMessage.find().then(item => {
         const data = item.filter(el => {
-            if ((el.name === req.params.userName && el.sentBy === mname)) {
+            if ((el.userName == uid && el.user == mname)) {
                 return el;
             }
         })
@@ -1134,6 +1159,49 @@ exports.getAllMessageByUser = catchAsync(async (req, res) => {
         secmessages
     })
 })
+
+exports.updateUserMessage = catchAsync(async (req, res, next) => {
+    let mname = req.params.name
+    const uid = await User.findOne({ name: req.params.userName }).then(item => {
+        if (item === null) {
+            return null
+        }
+        return item._id
+    })
+
+    if (uid === null) {
+        return (res.status(404).json({ status: 'success' }))
+    }
+
+    const messages = await UserMessage.find({ user: uid }).then(item => {
+
+        const data = item.filter(async (el) => {
+            if (el.userName === mname) {
+                let id = el._id
+                return id;
+            }
+        })
+        return data
+    })
+
+    messages.forEach(async (item) => {
+
+        let updated = await UserMessage.findByIdAndUpdate(item, {
+            $set: { received: true }
+        },
+            {
+                new: true,
+                runValidators: true
+            });
+
+        if (!updated || updated == null) return (res.status(404).json({ status: 'success' }));
+    })
+
+    res.status(200).json({
+        status: 'success',
+        messages
+    })
+});
 
 exports.deleteUserMessage = catchAsync(async (req, res, next) => {
     const doc = await UserMessage.findByIdAndDelete(req.params.id);

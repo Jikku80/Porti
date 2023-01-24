@@ -2,6 +2,16 @@ const formidable = require('formidable');
 const fs = require('fs')
 
 const User = require('./../models/userModel');
+const Portfolio = require('./../models/portfolioModel');
+const PortfolioImage = require('./../models/portfolioImageModel');
+const Restaurant = require('./../models/restaurantDetailModel')
+const Menu = require('./../models/menuModel');
+const Banner = require('./../models/bannerModel');
+const Company = require('./../models/companyModel');
+const Catalouge = require('./../models/catalougeModel');
+const CatalogBanner = require('./../models/catalogBannerModel');
+const ComComment = require('./../models/comComment');
+
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const factory = require('./../controllers/handleFactory')
@@ -98,6 +108,88 @@ exports.createUser = (req, res) => {
         message: 'This route is not defined! Please use /signup instead!'
     })
 }
+
+exports.updateAccountType = catchAsync(async (req, res, next) => {
+
+    const port = await Portfolio.findOne({ user: req.params.id })
+
+    if (port !== null) {
+        await Portfolio.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await PortfolioImage.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await PortfolioImage.findByIdAndDelete(item)
+        })
+    }
+
+    const restro = await Restaurant.findOne({ user: req.params.id })
+
+    if (restro !== null) {
+        await Restaurant.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Menu.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Menu.findByIdAndDelete(item)
+        })
+
+        await Banner.findOneAndDelete({ user: req.params.id })
+    }
+
+    const company = await Company.findOne({ user: req.params.id })
+
+    if (company !== null) {
+        await Company.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Catalouge.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Catalouge.findByIdAndDelete(item)
+        })
+
+        let comdata = []
+        await ComComment.find({ companyUserId: req.params.id }).then(item => {
+            item.filter(el => {
+                comdata.push(el.id)
+            })
+        });
+
+        comdata.forEach(async (item) => {
+            await ComComment.findByIdAndDelete(item)
+        })
+        await CatalogBanner.findOneAndDelete({ user: req.params.id })
+    }
+    await User.findByIdAndUpdate(
+        req.params.id,
+        {
+            accountType: req.body.accountType
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+
+    res.status(200).json({
+        status: 'Success'
+    });
+})
 
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);

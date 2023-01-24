@@ -9,17 +9,30 @@
             span.chr Por
             span.grn t
             span.nocaps.chr i
-        a#portiSearch.anavi.search__button(href="/inspire" title="search") Inspire
-        a(href="/me")
+        a#portiSearch.anavi.search__button(href="/inspire/cafe" title="search") Porti Cafe
+        a(href="/account/me")
             if (user.photo)
                 img#menuImg.profPic(src=`${user.photo}`, alt="prof__pic", title=`${user.name}`)
             else 
                 img#menuImg.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
-        a#menuLayouts.anavi(href="/porti" title="layouts") Layouts
-        a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
+        a#menuLayouts.anavi(href="/layouts/porti" title="layouts") Layouts
+        if (user.accountType === "portfolio")
+            a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
+        else 
+            #menuPortfolio.anavi.hidden
+        if (user.accountType === "restaurant")
+            a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+            a#menuMenuStats.anavi(href=`/api/v1/menu/restrostat/${user._id}` title="your menu statistics") Statistics
+        else 
+            #menuMenu.anavi.hidden 
+            #menuMenuStats.hidden
+        if (user.accountType === "business")
+            a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+            a#menuCatalogeStats.anavi(href=`/api/v1/catalouge/companystat/${user._id}` title="your catalouge statistics") Statistics
+        else 
+            #menuCataloge.anavi.hidden
+            #menuCatalogeStats.anavi.hidden
         a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
-        a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
-        a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
         a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
         #logout.logout.pointer SignOut
 

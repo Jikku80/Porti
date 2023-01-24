@@ -86,7 +86,7 @@ pdBtn.addEventListener("click", async (e) => {
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
     let portfolioName = document.getElementById("port_name");
-    const endpoint = '/updateportSec'
+    const endpoint = '/update/portSec'
     try {
         await fetch(endpoint, {
             method: 'PATCH',

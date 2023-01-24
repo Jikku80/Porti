@@ -18,6 +18,10 @@ const companySchema = new mongoose.Schema({
         lowercase: true,
         validate: [validator.isEmail, 'please provide a valid email address!']
     },
+    country: {
+        type: String,
+        trim: true
+    },
     social: {
         type: String,
         trim: true

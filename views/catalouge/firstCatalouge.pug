@@ -7,6 +7,99 @@ block content
             span Por
             span.grn t
             span.nocaps i
+    if (user)
+        if (user.id !== company.user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= company.user.name
+                    p.portiuserid.hidden= company.user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .msg__dot.hidden
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= company.user.name 
+            .portiuserid.hidden= company.user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= company.user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
+
+    if (!user)
+        #firstCatid.hidden 
+        #changefirstCatTheme.hidden 
+        #defaultfirstCatTheme.hidden
+        .cancel__edit__dummy.hidden
+        .edit__sec__cat.hidden
+    else
+        if (user.id !== company.user.id)
+            #firstCatid.hidden 
+            #changefirstCatTheme.hidden 
+            #defaultfirstCatTheme.hidden
+            .cancel__edit__dummy.hidden
+            .edit__sec__cat.hidden
+        else
+            .edit__sec__cat(title="Edit Theme") &#9881;
+            .edit__features__sec.hidden
+                .edit__feat__head 
+                    h3 Edit Theme 
+                    img.cancel__edit__dummy.point(src="/images/cancel.png" alt="cancel__edit")
+                .edit__feat__bod
+                    #firstCatid.hidden= company._id
+                    form.feat_form_bod
+                        .form__bod__cat 
+                            label Background Color:
+                            input#firstCatBackColor(type="color" value="#2c2c2c")
+                        .form__bod__cat
+                            label Font Color:
+                            input#firstCatFontColor(type="color" value="#808080")
+                        .form__bod__cat 
+                            label Focus Color:
+                            input#firstCatFocusColor(type="color" value="#ffffff")
+                        .form__bod__cat 
+                            label Font Family 
+                            select#firstCatFontFam
+                                option.opt(hidden selected) Cambria
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                                option.opt(value="Cabin Sketch") Cabin Sketch
+                        .grp_sec_cat_btn
+                            button#changefirstCatTheme.catbtn Update Theme
+                            button#defaultfirstCatTheme.catbtn Default Theme 
     .catalouge__one__sec
         .background__cover 
             if (company.coverImage)
@@ -20,23 +113,26 @@ block content
                     p.comp__color.hidden= company.themecolor
                 else
                     p.comp__color.hidden #1A9ACC
+                p.focus__color.hidden= company.focusColor 
+                p.font__fam.hidden= company.fontFam 
+                p.font__color.hidden= company.fontColor
                 a.go__to__catalouge(href="#compcatalouge") Go To Catalouge
         .search__catalouge 
             form.catal__search
                 input.catalouge__searchbar#catalougeSearch(type="text", required, placeholder="Type To Find Items")
         .all__items 
-            h3.center.get__all__items All Items
+            h3.center.get__all__items.cardtxt All Items
         .cat__list 
-            h2.center Items Categories | Group
+            h2.center.cardtxt Items Categories | Group
             .categories__catalouge 
         .sub__cat__list 
             .sub__cat__opt
-                h2.sub__cat__head Sub Categories | SGroup
+                h2.sub__cat__head.cardtxt Sub Categories | SGroup
                 img.cancel__subModel(src="/images/cancel.png" alt="cancel")
             .sub__categories__catalouge
         #compcatalouge
             if (company.slogan !== "")
-                h2.center= company.slogan
+                h2.center.cardtxt= company.slogan
             .catalouge__item__bod
                 .catalouge__items 
                     each item in catalouges
@@ -47,45 +143,50 @@ block content
                                 img(class="catal__card__img imgFull" loading="lazy" src=`/images/noimg.png` alt="catalouge__item__image")
                             .catal__card__det
                                 .card__sub__sec
-                                    .catal__card__head Name: 
-                                    .card__dark__text.catal__name= item.name
+                                    p.catal__card__head.cardtxt Name: 
+                                    p.card__dark__text.catal__name.cardtxt= item.name
+                                if (item.serialno !== "")
+                                    .card__sub__sec
+                                        p.catal__card__head.cardtxt S.No: 
+                                        p.card__dark__text.catal__sno= item.serialno
                                 .card__sub__sec
-                                    .catal__card__head S.No: 
-                                    .card__dark__text.catal__sno= item.serialno
+                                    p.catal__card__head.cardtxt Price: 
+                                    p.card__dark__text.catal__price= `${item.currency}${item.price}`
                                 .card__sub__sec
-                                    .catal__card__head Price: 
-                                    .card__dark__text.catal__price= `${item.currency}${item.price}`
-                                .card__sub__sec
-                                    .catal__card__head Group: 
-                                    .card__dark__text= item.category
-                                .card__sub__sec
-                                    .catal__card__head SGroup: 
-                                    .card__dark__text= item.subcategory
-                                .card__sub__sec
-                                    .catal__card__head Detail: 
-                                    .card__dark__text= item.detail
+                                    p.catal__card__head.cardtxt Group: 
+                                    p.card__dark__text.cardtxt= item.category
+                                if (item.subcategory !== "")
+                                    .card__sub__sec
+                                        p.catal__card__head.cardtxt SGroup: 
+                                        p.card__dark__text.cardtxt= item.subcategory
+                                if (item.detail !== "")
+                                    .card__sub__sec
+                                        p.catal__card__head.cardtxt Detail: 
+                                        p.card__dark__text.cardtxt= item.detail
         .paginate 
             button(type="button" name="prev__catal").prev__catal.pag__btn.blue Previous
             button(type="button" name="next__catal").next__catal.pag__btn.blue Next
         .company__footer 
             .footer__bod
                 if (company.Address !== "")
-                    h4.comp__cont Find Us At
+                    h4.comp__cont.cardtxt Find Us At
                     p= company.Address 
                 if (company.locationLink !== "")
-                    a.comp__loc(href=`${company.locationLink}`)= `open ${company.name} Location`
+                    a.comp__loc.cardtxt(href=`${company.locationLink}`)= `open ${company.name} Location`
                 if (company.contact !== "")
-                    h4.comp__cont Get In Touch With Us In 
-                    h4= company.contact 
+                    h4.comp__cont.cardtxt Get In Touch With Us In 
+                    h4.cardtxt= company.contact 
                 .footer__mail__bod.footer__bod 
                     if (company.email !== "")
-                        h4.comp__cont Email Us At 
-                        p.comp__email= company.email 
+                        h4.comp__cont.cardtxt Email Us At 
+                        p.comp__email.cardtxt= company.email 
                     if (company.social !== "")
-                        h4 OR
-                        h4.comp__cont Our Social Link 
+                        h4.cardtxt OR
+                        h4.comp__cont.cardtxt Our Social Link 
                         h4
-                            a.comp__loc(href=`${company.locationLink}`)= company.social
+                            a.comp__loc.cardtxt(href=`${company.locationLink}`)= company.social
 
     script(src="/js/alert.js") 
     script(src="/js/catalouge/catalougeFeature.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/usermsg.js") 

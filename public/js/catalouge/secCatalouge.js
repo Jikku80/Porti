@@ -304,11 +304,12 @@ let jar = [];
     let orderadd = document.getElementById("comordadd");
     let orderphn = document.getElementById("comordphn");
     let secalrt = document.getElementById("seccompmsgalert");
+    let usrId = document.getElementById("uniquecompuserid").innerText;
     let homeDel;
 
-    socket.on("catorderreply", (catid, oderuser) => {
+    socket.on("catorderreply", (catid, oderuser, oderuserid) => {
         if (compid.value == catid) {
-            if (orderuser.innerText == oderuser) {
+            if (usrId == oderuserid) {
                 secalrt.play();
                 fill.classList.remove("hidden");
                 getUserCompMsg();
@@ -323,6 +324,7 @@ let jar = [];
         let cartCard = document.querySelectorAll(".cart__card");
         let catalusrName = document.querySelector("#thiscurrentcompusrname").innerText;
         let curLogUserName = document.getElementById("uniquecompusername").innerText;
+        let curLogUserId = document.getElementById("uniquecompuserid").innerText;
         let usrName = catalusrName + "-" + curLogUserName
         let itemPriceList = [];
         let qList = [];
@@ -372,6 +374,7 @@ let jar = [];
                     company: compid.value,
                     message: resmsg.value,
                     name: orderuser.innerText,
+                    userId: curLogUserId,
                     address: orderadd.value,
                     phn_no: orderphn.value,
                     total: sumTotal,
@@ -421,7 +424,7 @@ let jar = [];
     let goTOLoginSecMenu = document.getElementById("gotoLoginComp");
 
     goTOLoginSecMenu.addEventListener("click", () => {
-        window.open(`/login`)
+        window.open(`/account/login`)
     })
 
     let cancelbanner = document.querySelector(".removebanner");
@@ -1640,6 +1643,8 @@ async function createComment(productId) {
     let user = document.getElementById("uniquecompusername").innerText;
     let company = document.getElementById("thiscurrentcompuserid").innerText;
     let comment = document.getElementById("newComment");
+    let usrId = document.getElementById("uniquecompuserid").innerText;
+
     if (comment.value == "") {
         return false;
     }
@@ -1655,6 +1660,7 @@ async function createComment(productId) {
             },
             body: JSON.stringify({
                 name: user,
+                userId: usrId,
                 companyUserId: company,
                 productId: productId,
                 comment: comment.value
@@ -1680,6 +1686,7 @@ async function createComment(productId) {
 async function getComments(productId) {
     let user = document.getElementById("uniquecompusername").innerText;
     let curuser = document.querySelector(".thisuserid").innerText;
+    let usrId = document.getElementById("uniquecompuserid").innerText;
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden");
@@ -1700,7 +1707,7 @@ async function getComments(productId) {
                 res.then(items => {
                     let item = items.comments
                     item.forEach(el => {
-                        if (el.name === user || el.companyUserId === curuser) {
+                        if (el.userId === usrId || el.companyUserId === curuser) {
                             commentSec.innerHTML += `
                                 <div class="comment__card">
                                 <div class="comment__head">

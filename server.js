@@ -20,14 +20,14 @@ io.on('connection', (socket) => {
     socket.on("resorders", (restoid, oderuser) => {
         io.emit('resorders', restoid, oderuser)
     });
-    socket.on("resorderreply", (restoid, oderuser) => {
-        io.emit('resorderreply', restoid, oderuser)
+    socket.on("resorderreply", (restoid, oderuser, oderuserid) => {
+        io.emit('resorderreply', restoid, oderuser, oderuserid)
     });
     socket.on("catorders", (catid) => {
         io.emit('catorders', catid)
     });
-    socket.on("catorderreply", (catid, oderuser) => {
-        io.emit('catorderreply', catid, oderuser)
+    socket.on("catorderreply", (catid, oderuser, oderuserid) => {
+        io.emit('catorderreply', catid, oderuser, oderuserid)
     });
     socket.on("usermessage", (name, user, message, userid) => {
         io.emit('usermessage', name, user, message, userid)

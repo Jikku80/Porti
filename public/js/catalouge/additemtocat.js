@@ -433,7 +433,7 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head form__label">Your Catalouge Link</p>
-            <p class="catalouge__link__displayer catalqrLink">${location.host}/catalog/${nm}</p>
+            <p class="catalouge__link__displayer catalqrLink">${location.host}/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
             <button class="ygbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
@@ -442,7 +442,7 @@ prev.addEventListener("click", async () => {
     `
     let openMenu = document.getElementById("openmycatal");
     openMenu.addEventListener("click", () => {
-        window.open(`/catalog/${nm}`)
+        window.open(`/${nm}`)
     })
 
     let menuLinkDis = document.querySelector(".catalouge__link__displayer");
@@ -466,7 +466,6 @@ prev.addEventListener("click", async () => {
     let compemail = document.getElementById("compemail");
     let compsocial = document.getElementById("compsocial");
     let comploc = document.getElementById("complocationLink");
-    let compcolor = document.getElementById("companyColor");
     let compTheme = document.getElementById("compTheme");
     let compType = document.getElementById("compType");
     let compHome = document.getElementById("compHomeDel");
@@ -504,7 +503,6 @@ prev.addEventListener("click", async () => {
                     Address: resAddress.value,
                     contact: compcontact.value,
                     theme: compTheme.value,
-                    themecolor: compcolor.value,
                     compType: compType.value,
                     homedelivery: compHome.checked
                 })
@@ -533,6 +531,7 @@ prev.addEventListener("click", async () => {
     let td = document.querySelectorAll(".td");
     let lbtn = document.querySelector(".lbtn");
     let lod = document.querySelector(".loader");
+    let delsec = document.querySelector(".delete__sec");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -541,6 +540,8 @@ prev.addEventListener("click", async () => {
         inpt.forEach(item => {
             item.style.borderColor = "white";
         })
+
+        delsec.style.backgroundColor = "rgba(0, 0, 0, 0.411)"
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
@@ -733,16 +734,17 @@ async function getAllCatMsg() {
                                 `
                                 <div class="menu__msg__table__list">
                                     <div class="msg__table__bod">
-                                        <p class="tabledet" id="${el.name}">${el.name}</p>
-                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                        <p class="tabledet">${el.name}</p>
+                                        <p class="ordermsg hidden">${el.message}</p>
                                         <p class="dotnoti"></p>
                                     </div>
-                                    <p class="usersmalltag" id="${el.total}">${el.total}</p>
-                                    <p class="hidden" id="${el.address}"></p>
-                                    <p class="hidden" id="${el.phn_no}"></p>
-                                    <p class="hidden msgid" id="${el._id}"></p>
-                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
-                                    <p class="hidden" id="${el.company}"></p>
+                                    <p class="usersmalltag">${el.total}</p>
+                                    <p class="hidden">${el.address}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.orderInfo}</p>
+                                    <p class="hidden">${el.company}</p>
+                                    <p class="hidden">${el.userId}</p>
                                 </div>
                             `
                         }
@@ -762,14 +764,16 @@ async function getAllCatMsg() {
 
                     msgTab.forEach(item => {
                         item.addEventListener("click", () => {
-                            let msg = item.childNodes[1].childNodes[3].id;
-                            let usr = item.childNodes[1].childNodes[1].id;
-                            let total = item.childNodes[3].id;
-                            let add = item.childNodes[5].id;
-                            let phn = item.childNodes[7].id;
-                            let mid = item.childNodes[9].id;
-                            let ordInfo = item.childNodes[11].id;
-                            let companyID = item.childNodes[13].id;
+                            let msg = item.childNodes[1].childNodes[3].innerText;
+                            let usr = item.childNodes[1].childNodes[1].innerText;
+                            let total = item.childNodes[3].innerText;
+                            let add = item.childNodes[5].innerText;
+                            let phn = item.childNodes[7].innerText;
+                            let mid = item.childNodes[9].innerText;
+                            let ordInfo = item.childNodes[11].innerText;
+                            let companyID = item.childNodes[13].innerText;
+                            let usrID = item.childNodes[15].innerText;
+
                             msgmidsec.classList.add("hidden");
                             msgRev.classList.remove("hidden");
                             tablePlace.innerText = usr;
@@ -816,7 +820,7 @@ async function getAllCatMsg() {
                             confirmord.addEventListener("click", (e) => {
                                 e.preventDefault();
                                 itemorderConfirmed(grpbtn, mid);
-                                socket.emit("catorderreply", companyID, usr);
+                                socket.emit("catorderreply", companyID, usr, usrID);
                                 menuMsgBod.innerHTML = "";
                                 getAllCatMsg();
                             })
@@ -824,7 +828,7 @@ async function getAllCatMsg() {
                             cancelord.addEventListener("click", (e) => {
                                 e.preventDefault();
                                 itemorderCanceled(grpbtn, mid);
-                                socket.emit("catorderreply", companyID, usr);
+                                socket.emit("catorderreply", companyID, usr, usrID);
                                 menuMsgBod.innerHTML = "";
                                 getAllCatMsg();
                             })
@@ -915,4 +919,47 @@ async function itemorderCanceled(val, usr) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-}
+};
+
+(function () {
+    let delBtn = document.getElementById("deleteCompany");
+    let id = document.querySelector(".delcompid").innerText;
+    let user = document.querySelector(".delcatalid").innerText;
+
+    delBtn.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/${id}/deleteCompany/${user}`
+            await fetch(endpoint, {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                console.log(response);
+                if (response.status === 200) {
+                    successAlert("Your Company Has been Deleted :(");
+                    window.setTimeout(() => {
+                        location.assign(`/layouts/porti`);
+                    }, 300)
+                }
+                else if (response.status === 404) {
+                    errorAlert("No Company Found!!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Deletion Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();

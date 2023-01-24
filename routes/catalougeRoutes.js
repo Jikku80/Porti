@@ -18,6 +18,9 @@ router.get('/comments/:id', catalougeController.getLastComments);
 
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
+
+router.get('/companystat/:id', authController.restrictTo('user', 'admin'), catalougeController.redirectoTocatalogStats);
+
 router.post('/', authController.restrictTo('user', 'admin'), catalougeController.createCatalouge);
 router.patch('/:id/updateItemDetail', authController.restrictTo('user', 'admin'), catalougeController.updateCatalouge);
 router.post('/:id/updateItemImage', authController.restrictTo('user', 'admin'), catalougeController.updateCatalougeItemImg);
@@ -26,6 +29,7 @@ router.delete('/:id/deleteItem', authController.restrictTo('user', 'admin'), cat
 router.post('/createCompany', authController.restrictTo('user', 'admin'), catalougeController.createCompany);
 router.patch('/:id/updateCompany', authController.restrictTo('user', 'admin'), catalougeController.updateCompany);
 router.post('/:id/updateCompanyImage', authController.restrictTo('user', 'admin'), catalougeController.updateCompanyImg);
+router.delete('/:id/deleteCompany/:user', authController.restrictTo('user', 'admin'), catalougeController.deleteUserCompany);
 
 router.post('/catalogbanner', authController.restrictTo('user', 'admin'), catalougeController.createCatalogBanner);
 router.delete('/catalogbanner/:id', authController.restrictTo('user', 'admin'), catalougeController.deleteCatalogBanner);

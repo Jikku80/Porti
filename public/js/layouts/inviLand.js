@@ -40,7 +40,7 @@ invigen.addEventListener("click", async () => {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
-        const endpoint = `/scan`
+        const endpoint = `/scan/qr`
         await fetch((endpoint), {
             method: 'POST',
             headers: {

@@ -19,7 +19,7 @@ block content
             span.nocaps.wite i
         .main__content__log
             if (!user)
-                a#log(href="/login" title="Login | SignUp") 
+                a#log(href="/account/login" title="Login | SignUp") 
                     .futuristic-button
                         .top 
                         .parallelogram-left
@@ -27,7 +27,7 @@ block content
                         .bottom 
                         .button-text Login | SignUp
             else 
-                a#log.fkAncky.norot(href="/me" title="Your Account")
+                a#log.fkAncky.norot(href="/account/me" title="Your Account")
                     if (!user.photo)
                         img.accpic(src=`/images/hitman.png`, alt="dp")
                     else
@@ -40,13 +40,13 @@ block content
                     span.lst De 
                         span.wite Tech
             if (!user)
-                a.crPr.button-89(href="/porti-highlights") Por
+                a.crPr.button-89(href="/layouts/highlights") Por
                     span.grn t
                     span.crPr i-
                     span.orng Features
                 #go__create.hidden
             else
-                a.crPr.button-89(href="/porti")
+                a.crPr.button-89(href="/layouts/porti")
                     p#go__create.wite Let's  
                         span.orng Suit Up
             .fkAncky
@@ -77,19 +77,22 @@ block content
                         span.wite i
                     if (!user)
                         p.usrTheme.hidden
-                        a.bottom__anch(href="/login") 
+                        a.bottom__anch(href="/account/login") 
                             h3 Login | SignUp
                     else
                         p.usrTheme.hidden= user.theme
                         .bottom__nav__inner 
-                            a.bottom__anch.text__shadow(href=`/myportfolio/${user._id}`) 
-                                h3 Portfolio
+                            if (user.accountType == "portfolio")
+                                a.bottom__anch.text__shadow(href=`/myportfolio/${user._id}`) 
+                                    h3 Portfolio
+                            if (user.accountType === "restaurant")
+                                a.bottom__anch.text__shadow(href=`/menu/${user._id}/additemstomenu`) 
+                                    h3 Menu
+                            if (user.accountType === "business")
+                                a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
+                                    h3 Catalouge
                             a.bottom__anch.text__shadow(href=`/invitations/${user._id}`) 
                                 h3 Invitation
-                            a.bottom__anch.text__shadow(href=`/menu/${user._id}/additemstomenu`) 
-                                h3 Menu
-                            a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
-                                h3 Catalouge
                 .first__abt__cont.containr#apS 
                     .first__half__cont 
                         h1 About 
@@ -250,9 +253,9 @@ block content
                                 p you can click generate qrcode button to get your portfolio qr code, just scan it and open your portfolio.
                     .link__helper 
                         h2 You Portfolio link will be 
-                            span.mid.nocaps /profile/yourusername
+                            span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.porti.com/profile/username
+                            p.porti_all_link www.porti.com/username
             .darkgreen.padder#iHelper
                 .containr 
                     .second__half__cont
@@ -381,9 +384,9 @@ block content
                                 p you can click generate qrcode button to get your menu qr code, just scan it and open your menu.
                     .link__helper 
                         h2 You Menu link will be 
-                            span.mid.nocaps /menu/yourusername
+                            span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.porti.com/menu/username
+                            p.porti_all_link www.porti.com/username
             .padder.darkgreen#cHelper
                 .containr 
                     .second__half__cont
@@ -487,9 +490,9 @@ block content
                                 p you can click generate qrcode button to get your cataloge qr code, just scan it and open your cataloge.
                     .link__helper 
                         h2 You Catalog link will be 
-                            span.mid.nocaps /catalog/yourusername
+                            span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.porti.com/catalog/username
+                            p.porti_all_link www.porti.com/username
             .padder.darkgreen#aTM
                 .containr 
                     .first__half__cont 
@@ -540,7 +543,7 @@ block content
                     if (!user)
                         p You need to Login || SignUp to message Us.  
                         br  
-                        a.greybtn(href="/login") Login || SignUp
+                        a.greybtn(href="/account/login") Login || SignUp
                         .send__msg 
                         .loader.hidden
                     else

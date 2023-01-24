@@ -26,6 +26,8 @@
     let menu = document.getElementById("menuMenu");
     let cataloge = document.getElementById("menuCataloge");
     let menuImg = document.getElementById("menuImg");
+    let restroStat = document.getElementById("menuMenuStats");
+    let catStat = document.getElementById("menuCatalogeStats");
 
     let pathName = window.location.pathname;
 
@@ -63,6 +65,13 @@
         return;
     }
 
+    if (pathName.match(/restrostat/gi)) {
+        restroStat.style.color = "greenyellow";
+        restroStat.style.fontWeight = "bold";
+        restroStat.style.borderBottom = "2px solid white"
+        return;
+    }
+
     if (pathName.match(/menu/gi)) {
         menu.style.color = "greenyellow";
         menu.style.fontWeight = "bold";
@@ -74,6 +83,13 @@
         cataloge.style.color = "greenyellow";
         cataloge.style.fontWeight = "bold";
         cataloge.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/companystat/gi)) {
+        catStat.style.color = "greenyellow";
+        catStat.style.fontWeight = "bold";
+        catStat.style.borderBottom = "2px solid white"
         return;
     }
 })();

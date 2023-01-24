@@ -150,9 +150,8 @@ body{
 
 #gtop{
     position: fixed;
-    align-items: flex-end;
-    top:90%;
-    left: 95%;
+    bottom:1vh;
+    left: 1vw;
 }
 
 .hidden{
@@ -182,13 +181,6 @@ body{
         width: 70vw;
         height: 30vh;
     }
-
-    #gtop{
-        position: fixed;
-        align-items: flex-end;
-        top:90%;
-        left: 80%;
-    }
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -198,12 +190,6 @@ body{
     .accomp__cont__card img{
         width: 25vw;
         height: 25vh;
-    }
-    #gtop{
-        position: fixed;
-        align-items: flex-end;
-        top:90%;
-        left: 90%;
     }
 }
 

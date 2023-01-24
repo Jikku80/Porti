@@ -344,6 +344,7 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         email: req.body.email,
         social: req.body.social,
         locationLink: req.body.locationLink,
+        country: req.body.country,
         slogan: req.body.slogan,
         contact: req.body.contact,
         Address: req.body.Address,
@@ -445,4 +446,56 @@ exports.deleteCatalogBanner = catchAsync(async (req, res, next) => {
         }
     })
 });
+
+exports.deleteUserCompany = catchAsync(async (req, res, next) => {
+    const doc = await Company.findByIdAndDelete(req.params.id);
+
+    let data = []
+    await Catalouge.find({ user: req.params.user }).then(item => {
+        item.filter(el => {
+            data.push(el.id)
+        })
+    });
+
+    data.forEach(async (item) => {
+        await Catalouge.findByIdAndDelete(item)
+    })
+
+    let comdata = []
+    await ComComment.find({ companyUserId: req.params.user }).then(item => {
+        item.filter(el => {
+            comdata.push(el.id)
+        })
+    });
+
+    comdata.forEach(async (item) => {
+        await ComComment.findByIdAndDelete(item)
+    })
+
+    await CatalogBanner.findOneAndDelete({ user: req.params.user })
+
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
+exports.redirectoTocatalogStats = catchAsync(async (req, res, next) => {
+    let userId = req.params.id;
+
+    const comp = await Company.findOne({ user: userId })
+
+    if (comp !== null) {
+        res.redirect(`/catalog/${comp.id}/companystat`)
+    }
+    else {
+        res.redirect('/layouts/porti')
+    }
+
+});
+
 

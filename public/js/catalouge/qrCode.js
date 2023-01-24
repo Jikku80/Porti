@@ -8,7 +8,7 @@
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             // page.classList.remove("hidden");
-            const endpoint = `/scan`
+            const endpoint = `/scan/qr`
             await fetch((endpoint), {
                 method: 'POST',
                 headers: {

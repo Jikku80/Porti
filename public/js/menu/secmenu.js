@@ -398,11 +398,12 @@ window.addEventListener("load", () => {
     let orderadd = document.getElementById("resordadd");
     let orderphn = document.getElementById("resordphn");
     let secalrt = document.getElementById("secmsgalert");
+    let orderuserid = document.getElementById("uniqueuserid");
     let homeDel;
 
-    socket.on("resorderreply", (restoid, restouser) => {
+    socket.on("resorderreply", (restoid, restouser, oderuserid) => {
         if (restroid.innerText == restoid) {
-            if (orderuser.innerText == restouser) {
+            if (orderuserid.innerText == oderuserid) {
                 secalrt.play();
                 fill.classList.remove("hidden");
                 getUserMsg();
@@ -412,11 +413,12 @@ window.addEventListener("load", () => {
 
     let homedelv = document.getElementById("showHomeDelOpt");
     let homedelform = document.querySelector(".showhomesec");
-
-    homedelv.addEventListener("click", (e) => {
-        e.preventDefault();
-        homedelform.classList.toggle("hidden");
-    })
+    if (homedelv !== null) {
+        homedelv.addEventListener("click", (e) => {
+            e.preventDefault();
+            homedelform.classList.toggle("hidden");
+        })
+    }
 
     sendOrderbtn.addEventListener("click", async (e) => {
         e.preventDefault();
@@ -481,6 +483,7 @@ window.addEventListener("load", () => {
                     table: tableno.value,
                     message: resmsg.value,
                     name: orderuser.innerText,
+                    userId: orderuserid.innerText,
                     address: orderadd.value,
                     phn_no: orderphn.value,
                     homedelivery: homeDel,
@@ -790,7 +793,7 @@ async function getUserMsg() {
 let goTOLoginSecMenu = document.getElementById("gotoLogin");
 
 goTOLoginSecMenu.addEventListener("click", () => {
-    window.open(`/login`)
+    window.open(`/account/login`)
 });
 
 async function likeDislikeConfig() {
@@ -909,7 +912,11 @@ async function likeDislikeConfig() {
                                 }).then((response) => {
                                     if (response.status === 200) {
                                         getAllLikeCount()
-                                    } else {
+                                    }
+                                    else if (response.status === 401) {
+                                        errorAlert("You Are Not Logged In!!!")
+                                    }
+                                    else {
                                         console.log(response);
                                         errorAlert("Invalid input, Duplication Input error!!!")
                                     }
@@ -964,7 +971,11 @@ async function likeDislikeConfig() {
                                 }).then((response) => {
                                     if (response.status === 200) {
                                         getAllLikeCount()
-                                    } else {
+                                    }
+                                    else if (response.status === 401) {
+                                        errorAlert("You Are Not Logged In!!!")
+                                    }
+                                    else {
                                         console.log(response);
                                         errorAlert("Invalid input, Duplication Input error!!!")
                                     }

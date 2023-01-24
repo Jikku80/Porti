@@ -61,10 +61,41 @@ block content
                     button.btn__pwd.redbtn.btnpad Update        
             
             h1#acHead= `Greetings, ${user.name}`
-            include _footer
+        .bottom__sec
+            if (!user.accountType)
+                .showSwitches.hidden
+                .select__account__type__sec
+                    h1 Select A Account Type
+                    .account__types 
+                        .acc__typ__card.portfolio
+                            h2 Personal || Portfolio 
+                            p Create Virtual Portfolio
+                        .acc__typ__card.restaurant
+                            h2 Restaurant || Food Menu
+                            p Create Virtual Menu
+                        .acc__typ__card.business
+                            h2 Business || Catalog
+                            p Create Virtual Catalog
+                    p You will be able to create invitaitons with any of the followings
+            else 
+                h1.txt Switch Account Type
+                h2.txt.rd Switching account will delete everything
+                button.redbtn.showSwitches Switch Account
+                .account_v_types.hidden
+                    .acc__typ__card.portfolio
+                        h2 Personal || Portfolio 
+                        p Create Virtual Portfolio
+                    .acc__typ__card.restaurant
+                        h2 Restaurant || Food Menu
+                        p Create Virtual Menu
+                    .acc__typ__card.business
+                        h2 Business || Catalog
+                        p Create Virtual Catalog
+                p.txt You will be able to create invitaitons with any of the followings
+                include _footer
     else 
         h1 You are not Logged In, Please Log In 
-        a.redbtn(href="/login") LogIn
+        a.redbtn(href="/account/login") LogIn
         p.hidden#currentId
 
     script(src="/js/alert.js") 
