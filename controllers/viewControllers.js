@@ -18,6 +18,10 @@ const Catalouge = require('./../models/catalougeModel');
 const Company = require("./../models/companyModel");
 const Invite = require('./../models/inviteModel');
 const Theme = require('./../models/themeModel');
+const Brochure = require('./../models/brochureModel');
+const Organization = require('./../models/organizationModel');
+const BrochureBanner = require('./../models/brochureBannerModel');
+
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const PortfolioImage = require('../models/portfolioImageModel');
@@ -73,6 +77,9 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
     const restro = await Restaurant.findOne({ user: req.user.id })
     const company = await Company.findOne({ user: req.user.id })
     const theme = await Theme.find().sort('-createdAt');
+    const brochure = await Brochure.findOne({ user: req.user.id })
+    const organization = await Organization.findOne({ user: req.user.id })
+
     res.status(200).render('create', {
         title: `Let's Suit Up`,
         portfolio,
@@ -81,7 +88,9 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
         catalouge,
         restro,
         company,
-        theme
+        theme,
+        brochure,
+        organization
     })
 })
 
@@ -259,6 +268,28 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
                     company: company[0],
                     banner,
                     hotItems
+                })
+                break;
+            default:
+                res.status(404).render('404.pug')
+        }
+        return;
+    }
+
+    const organization = await Organization.find({ user: usr[0]._id }).populate('user')
+
+    if (organization.length !== 0) {
+        const brochures = await Brochure.find({ user: usr[0]._id })
+        const banner = await BrochureBanner.find({ user: usr[0]._id })
+
+        let theme = organization[0].theme
+        switch (theme) {
+            case "65954198f2f59aac9b415952aa9c614fd74245ff":
+                res.status(200).render('brochure/firstBrochure', {
+                    title: `${organization[0].name}`,
+                    brochures,
+                    organization: organization[0],
+                    banner
                 })
                 break;
             default:

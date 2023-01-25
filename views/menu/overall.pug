@@ -62,8 +62,8 @@ block content
                     #item__form
                         .itemform__head 
                             h2.form__label Add Items To Menu
-                            a(href=`/menu/${restro[0]._id}/restrostat`) 
-                                h2 Restaurant Statistics
+                            h2
+                                a(href="#upRestro") Update Restaurant
                         form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label Food Name:

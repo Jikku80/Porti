@@ -327,6 +327,10 @@ html{
   background-color: green;
 }
 
+.brochure{
+  background-color: orangered;
+}
+
 .acc__typ__card:hover{
   background-color: rgba(128, 128, 128, 0.699);
 }

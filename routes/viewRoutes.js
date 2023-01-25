@@ -7,6 +7,7 @@ const inlayoutController = require('./../controllers/inviLayoutControllers');
 const menuController = require('../controllers/menuControllers');
 const messageController = require('../controllers/messageControllers');
 const catalougeController = require('../controllers/catalougeController');
+const brochureController = require('../controllers/brochureController');
 
 
 const router = express.Router();
@@ -46,6 +47,8 @@ router.get('/tweaks/:id', authController.protect, authController.restrictTo('adm
 router.get('/catalougetweaks/:id', authController.protect, authController.restrictTo('admin', 'user'), catalougeController.itemTweaks);
 router.get('/catalog/:company/companystat', messageController.getComOrderStat);
 
+router.get('/brochure/:id/additems', brochureController.addItemsToPage)
+router.get('/brochuretweaks/:id', authController.protect, authController.restrictTo('admin', 'user'), brochureController.sectionTweaks);
 
 router.get('/account/login', viewsController.getOverview);
 router.get('/layouts/highlights', viewsController.portiHighlights);

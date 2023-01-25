@@ -340,6 +340,8 @@ lakheyBack.addEventListener("click", async (e) => {
     let business = document.querySelector(".business");
     let btns = document.querySelector(".account_v_types")
     let switchBtn = document.querySelector(".showSwitches");
+    let brochure = document.querySelector(".brochure");
+
 
     switchBtn.addEventListener("click", () => {
         btns.classList.toggle("hidden");
@@ -369,7 +371,7 @@ lakheyBack.addEventListener("click", async (e) => {
                 }
                 else {
                     console.log(response)
-                    errorAlert("Error Updating Theme :(")
+                    errorAlert("Error Updating Account Type :(")
                 }
             })
         }
@@ -403,7 +405,7 @@ lakheyBack.addEventListener("click", async (e) => {
                 }
                 else {
                     console.log(response)
-                    errorAlert("Error Updating Theme :(")
+                    errorAlert("Error Updating Account Type :(")
                 }
             })
         }
@@ -437,7 +439,7 @@ lakheyBack.addEventListener("click", async (e) => {
                 }
                 else {
                     console.log(response)
-                    errorAlert("Error Updating Theme :(")
+                    errorAlert("Error Updating Account Type :(")
                 }
             })
         }
@@ -446,4 +448,63 @@ lakheyBack.addEventListener("click", async (e) => {
             errorAlert('Sorry! Something went wrong :(', err);
         };
     })
+
+    brochure.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/users/updateAccount/${currentid}`
+            await fetch((endpoint), {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    accountType: 'brochure'
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Oraganizational Account has been set :)");
+                    window.setTimeout(() => {
+                        location.assign('/account/me');
+                    }, 400);
+                }
+                else {
+                    console.log(response)
+                    errorAlert("Error Updating Account Type :(")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong :(', err);
+        };
+    })
+})();
+
+(function () {
+    let portfolio = document.querySelector(".portfolio");
+    let restaurant = document.querySelector(".restaurant");
+    let business = document.querySelector(".business");
+    let brochure = document.querySelector(".brochure");
+    let accountType = document.querySelector(".accounType").innerText;
+
+    if (accountType === "portfolio") {
+        portfolio.classList.add("hidden");
+    }
+
+    if (accountType === "restaurant") {
+        restaurant.classList.add("hidden");
+    }
+
+    if (accountType === "business") {
+        business.classList.add("hidden");
+    }
+
+    if (accountType === "brochure") {
+        brochure.classList.add("hidden")
+    }
+
 })();

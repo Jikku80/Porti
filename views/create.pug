@@ -36,13 +36,59 @@ block content
                                     p.portDet= item.name
                 .layout__main#lockedInviSec 
                     .unl
+            if (user.accountType === "brochure")
+                .brochure__section.newsec.shinesec#crtBrochure
+                    if (!organization)
+                        h2 Create Brochure for your Hotels, Motels Any Organization
+                        p Pick any of the layouts below and build a Brochure 
+                        p Need tips Creating Your Brochure Go To 
+                            a.portDet(href="/#cHelper") Brochure Helper
+                        .gGroup 
+                            .freeSec.whitebtn.brochurebtn#freebrochureBtn Unlocked
+                            .paidSec.whitebtn.brochurebtn#lockedbrochureBtn Locked
+                        .layout__main#freeBrochureSec
+                            each item in theme
+                                if (item.themeCategory === "Brochure" && item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
+                                    .unl.brochure_layouts(id=`${item.themeId}`)
+                                        .un_layout_log
+                                            img(src=`${item.picture}`, loading="lazy", alt="brochure")
+                                            p.portDet= item.name
+                        .layout__main#lockedBrochureSec 
+                            .unl
+                    else 
+                        .noti__sec
+                            .sticky__section
+                                h2 You Already have A Brochure!
+                                p.warn You can't have more than one Brochure!
+                            if (!brochure)
+                                .sticky__section 
+                                    h2.warn You Haven't added items to your Brochure!
+                        .gGroup 
+                            .freeSec.whitebtn.brochurebtn#freebrochureBtn Unlocked
+                            .paidSec.whitebtn.brochurebtn#lockedbrochureBtn Locked
+                        .layout__main#freeBrochureSec 
+                            each item in theme
+                                if (item.themeCategory === "Brochure" && item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
+                                    .un_layout
+                                        img(src=`${item.picture}`, loading="lazy", alt="brochure")
+                                        p.portDet= item.name
+                        .layuot__main#lockedBrochureSec 
+                            .un_layout
+            else 
+                #brochureCataloge.hidden 
+                .brochurebtn.hidden
+                #lockedBrochureSec.hidden 
+                #freeBrochureSec.hidden 
+                #freebrochureBtn.hidden 
+                #lockedbrochureBtn.hidden  
+                .brochure__section.hidden
             if (user.accountType === "business")
                 .catalouge__section.newsec.shinesec#crtCataloge
                     if (!company)
-                        h2 Create Catalouge For Your Business 
-                        p Pick any of the layouts below and buid a Catalouge 
-                        p Need tips Creating Your Portfolio Go To 
-                            a.portDet(href="/#cHelper") Cataloge Helper
+                        h2 Create Catalog For Your Business 
+                        p Pick any of the layouts below and build a Catalog 
+                        p Need tips Creating Your Catalog Go To 
+                            a.portDet(href="/#cHelper") Catalog Helper
                         .gGroup 
                             .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
                             .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
@@ -88,7 +134,7 @@ block content
                     if (!restro)
                         h2 Create Restro for your Menu 
                         p Pick any of the layouts below and build a menu for your restro 
-                        p Need tips Creating Your Portfolio Go To 
+                        p Need tips Creating Your Restaurant || Bakery || Food Spot Go To 
                             a.portDet(href="/#mHelper") Menu Helper
                         .gGroup 
                             .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
@@ -217,6 +263,7 @@ block content
             script(src="/js/createrestro/createRestro.js")
             script(src="/js/createcompany/createCatalogeForm.js")
             script(src="/js/createcompany/createcataloge.js")  
-            //- script(src="/js/logout.js")
+            script(src="/js/createbrochure/createBrochureForm.js")
+            script(src="/js/createbrochure/createBrochure.js")  
     script(src="/js/layouts/portForAll.js") 
     script(src="/js/alert.js")

@@ -26,6 +26,7 @@
     let menu = document.getElementById("menuMenu");
     let cataloge = document.getElementById("menuCataloge");
     let menuImg = document.getElementById("menuImg");
+    let brochure = document.getElementById("menuBrochure");
     let restroStat = document.getElementById("menuMenuStats");
     let catStat = document.getElementById("menuCatalogeStats");
 
@@ -90,6 +91,13 @@
         catStat.style.color = "greenyellow";
         catStat.style.fontWeight = "bold";
         catStat.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/brochure/gi)) {
+        brochure.style.color = "greenyellow";
+        brochure.style.fontWeight = "bold";
+        brochure.style.borderBottom = "2px solid white"
         return;
     }
 })();

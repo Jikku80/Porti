@@ -1,0 +1,206 @@
+extends baseBrochure
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span.td Por
+            span.grn t
+            span.nocaps.td i
+    if (user)
+        if (!organization)
+            p.hidden.themeUsr= user.theme
+            #cataddItemBtn.hidden 
+            #updateCompBtn.hidden
+            .uname__catal.hidden
+            .prev__catal.hidden 
+            .next__catal.hidden
+            .share__catal__link.hidden
+            .comp__id.hidden
+            .compimg__id.hidden
+            .your__items.hidden 
+            #compUpdateImgBtn.hidden
+            .whole__menu__sec.hidden
+            .currentuid.hidden
+            .confirm__pg
+                h1.td You have not created your Organization || Hotel || Motel! Create one and come back
+                a.lbtn(href="/layouts/porti#crtCataloge") Create Organization
+        else
+            include ../_header
+            p.hidden.themeUsr= user.theme
+            .lbtn.hidden
+            .whole__menu__sec 
+                .menu__section
+                    .menu__messages__btn &#128722;
+                    .new__menu__msg.hidden
+                    .curcatid.hidden= organization
+                    audio#catmsgalert.hidden
+                        source(src="/noti/msg.mp3")
+                    .menu__message__secetion.hidden
+                        .menu__message__mid__sec
+                            .menu__message__head 
+                                h3 Messages (Last 50 Orders Made)
+                                img.cancel__msg__sec.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__message__bod
+                            .menu__message__bod__prev
+                        .menu__reveived__msg.hidden
+                            .menu__message__head 
+                                h3.tablename 
+                                img.cancel__reveived__msg.point(src="/images/cancel.png" alt="cancel__btn")
+                            .menu__reveived__msg__bod
+                    .share__catalouge#openCatalouge 
+                        h2.form__label Share your Brochure 
+                        p.uname__catal.hidden= user.name
+                        p.share__catal__link
+                    .qrcode__menu 
+                        #catalqrcode 
+                    if (brochures.length === 0)
+                        h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
+                    #item__form
+                        .itemform__head 
+                            h2.form__label Add To Brochure
+                            h2 
+                                a(href="#upOrganization") Update Organization
+                        form#addCatItem.upItem(action="/api/v1/brochure/" method="post" enctype="multipart/form-data")
+                            .form__bod
+                                label.form__label(for="item_name") Section Name:
+                                input#catitemname.form__input(type="text" name="catalogname" required placeholder="Section Name")
+                            .form__bod
+                                label.form__label(for="item_name") Currency Sign (optional):
+                                if (brochures[0])
+                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" value=`${brochures[0].currency}`)
+                                else
+                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" placeholder="$ or Rs. or £")
+                            .form__bod
+                                label.form__label(for="item_price") Section Price (optional): 
+                                input#catitemprice.form__input(type="number" name="catalogprice" placeholder="400")
+                                label.form__label(for="item_detail") Section Detail:
+                                textarea#catitemdetail.form__input(rows="4" cols="50" name="catalogdetail" placeholder="Describe about the section")
+                            .form__bod 
+                                label.form__label Apply Discount(optional):
+                                input#catalitemdiscount.checkbox(type="checkbox" name="catalogdiscount")
+                            .form__bod.file_part
+                                label.form__label(for="catcoverimage") Section Image:
+                                input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
+                            button#cataddItemBtn.blackbtn Add Section
+                    .your__item__sec#CatalogeItemSec
+                        h2.items__head Your Sections 
+                        .all__brochure__items
+                            for item in brochures 
+                                .brochure__card
+                                    if (item.coverImage)
+                                        img(class="brochure__card__img" loading="lazy" src=`${item.coverImage}` alt="catalouge__item__img")
+                                    else
+                                        img.brochure__card__img( loading="lazy" src="/images/noimg.png" alt="catalouge__item__img")
+                                    .catalouge__card__det
+                                        h3.catalouge__card__head.goldn= item.name
+                                        if (item.price)
+                                            p.catalouge__card__price.goldn= `${item.currency} ${item.price}`
+                                        if (item.applyDiscount == true)
+                                            p.catalouge__card__dis__per.goldn Discount
+                                        a(href=`/brochuretweaks/${item._id}?update` class="ygbtn btn") Update
+                                        a.redbtn.btn(href=`/brochuretweaks/${item._id}?delete`) Delete
+                        p.currentuid.hidden= user._id
+                        if (banner[0])
+                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                p.itemdiscountpercent.hidden= banner[0].discountpercent
+                            else 
+                                p.itemdiscountpercent.hidden
+                        else 
+                            .itemdiscountpercent.hidden
+                        .your__item__bod
+                            .your__items.sec__items
+                        //- .paginate 
+                        //-     button.prev__catal Previous
+                        //-     button.next__catal.hidden Next
+                    .itemform__head 
+                        h2.form__label Update Organization Detail
+                    form#upOrganization.upItem
+                        .form__bod
+                            label.form__label(for="company_name") Name:
+                            input#compname.form__input(type="text" required value=organization.name)
+                        .form__bod
+                            label.form__label(for="company_email") Email: 
+                            input#compemail.form__input(type="email" required value=organization.email)
+                        .form__bod
+                            label.form__label(for="comapny_social_account") Social Account Link (optional): 
+                            input#compsocial.form__input(type="text" value=organization.social)
+                        .form__bod
+                            label.form__label(for="company_address") Address: 
+                            input#compaddress.form__input(type="text" required value=organization.Address)
+                        .form__bod
+                            label.form__label(for="company_address_link") Address Link (optional): 
+                            input#complocationLink.form__input(type="text" value=organization.locationLink)
+                        .form__bod
+                            label.form__label(for="company_contact") Contact: 
+                            input#compcontact.form__input(type="text" required value=organization.contact)
+                        .form__bod
+                            label.form__label(for="company_slogan") Slogan (optional): 
+                            input#compslogan.form__input(type="text", value=organization.slogan)
+                        .form__bod
+                            label.form__label(for="company_slogan") Type: 
+                            input#compType.form__input(type="text", value=organization.orgType)
+                        .form__bod 
+                            label.form__label Change Theme (optional):
+                            select#compTheme
+                                option.opt(hidden selected)= organization.theme 
+                                each item in theme 
+                                    if (item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
+                                        option.opt(value=`${item.themeId}`)= item.name
+                        p.comp__id.hidden= organization._id
+                        button#updateCompBtn.blackbtn Update now
+
+                    .itemform__head 
+                        h2.form__label Update Enterprise Cover Image
+                        p.compimg__id.hidden= organization._id
+                    form#upCompanyImage.upItem(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
+                        .form__bod.file_part
+                            label.form__label(for="compcoverimage") Catalouge Cover Image:
+                            input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
+                        button#compUpdateImgBtn.blackbtn Update Cover Image
+                    
+                    .createBanner
+                        .itemform__head 
+                            h2.form__label Create A Banner
+                        form.upItem
+                            .form__bod 
+                                label.form__label Banner Information 
+                                if (!banner[0])
+                                    textarea.form__input#catalogbannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
+                                else 
+                                    textarea.form__input#catalogbannerInfo(type="text" placeholder="You Can only have one Banner at a time" disabled)
+                                label.form__label Discount Percentage(optional)
+                                if (!banner[0])
+                                    input.form__input#discountpercent(type="number" placeholder="50 (you dont have to use % sign)")
+                                else 
+                                    input.form__input#discountpercent(type="number" placeholder="You Can only have ony Banner at a time" disabled)
+                            button#catalogbannerbtn.blackbtn Create
+                        if (banner[0])
+                            .banner__sec 
+                                h2= banner[0].bannerInfo
+                                p#catalogbannerId.hidden= banner[0]._id
+                                if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                    h2= `${banner[0].discountpercent}%`
+                                    p You will have to check apply discount to items, to use it in your product items
+                                btn#catalogdeletebanner.blackbtn Delete
+                        else 
+                            .banner__sec 
+                                h1 No Banner
+                                #catalogdeletebanner.hidden
+                                #catalogbannerId.hidden
+                .delete__sec 
+                    h2 Delete Organization 
+                    p It will delete Everything including all the Brochure Sections
+                    .delcompid.hidden= organization._id
+                    .delcatalid.hidden= organization.user._id
+                    btn#deleteOrganization.blackbtn Delete
+            .to__left
+                include ../_footer
+    else 
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a(href="/account/login") Sign In
+
+    script(src="/js/alert.js")
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/brochure/additems.js") 

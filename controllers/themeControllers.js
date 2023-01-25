@@ -16,32 +16,46 @@ exports.setUsersId = (req, res, next) => {
 }
 
 exports.createTheme = catchAsync(async (req, res, next) => {
-    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-    if (!accountName) throw Error('Azure Storage accountName not found');
-    const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
-
-    const containerName = 'layoutimages';
-
-    const containerClient = blobServiceClient.getContainerClient(containerName);
     let form = new formidable.IncomingForm();
 
     form.parse(req, async function (err, fields, files) {
+        if (files.picture.originalFilename == "") {
+            await Theme.create({
+                name: fields.themename,
+                themeId: fields.themeId,
+                themeType: fields.themeType,
+                themeCategory: fields.themeCategory,
+                price: fields.themeprice,
+                paid: fields.paid,
+                createdAt: Date.now()
+            });
+            res.redirect(`/api/themes/tweaktheme`)
+        }
+        else {
+            const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+            if (!accountName) throw Error('Azure Storage accountName not found');
+            const blobServiceClient = new BlobServiceClient(`https://${accountName}.blob.core.windows.net`, new DefaultAzureCredential());
 
-        const filePath = files.picture.filepath;
-        const blobName = `${req.user.name}-layoutthemeimages-${uuidv1()}.jpeg`;
-        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-        await blockBlobClient.uploadFile(filePath)
-        await Theme.create({
-            name: fields.themename,
-            themeId: fields.themeId,
-            themeType: fields.themeType,
-            themeCategory: fields.themeCategory,
-            price: fields.themeprice,
-            paid: fields.paid,
-            picture: blockBlobClient.url,
-            createdAt: Date.now()
-        });
-        res.redirect(`/api/themes/tweaktheme`)
+            const containerName = 'layoutimages';
+
+            const containerClient = blobServiceClient.getContainerClient(containerName);
+
+            const filePath = files.picture.filepath;
+            const blobName = `${req.user.name}-layoutthemeimages-${uuidv1()}.jpeg`;
+            const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+            await blockBlobClient.uploadFile(filePath)
+            await Theme.create({
+                name: fields.themename,
+                themeId: fields.themeId,
+                themeType: fields.themeType,
+                themeCategory: fields.themeCategory,
+                price: fields.themeprice,
+                paid: fields.paid,
+                picture: blockBlobClient.url,
+                createdAt: Date.now()
+            });
+            res.redirect(`/api/themes/tweaktheme`)
+        }
     })
 
 });

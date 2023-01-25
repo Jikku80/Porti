@@ -11,6 +11,9 @@ const Company = require('./../models/companyModel');
 const Catalouge = require('./../models/catalougeModel');
 const CatalogBanner = require('./../models/catalogBannerModel');
 const ComComment = require('./../models/comComment');
+const Brochure = require('./../models/brochureModel');
+const BrochureBanner = require('./../models/brochureBannerModel');
+let Organization = require('./../models/organizationModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -175,6 +178,26 @@ exports.updateAccountType = catchAsync(async (req, res, next) => {
         })
         await CatalogBanner.findOneAndDelete({ user: req.params.id })
     }
+
+    const organization = await Organization.findOne({ user: req.params.id })
+
+    if (organization !== null) {
+        await Organization.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Brochure.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Brochure.findByIdAndDelete(item)
+        })
+
+        await BrochureBanner.findOneAndDelete({ user: req.params.id })
+    }
+
     await User.findByIdAndUpdate(
         req.params.id,
         {

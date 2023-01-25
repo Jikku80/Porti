@@ -71,26 +71,33 @@ block content
                             h2 Personal || Portfolio 
                             p Create Virtual Portfolio
                         .acc__typ__card.restaurant
-                            h2 Restaurant || Food Menu
+                            h2 Food || Food Menu
                             p Create Virtual Menu
                         .acc__typ__card.business
                             h2 Business || Catalog
                             p Create Virtual Catalog
+                        .acc__typ__card.brochure
+                            h2 Organization || Brochure
+                            p Create Virtual Brochure
                     p You will be able to create invitaitons with any of the followings
             else 
                 h1.txt Switch Account Type
                 h2.txt.rd Switching account will delete everything
                 button.redbtn.showSwitches Switch Account
+                .accounType.hidden= user.accountType
                 .account_v_types.hidden
                     .acc__typ__card.portfolio
                         h2 Personal || Portfolio 
                         p Create Virtual Portfolio
                     .acc__typ__card.restaurant
-                        h2 Restaurant || Food Menu
+                        h2 Food || Food Menu
                         p Create Virtual Menu
                     .acc__typ__card.business
                         h2 Business || Catalog
                         p Create Virtual Catalog
+                    .acc__typ__card.brochure
+                        h2 Organization || Brochure
+                        p Create Virtual Brochure
                 p.txt You will be able to create invitaitons with any of the followings
                 include _footer
     else 

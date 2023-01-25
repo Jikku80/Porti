@@ -32,6 +32,10 @@
         else 
             #menuCataloge.anavi.hidden
             #menuCatalogeStats.anavi.hidden
+        if (user.accountType === "brochure")
+            a#menuBrochure.anavi(href=`/brochure/${user._id}/additems` title="your brochure") Brochure 
+        else 
+            #menuBrochure.anavi
         a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
         a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
         #logout.logout.pointer SignOut

@@ -1,0 +1,19 @@
+.all__brochure__items{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.brochure__card{
+    margin: 4%;
+}
+
+.brochure__card__img{
+    width: 10vw;
+    height: 10vh;
+}
+
+.items__head{
+    text-align: center;
+}

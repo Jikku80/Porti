@@ -59,8 +59,8 @@ block content
                     #item__form
                         .itemform__head 
                             h2.form__label Add Items To Catalouge
-                            h2
-                                a.form__label(href=`/catalog/${company[0]._id}/companystat`) Catalouge Statistics
+                            h2 
+                                a(href="#upCompany") Update Company
                         form#addCatItem.upItem(action="/api/v1/catalouge/" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label(for="item_name") Item Name:

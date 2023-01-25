@@ -16,7 +16,8 @@ const messageRouter = require('./routes/messageRoutes');
 const userRouter = require('./routes/userRoutes');
 const menuRouter = require('./routes/menuRoutes');
 const viewRouter = require('./routes/viewRoutes');
-const catalougeRouter = require('./routes/catalougeRoutes')
+const catalougeRouter = require('./routes/catalougeRoutes');
+const brochureRouter = require('./routes/brochureRoutes');
 const themeRouter = require('./routes/themeRoutes');
 const paymentRouter = require('./routes/paymentRoutes');
 
@@ -127,6 +128,7 @@ app.use('/api/v1/invite', inviteRouter);
 app.use('/api/v1/message', messageRouter);
 app.use('/api/v1/menu', menuRouter);
 app.use('/api/v1/catalouge', catalougeRouter);
+app.use('/api/v1/brochure', brochureRouter);
 
 
 
