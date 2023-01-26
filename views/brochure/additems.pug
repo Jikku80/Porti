@@ -33,7 +33,7 @@ block content
                 .menu__section
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
-                    .curcatid.hidden= organization
+                    .curcatid.hidden= organization.id
                     audio#catmsgalert.hidden
                         source(src="/noti/msg.mp3")
                     .menu__message__secetion.hidden
@@ -75,7 +75,7 @@ block content
                                 label.form__label(for="item_price") Section Price (optional): 
                                 input#catitemprice.form__input(type="number" name="catalogprice" placeholder="400")
                                 label.form__label(for="item_detail") Section Detail:
-                                textarea#catitemdetail.form__input(rows="4" cols="50" name="catalogdetail" placeholder="Describe about the section")
+                                textarea#catitemdetail.brochureTextarea.form__input(rows="4" cols="50" name="catalogdetail" placeholder="Describe about the section")
                             .form__bod 
                                 label.form__label Apply Discount(optional):
                                 input#catalitemdiscount.checkbox(type="checkbox" name="catalogdiscount")

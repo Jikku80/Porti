@@ -17,6 +17,10 @@
     margin-right: 1vw;
 }
 
+.logout{
+    cursor: pointer;
+}
+
 .presents{
     position: absolute;
     font-variant: small-caps;

@@ -29,6 +29,7 @@
     let brochure = document.getElementById("menuBrochure");
     let restroStat = document.getElementById("menuMenuStats");
     let catStat = document.getElementById("menuCatalogeStats");
+    let orgStat = document.getElementById("menuBrochureStats");
 
     let pathName = window.location.pathname;
 
@@ -91,6 +92,13 @@
         catStat.style.color = "greenyellow";
         catStat.style.fontWeight = "bold";
         catStat.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/organizationstat/gi)) {
+        orgStat.style.color = "greenyellow";
+        orgStat.style.fontWeight = "bold";
+        orgStat.style.borderBottom = "2px solid white"
         return;
     }
 

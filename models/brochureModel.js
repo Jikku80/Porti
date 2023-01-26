@@ -26,6 +26,10 @@ const brochureSchema = new mongoose.Schema({
     theme: {
         type: String
     },
+    applydiscount: {
+        type: Boolean,
+        default: false
+    },
     coverImage: String,
     itemLike: [String],
     itemDisLike: [String],

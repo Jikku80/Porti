@@ -35,11 +35,11 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val8, val
         </div>
         <div class="form__cont">
             <label class="form__label">Contact Detail : </label>
-            <input id=${val6} class="form__input" placeholder="999999998" required />
+            <input id=${val5} class="form__input" placeholder="999999998" required />
             </div>
             <div class="form__cont">
             <label class="form__label">Slogan (optional) : </label>
-            <input id=${val5} class="form__input" placeholder="11:00 AM is not late" required />
+            <input id=${val6} class="form__input" placeholder="11:00 AM is not late" required />
         </div>
         <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>

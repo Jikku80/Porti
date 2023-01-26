@@ -1,0 +1,232 @@
+.first__bro__section{
+    background-color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* color: #000; */
+}
+
+.bro__banner__sec{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    bottom: 1vh;
+    left: 0vw;
+    width: 20vw;
+    z-index: 1;
+    padding: 1%;
+    background-color: rgba(204, 204, 162, 0.836);
+    color: #000;
+    align-items: center;
+}
+
+.cancelbanner{
+    height: 3vw;
+}
+
+.first__bro__nav{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: fixed;
+    top: 0;
+}
+
+.first__bro__nav ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    list-style-type: none;
+    padding: 2%;
+}
+
+.first__bro__nav a{
+    text-decoration: none;
+    color: white;
+}
+
+.first__bro__nav li{
+    text-shadow: 1px 1px 2px black;
+    cursor: pointer;
+    font-variant: small-caps;
+}
+
+.first__bro__cover{
+    width: 100vw;
+    height: 100vh;
+}
+
+.first__bro__sec__section{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.first__bro__sec__half, .first__bro__sec__other{
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.first__bro__sec__other{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    text-align: justify;
+    text-justify: inter-word;
+    color: #000;
+}
+
+.bro__sec__detail{
+    background-color: rgba(0, 0, 0, 0.479);
+    padding: 2%;
+}
+pre{
+    white-space: pre-wrap;
+    font-size: 16px;
+    overflow: auto;
+    clear: both;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+}
+.section__img{
+    width: 40vw;
+    height: 40vh;
+}
+
+#bookNow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bookform{
+    background-color: rgba(0, 0, 0, 0.418);
+    width: 50vw;
+}
+
+.brotxt{
+    color: black;
+    text-align: center;
+}
+
+.go__up__top{
+    position: fixed;
+    bottom: 0;
+    right: 1vw;
+}
+
+.gouptop{
+    width: 3vw;
+    height: 3vw;
+}
+
+#contact{
+    background-color: rgba(0, 0, 0, 0.418);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    justify-content: space-evenly;
+}
+
+#contact h2{
+    margin: 2%;
+}
+
+.get__booked{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.book__card{
+    margin: 2%;
+    background-color: teal;
+    width: fit-content;
+    padding: 2%;
+    border-radius: 2rem;
+}
+
+.bookinfo{
+    color: yellow;
+}
+
+#contact a{
+    color :teal;
+    text-decoration: none;
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .section__img{
+        width: 40vw;
+        height: 20vh;
+    }
+
+    .bro__banner__sec{
+        width: 30vw;
+    }
+
+    .gouptop{
+        width: 4vh;
+        height: 4vh;
+    }
+
+    .cancelbanner{
+        height: 4vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .first__bro__nav{
+        position: absolute;
+    }
+
+    .first__bro__nav ul {
+        flex-direction: column;
+        align-items: center;
+        height: 20rem;
+    }
+
+    .first__bro__sec__section{
+        flex-direction: column;
+    }
+
+    .section__img{
+        width: 80vw;
+        height: 30vh;
+    }
+
+    .first__bro__sec__half, .first__bro__sec__other{
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .bro__sec__detail{
+        width: 80vw;
+    }
+
+    .bookform{
+        width: 80vw;
+    }
+
+    .gouptop{
+        width: 5vh;
+        height: 5vh;
+    }
+
+    .cancelbanner{
+        height: 5vh;
+    }
+
+    .bro__banner__sec{
+        width: 55vw;
+    }
+}

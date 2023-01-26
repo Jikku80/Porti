@@ -7,3 +7,134 @@ block content
             span.td Por
             span.grn t
             span.nocaps.td i
+    if (user)
+        if (user.id !== organization.user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= organization.user.name
+                    p.portiuserid.hidden= organization.user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .msg__dot.hidden
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= organization.user.name 
+            .portiuserid.hidden= organization.user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= organization.user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
+    .first__bro__section
+        if (banner[0])
+            .bro__banner__sec 
+                p= banner[0].bannerInfo
+                img.cancelbanner.point(src="/images/cancel.png" alt="cancelbanner")
+        audio.bkalert.hidden
+            source(src="/noti/msg.mp3")
+        .first__bro__nav 
+            ul 
+                li.nav__org= organization.name
+                li
+                    a.nav__sec(href="#section") Section 
+                li 
+                    a.nav__book(href="#bookNow") Book Now 
+                li 
+                    a.nav__cont(href="#contact") Contact Us
+        if (organization.coverImage)
+            img.first__bro__cover(src=`${organization.coverImage}` alt="cover__img")        
+        else    
+            img.first__bro__cover(src="/images/hustle.jpg" alt="cover__img")
+        #section
+            for items in brochures
+                .first__bro__sec__section 
+                    .first__bro__sec__half 
+                        if (items.coverImage)
+                            img.section__img(src=`${items.coverImage}` alt="section image")
+                        else 
+                            img.section__img(src="/images/noimg.png" alt="no image")
+                    .first__bro__sec__other
+                        h2= items.name 
+                        pre= items.detail
+                        if (items.price)
+                            h2= `Price : ${items.currency} ${items.price}`
+                        if (items.applydiscount == true)
+                            if (banner[0])
+                                h3= `${banner[0].discountpercent}% off`
+        #bookNow
+            if (user)
+                .curUserId.hidden= user.id
+                .orgid.hidden= organization.id
+                form.upItem.bookform
+                    h2 Book Now
+                    .form__bod
+                        label.form__label(for="item_name") Name :
+                        input#broname.form__input(type="text" name="catalogname" required placeholder="Your Name")
+                    .form__bod
+                        label.form__label(for="item_price") Phone Number : 
+                        input#brophn_no.form__input(type="number" name="phn" required placeholder="9874561332")
+                    .form__bod
+                        label.form__label(for="item_price") Number of People : 
+                        input#bronum.form__input(type="number" name="catalogprice" required placeholder="4")
+                    .form__bod
+                        label.form__label(for="item_detail") Date :
+                        input#brodate.form__input(type="date" required)
+                    .form__bod 
+                        label.form__label Time :
+                        input#brotime.for__input(type="time" required)
+
+                    button#bookBtn.blackbtn Book Now
+            else 
+                .upItem 
+                h2 You are not Logged In, Please Log In to Book 
+                #bookBtn.hidden
+        h4.brotxt Your Bookings
+        .get__booked
+        h4.brotxt= organization.slogan
+        #contact
+            h4= `Email : ${organization.email}`
+            h4= `Address : ${organization.Address}`
+            h4 
+                a(href=`${organization.locationLink}`) Address Link 
+            h4= `Contact : ${organization.contact}` 
+            h4
+                a(href=`${organization.social}`) Profile Link
+
+    a.go__up__top(href="#")
+        img.gouptop(src="/images/yup.png" alt="go_up")
+
+    script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/brochure/first.js") 
+    script(src="/js/usermsg.js") 

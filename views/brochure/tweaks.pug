@@ -41,7 +41,7 @@ block content
                         input#upcatalitemprice.form__input(type="text" value=brochure.price)
                     .form__bod
                         label.form__label Detail:
-                        textarea#upcatalitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= brochure.detail
+                        textarea#upcatalitemdetail.brochureTextarea.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= brochure.detail
                     if (organization.theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
                         .form__bod 
                             label.form__label Apply Discount (optional):

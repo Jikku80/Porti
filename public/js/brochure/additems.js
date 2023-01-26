@@ -344,3 +344,283 @@
         };
     })
 })();
+
+(function () {
+    const socket = io();
+
+    let menuMsgSec = document.querySelector(".menu__message__secetion");
+    let dummybtn = document.querySelector(".menu__messages__btn");
+    let curcatid = document.querySelector(".curcatid");
+    let openMsgBod = document.querySelector(".menu__messages__btn");
+    let cancelMsgBod = document.querySelector(".cancel__msg__sec");
+    let dot = document.querySelector(".new__menu__msg");
+
+    let alrt = document.getElementById("catmsgalert");
+
+    openMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.remove("hidden");
+        dummybtn.classList.add("hidden");
+        dot.classList.add("hidden");
+        getAllCatMsg();
+    })
+
+    socket.on("brobooking", (catid) => {
+        if (curcatid.innerText == catid) {
+            getAllCatMsg();
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+    cancelMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.add("hidden");
+        dummybtn.classList.remove("hidden");
+        let dotnoti = document.querySelector(".dotnoti");
+        if (dotnoti) {
+            dot.classList.remove("hidden");
+        }
+        else {
+            dot.classList.add("hidden");
+        }
+    })
+})();
+
+async function getAllCatMsg() {
+    let curcatid = document.querySelector(".curcatid").innerText;
+    let menuMsgBod = document.querySelector(".menu__message__bod__prev");
+
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+        menuMsgBod.innerHTML = "";
+        const endpoint = `/api/v1/brochure/broBooking/${curcatid}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                let res = response.json();
+                res.then((item) => {
+                    let usrorders = item.comorders
+                    usrorders.forEach(el => {
+                        if (el.bookingInfo) {
+                            menuMsgBod.innerHTML +=
+                                `
+                                <div class="menu__msg__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet">${el.name}</p>
+                                        <p class="ordermsg hidden">${el.numberPeople}</p>
+                                    </div>
+                                    <p class="hidden">${el.total}</p>
+                                    <p class="usersmalltag">${el.date}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.bookingInfo}</p>
+                                    <p class="hidden">${el.organization}</p>
+                                    <p class="hidden">${el.userId}</p>
+                                    <p class="hidden">${el.time}</p>
+                                </div>
+                            `
+                        }
+                        else {
+                            menuMsgBod.innerHTML +=
+                                `
+                                <div class="menu__msg__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet">${el.name}</p>
+                                        <p class="ordermsg hidden">${el.numberPeople}</p>
+                                        <p class="dotnoti"></p>
+                                    </div>
+                                    <p class="hidden">${el.total}</p>
+                                    <p class="usersmalltag">${el.date}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.bookingInfo}</p>
+                                    <p class="hidden">${el.organization}</p>
+                                    <p class="hidden">${el.userId}</p>
+                                    <p class="hidden">${el.time}</p>
+                                </div>
+                            `
+                        }
+                    })
+
+                    let msgTab = document.querySelectorAll(".menu__msg__table__list");
+                    let msgRev = document.querySelector(".menu__reveived__msg");
+                    let tablePlace = document.querySelector(".tablename");
+                    let msgRevbod = document.querySelector(".menu__reveived__msg__bod");
+                    let cancelmsgtab = document.querySelector(".cancel__reveived__msg");
+                    let msgmidsec = document.querySelector(".menu__message__mid__sec");
+
+                    cancelmsgtab.addEventListener("click", () => {
+                        msgRev.classList.add("hidden");
+                        msgmidsec.classList.remove("hidden");
+                    })
+
+                    msgTab.forEach(item => {
+                        item.addEventListener("click", () => {
+                            let numPeople = item.childNodes[1].childNodes[3].innerText;
+                            let usr = item.childNodes[1].childNodes[1].innerText;
+                            let total = item.childNodes[3].innerText;
+                            let date = item.childNodes[5].innerText;
+                            let phn = item.childNodes[7].innerText;
+                            let mid = item.childNodes[9].innerText;
+                            let bookInfo = item.childNodes[11].innerText;
+                            let orgID = item.childNodes[13].innerText;
+                            let usrID = item.childNodes[15].innerText;
+                            let time = item.childNodes[17].innerText;
+
+                            msgmidsec.classList.add("hidden");
+                            msgRev.classList.remove("hidden");
+                            tablePlace.innerText = usr;
+                            if (bookInfo !== "undefined") {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                        <p>Total number of People : </p>
+                                        <p class="ordermsg">${numPeople}</p>
+                                        <p>Date : </p>
+                                        <p class="ordermsg">${date}</p>
+                                        <p>Time : </p>
+                                        <p class="ordermsg">${time}</p>
+                                        <p>Phone No : </p>
+                                        <p class="ordermsg">${phn}</p>
+                                        <p class="rdorng hidden">Total Order Price : ${total}</p>
+                                            <div class="grp__button hidden">
+                                                <button class="confirmord ordbtn">Confirm</button>
+                                                <button class="cancelord ordbtn">Cancel</button>
+                                            </div>
+                                            <p class="rdorng">${bookInfo}</p>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                            <p>Total number of People : </p>
+                                            <p class="ordermsg">${numPeople}</p>
+                                            <p>Date : </p>
+                                            <p class="ordermsg">${date}</p>
+                                            <p>Time : </p>
+                                            <p class="ordermsg">${time}</p>
+                                            <p>Phone No : </p>
+                                            <p class="ordermsg">${phn}</p>
+                                            <p class="rdorng hidden">Order Total : ${total} </p>
+                                            <div class="grp__button">
+                                                <button class="confirmord ordbtn">Confirm</button>
+                                                <button class="cancelord ordbtn">Cancel</button>
+                                            </div>
+                                        </div>
+                                    `
+                            }
+                            let confirmord = document.querySelector(".confirmord");
+                            let cancelord = document.querySelector(".cancelord");
+                            let grpbtn = document.querySelector(".grp__button");
+                            const socket = io();
+
+                            confirmord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                itemorderConfirmed(grpbtn, mid);
+                                socket.emit("brobookingreply", orgID, usr, usrID);
+                                menuMsgBod.innerHTML = "";
+                                getAllCatMsg();
+                            })
+
+                            cancelord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                itemorderCanceled(grpbtn, mid);
+                                socket.emit("brobookingreply", orgID, usr, usrID);
+                                menuMsgBod.innerHTML = "";
+                                getAllCatMsg();
+                            })
+                        })
+                    })
+                })
+            } else {
+                console.log(response);
+                errorAlert("Fetching Data Failure!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function itemorderConfirmed(val, usr) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/brochure/itemBookingById/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                bookingInfo: "confirmed"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("You Accepted a Order :)");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Order Accepted</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Order Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Creation error, You Can't Have more than one banner!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function itemorderCanceled(val, usr) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/brochure/itemBookingById/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                bookingInfo: "canceled"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("You cancelled a order :(");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Order Cancelled</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Order Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Creation error, You Can't Have more than one banner!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+

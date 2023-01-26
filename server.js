@@ -29,6 +29,12 @@ io.on('connection', (socket) => {
     socket.on("catorderreply", (catid, oderuser, oderuserid) => {
         io.emit('catorderreply', catid, oderuser, oderuserid)
     });
+    socket.on("brobooking", (broid) => {
+        io.emit('brobooking', broid)
+    });
+    socket.on("brobookingreply", (broid, brouser, brouserid) => {
+        io.emit('brobookingreply', broid, brouser, brouserid)
+    });
     socket.on("usermessage", (name, user, message, userid) => {
         io.emit('usermessage', name, user, message, userid)
     });

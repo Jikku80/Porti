@@ -717,15 +717,16 @@ async function getAllCatMsg() {
                                 `
                                 <div class="menu__msg__table__list">
                                     <div class="msg__table__bod">
-                                        <p class="tabledet" id="${el.name}">${el.name}</p>
-                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                        <p class="tabledet" >${el.name}</p>
+                                        <p class="ordermsg hidden">${el.message}</p>
                                     </div>
-                                    <p class="usersmalltag" id="${el.total}">${el.total}</p>
-                                    <p class="hidden" id="${el.address}"></p>
-                                    <p class="hidden" id="${el.phn_no}"></p>
-                                    <p class="hidden msgid" id="${el._id}"></p>
-                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
-                                    <p class="hidden" id="${el.company}"></p>
+                                    <p class="usersmalltag">${el.total}</p>
+                                    <p class="hidden">${el.address}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.orderInfo}</p>
+                                    <p class="hidden">${el.company}</p>
+                                    <p class="hidden">${el.userId}</p>
                                 </div>
                             `
                         }
@@ -900,7 +901,6 @@ async function itemorderCanceled(val, usr) {
             })
         }).then((response) => {
             load.classList.add("hidden");
-            console.log(response);
             if (response.status === 200) {
                 successAlert("You cancelled a order :(");
                 val.innerHTML = "";

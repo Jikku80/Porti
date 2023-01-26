@@ -592,16 +592,19 @@ async function getAllResMsg() {
                                 `
                                 <div class="menu__msg__table__list">
                                     <div class="msg__table__bod">
-                                        <p class="tabledet" id="${el.table}">${el.table}</p>
-                                        <p class="ordermsg hidden" id="${el.message}"></p>
+                                        <p class="tabledet">${el.table}</p>
+                                        <p class="ordermsg hidden">${el.message}</p>
                                         
                                     </div>
-                                    <p class="usersmalltag" id="${el.name}">${el.name}</p>
-                                    <p class="hidden" id="${el.address}"></p>
-                                    <p class="hidden" id="${el.phn_no}"></p>
-                                    <p class="hidden msgid" id="${el._id}"></p>
-                                    <p class="hidden ordinfoo" id="${el.orderInfo}"></p>
-                                    <p class="hidden" id="${el.restro}"></p>
+                                    <p class="usersmalltag">${el.name}</p>
+                                    <p class="hidden">${el.address}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.orderInfo}</p>
+                                    <p class="hidden">${el.restro}</p>
+                                    <p class="hidden">${el.total}</p>
+                                    <p class="hidden">${el.userId}</p>
+
                                 </div>
                             `
                         }

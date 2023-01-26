@@ -49,6 +49,8 @@ router.get('/catalog/:company/companystat', messageController.getComOrderStat);
 
 router.get('/brochure/:id/additems', brochureController.addItemsToPage)
 router.get('/brochuretweaks/:id', authController.protect, authController.restrictTo('admin', 'user'), brochureController.sectionTweaks);
+router.get('/brochure/:org/organizationstat', brochureController.getBookingStat);
+
 
 router.get('/account/login', viewsController.getOverview);
 router.get('/layouts/highlights', viewsController.portiHighlights);

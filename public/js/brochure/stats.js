@@ -13,7 +13,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/catalouge/getToday/${restroid}`
+            const endpoint = `/api/v1/brochure/getToday/${restroid}`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -26,19 +26,19 @@
                     let res = response.json();
                     res.then(item => {
                         data = item.resOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Today : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Booking Today : ${data.length}</h2>`
                         data.forEach(item => {
                             orderlistbod.innerHTML +=
                                 `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.total}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
+                                <div class="order__card">
+                                    <p>From : ${item.name}</p>
+                                    <p>Total People : ${item.numberPeople}</p>
+                                    <p>Date : ${item.date}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Phone Number: ${item.phn_no}</p>
+                                    <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Created At: ${item.createdAt}</p>
+                                </div>
                                 `
                         })
                         list = []
@@ -96,7 +96,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/catalouge/getWeek/${restroid}`
+            const endpoint = `/api/v1/brochure/getWeek/${restroid}`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -109,34 +109,20 @@
                     let res = response.json();
                     res.then(item => {
                         data = item.resOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders This Week : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings This Week : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
+                                        <p>Total People : ${item.numberPeople}</p>
+                                        <p>Date : ${item.date}</p>
+                                        <p>Time : ${item.time}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
+                                        <p>Booking info: ${item.bookingInfo}</p>
                                         <p>Created At: ${item.createdAt}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
                         })
                         successAlert("Last Week Orders :)");
                         window.setTimeout(() => {
@@ -192,7 +178,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/catalouge/getMonth/${restroid}`
+            const endpoint = `/api/v1/brochure/getMonth/${restroid}`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -205,34 +191,20 @@
                     let res = response.json();
                     res.then(item => {
                         data = item.resOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings Made In Last 30 Days : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
+                            orderlistbod.innerHTML +=
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
+                                <div class="order__card">
+                                    <p>From : ${item.name}</p>
+                                    <p>Total People : ${item.numberPeople}</p>
+                                    <p>Date : ${item.date}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Phone Number: ${item.phn_no}</p>
+                                    <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Created At: ${item.createdAt}</p>
+                                </div>
                                 `
-                            }
                         })
                         list = []
                         list.push(item.totalConfirm);
@@ -295,7 +267,7 @@
             let yrv = yearVal.value;
             let mtv = monthVal.value;
             let val = `${mtv}-${yrv}`;
-            const endpoint = `/api/v1/catalouge/byMonth/${restroid}/find/${val}`
+            const endpoint = `/api/v1/brochure/byMonth/${restroid}/find/${val}`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -308,34 +280,20 @@
                     let res = response.json();
                     res.then(item => {
                         data = item.resOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders made in ${val} : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings made in ${val} : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
+                            orderlistbod.innerHTML +=
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
+                                <div class="order__card">
+                                    <p>From : ${item.name}</p>
+                                    <p>Total People : ${item.numberPeople}</p>
+                                    <p>Date : ${item.date}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Phone Number: ${item.phn_no}</p>
+                                    <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Created At: ${item.createdAt}</p>
+                                </div>
+                            `
                         })
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -400,7 +358,7 @@ function getOrderGraph(data) {
         data: {
             labels: dates,
             datasets: [{
-                label: 'No of Orders',
+                label: 'No of Bookings',
                 data: data,
                 borderWidth: 1,
                 fill: false,
@@ -423,7 +381,7 @@ function getOrderPieChart(data, elem) {
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Orders Confirmed", "Orders Cancelled", "Orders Left Out"],
+            labels: ["Booking Confirmed", "Booking Cancelled", "Booking Left Out"],
             datasets: [{
                 label: 'Orders Chart',
                 data: data,
@@ -485,7 +443,7 @@ window.addEventListener("load", async () => {
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden");
-        const endpoint = `/api/v1/catalouge/perDay/${restroid}`
+        const endpoint = `/api/v1/brochure/perDay/${restroid}`
         await fetch(endpoint, {
             method: 'GET',
             headers: {
@@ -520,7 +478,7 @@ async function getOrderDetail(val) {
 
         load.classList.remove("hidden");
         let totaldisp = document.querySelector(".alltimetotalorder");
-        const endpoint = `/api/v1/catalouge/orderDetails/${val}`
+        const endpoint = `/api/v1/brochure/orderDetails/${val}`
         await fetch(endpoint, {
             method: 'GET',
             headers: {
@@ -538,7 +496,7 @@ async function getOrderDetail(val) {
                     list.push(item.totalLeftOut);
                     getOrderPieChart(list, 'myPie');
                     total = item.totalConfirm + item.totalCanceled + item.totalLeftOut;
-                    totaldisp.innerText = `Total Number Of Orders ${total}`
+                    totaldisp.innerText = `Total Number Of Bookings ${total}`
                     let barList = [];
                     barList.push(item.totalConfirmedAmount);
                     barList.push(item.totalUnConfirmedAmount);
@@ -634,7 +592,7 @@ async function getOrderDetail(val) {
             if (!curbymonthpie.classList.contains("hidden")) {
                 curbymonthpie.classList.add("hidden");
             }
-            const endpoint = `/api/v1/catalouge/getRes/${restroid}`
+            const endpoint = `/api/v1/brochure/getRes/${restroid}`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -647,39 +605,25 @@ async function getOrderDetail(val) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
+                                        <p>Total People : ${item.numberPeople}</p>
+                                        <p>Date : ${item.date}</p>
+                                        <p>Time : ${item.time}</p>
+                                        <p>Phone Number : ${item.phn_no}</p>
+                                        <p>Booking info : ${item.bookingInfo}</p>
                                         <p>Created At: ${item.createdAt}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
                         })
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
-                        successAlert(`All Home Orders :)`);
+                        successAlert(`All Bookings :)`);
                     })
                 } else {
                     console.log(response);

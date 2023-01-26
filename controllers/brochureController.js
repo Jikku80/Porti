@@ -6,6 +6,7 @@ const User = require('./../models/userModel');
 const Brochure = require('./../models/brochureModel');
 const Organization = require('./../models/organizationModel');
 const BrochureBanner = require('./../models/brochureBannerModel');
+const OrgBook = require('./../models/bookModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -273,3 +274,473 @@ exports.deleteUserOrganization = catchAsync(async (req, res, next) => {
         }
     })
 });
+
+exports.book = catchAsync(async (req, res, next) => {
+
+    const doc = await OrgBook.create(req.body);
+
+    res.status(201).json({
+        status: 'success',
+        data: {
+            data: doc
+        }
+    })
+})
+
+exports.getAllUserBooking = catchAsync(async (req, res, next) => {
+    const id = req.params.id;
+    const org = req.params.org;
+    const bookings = await OrgBook.find({ organization: org }).then(item => {
+        const data = item.filter(el => {
+            return el.userId === id
+        })
+        return data
+    })
+    res.status(200).json({
+        status: 'success',
+        bookings
+    })
+});
+
+exports.deleteUserBooking = catchAsync(async (req, res, next) => {
+    const doc = await OrgBook.findByIdAndDelete(req.params.id);
+
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
+exports.getFifBooking = catchAsync(async (req, res, next) => {
+    const org = req.params.id;
+    const features = new APIFeatures(OrgBook.find({ organization: org }), { limit: 50, page: "1" }).paginate().srt();
+    const comorders = await features.query
+    res.status(200).json({
+        status: 'success',
+        comorders
+    })
+});
+
+exports.updateBookingById = catchAsync(async (req, res, next) => {
+
+    const updatedComOrder = await OrgBook.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedComOrder || updatedComOrder == null) return (res.status(404).json({ status: 'success' }));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            restro: updatedComOrder
+        }
+    })
+})
+
+exports.redirectoTobookingStats = catchAsync(async (req, res, next) => {
+    let userId = req.params.id;
+
+    const org = await Organization.findOne({ user: userId })
+
+    if (org !== null) {
+        res.redirect(`/brochure/${org.id}/organizationstat`)
+    }
+    else {
+        res.redirect('/layouts/porti')
+    }
+
+});
+
+exports.getBookingStat = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const organization = await Organization.findOne({ _id: id })
+
+    res.status(200).render('brochure/stats', {
+        title: 'Brochure Statistics',
+        organization
+    })
+})
+
+exports.getDayBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            itemsDate = fullDate.slice(0, 10);
+            let datToday = new Date().toString();
+            let today = datToday.slice(0, 10)
+            return itemsDate === today
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    let confirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            let amounts = el.total * 1
+            return confirmedAmountList.push(amounts);
+        }
+    })
+    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+    let unconfirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo !== "confirmed") {
+            let amounts = el.total * 1
+            return unconfirmedAmountList.push(amounts);
+        }
+    })
+    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+    res.status(200).json({
+        status: "success",
+        resOrders,
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+        totalConfirmedAmount,
+        totalUnConfirmedAmount
+    })
+
+})
+
+exports.getWeekBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 7; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    let confirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            let amounts = el.total * 1
+            return confirmedAmountList.push(amounts);
+        }
+    })
+    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+    let unconfirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo !== "confirmed") {
+            let amounts = el.total * 1
+            return unconfirmedAmountList.push(amounts);
+        }
+    })
+    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+    res.status(200).json({
+        status: "success",
+        resOrders,
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+        totalConfirmedAmount,
+        totalUnConfirmedAmount
+    })
+
+})
+
+exports.getMonthBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 30; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    let confirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            let amounts = el.total * 1
+            return confirmedAmountList.push(amounts);
+        }
+    })
+    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+    let unconfirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo !== "confirmed") {
+            let amounts = el.total * 1
+            return unconfirmedAmountList.push(amounts);
+        }
+    })
+    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+    res.status(200).json({
+        status: "success",
+        resOrders,
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+        totalConfirmedAmount,
+        totalUnConfirmedAmount
+    })
+
+})
+
+exports.byMonthBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const month = req.params.month
+    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            let mon = fullDate.slice(4, 7)
+            itemsDate = fullDate.slice(11, 15);
+            monthDat = `${mon}-${itemsDate}`
+            return monthDat === month
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    let confirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            let amounts = el.total * 1
+            return confirmedAmountList.push(amounts);
+        }
+    })
+    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+    let unconfirmedAmountList = []
+    resOrders.filter(el => {
+        if (el.bookingInfo !== "confirmed") {
+            let amounts = el.total * 1
+            return unconfirmedAmountList.push(amounts);
+        }
+    })
+    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+    res.status(200).json({
+        status: "success",
+        resOrders,
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+        totalConfirmedAmount,
+        totalUnConfirmedAmount
+    })
+
+})
+
+exports.perDayBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+
+    const itemlen = await OrgBook.find({ organization: id }).then((item) => {
+        let itemdates = [];
+        let count = [];
+
+        item.forEach(el => {
+            let createDate = el.createdAt.toString();
+            createDate = createDate.slice(0, 15);
+            itemdates.push(createDate);
+        })
+
+        let datToday = new Date();
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 30; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 15)
+            let counter = 0;
+            for (idt of itemdates) {
+                if (idt == day) {
+                    counter++;
+                }
+            }
+            count.push(counter);
+        }
+        return count;
+    })
+
+    res.status(200).json({
+        status: "success",
+        itemlen
+    })
+
+})
+
+exports.getBookingDetails = catchAsync(async (req, res) => {
+    const id = req.params.id
+
+    await OrgBook.find({ organization: id }).then((item) => {
+        const confirmed = item.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = item.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
+
+        const leftOut = item.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
+
+        totalLeftOut = leftOut.length;
+
+        let confirmedAmountList = []
+        item.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+        let unconfirmedAmountList = []
+        item.filter(el => {
+            if (el.bookingInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+        res.status(200).json({
+            status: "success",
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount
+        })
+    })
+
+})
+
+exports.getAllBooking = catchAsync(async (req, res) => {
+    const id = req.params.org
+    const restroOrders = await OrgBook.find({ organization: id })
+    res.status(200).json({
+        status: "success",
+        restroOrders
+    })
+})

@@ -59,6 +59,8 @@ futbtn.addEventListener("mouseout", (function () {
     let menuHelper = document.getElementById("portimenuHelper");
     let showcatalogHelp = document.getElementById("showCatalogHelper");
     let catalogHelper = document.getElementById("porticatalogeHelper");
+    let showBro = document.getElementById("showBrochureHelper");
+    let broHelper = document.getElementById("portibrochureHelper");
     let showLdt = document.getElementById("showLDT");
     let aboutLdt = document.getElementById("aboutTM");
     let showContact = document.getElementById("showContactTM");
@@ -99,6 +101,13 @@ futbtn.addEventListener("mouseout", (function () {
         catalogHelper.classList.toggle("hidden");
         if (!(catalogHelper.classList.contains("hidden"))) {
             window.location.href = "#porticatalogeHelper"
+        }
+    })
+
+    showBro.addEventListener("click", () => {
+        broHelper.classList.toggle("hidden");
+        if (!(broHelper.classList.contains("hidden"))) {
+            window.location.href = "#portibrochureHelper"
         }
     })
 

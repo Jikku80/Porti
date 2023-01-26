@@ -91,8 +91,13 @@ block content
                             if (user.accountType === "business")
                                 a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
                                     h3 Catalouge
+                            if (user.accountType === "brochure")
+                                a.bottom__anch.text__shadow(href=`/brochure/${user._id}/additems`)
+                                    h3 Brochure
                             a.bottom__anch.text__shadow(href=`/invitations/${user._id}`) 
                                 h3 Invitation
+                            .bottom__anch.text__shadow.logout 
+                                h3 SignOut
                 .first__abt__cont.containr#apS 
                     .first__half__cont 
                         h1 About 
@@ -493,6 +498,97 @@ block content
                             span.mid.nocaps /yourusername
                         .link__format
                             p.porti_all_link www.porti.com/username
+            .padder.darkgreen#bHelper
+                .containr 
+                    .second__half__cont
+                        .second__half__head.to__left
+                            h2.gry CREATE 
+                                span.wite Borchure 
+                            h2 Your Product 
+                                span.wite Solution
+                            h2.gry Your Hotel 
+                                span.wite Showcase
+                            h2 Your Business 
+                                span.wite Growth
+                        button#showBrochureHelper.shwbtn Brochure Helper
+                    .first__half__cont 
+                        h1.wite Bro  
+                            span.gry chure  
+                            span.gry Helper
+                #portibrochureHelper.hidden
+                    h3.wite Brochure 
+                        span.lst Helper
+                    h4 Creating a Organization 
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Name
+                            .gbox__bod
+                                p Your Registered Organization Name.
+                        .gbox 
+                            .gbox__head 
+                                h3 Email
+                            .gbox__bod
+                                p Your Organization Email Address.
+                        .gbox 
+                            .gbox__head 
+                                h3 Organization Social Account Link
+                            .gbox__bod
+                                p Your Organization social media link where people can find you. Like Facebook, LinkediN, instagram, twitter etc.
+                        .gbox 
+                            .gbox__head 
+                                h3 Organization Address
+                            .gbox__bod
+                                p Your Organization Location.
+                        .gbox 
+                            .gbox__head 
+                                h3 Organization Address Link
+                            .gbox__bod
+                                p This field is a optional field but if you want to add then copy your location link from map and paste it here. It will help people find you easily.
+                        .gbox 
+                            .gbox__head 
+                                h3 Organization Contact
+                            .gbox__bod
+                                p Your Organization Contact details, phone number or mobile number.
+                        .gbox 
+                            .gbox__head 
+                                h3 Organization Slogan
+                            .gbox__bod
+                                p This field is a optional field so if only if your company is using a slong add it here.
+                    h4 Adding Items to your Brochure.
+                    .guide__box
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Name
+                            .gbox__bod
+                                p First give your product a name
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Price
+                            .gbox__bod
+                                p Please provide a price to your prodct. You can use Rs. 150 or $150 your country currency and price.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Detail
+                            .gbox__bod
+                                p item detail is a optional field if you want to add detail about the product then use it else you can leave it blank.
+                        .gbox 
+                            .gbox__head 
+                                h3 Product Image
+                            .gbox__bod
+                                p item image section, it helps user to see what the product looks like so its good to use the product image.
+                        .gbox
+                            .gbox__head 
+                                h3 Access your Brochure
+                            .gbox__bod
+                                p you can use the link copy paste it to browser and open your Brochure.
+                                p you can use my Brochure button to open your Brochure directly.
+                                p you can click generate qrcode button to get your Brochure qr code, just scan it and open your cataloge.
+                    .link__helper 
+                        h2 You Brochure link will be 
+                            span.mid.nocaps /yourusername
+                        .link__format
+                            p.porti_all_link www.porti.com/username
             .padder.darkgreen#aTM
                 .containr 
                     .first__half__cont 
@@ -577,3 +673,4 @@ block content
 
     script(src="/js/alert.js")
     script(src="/js/home.js")  
+    script(src="/js/logout.js") 
