@@ -48,4 +48,18 @@ router.patch('/updateunLikes/:id', authController.restrictTo('user', 'admin'), m
 router.patch('/updatedisLikes/:id', authController.restrictTo('user', 'admin'), menuController.updatedisLikes);
 router.patch('/updateunDisLikes/:id', authController.restrictTo('user', 'admin'), menuController.unDisLike);
 
+router.get('/reserve/:restro', menuController.getfiftyResReserve)
+router.post('/reserve', menuController.createResReserve);
+router.get('/get/:restro/reserve/:user', menuController.getSelectedResReserve);
+router.delete('/delreserve/:id', menuController.deleteResReserve);
+router.patch('/reserveById/:id', menuController.updateResReserveById);
+
+router.get('/getreservedetails/:restro', menuController.getAllResReserveDetails);
+router.get('/getResToday/:restro', authController.restrictTo('user', 'admin'), menuController.getDayReserve);
+router.get('/getResWeek/:restro', authController.restrictTo('user', 'admin'), menuController.getWeekReserve);
+router.get('/getResMonth/:restro', authController.restrictTo('user', 'admin'), menuController.getMonthReserve);
+router.get('/byResMonth/:restro/find/:month', authController.restrictTo('user', 'admin'), menuController.byMonthReserve);
+router.get('/getAllReserve/:restro', authController.restrictTo('user', 'admin'), menuController.getAllReserve);
+
+
 module.exports = router;

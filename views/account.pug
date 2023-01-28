@@ -64,7 +64,9 @@ block content
         .bottom__sec
             if (!user.accountType)
                 .showSwitches.hidden
+                .rd.hidden
                 .select__account__type__sec
+                    .accounType.hidden= user.accountType
                     h1 Select A Account Type
                     .account__types 
                         .acc__typ__card.portfolio
@@ -74,10 +76,10 @@ block content
                             h2 Food || Food Menu
                             p Create Virtual Menu
                         .acc__typ__card.business
-                            h2 Business || Catalog
+                            h2 Business || Products
                             p Create Virtual Catalog
                         .acc__typ__card.brochure
-                            h2 Organization || Brochure
+                            h2 Organization || Hotels
                             p Create Virtual Brochure
                     p You will be able to create invitaitons with any of the followings
             else 
@@ -93,10 +95,10 @@ block content
                         h2 Food || Food Menu
                         p Create Virtual Menu
                     .acc__typ__card.business
-                        h2 Business || Catalog
+                        h2 Business || Products
                         p Create Virtual Catalog
                     .acc__typ__card.brochure
-                        h2 Organization || Brochure
+                        h2 Organization || Hotels
                         p Create Virtual Brochure
                 p.txt You will be able to create invitaitons with any of the followings
                 include _footer

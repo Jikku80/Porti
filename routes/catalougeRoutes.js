@@ -47,4 +47,17 @@ router.get('/getRes/:company', authController.restrictTo('user', 'admin'), messa
 router.post('/newcomment', authController.restrictTo('user', 'admin'), catalougeController.newComment);
 router.delete('/delcomments/:id', authController.restrictTo('user', 'admin'), catalougeController.deleteComment);
 
+router.get('/return/:company', catalougeController.getfiftyCompReturn)
+router.post('/return', catalougeController.createCompReturn);
+router.get('/get/:company/return/:user', catalougeController.getSelectedCompReturn);
+router.delete('/delreturn/:id', catalougeController.deleteCompReturn);
+router.patch('/returnById/:id', catalougeController.updateCompReturnById);
+
+router.get('/getreturndetails/:company', catalougeController.getAllReturnsDetails);
+router.get('/getReturnToday/:company', authController.restrictTo('user', 'admin'), catalougeController.getDayReturn);
+router.get('/getReturnWeek/:company', authController.restrictTo('user', 'admin'), catalougeController.getWeekReturn);
+router.get('/getReturnMonth/:company', authController.restrictTo('user', 'admin'), catalougeController.getMonthReturn);
+router.get('/byReturnMonth/:company/find/:month', authController.restrictTo('user', 'admin'), catalougeController.byMonthReturn);
+router.get('/getAllReturns/:company', authController.restrictTo('user', 'admin'), catalougeController.getAllReturn);
+
 module.exports = router;

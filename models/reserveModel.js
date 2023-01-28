@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
 
-const orgBookSchema = new mongoose.Schema({
+const resReserveSchema = new mongoose.Schema({
     name: {
         type: String,
-        trim: true,
+        trim: true
     },
     userId: {
         type: String,
         trim: true
     },
-    organization: {
+    numberPeople: {
+        type: Number,
+        trim: true
+    },
+    restro: {
         type: String,
         trim: true
     },
-    numberPeople: {
+    time: {
         type: String,
         trim: true
     },
@@ -21,23 +25,12 @@ const orgBookSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    todate: {
+    bookingInfo: {
         type: String,
-        trim: true
-    },
-    time: {
-        type: String
-    },
-    total: {
-        type: Number,
         trim: true
     },
     phn_no: {
         type: Number,
-        trim: true
-    },
-    bookingInfo: {
-        type: String,
         trim: true
     },
     createdAt: {
@@ -46,6 +39,6 @@ const orgBookSchema = new mongoose.Schema({
     }
 })
 
-const OrgBook = mongoose.model('OrgBook', orgBookSchema);
+const ResReserve = mongoose.model('ResReserve', resReserveSchema);
 
-module.exports = OrgBook;
+module.exports = ResReserve;

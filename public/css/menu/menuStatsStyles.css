@@ -37,6 +37,7 @@
 
 .restro__graph__grp{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 4%;
@@ -67,7 +68,7 @@
     height: 30vh !important;
 }
 
-#myPie, #todays__pie, .pie{
+#myPie, #todays__pie, .pie, #resPie{
     width: 25vw !important;
     height: 25vw !important;
 }
@@ -114,6 +115,8 @@
     border-right: none;
     border-bottom: 1px solid teal;
     width: 50%;
+    background-color: transparent;
+    color: white;
 }
 
 #months{
@@ -150,7 +153,7 @@
         width: 80vw !important;
         height: auto !important;
     }
-    #myPie, #todays__pie, .pie{
+    #myPie, #todays__pie, .pie, #resPie{
         width: 40vw !important;
         height: 40vw !important;
     }
@@ -181,7 +184,7 @@
         width: 90vw;
     }
 
-    #myPie, #todays__pie, .pie{
+    #myPie, #todays__pie, .pie, #resPie{
         width: 60vw !important;
         height: 60vw !important;
         margin-bottom: 4%;

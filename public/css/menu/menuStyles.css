@@ -123,11 +123,10 @@ body{
     font-variant: normal;
 }
 
-.menu__messages__btn{
+.menu__messages__btn, .menu__reserve__btn{
     position: fixed;
     z-index: 1;
     top: 2vh;
-    right: 2vw;
     width: 5rem;
     height: 5rem;
     border-radius: 12rem;
@@ -139,15 +138,30 @@ body{
     cursor: pointer;
 }
 
-.new__menu__msg{
+.menu__messages__btn{
+    right: 2vw;
+}
+
+.menu__reserve__btn{
+    left: 16vw;
+}
+
+.new__menu__msg, .new__menu__reserve{
     position: fixed;
     z-index: 2;
     top: 4vh;
-    right: 4vw;
     width: 1rem;
     height: 1rem;
     border-radius: 8rem;
     background-color: orangered;
+}
+
+.new__menu__msg{
+    right: 4vw;
+}
+
+.new__menu__reserve{
+    left: 18vw;
 }
 
 .menu__message__secetion{
@@ -158,10 +172,20 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
-.menu__message__mid__sec, .menu__reveived__msg{
+.menu__reserve__secetion{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu__message__mid__sec, .menu__reveived__msg, .menu__reserve__mid__sec, .menu__reveived__reserve{
     background-color: rgba(0, 0, 0, 0.897);
     display: flex;
     flex-direction: column;
@@ -173,13 +197,14 @@ body{
     border-radius: 2rem;
 }
 
-.menu__message__head{
+
+.menu__message__head, .menu__reserve__head{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.menu__message__bod, .menu__message__bod__prev{
+.menu__message__bod, .menu__message__bod__prev, .menu__reserve__bod, .menu__reserve__bod__prev{
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
@@ -187,15 +212,15 @@ body{
     justify-content: center;
 }
 
-.menu__message__bod__prev{
+.menu__message__bod__prev, .menu__reserve__bod__prev{
     flex-direction: column;
 }
 
-.menu__reveived__msg__bod{
+.menu__reveived__msg__bod, .menu__reveived__reserve__bod{
     width: 100%;
 }
 
-.menu__msg__table__list{
+.menu__msg__table__list, .menu__reserve__table__list{
     font-family: monospace;
     font-size: 16px;
     padding: 2%;
@@ -207,7 +232,7 @@ body{
     flex-direction: column;
 }
 
-.menu__msg__table__list{
+.menu__msg__table__list, .menu__reserve__table__list{
     background-color: rgb(15, 15, 15);
     border: 1px solid gray;
 }
@@ -789,6 +814,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
     .navigation a{
         font-size: 1.8vw;
       }
+
+    .new__menu__reserve{
+        left: 20vw;
+    }
+
     .new__menu__msg{
         top: 3vh;
         right: 3vw;
@@ -815,6 +845,15 @@ input::file-selector-button, ::-webkit-file-upload-button{
     input, select, textarea{
         font-size: 16px !important;
     }
+
+    .menu__reserve__btn{
+        left: 1vw;
+    }
+
+    .new__menu__reserve{
+        left: 6vw;
+    }
+
     .checkbox{
         height: 10vh;
         width: 10vw;
@@ -823,10 +862,15 @@ input::file-selector-button, ::-webkit-file-upload-button{
         top: 4vh;
         right: 4vw;
     }
-    .menu__message__mid__sec, .menu__reveived__msg{
+    .menu__message__mid__sec, .menu__reveived__msg, .menu__reserve__mid__sec, .menu__reveived__reserve{
         width: 90%;
         height: 90%;
     }
+
+    .cancel__reserve__sec{
+        z-index: 2;
+    }
+
     .menu__bar{
         position: sticky;
         top: 0;

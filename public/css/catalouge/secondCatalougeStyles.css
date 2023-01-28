@@ -98,9 +98,8 @@ label{
     width: fit-content;
 }
 
-.resdetail, .resorder{
+.resdetail, .resorder, .return__btn{
     position: fixed;
-    top: .5vh;
     font-size: 20px;
     margin: 0;
     padding: 0;
@@ -116,16 +115,24 @@ label{
 }
 
 .resdetail{
-    left: 2vw;
+    left: 0;
+    top: .5vh;
     z-index: 4;
 }
 
 .resorder{
-    right: 2vw;
+    right: 0;
+    top: .5vh;
     z-index: 4;
 }
 
-.resorderfill{
+.return__btn{
+    left: 0;
+    bottom: .5vh;
+    z-index: 4;
+}
+
+.resorderfill, .return__fill{
     position: fixed;
     top: 2vh;
     right: 4vw;
@@ -137,7 +144,7 @@ label{
 
 }
 
-.restro__info, .resorder__info, .productModal{
+.restro__info, .resorder__info, .productModal, .return__sec{
     position: fixed;
     top:0;
     width: 100vw;
@@ -151,7 +158,7 @@ label{
     z-index: 4;
 }
 
-.restromidsec, .catdeatilmidsec, .sec__sub__item__modal, .productMidModal{
+.restromidsec, .catdeatilmidsec, .sec__sub__item__modal, .productMidModal, .return__midsec{
     background-color: rgba(0, 0, 0, 0.815);
     border-radius: 2rem;
     display: flex;
@@ -169,12 +176,12 @@ label{
     background-color: rgba(0, 0, 0, 0.918);
 }
 
-.res__detail__head, .product__head {
+.res__detail__head, .product__head, .return__head {
     display: flex;
     justify-content: space-around;
 }
 
-.restro__info__bod,.sec__cat__sub {
+.restro__info__bod,.sec__cat__sub, .return__bod {
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -193,7 +200,7 @@ label{
     flex-wrap: wrap;
 }
 
-.foods__order__his{
+.foods__order__his, .returns{
     display: flex;
     flex-direction: column;
     /* flex-direction: column-reverse; */

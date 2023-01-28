@@ -422,6 +422,7 @@ async function getAllCatMsg() {
                                     <p class="hidden">${el.organization}</p>
                                     <p class="hidden">${el.userId}</p>
                                     <p class="hidden">${el.time}</p>
+                                    <p class="hidden">${el.todate}</p>
                                 </div>
                             `
                         }
@@ -442,6 +443,7 @@ async function getAllCatMsg() {
                                     <p class="hidden">${el.organization}</p>
                                     <p class="hidden">${el.userId}</p>
                                     <p class="hidden">${el.time}</p>
+                                    <p class="hidden">${el.todate}</p>
                                 </div>
                             `
                         }
@@ -471,18 +473,22 @@ async function getAllCatMsg() {
                             let orgID = item.childNodes[13].innerText;
                             let usrID = item.childNodes[15].innerText;
                             let time = item.childNodes[17].innerText;
-
+                            let todate = item.childNodes[19].innerText;
+                            console.log(todate)
                             msgmidsec.classList.add("hidden");
                             msgRev.classList.remove("hidden");
                             tablePlace.innerText = usr;
                             if (bookInfo !== "undefined") {
-                                msgRevbod.innerHTML =
-                                    `
+                                if (todate) {
+                                    msgRevbod.innerHTML =
+                                        `
                                         <div class="oder__mesg">
                                         <p>Total number of People : </p>
                                         <p class="ordermsg">${numPeople}</p>
-                                        <p>Date : </p>
+                                        <p>Booking From : </p>
                                         <p class="ordermsg">${date}</p>
+                                        <p>Booking Till : </p>
+                                        <p class="ordermsg">${todate}</p>
                                         <p>Time : </p>
                                         <p class="ordermsg">${time}</p>
                                         <p>Phone No : </p>
@@ -495,15 +501,40 @@ async function getAllCatMsg() {
                                             <p class="rdorng">${bookInfo}</p>
                                         </div>
                                     `
-                            }
-                            else {
-                                msgRevbod.innerHTML =
-                                    `
-                                        <div class="oder__mesg">
+                                }
+                                else {
+                                    msgRevbod.innerHTML =
+                                        `
+                                            <div class="oder__mesg">
                                             <p>Total number of People : </p>
                                             <p class="ordermsg">${numPeople}</p>
                                             <p>Date : </p>
                                             <p class="ordermsg">${date}</p>
+                                            <p>Time : </p>
+                                            <p class="ordermsg">${time}</p>
+                                            <p>Phone No : </p>
+                                            <p class="ordermsg">${phn}</p>
+                                            <p class="rdorng hidden">Total Order Price : ${total}</p>
+                                                <div class="grp__button hidden">
+                                                    <button class="confirmord ordbtn">Confirm</button>
+                                                    <button class="cancelord ordbtn">Cancel</button>
+                                                </div>
+                                                <p class="rdorng">${bookInfo}</p>
+                                            </div>
+                                        `
+                                }
+                            }
+                            else {
+                                if (todate) {
+                                    msgRevbod.innerHTML =
+                                        `
+                                        <div class="oder__mesg">
+                                            <p>Total number of People : </p>
+                                            <p class="ordermsg">${numPeople}</p>
+                                            <p>Booking From : </p>
+                                            <p class="ordermsg">${date}</p>
+                                            <p>Booking Till : </p>
+                                            <p class="ordermsg">${todate}</p>
                                             <p>Time : </p>
                                             <p class="ordermsg">${time}</p>
                                             <p>Phone No : </p>
@@ -515,6 +546,27 @@ async function getAllCatMsg() {
                                             </div>
                                         </div>
                                     `
+                                }
+                                else {
+                                    msgRevbod.innerHTML =
+                                        `
+                                            <div class="oder__mesg">
+                                                <p>Total number of People : </p>
+                                                <p class="ordermsg">${numPeople}</p>
+                                                <p>Date : </p>
+                                                <p class="ordermsg">${date}</p>
+                                                <p>Time : </p>
+                                                <p class="ordermsg">${time}</p>
+                                                <p>Phone No : </p>
+                                                <p class="ordermsg">${phn}</p>
+                                                <p class="rdorng hidden">Order Total : ${total} </p>
+                                                <div class="grp__button">
+                                                    <button class="confirmord ordbtn">Confirm</button>
+                                                    <button class="cancelord ordbtn">Cancel</button>
+                                                </div>
+                                            </div>
+                                        `
+                                }
                             }
                             let confirmord = document.querySelector(".confirmord");
                             let cancelord = document.querySelector(".cancelord");

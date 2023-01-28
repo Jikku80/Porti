@@ -964,3 +964,270 @@ async function orderCanceled(val, usr, route) {
         };
     })
 })();
+
+(function () {
+    const socket = io();
+    let menuMsgBod = document.querySelector(".menu__reserve__bod");
+    let menuMsgSec = document.querySelector(".menu__reserve__secetion");
+    let dummybtn = document.querySelector(".menu__reserve__btn");
+    let resid = document.querySelector(".curressid");
+    let openMsgBod = document.querySelector(".menu__reserve__btn");
+    let cancelMsgBod = document.querySelector(".cancel__reserve__sec");
+    let dot = document.querySelector(".new__menu__reserve");
+
+    let alrt = document.getElementById("msgalert");
+
+    openMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.remove("hidden");
+        dummybtn.classList.add("hidden");
+        dot.classList.add("hidden");
+        getAllResReserve();
+    })
+
+    socket.on("reserve", (restoid, userid) => {
+        if (resid.innerText == restoid) {
+            getAllResReserve();
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+
+    cancelMsgBod.addEventListener("click", () => {
+        menuMsgSec.classList.add("hidden");
+        dummybtn.classList.remove("hidden");
+    })
+})();
+
+async function getAllResReserve() {
+    let id = document.querySelector(".curressid").innerText;
+    let menuReserveBod = document.querySelector(".menu__reserve__bod__prev")
+
+    try {
+        const endpoint = `/api/v1/menu/reserve/${id}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                menuReserveBod.innerHTML = "";
+                res.then(items => {
+                    let item = items.resorders
+                    item.forEach(el => {
+                        if (el.bookingInfo) {
+                            menuReserveBod.innerHTML +=
+                                `
+                                <div class="menu__reserve__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet">${el.name}</p>
+                                    </div>
+                                    <p class="usersmalltag">${el.date}</p>
+                                    <p class="hidden">${el.time}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.bookingInfo}</p>
+                                    <p class="hidden">${el.restro}</p>
+                                    <p class="hidden">${el.userId}</p>
+                                    <p class="hidden">${el.numberPeople}</p>
+                                </div>
+                        `
+                        }
+                        else {
+                            menuReserveBod.innerHTML +=
+                                `
+                                <div class="menu__reserve__table__list">
+                                    <div class="msg__table__bod">
+                                        <p class="tabledet">${el.name}</p>
+                                        <p class="dotnoti"></p>
+                                    </div>
+                                    <p class="usersmalltag">${el.date}</p>
+                                    <p class="hidden">${el.time}</p>
+                                    <p class="hidden">${el.phn_no}</p>
+                                    <p class="hidden msgid">${el._id}</p>
+                                    <p class="hidden ordinfoo">${el.bookingInfo}</p>
+                                    <p class="hidden">${el.restro}</p>
+                                    <p class="hidden">${el.userId}</p>
+                                    <p class="hidden">${el.numberPeople}</p>
+                                </div>
+                        `
+
+                        }
+                    })
+                    let msgTab = document.querySelectorAll(".menu__reserve__table__list");
+                    let msgRev = document.querySelector(".menu__reveived__reserve");
+                    let tablePlace = document.querySelector(".reservename");
+                    let msgRevbod = document.querySelector(".menu__reveived__reserve__bod");
+                    let cancelmsgtab = document.querySelector(".cancel__reveived__reserve");
+                    let msgmidsec = document.querySelector(".menu__reserve__mid__sec");
+
+                    cancelmsgtab.addEventListener("click", () => {
+                        msgRev.classList.add("hidden");
+                        msgmidsec.classList.remove("hidden");
+                    })
+
+                    msgTab.forEach(item => {
+                        item.addEventListener("click", () => {
+                            let usr = item.childNodes[1].childNodes[1].innerText;
+                            let date = item.childNodes[3].innerText;
+                            let time = item.childNodes[5].innerText;
+                            let phn = item.childNodes[7].innerText;
+                            let mid = item.childNodes[9].innerText;
+                            let bookInfo = item.childNodes[11].innerText;
+                            let restroID = item.childNodes[13].innerText;
+                            let usrId = item.childNodes[15].innerText;
+                            let pep = item.childNodes[17].innerText;
+                            msgmidsec.classList.add("hidden");
+                            msgRev.classList.remove("hidden");
+                            tablePlace.innerText = usr;
+                            if (bookInfo !== "undefined") {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                            <p>${usr} Reservation : </p>
+                                            <p>Total No. of People</p>
+                                            <p class="ordermsg">${pep}</p>
+                                            <p>Date : </p>
+                                            <p class="rdorng">${date}</p>
+                                            <p>Time : </p>
+                                            <p class="rdorng">${time}</p>
+                                            <p>Phone No : </p>
+                                            <p class="rdorng">${phn}</p>
+                                            <div class="grp__button hidden">
+                                                <button class="confirmreserve ordbtn">Confirm</button>
+                                                <button class="cancelreserve ordbtn">Cancel</button>
+                                            </div>
+                                            <p class="rdorng">${bookInfo}</p>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                msgRevbod.innerHTML =
+                                    `
+                                        <div class="oder__mesg">
+                                            <p>${usr} Reservation : </p>
+                                            <p>Total No. of People</p>
+                                            <p class="ordermsg">${pep}</p>
+                                            <p>Date : </p>
+                                            <p class="rdorng">${date}</p>
+                                            <p>Time : </p>
+                                            <p class="rdorng">${time}</p>
+                                            <p>Phone No : </p>
+                                            <p class="rdorng">${phn}</p>
+                                            <div class="grp__button">
+                                                <button class="confirmreserve ordbtn">Confirm</button>
+                                                <button class="cancelreserve ordbtn">Cancel</button>
+                                            </div>
+                                        </div>
+                                    `
+                            }
+                            let confirmord = document.querySelector(".confirmreserve");
+                            let cancelord = document.querySelector(".cancelreserve");
+                            let grpbtn = document.querySelector(".grp__button");
+                            const socket = io();
+
+                            confirmord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                reserveConfirmed(grpbtn, mid, "reserveById");
+                                socket.emit("reservereply", restroID, usrId);
+                                menuReserveBod.innerHTML = "";
+                                getAllResReserve()
+                            })
+
+                            cancelord.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                reserveCanceled(grpbtn, mid, "reserveById");
+                                socket.emit("reservereply", restroID, usrId);
+                                menuReserveBod.innerHTML = "";
+                                getAllResReserve()
+                            })
+                        })
+                    })
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error Fetching Reservation!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+async function reserveConfirmed(val, usr, route) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/menu/${route}/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                bookingInfo: "confirmed"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("You Accepted a Order :)");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Reservation Accepted</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Reservation Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Error fetching reservation!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+async function reserveCanceled(val, usr, route) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/menu/${route}/${usr}`
+        await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                bookingInfo: "canceled"
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            console.log(response);
+            if (response.status === 200) {
+                successAlert("You cancelled a order :(");
+                val.innerHTML = "";
+                val.innerHTML = `<p class="grncf">Reservation Cancelled</p>`
+            }
+            else if (response.status === 404) {
+                errorAlert("Reservation Has been Deleted By Sender !!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Error fetching reservation!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}

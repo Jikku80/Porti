@@ -1178,6 +1178,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
   .bg__opt{
     width: 15vw;
   }
+
+  .acc__typ__card{
+    margin: 2%;
+  }
+
   .comp__form{
     width: 92%;
   }

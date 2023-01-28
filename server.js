@@ -23,11 +23,24 @@ io.on('connection', (socket) => {
     socket.on("resorderreply", (restoid, oderuser, oderuserid) => {
         io.emit('resorderreply', restoid, oderuser, oderuserid)
     });
+
+    socket.on("reserve", (restoid, userId) => {
+        io.emit('reserve', restoid, userId)
+    });
+    socket.on("reservereply", (restoid, userId) => {
+        io.emit('reservereply', restoid, userId)
+    });
     socket.on("catorders", (catid) => {
         io.emit('catorders', catid)
     });
     socket.on("catorderreply", (catid, oderuser, oderuserid) => {
         io.emit('catorderreply', catid, oderuser, oderuserid)
+    });
+    socket.on("return", (catid, userId) => {
+        io.emit('return', catid, userId)
+    });
+    socket.on("returnreply", (catid, userId) => {
+        io.emit('returnreply', catid, userId)
     });
     socket.on("brobooking", (broid) => {
         io.emit('brobooking', broid)

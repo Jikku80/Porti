@@ -7,6 +7,7 @@ const Theme = require('./../models/themeModel');
 const User = require('./../models/userModel');
 const CatalogBanner = require('./../models/catalogBannerModel');
 const ComComment = require('./../models/comComment');
+const CompReturn = require('./../models/returnModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -497,5 +498,311 @@ exports.redirectoTocatalogStats = catchAsync(async (req, res, next) => {
     }
 
 });
+
+exports.createCompReturn = catchAsync(async (req, res, next) => {
+    const newreserve = await CompReturn.create(req.body);
+    res.status(201).json({
+        status: 'success',
+        newreserve
+    });
+});
+
+exports.getSelectedCompReturn = catchAsync(async (req, res, next) => {
+    const restro = req.params.company;
+    const usr = req.params.user;
+
+    const features = new APIFeatures(CompReturn.find({ company: restro }), { limit: 11, page: "1" }).paginate().srt();
+    await features.query.then((item) => {
+        const resreserve = item.filter(x => {
+            return x.userId == usr
+        })
+        res.status(200).json({
+            status: 'success',
+            resreserve
+        })
+    })
+
+})
+
+exports.deleteCompReturn = catchAsync(async (req, res, next) => {
+    const doc = await CompReturn.findByIdAndDelete(req.params.id);
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
+exports.getfiftyCompReturn = catchAsync(async (req, res, next) => {
+    const restro = req.params.company;
+    const features = new APIFeatures(CompReturn.find({ company: restro }), { limit: 50, page: "1" }).paginate().srt();
+    const resorders = await features.query
+    res.status(200).json({
+        status: 'success',
+        resorders
+    })
+});
+
+exports.updateCompReturnById = catchAsync(async (req, res, next) => {
+
+    const updatedResOrder = await CompReturn.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedResOrder || updatedResOrder == null) return (res.status(404).json({ status: 'success' }));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            restro: updatedResOrder
+        }
+    })
+})
+
+exports.getAllReturnsDetails = catchAsync(async (req, res) => {
+    const id = req.params.company
+
+    await CompReturn.find({ company: id }).then((item) => {
+
+        const confirmed = item.filter(el => {
+            if (el.returnInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = item.filter(el => {
+            if (el.returnInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
+
+        const leftOut = item.filter(el => {
+            if (!el.returnInfo || el.returnInfo == null) {
+                return el
+            }
+        })
+
+        totalLeftOut = leftOut.length;
+
+        res.status(200).json({
+            status: "success",
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+        })
+    })
+
+})
+
+exports.getDayReturn = catchAsync(async (req, res) => {
+    const id = req.params.company
+    const resOrders = await CompReturn.find({ company: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            itemsDate = fullDate.slice(0, 10);
+            let datToday = new Date().toString();
+            let today = datToday.slice(0, 10)
+            return itemsDate === today
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.returnInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.returnInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.returnInfo || el.returnInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.getWeekReturn = catchAsync(async (req, res) => {
+    const id = req.params.company
+    const resOrders = await CompReturn.find({ company: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 7; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.returnInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.returnInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.returnInfo || el.returnInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.getMonthReturn = catchAsync(async (req, res) => {
+    const id = req.params.company
+    const resOrders = await CompReturn.find({ company: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 30; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.returnInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.returnInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.returnInfo || el.returnInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.byMonthReturn = catchAsync(async (req, res) => {
+    const id = req.params.company
+    const month = req.params.month
+    const resOrders = await CompReturn.find({ company: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            let mon = fullDate.slice(4, 7)
+            itemsDate = fullDate.slice(11, 15);
+            monthDat = `${mon}-${itemsDate}`
+            return monthDat === month
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.returnInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.returnInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.returnInfo || el.returnInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+    })
+
+});
+
+exports.getAllReturn = catchAsync(async (req, res) => {
+    const id = req.params.company
+    const restroOrders = await CompReturn.find({ company: id })
+
+    res.status(200).json({
+        status: "success",
+        restroOrders
+    })
+})
 
 

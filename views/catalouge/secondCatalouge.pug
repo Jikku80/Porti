@@ -197,7 +197,6 @@ block content
 
                         p.smallfnt Your last 10 orders
                         .foods__order__his
-
                 else 
                     .restro__info__bod 
                         h4 You are Not Logged In Please Log in to Order Food 
@@ -322,6 +321,58 @@ block content
             if (company.email !== "")
                 p.headFont= company.email
 
+    if (user)
+        .return__btn(title="return product") &#9842;
+        .return__fill.hidden
+        .return__sec.hidden 
+            .return__midsec 
+                .return__head 
+                    h1 Return product 
+                    img.returncancel.point(src="/images/cancel.png" alt="cancel")
+                    .acclog.hidden
+                .return__bod
+                    form
+                        .form__cont__order
+                            label Name :
+                            input#returnuser(type="text", name="tableno", value=user.name)
+                            #returnuserid.hidden= user.id
+                            #returncompid.hidden= company._id
+                        .form__cont__order
+                            label Product Name : 
+                            input#returnname(type="text" required placeholder="drs watch") 
+                        .form__cont__order
+                            label Message : 
+                            textarea#returnmsg(type="text" required placeholder="item doesnot match") 
+                        .form__cont__order
+                            label Date you ordered : 
+                            input#returndate(type="date" required)
+                        .form__cont__order 
+                            label Contact : 
+                            input#returnphn(type="number" required placeholder="9876543127")
+                        .form__cont__order
+                            button#returnreq.seccatbtn Return
+                    h3 Returned Items
+                        p.smallfnt Items you have returned so far
+                    .returns
+    else 
+        .return__btn(title="make reservation") &#9842;
+        .return__fill.hidden
+        .return__sec.hidden
+            .return__midsec
+                .return__head 
+                    h1 Make Reservation 
+                    img.returncancel.point(src="/images/cancel.png" alt="cancel")
+                .return__bod
+                    h3 Login To Make Reservation
+                    h3.seccatbtn.acclog Login || SignUp
+        .returns.hidden
+        #returnuser.hidden 
+        #returnuserid.hidden 
+        #returncompid.hidden 
+        #returndate.hidden 
+        #returnname.hidden 
+        #returnphn.hidden 
+        #returnreq.hidden
 
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 

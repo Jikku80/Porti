@@ -461,6 +461,9 @@ async function getUserCompMsg() {
                     let usrorders = item.usrcomorders
                     usrorders.forEach(el => {
                         if (el.orderInfo) {
+                            let dt = el.createdAt
+                            dt = dt.toLocaleString()
+                            let newdate = dt.slice(0, 10)
                             hisOrder.innerHTML +=
                                 `
                                         <div class="food__order__list homeone">
@@ -473,6 +476,8 @@ async function getUserCompMsg() {
                                             <p>${el.phn_no}</p>
                                             <p class="faded">Total Amount : </p>
                                             <p>${el.total}</p>
+                                            <p class="faded">Purchased Date : </p>
+                                            <p>${newdate}</p>
                                             <p class="info">Your Order has been ${el.orderInfo}</p>
                                             <button class="hidden delreqbtn" id="${el._id}"></button>
                                         </div>
@@ -491,6 +496,8 @@ async function getUserCompMsg() {
                                             <p>${el.phn_no}</p>
                                             <p class="faded">Total Amount : </p>
                                             <p>${el.total}</p>
+                                            <p class="faded">Purchased Date : </p>
+                                            <p>${newdate}</p>
                                             <p class="faded wait">Waiting for Response...</p>
                                             <button class="seccatbtn delreqbtn" id="${el._id}">Delete</button>
                                         </div>
@@ -1808,4 +1815,227 @@ async function updateProductQuantity(id, quantity) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
+};
+
+(function () {
+    let usr = document.getElementById("returnuser");
+    let usrId = document.getElementById("returnuserid").innerText;
+    let restroId = document.getElementById("returncompid").innerText;
+    let date = document.getElementById("returndate");
+    let returnmsg = document.getElementById("returnmsg");
+    let phn = document.getElementById("returnphn");
+    let returnname = document.getElementById("returnname");
+    let reservebtn = document.getElementById("returnreq");
+    let socket = io();
+
+    let reserveDummybtn = document.querySelector(".return__btn");
+    let cancelbtn = document.querySelector(".returncancel");
+    let reserveformsec = document.querySelector(".return__sec");
+    let resfill = document.querySelector(".return__fill");
+    let secalrt = document.getElementById('seccompmsgalert');
+
+    reserveDummybtn.addEventListener("click", () => {
+        reserveformsec.classList.remove("hidden");
+        getReservation();
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        reserveformsec.classList.add("hidden")
+    })
+
+    socket.on("returnreply", (restoID, userID) => {
+        if (restroId === restoID) {
+            if (usrId === userID) {
+                resfill.classList.remove("hidden")
+                secalrt.play();
+                getReservation();
+            }
+        }
+    })
+
+
+    reservebtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (usr.value == "") {
+            return false;
+        }
+
+        if (returnname.value == "") {
+            return false;
+        }
+
+        if (phn.value == "") {
+            return false;
+        }
+
+        if (date.value == "") {
+            return false;
+        }
+
+        if (returnmsg.value == "") {
+            return false
+        }
+
+        socket.emit("return", restroId, usrId)
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/return`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    company: restroId,
+                    name: usr.value,
+                    message: returnmsg.value,
+                    date: date.value,
+                    product: returnname.value,
+                    phn_no: phn.value,
+                    userId: usrId,
+                    createdAt: Date.now()
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Product Return Requested :)");
+                    getReservation();
+                    date.value = "";
+                    returnmsg.value = "";
+                    returnname.value = "";
+                    phn.value = "";
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+async function getReservation() {
+    let usrId = document.getElementById("returnuserid").innerText;
+    let restroId = document.getElementById("returncompid").innerText;
+    let reserveCont = document.querySelector(".returns");
+    reserveCont.innerHTML = "";
+    try {
+        const endpoint = `/api/v1/catalouge/get/${restroId}/return/${usrId}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(items => {
+                    let item = items.resreserve;
+                    item.forEach(el => {
+
+                        if (el.returnInfo) {
+                            reserveCont.innerHTML +=
+                                `
+                                        <div class="food__order__list homeone">
+                                            <h3>${el.name}</h3>
+                                            <p class="faded">Product  : </p>
+                                            <p>${el.product}</p>
+                                            <p class="faded">Purchased Date : </p>
+                                            <p>${el.date}</p>
+                                            <p class="faded">Message : </p>
+                                            <p>${el.message}</p>
+                                            <p class="faded">Phone No : </p>
+                                            <p>${el.phn_no}</p>
+                                            <p class="info">Your Return Request has been ${el.returnInfo}</p>
+                                            <button class="hidden delreturnbtn"></button>
+                                        </div>
+                                    `
+                        }
+                        else {
+                            reserveCont.innerHTML +=
+                                `
+                                        <div class="food__order__list homeone">
+                                            <h3>${el.name}</h3>
+                                            <p class="faded">Product  : </p>
+                                            <p>${el.product}</p>
+                                            <p class="faded">Purchased Date : </p>
+                                            <p>${el.date}</p>
+                                            <p class="faded">Message : </p>
+                                            <p>${el.message}</p>
+                                            <p class="faded">Phone No : </p>
+                                            <p>${el.phn_no}</p>
+                                            <p class="faded wait">Waiting for Response...</p>
+                                            <button class="seccatbtn delreturnbtn" id="${el._id}">Cancel</button>
+                                        </div>
+                                    `
+                        }
+                        let delReserve = document.querySelectorAll(".delreturnbtn");
+                        delReserve.forEach(item => {
+                            item.addEventListener("click", () => {
+                                deleteReservation(item.id);
+                            })
+                        })
+                    })
+                })
+            }
+            else if (response.status === 401) {
+                errorAlert("Log In To Make Reservation!!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Reservation Fetching Error!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
 }
+
+async function deleteReservation(id) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/catalouge/delreturn/${id}`
+        await fetch(endpoint, {
+            method: 'DELETE',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Return Canceled :)");
+                getReservation();
+            } else {
+                console.log(response);
+                errorAlert("Error Deleting Reservation!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+(function () {
+    let log = document.querySelector(".acclog");
+
+    log.addEventListener("click", () => {
+        window.open("/account/login")
+    })
+})();

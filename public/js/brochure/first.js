@@ -3,6 +3,7 @@
     let brophn = document.getElementById("brophn_no");
     let bronum = document.getElementById("bronum");
     let brodate = document.getElementById("brodate");
+    let brotodate = document.getElementById("brotodate");
     let brotime = document.getElementById("brotime");
     let bookBtn = document.getElementById("bookBtn");
     let userId = document.querySelector(".curUserId").innerText;
@@ -20,6 +21,7 @@
     })
 
     bookBtn.addEventListener("click", async (e) => {
+
         if (broname.value == "") {
             return false;
         }
@@ -54,6 +56,7 @@
                     organization: orgid,
                     numberPeople: bronum.value,
                     date: brodate.value,
+                    todate: brotodate.value,
                     time: brotime.value,
                     createdAt: Date.now()
                 })
@@ -66,6 +69,7 @@
                     brophn.value = "";
                     bronum.value = "";
                     brodate.value = "";
+                    brotodate.value = "";
                     brotime.value = ""
                 } else {
                     console.log(response);
@@ -100,29 +104,60 @@ async function getAllUserBookings() {
                     let item = items.bookings
                     item.forEach(el => {
                         if (el.bookingInfo) {
-                            bookCont.innerHTML += `
-                            <div class="book__card">
-                                <p>Name : ${el.name}</p>
-                                <p>Contact : ${el.phn_no}</p>
-                                <p>No. of people : ${el.numberPeople}</p>
-                                <p>Date : ${el.date}</p>
-                                <p>Time : ${el.time}</p>
-                                <p class="bookinfo">Your Booking Has been ${el.bookingInfo}</p>
-                            </div>
-                        `
-                        }
-                        else {
-                            bookCont.innerHTML += `
+                            if (el.todate) {
+                                bookCont.innerHTML += `
+                                <div class="book__card">
+                                    <p>Name : ${el.name}</p>
+                                    <p>Contact : ${el.phn_no}</p>
+                                    <p>No. of people : ${el.numberPeople}</p>
+                                    <p>Booking From : ${el.date}</p>
+                                    <p>Booking Till : ${el.todate}</p>
+                                    <p>Time : ${el.time}</p>
+                                    <p class="bookinfo">Your Booking Has been ${el.bookingInfo}</p>
+                                </div>
+                            `
+                            }
+                            else {
+                                bookCont.innerHTML += `
                                 <div class="book__card">
                                     <p>Name : ${el.name}</p>
                                     <p>Contact : ${el.phn_no}</p>
                                     <p>No. of people : ${el.numberPeople}</p>
                                     <p>Date : ${el.date}</p>
                                     <p>Time : ${el.time}</p>
+                                    <p class="bookinfo">Your Booking Has been ${el.bookingInfo}</p>
+                                </div>
+                            `
+                            }
+                        }
+                        else {
+                            if (el.todate) {
+                                bookCont.innerHTML += `
+                                <div class="book__card">
+                                    <p>Name : ${el.name}</p>
+                                    <p>Contact : ${el.phn_no}</p>
+                                    <p>No. of people : ${el.numberPeople}</p>
+                                    <p>Booking From : ${el.date}</p>
+                                    <p>Booking Till : ${el.todate}</p>
+                                    <p>Time : ${el.time}</p>
                                     <p class="bookinfo bink">Waiting for booking response...</p>
                                     <button id="${el._id}" class="blackbtn deleteBooking">Cancel Booking</button>
                                 </div>
                             `
+                            }
+                            else {
+                                bookCont.innerHTML += `
+                                    <div class="book__card">
+                                        <p>Name : ${el.name}</p>
+                                        <p>Contact : ${el.phn_no}</p>
+                                        <p>No. of people : ${el.numberPeople}</p>
+                                        <p>Date : ${el.date}</p>
+                                        <p>Time : ${el.time}</p>
+                                        <p class="bookinfo bink">Waiting for booking response...</p>
+                                        <button id="${el._id}" class="blackbtn deleteBooking">Cancel Booking</button>
+                                    </div>
+                                `
+                            }
                         }
                         let del = document.querySelectorAll(".deleteBooking");
                         del.forEach(item => {

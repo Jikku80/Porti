@@ -20,9 +20,8 @@
     text-shadow:1px 1px 1px#2c2c2c;
 }
 
-.resdetail, .resorder{
+.resdetail, .resorder, .reserve__btn{
     position: absolute;
-    top: .5vh;
     font-size: 40px;
     margin: 0;
     padding: 0;
@@ -39,14 +38,23 @@
 
 .resdetail{
     right: 2vw;
+    top: .5vh;
 }
 
 .resorder{
     left: 2vw;
     z-index: 4;
+    top: .5vh;
 }
 
-.resorderfill{
+.reserve__btn{
+    bottom: 0;
+    left: 2vw;
+    font-size: 30px;
+    z-index: 4;
+}
+
+.resorderfill, .reserve__fill{
     position: absolute;
     top: 2vh;
     left: 4vw;
@@ -58,7 +66,7 @@
 
 }
 
-.restro__info, .resorder__info{
+.restro__info, .resorder__info, .reserve__sec{
     position: absolute;
     top:0;
     width: 100vw;
@@ -68,11 +76,11 @@
     align-items: center;
 }
 
-.resorder__info{
+.resorder__info, .reserve__sec{
     z-index: 4;
 }
 
-.restromidsec, .restrodeatilmidsec{
+.restromidsec, .restrodeatilmidsec, .reserve__midsec{
     background-color: rgba(0, 0, 0, 0.815);
     border-radius: 2rem;
     display: flex;
@@ -86,19 +94,19 @@
     width: 60%;
 }
 
-.restromidsec{
+.restromidsec, .reserve__midsec{
     width: 90%;
     height: 90%;
     overflow-y: auto;
     scrollbar-width: none;
 }
 
-.res__detail__head {
+.res__detail__head, .reserve__head {
     display: flex;
     justify-content: space-around;
 }
 
-.restro__info__bod {
+.restro__info__bod, .reserve__bod {
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -106,7 +114,7 @@
     align-items: center;
 }
 
-.foods__order__his{
+.foods__order__his, .reservations{
     display: flex;
     flex-direction: column;
     /* flex-direction: column-reverse; */

@@ -1129,4 +1129,222 @@ async function getAllLikeCount() {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
+};
+
+(function () {
+    let usr = document.getElementById("reserveuser");
+    let usrId = document.getElementById("reserveuserid").innerText;
+    let restroId = document.getElementById("reserverestroid").innerText;
+    let date = document.getElementById("reservedate");
+    let time = document.getElementById("reservetime");
+    let phn = document.getElementById("reservephn");
+    let pep = document.getElementById("reserveno");
+    let reservebtn = document.getElementById("reservereq");
+    let socket = io();
+
+    let reserveDummybtn = document.querySelector(".reserve__btn");
+    let cancelbtn = document.querySelector(".reservecancel");
+    let reserveformsec = document.querySelector(".reserve__sec");
+    let resfill = document.querySelector(".reserve__fill");
+    let secalrt = document.getElementById('secmsgalert');
+
+    reserveDummybtn.addEventListener("click", () => {
+        reserveformsec.classList.remove("hidden");
+        getReservation();
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        reserveformsec.classList.add("hidden")
+    })
+
+    socket.on("reservereply", (restoID, userID) => {
+        if (restroId === restoID) {
+            if (usrId === userID) {
+                resfill.classList.remove("hidden")
+                secalrt.play();
+                getReservation();
+            }
+        }
+    })
+
+
+    reservebtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (usr.value == "") {
+            return false;
+        }
+
+        if (pep.value == null) {
+            return false;
+        }
+
+        if (phn.value == "") {
+            return false;
+        }
+
+        if (date.value == "") {
+            return false;
+        }
+
+        if (time.value == "") {
+            return false
+        }
+
+        socket.emit("reserve", restroId, usrId)
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/reserve`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    restro: restroId,
+                    name: usr.value,
+                    numberPeople: pep.value,
+                    date: date.value,
+                    time: time.value,
+                    phn_no: phn.value,
+                    userId: usrId,
+                    createdAt: Date.now()
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Table Reservation Requested :)");
+                    getReservation();
+                    date.value = "";
+                    pep.value = "";
+                    time.value = "";
+                    phn.value = "";
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+async function getReservation() {
+    let usrId = document.getElementById("reserveuserid").innerText;
+    let restroId = document.getElementById("reserverestroid").innerText;
+    let reserveCont = document.querySelector(".reservations");
+    reserveCont.innerHTML = "";
+    try {
+        const endpoint = `/api/v1/menu/get/${restroId}/reserve/${usrId}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(items => {
+                    let item = items.resreserve;
+                    item.forEach(el => {
+                        if (el.bookingInfo) {
+                            reserveCont.innerHTML +=
+                                `
+                                    <div class="food__order__list homeone">
+                                        <h3>${el.name}</h3>
+                                        <p class="faded">Date : </p>
+                                        <p>${el.date}</p>
+                                        <p class="faded">Time : </p>
+                                        <p>${el.time}</p>
+                                        <p class="faded">Phone No : </p>
+                                        <p>${el.phn_no}</p>
+                                        <p class="info">Your Order has been ${el.bookingInfo}</p>
+                                        <button class="hidden delreservebtn"></button>
+                                    </div>
+                                `
+                        }
+                        else {
+                            reserveCont.innerHTML +=
+                                `
+                                    <div class="food__order__list homeone">
+                                        <h3>${el.name}</h3>
+                                        <p class="faded">Date : </p>
+                                        <p>${el.date}</p>
+                                        <p class="faded">Time : </p>
+                                        <p>${el.time}</p>
+                                        <p class="faded">Phone No : </p>
+                                        <p>${el.phn_no}</p>
+                                        <p class="faded wait">Waiting for Response...</p>
+                                        <button class="lonbtn delreservebtn" id="${el._id}">Cancel</button>
+                                    </div>
+                                `
+                        }
+                        let delReserve = document.querySelectorAll(".delreservebtn");
+                        delReserve.forEach(item => {
+                            item.addEventListener("click", () => {
+                                deleteReservation(item.id);
+                            })
+                        })
+                    })
+                })
+            }
+            else if (response.status === 401) {
+                errorAlert("Log In To Make Reservation!!!")
+            }
+            else {
+                console.log(response);
+                errorAlert("Reservation Fetching Error!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
 }
+
+async function deleteReservation(id) {
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = `/api/v1/menu/delreserve/${id}`
+        await fetch(endpoint, {
+            method: 'DELETE',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 200) {
+                successAlert("Reservation Deleted :)");
+                getReservation();
+            } else {
+                console.log(response);
+                errorAlert("Error Deleting Reservation!!!")
+
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+(function () {
+    let log = document.querySelector(".acclog");
+
+    log.addEventListener("click", () => {
+        window.open("/account/login")
+    })
+})();

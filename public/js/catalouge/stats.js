@@ -64,6 +64,7 @@
                         curpie.innerHTML = `
                         <canvas class="pie" id="todays__pie"></canvas>
                         <canvas class="bar" id="todaysBar"></canvas>
+                        <canvas class="pie" id="todaysrespie"></canvas>
                         </div>
                         `
                         getOrderPieChart(list, 'todays__pie');
@@ -71,6 +72,7 @@
                         barList.push(item.totalConfirmedAmount);
                         barList.push(item.totalUnConfirmedAmount);
                         getOrderBar(barList, 'todaysBar')
+                        getFilteredReserve("getReturnToday", restroid, "todaysrespie")
                         successAlert("Orders Made Today :)");
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -165,6 +167,7 @@
                         curweekpie.innerHTML = `
                         <canvas class="pie" id="weeks__pie"></canvas>
                         <canvas class="bar" id="weeksBar"></canvas>
+                        <canvas class="pie" id="weeksrespie"></canvas>
                         </div>
                         `
                         getOrderPieChart(list, 'weeks__pie');
@@ -172,6 +175,7 @@
                         barList.push(item.totalConfirmedAmount);
                         barList.push(item.totalUnConfirmedAmount);
                         getOrderBar(barList, 'weeksBar')
+                        getFilteredReserve("getReturnWeek", restroid, "weeksrespie")
                     })
                 } else {
                     console.log(response);
@@ -257,6 +261,7 @@
                         curmonthpie.innerHTML = `
                         <canvas class="pie" id="months__pie"></canvas>
                         <canvas class="bar" id="monthsBar"></canvas>
+                        <canvas class="pie" id="monthsrespie"></canvas>
                         </div>
                         `
                         getOrderPieChart(list, 'months__pie');
@@ -264,6 +269,7 @@
                         barList.push(item.totalConfirmedAmount);
                         barList.push(item.totalUnConfirmedAmount);
                         getOrderBar(barList, 'monthsBar')
+                        getFilteredReserve("getReturnMonth", restroid, "monthsrespie")
                         successAlert("Last 30 Days Orders :)");
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -362,6 +368,7 @@
                         curbymonthpie.innerHTML = `
                         <canvas class="pie" id="monthlyPie"></canvas>
                         <canvas class="bar" id="monthlyBar"></canvas>
+                        <canvas class="pie" id="monthlyResPie"></canvas>
                         </div>
                         `
                         getOrderPieChart(list, 'monthlyPie');
@@ -369,6 +376,7 @@
                         barList.push(item.totalConfirmedAmount);
                         barList.push(item.totalUnConfirmedAmount);
                         getOrderBar(barList, 'monthlyBar')
+                        byMonthReserve(restroid, val)
                         successAlert(`${val} Orders :)`);
                     })
                 } else {
@@ -426,6 +434,26 @@ function getOrderPieChart(data, elem) {
             labels: ["Orders Confirmed", "Orders Cancelled", "Orders Left Out"],
             datasets: [{
                 label: 'Orders Chart',
+                data: data,
+                backgroundColor: [
+                    'rgb(0, 128, 0)',
+                    'rgb(255, 205, 86)',
+                    'rgb(255, 99, 132)'
+                ],
+                hoverOffset: 4
+            }]
+        }
+    });
+};
+
+function getReservePieChart(data, elem) {
+    const ctx = document.getElementById(elem);
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Return Confirmed", "Return Cancelled", "Return Left Out"],
+            datasets: [{
+                label: 'Return Chart',
                 data: data,
                 backgroundColor: [
                     'rgb(0, 128, 0)',
@@ -543,6 +571,7 @@ async function getOrderDetail(val) {
                     barList.push(item.totalConfirmedAmount);
                     barList.push(item.totalUnConfirmedAmount);
                     getOrderBar(barList, 'myBar')
+                    getAllReserveDetails(val)
                 })
                 successAlert("Your Last 30 Days in Graph");
             } else {
@@ -556,6 +585,99 @@ async function getOrderDetail(val) {
         errorAlert('Sorry! Something went wrong', err);
     };
 };
+
+async function getAllReserveDetails(val) {
+    try {
+        const endpoint = `/api/v1/catalouge/getreturndetails/${val}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    let list = [];
+                    list.push(item.totalConfirm)
+                    list.push(item.totalCanceled)
+                    list.push(item.totalLeftOut)
+                    getReservePieChart(list, 'resPie')
+                })
+            } else {
+                console.log(response);
+                errorAlert("Fetching data error!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function getFilteredReserve(route, val, elemid) {
+    try {
+        const endpoint = `/api/v1/catalouge/${route}/${val}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    reslist = []
+                    reslist.push(item.totalConfirm);
+                    reslist.push(item.totalCanceled);
+                    reslist.push(item.totalLeftOut);
+                    getReservePieChart(reslist, `${elemid}`)
+                })
+            } else {
+                console.log(response);
+                errorAlert("Fetching data error!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
+
+async function byMonthReserve(restro, month) {
+    try {
+        const endpoint = `/api/v1/catalouge/byReturnMonth/${restro}/find/${month}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    reslist = []
+                    reslist.push(item.totalConfirm);
+                    reslist.push(item.totalCanceled);
+                    reslist.push(item.totalLeftOut);
+                    getReservePieChart(reslist, 'monthlyResPie')
+                })
+            } else {
+                console.log(response);
+                errorAlert("Fetching data error!!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
 
 (function () {
     let theme = document.querySelector(".statUserTheme").innerText;
@@ -605,7 +727,6 @@ async function getOrderDetail(val) {
 })();
 
 (function () {
-    let getHome = document.getElementById("getAllHome");
     let getRes = document.getElementById("getAllRestro");
     let orderlistbod = document.querySelector(".restro__order__list");
     let restroid = document.querySelector(".currentrestroid").innerText;
@@ -614,6 +735,7 @@ async function getOrderDetail(val) {
     let curweekpie = document.getElementById("week__sec")
     let curmonthpie = document.getElementById("month__sec")
     let curbymonthpie = document.getElementById("bymonths__pie")
+    let getReserve = document.getElementById("getAllReserve");
 
     getRes.addEventListener("click", async (e) => {
         e.preventDefault()
@@ -680,6 +802,69 @@ async function getOrderDetail(val) {
                             location.hash = "#restro__order__data";
                         }, 200)
                         successAlert(`All Home Orders :)`);
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Fetching data error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    getReserve.addEventListener("click", async (e) => {
+        e.preventDefault()
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            location.hash = "#";
+            if (!curweekpie.classList.contains("hidden")) {
+                curweekpie.classList.add("hidden");
+            }
+            if (!curpie.classList.contains("hidden")) {
+                curpie.classList.add("hidden");
+            }
+            if (!curmonthpie.classList.contains("hidden")) {
+                curmonthpie.classList.add("hidden");
+            }
+            if (!curbymonthpie.classList.contains("hidden")) {
+                curbymonthpie.classList.add("hidden");
+            }
+            const endpoint = `/api/v1/catalouge/getAllReturns/${restroid}`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                }
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    let res = response.json();
+                    res.then(item => {
+                        data = item.restroOrders;
+                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Reservation : ${data.length}</h2>`
+                        data.forEach(item => {
+                            orderlistbod.innerHTML +=
+                                `
+                                    <div class="order__card">
+                                        <p>From : ${item.name}</p>
+                                        <p>Date : ${item.product}</p>
+                                        <p>Time : ${item.message}</p>
+                                        <p>Phone Number: ${item.phn_no}</p>
+                                        <p>Order info: ${item.returnInfo}</p>
+                                        <p>Created At: ${item.createdAt}</p>
+                                    </div>
+                                `
+                        })
+                        window.setTimeout(() => {
+                            location.hash = "#restro__order__data";
+                        }, 200)
+                        successAlert(`All Reservations :)`);
                     })
                 } else {
                     console.log(response);

@@ -180,6 +180,59 @@ block content
             .bannerpercent.hidden
         .sec__item__sec.hidden
 
+    if (user)
+        .reserve__btn(title="make reservation") &#129348;
+        .reserve__fill.hidden
+        .reserve__sec.hidden 
+            .reserve__midsec 
+                .reserve__head 
+                    h1 Make Reservation 
+                    img.reservecancel.point(src="/images/cancel.png" alt="cancel")
+                    .acclog.hidden
+                .reserve__bod
+                    form
+                        .form__cont__order
+                            label Name :
+                            input#reserveuser(type="text", name="tableno", value=user.name)
+                            #reserveuserid.hidden= user.id
+                            #reserverestroid.hidden= restro[0]._id
+                        .form__cont__order
+                            label Total People : 
+                            input#reserveno(type="number" required placeholder="2") 
+                        .form__cont__order
+                            label Date : 
+                            input#reservedate(type="date" required) 
+                        .form__cont__order
+                            label Time : 
+                            input#reservetime(type="time" required)
+                        .form__cont__order 
+                            label Contact : 
+                            input#reservephn(type="number" required placeholder="9876543127")
+                        .form__cont__order
+                            button#reservereq.lonbtn Reserve
+                    h3 Your Reservations
+                        p.smallfnt Your last 10 Reservations with 
+                            span= restro[0].name
+                    .reservations
+    else 
+        .reserve__btn(title="make reservation") &#129348;
+        .reserve__fill.hidden
+        .reserve__sec.hidden
+            .reserve__midsec
+                .reserve__head 
+                    h1 Make Reservation 
+                    img.reservecancel.point(src="/images/cancel.png" alt="cancel")
+                .reserve__bod
+                    h3 Login To Make Reservation
+                    h3.lonbtn.acclog Login || SignUp
+        .reservations.hidden
+        #reserveuser.hidden 
+        #reserveuserid.hidden 
+        #reserverestroid.hidden 
+        #reservedate.hidden 
+        #reservetime.hidden 
+        #reservephn.hidden 
+        #reservereq.hidden
 
             
     script(src="/js/alert.js") 

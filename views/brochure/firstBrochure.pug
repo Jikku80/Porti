@@ -108,8 +108,12 @@ block content
                         label.form__label(for="item_price") Number of People : 
                         input#bronum.form__input(type="number" name="catalogprice" required placeholder="4")
                     .form__bod
-                        label.form__label(for="item_detail") Date :
+                        label.form__label(for="item_detail") Date (From) :
                         input#brodate.form__input(type="date" required)
+                    .form__bod
+                        label.form__label(for="item_toodatedetail") Date (To) (optional):
+                        input#brotodate.form__input(type="date")
+                        p.smalltag Use it if booking is for multiple days
                     .form__bod 
                         label.form__label Time :
                         input#brotime.for__input(type="time" required)

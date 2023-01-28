@@ -7,6 +7,7 @@ const Restaurant = require('./../models/restaurantDetailModel');
 const Theme = require('./../models/themeModel');
 const ResOrder = require('./../models/resOrderModel');
 const Banner = require('./../models/bannerModel');
+const ResReserve = require('./../models/reserveModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -526,3 +527,310 @@ exports.redirectoTorestroStats = catchAsync(async (req, res, next) => {
     }
 
 });
+
+exports.createResReserve = catchAsync(async (req, res, next) => {
+    const newreserve = await ResReserve.create(req.body);
+    res.status(201).json({
+        status: 'success',
+        newreserve
+    });
+});
+
+exports.getSelectedResReserve = catchAsync(async (req, res, next) => {
+    const restro = req.params.restro;
+    const usr = req.params.user;
+
+    const features = new APIFeatures(ResReserve.find({ restro: restro }), { limit: 11, page: "1" }).paginate().srt();
+    await features.query.then((item) => {
+        const resreserve = item.filter(x => {
+            return x.userId == usr
+        })
+        res.status(200).json({
+            status: 'success',
+            resreserve
+        })
+    })
+
+})
+
+exports.deleteResReserve = catchAsync(async (req, res, next) => {
+    const doc = await ResReserve.findByIdAndDelete(req.params.id);
+    if (!doc) return next(new AppError('No document found with the given ID', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: null
+        }
+    })
+});
+
+exports.getfiftyResReserve = catchAsync(async (req, res, next) => {
+    const restro = req.params.restro;
+    const features = new APIFeatures(ResReserve.find({ restro: restro }), { limit: 50, page: "1" }).paginate().srt();
+    const resorders = await features.query
+    res.status(200).json({
+        status: 'success',
+        resorders
+    })
+});
+
+exports.updateResReserveById = catchAsync(async (req, res, next) => {
+
+    const updatedResOrder = await ResReserve.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedResOrder || updatedResOrder == null) return (res.status(404).json({ status: 'success' }));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            restro: updatedResOrder
+        }
+    })
+})
+
+exports.getAllResReserveDetails = catchAsync(async (req, res) => {
+    const id = req.params.restro
+
+    await ResReserve.find({ restro: id }).then((item) => {
+
+        const confirmed = item.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = item.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
+
+        const leftOut = item.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
+
+        totalLeftOut = leftOut.length;
+
+        res.status(200).json({
+            status: "success",
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+        })
+    })
+
+})
+
+exports.getDayReserve = catchAsync(async (req, res) => {
+    const id = req.params.restro
+    const resOrders = await ResReserve.find({ restro: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            itemsDate = fullDate.slice(0, 10);
+            let datToday = new Date().toString();
+            let today = datToday.slice(0, 10)
+            return itemsDate === today
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.getWeekReserve = catchAsync(async (req, res) => {
+    const id = req.params.restro
+    const resOrders = await ResReserve.find({ restro: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 7; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.getMonthReserve = catchAsync(async (req, res) => {
+    const id = req.params.restro
+    const resOrders = await ResReserve.find({ restro: id }).then((item) => {
+        let datToday = new Date();
+        let dates = [];
+        let timeofDay = 60 * 60 * 24 * 1000
+        for (let i = 0; i < 30; i++) {
+            let eachday = new Date(datToday.getTime() - i * timeofDay);
+            let day = eachday.toString().slice(0, 10)
+            dates.push(day)
+        }
+        const datas = item.filter((data) => {
+            let itemdate = data.createdAt.toString();
+            let idate = itemdate.slice(0, 10)
+            if (dates.includes(idate)) {
+                return data
+            }
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut
+    })
+
+})
+
+exports.byMonthReserve = catchAsync(async (req, res) => {
+    const id = req.params.restro
+    const month = req.params.month
+    const resOrders = await ResReserve.find({ restro: id }).then((item) => {
+        const datas = item.filter((data) => {
+            let fullDate = data.createdAt.toString();
+            let mon = fullDate.slice(4, 7)
+            itemsDate = fullDate.slice(11, 15);
+            monthDat = `${mon}-${itemsDate}`
+            return monthDat === month
+        })
+        return datas
+    })
+
+    const confirmed = resOrders.filter(el => {
+        if (el.bookingInfo === "confirmed") {
+            return el
+        };
+    })
+    totalConfirm = confirmed.length;
+
+    const canceled = resOrders.filter(el => {
+        if (el.bookingInfo === "canceled") {
+            return el
+        }
+    })
+    totalCanceled = canceled.length;
+
+    const leftOut = resOrders.filter(el => {
+        if (!el.bookingInfo || el.bookingInfo == null) {
+            return el
+        }
+    })
+
+    totalLeftOut = leftOut.length;
+
+    res.status(200).json({
+        status: "success",
+        totalConfirm,
+        totalCanceled,
+        totalLeftOut,
+    })
+
+});
+
+exports.getAllReserve = catchAsync(async (req, res) => {
+    const id = req.params.restro
+    const restroOrders = await ResReserve.find({ restro: id })
+
+    res.status(200).json({
+        status: "success",
+        restroOrders
+    })
+})
+
