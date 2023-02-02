@@ -142,6 +142,7 @@ pre{
 
 .get__booked{
     display: flex;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -207,6 +208,10 @@ pre{
     .first__bro__sec__half, .first__bro__sec__other{
         width: 100vw;
         height: 50vh;
+    }
+
+    .first__bro__sec__other{
+        margin: 2%;
     }
 
     .bro__sec__detail{

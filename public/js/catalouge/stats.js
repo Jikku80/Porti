@@ -28,6 +28,9 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Today : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                     <div class="order__card">
@@ -37,7 +40,7 @@
                                         <p>Address: ${item.address}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
                         })
@@ -113,9 +116,11 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders This Week : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
                                         <p>Order : ${item.message}</p>
@@ -123,22 +128,9 @@
                                         <p>Address: ${item.address}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
                         })
                         successAlert("Last Week Orders :)");
                         window.setTimeout(() => {
@@ -211,9 +203,11 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
                                         <p>Order : ${item.message}</p>
@@ -221,22 +215,9 @@
                                         <p>Address: ${item.address}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
                         })
                         list = []
                         list.push(item.totalConfirm);
@@ -316,9 +297,11 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders made in ${val} : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
                                         <p>Order : ${item.message}</p>
@@ -326,22 +309,9 @@
                                         <p>Address: ${item.address}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
                         })
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -771,9 +741,11 @@ async function byMonthReserve(restro, month) {
                         data = item.restroOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders : ${data.length}</h2>`
                         data.forEach(item => {
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
                                         <p>From : ${item.name}</p>
                                         <p>Order : ${item.message}</p>
@@ -781,22 +753,10 @@ async function byMonthReserve(restro, month) {
                                         <p>Address: ${item.address}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
-                                    </div>
-                                `
-                            }
+
                         })
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -849,6 +809,9 @@ async function byMonthReserve(restro, month) {
                         data = item.restroOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Reservation : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                     <div class="order__card">
@@ -857,7 +820,7 @@ async function byMonthReserve(restro, month) {
                                         <p>Time : ${item.message}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Order info: ${item.returnInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
                         })

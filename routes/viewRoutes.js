@@ -59,7 +59,6 @@ router.get('/invitations/:id', viewsController.gotoInviMid);
 
 router.get('/inspire/cafe', viewsController.searchPage);
 router.get('/search/:values', viewsController.searchPorti);
-router.get('/toprofile/:user_id/:types', viewsController.toPage)
 
 
 router.get('/messages/all', viewsController.getAllMsg);

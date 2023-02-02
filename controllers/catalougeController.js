@@ -351,6 +351,7 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         Address: req.body.Address,
         themecolor: req.body.themecolor,
         theme: req.body.theme,
+        compType: req.body.compType,
         createdAt: Date.now()
     });
 
@@ -406,6 +407,27 @@ exports.deleteComment = catchAsync(async (req, res, next) => {
 exports.updateCompany = catchAsync(async (req, res, next) => {
 
     const updatedCompany = await Company.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedCompany) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            company: updatedCompany
+        }
+    })
+});
+
+exports.updateCompanyPg = catchAsync(async (req, res, next) => {
+
+    const updatedCompany = await Company.findByIdAndUpdate(req.params.id, {
+        $set: { pageCount: req.body.pageCount }
+    },
         {
             new: true,
             runValidators: true

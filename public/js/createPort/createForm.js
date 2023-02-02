@@ -1,4 +1,4 @@
-function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, val11, probValue, solveValue, failValue, motiValue, msgValue) {
+function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, val11, probValue, solveValue, failValue, motiValue, msgValue, role) {
     return `
         <div class="form__head">
             <h1>${val}</h1>
@@ -18,6 +18,23 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                         <input id=${val1} name=${val1} class="form__input" type="text" placeholder="TechMafia" required/>
                         <div class="btnGroup">
                             <button id="portNameNext" type="button" class="port__form__btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="port__role__cont hidden portForm">
+                    <div class="form__first__cont">
+                        <label>Your Role:</label>                    
+                        <div class="port__info">
+                            <p>Profession Name</p>
+                            <p>Doctor, Civil Engineer, Pilot, Fashion Designer, Photographer</p>
+                            <p>Name field cannot be Empty!!!</p>
+                        </div>
+                    </div>
+                    <div class="form__sec__cont">
+                        <input id=${role} name=${role} class="form__input" type="text" placeholder="Artist" required/>
+                        <div class="btnGroup">
+                            <button id="portRolePrev" type="button" class="port__form__btn">Previous</button>
+                            <button id="portRoleNext" type="button" class="port__form__btn">Next</button>
                         </div>
                     </div>
                 </div>

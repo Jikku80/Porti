@@ -54,7 +54,7 @@
     z-index: 4;
 }
 
-.resorderfill, .reserve__fill{
+.resorderfill{
     position: absolute;
     top: 2vh;
     left: 4vw;
@@ -64,6 +64,17 @@
     border-radius: 8rem;
     background-color: orangered;
 
+}
+
+.reserve__fill{
+    position: absolute;
+    bottom: 2vh;
+    left: 4vw;
+    z-index: 5;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: orangered;
 }
 
 .restro__info, .resorder__info, .reserve__sec{

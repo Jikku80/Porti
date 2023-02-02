@@ -50,6 +50,21 @@ body{
     justify-content: center;
 }
 
+.pageCount_sec{
+    position: fixed;
+    top: 1vh;
+    left: 45vw;
+    /* color: #000; */
+    z-index: 2;
+    background-color: rgba(255, 228, 196, 0.247);
+    border-radius: 1rem;
+    padding: 1%;
+  }
+  
+  .opn{
+    font-size: 10px;
+  }
+
 #about{
     background-color: rgb(201, 201, 201);
     color: rgb(29, 29, 29);

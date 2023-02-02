@@ -538,6 +538,12 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         return;
     }
 
+    if (lowVals == "brochure" || lowVals == "brochures" || lowVals == "hotels" || lowVals == "hotel" || lowVals == "motel" || lowVals == "motels" || lowVals == "organization" || lowVals == "org") {
+        const organization = await Organization.find();
+        res.status(200).json({ status: 'success', organization })
+        return;
+    }
+
     const portfolio = await Portfolio.find().then(ports => {
         const por = ports.filter(item => {
             let lownam = (item.name).toLowerCase();
@@ -546,7 +552,7 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
                 let searchVal = Portfolio.find({ name: item.name })
                 return searchVal
             }
-            return false
+            return;
         });
         return por
     })
@@ -559,7 +565,7 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
                 let searchVal = Restaurant.find({ name: item.name })
                 return searchVal
             }
-            return false
+            return;
         });
         return restr
     })
@@ -572,34 +578,32 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
                 let searchVal = Company.find({ name: item.name })
                 return searchVal
             }
-            return false
+            return;
         });
         return comps
     })
+
+    const organization = await Organization.find().then(comp => {
+        const comps = comp.filter(item => {
+            let lownam = (item.name).toLowerCase();
+            let lowtype = (item.orgType).toLowerCase();
+            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                let searchVal = Company.find({ name: item.name })
+                return searchVal
+            }
+            return;
+        });
+        return comps
+    })
+
     res.status(200).json({
         status: 'success',
         portfolio,
         restro,
-        company
+        company,
+        organization
     });
 
-})
-
-exports.toPage = catchAsync(async (req, res, next) => {
-    const user_id = req.params.user_id;
-    const types = req.params.types;
-    await User.findOne({ _id: user_id }).then((user) => {
-        user_name = user.name
-        if (types == "portfolio") {
-            res.redirect(`/profile/${user_name}`)
-        }
-        if (types == "restro") {
-            res.redirect(`/menu/${user_name}`)
-        }
-        if (types == "company") {
-            res.redirect(`/catalog/${user_name}`)
-        }
-    });
 })
 
 exports.searchPage = catchAsync(async (req, res, next) => {

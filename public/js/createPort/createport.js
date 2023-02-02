@@ -8,7 +8,7 @@ id1 = document.getElementById("usId").innerText;
 
 let layoutOneForm = document.createElement("div");
 layoutOneForm.classList.add("createForm");
-layoutOneForm.innerHTML = createPortiForm("Create Portfolio", "cancel__create", "yourname", "aboutyou", "what", "why", "yourno", "yourCheck", "youremail", "yourFb", "yourLoc", "yourwork", "form__btn", "yourProb", "yourSoln", "yourFail", "yourMoti", "yourMsg")
+layoutOneForm.innerHTML = createPortiForm("Create Portfolio", "cancel__create", "yourname", "aboutyou", "what", "why", "yourno", "yourCheck", "youremail", "yourFb", "yourLoc", "yourwork", "form__btn", "yourProb", "yourSoln", "yourFail", "yourMoti", "yourMsg", "role")
 
 document.body.appendChild(layoutOneForm);
 let crForm = document.querySelector('.createForm');
@@ -24,6 +24,7 @@ layout1.forEach(item => {
         catSec.classList.add("hidden");
         crForm.classList.remove("hidden");
         let yourname = document.querySelector("#yourname");
+        let role = document.querySelector("#role");
         let aboutyou = document.querySelector("#aboutyou");
         let what = document.getElementById("what");
         let why = document.getElementById("why");
@@ -61,6 +62,7 @@ layout1.forEach(item => {
                     },
                     body: JSON.stringify({
                         name: yourname.value,
+                        role: role.value,
                         about: aboutyou.value,
                         what: what.value,
                         why: why.value,
@@ -124,6 +126,7 @@ function aboutHelper(about) {
 
 (function () {
     let portName = document.querySelector(".port__name__cont");
+    let portRole = document.querySelector(".port__role__cont");
     let portAbout = document.querySelector(".port__about__cont");
     let portWhat = document.querySelector(".port__what__cont");
     let portWhy = document.querySelector(".port__why__cont");
@@ -140,6 +143,7 @@ function aboutHelper(about) {
     let portSoln = document.querySelector(".port__soln__cont");
     let portSubmit = document.querySelector(".portSubmit");
     let next = document.getElementById("portNameNext");
+    let roleNext = document.getElementById("portRoleNext");
     let aboutNext = document.getElementById("portAboutNext");
     let whatNext = document.getElementById("portWhatNext");
     let whyNext = document.getElementById("portWhyNext");
@@ -153,6 +157,7 @@ function aboutHelper(about) {
     let addressNext = document.getElementById("portAddressNext");
     let accompNext = document.getElementById("portAccompNext");
     let probNext = document.getElementById("portProbNext");
+    let rolePrev = document.getElementById("portRolePrev");
     let aboutPrev = document.getElementById("portAboutPrev");
     let whatPrev = document.getElementById("portWhatPrev");
     let whyPrev = document.getElementById("portWhyPrev");
@@ -170,13 +175,27 @@ function aboutHelper(about) {
 
     let yourname = document.querySelector("#yourname");
     let youremail = document.getElementById("youremail");
+    let yourrole = document.getElementById("role");
 
     next.addEventListener("click", () => {
         if (yourname.value < 1) {
             return false;
         }
         portName.classList.add("hidden");
+        portRole.classList.remove("hidden");
+    })
+
+    roleNext.addEventListener("click", () => {
+        if (yourrole.value < 1) {
+            return false;
+        }
         portAbout.classList.remove("hidden");
+        portRole.classList.add("hidden");
+    })
+
+    rolePrev.addEventListener("click", () => {
+        portName.classList.remove("hidden");
+        portRole.classList.add("hidden");
     })
 
     aboutNext.addEventListener("click", () => {
@@ -186,7 +205,7 @@ function aboutHelper(about) {
 
     aboutPrev.addEventListener("click", () => {
         portAbout.classList.add("hidden");
-        portName.classList.remove("hidden");
+        portRole.classList.remove("hidden");
     })
 
     whatNext.addEventListener("click", () => {
@@ -260,7 +279,7 @@ function aboutHelper(about) {
     });
 
     emailNext.addEventListener("click", () => {
-        if (youremail.value < 1 || yourname.value == "" || yourname.value == null) {
+        if (youremail.value < 1) {
             return false;
         }
         portEmail.classList.add("hidden");

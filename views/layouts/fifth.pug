@@ -7,6 +7,8 @@ block content
             span Por
             span.grn t
             span.nocaps i
+    .pageCount.hidden= portfolio.pageCount
+    .unqid.hidden= portfolio._id
     if (user)
         if (user.id !== portfolio.user.id)
             h1.msg__user__btn &#9993;
@@ -26,6 +28,9 @@ block content
                     input.curusermessage(type="text" placeholder="type your message") 
                     img(src="/images/send.png" class="sendusermessagebtn")
         else 
+            .pageCount_sec
+                p.opn Page Views : 
+                    span= portfolio.pageCount
             .msg__user__btn.hidden 
             .usermsgalrt.hidden 
             .msg__user__sec.hidden 
@@ -104,5 +109,6 @@ block content
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/layouts/fifth.js") 
+    script(src="/js/layouts/pgct.js") 
     script(src="/js/usermsg.js") 
     script(src="/js/imgFull.js")

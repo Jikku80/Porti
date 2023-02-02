@@ -16,6 +16,9 @@ router.get('/:id/similar/:category/item/:itemId', catalougeController.listSimila
 router.get('/:id/getItem', catalougeController.getCatalouge);
 router.get('/comments/:id', catalougeController.getLastComments);
 
+router.patch('/:id/updateCompanyPg', catalougeController.updateCompanyPg);
+
+
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
 

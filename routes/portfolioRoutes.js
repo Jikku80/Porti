@@ -5,6 +5,9 @@ const authController = require('./../controllers/authControllers');
 
 const router = express.Router({ mergeParams: true });
 
+router.patch('/:id/updatePortfolioPg', portController.updatePortPg);
+
+
 router.get('/:id', portController.getMe);
 
 router.use(authController.protect);

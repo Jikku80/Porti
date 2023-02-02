@@ -11,6 +11,9 @@ block content
     if (user)
         include ../_header
         .statUserTheme.hidden= user.theme
+        .pageCount_sec
+            p.txt.opn Page Views : 
+                span.txt= restro[0].pageCount
         .restro__stat__sec
             .restro__stat__bod
                 h1.txt.stathead= `${restro[0].name} Statistics`

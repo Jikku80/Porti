@@ -30,6 +30,7 @@ exports.createOrganization = catchAsync(async (req, res, next) => {
         contact: req.body.contact,
         Address: req.body.Address,
         theme: req.body.theme,
+        orgType: req.body.orgType,
         createdAt: Date.now()
     });
 
@@ -138,6 +139,27 @@ exports.sectionTweaks = catchAsync(async (req, res) => {
 exports.updateOrganizaiton = catchAsync(async (req, res, next) => {
 
     const updatedOrganization = await Organization.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedOrganization) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            company: updatedOrganization
+        }
+    })
+});
+
+exports.updateOrgi = catchAsync(async (req, res, next) => {
+
+    const updatedOrganization = await Organization.findByIdAndUpdate(req.params.id, {
+        $set: { pageCount: req.body.pageCount }
+    },
         {
             new: true,
             runValidators: true

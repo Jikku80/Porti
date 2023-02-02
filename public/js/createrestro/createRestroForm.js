@@ -1,4 +1,4 @@
-function createRestro(val, val1, val2, val3, val4, val5) {
+function createRestro(val, val1, val2, val3, val4, val5, val6) {
     return `
     <form class="comp__form">
         <div class="form__head">
@@ -12,6 +12,10 @@ function createRestro(val, val1, val2, val3, val4, val5) {
         <div class="form__cont">
             <label class="form__label">Country:</label>
             <input id=${val5} class="form__input" type="text" placeholder="Thailand" required/>
+        </div>
+        <div class="form__cont">
+            <label class="form__label">Food Menu For:</label>
+            <input id=${val6} class="form__input" placeholder="Restaurant, Bakery, Cafe, Any other Food Spot" required />
         </div>
         <div class="form__cont">
             <label class="form__label">Address:</label>

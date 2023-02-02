@@ -94,7 +94,7 @@ signup.addEventListener('click', async (e) => {
             if (response.status === 201) {
                 successAlert("Congrats! You have been hooked ;)");
                 window.setTimeout(() => {
-                    location.assign('/me');
+                    location.assign('/account/me');
                 }, 400);
             }
             else if (response.status === 409) {

@@ -18,6 +18,10 @@ const portfolioSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
+    pageCount: {
+        type: Number,
+        trim: true
+    },
     showNo: {
         type: Boolean,
         default: false

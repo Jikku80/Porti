@@ -7,6 +7,8 @@ block content
             span Por
             span.grn t
             span.nocaps i
+    .pageCount.hidden= invite.pageCount
+    .unqid.hidden= invite._id
     if (user)
         if (user.id !== invite.user.id)
             h1.msg__user__btn &#9993;
@@ -26,6 +28,9 @@ block content
                     input.curusermessage(type="text" placeholder="type your message") 
                     img(src="/images/send.png" class="sendusermessagebtn")
         else 
+            .pageCount_sec
+                p.opn Page Views : 
+                    span= invite.pageCount
             .msg__user__btn.hidden 
             .msg__dot.hidden
             .usermsgalrt.hidden 
@@ -87,3 +92,4 @@ block content
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/usermsg.js") 
+    script(src="/js/upinvi/invi.js") 

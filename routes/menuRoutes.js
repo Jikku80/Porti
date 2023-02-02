@@ -11,6 +11,9 @@ router.get('/:id/findbynam/:nam', menuController.findbyNam);
 router.get('/allCategories/:id', menuController.listCategories);
 router.get('/:id/searchItems', menuController.lookup);
 router.get('/:id/paginate/:count', menuController.paginate);
+
+router.patch('/:id/updateResPg', menuController.updateResPg);
+
 router.use(authController.isLoggedIn);
 router.get('/:id/getItem', menuController.getMenu);
 router.use(authController.protect);

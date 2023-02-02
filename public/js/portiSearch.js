@@ -24,13 +24,12 @@
             let subItems = document.querySelector(".found__values");
             let menuItems = document.querySelector(".found__menu__values");
             let compItems = document.querySelector(".found__catalog__values");
-            let loadPort = document.querySelector(".load__portfolio");
-            let loadMenu = document.querySelector(".load__menu");
-            let loadCatalog = document.querySelector(".load__catalog");
+            let orgItems = document.querySelector(".found__org__values");
 
             subItems.innerHTML = "";
             menuItems.innerHTML = "";
             compItems.innerHTML = "";
+            orgItems.innerHTML = "";
             try {
                 e.preventDefault();
                 let load = document.querySelector('.loader');
@@ -52,11 +51,12 @@
                             let profiles = items.portfolio;
                             let company = items.company;
                             let restro = items.restro;
+                            let organization = items.organization;
                             if (profiles) {
                                 profiles.forEach(el => {
                                     if (el.user.photo) {
                                         subItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/portfolio">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />
                                                                         ${el.name}
                                                                     </a> 
@@ -65,7 +65,7 @@
                                     }
                                     else {
                                         subItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/portfolio">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="/images/bighitman.png", alt="hit__pic", title=${el.name} />
                                                                         ${el.name}
                                                                     </a> 
@@ -82,7 +82,7 @@
                                 restro.forEach(el => {
                                     if (el.user.photo) {
                                         menuItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/restro">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />
                                                                         ${el.name}
                                                                     </a>    
@@ -92,7 +92,7 @@
                                     }
                                     else {
                                         menuItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/restro">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />
                                                                         ${el.name}
                                                                     </a>    
@@ -112,7 +112,7 @@
                                 company.forEach(el => {
                                     if (el.user.photo) {
                                         compItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/company">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />   
                                                                         ${el.name} 
                                                                     </a>
@@ -121,7 +121,7 @@
                                     }
                                     else {
                                         compItems.innerHTML += `<div class="search__results">
-                                                                    <a class="anc" href="/toprofile/${el.user._id}/company">
+                                                                    <a class="anc" href="/${el.user.name}">
                                                                         <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />   
                                                                         ${el.name} 
                                                                     </a>
@@ -131,6 +131,33 @@
                                 });
                                 if (company.length == 0) {
                                     compItems.innerHTML += `
+                                    <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+                                }
+
+                            }
+                            if (organization) {
+                                organization.forEach(el => {
+                                    if (el.user.photo) {
+                                        orgItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/${el.user.name}">
+                                                                        <img class="profPic satProf" src="${el.user.photo}", alt="prof__pic", title=${el.name} />   
+                                                                        ${el.name} 
+                                                                    </a>
+                                                                </div>
+                                        `
+                                    }
+                                    else {
+                                        orgItems.innerHTML += `<div class="search__results">
+                                                                    <a class="anc" href="/${el.user.name}">
+                                                                        <img class="profPic satProf" src="/images/bighitman.png", alt="prof__pic", title=${el.name} />   
+                                                                        ${el.name} 
+                                                                    </a>
+                                                                </div>
+                                        `
+                                    }
+                                });
+                                if (organization.length == 0) {
+                                    orgItems.innerHTML += `
                                     <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                                 }
 
@@ -147,6 +174,11 @@
                             }
                             if (!company) {
                                 compItems.innerHTML = `
+                                        <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
+
+                            }
+                            if (!organization) {
+                                orgItems.innerHTML = `
                                         <h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
 
                             }

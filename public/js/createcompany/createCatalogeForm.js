@@ -1,4 +1,4 @@
-function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8) {
+function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8, val9) {
     return `
     <form class="comp__form">
         <div class="form__head">
@@ -20,6 +20,10 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8) {
         <div class="form__cont">
             <label class="form__label">Company Country:</label>
             <input id=${val8} class="form__input" placeholder="Spain" required />
+        </div>
+        <div class="form__cont">
+            <label class="form__label">Company Type:</label>
+            <input id=${val9} class="form__input" placeholder="Clothing Store, Hardware Shop, Any other Firm" required />
         </div>
         <div class="form__cont">
             <label class="form__label">Company Address:</label>

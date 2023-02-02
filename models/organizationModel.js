@@ -76,6 +76,9 @@ const organizationSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    pageCount: {
+        type: Number
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

@@ -1,6 +1,7 @@
 create_port = document.querySelector(".create_port")
 footerBod = document.querySelector(".footer")
 portBod = document.querySelector(".port__section");
+broBod = document.querySelector(".brochure__section");
 inviBod = document.querySelector(".invi__section");
 menuBod = document.querySelector('.menu__section');
 catBod = document.querySelector('.catalouge__section');
@@ -20,11 +21,26 @@ inviLayouts.forEach(item => {
 
     item.addEventListener("click", () => {
         location.hash = "#portNav";
-        portBod.classList.add("hidden");
+        if (!portBod.classList.contains("hidden")) {
+            portBod.classList.add("hidden");
+        }
         footerBod.classList.add("hidden");
-        inviBod.classList.add("hidden");
-        menuBod.classList.add("hidden");
-        catBod.classList.add("hidden");
+        if (!inviBod.classList.contains("hidden")) {
+            inviBod.classList.add("hidden");
+        }
+
+        if (!menuBod.classList.contains("hidden")) {
+            menuBod.classList.add("hidden");
+        }
+
+        if (!catBod.classList.contains("hidden")) {
+            catBod.classList.add("hidden");
+        }
+
+        if (!broBod.classList.contains("hidden")) {
+            broBod.classList.add("hidden");
+        }
+
         mkForm.classList.remove("hidden");
         let yourname = document.querySelector("#fname");
         let secname = document.getElementById("sname")
@@ -102,14 +118,28 @@ inviLayouts.forEach(item => {
     })
 });
 
+console.log()
+console.log(broBod.childNodes.length)
+
 let cancelInvite = document.querySelector(".cancel__invite");
 cancelInvite.addEventListener("click", () => {
     mkForm.classList.add("hidden");
-    portBod.classList.remove("hidden");
+    if (portBod.childNodes.length !== 0) {
+        portBod.classList.remove("hidden");
+    }
+    if (broBod.childNodes.length !== 0) {
+        broBod.classList.remove("hidden")
+    }
     footerBod.classList.remove("hidden");
     inviBod.classList.remove("hidden");
-    menuBod.classList.remove("hidden");
-    catBod.classList.remove("hidden");
+    if (menuBod.childNodes.length !== 0) {
+        menuBod.classList.remove("hidden")
+    }
+
+    if (catBod.childNodes.length !== 0) {
+        catBod.classList.remove("hidden")
+    }
+
     window.setTimeout(() => {
         location.hash = "#crtInvi";
     }, 200)

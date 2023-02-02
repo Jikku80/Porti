@@ -9,7 +9,7 @@ catalogeLayouts = document.querySelectorAll(".cataloge_layouts");
 
 let catalogeOneForm = document.createElement("div");
 catalogeOneForm.classList.add("createCataloge");
-catalogeOneForm.innerHTML = createCataloge("catalogesname", "catalogesemail", "catalogessocial", "catalogesaddress", "catalogesadd_link", "catalogesphn_no", "catalogesslogan", "cataloge__form__btn", "catalogecountry")
+catalogeOneForm.innerHTML = createCataloge("catalogesname", "catalogesemail", "catalogessocial", "catalogesaddress", "catalogesadd_link", "catalogesphn_no", "catalogesslogan", "cataloge__form__btn", "catalogecountry", "catalogetype")
 
 document.body.appendChild(catalogeOneForm);
 let mkCForm = document.querySelector('.createCataloge');
@@ -35,6 +35,7 @@ catalogeLayouts.forEach(item => {
         let phn_no = document.getElementById("catalogesphn_no")
         let submit = document.getElementById("cataloge__form__btn");
         let country = document.getElementById("catalogecountry");
+        let compType = document.getElementById("catalogetype");
         let theme = item.id;
 
         submit.addEventListener("click", async (e) => {
@@ -51,6 +52,9 @@ catalogeLayouts.forEach(item => {
                 return false;
             }
             if (country.value < 1 || country.value == "") {
+                return false;
+            }
+            if (compType.value < 1 || compType.value == "") {
                 return false;
             }
             e.preventDefault();
@@ -73,7 +77,8 @@ catalogeLayouts.forEach(item => {
                         contact: phn_no.value,
                         theme: theme,
                         Address: address.value,
-                        country: country.value
+                        country: country.value,
+                        compType: compType.value
                     })
                 }).then((response) => {
                     load.classList.add("hidden");

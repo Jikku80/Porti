@@ -87,6 +87,7 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
                 showNo: cont,
                 theme: fields.theme,
                 images: imgs,
+                role: fields.role,
                 createdAt: Date.now()
             });
             res.redirect(`/myportfolio/${req.user.id}`)
@@ -109,6 +110,7 @@ exports.createImgColl = catchAsync(async (req, res, next) => {
                 showNo: cont,
                 theme: fields.theme,
                 images: blockBlobClient.url,
+                role: fields.role,
                 createdAt: Date.now()
             });
             res.redirect(`/myportfolio/${req.user.id}`)
@@ -122,6 +124,27 @@ exports.getMe = factory.getOne(Portfolio);
 exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
 exports.makePorti = factory.createOne(Portfolio);
+
+exports.updatePortPg = catchAsync(async (req, res, next) => {
+
+    const updatedPortfolio = await Portfolio.findByIdAndUpdate(req.params.id, {
+        $set: { pageCount: req.body.pageCount }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedPortfolio) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            company: updatedPortfolio
+        }
+    })
+});
 
 exports.updatePortfolioTheme = catchAsync(async (req, res, next) => {
     const updatedPortfolioTheme = await Portfolio.findByIdAndUpdate(

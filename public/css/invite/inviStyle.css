@@ -54,6 +54,21 @@ body{
   animation: blink 1.5s infinite linear;
 }
 
+.pageCount_sec{
+  position: fixed;
+  top: 2vh;
+  right: 1vw;
+  /* color: #000; */
+  z-index: 2;
+  background-color: rgba(255, 228, 196, 0.247);
+  border-radius: 1rem;
+  padding: 1%;
+}
+
+.opn{
+  font-size: 10px;
+}
+
 .success__main{
   display: flex;
   flex-direction: column;

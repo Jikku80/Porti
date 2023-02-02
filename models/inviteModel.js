@@ -15,6 +15,10 @@ const inviteSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
+    pageCount: {
+        type: Number,
+        trim: true
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

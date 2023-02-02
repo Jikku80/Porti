@@ -9,7 +9,7 @@ menuLayouts = document.querySelectorAll(".menu_layouts");
 
 let restroOneForm = document.createElement("div");
 restroOneForm.classList.add("createRestro");
-restroOneForm.innerHTML = createRestro("name", "address", "slogan", "phn_no", "restro__form__btn", "country")
+restroOneForm.innerHTML = createRestro("name", "address", "slogan", "phn_no", "restro__form__btn", "country", "resType")
 
 document.body.appendChild(restroOneForm);
 let mkRestroForm = document.querySelector('.createRestro');
@@ -31,6 +31,7 @@ menuLayouts.forEach(item => {
         let slogan = document.getElementById("slogan");
         let no = document.getElementById("phn_no");
         let country = document.getElementById("country");
+        let resType = document.getElementById("resType");
         let submit = document.getElementById("restro__form__btn");
         let theme = item.id;
 
@@ -42,6 +43,9 @@ menuLayouts.forEach(item => {
                 return false;
             }
             if (country.vlaue < 1 || country.value == "") {
+                return false;
+            }
+            if (resType.value < 1 || resType.value == "") {
                 return false;
             }
             e.preventDefault();
@@ -61,7 +65,8 @@ menuLayouts.forEach(item => {
                         slogan: slogan.value,
                         phn_no: no.value,
                         theme: theme,
-                        country: country.value
+                        country: country.value,
+                        resType: resType.value
                     })
                 }).then((response) => {
                     load.classList.add("hidden");

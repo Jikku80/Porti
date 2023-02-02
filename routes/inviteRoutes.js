@@ -7,6 +7,9 @@ const router = express.Router({ mergeParams: true });
 
 // router.get('/:id', portController.getMe);
 
+router.patch('/:id/updateInPg', inviController.updateInPg);
+
+
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
 

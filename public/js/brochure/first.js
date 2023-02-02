@@ -168,7 +168,11 @@ async function getAllUserBookings() {
                         })
                     })
                 })
-            } else {
+            }
+            else if (response.status === 401) {
+                errorAlert("You Are Not Logged In")
+            }
+            else {
                 console.log(response);
                 errorAlert("Error While fetching bookings!!!")
             }
@@ -183,6 +187,9 @@ async function getAllUserBookings() {
 getAllUserBookings()
 
 async function deleteBooking(delId) {
+    let orgid = document.querySelector(".orgid").innerText;
+    let socket = io();
+
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -198,6 +205,7 @@ async function deleteBooking(delId) {
         }).then((response) => {
             load.classList.add("hidden");
             if (response.status === 200) {
+                socket.emit("brobooking", orgid)
                 getAllUserBookings()
                 successAlert("Your Booking Has Been Deleted Successfully :)");
             } else {
@@ -220,3 +228,73 @@ async function deleteBooking(delId) {
         bannerSec.remove();
     })
 })();
+
+window.addEventListener("load", async () => {
+    let pgCount = document.querySelector(".pageCount");
+    let orgId = document.querySelector(".ogid").innerText;
+    let orgUsrId = document.querySelector(".portiuserid").innerText;
+    let usrId = document.querySelector(".curloguser").innerText;
+    if (pgCount.innerText === "") {
+        pgCount.innerText = 0;
+    }
+    if (orgUsrId !== "" && usrId !== "") {
+        if (orgUsrId !== usrId) {
+            let newCount = (pgCount.innerText * 1) + 1;
+            try {
+                let load = document.querySelector('.loader');
+                load.classList.remove("hidden")
+                const endpoint = `/api/v1/brochure/${orgId}/updateOrg`
+                await fetch(endpoint, {
+                    method: 'PATCH',
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        pageCount: newCount
+                    })
+                }).then((response) => {
+                    load.classList.add("hidden");
+                    if (response.status === 200) {
+                    } else {
+                        console.log(response);
+                        errorAlert("Error Pg!!!")
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
+        }
+    }
+    else {
+        let newCount = (pgCount.innerText * 1) + 1;
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/brochure/${orgId}/updateOrg`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pageCount: newCount
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                } else {
+                    console.log(response);
+                    errorAlert("Error Pg!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    }
+})

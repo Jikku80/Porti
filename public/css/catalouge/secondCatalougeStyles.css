@@ -132,16 +132,27 @@ label{
     z-index: 4;
 }
 
-.resorderfill, .return__fill{
+.resorderfill{
     position: fixed;
     top: 2vh;
-    right: 4vw;
+    right: 2vw;
     z-index: 5;
     width: 1rem;
     height: 1rem;
     border-radius: 8rem;
     background-color: orangered;
 
+}
+
+.return__fill{
+    position: fixed;
+    bottom: 2vh;
+    left: 2vw;
+    z-index: 5;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 8rem;
+    background-color: orangered;
 }
 
 .restro__info, .resorder__info, .productModal, .return__sec{

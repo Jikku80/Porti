@@ -28,6 +28,9 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Booking Today : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                 <div class="order__card">
@@ -37,7 +40,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Created At: ${item.createdAt}</p>
+                                    <p>Created At: ${newdate}</p>
                                 </div>
                                 `
                         })
@@ -111,6 +114,9 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings This Week : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                     <div class="order__card">
@@ -120,7 +126,7 @@
                                         <p>Time : ${item.time}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Booking info: ${item.bookingInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
                         })
@@ -193,6 +199,9 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings Made In Last 30 Days : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                 <div class="order__card">
@@ -202,7 +211,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Created At: ${item.createdAt}</p>
+                                    <p>Created At: ${newdate}</p>
                                 </div>
                                 `
                         })
@@ -282,6 +291,9 @@
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings made in ${val} : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                 <div class="order__card">
@@ -291,7 +303,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Created At: ${item.createdAt}</p>
+                                    <p>Created At: ${newdate}</p>
                                 </div>
                             `
                         })
@@ -607,6 +619,9 @@ async function getOrderDetail(val) {
                         data = item.restroOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings : ${data.length}</h2>`
                         data.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
                                     <div class="order__card">
@@ -616,7 +631,7 @@ async function getOrderDetail(val) {
                                         <p>Time : ${item.time}</p>
                                         <p>Phone Number : ${item.phn_no}</p>
                                         <p>Booking info : ${item.bookingInfo}</p>
-                                        <p>Created At: ${item.createdAt}</p>
+                                        <p>Created At: ${newdate}</p>
                                     </div>
                                 `
                         })

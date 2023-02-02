@@ -85,6 +85,7 @@ const companySchema = new mongoose.Schema({
     theme: {
         type: String
     },
+    pageCount: Number,
     createdAt: {
         type: Date,
         default: Date.now()

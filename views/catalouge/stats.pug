@@ -12,6 +12,9 @@ block content
         if (company[0])
             include ../_header
             .statUserTheme.hidden= user.theme
+            .pageCount_sec
+                p.txt.opn Page Views : 
+                    span.txt= company[0].pageCount
             .restro__stat__sec
                 .restro__stat__bod
                     h1.txt.stathead= `${company[0].name} Statistics`

@@ -40,6 +40,7 @@ const restaurantSchema = new mongoose.Schema({
         default: false
     },
     coverImage: String,
+    pageCount: Number,
     createdAt: {
         type: Date,
         default: Date.now()

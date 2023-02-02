@@ -131,6 +131,7 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
         Address: req.body.address,
         theme: req.body.theme,
         phn_no: req.body.phn_no,
+        resType: req.body.resType,
         createdAt: Date.now()
     });
 
@@ -145,6 +146,27 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
 exports.updateRestaurant = catchAsync(async (req, res, next) => {
 
     const updatedRestro = await Restaurant.findByIdAndUpdate(req.params.id, req.body,
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedRestro) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            restro: updatedRestro
+        }
+    })
+})
+
+exports.updateResPg = catchAsync(async (req, res, next) => {
+
+    const updatedRestro = await Restaurant.findByIdAndUpdate(req.params.id, {
+        $set: { pageCount: req.body.pageCount }
+    },
         {
             new: true,
             runValidators: true

@@ -148,4 +148,23 @@ exports.updateInviCoverImg = catchAsync(async (req, res, next) => {
 });
 
 
+exports.updateInPg = catchAsync(async (req, res, next) => {
 
+    const updatedOrganization = await Invite.findByIdAndUpdate(req.params.id, {
+        $set: { pageCount: req.body.pageCount }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedOrganization) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            company: updatedOrganization
+        }
+    })
+});

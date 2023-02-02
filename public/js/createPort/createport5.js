@@ -20,6 +20,10 @@ formLayoutFive.innerHTML = `
         <input id="fifthname" class="form__input" name="portname" type="text" placeholder="TechMafia" required/>
     </div>
     <div class="form__cont">
+        <label class="form__label">Occupation:</label>
+        <input id="fifthrole" class="form__input" name="role" type="text" placeholder="Artist, Photographer" required/>
+    </div>
+    <div class="form__cont">
         <label class="form__label">About Your Portfolio</label>
         <textarea id="fifthabout" class="form__input" name="aboutyou" rows="4" cols="50" placeholder="TechMafia is a ...." required></textarea>
     </div>

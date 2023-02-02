@@ -477,6 +477,11 @@
     text-align: left !important;
 }
 
+.guidlink{
+    font-variant: normal;
+    margin: 0;
+}
+
 .shwbtn{
     padding: 2%;
     border: 2px solid rgb(54, 219, 54);
