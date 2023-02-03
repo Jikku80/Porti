@@ -5,9 +5,11 @@
     let brodate = document.getElementById("brodate");
     let brotodate = document.getElementById("brotodate");
     let brotime = document.getElementById("brotime");
+    let bromsg = document.getElementById("bromsg");
     let bookBtn = document.getElementById("bookBtn");
     let userId = document.querySelector(".curUserId").innerText;
     let orgid = document.querySelector(".orgid").innerText;
+    let curorgName = document.querySelector(".pageName").innerText;
     let alrt = document.querySelector(".bkalert")
     let socket = io();
 
@@ -37,6 +39,9 @@
         if (brodate.value == "") {
             return false;
         }
+        if (bromsg.value == "") {
+            return false;
+        }
         e.preventDefault();
         socket.emit("brobooking", orgid)
         try {
@@ -54,10 +59,12 @@
                     userId: userId,
                     phn_no: brophn.value,
                     organization: orgid,
+                    organizationName: curorgName,
                     numberPeople: bronum.value,
                     date: brodate.value,
                     todate: brotodate.value,
                     time: brotime.value,
+                    message: bromsg.value,
                     createdAt: Date.now()
                 })
             }).then((response) => {
@@ -70,7 +77,8 @@
                     bronum.value = "";
                     brodate.value = "";
                     brotodate.value = "";
-                    brotime.value = ""
+                    brotime.value = "";
+                    bromsg.value = "";
                 } else {
                     console.log(response);
                     errorAlert("Invalid input, Duplication Input error!!!")
@@ -113,6 +121,7 @@ async function getAllUserBookings() {
                                     <p>Booking From : ${el.date}</p>
                                     <p>Booking Till : ${el.todate}</p>
                                     <p>Time : ${el.time}</p>
+                                    <p>Message : ${el.message}</p>
                                     <p class="bookinfo">Your Booking Has been ${el.bookingInfo}</p>
                                 </div>
                             `
@@ -125,6 +134,7 @@ async function getAllUserBookings() {
                                     <p>No. of people : ${el.numberPeople}</p>
                                     <p>Date : ${el.date}</p>
                                     <p>Time : ${el.time}</p>
+                                    <p>Message : ${el.message}</p>
                                     <p class="bookinfo">Your Booking Has been ${el.bookingInfo}</p>
                                 </div>
                             `
@@ -140,6 +150,7 @@ async function getAllUserBookings() {
                                     <p>Booking From : ${el.date}</p>
                                     <p>Booking Till : ${el.todate}</p>
                                     <p>Time : ${el.time}</p>
+                                    <p>Message : ${el.message}</p>
                                     <p class="bookinfo bink">Waiting for booking response...</p>
                                     <button id="${el._id}" class="blackbtn deleteBooking">Cancel Booking</button>
                                 </div>
@@ -153,6 +164,7 @@ async function getAllUserBookings() {
                                         <p>No. of people : ${el.numberPeople}</p>
                                         <p>Date : ${el.date}</p>
                                         <p>Time : ${el.time}</p>
+                                        <p>Message : ${el.message}</p>
                                         <p class="bookinfo bink">Waiting for booking response...</p>
                                         <button id="${el._id}" class="blackbtn deleteBooking">Cancel Booking</button>
                                     </div>

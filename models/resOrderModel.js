@@ -13,6 +13,10 @@ const resOrderSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    restroName: {
+        type: String,
+        trim: true
+    },
     message: {
         type: String,
         trim: true,

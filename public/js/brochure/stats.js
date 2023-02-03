@@ -40,6 +40,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Message : ${item.message}</p>
                                     <p>Created At: ${newdate}</p>
                                 </div>
                                 `
@@ -126,6 +127,7 @@
                                         <p>Time : ${item.time}</p>
                                         <p>Phone Number: ${item.phn_no}</p>
                                         <p>Booking info: ${item.bookingInfo}</p>
+                                        <p>Message : ${item.message}</p>
                                         <p>Created At: ${newdate}</p>
                                     </div>
                                 `
@@ -211,6 +213,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Message : ${item.message}</p>
                                     <p>Created At: ${newdate}</p>
                                 </div>
                                 `
@@ -303,6 +306,7 @@
                                     <p>Time : ${item.time}</p>
                                     <p>Phone Number: ${item.phn_no}</p>
                                     <p>Booking info: ${item.bookingInfo}</p>
+                                    <p>Message : ${item.message}</p>
                                     <p>Created At: ${newdate}</p>
                                 </div>
                             `
@@ -413,9 +417,9 @@ function getOrderBar(data, elem) {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Confirmed Amount", "Cancelled & Leftout Amount"],
+            labels: ["Confirmed", "Cancel & Left"],
             datasets: [{
-                label: 'Order Amount Chart',
+                label: 'Amount Chart',
                 data: data,
                 backgroundColor: [
                     'rgb(255, 205, 86)',
@@ -441,7 +445,7 @@ function getOrderBar(data, elem) {
                 legend: {
                     labels: {
                         font: {
-                            size: 20
+                            size: 16
                         }
                     }
                 }
@@ -631,6 +635,7 @@ async function getOrderDetail(val) {
                                         <p>Time : ${item.time}</p>
                                         <p>Phone Number : ${item.phn_no}</p>
                                         <p>Booking info : ${item.bookingInfo}</p>
+                                        <p>Message : ${item.message}</p>
                                         <p>Created At: ${newdate}</p>
                                     </div>
                                 `

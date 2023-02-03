@@ -7,6 +7,7 @@ block content
         span.grn t
         span.nocaps i
     .pageCount.hidden= company.pageCount
+    .pageName.hidden= company.name
     if (user)
         if (user.id !== company.user.id)
             h1.msg__user__btn &#9993;

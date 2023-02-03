@@ -21,6 +21,11 @@ const Theme = require('./../models/themeModel');
 const Brochure = require('./../models/brochureModel');
 const Organization = require('./../models/organizationModel');
 const BrochureBanner = require('./../models/brochureBannerModel');
+const ResOrder = require('./../models/resOrderModel');
+const ComOrder = require('./../models/comOrderModel');
+const Booking = require('./../models/bookModel');
+const ResReserve = require('./../models/reserveModel');
+const ComReturn = require('./../models/returnModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -612,5 +617,109 @@ exports.searchPage = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.expPage = catchAsync(async (req, res, next) => {
+    let pg;
 
+    if (req.query.book !== undefined) {
+        newpg = (req.query.book) * 1
+        pg = newpg;
+        let booking = new APIFeatures(Booking.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let book = await booking.query
 
+        res.status(200).json({
+            status: 'success',
+            book
+        })
+    }
+    else if (req.query.food !== undefined) {
+        newpg = (req.query.food) * 1
+        pg = newpg;
+        let foo = new APIFeatures(ResOrder.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let food = await foo.query
+
+        res.status(200).json({
+            status: 'success',
+            food
+        })
+    }
+    else if (req.query.product !== undefined) {
+        newpg = (req.query.product) * 1
+        pg = newpg;
+        let prod = new APIFeatures(ComOrder.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let product = await prod.query
+
+        res.status(200).json({
+            status: 'success',
+            product
+        })
+    }
+    else if (req.query.table !== undefined) {
+        newpg = (req.query.table) * 1
+        pg = newpg;
+        let resRes = new APIFeatures(ResReserve.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let table = await resRes.query
+
+        res.status(200).json({
+            status: 'success',
+            table
+        })
+    }
+    else if (req.query.itemreturn !== undefined) {
+        newpg = (req.query.itemreturn) * 1
+        pg = newpg;
+        let prodreturn = new APIFeatures(ComReturn.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let itemreturn = await prodreturn.query
+
+        res.status(200).json({
+            status: 'success',
+            itemreturn
+        })
+    }
+    else {
+        pg = 1;
+        let resordrs = await ResOrder.find({ userId: req.params.id });
+        let resord = new APIFeatures(ResOrder.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let resorders = await resord.query
+        let comordrs = await ComOrder.find({ userId: req.params.id });
+        let comord = new APIFeatures(ComOrder.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let comorders = await comord.query
+        let booking = new APIFeatures(Booking.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let bookings = await booking.query
+        let coreturn = new APIFeatures(ComReturn.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let comreturn = await coreturn.query
+        let resresve = new APIFeatures(ResReserve.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let resreserve = await resresve.query
+
+        let restotal = [];
+        let comtotal = [];
+
+        if (resordrs.length !== 0) {
+            resordrs.filter(item => {
+                if (item.orderInfo == "confirmed") {
+                    restotal.push(item.total)
+                }
+            })
+        }
+        if (comordrs.length !== 0) {
+            comordrs.filter(item => {
+                if (item.orderInfo == "confirmed") {
+                    comtotal.push(item.total);
+                }
+            })
+        }
+
+        const totalresexp = restotal.reduce((a, b) => a + b, 0)
+        const totalcomexp = comtotal.reduce((a, b) => a + b, 0)
+
+        res.status(200).render('expense', {
+            title: 'Activity Tracker',
+            resorders,
+            comorders,
+            bookings,
+            totalresexp,
+            totalcomexp,
+            comreturn,
+            resreserve
+        })
+    }
+})

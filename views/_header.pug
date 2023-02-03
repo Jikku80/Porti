@@ -40,6 +40,7 @@
             #menuBrochureStats.anavi.hidden
         a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
         a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
+        a#exp.anavi(href=`/activity/${user._id}/tracker` title="your expenses") Activity
         #logout.logout.pointer SignOut
 
 script(src="/js/alert.js")  

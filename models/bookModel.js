@@ -13,11 +13,19 @@ const orgBookSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    organizationName: {
+        type: String,
+        trim: true
+    },
     numberPeople: {
         type: String,
         trim: true
     },
     date: {
+        type: String,
+        trim: true
+    },
+    message: {
         type: String,
         trim: true
     },

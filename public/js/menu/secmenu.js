@@ -398,6 +398,7 @@ window.addEventListener("load", () => {
     let orderadd = document.getElementById("resordadd");
     let orderphn = document.getElementById("resordphn");
     let secalrt = document.getElementById("secmsgalert");
+    let curResName = document.querySelector(".pageName").innerText;
     let orderuserid = document.getElementById("uniqueuserid");
     let homeDel;
 
@@ -488,6 +489,7 @@ window.addEventListener("load", () => {
                     phn_no: orderphn.value,
                     homedelivery: homeDel,
                     total: sumTotal,
+                    retroName: curResName,
                     createdAt: Date.now()
                 })
             }).then((response) => {
@@ -1139,6 +1141,7 @@ async function getAllLikeCount() {
     let time = document.getElementById("reservetime");
     let phn = document.getElementById("reservephn");
     let pep = document.getElementById("reserveno");
+    let crResName = document.querySelector(".pageName").innerText;
     let reservebtn = document.getElementById("reservereq");
     let socket = io();
 
@@ -1209,6 +1212,7 @@ async function getAllLikeCount() {
                     time: time.value,
                     phn_no: phn.value,
                     userId: usrId,
+                    restroName: crResName,
                     createdAt: Date.now()
                 })
             }).then((response) => {

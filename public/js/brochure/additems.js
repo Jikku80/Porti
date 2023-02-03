@@ -423,6 +423,7 @@ async function getAllCatMsg() {
                                     <p class="hidden">${el.userId}</p>
                                     <p class="hidden">${el.time}</p>
                                     <p class="hidden">${el.todate}</p>
+                                    <p class="hidden">${el.message}</p>
                                 </div>
                             `
                         }
@@ -444,6 +445,7 @@ async function getAllCatMsg() {
                                     <p class="hidden">${el.userId}</p>
                                     <p class="hidden">${el.time}</p>
                                     <p class="hidden">${el.todate}</p>
+                                    <p class="hidden">${el.message}</p>
                                 </div>
                             `
                         }
@@ -474,7 +476,8 @@ async function getAllCatMsg() {
                             let usrID = item.childNodes[15].innerText;
                             let time = item.childNodes[17].innerText;
                             let todate = item.childNodes[19].innerText;
-                            console.log(todate)
+                            let msg = item.childNodes[21].innerText;
+
                             msgmidsec.classList.add("hidden");
                             msgRev.classList.remove("hidden");
                             tablePlace.innerText = usr;
@@ -493,6 +496,7 @@ async function getAllCatMsg() {
                                         <p class="ordermsg">${time}</p>
                                         <p>Phone No : </p>
                                         <p class="ordermsg">${phn}</p>
+                                        <p class="ordermsg">${msg}</p>
                                         <p class="rdorng hidden">Total Order Price : ${total}</p>
                                             <div class="grp__button hidden">
                                                 <button class="confirmord ordbtn">Confirm</button>
@@ -514,6 +518,7 @@ async function getAllCatMsg() {
                                             <p class="ordermsg">${time}</p>
                                             <p>Phone No : </p>
                                             <p class="ordermsg">${phn}</p>
+                                            <p class="ordermsg">${msg}</p>
                                             <p class="rdorng hidden">Total Order Price : ${total}</p>
                                                 <div class="grp__button hidden">
                                                     <button class="confirmord ordbtn">Confirm</button>
@@ -539,6 +544,7 @@ async function getAllCatMsg() {
                                             <p class="ordermsg">${time}</p>
                                             <p>Phone No : </p>
                                             <p class="ordermsg">${phn}</p>
+                                            <p class="ordermsg">${msg}</p>
                                             <p class="rdorng hidden">Order Total : ${total} </p>
                                             <div class="grp__button">
                                                 <button class="confirmord ordbtn">Confirm</button>
@@ -559,6 +565,7 @@ async function getAllCatMsg() {
                                                 <p class="ordermsg">${time}</p>
                                                 <p>Phone No : </p>
                                                 <p class="ordermsg">${phn}</p>
+                                                <p class="ordermsg">${msg}</p>
                                                 <p class="rdorng hidden">Order Total : ${total} </p>
                                                 <div class="grp__button">
                                                     <button class="confirmord ordbtn">Confirm</button>

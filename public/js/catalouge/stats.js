@@ -441,7 +441,7 @@ function getOrderBar(data, elem) {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Confirmed Amount", "Cancelled & Leftout Amount"],
+            labels: ["Confirmed", "Cancel & Left"],
             datasets: [{
                 label: 'Order Amount Chart',
                 data: data,

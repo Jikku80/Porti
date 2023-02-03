@@ -9,6 +9,7 @@ block content
             span.nocaps.td i
     .pageCount.hidden= organization.pageCount
     .ogid.hidden= organization.id
+    .pageName.hidden= organization.name
     if (user)
         if (user.id !== organization.user.id)
             h1.msg__user__btn &#9993;
@@ -119,6 +120,9 @@ block content
                     .form__bod 
                         label.form__label Time :
                         input#brotime.for__input(type="time" required)
+                    .form__bod 
+                        label.form__label Message : 
+                        textarea#bromsg.for__input(type="text" required)
 
                     button#bookBtn.blackbtn Book Now
             else 

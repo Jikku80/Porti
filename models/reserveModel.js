@@ -17,6 +17,10 @@ const resReserveSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    restroName: {
+        type: String,
+        trim: true
+    },
     time: {
         type: String,
         trim: true

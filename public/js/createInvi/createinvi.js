@@ -118,9 +118,6 @@ inviLayouts.forEach(item => {
     })
 });
 
-console.log()
-console.log(broBod.childNodes.length)
-
 let cancelInvite = document.querySelector(".cancel__invite");
 cancelInvite.addEventListener("click", () => {
     mkForm.classList.add("hidden");

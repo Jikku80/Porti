@@ -325,6 +325,8 @@ let jar = [];
         let catalusrName = document.querySelector("#thiscurrentcompusrname").innerText;
         let curLogUserName = document.getElementById("uniquecompusername").innerText;
         let curLogUserId = document.getElementById("uniquecompuserid").innerText;
+        let curComName = document.querySelector(".pageName").innerText;
+
         let usrName = catalusrName + "-" + curLogUserName
         let itemPriceList = [];
         let qList = [];
@@ -372,6 +374,7 @@ let jar = [];
                 },
                 body: JSON.stringify({
                     company: compid.value,
+                    companyName: curComName,
                     message: resmsg.value,
                     name: orderuser.innerText,
                     userId: curLogUserId,
@@ -1826,6 +1829,7 @@ async function updateProductQuantity(id, quantity) {
     let phn = document.getElementById("returnphn");
     let returnname = document.getElementById("returnname");
     let reservebtn = document.getElementById("returnreq");
+    let curComName = document.querySelector(".pageName").innerText;
     let socket = io();
 
     let reserveDummybtn = document.querySelector(".return__btn");
@@ -1889,6 +1893,7 @@ async function updateProductQuantity(id, quantity) {
                 },
                 body: JSON.stringify({
                     company: restroId,
+                    companyName: curComName,
                     name: usr.value,
                     message: returnmsg.value,
                     date: date.value,

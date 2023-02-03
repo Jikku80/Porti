@@ -520,7 +520,7 @@ function getOrderBar(data, elem) {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Restaurant Orders", "Home Orders"],
+            labels: ["Restaurant", "Home"],
             datasets: [{
                 label: 'Order Type Chart',
                 data: data,

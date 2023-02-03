@@ -30,23 +30,24 @@
     let restroStat = document.getElementById("menuMenuStats");
     let catStat = document.getElementById("menuCatalogeStats");
     let orgStat = document.getElementById("menuBrochureStats");
+    let exp = document.getElementById("exp");
 
     let pathName = window.location.pathname;
 
-    if (pathName === "/inspire") {
+    if (pathName.match(/inspire/gi)) {
         search.style.color = "greenyellow";
         search.style.fontWeight = "bold";
         search.style.borderBottom = "2px solid white"
         return;
     }
 
-    if (pathName === "/me") {
+    if (pathName.match(/me/gi)) {
         menuImg.style.filter = "grayscale(.7)";
         menuImg.style.borderBottom = "2px solid white"
         return;
     }
 
-    if (pathName === "/porti") {
+    if (pathName.match(/layouts/gi)) {
         layouts.style.color = "greenyellow";
         layouts.style.fontWeight = "bold";
         layouts.style.borderBottom = "2px solid white"
@@ -108,6 +109,13 @@
         brochure.style.borderBottom = "2px solid white"
         return;
     }
+
+    if (pathName.match(/activity/gi)) {
+        exp.style.color = "greenyellow";
+        exp.style.fontWeight = "bold";
+        exp.style.borderBottom = "2px solid white"
+        return;
+    }
 })();
 
 
@@ -125,6 +133,11 @@
     let menu = document.getElementById("menuMenu");
     let cataloge = document.getElementById("menuCataloge");
     let menuImg = document.getElementById("menuImg");
+
+    let restroStat = document.getElementById("menuMenuStats");
+    let catStat = document.getElementById("menuCatalogeStats");
+    let orgStat = document.getElementById("menuBrochureStats");
+    let exp = document.getElementById("exp");
 
     let menusiz = document.querySelector(".menu__size");
 
@@ -152,20 +165,20 @@
             item.style.color = "black";
         })
 
-        if (pathName === "/inspire") {
+        if (pathName.match(/inspire/gi)) {
             search.style.color = "chartreuse";
             search.style.fontWeight = "bold";
             search.style.borderBottom = "2px solid black"
             return;
         }
 
-        if (pathName === "/me") {
+        if (pathName.match(/me/gi)) {
             menuImg.style.filter = "grayscale(.7)";
             menuImg.style.borderBottom = "2px solid chartreuse"
             return;
         }
 
-        if (pathName === "/porti") {
+        if (pathName.match(/layouts/gi)) {
             layouts.style.color = "chartreuse";
             layouts.style.fontWeight = "bold";
             layouts.style.borderBottom = "2px solid black"
@@ -197,6 +210,40 @@
             cataloge.style.color = "chartreuse";
             cataloge.style.fontWeight = "bold";
             cataloge.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/restrostat/gi)) {
+            restroStat.style.color = "chartreuse";
+            restroStat.style.fontWeight = "bold";
+            restroStat.style.borderBottom = "2px solid black"
+            return;
+        }
+        if (pathName.match(/companystat/gi)) {
+            catStat.style.color = "chartreuse";
+            catStat.style.fontWeight = "bold";
+            catStat.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/organizationstat/gi)) {
+            orgStat.style.color = "chartreuse";
+            orgStat.style.fontWeight = "bold";
+            orgStat.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/brochure/gi)) {
+            brochure.style.color = "chartreuse";
+            brochure.style.fontWeight = "bold";
+            brochure.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/activity/gi)) {
+            exp.style.color = "chartreuse";
+            exp.style.fontWeight = "bold";
+            exp.style.borderBottom = "2px solid black"
             return;
         }
     }

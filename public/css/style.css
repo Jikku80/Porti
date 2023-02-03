@@ -1152,6 +1152,97 @@ input::file-selector-button, ::-webkit-file-upload-button{
   justify-content: space-around;
 }
 
+.expense__sec{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exp__bod{
+  width: 84%;
+}
+
+.exp__nav ul{
+  display: flex;
+  justify-content: space-around;
+}
+
+.exp__nav li a{ 
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.exp__nav li a:hover{
+  color: goldenrod;
+}
+
+.exp_foot{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exp__charts{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.308);
+  margin: 2%;
+}
+
+.bar{
+  width: 30vw !important;
+  height: 30vh !important;
+}
+
+.pie{
+  width: 25vw !important;
+  height: 25vw !important;
+}
+
+.exp__bod__inner{
+  background-color: rgba(0, 0, 0, 0.308);
+  padding: 2%;
+  margin: 2%;
+}
+
+.exp__items {
+  background-color: #131313;
+  padding: 1%;
+  margin: 1%;
+}
+
+.exp__items__grp{
+  display: flex;
+  justify-content: space-around;
+}
+
+.exp__paginate{
+  display: flex;
+  justify-content: space-around;
+}
+
+.exppagibtn{
+  margin: 1%;
+  padding: 1%;
+  color: gray;
+  border: 1px solid gray;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.exppagibtn:hover{
+  background-color: gray;
+  color: white;
+}
+
+.cnt{
+  text-align: center;
+}
+
+.go__back{
+  color: goldenrod;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
   .navigation a{
     font-size: 1.8vw;
@@ -1247,6 +1338,16 @@ input::file-selector-button, ::-webkit-file-upload-button{
   .redbtn{
     padding: 2%;
   }
+
+  .bar{
+    width: 30vw !important;
+    height: 15vh !important;
+  }
+
+  .pie{
+    width: 40vw !important;
+    height: 40vw !important;
+}
 
 }
 
@@ -1402,6 +1503,16 @@ input::file-selector-button, ::-webkit-file-upload-button{
     padding: 2vw;
   }
 
+  .exp__bod{
+    width: 100%;
+    padding: 2vw;
+  }
+
+  .exp__charts{
+    display: flex;
+    flex-direction: column;
+  }
+
   .footer{
     width: 100%;
   }
@@ -1427,7 +1538,18 @@ input::file-selector-button, ::-webkit-file-upload-button{
   .footer__first__bod, .footer__sec__bod{
     flex-direction: column;
     text-align: center;
-}
+  }
+
+  .bar{
+    width: 80vw !important;
+    font-size: 16px !important;
+  }
+
+  .pie{
+    width: 60vw !important;
+    height: 60vw !important;
+    margin-bottom: 4%;
+  }
 
 }
 
