@@ -13,7 +13,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/brochure/getToday/${restroid}`
+            const endpoint = `/api/v1/brochure/${restroid}/getToday`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -33,18 +33,27 @@
                             let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
-                                <div class="order__card">
-                                    <p>From : ${item.name}</p>
-                                    <p>Total People : ${item.numberPeople}</p>
-                                    <p>Date : ${item.date}</p>
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
                                     <p>Time : ${item.time}</p>
-                                    <p>Phone Number: ${item.phn_no}</p>
-                                    <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Message : ${item.message}</p>
-                                    <p>Created At: ${newdate}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
                                 </div>
-                                `
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
                         })
+                        let dy = document.querySelector(".daysec")
+                        dy.classList.remove("hidden");
+                        let daynext = document.querySelector(".daynext");
+                        if (orderlistbod.children.length == 20) {
+                            daynext.classList.remove("hidden");
+                        }
                         list = []
                         list.push(item.totalConfirm);
                         list.push(item.totalCanceled);
@@ -100,7 +109,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/brochure/getWeek/${restroid}`
+            const endpoint = `/api/v1/brochure/${restroid}/getWeek`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -112,26 +121,36 @@
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.resOrders;
+                        let data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings This Week : ${data.length}</h2>`
-                        data.forEach(item => {
+                        let boodata = item.bookings;
+                        boodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Total People : ${item.numberPeople}</p>
-                                        <p>Date : ${item.date}</p>
-                                        <p>Time : ${item.time}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Booking info: ${item.bookingInfo}</p>
-                                        <p>Message : ${item.message}</p>
-                                        <p>Created At: ${newdate}</p>
-                                    </div>
-                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
                         })
+                        let wk = document.querySelector(".weeksec")
+                        wk.classList.remove("hidden");
+                        let weeknext = document.querySelector(".weeknext");
+                        if (orderlistbod.children.length == 20) {
+                            weeknext.classList.remove("hidden");
+                        }
                         successAlert("Last Week Orders :)");
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -186,7 +205,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/brochure/getMonth/${restroid}`
+            const endpoint = `/api/v1/brochure/${restroid}/getMonth`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -198,26 +217,36 @@
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.resOrders;
+                        let data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings Made In Last 30 Days : ${data.length}</h2>`
-                        data.forEach(item => {
+                        let mndata = item.bookings
+                        mndata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
-                                <div class="order__card">
-                                    <p>From : ${item.name}</p>
-                                    <p>Total People : ${item.numberPeople}</p>
-                                    <p>Date : ${item.date}</p>
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
                                     <p>Time : ${item.time}</p>
-                                    <p>Phone Number: ${item.phn_no}</p>
-                                    <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Message : ${item.message}</p>
-                                    <p>Created At: ${newdate}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
                                 </div>
-                                `
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
                         })
+                        let moth = document.querySelector(".monthsec")
+                        moth.classList.remove("hidden");
+                        let monthnext = document.querySelector(".monthnext");
+                        if (orderlistbod.children.length == 20) {
+                            monthnext.classList.remove("hidden");
+                        }
                         list = []
                         list.push(item.totalConfirm);
                         list.push(item.totalCanceled);
@@ -276,10 +305,11 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
+            let bymonth = document.querySelector(".bymonthsec");
             let yrv = yearVal.value;
             let mtv = monthVal.value;
             let val = `${mtv}-${yrv}`;
-            const endpoint = `/api/v1/brochure/byMonth/${restroid}/find/${val}`
+            const endpoint = `/api/v1/brochure/by/${restroid}/find/${val}/Month`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -293,24 +323,33 @@
                     res.then(item => {
                         data = item.resOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Bookings made in ${val} : ${data.length}</h2>`
-                        data.forEach(item => {
+                        let monthdata = item.foodOrders
+                        monthdata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
-                                <div class="order__card">
-                                    <p>From : ${item.name}</p>
-                                    <p>Total People : ${item.numberPeople}</p>
-                                    <p>Date : ${item.date}</p>
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
                                     <p>Time : ${item.time}</p>
-                                    <p>Phone Number: ${item.phn_no}</p>
-                                    <p>Booking info: ${item.bookingInfo}</p>
-                                    <p>Message : ${item.message}</p>
-                                    <p>Created At: ${newdate}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
                                 </div>
-                            `
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
                         })
+                        bymonth.classList.remove("hidden");
+                        let bymonthnext = document.querySelector(".bymonthnext");
+                        if (orderlistbod.children.length == 20) {
+                            bymonthnext.classList.remove("hidden");
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -491,7 +530,6 @@ window.addEventListener("load", async () => {
 async function getOrderDetail(val) {
     try {
         let load = document.querySelector('.loader');
-
         load.classList.remove("hidden");
         let totaldisp = document.querySelector(".alltimetotalorder");
         const endpoint = `/api/v1/brochure/orderDetails/${val}`
@@ -608,7 +646,7 @@ async function getOrderDetail(val) {
             if (!curbymonthpie.classList.contains("hidden")) {
                 curbymonthpie.classList.add("hidden");
             }
-            const endpoint = `/api/v1/brochure/getRes/${restroid}`
+            const endpoint = `/api/v1/brochure/${restroid}/getRes`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -629,17 +667,26 @@ async function getOrderDetail(val) {
                             orderlistbod.innerHTML +=
                                 `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Total People : ${item.numberPeople}</p>
-                                        <p>Date : ${item.date}</p>
-                                        <p>Time : ${item.time}</p>
-                                        <p>Phone Number : ${item.phn_no}</p>
-                                        <p>Booking info : ${item.bookingInfo}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>Audience : ${item.numberPeople}</p>
+                                            <p>From : ${item.date}</p>
+                                            <p>To : ${item.todate}</p>
+                                            <p>Time : ${item.time}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Status : ${item.bookingInfo}</p>
+                                        </div>
                                         <p>Message : ${item.message}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                         })
+                        let allbook = document.querySelector(".allbooksec");
+                        allbook.classList.remove("hidden");
+                        let allnext = document.querySelector(".allbooknext");
+                        if (orderlistbod.children.length == 20) {
+                            allnext.classList.remove('hidden');
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -657,4 +704,670 @@ async function getOrderDetail(val) {
         };
     })
 
+})();
+
+(function () {
+    let x = 1;
+    let allnext = document.querySelector(".allbooknext");
+    let allprev = document.querySelector(".allbookprev");
+    let bymonthnext = document.querySelector(".bymonthnext");
+    let bymonthprev = document.querySelector(".bymonthprev");
+    let monthnext = document.querySelector(".monthnext");
+    let monthprev = document.querySelector(".monthprev");
+    let weeknext = document.querySelector(".weeknext");
+    let weekprev = document.querySelector(".weekprev");
+    let daynext = document.querySelector(".daynext");
+    let dayprev = document.querySelector(".dayprev");
+    let orderlistbod = document.querySelector(".restro__order__list");
+    let restroid = document.querySelector(".currentrestroid").innerText;
+
+    allnext.addEventListener("click", async () => {
+        let pg = ++x
+        allprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getRes?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            allnext.classList.remove("hidden");
+                        } else {
+                            allnext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            allnext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Bookings So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    allprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                allprev.classList.add("hidden")
+            }
+            allnext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getRes?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    bymonthnext.addEventListener("click", async () => {
+        let pg = ++x
+        bymonthprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            let yearVal = document.getElementById("getyear");
+            let monthVal = document.getElementById("months");
+            let yrv = yearVal.value;
+            let mtv = monthVal.value;
+            let val = `${mtv}-${yrv}`;
+            const endpoint = `/api/v1/brochure/by/${restroid}/find/${val}/Month?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            bymonthnext.classList.remove("hidden");
+                        } else {
+                            bymonthnext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            bymonthnext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Bookings So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    bymonthprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                bymonthprev.classList.add("hidden")
+            }
+            bymonthnext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            let yearVal = document.getElementById("getyear");
+            let monthVal = document.getElementById("months");
+            let yrv = yearVal.value;
+            let mtv = monthVal.value;
+            let val = `${mtv}-${yrv}`;
+            const endpoint = `/api/v1/brochure/by/${restroid}/find/${val}/Month?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    monthnext.addEventListener("click", async () => {
+        let pg = ++x
+        monthprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getMonth?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            monthnext.classList.remove("hidden");
+                        } else {
+                            monthnext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            monthnext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Bookings So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    monthprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                monthprev.classList.add("hidden")
+            }
+            monthnext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getMonth?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    weeknext.addEventListener("click", async () => {
+        let pg = ++x
+        weekprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getWeek?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            weeknext.classList.remove("hidden");
+                        } else {
+                            weeknext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            weeknext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Bookings So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    weekprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                weekprev.classList.add("hidden")
+            }
+            weeknext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getWeek?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    daynext.addEventListener("click", async () => {
+        let pg = ++x
+        dayprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getToday?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            daynext.classList.remove("hidden");
+                        } else {
+                            daynext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            daynext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Bookings So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    dayprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                dayprev.classList.add("hidden")
+            }
+            daynext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/brochure/${restroid}/getToday?book=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.bookings
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Audience : ${item.numberPeople}</p>
+                                    <p>From : ${item.date}</p>
+                                    <p>To : ${item.todate}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p>Message : ${item.message}</p>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
 })();

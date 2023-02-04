@@ -1,3 +1,50 @@
+(function () {
+    let theme = document.querySelector(".expUserTheme").innerText;
+    let bodsec = document.querySelector(".expense__sec");
+    let label = document.querySelectorAll(".txt");
+    let exps = document.querySelectorAll(".exp__items");
+    let gry = document.querySelectorAll(".gry");
+    let expIn = document.querySelectorAll(".exp__bod__inner ");
+    let chrt = document.querySelector(".exp__charts");
+
+    if (theme == "red") {
+        bodsec.style.backgroundColor = "crimson";
+        document.body.style.backgroundColor = "crimson";
+        exps.forEach(item => {
+            item.style.backgroundColor = "crimson"
+        })
+        gry.forEach(item => {
+            item.style.color = "black";
+        })
+    }
+    else if (theme == "dark") {
+        bodsec.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
+        exps.forEach(item => {
+            item.style.backgroundColor = "black"
+        })
+        expIn.forEach(item => {
+            item.style.backgroundColor = "#ffffff40"
+        })
+        chrt.style.backgroundColor = "#ffffff40"
+    }
+    else if (theme == "white") {
+        bodsec.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "white";
+        label.forEach(item => {
+            item.style.color = "black";
+        })
+        exps.forEach(item => {
+            item.style.color = "black";
+            item.style.backgroundColor = "white"
+        })
+    }
+    else {
+        return;
+    }
+})();
+
+
 function getOrderPieChart(data, elem) {
     const ctx = document.getElementById(elem);
     new Chart(ctx, {

@@ -34,15 +34,15 @@ router.delete('/brochurebanner/:id', authController.restrictTo('user', 'admin'),
 
 router.get('/brochurestat/:id', authController.restrictTo('user', 'admin'), brochureController.redirectoTobookingStats);
 
-router.get('/getToday/:org', authController.restrictTo('user', 'admin'), brochureController.getDayBooking);
-router.get('/getWeek/:org', authController.restrictTo('user', 'admin'), brochureController.getWeekBooking);
-router.get('/getMonth/:org', authController.restrictTo('user', 'admin'), brochureController.getMonthBooking);
-router.get('/byMonth/:org/find/:month', authController.restrictTo('user', 'admin'), brochureController.byMonthBooking);
+router.get('/:org/getToday?:page', authController.restrictTo('user', 'admin'), brochureController.getDayBooking);
+router.get('/:org/getWeek?:page', authController.restrictTo('user', 'admin'), brochureController.getWeekBooking);
+router.get('/:org/getMonth?:page', authController.restrictTo('user', 'admin'), brochureController.getMonthBooking);
+router.get('/by/:org/find/:month/Month?:page', authController.restrictTo('user', 'admin'), brochureController.byMonthBooking);
 
 router.get('/perday/:org', authController.restrictTo('user', 'admin'), brochureController.perDayBooking);
 router.get('/orderDetails/:id', authController.restrictTo('user', 'admin'), brochureController.getBookingDetails);
 
-router.get('/getRes/:org', authController.restrictTo('user', 'admin'), brochureController.getAllBooking);
+router.get('/:org/getRes?:page', authController.restrictTo('user', 'admin'), brochureController.getAllBooking);
 
 
 module.exports = router;

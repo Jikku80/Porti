@@ -13,7 +13,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/menu/getToday/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getToday`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -25,13 +25,14 @@
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.resOrders;
+                        let data = item.resOrders;
+                        let foodata = item.foodOrders;
                         ordcount.innerHTML = `
                         <h2 class="txtcent">Total No. of Orders Today : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
-                        data.forEach(item => {
+                        foodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
@@ -39,14 +40,16 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">   
+                                            <p>By : ${item.table}</p>
+                                            <p>Address: ${item.address}</p>
+                                            <p>Contact: ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
@@ -54,16 +57,24 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status: ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
                         })
+                        let daysec = document.querySelector(".daysec");
+                        daysec.classList.remove("hidden");
+                        let daynext = document.querySelector(".daynext");
+                        if (orderlistbod.children.length == 20) {
+                            daynext.classList.remove("hidden");
+                        }
                         list = []
                         list.push(item.totalConfirm);
                         list.push(item.totalCanceled);
@@ -121,7 +132,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/menu/getWeek/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getWeek`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -133,13 +144,14 @@
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.resOrders;
+                        let data = item.resOrders;
+                        let foodata = item.foodOrders;
                         ordcount.innerHTML = `
                         <h2 class="txtcent">Total No. of Orders This Week : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
-                        data.forEach(item => {
+                        foodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
@@ -147,14 +159,16 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
@@ -162,16 +176,24 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
                         })
+                        let weeksec = document.querySelector(".weeksec");
+                        weeksec.classList.remove("hidden");
+                        let weeknext = document.querySelector(".weeknext");
+                        if (orderlistbod.children.length == 20) {
+                            weeknext.classList.remove("hidden");
+                        }
                         successAlert("Last Week Orders :)");
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
@@ -228,7 +250,7 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            const endpoint = `/api/v1/menu/getMonth/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getMonth`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -240,13 +262,14 @@
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.resOrders;
+                        let data = item.resOrders;
+                        let foodata = item.foodOrders;
                         ordcount.innerHTML = `
                         <h2 class="txtcent">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
-                        data.forEach(item => {
+                        foodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
@@ -254,14 +277,16 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address: ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
@@ -269,16 +294,24 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
                         })
+                        let monthsec = document.querySelector(".monthsec");
+                        monthsec.classList.remove("hidden");
+                        let monthnext = document.querySelector(".monthnext");
+                        if (orderlistbod.children.length == 20) {
+                            monthnext.classList.remove("hidden");
+                        }
                         list = []
                         list.push(item.totalConfirm);
                         list.push(item.totalCanceled);
@@ -342,7 +375,7 @@
             let yrv = yearVal.value;
             let mtv = monthVal.value;
             let val = `${mtv}-${yrv}`;
-            const endpoint = `/api/v1/menu/byMonth/${restroid}/find/${val}`
+            const endpoint = `/api/v1/menu/by/${restroid}/find/${val}/Month`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -355,12 +388,13 @@
                     let res = response.json();
                     res.then(item => {
                         data = item.resOrders;
+                        let foodata = item.foodOrders;
                         ordcount.innerHTML = `
                         <h2 class="txtcent">Total No. of Orders made in ${val} : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
-                        data.forEach(item => {
+                        foodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
@@ -368,14 +402,16 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address: ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
@@ -383,16 +419,24 @@
                                 orderlistbod.innerHTML +=
                                     `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
                             }
                         })
+                        let bymonthsec = document.querySelector(".bymonthsec");
+                        bymonthsec.classList.remove("hidden");
+                        let bymonthnext = document.querySelector(".bymonthnext");
+                        if (orderlistbod.children.length == 20) {
+                            bymonthnext.classList.remove("hidden");
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -810,7 +854,7 @@ async function byMonthReserve(restro, month) {
                 curbymonthpie.classList.add("hidden");
             }
             location.hash = "#";
-            const endpoint = `/api/v1/menu/getHome/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getHome`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -822,41 +866,34 @@ async function byMonthReserve(restro, month) {
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {
-                        data = item.homeOrders;
+                        data = item.restroOrders;
                         ordcount.innerHTML = `<h2 class="txtcent">Total No. of Home Orders : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
-                                    </div>
-                                `
-                            }
                         })
+                        let homesec = document.querySelector(".homesec");
+                        homesec.classList.remove("hidden");
+                        let homenext = document.querySelector(".homenext");
+                        if (orderlistbod.children.length == 20) {
+                            homenext.classList.remove("hidden");
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -893,7 +930,7 @@ async function byMonthReserve(restro, month) {
             if (!curbymonthpie.classList.contains("hidden")) {
                 curbymonthpie.classList.add("hidden");
             }
-            const endpoint = `/api/v1/menu/getRes/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getRes`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -911,35 +948,26 @@ async function byMonthReserve(restro, month) {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
                             let newdate = dt.slice(0, 10)
-                            if (item.address && item.phn_no) {
-                                orderlistbod.innerHTML +=
-                                    `
+                            orderlistbod.innerHTML +=
+                                `
                                     <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
                                         <p>Order : ${item.message}</p>
-                                        <p>Type : ${item.table}</p>
-                                        <p>Address: ${item.address}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
-                            }
-                            else {
-                                orderlistbod.innerHTML +=
-                                    `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
-                                        <p>Order : ${item.message}</p>
-                                        <p>Table : ${item.table}</p>
-                                        <p>Total Amount : ${item.total}</p>
-                                        <p>Order info: ${item.orderInfo}</p>
-                                        <p>Created At: ${newdate}</p>
-                                    </div>
-                                `
-                            }
                         })
+                        let restosec = document.querySelector(".restosec");
+                        restosec.classList.remove("hidden");
+                        let restonext = document.querySelector(".restonext");
+                        if (orderlistbod.children.length == 20) {
+                            restonext.classList.remove("hidden");
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -976,7 +1004,7 @@ async function byMonthReserve(restro, month) {
             if (!curbymonthpie.classList.contains("hidden")) {
                 curbymonthpie.classList.add("hidden");
             }
-            const endpoint = `/api/v1/menu/getAllReserve/${restroid}`
+            const endpoint = `/api/v1/menu/${restroid}/getAllReserve`
             await fetch(endpoint, {
                 method: 'GET',
                 headers: {
@@ -996,16 +1024,24 @@ async function byMonthReserve(restro, month) {
                             let newdate = dt.slice(0, 10)
                             orderlistbod.innerHTML +=
                                 `
-                                    <div class="order__card">
-                                        <p>From : ${item.name}</p>
+                                <div class="order__card">
+                                    <p>${item.name}</p>
+                                    <div class="order__card__mid">
                                         <p>Date : ${item.date}</p>
                                         <p>Time : ${item.time}</p>
-                                        <p>Phone Number: ${item.phn_no}</p>
-                                        <p>Order info: ${item.bookingInfo}</p>
-                                        <p>Created At: ${newdate}</p>
+                                        <p>Contact : ${item.phn_no}</p>
+                                        <p>Status : ${item.bookingInfo}</p>
                                     </div>
+                                    <p class="gry">Created At: ${newdate}</p>
+                                </div>
                                 `
                         })
+                        let allresersec = document.querySelector(".allreservesec");
+                        allresersec.classList.remove("hidden");
+                        let reservenext = document.querySelector(".allreservenext");
+                        if (orderlistbod.children.length == 20) {
+                            reservenext.classList.remove("hidden");
+                        }
                         window.setTimeout(() => {
                             location.hash = "#restro__order__data";
                         }, 200)
@@ -1071,3 +1107,1045 @@ async function mostLiked() {
 mostLiked();
 
 
+(function () {
+    let x = 1;
+    let reservenext = document.querySelector(".allreservenext");
+    let reserveprev = document.querySelector(".allreserveprev");
+    let orderlistbod = document.querySelector(".restro__order__list");
+    let restonext = document.querySelector('.restonext');
+    let restoprev = document.querySelector('.restoprev');
+    let homenext = document.querySelector('.homenext');
+    let homeprev = document.querySelector('.homeprev');
+
+    let bymonthnext = document.querySelector('.bymonthnext');
+    let bymonthprev = document.querySelector('.bymonthprev');
+    let monthnext = document.querySelector('.monthnext');
+    let monthprev = document.querySelector('.monthprev');
+    let weeknext = document.querySelector('.weeknext');
+    let weekprev = document.querySelector('.weekprev');
+    let daynext = document.querySelector('.daynext');
+    let dayprev = document.querySelector('.dayprev');
+    let restroid = document.querySelector(".currentrestroid").innerText;
+
+    restonext.addEventListener("click", async () => {
+        let pg = ++x
+        restoprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getRes?order=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+
+                            orderlistbod.innerHTML +=
+                                `
+                                        <div class="order__card">
+                                            <p>${item.name}</p>
+                                            <div class="order__card__mid">
+                                                <p>By : ${item.table}</p>
+                                                <p>Total : ${item.total}</p>
+                                                <p>Status : ${item.orderInfo}</p>
+                                            </div>
+                                            <p>Order : ${item.message}</p>
+                                            <p class="gry">Created At: ${newdate}</p>
+                                        </div>
+                                    `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            restonext.classList.remove("hidden");
+                        } else {
+                            restonext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            restonext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    restoprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                restoprev.classList.add("hidden")
+            }
+            restonext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getRes?order=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                                        <div class="order__card">
+                                            <p>${item.name}</p>
+                                            <div class="order__card__mid">
+                                                <p>By : ${item.table}</p>
+                                                <p>Total : ${item.total}</p>
+                                                <p>Status : ${item.orderInfo}</p>
+                                            </div>
+                                            <p>Order : ${item.message}</p>
+                                            <p class="gry">Created At: ${newdate}</p>
+                                        </div>
+                                    `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    homenext.addEventListener("click", async () => {
+        let pg = ++x
+        homeprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getHome?order=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+
+                            orderlistbod.innerHTML +=
+                                `
+                                        <div class="order__card">
+                                            <p>${item.name}</p>
+                                            <div class="order__card__mid">
+                                                <p>By : ${item.table}</p>
+                                                <p>Total : ${item.total}</p>
+                                                <p>Address : ${item.address}</p>
+                                                <p>Contact : ${item.phn_no}</p>
+                                                <p>Status : ${item.orderInfo}</p>
+                                            </div>
+                                            <p>Order : ${item.message}</p>
+                                            <p class="gry">Created At: ${newdate}</p>
+                                        </div>
+                                    `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            homenext.classList.remove("hidden");
+                        } else {
+                            homenext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            homenext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    homeprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                homeprev.classList.add("hidden")
+            }
+            homenext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getHome?order=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                                        <div class="order__card">
+                                            <p>${item.name}</p>
+                                            <div class="order__card__mid">
+                                                <p>By : ${item.table}</p>
+                                                <p>Total : ${item.total}</p>
+                                                <p>Address : ${item.address}</p>
+                                                <p>Contact : ${item.phn_no}</p>
+                                                <p>Status : ${item.orderInfo}</p>
+                                            </div>
+                                            <p>Order : ${item.message}</p>
+                                            <p class="gry">Created At: ${newdate}</p>
+                                        </div>
+                                    `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    reservenext.addEventListener("click", async () => {
+        let pg = ++x
+        reserveprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getAllReserve?reserve=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                            <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Date : ${item.date}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            reservenext.classList.remove("hidden");
+                        } else {
+                            reservenext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            reservenext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Reservations So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    reserveprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                reserveprev.classList.add("hidden")
+            }
+            reservenext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getAllReserve?reserve=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.restroOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            orderlistbod.innerHTML +=
+                                `
+                                <div class="order__card">
+                                <p>${item.name}</p>
+                                <div class="order__card__mid">
+                                    <p>Date : ${item.date}</p>
+                                    <p>Time : ${item.time}</p>
+                                    <p>Contact : ${item.phn_no}</p>
+                                    <p>Status : ${item.bookingInfo}</p>
+                                </div>
+                                <p class="gry">Created At: ${newdate}</p>
+                            </div>
+                        `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    bymonthnext.addEventListener("click", async () => {
+        let pg = ++x
+        bymonthprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            let yearVal = document.getElementById("getyear");
+            let monthVal = document.getElementById("months");
+            let yrv = yearVal.value;
+            let mtv = monthVal.value;
+            let val = `${mtv}-${yrv}`;
+            const endpoint = `/api/v1/menu/by/${restroid}/find/${val}/Month?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            bymonthnext.classList.remove("hidden");
+                        } else {
+                            bymonthnext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            bymonthnext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    bymonthprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                bymonthprev.classList.add("hidden")
+            }
+            bymonthnext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            let yearVal = document.getElementById("getyear");
+            let monthVal = document.getElementById("months");
+            let yrv = yearVal.value;
+            let mtv = monthVal.value;
+            let val = `${mtv}-${yrv}`;
+            const endpoint = `/api/v1/menu/by/${restroid}/find/${val}/Month?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    monthnext.addEventListener("click", async () => {
+        let pg = ++x
+        monthprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getMonth?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            monthnext.classList.remove("hidden");
+                        } else {
+                            monthnext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            monthnext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    monthprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                monthprev.classList.add("hidden")
+            }
+            monthnext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getMonth?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    weeknext.addEventListener("click", async () => {
+        let pg = ++x
+        weekprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getWeek?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            weeknext.classList.remove("hidden");
+                        } else {
+                            weeknext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            weeknext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    weekprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                weekprev.classList.add("hidden")
+            }
+            weeknext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getWeek?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    daynext.addEventListener("click", async () => {
+        let pg = ++x
+        dayprev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getToday?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                        if (orderlistbod.children.length === 20) {
+                            daynext.classList.remove("hidden");
+                        } else {
+                            daynext.classList.add("hidden");
+                        }
+                        if (orderlistbod.innerHTML == "") {
+                            daynext.classList.add("hidden");
+                            orderlistbod.innerHTML = `<p class="go__back cnt">Oops!! Thats All of the Orders So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    dayprev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                dayprev.classList.add("hidden")
+            }
+            daynext.classList.remove("hidden");
+            orderlistbod.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/api/v1/menu/${restroid}/getToday?food=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.foodOrders
+                        items.forEach(item => {
+                            let dt = item.createdAt
+                            dt = dt.toLocaleString();
+                            let newdate = dt.slice(0, 10)
+                            if (item.address && item.phn_no) {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Address : ${item.address}</p>
+                                            <p>Contact : ${item.phn_no}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                            else {
+                                orderlistbod.innerHTML +=
+                                    `
+                                    <div class="order__card">
+                                        <p>${item.name}</p>
+                                        <div class="order__card__mid">
+                                            <p>By : ${item.table}</p>
+                                            <p>Total : ${item.total}</p>
+                                            <p>Status : ${item.orderInfo}</p>
+                                        </div>
+                                        <p>Order : ${item.message}</p>
+                                        <p class="gry">Created At: ${newdate}</p>
+                                    </div>
+                                `
+                            }
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#order_list";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+})();

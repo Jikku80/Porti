@@ -389,280 +389,465 @@ exports.getBookingStat = catchAsync(async (req, res) => {
     })
 })
 
+const pagination = function (array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+function comp(a, b) {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+}
+
 exports.getDayBooking = catchAsync(async (req, res) => {
     const id = req.params.org
-    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
-        const datas = item.filter((data) => {
-            let fullDate = data.createdAt.toString();
-            itemsDate = fullDate.slice(0, 10);
-            let datToday = new Date().toString();
-            let today = datToday.slice(0, 10)
-            return itemsDate === today
+    let pg;
+    if (req.query.book !== undefined) {
+        pg = req.query.book;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
         })
-        return datas
-    })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            bookings
+        })
+    }
+    else {
+        pg = 1;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg)
 
-    const confirmed = resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
+        })
 
-    const canceled = resOrders.filter(el => {
-        if (el.bookingInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        const confirmed = resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.bookingInfo || el.bookingInfo == null) {
-            return el
-        }
-    })
+        const canceled = resOrders.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
 
-    totalLeftOut = leftOut.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+        totalLeftOut = leftOut.length;
 
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            bookings
+        })
+    }
 })
 
 exports.getWeekBooking = catchAsync(async (req, res) => {
     const id = req.params.org
-    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
-        let datToday = new Date();
-        let dates = [];
-        let timeofDay = 60 * 60 * 24 * 1000
-        for (let i = 0; i < 7; i++) {
-            let eachday = new Date(datToday.getTime() - i * timeofDay);
-            let day = eachday.toString().slice(0, 10)
-            dates.push(day)
-        }
-        const datas = item.filter((data) => {
-            let itemdate = data.createdAt.toString();
-            let idate = itemdate.slice(0, 10)
-            if (dates.includes(idate)) {
-                return data
+    let pg;
+    if (req.query.book !== undefined) {
+        pg = req.query.book;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            bookings
+        })
+    }
+    else {
+        pg = 1;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg)
+
+        const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        const confirmed = resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = resOrders.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
             }
         })
-        return datas
-    })
+        totalCanceled = canceled.length;
 
-    const confirmed = resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
 
-    const canceled = resOrders.filter(el => {
-        if (el.bookingInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        totalLeftOut = leftOut.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.bookingInfo || el.bookingInfo == null) {
-            return el
-        }
-    })
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    totalLeftOut = leftOut.length;
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
-
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
-
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
-
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            bookings
+        })
+    }
 })
 
 exports.getMonthBooking = catchAsync(async (req, res) => {
     const id = req.params.org
-    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
-        let datToday = new Date();
-        let dates = [];
-        let timeofDay = 60 * 60 * 24 * 1000
-        for (let i = 0; i < 30; i++) {
-            let eachday = new Date(datToday.getTime() - i * timeofDay);
-            let day = eachday.toString().slice(0, 10)
-            dates.push(day)
-        }
-        const datas = item.filter((data) => {
-            let itemdate = data.createdAt.toString();
-            let idate = itemdate.slice(0, 10)
-            if (dates.includes(idate)) {
-                return data
+    let pg;
+    if (req.query.book !== undefined) {
+        pg = req.query.book;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            bookings
+        })
+    }
+    else {
+        pg = 1;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let bookings = pagination(newfoo, 20, pg);
+
+        const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        const confirmed = resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = resOrders.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
             }
         })
-        return datas
-    })
+        totalCanceled = canceled.length;
 
-    const confirmed = resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
 
-    const canceled = resOrders.filter(el => {
-        if (el.bookingInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        totalLeftOut = leftOut.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.bookingInfo || el.bookingInfo == null) {
-            return el
-        }
-    })
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    totalLeftOut = leftOut.length;
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
-
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
-
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            bookings
+        })
+    }
 
 })
 
 exports.byMonthBooking = catchAsync(async (req, res) => {
     const id = req.params.org
     const month = req.params.month
-    const resOrders = await OrgBook.find({ organization: id }).then((item) => {
-        const datas = item.filter((data) => {
-            let fullDate = data.createdAt.toString();
-            let mon = fullDate.slice(4, 7)
-            itemsDate = fullDate.slice(11, 15);
-            monthDat = `${mon}-${itemsDate}`
-            return monthDat === month
+    let pg;
+    if (req.query.book !== undefined) {
+        pg = req.query.book;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
         })
-        return datas
-    })
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            foodOrders
+        })
+    }
+    else {
+        pg = 1;
+        const foo = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
+        })
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+        const resOrders = await OrgBook.find({ organization: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
+        })
 
-    const confirmed = resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const confirmed = resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
 
-    const canceled = resOrders.filter(el => {
-        if (el.bookingInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        const canceled = resOrders.filter(el => {
+            if (el.bookingInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.bookingInfo || el.bookingInfo == null) {
-            return el
-        }
-    })
+        const leftOut = resOrders.filter(el => {
+            if (!el.bookingInfo || el.bookingInfo == null) {
+                return el
+            }
+        })
 
-    totalLeftOut = leftOut.length;
+        totalLeftOut = leftOut.length;
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.bookingInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.bookingInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            foodOrders
+        })
+    }
 
 })
 
@@ -759,10 +944,25 @@ exports.getBookingDetails = catchAsync(async (req, res) => {
 })
 
 exports.getAllBooking = catchAsync(async (req, res) => {
-    const id = req.params.org
-    const restroOrders = await OrgBook.find({ organization: id })
-    res.status(200).json({
-        status: "success",
-        restroOrders
-    })
+    if (req.query.book !== undefined) {
+        let pg = req.query.book;
+        const id = req.params.org
+        const features = new APIFeatures(OrgBook.find({ organization: id }), { limit: 20, page: pg }).srt().paginate()
+        const restroOrders = await features.query
+
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
+    else {
+        let pg = 1;
+        const id = req.params.org
+        const features = new APIFeatures(OrgBook.find({ organization: id }), { limit: 20, page: pg }).srt().paginate()
+        const restroOrders = await features.query
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
 })

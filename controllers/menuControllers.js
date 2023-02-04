@@ -847,12 +847,27 @@ exports.byMonthReserve = catchAsync(async (req, res) => {
 });
 
 exports.getAllReserve = catchAsync(async (req, res) => {
+    let pg;
     const id = req.params.restro
-    const restroOrders = await ResReserve.find({ restro: id })
+    if (req.query.reserve !== undefined) {
+        pg = req.query.reserve;
+        let features = new APIFeatures(ResReserve.find({ restro: id }), { limit: 20 }, { page: pg }).srt().paginate();
+        const restroOrders = await features.query
 
-    res.status(200).json({
-        status: "success",
-        restroOrders
-    })
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
+    else {
+        pg = 1;
+        let features = new APIFeatures(ResReserve.find({ restro: id }), { limit: 20 }, { page: pg }).srt().paginate();
+        const restroOrders = await features.query
+
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
 })
 

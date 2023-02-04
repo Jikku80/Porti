@@ -33,16 +33,16 @@ router.delete('/:id/deleteItem', authController.restrictTo('user', 'admin'), men
 router.post('/banner', authController.restrictTo('user', 'admin'), menuController.createBanner);
 router.delete('/banner/:id', authController.restrictTo('user', 'admin'), menuController.deleteBanner);
 
-router.get('/getToday/:restro', authController.restrictTo('user', 'admin'), messageController.getDayResOrder);
-router.get('/getWeek/:restro', authController.restrictTo('user', 'admin'), messageController.getWeekResOrder);
-router.get('/getMonth/:restro', authController.restrictTo('user', 'admin'), messageController.getMonthResOrder);
-router.get('/byMonth/:restro/find/:month', authController.restrictTo('user', 'admin'), messageController.byMonthResOrder);
+router.get('/:restro/getToday?:page', authController.restrictTo('user', 'admin'), messageController.getDayResOrder);
+router.get('/:restro/getWeek?:page', authController.restrictTo('user', 'admin'), messageController.getWeekResOrder);
+router.get('/:restro/getMonth?:page', authController.restrictTo('user', 'admin'), messageController.getMonthResOrder);
+router.get('/by/:restro/find/:month/Month?:page', authController.restrictTo('user', 'admin'), messageController.byMonthResOrder);
 
 router.get('/perday/:restro', authController.restrictTo('user', 'admin'), messageController.perDayResOrder);
 router.get('/orderDetails/:id', authController.restrictTo('user', 'admin'), messageController.getResOrderDetails);
 
-router.get('/getHome/:restro', authController.restrictTo('user', 'admin'), messageController.getAllHome);
-router.get('/getRes/:restro', authController.restrictTo('user', 'admin'), messageController.getAllResOrd);
+router.get('/:restro/getHome?:page', authController.restrictTo('user', 'admin'), messageController.getAllHome);
+router.get('/:restro/getRes?:page', authController.restrictTo('user', 'admin'), messageController.getAllResOrd);
 
 router.get('/mostLiked/:user', authController.restrictTo('user', 'admin'), menuController.getMostLiked);
 
@@ -62,7 +62,7 @@ router.get('/getResToday/:restro', authController.restrictTo('user', 'admin'), m
 router.get('/getResWeek/:restro', authController.restrictTo('user', 'admin'), menuController.getWeekReserve);
 router.get('/getResMonth/:restro', authController.restrictTo('user', 'admin'), menuController.getMonthReserve);
 router.get('/byResMonth/:restro/find/:month', authController.restrictTo('user', 'admin'), menuController.byMonthReserve);
-router.get('/getAllReserve/:restro', authController.restrictTo('user', 'admin'), menuController.getAllReserve);
+router.get('/:restro/getAllReserve?:page', authController.restrictTo('user', 'admin'), menuController.getAllReserve);
 
 
 module.exports = router;

@@ -164,353 +164,548 @@ exports.getComOrderStat = catchAsync(async (req, res) => {
     })
 })
 
+const pagination = function (array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+function comp(a, b) {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+}
+
 exports.getDayResOrder = catchAsync(async (req, res) => {
     const id = req.params.restro
-    const resOrders = await ResOrder.find({ restro: id }).then((item) => {
-        const datas = item.filter((data) => {
-            let fullDate = data.createdAt.toString();
-            itemsDate = fullDate.slice(0, 10);
-            let datToday = new Date().toString();
-            let today = datToday.slice(0, 10)
-            return itemsDate === today
+    let pg;
+    if (req.query.food !== undefined) {
+        pg = req.query.food
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
         })
-        return datas
-    })
 
-    const confirmed = resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
 
-    const canceled = resOrders.filter(el => {
-        if (el.orderInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        res.status(200).json({
+            status: "success",
+            foodOrders
+        })
+    }
+    else {
+        pg = 1
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
+        })
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.orderInfo || el.orderInfo == null) {
-            return el
-        }
-    })
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+        const resOrders = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                itemsDate = fullDate.slice(0, 10);
+                let datToday = new Date().toString();
+                let today = datToday.slice(0, 10)
+                return itemsDate === today
+            })
+            return datas
+        })
 
-    totalLeftOut = leftOut.length;
+        const confirmed = resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
 
-    const resOrd = resOrders.filter(el => {
-        if (el.homedelivery === false) {
-            return el
-        }
-    })
+        const canceled = resOrders.filter(el => {
+            if (el.orderInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
 
-    totalResOrd = resOrd.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.orderInfo || el.orderInfo == null) {
+                return el
+            }
+        })
 
-    const homeOrd = resOrders.filter(el => {
-        if ((el.homedelivery === true)) {
-            return el
-        }
-    })
+        totalLeftOut = leftOut.length;
 
-    totalHomeOrd = homeOrd.length;
+        const resOrd = resOrders.filter(el => {
+            if (el.homedelivery === false) {
+                return el
+            }
+        })
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+        totalResOrd = resOrd.length;
 
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+        const homeOrd = resOrders.filter(el => {
+            if ((el.homedelivery === true)) {
+                return el
+            }
+        })
 
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalResOrd,
-        totalHomeOrd,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
+        totalHomeOrd = homeOrd.length;
 
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalResOrd,
+            totalHomeOrd,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            foodOrders
+        })
+    }
 })
 
 exports.getWeekResOrder = catchAsync(async (req, res) => {
     const id = req.params.restro
-    const resOrders = await ResOrder.find({ restro: id }).then((item) => {
-        let datToday = new Date();
-        let dates = [];
-        let timeofDay = 60 * 60 * 24 * 1000
-        for (let i = 0; i < 7; i++) {
-            let eachday = new Date(datToday.getTime() - i * timeofDay);
-            let day = eachday.toString().slice(0, 10)
-            dates.push(day)
-        }
-        const datas = item.filter((data) => {
-            let itemdate = data.createdAt.toString();
-            let idate = itemdate.slice(0, 10)
-            if (dates.includes(idate)) {
-                return data
+    let pg;
+    if (req.query.food !== undefined) {
+        pg = req.query.food
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+
+        res.status(200).json({
+            status: "success",
+            foodOrders
+        })
+    }
+    else {
+        pg = 1
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+
+        const resOrders = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 7; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        const confirmed = resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = resOrders.filter(el => {
+            if (el.orderInfo === "canceled") {
+                return el
             }
         })
-        return datas
-    })
+        totalCanceled = canceled.length;
 
-    const confirmed = resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.orderInfo || el.orderInfo == null) {
+                return el
+            }
+        })
 
-    const canceled = resOrders.filter(el => {
-        if (el.orderInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        totalLeftOut = leftOut.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.orderInfo || el.orderInfo == null) {
-            return el
-        }
-    })
+        const resOrd = resOrders.filter(el => {
+            if (el.homedelivery === false) {
+                return el
+            }
+        })
 
-    totalLeftOut = leftOut.length;
+        totalResOrd = resOrd.length;
 
-    const resOrd = resOrders.filter(el => {
-        if (el.homedelivery === false) {
-            return el
-        }
-    })
+        const homeOrd = resOrders.filter(el => {
+            if ((el.homedelivery === true)) {
+                return el
+            }
+        })
 
-    totalResOrd = resOrd.length;
+        totalHomeOrd = homeOrd.length;
 
-    const homeOrd = resOrders.filter(el => {
-        if ((el.homedelivery === true)) {
-            return el
-        }
-    })
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    totalHomeOrd = homeOrd.length;
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
-
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
-
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalResOrd,
-        totalHomeOrd,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
-
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalResOrd,
+            totalHomeOrd,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            foodOrders
+        })
+    }
 })
 
 exports.getMonthResOrder = catchAsync(async (req, res) => {
     const id = req.params.restro
-    const resOrders = await ResOrder.find({ restro: id }).then((item) => {
-        let datToday = new Date();
-        let dates = [];
-        let timeofDay = 60 * 60 * 24 * 1000
-        for (let i = 0; i < 30; i++) {
-            let eachday = new Date(datToday.getTime() - i * timeofDay);
-            let day = eachday.toString().slice(0, 10)
-            dates.push(day)
-        }
-        const datas = item.filter((data) => {
-            let itemdate = data.createdAt.toString();
-            let idate = itemdate.slice(0, 10)
-            if (dates.includes(idate)) {
-                return data
+    let pg;
+    if (req.query.food !== undefined) {
+        pg = req.query.food
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+
+        res.status(200).json({
+            status: "success",
+            foodOrders
+        })
+    }
+    else {
+        pg = 1
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
+
+        const resOrders = await ResOrder.find({ restro: id }).then((item) => {
+            let datToday = new Date();
+            let dates = [];
+            let timeofDay = 60 * 60 * 24 * 1000
+            for (let i = 0; i < 30; i++) {
+                let eachday = new Date(datToday.getTime() - i * timeofDay);
+                let day = eachday.toString().slice(0, 10)
+                dates.push(day)
+            }
+            const datas = item.filter((data) => {
+                let itemdate = data.createdAt.toString();
+                let idate = itemdate.slice(0, 10)
+                if (dates.includes(idate)) {
+                    return data
+                }
+            })
+            return datas
+        })
+
+        const confirmed = resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
+
+        const canceled = resOrders.filter(el => {
+            if (el.orderInfo === "canceled") {
+                return el
             }
         })
-        return datas
-    })
+        totalCanceled = canceled.length;
 
-    const confirmed = resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        const leftOut = resOrders.filter(el => {
+            if (!el.orderInfo || el.orderInfo == null) {
+                return el
+            }
+        })
 
-    const canceled = resOrders.filter(el => {
-        if (el.orderInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        totalLeftOut = leftOut.length;
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.orderInfo || el.orderInfo == null) {
-            return el
-        }
-    })
+        const resOrd = resOrders.filter(el => {
+            if (el.homedelivery === false) {
+                return el
+            }
+        })
 
-    totalLeftOut = leftOut.length;
+        totalResOrd = resOrd.length;
 
-    const resOrd = resOrders.filter(el => {
-        if (el.homedelivery === false) {
-            return el
-        }
-    })
+        const homeOrd = resOrders.filter(el => {
+            if ((el.homedelivery === true)) {
+                return el
+            }
+        })
 
-    totalResOrd = resOrd.length;
+        totalHomeOrd = homeOrd.length;
 
-    const homeOrd = resOrders.filter(el => {
-        if ((el.homedelivery === true)) {
-            return el
-        }
-    })
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
 
-    totalHomeOrd = homeOrd.length;
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
-
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
-
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalResOrd,
-        totalHomeOrd,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
-
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalResOrd,
+            totalHomeOrd,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            foodOrders
+        })
+    }
 })
 
 exports.byMonthResOrder = catchAsync(async (req, res) => {
     const id = req.params.restro
     const month = req.params.month
-    const resOrders = await ResOrder.find({ restro: id }).then((item) => {
-        const datas = item.filter((data) => {
-            let fullDate = data.createdAt.toString();
-            let mon = fullDate.slice(4, 7)
-            itemsDate = fullDate.slice(11, 15);
-            monthDat = `${mon}-${itemsDate}`
-            return monthDat === month
+    let pg;
+    if (req.query.food !== undefined) {
+        pg = req.query.food
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
         })
-        return datas
-    })
 
-    const confirmed = resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            return el
-        };
-    })
-    totalConfirm = confirmed.length;
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
 
-    const canceled = resOrders.filter(el => {
-        if (el.orderInfo === "canceled") {
-            return el
-        }
-    })
-    totalCanceled = canceled.length;
+        res.status(200).json({
+            status: "success",
+            foodOrders
+        })
+    }
+    else {
+        pg = 1
+        let foo = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
+        })
 
-    const leftOut = resOrders.filter(el => {
-        if (!el.orderInfo || el.orderInfo == null) {
-            return el
-        }
-    })
+        let newfoo = foo.sort(comp)
+        let foodOrders = pagination(newfoo, 20, pg)
 
-    totalLeftOut = leftOut.length;
+        const resOrders = await ResOrder.find({ restro: id }).then((item) => {
+            const datas = item.filter((data) => {
+                let fullDate = data.createdAt.toString();
+                let mon = fullDate.slice(4, 7)
+                itemsDate = fullDate.slice(11, 15);
+                monthDat = `${mon}-${itemsDate}`
+                return monthDat === month
+            })
+            return datas
+        })
 
-    const resOrd = resOrders.filter(el => {
-        if (el.homedelivery === false) {
-            return el
-        }
-    })
+        const confirmed = resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                return el
+            };
+        })
+        totalConfirm = confirmed.length;
 
-    totalResOrd = resOrd.length;
+        const canceled = resOrders.filter(el => {
+            if (el.orderInfo === "canceled") {
+                return el
+            }
+        })
+        totalCanceled = canceled.length;
 
-    const homeOrd = resOrders.filter(el => {
-        if ((el.homedelivery === true)) {
-            return el
-        }
-    })
+        const leftOut = resOrders.filter(el => {
+            if (!el.orderInfo || el.orderInfo == null) {
+                return el
+            }
+        })
 
-    totalHomeOrd = homeOrd.length;
+        totalLeftOut = leftOut.length;
 
-    let confirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo === "confirmed") {
-            let amounts = el.total * 1
-            return confirmedAmountList.push(amounts);
-        }
-    })
-    const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+        const resOrd = resOrders.filter(el => {
+            if (el.homedelivery === false) {
+                return el
+            }
+        })
 
-    let unconfirmedAmountList = []
-    resOrders.filter(el => {
-        if (el.orderInfo !== "confirmed") {
-            let amounts = el.total * 1
-            return unconfirmedAmountList.push(amounts);
-        }
-    })
-    const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+        totalResOrd = resOrd.length;
 
-    res.status(200).json({
-        status: "success",
-        resOrders,
-        totalConfirm,
-        totalCanceled,
-        totalLeftOut,
-        totalResOrd,
-        totalHomeOrd,
-        totalConfirmedAmount,
-        totalUnConfirmedAmount
-    })
+        const homeOrd = resOrders.filter(el => {
+            if ((el.homedelivery === true)) {
+                return el
+            }
+        })
 
+        totalHomeOrd = homeOrd.length;
+
+        let confirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo === "confirmed") {
+                let amounts = el.total * 1
+                return confirmedAmountList.push(amounts);
+            }
+        })
+        const totalConfirmedAmount = confirmedAmountList.reduce((a, b) => a + b, 0)
+
+        let unconfirmedAmountList = []
+        resOrders.filter(el => {
+            if (el.orderInfo !== "confirmed") {
+                let amounts = el.total * 1
+                return unconfirmedAmountList.push(amounts);
+            }
+        })
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+
+        res.status(200).json({
+            status: "success",
+            resOrders,
+            totalConfirm,
+            totalCanceled,
+            totalLeftOut,
+            totalResOrd,
+            totalHomeOrd,
+            totalConfirmedAmount,
+            totalUnConfirmedAmount,
+            foodOrders
+        })
+    }
 })
 
 exports.perDayResOrder = catchAsync(async (req, res) => {
@@ -551,7 +746,6 @@ exports.perDayResOrder = catchAsync(async (req, res) => {
 
 exports.getResOrderDetails = catchAsync(async (req, res) => {
     const id = req.params.id
-
     await ResOrder.find({ restro: id }).then((item) => {
         const confirmed = item.filter(el => {
             if (el.orderInfo === "confirmed") {
@@ -620,41 +814,84 @@ exports.getResOrderDetails = catchAsync(async (req, res) => {
             totalUnConfirmedAmount
         })
     })
-
 })
 
 exports.getAllHome = catchAsync(async (req, res) => {
     const id = req.params.restro
-    const homeOrders = await ResOrder.find({ restro: id }).then(item => {
-        const data = item.filter(el => {
-            if (el.homedelivery === true) {
-                return el;
-            }
+    let pg;
+    if (req.query.order !== undefined) {
+        pg = req.query.order;
+        const restoOrders = await ResOrder.find({ restro: id }).then(item => {
+            const data = item.filter(el => {
+                if (el.homedelivery === true) {
+                    return el;
+                }
+            })
+            return data
         })
-        return data
-    })
-
-    res.status(200).json({
-        status: "success",
-        homeOrders
-    })
+        let newfoo = restoOrders.sort(comp)
+        let restroOrders = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
+    else {
+        pg = 1;
+        const restoOrders = await ResOrder.find({ restro: id }).then(item => {
+            const data = item.filter(el => {
+                if (el.homedelivery === true) {
+                    return el;
+                }
+            })
+            return data
+        })
+        let newfoo = restoOrders.sort(comp)
+        let restroOrders = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
 })
 
 exports.getAllResOrd = catchAsync(async (req, res) => {
     const id = req.params.restro
-    const restroOrders = await ResOrder.find({ restro: id }).then(item => {
-        const data = item.filter(el => {
-            if (el.homedelivery === false) {
-                return el;
-            }
+    let pg;
+    if (req.query.order !== undefined) {
+        pg = req.query.order
+        const restoOrders = await ResOrder.find({ restro: id }).then(item => {
+            const data = item.filter(el => {
+                if (el.homedelivery === false) {
+                    return el;
+                }
+            })
+            return data
         })
-        return data
-    })
-
-    res.status(200).json({
-        status: "success",
-        restroOrders
-    })
+        let newfoo = restoOrders.sort(comp)
+        let restroOrders = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
+    else {
+        pg = 1;
+        const restoOrders = await ResOrder.find({ restro: id }).then(item => {
+            const data = item.filter(el => {
+                if (el.homedelivery === false) {
+                    return el;
+                }
+            })
+            return data
+        })
+        let newfoo = restoOrders.sort(comp)
+        let restroOrders = pagination(newfoo, 20, pg)
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
 })
 
 exports.getDayComOrder = catchAsync(async (req, res) => {

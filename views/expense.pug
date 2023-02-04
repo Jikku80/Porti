@@ -21,21 +21,22 @@ block content
         p.totalres.hidden= totalresexp
         p.totalcom.hidden= totalcomexp
         p.curuserid.hidden= user._id
+        p.expUserTheme.hidden= user.theme
         .expense__sec
             .exp__bod
                 .exp__nav 
                     ul 
                         li 
-                            a(href="#res__exp") Food 
+                            a.txt(href="#res__exp") Food 
                         li 
-                            a(href="#com__exp") Product 
+                            a.txt(href="#com__exp") Product 
                         li 
-                            a(href="#org__exp") Booking 
+                            a.txt(href="#org__exp") Booking 
                         li 
-                            a(href="#reserve__exp") Reservations 
+                            a.txt(href="#reserve__exp") Reservations 
                         li 
-                            a(href="#return__exp") Returns
-                h1 Your Activity Inside Porti
+                            a.txt(href="#return__exp") Returns
+                h1.txt Your Activity Inside Porti
                 .exp__charts
                     canvas#expPie.pie
                     canvas#expBar.bar
