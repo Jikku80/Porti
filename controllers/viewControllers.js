@@ -109,6 +109,14 @@ exports.gotoInviMid = catchAsync(async (req, res) => {
     }).catch(err => console.log(err));
 })
 
+const pagination = function (array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+function comp(a, b) {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+}
+
 exports.myPort = catchAsync(async (req, res) => {
     const id = req.params.id
     const pg = 1;
@@ -524,82 +532,219 @@ exports.qrCodeGen = catchAsync(async (req, res, next) => {
 exports.searchPorti = catchAsync(async (req, res, next) => {
     const values = req.params.values;
     const lowVals = values.toLowerCase();
+    let pg;
+    let company;
+    let portfolio;
+    let restro;
+    let organization;
 
     if (lowVals == "portfolio" || lowVals == "portfolios" || lowVals == "profile" || lowVals == "profiles") {
-        const portfolio = await Portfolio.find({ searchVisible: true })
-        res.status(200).json({ status: 'success', portfolio })
-        return;
+        if (req.query.port !== undefined) {
+            pg = req.query.port
+            let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
+            const portfolio = await features.query
+            res.status(200).json({ status: 'success', portfolio })
+            return;
+        }
+        else {
+            pg = 1;
+            let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
+            const portfolio = await features.query
+            res.status(200).json({ status: 'success', portfolio })
+            return;
+        }
     }
 
     if (lowVals == "menu" || lowVals == "food menu" || lowVals == "menues" || lowVals == "menus" || lowVals == "Restaurant" || lowVals == "Resraurants" || lowVals == "restro") {
-        const restro = await Restaurant.find();
-        res.status(200).json({ status: 'success', restro })
-        return;
+        if (req.query.resto !== undefined) {
+            pg = req.query.resto;
+            let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
+            const restro = await features.query;
+            res.status(200).json({ status: 'success', restro })
+            return;
+        }
+        else {
+            pg = 1;
+            let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
+            const restro = await features.query;
+            res.status(200).json({ status: 'success', restro })
+            return;
+        }
     }
 
     if (lowVals == "catalog" || lowVals == "cataloges" || lowVals == "catalouge" || lowVals == "catalogs" || lowVals == "cataloge" || lowVals == "catalouges" || lowVals == "company" || lowVals == "companies") {
-        const company = await Company.find();
-        res.status(200).json({ status: 'success', company })
-        return;
+        if (req.query.comp !== undefined) {
+            pg = req.query.comp;
+            let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
+            const company = await features.query;
+            res.status(200).json({ status: 'success', company })
+            return;
+        }
+        else {
+            pg = 1;
+            let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
+            const company = await features.query;
+            res.status(200).json({ status: 'success', company })
+            return;
+        }
     }
 
     if (lowVals == "brochure" || lowVals == "brochures" || lowVals == "hotels" || lowVals == "hotel" || lowVals == "motel" || lowVals == "motels" || lowVals == "organization" || lowVals == "org") {
-        const organization = await Organization.find();
-        res.status(200).json({ status: 'success', organization })
-        return;
+        if (req.query.org) {
+            pg = req.query.org;
+            let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
+            const organization = await features.query;
+            res.status(200).json({ status: 'success', organization })
+            return;
+        }
+        else {
+            pg = 1;
+            let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
+            const organization = await features.query;
+            res.status(200).json({ status: 'success', organization })
+            return;
+        }
     }
 
-    const portfolio = await Portfolio.find().then(ports => {
-        const por = ports.filter(item => {
-            let lownam = (item.name).toLowerCase();
-            let lowrole = (item.role).toLowerCase();
-            if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
-                let searchVal = Portfolio.find({ name: item.name })
-                return searchVal
-            }
-            return;
-        });
-        return por
-    })
+    if (req.query.port !== undefined) {
+        pg = req.query.port
+        let foo = await Portfolio.find().then(ports => {
+            const por = ports.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowrole = (item.role).toLowerCase();
+                if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
+                    let searchVal = Portfolio.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return por
+        })
 
-    const restro = await Restaurant.find().then(resto => {
-        const restr = resto.filter(item => {
-            let lownam = (item.name).toLowerCase();
-            let lowtype = (item.resType).toLowerCase();
-            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                let searchVal = Restaurant.find({ name: item.name })
-                return searchVal
-            }
-            return;
-        });
-        return restr
-    })
+        portfolio = pagination(foo, 20, pg)
+    }
+    else {
+        pg = 1;
+        let foo = await Portfolio.find().then(ports => {
+            const por = ports.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowrole = (item.role).toLowerCase();
+                if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
+                    let searchVal = Portfolio.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return por
+        })
 
-    const company = await Company.find().then(comp => {
-        const comps = comp.filter(item => {
-            let lownam = (item.name).toLowerCase();
-            let lowtype = (item.compType).toLowerCase();
-            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                let searchVal = Company.find({ name: item.name })
-                return searchVal
-            }
-            return;
-        });
-        return comps
-    })
+        portfolio = pagination(foo, 20, pg);
+    }
 
-    const organization = await Organization.find().then(comp => {
-        const comps = comp.filter(item => {
-            let lownam = (item.name).toLowerCase();
-            let lowtype = (item.orgType).toLowerCase();
-            if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                let searchVal = Company.find({ name: item.name })
-                return searchVal
-            }
-            return;
-        });
-        return comps
-    })
+    if (req.query.resto !== undefined) {
+        pg = req.query.resto
+        const foo = await Restaurant.find().then(resto => {
+            const restr = resto.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.resType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Restaurant.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return restr
+        })
+
+        restro = pagination(foo, 20, pg)
+    }
+    else {
+        pg = 1;
+        const foo = await Restaurant.find().then(resto => {
+            const restr = resto.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.resType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Restaurant.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return restr
+        })
+
+        restro = pagination(foo, 20, pg)
+    }
+
+    if (req.query.comp !== undefined) {
+        pg = req.query.comp
+        const foo = await Company.find().then(comp => {
+            const comps = comp.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.compType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Company.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return comps
+        })
+
+        company = pagination(foo, 20, pg)
+    }
+    else {
+        pg = 1;
+        const foo = await Company.find().then(comp => {
+            const comps = comp.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.compType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Company.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return comps
+        })
+
+        company = pagination(foo, 20, pg)
+    }
+
+    if (req.query.org !== undefined) {
+        pg = req.query.org;
+        let foo = await Organization.find().then(comp => {
+            const comps = comp.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.orgType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Company.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return comps
+        })
+
+        organization = pagination(foo, 20, pg)
+    }
+    else {
+        pg = 1;
+        let foo = await Organization.find().then(comp => {
+            const comps = comp.filter(item => {
+                let lownam = (item.name).toLowerCase();
+                let lowtype = (item.orgType).toLowerCase();
+                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
+                    let searchVal = Company.find({ name: item.name })
+                    return searchVal
+                }
+                return;
+            });
+            return comps
+        })
+
+        organization = pagination(foo, 20, pg)
+    }
 
     res.status(200).json({
         status: 'success',

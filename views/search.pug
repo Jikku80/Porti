@@ -18,26 +18,39 @@ block content
             .search__body
                 .search__box
                     input#portisearch.search_bar(type="text", placeholder="Search")
-                .search__groups.hidden
+                .search__history.hidden
+                    img#cancelSearch.pointer(src="/images/cancel.png", alt="cancel search" title="cancel search")
+                .search__groups
                     .search__head 
                         h1.res Search Results
-                        img#cancelSearch.pointer(src="/images/cancel.png", alt="cancel search" title="cancel search")
-                    h1.res Portfolio
+                    h1.res#portsec Portfolio
                     .found__values.search__values
                         p.gry You can type Profile or Profiles or Portfolio or Portfolios to get all available portfolio
                         p.gry You can also search Profile with occupation eg:- Doctor, Engineer, Director, CEO, etc
-                    h1.res Menu
+                    .portfoliovalsec.exp__paginate.hidden
+                        .portfolioprev.exppagibtn.hidden Previous 
+                        .portfolionext.exppagibtn.hidden Next
+                    h1.res#menusec Menu
                     .found__menu__values.search__values 
                         p.gry You can type Menu or Menus or food menu or restro or restaurants to get all available menu
                         p.gry You can also search Menu with Restaurant Type eg:- Bakery, Cafe, Bar, Club, etc
-                    h1.res Catalog
+                    .menuvalsec.exp__paginate.hidden
+                        .menuprev.exppagibtn.hidden Previous 
+                        .menunext.exppagibtn.hidden Next
+                    h1.res#catalsec Catalog
                     .found__catalog__values.search__values 
                         p.gry You can type Companies or Company or Catalog or Catalogue or Catalog to get all available catalog
                         p.gry You can also search Catalogs with Company Type eg:- Tiles Company, Clothing, etc
-                    h1.res Brochure
+                    .catalogvalsec.exp__paginate.hidden
+                        .catalogprev.exppagibtn.hidden Previous 
+                        .catalognext.exppagibtn.hidden Next
+                    h1.res#brosec Brochure
                     .found__org__values.search__values 
-                        p.gry You can type Hotels or Organization or Motels to get all available Brochure
+                        p.gry You can type Hotels or Organization or Motels or brochure to get all available Brochure
                         p.gry You can also search Brochure with Organization Type eg:- Tiles Hotels, Clothing, etc
+                    .brochurevalsec.exp__paginate.hidden
+                        .brochureprev.exppagibtn.hidden Previous 
+                        .brochurenext.exppagibtn.hidden Next
         .creation__body
             include _footer
 

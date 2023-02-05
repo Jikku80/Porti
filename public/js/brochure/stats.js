@@ -1,3 +1,10 @@
+let allbooksec = document.querySelector(".allbooksec");
+let returnsec = document.querySelector(".returnsec");
+let bymonthsec = document.querySelector('.bymonthsec');
+let monthsec = document.querySelector(".monthsec");
+let weeksec = document.querySelector(".weeksec");
+let daysec = document.querySelector(".daysec");
+
 (function () {
     let perDayBtn = document.getElementById("getPerDay");
     let perWeekBtn = document.getElementById("getPerWeek");
@@ -48,8 +55,11 @@
                             </div>
                         `
                         })
-                        let dy = document.querySelector(".daysec")
-                        dy.classList.remove("hidden");
+                        allbooksec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.remove("hidden");
                         let daynext = document.querySelector(".daynext");
                         if (orderlistbod.children.length == 20) {
                             daynext.classList.remove("hidden");
@@ -145,8 +155,11 @@
                             </div>
                         `
                         })
-                        let wk = document.querySelector(".weeksec")
-                        wk.classList.remove("hidden");
+                        allbooksec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.remove("hidden");
+                        daysec.classList.add("hidden");
                         let weeknext = document.querySelector(".weeknext");
                         if (orderlistbod.children.length == 20) {
                             weeknext.classList.remove("hidden");
@@ -241,8 +254,11 @@
                             </div>
                         `
                         })
-                        let moth = document.querySelector(".monthsec")
-                        moth.classList.remove("hidden");
+                        allbooksec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.remove("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let monthnext = document.querySelector(".monthnext");
                         if (orderlistbod.children.length == 20) {
                             monthnext.classList.remove("hidden");
@@ -305,7 +321,6 @@
             load.classList.remove("hidden")
             orderlistbod.innerHTML = "";
             location.hash = "#";
-            let bymonth = document.querySelector(".bymonthsec");
             let yrv = yearVal.value;
             let mtv = monthVal.value;
             let val = `${mtv}-${yrv}`;
@@ -345,7 +360,11 @@
                             </div>
                         `
                         })
-                        bymonth.classList.remove("hidden");
+                        allbooksec.classList.add("hidden");
+                        bymonthsec.classList.remove("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let bymonthnext = document.querySelector(".bymonthnext");
                         if (orderlistbod.children.length == 20) {
                             bymonthnext.classList.remove("hidden");
@@ -681,8 +700,11 @@ async function getOrderDetail(val) {
                                     </div>
                                 `
                         })
-                        let allbook = document.querySelector(".allbooksec");
-                        allbook.classList.remove("hidden");
+                        allbooksec.classList.remove("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let allnext = document.querySelector(".allbooknext");
                         if (orderlistbod.children.length == 20) {
                             allnext.classList.remove('hidden');

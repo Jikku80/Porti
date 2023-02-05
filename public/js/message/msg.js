@@ -22,6 +22,7 @@
 async function getAllMessageFromUser() {
     let curLogUser = document.querySelector(".logUserName").innerText;
     let curLogUserId = document.querySelector(".logUserId").innerText;
+    let theme = document.querySelector(".curtheme").innerText;
     let msgCont = document.querySelector(".message__user");
     msgCont.innerHTML = "";
 
@@ -55,7 +56,22 @@ async function getAllMessageFromUser() {
                             `
                         }
                     })
-
+                    let small = document.querySelectorAll(".message__user__small");
+                    if (theme == "white") {
+                        small.forEach(item => {
+                            item.style.backgroundColor = "white";
+                        })
+                    }
+                    if (theme == "red") {
+                        small.forEach(item => {
+                            item.style.backgroundColor = "crimson";
+                        })
+                    }
+                    if (theme == "dark") {
+                        small.forEach(item => {
+                            item.style.backgroundColor = "black";
+                        })
+                    }
                     let msgUsr = document.querySelectorAll(".messageUserName");
                     for (let i = 0; i < msgUsr.length; i++) {
                         let msg = msgUsr[i]
@@ -279,4 +295,37 @@ async function updateMsg() {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-}
+};
+
+(function () {
+    let theme = document.querySelector(".curtheme").innerText;
+    let msgbod = document.querySelector(".message__bod__sec ");
+    let td = document.querySelector(".head");
+    let small = document.querySelector(".message__user__small");
+    let inpt = document.querySelector("#messageback");
+
+    if (theme == "red") {
+        document.body.style.backgroundColor = "crimson";
+        msgbod.style.backgroundColor = "crimson";
+        small.forEach(item => {
+            item.style.backgroundColor = "crimson"
+        })
+    }
+    else if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+        msgbod.style.backgroundColor = "black";
+        small.forEach(item => {
+            item.style.backgroundColor = "black"
+        })
+    }
+    else if (theme == "white") {
+        document.body.style.backgroundColor = "white";
+        msgbod.style.backgroundColor = "white";
+        msgbod.style.color = "black";
+        td.style.color = "black";
+        inpt.style.color = "black";
+    }
+    else {
+        return;
+    }
+})();

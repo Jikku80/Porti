@@ -280,6 +280,18 @@ html{
   justify-content: center;
 }
 
+.account__type__head{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: fixed;
+  top: 1vh;
+}
+
+.cancelacctype{
+  cursor: pointer;
+}
+
 .account__types{
   display: flex;
   flex-wrap: wrap;
@@ -287,17 +299,8 @@ html{
   justify-content: space-around;
 }
 
-.account_v_types{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 50vw;
-  height: 50vh;
-  margin-right: 10vw;
-}
-
 .txt, .showSwitches{
-  margin-right: 10vw;
+  margin-right: 1vw;
 }
 
 .rd{
@@ -1041,16 +1044,17 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
 .search_bar{
   border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 2px solid chartreuse;
-    padding: 1%;
-    margin-bottom: 2%;
-    width: 40vw;
-    outline: 0;
-    background-color: transparent;
-    color: chartreuse;
-    transition: transform .2s;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid chartreuse;
+  padding: 1%;
+  margin-bottom: 2%;
+  width: 40vw;
+  outline: 0;
+  background-color: transparent;
+  color: chartreuse;
+  transition: transform .2s;
+  font-size: 16px;
 }
 
 .search_bar:focus{

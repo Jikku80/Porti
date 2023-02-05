@@ -338,13 +338,17 @@ lakheyBack.addEventListener("click", async (e) => {
     let personal = document.querySelector(".portfolio");
     let restro = document.querySelector(".restaurant");
     let business = document.querySelector(".business");
-    let btns = document.querySelector(".account_v_types")
+    let btns = document.querySelector(".select__account__type__sec")
     let switchBtn = document.querySelector(".showSwitches");
     let brochure = document.querySelector(".brochure");
-
+    let cancelbtn = document.querySelector(".cancelacctype");
 
     switchBtn.addEventListener("click", () => {
-        btns.classList.toggle("hidden");
+        btns.classList.remove("hidden");
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        btns.classList.add("hidden");
     })
 
     personal.addEventListener("click", async (e) => {

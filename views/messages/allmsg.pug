@@ -8,26 +8,27 @@ block content
             span.td Por
             span.grn t
             span.nocaps.td i
-    .message__bod__sec 
-        .msg__bod__head__sec
-            h1.head Messages
-            h1.head 
-                a(href="/layouts/porti") Go Back
-        .logUserName.hidden= user.name
-        .logUserId.hidden= user._id
-        audio#msgalert.hidden
-            source(src="/noti/msg.mp3")
-        .message__cont
-            .message__user 
-            .message__user__second__sec
-                h2.message__user__name
-                .message__msg.hidden
-                .message__reply.hidden
-                    form.msg__inpt__sec
-                        p.msgboxUserId.hidden
-                        p.msgboxUser.hidden
-                        input#messageback(type="text" placeholder="Type Your Message" required)
-                        img(src="/images/send.png" id="messagebackbtn")
+    if (user)
+        include ../_header
+        .message__bod__sec 
+            .msg__bod__head__sec
+                h1.head Messages
+            .logUserName.hidden= user.name
+            .logUserId.hidden= user._id
+            .curtheme.hidden= user.theme
+            audio#msgalert.hidden
+                source(src="/noti/msg.mp3")
+            .message__cont
+                .message__user 
+                .message__user__second__sec
+                    h2.message__user__name
+                    .message__msg.hidden
+                    .message__reply.hidden
+                        form.msg__inpt__sec
+                            p.msgboxUserId.hidden
+                            p.msgboxUser.hidden
+                            input#messageback(type="text" placeholder="Type Your Message" required)
+                            img(src="/images/send.png" id="messagebackbtn")
 
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 

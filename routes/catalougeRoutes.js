@@ -37,15 +37,15 @@ router.delete('/:id/deleteCompany/:user', authController.restrictTo('user', 'adm
 router.post('/catalogbanner', authController.restrictTo('user', 'admin'), catalougeController.createCatalogBanner);
 router.delete('/catalogbanner/:id', authController.restrictTo('user', 'admin'), catalougeController.deleteCatalogBanner);
 
-router.get('/getToday/:company', authController.restrictTo('user', 'admin'), messageController.getDayComOrder);
-router.get('/getWeek/:company', authController.restrictTo('user', 'admin'), messageController.getWeekComOrder);
-router.get('/getMonth/:company', authController.restrictTo('user', 'admin'), messageController.getMonthComOrder);
-router.get('/byMonth/:company/find/:month', authController.restrictTo('user', 'admin'), messageController.byMonthComOrder);
+router.get('/:company/getToday?:page', authController.restrictTo('user', 'admin'), messageController.getDayComOrder);
+router.get('/:company/getWeek?:page', authController.restrictTo('user', 'admin'), messageController.getWeekComOrder);
+router.get('/:company/getMonth?:page', authController.restrictTo('user', 'admin'), messageController.getMonthComOrder);
+router.get('/by/:company/find/:month/Month?:page', authController.restrictTo('user', 'admin'), messageController.byMonthComOrder);
 
 router.get('/perday/:company', authController.restrictTo('user', 'admin'), messageController.perDayComOrder);
 router.get('/orderDetails/:id', authController.restrictTo('user', 'admin'), messageController.getComOrderDetails);
 
-router.get('/getRes/:company', authController.restrictTo('user', 'admin'), messageController.getAllComOrd);
+router.get('/:company/getRes?:page', authController.restrictTo('user', 'admin'), messageController.getAllComOrd);
 
 router.post('/newcomment', authController.restrictTo('user', 'admin'), catalougeController.newComment);
 router.delete('/delcomments/:id', authController.restrictTo('user', 'admin'), catalougeController.deleteComment);
@@ -61,6 +61,6 @@ router.get('/getReturnToday/:company', authController.restrictTo('user', 'admin'
 router.get('/getReturnWeek/:company', authController.restrictTo('user', 'admin'), catalougeController.getWeekReturn);
 router.get('/getReturnMonth/:company', authController.restrictTo('user', 'admin'), catalougeController.getMonthReturn);
 router.get('/byReturnMonth/:company/find/:month', authController.restrictTo('user', 'admin'), catalougeController.byMonthReturn);
-router.get('/getAllReturns/:company', authController.restrictTo('user', 'admin'), catalougeController.getAllReturn);
+router.get('/:company/getAllReturns?:page', authController.restrictTo('user', 'admin'), catalougeController.getAllReturn);
 
 module.exports = router;

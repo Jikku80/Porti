@@ -30,14 +30,29 @@
     let restroStat = document.getElementById("menuMenuStats");
     let catStat = document.getElementById("menuCatalogeStats");
     let orgStat = document.getElementById("menuBrochureStats");
+    let message = document.getElementById("message");
     let exp = document.getElementById("exp");
 
     let pathName = window.location.pathname;
 
-    if (pathName.match(/inspire/gi)) {
+    if (pathName.match(/search/gi)) {
         search.style.color = "greenyellow";
         search.style.fontWeight = "bold";
         search.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/mymessages/gi)) {
+        message.style.color = "greenyellow";
+        message.style.fontWeight = "bold";
+        message.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/menu/gi)) {
+        menu.style.color = "greenyellow";
+        menu.style.fontWeight = "bold";
+        menu.style.borderBottom = "2px solid white"
         return;
     }
 
@@ -72,13 +87,6 @@
         restroStat.style.color = "greenyellow";
         restroStat.style.fontWeight = "bold";
         restroStat.style.borderBottom = "2px solid white"
-        return;
-    }
-
-    if (pathName.match(/menu/gi)) {
-        menu.style.color = "greenyellow";
-        menu.style.fontWeight = "bold";
-        menu.style.borderBottom = "2px solid white"
         return;
     }
 
@@ -133,7 +141,8 @@
     let menu = document.getElementById("menuMenu");
     let cataloge = document.getElementById("menuCataloge");
     let menuImg = document.getElementById("menuImg");
-
+    let brochure = document.getElementById("menuBrochure");
+    let message = document.getElementById("message");
     let restroStat = document.getElementById("menuMenuStats");
     let catStat = document.getElementById("menuCatalogeStats");
     let orgStat = document.getElementById("menuBrochureStats");
@@ -165,10 +174,24 @@
             item.style.color = "black";
         })
 
-        if (pathName.match(/inspire/gi)) {
+        if (pathName.match(/search/gi)) {
             search.style.color = "chartreuse";
             search.style.fontWeight = "bold";
             search.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/mymessages/gi)) {
+            message.style.color = "chartreuse";
+            message.style.fontWeight = "bold";
+            message.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/menu/gi)) {
+            menu.style.color = "chartreuse";
+            menu.style.fontWeight = "bold";
+            menu.style.borderBottom = "2px solid black"
             return;
         }
 
@@ -196,13 +219,6 @@
             invitation.style.color = "chartreuse";
             invitation.style.fontWeight = "bold";
             invitation.style.borderBottom = "2px solid black"
-            return;
-        }
-
-        if (pathName.match(/menu/gi)) {
-            menu.style.color = "chartreuse";
-            menu.style.fontWeight = "bold";
-            menu.style.borderBottom = "2px solid black"
             return;
         }
 

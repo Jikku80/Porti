@@ -1,3 +1,12 @@
+let restosec = document.querySelector(".restosec");
+let reservesec = document.querySelector(".allreservesec");
+let homesec = document.querySelector(".homesec");
+let returnsec = document.querySelector(".returnsec");
+let bymonthsec = document.querySelector('.bymonthsec');
+let monthsec = document.querySelector(".monthsec");
+let weeksec = document.querySelector(".weeksec");
+let daysec = document.querySelector(".daysec");
+
 (function () {
     let perDayBtn = document.getElementById("getPerDay");
     let perWeekBtn = document.getElementById("getPerWeek");
@@ -69,7 +78,12 @@
                                 `
                             }
                         })
-                        let daysec = document.querySelector(".daysec");
+                        reservesec.classList.add("hidden");
+                        restosec.classList.add("hidden");
+                        homesec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
                         daysec.classList.remove("hidden");
                         let daynext = document.querySelector(".daynext");
                         if (orderlistbod.children.length == 20) {
@@ -188,8 +202,13 @@
                                 `
                             }
                         })
-                        let weeksec = document.querySelector(".weeksec");
+                        reservesec.classList.add("hidden");
+                        restosec.classList.add("hidden");
+                        homesec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
                         weeksec.classList.remove("hidden");
+                        daysec.classList.add("hidden");
                         let weeknext = document.querySelector(".weeknext");
                         if (orderlistbod.children.length == 20) {
                             weeknext.classList.remove("hidden");
@@ -306,8 +325,13 @@
                                 `
                             }
                         })
-                        let monthsec = document.querySelector(".monthsec");
+                        reservesec.classList.add("hidden");
+                        restosec.classList.add("hidden");
+                        homesec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
                         monthsec.classList.remove("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let monthnext = document.querySelector(".monthnext");
                         if (orderlistbod.children.length == 20) {
                             monthnext.classList.remove("hidden");
@@ -431,8 +455,13 @@
                                 `
                             }
                         })
-                        let bymonthsec = document.querySelector(".bymonthsec");
+                        reservesec.classList.add("hidden");
+                        restosec.classList.add("hidden");
+                        homesec.classList.add("hidden");
                         bymonthsec.classList.remove("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let bymonthnext = document.querySelector(".bymonthnext");
                         if (orderlistbod.children.length == 20) {
                             bymonthnext.classList.remove("hidden");
@@ -888,8 +917,13 @@ async function byMonthReserve(restro, month) {
                                     </div>
                                 `
                         })
-                        let homesec = document.querySelector(".homesec");
+                        reservesec.classList.add("hidden");
+                        restosec.classList.add("hidden");
                         homesec.classList.remove("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let homenext = document.querySelector(".homenext");
                         if (orderlistbod.children.length == 20) {
                             homenext.classList.remove("hidden");
@@ -962,8 +996,13 @@ async function byMonthReserve(restro, month) {
                                     </div>
                                 `
                         })
-                        let restosec = document.querySelector(".restosec");
+                        reservesec.classList.add("hidden");
                         restosec.classList.remove("hidden");
+                        homesec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let restonext = document.querySelector(".restonext");
                         if (orderlistbod.children.length == 20) {
                             restonext.classList.remove("hidden");
@@ -1036,8 +1075,13 @@ async function byMonthReserve(restro, month) {
                                 </div>
                                 `
                         })
-                        let allresersec = document.querySelector(".allreservesec");
-                        allresersec.classList.remove("hidden");
+                        reservesec.classList.remove("hidden");
+                        restosec.classList.add("hidden");
+                        homesec.classList.add("hidden");
+                        bymonthsec.classList.add("hidden");
+                        monthsec.classList.add("hidden");
+                        weeksec.classList.add("hidden");
+                        daysec.classList.add("hidden");
                         let reservenext = document.querySelector(".allreservenext");
                         if (orderlistbod.children.length == 20) {
                             reservenext.classList.remove("hidden");

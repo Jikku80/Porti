@@ -819,12 +819,28 @@ exports.byMonthReturn = catchAsync(async (req, res) => {
 
 exports.getAllReturn = catchAsync(async (req, res) => {
     const id = req.params.company
-    const restroOrders = await CompReturn.find({ company: id })
+    let pg;
 
-    res.status(200).json({
-        status: "success",
-        restroOrders
-    })
+    if (req.query.order !== undefined) {
+        pg = (req.query.order) * 1;
+        let features = new APIFeatures(CompReturn.find({ company: id }), { limit: 20, page: pg }).srt().paginate();
+        const restroOrders = await features.query
+
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
+    else {
+        pg = 1;
+        let features = new APIFeatures(CompReturn.find({ company: id }), { limit: 20, page: pg }).srt().paginate();
+        const restroOrders = await features.query
+
+        res.status(200).json({
+            status: "success",
+            restroOrders
+        })
+    }
 })
 
 

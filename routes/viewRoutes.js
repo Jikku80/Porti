@@ -57,8 +57,8 @@ router.get('/layouts/highlights', viewsController.portiHighlights);
 router.get('/layouts/porti', authController.protect, viewsController.gotoPort);
 router.get('/invitations/:id', viewsController.gotoInviMid);
 
-router.get('/inspire/cafe', viewsController.searchPage);
-router.get('/search/:values', viewsController.searchPorti);
+router.get('/search/bar', viewsController.searchPage);
+router.get('/search/:values/bar?:page', viewsController.searchPorti);
 
 router.get('/activity/:id/tracker?:page', viewsController.expPage);
 

@@ -86,21 +86,24 @@ block content
                 h1.txt Switch Account Type
                 h2.txt.rd Switching account will delete everything
                 button.redbtn.showSwitches Switch Account
-                .accounType.hidden= user.accountType
-                .account_v_types.hidden
-                    .acc__typ__card.portfolio
-                        h2 Personal || Portfolio 
-                        p Create Virtual Portfolio
-                    .acc__typ__card.restaurant
-                        h2 Food || Food Menu
-                        p Create Virtual Menu
-                    .acc__typ__card.business
-                        h2 Business || Products
-                        p Create Virtual Catalog
-                    .acc__typ__card.brochure
-                        h2 Organization || Hotels
-                        p Create Virtual Brochure
-                p.txt You will be able to create invitaitons with any of the followings
+                .select__account__type__sec.hidden
+                    .accounType.hidden= user.accountType
+                    .account__type__head 
+                        h1 Select A Account Type 
+                        img.cancelacctype(src="/images/cancel.png" alt="cancel")
+                    .account__types
+                        .acc__typ__card.portfolio
+                            h2 Personal || Portfolio 
+                            p Create Virtual Portfolio
+                        .acc__typ__card.restaurant
+                            h2 Food || Food Menu
+                            p Create Virtual Menu
+                        .acc__typ__card.business
+                            h2 Business || Products
+                            p Create Virtual Catalog
+                        .acc__typ__card.brochure
+                            h2 Organization || Hotels
+                            p Create Virtual Brochure
                 include _footer
     else 
         h1 You are not Logged In, Please Log In 
