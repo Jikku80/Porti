@@ -230,8 +230,11 @@ input, textarea{
     background-color: transparent;
     color: white;
     border: 2px solid white;
-    height: 5vh;
     padding: 2%;
+}
+
+input{
+    height: 5vh;
 }
 
 .form__cont__order textarea{

@@ -144,8 +144,11 @@ input, textarea{
     background-color: transparent;
     color: white;
     border: 2px solid white;
-    height: 5vh;
     padding: 2%;
+}
+
+input{
+    height: 5vh;
 }
 
 .form__cont__order textarea{
@@ -266,6 +269,10 @@ input, textarea{
     overflow-y: auto;
     scrollbar-width: none;
     font-size: 25px;
+}
+
+.menu_sce_card_detail{
+    font-family: Londrina Sketch;
 }
 
 #ordernoid, .cart__product__quantity{

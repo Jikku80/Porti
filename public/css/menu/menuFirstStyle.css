@@ -149,6 +149,7 @@ html{
 .menu__card__detail{
     font-size: 11px;
     padding-bottom: 1%;
+    width: 50%;
 }
 
 .items__head{

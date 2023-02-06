@@ -32,7 +32,7 @@ p{
 }
 
 .menu__bar a {
-    font-size: 2em;
+    font-size: 20px;
     font-variant: small-caps;
     color: white;
     text-decoration: none;
@@ -142,6 +142,7 @@ p{
     cursor: pointer;
     padding: 1.5%;
     font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .ygbtn{
@@ -166,6 +167,7 @@ p{
     text-decoration: none;
     font-weight: bolder;
     font-variant: small-caps;
+    letter-spacing: 2px;
     cursor: pointer;
 }
 
@@ -260,6 +262,7 @@ p{
     align-items: center;
     font-size: 2rem;
     font-variant: small-caps;
+    letter-spacing: 2px;
     width: 15vw;
   }
   
@@ -294,6 +297,10 @@ p{
     margin-top: 0;
     color: gray;
     padding: 0;
+}
+
+input, textarea{
+    scrollbar-width: none;
 }
 
 #upPort input, #upImage input, #upPortSec input, #upImageCollec input, .inviF input, #upInviImage input, .addPortiImages input{
@@ -681,6 +688,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
     padding: 2%;
     border: 2px solid white;
     cursor: pointer;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .delbtn:hover{
@@ -698,6 +707,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
     font-family: monospace;
     font-size: 1.2em;
     font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 2px;
     display: flex;
     justify-content: center;
     color:gray;
@@ -708,6 +719,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     text-decoration: none;
   }
   
+  .rmcaps{
+    font-variant: normal;
+  }
+
   .footer a:hover{
     color: greenyellow;
   }

@@ -151,7 +151,7 @@ window.addEventListener("load", () => {
                                                     <p class="catalouge__card__disc">After Discount : ${el.currency}
                                                         <span class="afterDiscountPrice">${newprice}</span>
                                                     </p>
-                                                    <p class="menu_sce_card_detail">${el.detail}</p>
+                                                    <pre class="menu_sce_card_detail">${el.detail}</pre>
                                                     <p class="orgrd">Not Available For Today</p>
                                                     <div class="form__cont__label">
                                                         <label class="orgrd">Order Quantity :</label>
@@ -179,7 +179,7 @@ window.addEventListener("load", () => {
                                                 <p class="menu_sec_card_price">${el.currency}
                                                     <span class="menu__price__val">${el.price}</span>
                                                 </p>
-                                                <p class="menu_sce_card_detail">${el.detail}</p>
+                                                <pre class="menu_sce_card_detail">${el.detail}</pre>
                                                 <p class="orgrd">Not Available For Today</p>
                                                 <div class="form__cont__label">
                                                     <label class="orgrd">Order Quantity :</label>
@@ -216,7 +216,7 @@ window.addEventListener("load", () => {
                                                     <p class="catalouge__card__disc">After Discount : ${el.currency}
                                                         <span class="afterDiscountPrice">${newprice}</span>
                                                     </p>
-                                                    <p class="menu_sce_card_detail">${el.detail}</p>
+                                                    <pre class="menu_sce_card_detail">${el.detail}</pre>
                                                     <div class="form__cont__label">
                                                         <label>Order Quantity :</label>
                                                         <input type="number" class="orderno" id="ordernoid" name="points" placeholder="0" required>
@@ -243,7 +243,7 @@ window.addEventListener("load", () => {
                                                 <p class="menu_sec_card_price">${el.currency}
                                                     <span class="menu__price__val">${el.price}</span>
                                                 </p>
-                                                <p class="menu_sce_card_detail">${el.detail}</p>
+                                                <pre class="menu_sce_card_detail">${el.detail}</pre>
                                                 <div class="form__cont__label">
                                                     <label>Order Quantity :</label>
                                                     <input type="number" class="orderno" id="ordernoid" name="points" placeholder="0" required>

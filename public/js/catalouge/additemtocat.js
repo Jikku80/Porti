@@ -38,9 +38,10 @@ async function getAllCatalougeItem() {
                                                 <p class="catalouge__card__disc hidden"></p>
                                                 <p class="catalouge__card__cat goldn">${el.category}</p>
                                                 <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                                <div class="grp__btn">
                                                 <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                                 <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -61,9 +62,10 @@ async function getAllCatalougeItem() {
                                                 <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                                 <p class="catalouge__card__cat goldn">${el.category}</p>
                                                 <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
-                                                <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
-                                                <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                <div class="grp__btn">
+                                                    <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
+                                                    <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -82,9 +84,10 @@ async function getAllCatalougeItem() {
                                             <p class="catalouge__card__disc hidden"></p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -105,9 +108,10 @@ async function getAllCatalougeItem() {
                                                 <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                                 <p class="catalouge__card__cat goldn">${el.category}</p>
                                                 <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                                <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                                <div class="grp__btn">
                                                 <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                                 <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -191,9 +195,10 @@ next.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc hidden"></p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -214,9 +219,10 @@ next.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -235,9 +241,10 @@ next.addEventListener("click", async () => {
                                         <p class="catalouge__card__disc hidden"></p>
                                         <p class="catalouge__card__cat goldn">${el.category}</p>
                                         <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                        <div class="grp__btn">
                                         <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             `
@@ -258,9 +265,10 @@ next.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -333,9 +341,10 @@ prev.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc hidden"></p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -356,9 +365,10 @@ prev.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -377,9 +387,10 @@ prev.addEventListener("click", async () => {
                                         <p class="catalouge__card__disc hidden"></p>
                                         <p class="catalouge__card__cat goldn">${el.category}</p>
                                         <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                        <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                        <div class="grp__btn">
                                         <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             `
@@ -400,9 +411,10 @@ prev.addEventListener("click", async () => {
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="catalouge__card__cat goldn">${el.category}</p>
                                             <p class="catalouge__card__cat goldn">${el.subcategory}</p>
-                                            <p class="catalouge__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/catalougetweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/catalougetweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -433,6 +445,7 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head form__label">Your Catalouge Link</p>
+            <p class="head form__label">Your Endpoint / Username is Case-Insensitive</p>
             <p class="catalouge__link__displayer catalqrLink">${location.host}/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Catalouge</button>
@@ -1228,4 +1241,75 @@ async function reserveCanceled(val, usr, route) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-}
+};
+
+(function () {
+    let apply = document.querySelector("#updateDiscountToAll");
+    let remve = document.querySelector("#removeDiscountToAll");
+    let usr = document.querySelector(".currentuid").innerText;
+    apply.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/applydiscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Applied in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    remve.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/removediscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Removed in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();

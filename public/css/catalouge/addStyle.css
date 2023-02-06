@@ -27,7 +27,7 @@ html{
     width: 50%;
 }
 
-.catalouge__card__det{
+.deat{
     width: 50%;
     padding: 1%;
 }
@@ -64,8 +64,8 @@ html{
     padding: 2%;
 }
 
-.catalouge__card__detail{
-    width: 50vw;
+.catalouge__card__detal{
+    width: 20vw;
     height: 20vh;
     overflow-y: auto;
     scrollbar-width: none;
@@ -82,6 +82,9 @@ html{
         font-size: 16px !important;
     }
     .catalouge__card{
+        width: 100%;
+    }
+    .catalouge__card__detal{
         width: 100%;
     }
 }

@@ -46,7 +46,7 @@ block content
                     #exp__res__val
                         for item in resorders 
                             .exp__items 
-                                h4= item.restroName
+                                h4.rmcaps= item.restroName
                                 p= `Order : ${item.message}`
                                 .exp__items__grp
                                     p= item.table 
@@ -61,7 +61,7 @@ block content
                     #exp__com__val
                         for item in comorders 
                             .exp__items 
-                                h4= item.companyName 
+                                h4.rmcaps= item.companyName 
                                 p= `Order : ${item.message}` 
                                 .exp__items__grp
                                     p= `Total : ${item.total}`
@@ -75,7 +75,7 @@ block content
                     #exp__org__val
                         for item in bookings 
                             .exp__items 
-                                h4= item.organizationName 
+                                h4.rmcaps= item.organizationName 
                                 p= `Message : ${item.message}`
                                 .exp__items__grp
                                     p= `Status : ${item.bookingInfo}`
@@ -90,7 +90,7 @@ block content
                     #exp__reserve__val
                         for item in resreserve 
                             .exp__items 
-                                h4= item.restroName 
+                                h4.rmcaps= item.restroName 
                                 .exp__items__grp
                                     p= `Status : ${item.bookingInfo}`
                                     p= `Time : ${item.time}`
@@ -104,7 +104,7 @@ block content
                     #exp__return__val
                         for item in comreturn 
                             .exp__items 
-                                h4= item.companyName 
+                                h4.rmcaps= item.companyName 
                                 .exp__items__grp
                                     p= `Product : ${item.product}`
                                     p= `Status : ${item.returnInfo}`

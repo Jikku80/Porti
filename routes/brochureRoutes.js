@@ -44,5 +44,7 @@ router.get('/orderDetails/:id', authController.restrictTo('user', 'admin'), broc
 
 router.get('/:org/getRes?:page', authController.restrictTo('user', 'admin'), brochureController.getAllBooking);
 
+router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), brochureController.discountall);
+router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), brochureController.removediscountall);
 
 module.exports = router;

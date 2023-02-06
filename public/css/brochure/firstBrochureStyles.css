@@ -120,7 +120,7 @@ pre{
 .go__up__top{
     position: fixed;
     bottom: 0;
-    right: 1vw;
+    left: 1vw;
 }
 
 .gouptop{

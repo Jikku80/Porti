@@ -16,6 +16,7 @@ const APIFeatures = require('./../utils/apiFeatures');
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
+const { findByIdAndUpdate } = require('../models/messageModel');
 
 exports.createOrganization = catchAsync(async (req, res, next) => {
 
@@ -965,4 +966,60 @@ exports.getAllBooking = catchAsync(async (req, res) => {
             restroOrders
         })
     }
-})
+});
+
+exports.discountall = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    let brochuresId = []
+    let brochures = await Brochure.find({ user: id }).then(item => {
+        item.forEach(el => {
+            brochuresId.push(el.id);
+        })
+        return item;
+    });
+
+    brochuresId.forEach(async (item) => {
+        await Brochure.findByIdAndUpdate(item, {
+            $set: { applydiscount: true }
+        },
+            {
+                new: true,
+                runValidators: true
+            });
+
+    })
+
+    if (!brochures || brochures == null) return (res.status(404).json({ status: 'success' }));
+
+    res.status(200).json({
+        status: "success"
+    })
+});
+
+exports.removediscountall = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    let brochuresId = []
+    let brochures = await Brochure.find({ user: id }).then(item => {
+        item.forEach(el => {
+            brochuresId.push(el.id);
+        })
+        return item;
+    });
+
+    brochuresId.forEach(async (item) => {
+        await Brochure.findByIdAndUpdate(item, {
+            $set: { applydiscount: false }
+        },
+            {
+                new: true,
+                runValidators: true
+            });
+
+    })
+
+    if (!brochures || brochures == null) return (res.status(404).json({ status: 'success' }));
+
+    res.status(200).json({
+        status: "success"
+    })
+});

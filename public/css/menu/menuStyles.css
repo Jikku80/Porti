@@ -81,7 +81,7 @@ body{
   }
 
 .menu__bar a {
-    font-size: 2em;
+    font-size: 20px;
     font-variant: small-caps;
     color: white;
     text-decoration: none;
@@ -102,6 +102,7 @@ body{
     justify-content: space-around;
     align-items: center;
     font-size: 2rem;
+    letter-spacing: 2px;
     font-variant: small-caps;
     width: 15vw;
   }
@@ -117,7 +118,12 @@ body{
 
 .anavi:hover{
     color: greenyellow;
-  }
+}
+
+.scaps{
+    font-variant: small-caps;
+    letter-spacing: 2px;
+}
 
 .nocaps{
     font-variant: normal;
@@ -277,7 +283,9 @@ body{
     background-color: transparent;
     border: 1px solid teal;
     color: teal;
-    padding: 2%
+    padding: 2%;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .ordbtn:hover{
@@ -539,6 +547,10 @@ body{
     font-family: monospace;
 }
 
+input, textarea{
+    scrollbar-width: none;
+}
+
 .form__bod input, .form__bod textarea{
     background-color: rgba(0, 0, 0, 0.247);
     border: 1px solid rgba(0, 0, 0, 0.247);
@@ -557,6 +569,8 @@ body{
     padding: 1%;
     margin: 1%;
     cursor: pointer;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .blackbtn:hover{
@@ -572,6 +586,7 @@ body{
     text-decoration: none;
     font-weight: bolder;
     font-variant: small-caps;
+    letter-spacing: px;
     cursor: pointer;
 }
 
@@ -589,6 +604,8 @@ body{
     margin: 2%;
     cursor: pointer;
     text-decoration: none;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .ygbtn:hover{
@@ -605,6 +622,8 @@ body{
     margin: 2%;
     cursor: pointer;
     text-decoration: none;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .redbtn:hover{
@@ -615,6 +634,8 @@ body{
 .smallbtn{
     padding: 1%;
     margin: 1%;
+    letter-spacing: 2px;
+    font-variant: small-caps;
 }
 
 .group__btn{
@@ -685,6 +706,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
     background-color: rgba(0, 0, 0, 0.411);
     padding: 2%;
     border-radius: 2rem;
+    font-variant: small-caps;
+    letter-spacing: 2px;
 }
 
 .menu__link__displayer, .catalouge__link__displayer{
@@ -694,12 +717,26 @@ input::file-selector-button, ::-webkit-file-upload-button{
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     font-size: 2em;
+    font-variant: normal;
 }
 
 .your__item__sec{
     background-color:  rgba(0, 0, 0, 0.637);
     padding: 2%;
     border-radius: 2rem;
+}
+
+.menu__card__det a, .catalouge__card__det a{
+    font-size: 10px;
+}
+
+.catalouge__card__det{
+    font-size: 16px;
+}
+
+.grp__btn{
+    display: flex;
+    justify-content: space-between;
 }
 
 .createBanner{
@@ -732,7 +769,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
 .to__left{
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     width: 100%;
 }
 
@@ -755,6 +792,9 @@ input::file-selector-button, ::-webkit-file-upload-button{
     margin-top: 2vh;
     font-weight: bold;
     font-family: monospace;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    letter-spacing: 2px;
     display: flex;
     justify-content: center;
     color:gray;
@@ -766,6 +806,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     text-decoration: none;
   }
   
+  .rmcaps{
+    font-variant: normal;
+  }
+
   .footer a:hover{
     color: greenyellow;
   }
@@ -784,7 +828,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
     flex-direction: row;
     justify-content: space-around;
     width: 50%;
-    font-size: .8em;
   }
   
   .footer__first__bod{
@@ -807,7 +850,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .footer__sec__bod{
     display: flex;
     justify-content: space-around;
-    font-size: .8em;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -913,7 +955,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
     
       .footer__top{
         flex-direction: column;
-        font-size: .8em;
       }
       
       .footer__row{
@@ -922,7 +963,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
     
       .footer__contact__detail{
         width: 100%;
-        font-size: .8em;
       }
       
       .footer__contact__bod{
@@ -934,7 +974,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
     .footer__first__bod, .footer__sec__bod{
         flex-direction: column;
         text-align: center;
-        font-size: .8em;
     }
 }
   

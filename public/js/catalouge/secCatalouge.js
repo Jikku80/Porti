@@ -1161,7 +1161,7 @@ async function openProdMid(item) {
                                     <p class="product__card__cat">Sub-Category : ${item.subcategory}</p>
                                     <p class="product__card__cat instock">Stock Quantity : ${item.stockQuantity}</p>
                                     <p class="product__card__cat hidden outofStock rdstock">Item is Out of Stock</p>
-                                    <p class="product__card__detail">${item.detail}</p>
+                                    <pre class="product__card__detail">${item.detail}</pre>
                                 </div>
                                 <label>Quantity : </label>
                                 <input class="quantityInpt" type="number" placeholder="1" required/>

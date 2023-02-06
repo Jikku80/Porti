@@ -43,7 +43,7 @@ block content
                     .menu__message__secetion.hidden
                         .menu__message__mid__sec
                             .menu__message__head 
-                                h3 Messages (Last 50 Orders Made)
+                                h3.scaps Messages (Last 50 Orders Made)
                                 img.cancel__msg__sec.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__message__bod
                             .menu__message__bod__prev
@@ -57,7 +57,7 @@ block content
                     .menu__reserve__secetion.hidden
                         .menu__reserve__mid__sec
                             .menu__reserve__head 
-                                h3 Reservations (Last 50 Reservation Made)
+                                h3.scaps Reservations (Last 50 Reservation Made)
                                 img.cancel__reserve__sec.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reserve__bod
                             .menu__reserve__bod__prev
@@ -75,9 +75,9 @@ block content
                         #qrcode 
                     #item__form
                         .itemform__head 
-                            h2.form__label Add Items To Menu
+                            h2.form__label.scaps Add Items To Menu
                             h2
-                                a(href="#upRestro") Update Restaurant
+                                a.scaps(href="#upRestro") Update Restaurant
                         form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label Food Name:
@@ -108,7 +108,7 @@ block content
                                 input#coverimage.form__input(type="file" name="menuimage" accept="image/*")
                             button#addItemBtn.blackbtn Add Item
                     .your__item__sec#foodItemSec
-                        h2.items__head Your Items 
+                        h2.items__head.scaps Your Items 
                         p.currentid.hidden= user._id
                         if (banner[0])
                             if (banner[0].discountpercent || banner[0].discountpercent !== null)
@@ -124,7 +124,7 @@ block content
                                 button.next.hidden Next
                     
                     .itemform__head 
-                        h2.form__label Update Restaurant Detail
+                        h2.form__label.scaps Update Restaurant Detail
                     form#upRestro.upItem
                         .form__bod
                             label.form__label Restaurant Name:
@@ -163,16 +163,16 @@ block content
                         button#updateResBtn.blackbtn Update Restaurant
                     form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem
                         .form__bod.file_part
-                        label.form__label(for="upcoverimage") Update Restaurant Cover Image
+                        label.form__label(for="upcoverimage").scaps Update Restaurant Cover Image
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
                         button.blackbtn Update Cover Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
                         .createBanner
                             .itemform__head 
-                                h2.form__label Create A Banner
+                                h2.form__label.scaps Create A Banner
                             form.upItem
                                 .form__bod 
-                                    label.form__label Banner Information 
+                                    label.form__label.scaps Banner Information 
                                     if (!banner [0])
                                         textarea.form__input#bannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
                                     else 
@@ -189,13 +189,21 @@ block content
                                     p#bannerId.hidden= banner[0]._id
                                     if (banner[0].discountpercent || banner[0].discountpercent !== null)
                                         h2= `${banner[0].discountpercent}%`
-                                        p You will have to check apply discount to items, to use it in your product items
+                                        p.scaps You will have to check apply discount to items, to use it in your product items
+                                        .grp__btn 
+                                            #updateDiscountToAll.ygbtn Apply Discount In All Items
+                                            #removeDiscountToAll.ygbtn Remove Discount In All Items
+                                    else 
+                                        #updateDiscountToAll.hidden 
+                                        #removeDiscountToAll.hidden
                                     btn#deletebanner.blackbtn Delete
                             else 
                                 .banner__sec 
-                                    h1 No Banner
+                                    h1.scaps No Banner
                                     #deletebanner.hidden
                                     #bannerId.hidden
+                                    #updateDiscountToAll.hidden 
+                                    #removeDiscountToAll.hidden
                     else 
                         #bannerbtn.hidden 
                         #dscountpercent.hidden
@@ -204,8 +212,8 @@ block content
                         #deletebanner.hidden
                         .bannerresid.hidden
                 .delete__sec 
-                    h2 Delete Restaurant 
-                    p It will delete Everything including all the Menu items
+                    h2.scaps Delete Restaurant 
+                    p.scaps It will delete Everything including all the Menu items
                     .delrestroid.hidden= restro[0]._id
                     .delmenuid.hidden= restro[0].user._id
                     btn#deleteCompany.blackbtn Delete

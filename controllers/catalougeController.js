@@ -841,6 +841,62 @@ exports.getAllReturn = catchAsync(async (req, res) => {
             restroOrders
         })
     }
-})
+});
+
+exports.discountall = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    let brochuresId = []
+    let brochures = await Catalouge.find({ user: id }).then(item => {
+        item.forEach(el => {
+            brochuresId.push(el.id);
+        })
+        return item;
+    });
+
+    brochuresId.forEach(async (item) => {
+        await Catalouge.findByIdAndUpdate(item, {
+            $set: { applydiscount: true }
+        },
+            {
+                new: true,
+                runValidators: true
+            });
+
+    })
+
+    if (!brochures || brochures == null) return (res.status(404).json({ status: 'success' }));
+
+    res.status(200).json({
+        status: "success"
+    })
+});
+
+exports.removediscountall = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    let brochuresId = []
+    let brochures = await Catalouge.find({ user: id }).then(item => {
+        item.forEach(el => {
+            brochuresId.push(el.id);
+        })
+        return item;
+    });
+
+    brochuresId.forEach(async (item) => {
+        await Catalouge.findByIdAndUpdate(item, {
+            $set: { applydiscount: false }
+        },
+            {
+                new: true,
+                runValidators: true
+            });
+
+    })
+
+    if (!brochures || brochures == null) return (res.status(404).json({ status: 'success' }));
+
+    res.status(200).json({
+        status: "success"
+    })
+});
 
 

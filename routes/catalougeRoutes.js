@@ -63,4 +63,7 @@ router.get('/getReturnMonth/:company', authController.restrictTo('user', 'admin'
 router.get('/byReturnMonth/:company/find/:month', authController.restrictTo('user', 'admin'), catalougeController.byMonthReturn);
 router.get('/:company/getAllReturns?:page', authController.restrictTo('user', 'admin'), catalougeController.getAllReturn);
 
+router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), catalougeController.discountall);
+router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), catalougeController.removediscountall);
+
 module.exports = router;

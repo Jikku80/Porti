@@ -104,7 +104,7 @@ html{
 .menu__bar a{
   text-decoration: none;
   color: white;
-  font-size: 2vw;
+  font-size: 20px;
   font-variant: small-caps;
 }
 
@@ -123,6 +123,7 @@ html{
   justify-content: space-around;
   align-items: center;
   font-size: 2rem;
+  letter-spacing: 2px;
   font-variant: small-caps;
   width: 15vw;
 }
@@ -444,6 +445,10 @@ html{
   margin: 1%;
 }
 
+input, textarea{
+  scrollbar-width: none;
+}
+
 .form__sub input{
   height: 4rem;
 }
@@ -685,6 +690,8 @@ html{
   padding: 14px;
   color: white;
   background-color: transparent;
+  font-variant: small-caps;
+  letter-spacing: 2px;
 }
 
 .port__form__btn:hover{
@@ -759,6 +766,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
   cursor: pointer;
   text-decoration: none;
   padding: 1.5%;
+  font-variant: small-caps;
+  letter-spacing: 2px;
 }
 
 .redbtn:hover{
@@ -998,6 +1007,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
   border: 2px solid white;
   border-radius: 1rem;
   cursor: pointer;
+  font-variant: small-caps;
+  letter-spacing: 2px;
 }
 
 .whitebtn:hover{
@@ -1013,6 +1024,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
   text-decoration: none;
   font-weight: bolder;
   font-variant: small-caps;
+  letter-spacing: 2px;
   cursor: pointer;
 }
 
@@ -1105,6 +1117,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
   font-size: 1.2em;
   font-family: monospace;
   font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 2px;
   display: flex;
   justify-content: center;
   color:gray;
@@ -1113,6 +1127,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .footer a{
   color: rgba(245, 245, 245, 0.651);
   text-decoration: none;
+}
+
+.rmcaps{
+  font-variant: normal;
 }
 
 .footer a:hover{
@@ -1159,6 +1177,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .expense__sec{
   display: flex;
   justify-content: flex-end;
+  font-variant: small-caps;
+  letter-spacing: 2px;
 }
 
 .exp__bod{
@@ -1232,6 +1252,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
   border: 1px solid gray;
   background-color: transparent;
   cursor: pointer;
+  font-variant: small-caps;
+  letter-spacing: 2px;
 }
 
 .exppagibtn:hover{

@@ -146,7 +146,8 @@ exports.myInvi = catchAsync(async (req, res) => {
 })
 
 exports.layoutTally = catchAsync(async (req, res, next) => {
-    const user_name = req.params.username
+    const username = req.params.username
+    const user_name = username.toLowerCase();
     const usr = await User.find({ name: user_name });
     const pg = 1;
     const portfolio = await Portfolio.findOne({ user: usr[0]._id }).populate('user')

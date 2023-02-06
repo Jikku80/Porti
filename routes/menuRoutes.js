@@ -64,5 +64,7 @@ router.get('/getResMonth/:restro', authController.restrictTo('user', 'admin'), m
 router.get('/byResMonth/:restro/find/:month', authController.restrictTo('user', 'admin'), menuController.byMonthReserve);
 router.get('/:restro/getAllReserve?:page', authController.restrictTo('user', 'admin'), menuController.getAllReserve);
 
+router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), menuController.discountall);
+router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), menuController.removediscountall);
 
 module.exports = router;

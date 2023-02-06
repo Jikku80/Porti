@@ -192,7 +192,7 @@ window.addEventListener("load", () => {
                             ressec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.restroName}</h4>
+                                    <h4 class="rmcaps">${el.restroName}</h4>
                                     <p>Order : ${el.message}</p>
                                     <div class="exp__items__grp">
                                     <p>Total : ${el.total}</p>
@@ -255,7 +255,7 @@ window.addEventListener("load", () => {
                             ressec.innerHTML +=
                                 `
                             <div class="exp__items"> 
-                                <h4>${el.restroName}</h4>
+                                <h4 class="rmcaps">${el.restroName}</h4>
                                 <p>Order : ${el.message}</p>
                                 <div class="exp__items__grp">
                                 <p>Total : ${el.total}</p>
@@ -307,7 +307,7 @@ window.addEventListener("load", () => {
                             comsec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.companyName}</h4>
+                                    <h4 class="rmcaps">${el.companyName}</h4>
                                     <p>Order : ${el.message}</p>
                                     <div class="exp__items__grp">
                                     <p>Total : ${el.total}</p>
@@ -370,7 +370,7 @@ window.addEventListener("load", () => {
                             comsec.innerHTML +=
                                 `
                             <div class="exp__items"> 
-                                <h4>${el.companyName}</h4>
+                                <h4 class="rmcaps">${el.companyName}</h4>
                                 <p>Order : ${el.message}</p>
                                 <div class="exp__items__grp">
                                 <p>Total : ${el.total}</p>
@@ -422,7 +422,7 @@ window.addEventListener("load", () => {
                             orgsec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.organizationName}</h4>
+                                    <h4 class="rmcaps">${el.organizationName}</h4>
                                     <p>Message : ${el.message}</p>
                                     <div class="exp__items__grp">
                                         <p>Status : ${el.bookingInfo}</p>
@@ -487,7 +487,7 @@ window.addEventListener("load", () => {
                             orgsec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.organizationName}</h4>
+                                    <h4 class="rmcaps">${el.organizationName}</h4>
                                     <p>Message : ${el.message}</p>
                                     <div class="exp__items__grp">
                                         <p>Status : ${el.bookingInfo}</p>
@@ -540,7 +540,7 @@ window.addEventListener("load", () => {
                             reservesec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.restroName}</h4>
+                                    <h4 class="rmcaps">${el.restroName}</h4>
                                     <div class="exp__items__grp">
                                         <p>Status : ${el.bookingInfo}</p>
                                         <p class="gry">To : ${el.time}</p>
@@ -603,7 +603,7 @@ window.addEventListener("load", () => {
                             reservesec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.restroName}</h4>
+                                    <h4 class="rmcaps">${el.restroName}</h4>
                                     <div class="exp__items__grp">
                                         <p>Status : ${el.bookingInfo}</p>
                                         <p class="gry">To : ${el.time}</p>
@@ -655,7 +655,7 @@ window.addEventListener("load", () => {
                             returnsec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.companyName}</h4>
+                                    <h4 class="rmcaps">${el.companyName}</h4>
                                     <div class="exp__items__grp">
                                         <p>Product : ${el.product}</p>
                                         <p>Status : ${el.bookingInfo}</p>
@@ -719,7 +719,7 @@ window.addEventListener("load", () => {
                             returnsec.innerHTML +=
                                 `
                                 <div class="exp__items"> 
-                                    <h4>${el.companyName}</h4>
+                                    <h4 class="rmcaps">${el.companyName}</h4>
                                     <div class="exp__items__grp">
                                         <p>Product : ${el.product}</p>
                                         <p>Status : ${el.bookingInfo}</p>

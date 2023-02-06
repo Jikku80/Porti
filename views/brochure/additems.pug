@@ -39,7 +39,7 @@ block content
                     .menu__message__secetion.hidden
                         .menu__message__mid__sec
                             .menu__message__head 
-                                h3 Messages (Last 50 Orders Made)
+                                h3.scaps Messages (Last 50 Bookings Made)
                                 img.cancel__msg__sec.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__message__bod
                             .menu__message__bod__prev
@@ -58,9 +58,9 @@ block content
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form
                         .itemform__head 
-                            h2.form__label Add To Brochure
+                            h2.scaps.form__label Add To Brochure
                             h2 
-                                a(href="#upOrganization") Update Organization
+                                a.scaps(href="#upOrganization") Update Organization
                         form#addCatItem.upItem(action="/api/v1/brochure/" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label(for="item_name") Section Name:
@@ -84,7 +84,7 @@ block content
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
                             button#cataddItemBtn.blackbtn Add Section
                     .your__item__sec#CatalogeItemSec
-                        h2.items__head Your Sections 
+                        h2.items__head.scaps Your Sections 
                         .all__brochure__items
                             for item in brochures 
                                 .brochure__card
@@ -98,8 +98,9 @@ block content
                                             p.catalouge__card__price.goldn= `${item.currency} ${item.price}`
                                         if (item.applyDiscount == true)
                                             p.catalouge__card__dis__per.goldn Discount
-                                        a(href=`/brochuretweaks/${item._id}?update` class="ygbtn btn") Update
-                                        a.redbtn.btn(href=`/brochuretweaks/${item._id}?delete`) Delete
+                                        .grp__btn
+                                            a(href=`/brochuretweaks/${item._id}?update` class="ygbtn btn") Update
+                                            a.redbtn.btn(href=`/brochuretweaks/${item._id}?delete`) Delete
                         p.currentuid.hidden= user._id
                         if (banner[0])
                             if (banner[0].discountpercent || banner[0].discountpercent !== null)
@@ -114,7 +115,7 @@ block content
                         //-     button.prev__catal Previous
                         //-     button.next__catal.hidden Next
                     .itemform__head 
-                        h2.form__label Update Organization Detail
+                        h2.form__label.scaps Update Organization Detail
                     form#upOrganization.upItem
                         .form__bod
                             label.form__label(for="company_name") Name:
@@ -151,7 +152,7 @@ block content
                         button#updateCompBtn.blackbtn Update now
 
                     .itemform__head 
-                        h2.form__label Update Enterprise Cover Image
+                        h2.form__label.scaps Update Enterprise Cover Image
                         p.compimg__id.hidden= organization._id
                     form#upCompanyImage.upItem(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
                         .form__bod.file_part
@@ -161,10 +162,10 @@ block content
                     
                     .createBanner
                         .itemform__head 
-                            h2.form__label Create A Banner
+                            h2.form__label.scaps Create A Banner
                         form.upItem
                             .form__bod 
-                                label.form__label Banner Information 
+                                label.form__label.scaps Banner Information 
                                 if (!banner[0])
                                     textarea.form__input#catalogbannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
                                 else 
@@ -181,16 +182,24 @@ block content
                                 p#catalogbannerId.hidden= banner[0]._id
                                 if (banner[0].discountpercent || banner[0].discountpercent !== null)
                                     h2= `${banner[0].discountpercent}%`
-                                    p You will have to check apply discount to items, to use it in your product items
+                                    p.scaps You will have to check apply discount to items, to use it in your product items
+                                    .grp__btn 
+                                        #updateDiscountToAll.ygbtn Apply Discount In All Items
+                                        #removeDiscountToAll.ygbtn Remove Discount In All Items
+                                else 
+                                    #updateDiscountToAll.hidden 
+                                    #removeDiscountToAll.hidden
                                 btn#catalogdeletebanner.blackbtn Delete
                         else 
                             .banner__sec 
-                                h1 No Banner
+                                h1.scaps No Banner
                                 #catalogdeletebanner.hidden
                                 #catalogbannerId.hidden
+                                #updateDiscountToAll.hidden 
+                                #removeDiscountToAll.hidden
                 .delete__sec 
-                    h2 Delete Organization 
-                    p It will delete Everything including all the Brochure Sections
+                    h2.scaps Delete Organization 
+                    p.scaps It will delete Everything including all the Brochure Sections
                     .delcompid.hidden= organization._id
                     .delcatalid.hidden= organization.user._id
                     btn#deleteOrganization.blackbtn Delete

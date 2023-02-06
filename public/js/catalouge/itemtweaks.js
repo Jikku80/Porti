@@ -21,13 +21,13 @@ async function getOneCatalougeItem() {
                     catalougeCard.innerHTML =
                         `
                             <img class="catalouge__card__img" src="/images/noimg.png" alt="catalouge__item__image">
-                            <div class="catalouge__card__det">
+                            <div class="catalouge__card__det deat">
                                 <h3 class="catalouge__card__head goldn">${item.name}</h3>
                                 <p class="catalouge__card__price goldn">${item.serialno}</p>
                                 <p class="catalouge__card__price goldn">${item.currency} ${item.price}</p>
                                 <p class="catalouge__card__cat goldn">${item.category}</p>
                                 <p class="catalouge__card__cat goldn">${item.subcategory}</p>
-                                <p class="catalouge__card__detail goldn">${item.detail}</p>
+                                <p class="catalouge__card__detal goldn">${item.detail}</p>
                             </div>
                             `
                     if (item.coverImage) {

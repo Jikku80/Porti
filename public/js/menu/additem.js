@@ -43,9 +43,10 @@ async function getAllItem() {
                                                 <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                                 <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                                 <p class="menu__card__cat goldn">${el.category}</p>
-                                                <p class="menu__card__detail goldn">${el.detail}</p>
+                                                <div class="grp__btn">
                                                 <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                                 <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -59,9 +60,10 @@ async function getAllItem() {
                                                 <h3 class="menu__card__head goldn">${el.name}</h3>
                                                 <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                                 <p class="menu__card__cat goldn">${el.category}</p>
-                                                <p class="menu__card__detail goldn">${el.detail}</p>
+                                                <div class="grp__btn">
                                                 <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                                 <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -82,9 +84,10 @@ async function getAllItem() {
                                                 <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                                 <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                                 <p class="menu__card__cat goldn">${el.category}</p>
-                                                <p class="menu__card__detail goldn">${el.detail}</p>
+                                                <div class="grp__btn">
                                                 <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                                 <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     `
@@ -98,9 +101,10 @@ async function getAllItem() {
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -186,9 +190,10 @@ next.addEventListener("click", async () => {
                                             <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -202,9 +207,10 @@ next.addEventListener("click", async () => {
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -225,9 +231,10 @@ next.addEventListener("click", async () => {
                                             <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -241,9 +248,10 @@ next.addEventListener("click", async () => {
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                         <p class="menu__card__cat goldn">${el.category}</p>
-                                        <p class="menu__card__detail goldn">${el.detail}</p>
+                                        <div class="grp__btn">
                                         <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             `
@@ -316,9 +324,10 @@ prev.addEventListener("click", async () => {
                                             <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -332,9 +341,10 @@ prev.addEventListener("click", async () => {
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -355,9 +365,10 @@ prev.addEventListener("click", async () => {
                                             <p class="catalouge__card__dis__per goldn">Discount : ${disprcent}%</p> 
                                             <p class="catalouge__card__disc">After Discount : ${el.currency} ${newprice}</p>
                                             <p class="menu__card__cat goldn">${el.category}</p>
-                                            <p class="menu__card__detail goldn">${el.detail}</p>
+                                            <div class="grp__btn">
                                             <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                             <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 `
@@ -371,9 +382,10 @@ prev.addEventListener("click", async () => {
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
                                         <p class="menu__card__cat goldn">${el.category}</p>
-                                        <p class="menu__card__detail goldn">${el.detail}</p>
+                                        <div class="grp__btn">
                                         <a href="/tweaks/${el._id}?update" class="ygbtn">Update</a>
                                         <a href="/tweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             `
@@ -403,6 +415,7 @@ prev.addEventListener("click", async () => {
     shareLink.innerHTML += `
         <div class="menu__link">
             <p class="head form__label">Your Menu Link</p>
+            <p class="head form__label">Your Endpoint / Username is Case-Insensitive</p>
             <p class="menu__link__displayer qrLink">${location.host}/${nm}</p>
             <button class="copy__menu ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
@@ -1231,3 +1244,74 @@ async function reserveCanceled(val, usr, route) {
         errorAlert('Sorry! Something went wrong', err);
     };
 }
+
+(function () {
+    let apply = document.querySelector("#updateDiscountToAll");
+    let remve = document.querySelector("#removeDiscountToAll");
+    let usr = document.querySelector(".currentid").innerText;
+    apply.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/applydiscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Applied in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    remve.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/removediscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Removed in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();

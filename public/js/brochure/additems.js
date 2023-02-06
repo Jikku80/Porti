@@ -5,6 +5,7 @@
     shareLink.innerHTML += `
         <div class="catalouge__link">
             <p class="head form__label">Your Brochure Link</p>
+            <p class="head form__label">Your Endpoint / Username is Case-Insensitive</p>
             <p class="catalouge__link__displayer catalqrLink">${location.host}/${nm}</p>
             <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
             <button class="ygbtn smallbtn" id="openmycatal">My Brochure</button>
@@ -683,3 +684,73 @@ async function itemorderCanceled(val, usr) {
     };
 };
 
+(function () {
+    let apply = document.querySelector("#updateDiscountToAll");
+    let remve = document.querySelector("#removeDiscountToAll");
+    let usr = document.querySelector(".currentuid").innerText;
+    apply.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/brochure/applydiscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Applied in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    remve.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/brochure/removediscount/${usr}`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Discount Removed in all items :(");
+                }
+                else if (response.status === 404) {
+                    errorAlert("No items found !!!")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Creation error, Update Failed!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
