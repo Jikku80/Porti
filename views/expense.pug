@@ -114,6 +114,18 @@ block content
                     .exp__paginate 
                         .returnprev.exppagibtn.hidden Previous 
                         .returnNext.exppagibtn.hidden Next
+                
+                #search__his.exp__bod__inner
+                    .search__history__head 
+                        h2 Your Search History
+                        .exppagibtn.deleteAllSearches Clear All
+                    #search__val
+                        for item in search 
+                            .exp__items
+                                h4.rmcaps= item.searchName 
+                    .exp__paginate 
+                        .searchprev.exppagibtn.hidden Previous 
+                        .searchNext.exppagibtn.hidden Next
         .exp_foot
             include _footer
 

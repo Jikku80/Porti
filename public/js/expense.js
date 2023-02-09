@@ -144,11 +144,14 @@ window.addEventListener("load", () => {
     let reservePrev = document.querySelector(".reserveprev");
     let returnNext = document.querySelector(".returnNext");
     let returnPrev = document.querySelector(".returnprev");
+    let searchNext = document.querySelector(".searchNext");
+    let searchPrev = document.querySelector(".searchprev");
     let orgsec = document.getElementById("exp__org__val");
     let ressec = document.getElementById("exp__res__val");
     let comsec = document.getElementById("exp__com__val");
     let reservesec = document.getElementById("exp__reserve__val");
     let returnsec = document.getElementById("exp__return__val");
+    let searchsec = document.getElementById("search__val");
 
     if (ressec.children.length == 10) {
         resNext.classList.remove('hidden');
@@ -164,6 +167,10 @@ window.addEventListener("load", () => {
     }
     if (returnsec.children.length == 10) {
         returnNext.classList.remove('hidden');
+    }
+
+    if (searchsec.children.length == 10) {
+        searchNext.classList.remove('hidden');
     }
 
     resNext.addEventListener("click", async () => {
@@ -745,4 +752,145 @@ window.addEventListener("load", () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     });
+
+    searchNext.addEventListener("click", async () => {
+        let pg = ++x
+        searchPrev.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            searchsec.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/activity/${id}/tracker?sarch=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+
+                        let items = result.search
+                        items.forEach(el => {
+                            searchsec.innerHTML +=
+                                `
+                                <div class="exp__items"> 
+                                    <h4 class="rmcaps">${el.searchName}</h4>
+                                </div>
+                            `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#search__his";
+                        }, 200)
+                        if (searchsec.children.length === 10) {
+                            searchNext.classList.remove("hidden");
+                        } else {
+                            searchNext.classList.add("hidden");
+                        }
+                        if (searchsec.innerHTML == "") {
+                            searchNext.classList.add("hidden");
+                            searchsec.innerHTML = `<p class="go__back cnt">Oops!! Thats All You've Searched So Far :)</p>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    searchPrev.addEventListener("click", async () => {
+        let pg = --x
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            if (x == 1) {
+                searchPrev.classList.add("hidden")
+            }
+            searchNext.classList.remove("hidden");
+            searchsec.innerHTML = "";
+            window.location.hash = "#"
+            const endpoint = `/activity/${id}/tracker?sarch=${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result.search
+                        items.forEach(el => {
+                            searchsec.innerHTML +=
+                                `
+                                <div class="exp__items"> 
+                                    <h4 class="rmcaps">${el.searchName}</h4>
+                                </div>
+                            `
+                        });
+                        window.setTimeout(() => {
+                            window.location.hash = "#search__his";
+                        }, 200)
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+})();
+
+(function () {
+    let clearAll = document.querySelector(".deleteAllSearches");
+    let id = document.querySelector(".curuserid").innerText;
+
+    clearAll.addEventListener("click", async () => {
+        try {
+            const endpoint = `/api/v1/search/deleteAllSearch/${id}`
+            await fetch((endpoint), {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                if (response.status === 200) {
+                    successAlert("Your Search History has been cleared :) ")
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 300)
+                }
+                else if (response.status == 404) {
+                    errorAlert("You Do Not Have Search History")
+                }
+                else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
 })();

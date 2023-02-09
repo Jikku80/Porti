@@ -14,12 +14,16 @@ block content
     else
         include _header
         p.hidden.themeIid= user.theme
+        .curloguser.hidden= user._id
         .search__section
             .search__body
                 .search__box
                     input#portisearch.search_bar(type="text", placeholder="Search")
                 .search__history.hidden
-                    img#cancelSearch.pointer(src="/images/cancel.png", alt="cancel search" title="cancel search")
+                    .search__history__head
+                        p Your Last Searches
+                        img#cancelSearch.pointer(src="/images/cancel.png", alt="cancel search" title="cancel search")
+                    .search__history__bod
                 .search__groups
                     .search__head 
                         h1.res Search Results

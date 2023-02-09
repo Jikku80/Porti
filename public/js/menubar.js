@@ -49,19 +49,6 @@
         return;
     }
 
-    if (pathName.match(/menu/gi)) {
-        menu.style.color = "greenyellow";
-        menu.style.fontWeight = "bold";
-        menu.style.borderBottom = "2px solid white"
-        return;
-    }
-
-    if (pathName.match(/me/gi)) {
-        menuImg.style.filter = "grayscale(.7)";
-        menuImg.style.borderBottom = "2px solid white"
-        return;
-    }
-
     if (pathName.match(/layouts/gi)) {
         layouts.style.color = "greenyellow";
         layouts.style.fontWeight = "bold";
@@ -122,6 +109,19 @@
         exp.style.color = "greenyellow";
         exp.style.fontWeight = "bold";
         exp.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/menu/gi)) {
+        menu.style.color = "greenyellow";
+        menu.style.fontWeight = "bold";
+        menu.style.borderBottom = "2px solid white"
+        return;
+    }
+
+    if (pathName.match(/me/gi)) {
+        menuImg.style.filter = "grayscale(.7)";
+        menuImg.style.borderBottom = "2px solid white"
         return;
     }
 })();
@@ -188,19 +188,6 @@
             return;
         }
 
-        if (pathName.match(/menu/gi)) {
-            menu.style.color = "chartreuse";
-            menu.style.fontWeight = "bold";
-            menu.style.borderBottom = "2px solid black"
-            return;
-        }
-
-        if (pathName.match(/me/gi)) {
-            menuImg.style.filter = "grayscale(.7)";
-            menuImg.style.borderBottom = "2px solid chartreuse"
-            return;
-        }
-
         if (pathName.match(/layouts/gi)) {
             layouts.style.color = "chartreuse";
             layouts.style.fontWeight = "bold";
@@ -262,8 +249,67 @@
             exp.style.borderBottom = "2px solid black"
             return;
         }
+
+        if (pathName.match(/menu/gi)) {
+            menu.style.color = "chartreuse";
+            menu.style.fontWeight = "bold";
+            menu.style.borderBottom = "2px solid black"
+            return;
+        }
+
+        if (pathName.match(/me/gi)) {
+            menuImg.style.filter = "grayscale(.7)";
+            menuImg.style.borderBottom = "2px solid chartreuse"
+            return;
+        }
     }
     else {
         return;
     }
+})();
+
+(async function () {
+    let noti = document.querySelector(".newmsgnotifier");
+    let userid = document.querySelector(".curuserId").innerText;
+    let alrt = document.getElementById("msgalert");
+    let socket = io();
+    socket.on("usermessage", (name, user, message, id) => {
+
+        if (user === userid) {
+            alrt.play();
+            noti.classList.remove("hidden");
+        }
+
+    });
+
+    const endpoint = `/api/v1/message/getnewmsgnoti/${userid}`
+    try {
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    let data = item.msg
+                    if (data.length !== 0) {
+                        noti.classList.remove("hidden");
+                    }
+                })
+            } else {
+                errorAlert("Couldnt Fetch Messages!!!")
+                console.log(response);
+            }
+        })
+
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+
 })();

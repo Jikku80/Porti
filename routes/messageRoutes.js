@@ -30,5 +30,5 @@ router.get('/messagesAll/:name', msgController.getMessagesAllUsers);
 router.get('/messageby/:name/user/:userName', msgController.getAllMessageByUser);
 router.patch('/update/:name/msg/:userName', msgController.updateUserMessage);
 router.delete('/deleteusermessage', msgController.deleteUserMessage);
-
+router.get('/getnewmsgnoti/:id', msgController.getMsgNoti);
 module.exports = router;

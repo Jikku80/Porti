@@ -26,6 +26,7 @@ const ComOrder = require('./../models/comOrderModel');
 const Booking = require('./../models/bookModel');
 const ResReserve = require('./../models/reserveModel');
 const ComReturn = require('./../models/returnModel');
+const Search = require('./../models/searchModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -821,6 +822,17 @@ exports.expPage = catchAsync(async (req, res, next) => {
             itemreturn
         })
     }
+    else if (req.query.sarch !== undefined) {
+        newpg = (req.query.sarch) * 1
+        pg = newpg;
+        let sar = new APIFeatures(Search.find({ user: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let search = await sar.query
+
+        res.status(200).json({
+            status: 'success',
+            search
+        })
+    }
     else {
         pg = 1;
         let resordrs = await ResOrder.find({ userId: req.params.id });
@@ -835,6 +847,8 @@ exports.expPage = catchAsync(async (req, res, next) => {
         let comreturn = await coreturn.query
         let resresve = new APIFeatures(ResReserve.find({ userId: req.params.id }), { limit: 10, page: pg }).srt().paginate();
         let resreserve = await resresve.query
+        let sear = new APIFeatures(Search.find({ user: req.params.id }), { limit: 10, page: pg }).srt().paginate();
+        let search = await sear.query
 
         let restotal = [];
         let comtotal = [];
@@ -865,7 +879,8 @@ exports.expPage = catchAsync(async (req, res, next) => {
             totalresexp,
             totalcomexp,
             comreturn,
-            resreserve
+            resreserve,
+            search
         })
     }
 })

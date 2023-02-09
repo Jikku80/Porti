@@ -136,11 +136,13 @@ body{
 
 .sender__name{
     color: teal;
+    text-shadow: 1px 1px 2px black;
     margin: 0;
 }
 
 .me{
-    color: crimson;
+    color: red;
+    text-shadow: 1px 1px 2px black;
     margin: 0;
 }
 

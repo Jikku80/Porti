@@ -1111,6 +1111,50 @@ input::file-selector-button, ::-webkit-file-upload-button{
   color: white;
 }
 
+.search__history{
+  width: 40vw;
+  height: 30vh;  
+  z-index: 1;
+  position: absolute;
+  top: 8vh;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.336);
+  overflow-y: auto;
+  scrollbar-width: none;
+  animation: shine 4s ease-in-out forwards infinite;
+}
+
+.search__history__head{
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__history__bod{
+  display: flex;
+  flex-direction: column;
+}
+
+.searchCard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 10px;
+  background-color: #131313;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 1rem;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.search__data{
+  width: 90%;
+}
+
+.removeData{
+  cursor: pointer;
+}
+
 .footer{
   width: 83%;
   margin-top: 2vh;
@@ -1269,6 +1313,17 @@ input::file-selector-button, ::-webkit-file-upload-button{
   color: goldenrod;
 }
 
+.msgdiv{
+  display: flex;
+}
+
+.newmsgnotifier{
+  border-radius: 8rem;
+  width: .8rem;
+  height: .8rem;
+  background-color: orangered;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
   .navigation a{
     font-size: 1.8vw;
@@ -1373,7 +1428,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
   .pie{
     width: 40vw !important;
     height: 40vw !important;
-}
+  }
+
+  .search__history{
+    top: 5vh;
+  }
 
 }
 
@@ -1527,6 +1586,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
     margin-top: 5vh;
     width: 100%;
     padding: 2vw;
+  }
+
+  .search__history{
+    top: 0;
+    position: relative;
   }
 
   .exp__bod{

@@ -1,8 +1,11 @@
 .menu__bar 
     .menu__size
         a.anavi(href="#") &#9830; &#9830; &#9830;
+audio#msgalert.hidden
+    source(src="/noti/msg.mp3")
 #side__bar.main__navigation
     p.hidden.userTheme= user.theme
+    p.hidden.curuserId= user._id
     .navigation 
         a.port_sec_head.hm(href="/" title="home")
             img.porti__off__img(src="/images/smalport.png", alt="porti__img")
@@ -39,10 +42,13 @@
             #menuBrochure.anavi.hidden
             #menuBrochureStats.anavi.hidden
         a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
-        a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
+        .msgdiv
+            a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
+            .newmsgnotifier.hidden
         a#exp.anavi(href=`/activity/${user._id}/tracker` title="your expenses") Activity
         #logout.logout.pointer SignOut
 
 script(src="/js/alert.js")  
 script(src="/js/logout.js") 
+script(src="/socket.io/socket.io.js") 
 script(src="/js/menubar.js") 

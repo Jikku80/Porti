@@ -1644,3 +1644,18 @@ exports.deleteUserMessage = catchAsync(async (req, res, next) => {
         }
     })
 });
+
+exports.getMsgNoti = catchAsync(async (req, res, next) => {
+
+    const msg = await UserMessage.find({ userName: req.params.id }).then(item => {
+        let data = item.filter(el => {
+            return el.received == false;
+        })
+        return data;
+    })
+
+    res.status(200).json({
+        status: 'success',
+        msg
+    })
+});
