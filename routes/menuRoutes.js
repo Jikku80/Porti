@@ -67,4 +67,6 @@ router.get('/:restro/getAllReserve?:page', authController.restrictTo('user', 'ad
 router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), menuController.discountall);
 router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), menuController.removediscountall);
 
+router.get('/getnewordernoti/:id', authController.restrictTo('user', 'admin'), menuController.restronoti);
+
 module.exports = router;

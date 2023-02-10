@@ -1317,7 +1317,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
   display: flex;
 }
 
-.newmsgnotifier{
+.newmsgnotifier, .newbookingnoti, .newmenunoti, .newcatalognoti{
   border-radius: 8rem;
   width: .8rem;
   height: .8rem;

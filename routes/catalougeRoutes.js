@@ -66,4 +66,6 @@ router.get('/:company/getAllReturns?:page', authController.restrictTo('user', 'a
 router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), catalougeController.discountall);
 router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), catalougeController.removediscountall);
 
+router.get('/getnewordernoti/:id', authController.restrictTo('user', 'admin'), catalougeController.compnoti);
+
 module.exports = router;

@@ -17,8 +17,8 @@ url = process.env.DATABASE_LOCAL;
 // url = process.env.DATABASE;
 
 io.on('connection', (socket) => {
-    socket.on("resorders", (restoid, oderuser) => {
-        io.emit('resorders', restoid, oderuser)
+    socket.on("resorders", (restoid, oderuser, usrid) => {
+        io.emit('resorders', restoid, oderuser, usrid)
     });
     socket.on("resorderreply", (restoid, oderuser, oderuserid) => {
         io.emit('resorderreply', restoid, oderuser, oderuserid)
@@ -30,8 +30,8 @@ io.on('connection', (socket) => {
     socket.on("reservereply", (restoid, userId) => {
         io.emit('reservereply', restoid, userId)
     });
-    socket.on("catorders", (catid) => {
-        io.emit('catorders', catid)
+    socket.on("catorders", (catid, usrid) => {
+        io.emit('catorders', catid, usrid)
     });
     socket.on("catorderreply", (catid, oderuser, oderuserid) => {
         io.emit('catorderreply', catid, oderuser, oderuserid)
@@ -42,8 +42,8 @@ io.on('connection', (socket) => {
     socket.on("returnreply", (catid, userId) => {
         io.emit('returnreply', catid, userId)
     });
-    socket.on("brobooking", (broid) => {
-        io.emit('brobooking', broid)
+    socket.on("brobooking", (broid, usrid) => {
+        io.emit('brobooking', broid, usrid)
     });
     socket.on("brobookingreply", (broid, brouser, brouserid) => {
         io.emit('brobookingreply', broid, brouser, brouserid)

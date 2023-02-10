@@ -24,19 +24,25 @@ audio#msgalert.hidden
         else 
             #menuPortfolio.anavi.hidden
         if (user.accountType === "restaurant")
-            a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+            .msgdiv
+                a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+                .newmenunoti.hidden
             a#menuMenuStats.anavi(href=`/api/v1/menu/restrostat/${user._id}` title="your menu statistics") Statistics
         else 
             #menuMenu.anavi.hidden 
             #menuMenuStats.hidden
         if (user.accountType === "business")
-            a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+            .msgdiv
+                a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+                .newcatalognoti.hidden
             a#menuCatalogeStats.anavi(href=`/api/v1/catalouge/companystat/${user._id}` title="your catalouge statistics") Statistics
         else 
             #menuCataloge.anavi.hidden
             #menuCatalogeStats.anavi.hidden
         if (user.accountType === "brochure")
-            a#menuBrochure.anavi(href=`/brochure/${user._id}/additems` title="your brochure") Brochure 
+            .msgdiv 
+                a#menuBrochure.anavi(href=`/brochure/${user._id}/additems` title="your brochure") Brochure 
+                .newbookingnoti.hidden
             a#menuBrochureStats.anavi(href=`/api/v1/brochure/brochurestat/${user._id}` title="your catalouge statistics") Statistics
         else 
             #menuBrochure.anavi.hidden

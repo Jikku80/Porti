@@ -464,7 +464,8 @@ window.addEventListener("load", () => {
             return false;
         }
         fill.classList.add("hidden");
-        socket.emit("resorders", restroid.innerText, orderuser.innerText);
+        let menuuid = document.querySelector(".portiuserid").innerText;
+        socket.emit("resorders", restroid.innerText, orderuser.innerText, menuuid);
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -748,9 +749,10 @@ async function getUserMsg() {
                                 }).then((response) => {
                                     load.classList.add("hidden");
                                     if (response.status === 200) {
-                                        successAlert("Your order has ben deleted :(");
+                                        successAlert("Your order has been deleted :(");
                                         getUserMsg();
-                                        socket.emit("resorders", resid, usr);
+                                        let menuuid = document.querySelector(".portiuserid").innerText;
+                                        socket.emit("resorders", resid, usr, menuuid);
                                     } else {
                                         console.log(response);
                                         errorAlert("Creation error, You Can't Have more than one banner!!!")
@@ -1192,8 +1194,8 @@ async function getAllLikeCount() {
         if (time.value == "") {
             return false
         }
-
-        socket.emit("reserve", restroId, usrId)
+        let menuuid = document.querySelector(".portiuserid").innerText;
+        socket.emit("reserve", restroId, menuuid)
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -1334,7 +1336,8 @@ async function deleteReservation(id) {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Reservation Deleted :)");
-                socket.emit("reserve", restroId, usrId)
+                let menuuid = document.querySelector(".portiuserid").innerText;
+                socket.emit("reserve", restroId, menuuid)
                 getReservation();
             } else {
                 console.log(response);
@@ -1425,4 +1428,4 @@ window.addEventListener("load", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     }
-})
+});

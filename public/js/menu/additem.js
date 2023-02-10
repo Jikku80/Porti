@@ -558,7 +558,7 @@ prev.addEventListener("click", async () => {
         getAllResMsg();
     })
 
-    socket.on("resorders", (restoid, tablno, odermsg, oderuser, oderadd, oderphn) => {
+    socket.on("resorders", (restoid) => {
         if (resid.innerText == restoid) {
             getAllResMsg();
             alrt.play();
@@ -1008,6 +1008,13 @@ async function orderCanceled(val, usr, route) {
     cancelMsgBod.addEventListener("click", () => {
         menuMsgSec.classList.add("hidden");
         dummybtn.classList.remove("hidden");
+        let dotnoti = document.querySelector(".dotnoti");
+        if (dotnoti) {
+            dot.classList.remove("hidden");
+        }
+        else {
+            dot.classList.add("hidden");
+        }
     })
 })();
 
@@ -1314,4 +1321,43 @@ async function reserveCanceled(val, usr, route) {
             errorAlert('Sorry! Something went wrong', err);
         };
     })
+})();
+
+(async function () {
+    let userid = document.querySelector(".currentid").innerText;
+    let resnoti = document.querySelector(".new__menu__reserve");
+    let ordnoti = document.querySelector(".new__menu__msg");
+    try {
+        const endpoint = `/api/v1/menu/getnewordernoti/${userid}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    let data = item.neworder
+                    let secdata = item.newreserve
+                    if (data.length !== 0) {
+                        ordnoti.classList.remove("hidden");
+                    }
+                    if (secdata.length !== 0) {
+                        resnoti.classList.remove("hidden");
+                    }
+                })
+            } else {
+                errorAlert("Order fetching error!!!")
+                console.log(response);
+            }
+        })
+
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
 })();

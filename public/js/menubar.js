@@ -147,6 +147,10 @@
     let catStat = document.getElementById("menuCatalogeStats");
     let orgStat = document.getElementById("menuBrochureStats");
     let exp = document.getElementById("exp");
+    let notif = document.querySelector(".newmsgnotifier");
+    let bronoti = document.querySelector(".newbookingnoti");
+    let menunoti = document.querySelector(".newmenunoti");
+    let catalnoti = document.querySelector(".newcatalognoti");
 
     let menusiz = document.querySelector(".menu__size");
 
@@ -158,6 +162,16 @@
         hd.style.color = "white";
         upAccForm.style.animation = "blackShine 4s ease-in-out forwards infinite";
         menusiz.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        notif.style.backgroundColor = "gold";
+        if (bronoti) {
+            bronoti.style.backgroundColor = "gold";
+        }
+        if (menunoti) {
+            menunoti.style.backgroundColor = "gold";
+        }
+        if (catalnoti) {
+            catalnoti.style.backgroundColor = "gold";
+        }
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
@@ -271,6 +285,10 @@
 (async function () {
     let noti = document.querySelector(".newmsgnotifier");
     let userid = document.querySelector(".curuserId").innerText;
+    let bronoti = document.querySelector(".newbookingnoti");
+    let menunoti = document.querySelector(".newmenunoti");
+    let catalnoti = document.querySelector(".newcatalognoti");
+
     let alrt = document.getElementById("msgalert");
     let socket = io();
     socket.on("usermessage", (name, user, message, id) => {
@@ -282,8 +300,45 @@
 
     });
 
-    const endpoint = `/api/v1/message/getnewmsgnoti/${userid}`
+    socket.on("reserve", (restoid, usrid) => {
+        if (userid == usrid) {
+            getAllResReserve();
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+
+    socket.on("resorders", (restoid, oderuser, usrid) => {
+        if (userid == usrid) {
+            alrt.play();
+            menunoti.classList.remove("hidden");
+        }
+    });
+
+    socket.on("catorders", (catid, usrid) => {
+        if (userid == usrid) {
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+
+    socket.on("return", (restoid, usrid) => {
+        if (userid == usrid) {
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+
+    socket.on("brobooking", (catid, usrid) => {
+        if (userid == usrid) {
+            getAllCatMsg();
+            alrt.play();
+            dot.classList.remove("hidden");
+        }
+    });
+
     try {
+        const endpoint = `/api/v1/message/getnewmsgnoti/${userid}`
         await fetch(endpoint, {
             method: 'GET',
             headers: {
@@ -311,5 +366,104 @@
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
+
+
+    if (bronoti) {
+        try {
+            const endpoint = `/api/v1/brochure/getnewbookingnoti/${userid}`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                }
+            }).then((response) => {
+
+                if (response.status === 200) {
+                    let res = response.json();
+                    res.then(item => {
+                        let data = item.newbook
+                        if (data.length !== 0) {
+                            bronoti.classList.remove("hidden");
+                        }
+                    })
+                } else {
+                    errorAlert("Booking fetching error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    }
+
+    if (menunoti) {
+        try {
+            const endpoint = `/api/v1/menu/getnewordernoti/${userid}`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                }
+            }).then((response) => {
+
+                if (response.status === 200) {
+                    let res = response.json();
+                    res.then(item => {
+                        let data = item.neworder
+                        let secdata = item.newreserve
+                        if (data.length !== 0 || secdata.length !== 0) {
+                            menunoti.classList.remove("hidden");
+                        }
+                    })
+                } else {
+                    errorAlert("Order fetching error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    }
+
+    if (catalnoti) {
+        try {
+            const endpoint = `/api/v1/catalouge/getnewordernoti/${userid}`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                }
+            }).then((response) => {
+
+                if (response.status === 200) {
+                    let res = response.json();
+                    res.then(item => {
+                        let data = item.neworder
+                        let secdata = item.newreturn
+                        if (data.length !== 0 || secdata.length !== 0) {
+                            catalnoti.classList.remove("hidden");
+                        }
+                    })
+                } else {
+                    errorAlert("Order fetching error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    }
 
 })();

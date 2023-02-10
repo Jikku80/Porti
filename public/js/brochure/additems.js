@@ -752,5 +752,39 @@ async function itemorderCanceled(val, usr) {
             console.log(err);
             errorAlert('Sorry! Something went wrong', err);
         };
-    })
+    });
+})();
+
+(async function () {
+    let usr = document.querySelector(".currentuid").innerText;
+    try {
+        let bronoti = document.querySelector(".new__menu__msg");
+        const endpoint = `/api/v1/brochure/getnewbookingnoti/${usr}`
+        await fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            }
+        }).then((response) => {
+
+            if (response.status === 200) {
+                let res = response.json();
+                res.then(item => {
+                    let data = item.newbook
+                    if (data.length !== 0) {
+                        bronoti.classList.remove("hidden");
+                    }
+                })
+            } else {
+                errorAlert("Booking fetching error!!!")
+                console.log(response);
+            }
+        })
+
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
 })();

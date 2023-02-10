@@ -47,4 +47,6 @@ router.get('/:org/getRes?:page', authController.restrictTo('user', 'admin'), bro
 router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), brochureController.discountall);
 router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), brochureController.removediscountall);
 
+router.get('/getnewbookingnoti/:id', authController.restrictTo('user', 'admin'), brochureController.bookingnoti);
+
 module.exports = router;

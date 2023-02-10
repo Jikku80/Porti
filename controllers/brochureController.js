@@ -1023,3 +1023,23 @@ exports.removediscountall = catchAsync(async (req, res) => {
         status: "success"
     })
 });
+
+exports.bookingnoti = catchAsync(async (req, res) => {
+    const id = req.params.id;
+
+    let org = await Organization.findOne({ user: id })
+
+    const newbook = await OrgBook.find({ organization: org._id }).then(item => {
+        let datas = item.filter(el => {
+            if (el.bookingInfo == undefined) {
+                return el
+            }
+        })
+        return datas
+    })
+
+    res.status(200).json({
+        status: "success",
+        newbook
+    })
+});

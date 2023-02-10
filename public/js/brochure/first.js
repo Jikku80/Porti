@@ -43,7 +43,8 @@
             return false;
         }
         e.preventDefault();
-        socket.emit("brobooking", orgid)
+        let orguid = document.querySelector(".portiuserid").innerText;
+        socket.emit("brobooking", orgid, orguid)
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -217,7 +218,8 @@ async function deleteBooking(delId) {
         }).then((response) => {
             load.classList.add("hidden");
             if (response.status === 200) {
-                socket.emit("brobooking", orgid)
+                let orguid = document.querySelector(".portiuserid").innerText;
+                socket.emit("brobooking", orgid, orguid)
                 getAllUserBookings()
                 successAlert("Your Booking Has Been Deleted Successfully :)");
             } else {

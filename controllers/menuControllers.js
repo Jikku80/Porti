@@ -926,3 +926,33 @@ exports.removediscountall = catchAsync(async (req, res) => {
         status: "success"
     })
 });
+
+exports.restronoti = catchAsync(async (req, res) => {
+    const id = req.params.id;
+
+    let restro = await Restaurant.findOne({ user: id })
+
+    const neworder = await ResOrder.find({ restro: restro._id }).then(item => {
+        let datas = item.filter(el => {
+            if (el.orderInfo == undefined) {
+                return el
+            }
+        })
+        return datas
+    })
+
+    const newreserve = await ResReserve.find({ restro: restro._id }).then(item => {
+        let datas = item.filter(el => {
+            if (el.bookingInfo == undefined) {
+                return el
+            }
+        })
+        return datas
+    })
+
+    res.status(200).json({
+        status: "success",
+        neworder,
+        newreserve
+    })
+});

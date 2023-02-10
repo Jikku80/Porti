@@ -361,7 +361,9 @@ let jar = [];
             return false;
         }
         fill.classList.add("hidden");
-        socket.emit("catorders", compid.value, orderuser.innerText);
+        let comuid = document.querySelector(".portiuserid").innerText;
+
+        socket.emit("catorders", compid.value, orderuser.innerText, comuid);
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -528,7 +530,8 @@ async function getUserCompMsg() {
                                     if (response.status === 200) {
                                         successAlert("Your order has ben deleted :(");
                                         getUserCompMsg();
-                                        socket.emit("catorders", resid, usr);
+                                        let comuid = document.querySelector(".portiuserid").innerText;
+                                        socket.emit("catorders", resid, usr, comuid);
                                     } else {
                                         console.log(response);
                                         errorAlert("Creation error, You Can't Have more than one banner!!!")
@@ -1879,8 +1882,8 @@ async function updateProductQuantity(id, quantity) {
         if (returnmsg.value == "") {
             return false
         }
-
-        socket.emit("return", restroId, usrId)
+        let comuid = document.querySelector(".portiuserid").innerText;
+        socket.emit("return", restroId, comuid)
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -2026,7 +2029,8 @@ async function deleteReservation(id) {
             load.classList.add("hidden");
             if (response.status === 200) {
                 successAlert("Return Canceled :)");
-                socket.emit("return", restroId, usrId)
+                let comuid = document.querySelector(".portiuserid").innerText;
+                socket.emit("return", restroId, comuid)
                 getReservation();
 
             } else {

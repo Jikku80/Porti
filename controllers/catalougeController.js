@@ -17,6 +17,7 @@ const APIFeatures = require('./../utils/apiFeatures');
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
+const ComOrder = require('../models/comOrderModel');
 
 exports.setUsersId = (req, res, next) => {
     if (!req.body.user) req.body.user = req.user.id;
@@ -899,4 +900,33 @@ exports.removediscountall = catchAsync(async (req, res) => {
     })
 });
 
+exports.compnoti = catchAsync(async (req, res) => {
+    const id = req.params.id;
+
+    let company = await Company.findOne({ user: id })
+
+    const neworder = await ComOrder.find({ restro: company._id }).then(item => {
+        let datas = item.filter(el => {
+            if (el.orderInfo == undefined) {
+                return el
+            }
+        })
+        return datas
+    })
+
+    const newreturn = await CompReturn.find({ restro: company._id }).then(item => {
+        let datas = item.filter(el => {
+            if (el.returnInfo == undefined) {
+                return el
+            }
+        })
+        return datas
+    })
+
+    res.status(200).json({
+        status: "success",
+        neworder,
+        newreturn
+    })
+});
 
