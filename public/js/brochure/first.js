@@ -311,4 +311,30 @@ window.addEventListener("load", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     }
-})
+});
+
+(function () {
+    let terms = document.querySelector(".terms");
+    let policies = document.querySelector(".policies");
+
+    let termbod = document.querySelector(".terms__sec");
+    let privbod = document.querySelector(".policies__sec");
+    let cancelterm = document.querySelector(".hideterms");
+    let cancelpriv = document.querySelector(".hideprivacypolicies");
+
+    cancelterm.addEventListener("click", () => {
+        termbod.classList.add("hidden");
+    })
+
+    cancelpriv.addEventListener("click", () => {
+        privbod.classList.add("hidden");
+    })
+
+    terms.addEventListener("click", () => {
+        termbod.classList.remove("hidden");
+    });
+
+    policies.addEventListener("click", () => {
+        privbod.classList.remove("hidden");
+    });
+})();

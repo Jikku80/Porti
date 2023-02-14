@@ -210,7 +210,34 @@ block content
                         #bannerInfo.hidden 
                         #bannerId.hidden 
                         #deletebanner.hidden
+                        #updateDiscountToAll.hidden 
+                        #removeDiscountToAll.hidden
                         .bannerresid.hidden
+                    h2.scaps Update Your Organizations Terms And Policies
+                    .termsandpolicies 
+                        .blackbtn#termsandcond Terms and Conditions 
+                        .termservice.hidden 
+                            .termservice__head 
+                                h3 Your Terms of Service 
+                                img.cancelterms.point(src="/images/cancel.png" alt="cancel__btn")
+                            .termservice__bod 
+                                if (restro[0].serviceTerms)
+                                    textarea#termsValue.big__input(type="text")= restro[0].serviceTerms
+                                else 
+                                    textarea#termsValue.big__input(type="text" placeholder="Enter Your Terms and Conditions")
+                                #updateTerms.blackbtn Update 
+
+                        .blackbtn#privacypol Privacy Policies
+                        .privacypolicies.hidden 
+                            .privacypolicies__head 
+                                h3 Your Privacy Policies 
+                                img.cancelprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
+                            .privacypolicies__bod 
+                                if (restro[0].privacyPolicies)
+                                    textarea#policiesValue.big__input(type="text")= restro[0].privacyPolicies
+                                else 
+                                    textarea#policiesValue.big__input(type="text" placeholder="Enter Your Privacy Policies")
+                                #updatePolicies.blackbtn Update 
                 .delete__sec 
                     h2.scaps Delete Restaurant 
                     p.scaps It will delete Everything including all the Menu items

@@ -69,9 +69,33 @@ block content
                 .res__detail__head 
                     p Contact Us 
                     img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
-                .restro__info__bod 
+                .restro__info__bod.sec__contact__detail 
                     p= restro[0].Address
                     p= restro[0].phn_no
+                    if (restro[0].serviceTerms)
+                        p.sec__terms Terms And Conditions
+                        .terms__sec.hidden 
+                            .termservice__head 
+                                h3 Terms of Service 
+                                img.hideterms.point(src="/images/cancel.png" alt="cancel__btn")
+                            .terms__sec__bod
+                                pre.termspoliciespre= restro[0].serviceTerms 
+                    else 
+                        .terms__sec.hidden 
+                        .hideterms.hidden 
+                        .sec__terms.hidden 
+                    if (restro[0].privacyPolicies)
+                        p.sec__policies Privacy Policies
+                        .policies__sec.hidden 
+                            .privacypolicies__head 
+                                h3 Privacy Policies 
+                                img.hideprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
+                            .policies__sec__bod
+                                pre.termspoliciespre= restro[0].privacyPolicies
+                    else 
+                        .sec__policies.hidden 
+                        .policies__sec.hidden
+                        .hideprivacypolicies.hidden
         #thiscurrentrestroid.hidden= restro[0]._id
         #thiscurrentrestrouser.hidden= restro[0].user.name
         if (user)

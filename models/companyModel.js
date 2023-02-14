@@ -85,6 +85,14 @@ const companySchema = new mongoose.Schema({
     theme: {
         type: String
     },
+    serviceTerms: {
+        type: String,
+        trim: true
+    },
+    privacyPolicies: {
+        type: String,
+        trim: true
+    },
     pageCount: Number,
     createdAt: {
         type: Date,

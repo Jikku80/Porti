@@ -187,6 +187,30 @@ block content
                         h4.comp__cont.cardtxt Our Social Link 
                         h4
                             a.comp__loc.cardtxt(href=`${company.locationLink}`)= company.social
+                if (company.serviceTerms)
+                    p.sec__terms Terms And Conditions
+                    .terms__sec.hidden 
+                        .termservice__head 
+                            h3 Terms of Service 
+                            img.hideterms.point(src="/images/cancel.png" alt="cancel__btn")
+                        .terms__sec__bod
+                            pre.termspoliciespre= company.serviceTerms 
+                else 
+                    .terms__sec.hidden 
+                    .hideterms.hidden 
+                    .sec__terms.hidden 
+                if (company.privacyPolicies)
+                    p.sec__policies Privacy Policies
+                    .policies__sec.hidden 
+                        .privacypolicies__head 
+                            h3 Privacy Policies 
+                            img.hideprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
+                        .policies__sec__bod
+                            pre.termspoliciespre= company.privacyPolicies
+                else 
+                    .sec__policies.hidden 
+                    .policies__sec.hidden
+                    .hideprivacypolicies.hidden
 
     script(src="/js/alert.js") 
     script(src="/js/catalouge/catalougeFeature.js") 

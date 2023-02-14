@@ -300,43 +300,6 @@
 
     });
 
-    socket.on("reserve", (restoid, usrid) => {
-        if (userid == usrid) {
-            getAllResReserve();
-            alrt.play();
-            dot.classList.remove("hidden");
-        }
-    });
-
-    socket.on("resorders", (restoid, oderuser, usrid) => {
-        if (userid == usrid) {
-            alrt.play();
-            menunoti.classList.remove("hidden");
-        }
-    });
-
-    socket.on("catorders", (catid, usrid) => {
-        if (userid == usrid) {
-            alrt.play();
-            dot.classList.remove("hidden");
-        }
-    });
-
-    socket.on("return", (restoid, usrid) => {
-        if (userid == usrid) {
-            alrt.play();
-            dot.classList.remove("hidden");
-        }
-    });
-
-    socket.on("brobooking", (catid, usrid) => {
-        if (userid == usrid) {
-            getAllCatMsg();
-            alrt.play();
-            dot.classList.remove("hidden");
-        }
-    });
-
     try {
         const endpoint = `/api/v1/message/getnewmsgnoti/${userid}`
         await fetch(endpoint, {
@@ -369,6 +332,13 @@
 
 
     if (bronoti) {
+        socket.on("brobooking", (catid, usrid) => {
+            if (userid == usrid) {
+                alrt.play();
+                bronoti.classList.remove("hidden");
+            }
+        });
+
         try {
             const endpoint = `/api/v1/brochure/getnewbookingnoti/${userid}`
             await fetch(endpoint, {
@@ -401,6 +371,19 @@
     }
 
     if (menunoti) {
+        socket.on("reserve", (restoid, usrid) => {
+            if (userid == usrid) {
+                alrt.play();
+                menunoti.classList.remove("hidden");
+            }
+        });
+
+        socket.on("resorders", (restoid, oderuser, usrid) => {
+            if (userid == usrid) {
+                alrt.play();
+                menunoti.classList.remove("hidden");
+            }
+        });
         try {
             const endpoint = `/api/v1/menu/getnewordernoti/${userid}`
             await fetch(endpoint, {
@@ -434,6 +417,20 @@
     }
 
     if (catalnoti) {
+        socket.on("catorders", (catid, usr, usrid) => {
+            if (userid == usrid) {
+                alrt.play();
+                catalnoti.classList.remove("hidden");
+            }
+        });
+
+        socket.on("return", (restoid, usrid) => {
+            if (userid == usrid) {
+                alrt.play();
+                catalnoti.classList.remove("hidden");
+            }
+        });
+
         try {
             const endpoint = `/api/v1/catalouge/getnewordernoti/${userid}`
             await fetch(endpoint, {

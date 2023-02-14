@@ -854,14 +854,93 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
 .msgdiv{
     display: flex;
-  }
-  
-  .newmsgnotifier, .newbookingnoti, .newmenunoti, .newcatalognoti{
+}
+
+.newmsgnotifier, .newbookingnoti, .newmenunoti, .newcatalognoti{
     border-radius: 8rem;
     width: .8rem;
     height: .8rem;
     background-color: orangered;
-  }
+}
+
+.termsandpolicies{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.termservice, .privacypolicies{
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.terms__sec, .policies__sec{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+.termservice__head, .privacypolicies__head{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.termservice__bod, .privacypolicies__bod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.terms__sec__bod, .policies__sec__bod{
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.termspoliciespre{
+    margin: 2%;
+    text-align: left;
+}
+
+.big__input{
+    height: 80vh;
+    width: 80%;
+    resize: none;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 16px !important;
+    padding: 0;
+}
+
+.dismantled{
+    background-color: rgba(0, 0, 0, 0.616);
+    color: red;
+}
 
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
@@ -985,6 +1064,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     .footer__first__bod, .footer__sec__bod{
         flex-direction: column;
         text-align: center;
+    }
+
+    .termservice{
+        width: 100%;
     }
 }
   

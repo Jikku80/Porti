@@ -160,7 +160,7 @@ pre{
     color: yellow;
 }
 
-#contact a{
+#contact a, .terms, .policies{
     color :teal;
     text-decoration: none;
 }

@@ -39,6 +39,14 @@ const restaurantSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    serviceTerms: {
+        type: String,
+        trim: true
+    },
+    privacyPolicies: {
+        type: String,
+        trim: true
+    },
     coverImage: String,
     pageCount: Number,
     createdAt: {

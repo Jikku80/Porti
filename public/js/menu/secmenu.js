@@ -1429,3 +1429,43 @@ window.addEventListener("load", async () => {
         };
     }
 });
+
+(function () {
+    let terms = document.querySelector(".sec__terms");
+    let policies = document.querySelector(".sec__policies");
+    let msgusrbtn = document.querySelector(".msg__user__btn");
+    let resord = document.querySelector(".resorder");
+    let resvbtn = document.querySelector(".reserve__btn");
+    let termbod = document.querySelector(".terms__sec");
+    let privbod = document.querySelector(".policies__sec");
+    let cancelterm = document.querySelector(".hideterms");
+    let cancelpriv = document.querySelector(".hideprivacypolicies");
+
+    cancelterm.addEventListener("click", () => {
+        termbod.classList.add("hidden");
+        msgusrbtn.classList.remove("hidden");
+        resord.classList.remove("hidden");
+        resvbtn.classList.remove("hidden");
+    })
+
+    cancelpriv.addEventListener("click", () => {
+        privbod.classList.add("hidden");
+        msgusrbtn.classList.remove("hidden");
+        resord.classList.remove("hidden");
+        resvbtn.classList.remove("hidden");
+    })
+
+    terms.addEventListener("click", () => {
+        termbod.classList.remove("hidden");
+        msgusrbtn.classList.add("hidden");
+        resord.classList.add("hidden");
+        resvbtn.classList.add("hidden");
+    });
+
+    policies.addEventListener("click", () => {
+        privbod.classList.remove("hidden");
+        msgusrbtn.classList.add("hidden");
+        resord.classList.add("hidden");
+        resvbtn.classList.add("hidden");
+    });
+})();

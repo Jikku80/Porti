@@ -2122,4 +2122,44 @@ window.addEventListener("load", async () => {
             errorAlert('Sorry! Something went wrong', err);
         };
     }
-})
+});
+
+(function () {
+    let terms = document.querySelector(".sec__terms");
+    let policies = document.querySelector(".sec__policies");
+    let resdetail = document.querySelector(".resdetail");
+    let resord = document.querySelector(".resorder");
+    let resvbtn = document.querySelector(".return__btn");
+    let termbod = document.querySelector(".terms__sec");
+    let privbod = document.querySelector(".policies__sec");
+    let cancelterm = document.querySelector(".hideterms");
+    let cancelpriv = document.querySelector(".hideprivacypolicies");
+
+    cancelterm.addEventListener("click", () => {
+        termbod.classList.add("hidden");
+        resdetail.classList.remove("hidden");
+        resord.classList.remove("hidden");
+        resvbtn.classList.remove("hidden");
+    })
+
+    cancelpriv.addEventListener("click", () => {
+        privbod.classList.add("hidden");
+        resdetail.classList.remove("hidden");
+        resord.classList.remove("hidden");
+        resvbtn.classList.remove("hidden");
+    })
+
+    terms.addEventListener("click", () => {
+        termbod.classList.remove("hidden");
+        resdetail.classList.add("hidden");
+        resord.classList.add("hidden");
+        resvbtn.classList.add("hidden");
+    });
+
+    policies.addEventListener("click", () => {
+        privbod.classList.remove("hidden");
+        resdetail.classList.add("hidden");
+        resord.classList.add("hidden");
+        resvbtn.classList.add("hidden");
+    });
+})();

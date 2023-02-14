@@ -30,8 +30,8 @@ io.on('connection', (socket) => {
     socket.on("reservereply", (restoid, userId) => {
         io.emit('reservereply', restoid, userId)
     });
-    socket.on("catorders", (catid, usrid) => {
-        io.emit('catorders', catid, usrid)
+    socket.on("catorders", (catid, usr, usrid) => {
+        io.emit('catorders', catid, usr, usrid)
     });
     socket.on("catorderreply", (catid, oderuser, oderuserid) => {
         io.emit('catorderreply', catid, oderuser, oderuserid)

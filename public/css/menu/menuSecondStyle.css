@@ -91,6 +91,10 @@
     z-index: 4;
 }
 
+.restro__info{
+    z-index: 1;
+}
+
 .restromidsec, .restrodeatilmidsec, .reserve__midsec{
     background-color: rgba(0, 0, 0, 0.815);
     border-radius: 2rem;
@@ -162,6 +166,7 @@ input{
     font-family: Londrina Sketch;
     font-size: 25px;
     cursor: pointer;
+    border: 1px solid white
 }
 
 .sec__menu__cover img{
@@ -433,6 +438,21 @@ input{
 
 .orgrd{
     color: orangered;
+}
+
+.sec__terms, .sec__policies{
+    cursor: pointer;
+    color: gold;
+    text-decoration: underline;
+}
+
+pre{
+    white-space: pre-wrap;
+    font-size: 16px;
+    overflow: auto;
+    clear: both;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
 }
 
 @media (min-width: 601px) and (max-width: 900px){

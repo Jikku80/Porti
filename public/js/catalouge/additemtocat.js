@@ -1229,7 +1229,6 @@ async function reserveCanceled(val, usr, route) {
             })
         }).then((response) => {
             load.classList.add("hidden");
-            console.log(response);
             if (response.status === 200) {
                 successAlert("You cancelled a return :(");
                 val.innerHTML = "";
@@ -1360,4 +1359,98 @@ async function reserveCanceled(val, usr, route) {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
+})();
+
+(function () {
+    let termsModalbtn = document.getElementById("termsandcond");
+    let privacypolmodalbtn = document.getElementById("privacypol");
+    let termbod = document.querySelector(".termservice");
+    let privbod = document.querySelector(".privacypolicies");
+    let cancelterm = document.querySelector(".cancelterms");
+    let cancelpriv = document.querySelector(".cancelprivacypolicies");
+
+    termsModalbtn.addEventListener("click", () => {
+        termbod.classList.remove("hidden");
+    })
+
+    cancelterm.addEventListener("click", () => {
+        termbod.classList.add("hidden");
+    })
+
+    privacypolmodalbtn.addEventListener("click", () => {
+        privbod.classList.remove("hidden");
+    })
+
+    cancelpriv.addEventListener("click", () => {
+        privbod.classList.add("hidden");
+    })
+
+    let updateTerms = document.getElementById("updateTerms");
+    let serviceTerms = document.getElementById("termsValue");
+    let updatePolicies = document.getElementById("updatePolicies");
+    let privacyPolicies = document.getElementById("policiesValue");
+
+    let restroId = document.querySelector(".comp__id").innerText;
+
+    updateTerms.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/${restroId}/updateCompany`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    serviceTerms: serviceTerms.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Terms and Conditions Updated Successfully :)");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    updatePolicies.addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/${restroId}/updateCompany`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    privacyPolicies: privacyPolicies.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Privacy Policies Updated Successfully :)");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
 })();

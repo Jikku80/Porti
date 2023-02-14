@@ -79,6 +79,14 @@ const organizationSchema = new mongoose.Schema({
     pageCount: {
         type: Number
     },
+    serviceTerms: {
+        type: String,
+        trim: true
+    },
+    privacyPolicies: {
+        type: String,
+        trim: true
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

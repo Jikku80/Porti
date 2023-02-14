@@ -64,6 +64,9 @@ block content
             .bro__banner__sec 
                 p= banner[0].bannerInfo
                 img.cancelbanner.point(src="/images/cancel.png" alt="cancelbanner")
+        else 
+            .bro__banner__sec.hidden
+            .cancelbanner.hidden
         audio.bkalert.hidden
             source(src="/noti/msg.mp3")
         .first__bro__nav 
@@ -134,6 +137,31 @@ block content
         h4.brotxt Your Bookings
         .get__booked
         h4.brotxt= organization.slogan
+        .termsandpolicies.brotxt
+            if (organization.serviceTerms)
+                h4.terms.point Terms And Conditions 
+                .terms__sec.hidden 
+                    .termservice__head 
+                        h3 Terms of Service 
+                        img.hideterms.point(src="/images/cancel.png" alt="cancel__btn")
+                    .terms__sec__bod
+                        pre.termspoliciespre= organization.serviceTerms
+            else 
+                .terms__sec.hidden 
+                .hideterms.hidden 
+                .terms.hidden 
+            if (organization.privacyPolicies)
+                h4.policies.point Privacy Policies
+                .policies__sec.hidden 
+                    .privacypolicies__head 
+                        h3 Privacy Policies 
+                        img.hideprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
+                    .policies__sec__bod
+                        pre.termspoliciespre= organization.privacyPolicies
+            else 
+                .policies.hidden 
+                .policies__sec.hidden 
+                .hideprivacypolicies.hidden
         #contact
             h4= `Email : ${organization.email}`
             h4= `Address : ${organization.Address}`
