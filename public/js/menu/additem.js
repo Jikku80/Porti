@@ -5,8 +5,16 @@ let idetail = document.getElementById("itemdetail");
 let icimg = document.getElementById("coverimage");
 let additembtn = document.getElementById("addItemBtn");
 let disprcent = document.querySelector(".discountpercen").innerText;
+let pgC = window.sessionStorage.getItem('paginate')
 async function getAllItem() {
-    let pg = 1
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
+
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -146,15 +154,23 @@ let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");
 let sub = document.querySelector(".sub__items")
 
-let x = 1;
+let x;
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+}
 
 if (x == 1) {
     prev.classList.add("hidden")
 }
 
+
 next.addEventListener("click", async () => {
     let pg = ++x
     prev.classList.remove("hidden");
+    window.sessionStorage.setItem("paginate", pg);
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -285,6 +301,8 @@ next.addEventListener("click", async () => {
 
 prev.addEventListener("click", async () => {
     let pg = --x
+    window.sessionStorage.setItem("paginate", pg);
+
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")

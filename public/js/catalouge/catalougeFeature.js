@@ -116,6 +116,8 @@ window.addEventListener("load", async () => {
                                     load.classList.add("hidden");
                                     let res = response.json();
                                     if (response.status === 200) {
+                                        let catalougeItems = document.querySelector(".catalouge__items");
+                                        catalougeItems.innerHTML = "";
                                         res.then(result => {
                                             result.forEach(item => {
                                                 if (typeof (item) !== "object") {
@@ -126,8 +128,6 @@ window.addEventListener("load", async () => {
                                                     subItemHeader.style.color = focusColor;
                                                 }
                                                 else {
-                                                    let catalougeItems = document.querySelector(".catalouge__items");
-                                                    catalougeItems.innerHTML = "";
                                                     subItemModel.classList.add('hidden');
                                                     addCardElem(item);
                                                 }
@@ -321,13 +321,69 @@ modelCanceler.addEventListener("click", () => {
 })();
 
 (function () {
-
     let page = document.querySelector(".paginate");
     let next = document.querySelector(".next__catal");
     let prev = document.querySelector(".prev__catal");
+    let pgC = window.sessionStorage.getItem('secpaginate');
 
+    window.addEventListener("load", async () => {
+        let pg;
+        if (pgC === null) {
+            pg = 1
+        }
+        else {
+            pg = pgC
+        }
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            let subItems = document.querySelector(".catalouge__items")
+            subItems.innerHTML = "";
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/paginate/${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result
+                        items.forEach(el => {
+                            addCardElem(el)
+                        });
+                        if (subItems.children.length === 12) {
+                            next.classList.remove("hidden");
+                        } else {
+                            next.classList.add("hidden");
+                        }
+                        if (subItems.innerHTML == "") {
+                            next.classList.add("hidden");
+                            subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
+                        }
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
 
-    let x = 1;
+    let x;
+    if (pgC === null) {
+        x = 1
+    }
+    else {
+        x = pgC
+    }
 
     if (x == 1) {
         prev.classList.add("hidden")
@@ -336,6 +392,7 @@ modelCanceler.addEventListener("click", () => {
     next.addEventListener("click", async () => {
         let pg = ++x
         prev.classList.remove("hidden");
+        window.sessionStorage.setItem("secpaginate", pg);
         location.hash = "#"
         try {
             let load = document.querySelector('.loader');
@@ -385,6 +442,7 @@ modelCanceler.addEventListener("click", () => {
 
     prev.addEventListener("click", async () => {
         let pg = --x
+        window.sessionStorage.setItem("secpaginate", pg);
         try {
             let load = document.querySelector('.loader');
             location.hash = "#"

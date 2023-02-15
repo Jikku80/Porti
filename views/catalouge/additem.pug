@@ -110,7 +110,7 @@ block content
                                     p Leaving this blank will show out of stocks
                             else 
                                 #catalitemdiscount.hidden
-                                #catalStockQuantity.hidden
+                                input#catalStockQuantity.hidden.form__input(type="number" name="catalStockQuantity" value="100" required)
                             .form__bod.file_part
                                 label.form__label(for="catcoverimage") Item Image:
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")

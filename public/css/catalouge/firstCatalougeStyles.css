@@ -83,8 +83,9 @@
 
 .categories__catalouge{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
     font-family: monospace;
 }
 

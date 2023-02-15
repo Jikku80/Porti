@@ -1,6 +1,14 @@
 let discountedPercent = document.querySelector(".itemdiscountpercent").innerText;
+let pgC = window.sessionStorage.getItem('paginate')
+
 async function getAllCatalougeItem() {
-    let pg = 1
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
     let fullpath = location.pathname
     let resultpath = fullpath.match("/catalouge/(.*)/")
     let next = document.querySelector(".next__catal")
@@ -151,7 +159,13 @@ let next = document.querySelector(".next__catal");
 let prev = document.querySelector(".prev__catal");
 
 
-let x = 1;
+let x;
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+}
 
 if (x == 1) {
     prev.classList.add("hidden")
@@ -160,6 +174,7 @@ if (x == 1) {
 next.addEventListener("click", async () => {
     let pg = ++x
     prev.classList.remove("hidden");
+    window.sessionStorage.setItem("paginate", pg);
     window.location.hash = "#"
     try {
         let load = document.querySelector('.loader');
@@ -302,6 +317,7 @@ next.addEventListener("click", async () => {
 
 prev.addEventListener("click", async () => {
     let pg = --x
+    window.sessionStorage.setItem("paginate", pg);
     try {
         let load = document.querySelector('.loader');
         window.location.hash = "#"

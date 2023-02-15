@@ -78,16 +78,6 @@ block content
                     .category
                 .sub__item__bod#foodItem
                     .sub__items.row__items
-                        each menu in menus 
-                            .menu__card
-                                if (!menu.coverImage)
-                                    img.menu__card__img(src="/images/noimg.png" loading="lazy"  alt="menu__item__img")
-                                else 
-                                    img.menu__card__img(src=`${menu.coverImage}` loading="lazy"  alt="menu__item__img")
-                                .menu__card__det
-                                    h3.menu__card__head= menu.name
-                                    p.menu__card__price= menu.price
-                                    p.menu__card__detail= menu.detail
                     .paginate 
                         button(type="button" name="prev").prev Previous
                         button(type="button" name="next").next.hidden Next  

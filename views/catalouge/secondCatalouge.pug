@@ -253,30 +253,30 @@ block content
         .cntre
             h1.getAllSecCatItem.point.seccatbtn All Items
         .sec__cat__items#secCatItems 
-            for item in catalouges
-                .sec__cat__item__card 
-                    if (item.coverImage)
-                        img.sec__cat__img(src=`${item.coverImage}` alt="item__img")
-                    else
-                        img.sec__cat__img(src="/images/noimg.png" alt="item__img")
-                    .sec__cat__item__info
-                        h3= `Name : ${item.name}`
-                        h3= `Price : ${item.currency} ${item.price}`
-                        if (item.applydiscount == true)
-                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
-                                h3= `Discount : ${banner[0].discountpercent}%`
-                        if (item.stockQuantity === 0 || item.stockQuantity === null)
-                            h3.stock.rdstock= `Out Of Stock`
-                        else
-                            h3.stock= `Stock Quantity : ${item.stockQuantity}`
-                    if (item.stockQuantity === 0 || item.stockQuantity === null)
-                        .sec__cat__btn__grp
-                            button(name=item._id disabled).seccatbtn.addToCart Add To Cart
-                            button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
-                    else
-                        .sec__cat__btn__grp
-                            button(name=item._id).seccatbtn.addToCart Add To Cart
-                            button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
+            //- for item in catalouges
+            //-     .sec__cat__item__card 
+            //-         if (item.coverImage)
+            //-             img.sec__cat__img(src=`${item.coverImage}` alt="item__img")
+            //-         else
+            //-             img.sec__cat__img(src="/images/noimg.png" alt="item__img")
+            //-         .sec__cat__item__info
+            //-             h3= `Name : ${item.name}`
+            //-             h3= `Price : ${item.currency} ${item.price}`
+            //-             if (item.applydiscount == true)
+            //-                 if (banner[0].discountpercent || banner[0].discountpercent !== null)
+            //-                     h3= `Discount : ${banner[0].discountpercent}%`
+            //-             if (item.stockQuantity === 0 || item.stockQuantity === null)
+            //-                 h3.stock.rdstock= `Out Of Stock`
+            //-             else
+            //-                 h3.stock= `Stock Quantity : ${item.stockQuantity}`
+            //-         if (item.stockQuantity === 0 || item.stockQuantity === null)
+            //-             .sec__cat__btn__grp
+            //-                 button(name=item._id disabled).seccatbtn.addToCart Add To Cart
+            //-                 button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
+            //-         else
+            //-             .sec__cat__btn__grp
+            //-                 button(name=item._id).seccatbtn.addToCart Add To Cart
+            //-                 button(id=item._id name=`${item.category}`).seccatbtn.viewProduct View
         .productModal.hidden 
             .productMidModal
                 .product__head#prodBod

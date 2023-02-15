@@ -203,46 +203,46 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
     })
 })
 
-exports.firstCatalouge = catchAsync(async (req, res, next) => {
-    const user_name = req.params.user
-    const usr = await User.find({ name: user_name });
-    const features = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
-    const catalouges = await features.query
-    const banner = await CatalogBanner.find({ user: usr[0]._id })
-    const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
-        const items = el.filter(item => {
-            if (item.hotItem === true) {
-                return item
-            }
-        })
-        return items
-    })
+// exports.firstCatalouge = catchAsync(async (req, res, next) => {
+//     const user_name = req.params.user
+//     const usr = await User.find({ name: user_name });
+//     const features = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
+//     const catalouges = await features.query
+//     const banner = await CatalogBanner.find({ user: usr[0]._id })
+//     const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
+//         const items = el.filter(item => {
+//             if (item.hotItem === true) {
+//                 return item
+//             }
+//         })
+//         return items
+//     })
 
-    await Company.find({ user: usr[0]._id }).populate('user').then(company => {
-        let theme = company[0].theme
-        switch (theme) {
-            case "51eac6b471a284d3341d8c0c63d0f1a286262a18":
-                res.status(200).render('catalouge/firstCatalouge', {
-                    title: `${company[0].name}`,
-                    catalouges,
-                    company: company[0]
-                })
-                break;
-            case "e8d4bd5004021ea34a450c4482093ab20853fe68":
-                res.status(200).render('catalouge/secondCatalouge', {
-                    title: `${company[0].name}`,
-                    catalouges,
-                    company: company[0],
-                    banner,
-                    hotItems
-                })
-                break;
-            default:
-                res.status(404).render('404.pug')
-        }
-    })
+//     await Company.find({ user: usr[0]._id }).populate('user').then(company => {
+//         let theme = company[0].theme
+//         switch (theme) {
+//             case "51eac6b471a284d3341d8c0c63d0f1a286262a18":
+//                 res.status(200).render('catalouge/firstCatalouge', {
+//                     title: `${company[0].name}`,
+//                     catalouges,
+//                     company: company[0]
+//                 })
+//                 break;
+//             case "e8d4bd5004021ea34a450c4482093ab20853fe68":
+//                 res.status(200).render('catalouge/secondCatalouge', {
+//                     title: `${company[0].name}`,
+//                     catalouges,
+//                     company: company[0],
+//                     banner,
+//                     hotItems
+//                 })
+//                 break;
+//             default:
+//                 res.status(404).render('404.pug')
+//         }
+//     })
 
-})
+// })
 
 exports.listSimilarItems = catchAsync(async (req, res, next) => {
     const user_id = req.params.id;

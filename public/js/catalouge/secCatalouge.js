@@ -972,7 +972,7 @@ function smallCardElem(el) {
 };
 
 (function () {
-    let subItems = document.querySelector(".sec__cat__items")
+    let subItems = document.querySelector(".sec__cat__items");
     let next = document.querySelector(".next__seccatal");
 
     if (subItems.children.length == 0) {
@@ -991,8 +991,68 @@ function smallCardElem(el) {
     let next = document.querySelector(".next__seccatal");
     let prev = document.querySelector(".prev__seccatal");
     let catalogeUserId = document.querySelector(".seccataluserid").innerText;
+    let pgC = window.sessionStorage.getItem('secpaginate');
 
-    let x = 1;
+    window.addEventListener("load", async () => {
+        let pg;
+        if (pgC === null) {
+            pg = 1
+        }
+        else {
+            pg = pgC
+        }
+        try {
+            let load = document.querySelector('.loader');
+            let subItems = document.querySelector(".sec__cat__items");
+            load.classList.remove("hidden")
+            location.hash = "#"
+            subItems.innerHTML = "";
+            const endpoint = `/api/v1/catalouge/${catalogeUserId}/paginate/${pg}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
+            await fetch((endpoint), {
+                method: 'GET',
+                headers: myHeaders
+            }).then((response) => {
+                load.classList.add("hidden");
+                let res = response.json();
+                if (response.status === 200) {
+                    res.then(result => {
+                        let items = result
+                        items.forEach(el => {
+                            smallCardElem(el);
+                        });
+                        if (subItems.children.length === 12) {
+                            next.classList.remove("hidden");
+                        } else {
+                            next.classList.add("hidden");
+                        }
+                        if (subItems.innerHTML == "") {
+                            next.classList.add("hidden");
+                            subItems.innerHTML = `<h3 class="go__back center">Oops!! Thats All You've Added So Far :)</h3>`
+                        }
+                        btnCard()
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+    let x;
+    if (pgC === null) {
+        x = 1
+    }
+    else {
+        x = pgC
+    }
 
     if (x == 1) {
         prev.classList.add("hidden")
@@ -1001,6 +1061,7 @@ function smallCardElem(el) {
     next.addEventListener("click", async () => {
         let pg = ++x
         prev.classList.remove("hidden");
+        window.sessionStorage.setItem("secpaginate", pg);
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -1050,7 +1111,8 @@ function smallCardElem(el) {
     })
 
     prev.addEventListener("click", async () => {
-        let pg = --x
+        let pg = --x;
+        window.sessionStorage.setItem("secpaginate", pg);
         try {
             let load = document.querySelector('.loader');
             location.hash = "#"

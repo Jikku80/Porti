@@ -3,8 +3,17 @@ let resultpath = document.querySelector(".menu__user__id").innerText;
 let page = document.querySelector(".paginate");
 let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");
-let sub = document.querySelector(".sub__items")
-let x = 1;
+let sub = document.querySelector(".sub__items");
+let pgC = window.sessionStorage.getItem('secpaginate');
+
+let x;
+
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+}
 
 if (x == 1) {
     prev.classList.add("hidden")
@@ -13,6 +22,8 @@ if (x == 1) {
 next.addEventListener("click", async () => {
     let pg = ++x
     prev.classList.remove("hidden");
+    window.sessionStorage.setItem("secpaginate", pg);
+
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -87,6 +98,7 @@ next.addEventListener("click", async () => {
 
 prev.addEventListener("click", async () => {
     let pg = --x
+    window.sessionStorage.setItem("secpaginate", pg);
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -338,8 +350,17 @@ searchBar.addEventListener("keypress", async (e) => {
 })
 
 let grabAll = document.querySelector(".grab__all");
-grabAll.addEventListener("click", async () => {
-    let pg = 1
+grabAll.addEventListener("click", () => {
+    location.reload()
+})
+window.addEventListener("load", async () => {
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
     try {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
@@ -367,7 +388,7 @@ grabAll.addEventListener("click", async () => {
                                         <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__price">${el.currency}${el.price}</p>
                                             <p class="menu__card__detail">${el.detail}</p>
                                         </div>
                                     </div>
@@ -380,13 +401,22 @@ grabAll.addEventListener("click", async () => {
                                         <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__price">${el.currency}${el.price}</p>
                                             <p class="menu__card__detail">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
                         }
                     });
+                    if (sub.children.length == 0) {
+                        sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
+                    }
+                    if (sub.children.length === 12) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+
                     if (sub.children.length == 0) {
                         sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
                     }
@@ -402,16 +432,6 @@ grabAll.addEventListener("click", async () => {
         errorAlert('Sorry! Something went wrong', err);
     };
 })
-
-if (sub.children.length === 12) {
-    next.classList.remove("hidden");
-} else {
-    next.classList.add("hidden");
-}
-
-if (sub.children.length == 0) {
-    sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
-}
 
 
 let dark = document.querySelector(".darkmode");
