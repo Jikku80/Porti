@@ -930,7 +930,7 @@ exports.getBookingDetails = catchAsync(async (req, res) => {
                 return unconfirmedAmountList.push(amounts);
             }
         })
-        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0)
+        const totalUnConfirmedAmount = unconfirmedAmountList.reduce((a, b) => a + b, 0);
 
         res.status(200).json({
             status: "success",

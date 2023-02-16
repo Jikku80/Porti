@@ -25,7 +25,10 @@ block content
                                 img.brochure__card__img(src="/images/noimg.png" alt="catalouge__item__image")
                                 .catalouge__card__det
                                     h3.catalouge__card__head.goldn= brochure.name
-                                    p.catalouge__card__price.goldn= `${brochure.currency} ${brochure.price}`
+                                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
+                                        p.catalouge__card__price.goldn= `${brochure.currency} ${brochure.price}`
+                                    else 
+                                        .catalouge__card__price.hidden
                                     p.catalouge__card__detail.goldn= brochure.detail
             .up__items__detail
                 h2.items__head Update Item Detail
@@ -33,16 +36,20 @@ block content
                     .form__bod
                         label.form__label Items Name:
                         input#upcatalitemname.form__input(type="text" value=brochure.name required)
-                    .form__bod
-                        label.form__label(for="item_name") Currency Sign (optional):        
-                        input#upcatalitemcurrency.form__input(type="text" value=brochure.currency)
-                    .form__bod
-                        label.form__label Items Price (optional): 
-                        input#upcatalitemprice.form__input(type="text" value=brochure.price)
+                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")    
+                        .form__bod
+                            label.form__label(for="item_name") Currency Sign (optional):        
+                            input#upcatalitemcurrency.form__input(type="text" value=brochure.currency)
+                        .form__bod
+                            label.form__label Items Price (optional): 
+                            input#upcatalitemprice.form__input(type="text" value=brochure.price)
+                    else 
+                        #upcatalitemcurrency.hidden 
+                        #upcatalitemprice.hidden
                     .form__bod
                         label.form__label Detail:
                         textarea#upcatalitemdetail.brochureTextarea.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= brochure.detail
-                    if (organization.theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
                         .form__bod 
                             label.form__label Apply Discount (optional):
                             if (brochure.applydiscount === true)

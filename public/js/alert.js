@@ -33,6 +33,23 @@ function errorAlert(msg) {
     }, 2000)
 }
 
+function notifyAlert(msg) {
+    let notifCont = document.createElement("div");
+    let notiInfoCont = document.createElement("div");
+    let desInfo = document.createElement("p");
+    desInfo.innerText = msg;
+    desInfo.classList.add("notify__msg")
+    notiInfoCont.classList.add("notify__cont");
+    notifCont.classList.add("notify__main")
+    document.body.appendChild(notifCont);
+    notifCont.appendChild(notiInfoCont);
+    notiInfoCont.appendChild(desInfo);
+
+    setTimeout(() => {
+        notifCont.style.display = "none";
+    }, 2000)
+}
+
 window.addEventListener("load", () => {
     let loads = document.querySelector('.loader');
     loads.classList.add("hidden");

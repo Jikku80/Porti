@@ -288,14 +288,15 @@
     let bronoti = document.querySelector(".newbookingnoti");
     let menunoti = document.querySelector(".newmenunoti");
     let catalnoti = document.querySelector(".newcatalognoti");
-
     let alrt = document.getElementById("msgalert");
+
     let socket = io();
     socket.on("usermessage", (name, user, message, id) => {
 
         if (user === userid) {
             alrt.play();
             noti.classList.remove("hidden");
+            notifyAlert("New Message!!!");
         }
 
     });
@@ -336,6 +337,7 @@
             if (userid == usrid) {
                 alrt.play();
                 bronoti.classList.remove("hidden");
+                notifyAlert("Booking Request!!!")
             }
         });
 
@@ -375,6 +377,7 @@
             if (userid == usrid) {
                 alrt.play();
                 menunoti.classList.remove("hidden");
+                notifyAlert("Reservation Request!!!");
             }
         });
 
@@ -382,6 +385,7 @@
             if (userid == usrid) {
                 alrt.play();
                 menunoti.classList.remove("hidden");
+                notifyAlert("Order Request!!!");
             }
         });
         try {
@@ -421,6 +425,7 @@
             if (userid == usrid) {
                 alrt.play();
                 catalnoti.classList.remove("hidden");
+                notifyAlert("Product Order Request!!!");
             }
         });
 
@@ -428,6 +433,7 @@
             if (userid == usrid) {
                 alrt.play();
                 catalnoti.classList.remove("hidden");
+                notifyAlert("Product Return Request!!!");
             }
         });
 

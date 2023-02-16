@@ -55,7 +55,22 @@ block content
                     .qrcode__menu 
                         #catalqrcode 
                     if (brochures.length === 0)
-                        h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
+                        h2.banner.up__place__det.form__label You haven't Added Items to your Brochure, Add Few Items!
+                    if (organization.theme == "eb6669076ee9537ef67c6a0a789346614a98f7c6")
+                        p.scaps Update Your Brochure Price and Currency
+                        form.org__form
+                            .org__money__detail
+                                .form__bod 
+                                    label.form__label Currency : 
+                                    input#orgCurrency.form__input(type="text" value=organization.currency)
+                                .form__bod 
+                                    label.form__label Total Package Price : 
+                                    input#orgTotal.form__input(type="number" value=organization.total)
+                            button#updateorgcur.blackbtn Update 
+                    else 
+                        #orgCurrency.hidden 
+                        #orgTotal.hidden 
+                        #updateorgcur.hidden
                     #item__form
                         .itemform__head 
                             h2.scaps.form__label Add To Brochure
@@ -65,20 +80,28 @@ block content
                             .form__bod
                                 label.form__label(for="item_name") Section Name:
                                 input#catitemname.form__input(type="text" name="catalogname" required placeholder="Section Name")
+                            if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")    
+                                .form__bod
+                                    label.form__label(for="item_name") Currency Sign:
+                                    if (brochures[0])
+                                        input#catitemcurrency.form__input(type="text" name="catalogcurrency" value=`${brochures[0].currency}` required)
+                                    else
+                                        input#catitemcurrency.form__input(type="text" name="catalogcurrency" placeholder="$ or Rs. or £" required)
+                                .form__bod
+                                    label.form__label(for="item_price") Section Price: 
+                                    input#catitemprice.form__input(type="number" name="catalogprice" placeholder="400" required)
+                            else 
+                                #catitemcurrency.hidden 
+                                #catitemprice.hidden
                             .form__bod
-                                label.form__label(for="item_name") Currency Sign (optional):
-                                if (brochures[0])
-                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" value=`${brochures[0].currency}`)
-                                else
-                                    input#catitemcurrency.form__input(type="text" name="catalogcurrency" placeholder="$ or Rs. or £")
-                            .form__bod
-                                label.form__label(for="item_price") Section Price (optional): 
-                                input#catitemprice.form__input(type="number" name="catalogprice" placeholder="400")
                                 label.form__label(for="item_detail") Section Detail:
                                 textarea#catitemdetail.brochureTextarea.form__input(rows="4" cols="50" name="catalogdetail" placeholder="Describe about the section")
-                            .form__bod 
-                                label.form__label Apply Discount(optional):
-                                input#catalitemdiscount.checkbox(type="checkbox" name="catalogdiscount")
+                            if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
+                                .form__bod 
+                                    label.form__label Apply Discount(optional):
+                                    input#catalitemdiscount.checkbox(type="checkbox" name="catalogdiscount")
+                            else 
+                                #catalitemdiscount.hidden
                             .form__bod.file_part
                                 label.form__label(for="catcoverimage") Section Image:
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
@@ -94,10 +117,14 @@ block content
                                         img.brochure__card__img( loading="lazy" src="/images/noimg.png" alt="catalouge__item__img")
                                     .catalouge__card__det
                                         h3.catalouge__card__head.goldn= item.name
-                                        if (item.price)
-                                            p.catalouge__card__price.goldn= `${item.currency} ${item.price}`
-                                        if (item.applyDiscount == true)
-                                            p.catalouge__card__dis__per.goldn Discount
+                                        if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
+                                            if (item.price)
+                                                p.catalouge__card__price.goldn= `${item.currency} ${item.price}`
+                                            if (item.applyDiscount == true)
+                                                p.catalouge__card__dis__per.goldn Discount
+                                        else 
+                                            .catalouge__card__price.hidden 
+                                            .catalouge__card__dis__per.hidden
                                         .grp__btn
                                             a(href=`/brochuretweaks/${item._id}?update` class="ygbtn btn") Update
                                             a.redbtn.btn(href=`/brochuretweaks/${item._id}?delete`) Delete

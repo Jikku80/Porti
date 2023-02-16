@@ -51,6 +51,7 @@ let daysec = document.querySelector(".daysec");
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -151,6 +152,7 @@ let daysec = document.querySelector(".daysec");
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -250,6 +252,7 @@ let daysec = document.querySelector(".daysec");
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -356,6 +359,7 @@ let daysec = document.querySelector(".daysec");
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -696,6 +700,7 @@ async function getOrderDetail(val) {
                                             <p>Status : ${item.bookingInfo}</p>
                                         </div>
                                         <p>Message : ${item.message}</p>
+                                        <p>Total Booking Price: ${item.total}</p>
                                         <p class="gry">Created At: ${newdate}</p>
                                     </div>
                                 `
@@ -781,6 +786,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -851,6 +857,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -914,6 +921,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -989,6 +997,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1047,6 +1056,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1117,6 +1127,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1175,6 +1186,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1245,6 +1257,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1303,6 +1316,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `
@@ -1373,6 +1387,7 @@ async function getOrderDetail(val) {
                                     <p>Status : ${item.bookingInfo}</p>
                                 </div>
                                 <p>Message : ${item.message}</p>
+                                <p>Total Booking Price: ${item.total}</p>
                                 <p class="gry">Created At: ${newdate}</p>
                             </div>
                         `

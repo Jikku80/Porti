@@ -87,6 +87,14 @@ const organizationSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    currency: {
+        type: String,
+        trim: true
+    },
+    total: {
+        type: Number,
+        trim: true
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

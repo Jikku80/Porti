@@ -93,19 +93,13 @@ block content
                     .first__bro__sec__other
                         h2= items.name 
                         pre= items.detail
-                        h2= `Price : ${items.currency} ${items.price}`
-                        h2.hidden= items.price
-                        if (items.applydiscount == true)
-                            if (banner[0])
-                                h3= `${banner[0].discountpercent}% off`
-                        else 
-                            h3.hidden
-                        .addtobooking Add To Booking
-                        if (items.applydiscount == true)
-                            if (banner[0])
-                                h3.hidden= `${banner[0].discountpercent}`
-                        else 
-                            h3.hidden
+        #totalpricesec 
+            .packagetotal.hidden= organization.total
+            if (organization.total)
+                h2= `Total Package Price : ${organization.currency} ${organization.total}` 
+            if (banner[0])
+                h3= `${banner[0].discountpercent}% off`
+                .packagediscount.hidden= banner[0].discountpercent
         #bookNow
             if (user)
                 .curUserId.hidden= user.id
@@ -131,11 +125,9 @@ block content
                     .form__bod 
                         label.form__label Time :
                         input#brotime.for__input(type="time" required)
-                    p.txt Your Selected Items 
-                    .form__items
-                    
-                    textarea#bromsg.hidden.for__input(type="text" required)
-
+                    .form__bod
+                        label.form__label Message :
+                        textarea#bromsg.for__input(type="text" required)
                     button#bookBtn.blackbtn Book Now
             else 
                 .upItem 
@@ -185,5 +177,5 @@ block content
 
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
-    script(src="/js/brochure/first.js") 
+    script(src="/js/brochure/sec.js") 
     script(src="/js/usermsg.js") 

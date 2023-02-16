@@ -160,6 +160,18 @@ cursor: pointer;
     font-size: 10px;
 }
 
+.org__form{
+    display: flex;
+    justify-content: center;
+}
+
+.org__money__detail{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
 @media (min-width: 601px) and (max-width: 900px){
     .darkmode{
         right: 55px;

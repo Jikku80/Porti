@@ -107,6 +107,11 @@ pre{
     justify-content: center;
 }
 
+#totalpricesec{
+    text-align: center;
+    color: #000;
+}
+
 .bookform{
     background-color: rgba(0, 0, 0, 0.418);
     width: 50vw;
@@ -158,6 +163,53 @@ pre{
 
 .bookinfo{
     color: yellow;
+}
+
+.addtobooking{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid black;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.addtobooking:hover{
+    background-color: black;
+    color: white;
+}
+
+.form__items{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.form__item__bod{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.quantityinpt{
+    color:white;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 10%;
+}
+
+.updateitem{
+    background-color: white;
+    border: 1px solid white;
+    color: teal;
+    cursor: pointer;
+}
+
+.cancelitem{
+    cursor: pointer;
 }
 
 #contact a, .terms, .policies{

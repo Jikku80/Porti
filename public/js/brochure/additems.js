@@ -111,6 +111,51 @@
 })();
 
 (function () {
+    let updateOrg = document.getElementById("updateorgcur");
+    let restroId = document.querySelector(".comp__id").innerText;
+    let brocurrency = document.getElementById("orgCurrency");
+    let brototal = document.getElementById("orgTotal");
+
+    updateOrg.addEventListener("click", async (e) => {
+        if (brocurrency.value < 1) {
+            return false;
+        }
+        if (brototal.value < 1) {
+            return false;
+        }
+        e.preventDefault();
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/brochure/${restroId}/updateOrganization`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    currency: brocurrency.value,
+                    total: brototal.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Company Price Updated Successfully :)");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
     let updateRestroBtn = document.getElementById("updateCompBtn");
     let restroId = document.querySelector(".comp__id").innerText;
     let resName = document.getElementById("compname");
@@ -505,12 +550,12 @@ async function getAllCatMsg() {
                                         <p>Phone No : </p>
                                         <p class="ordermsg">${phn}</p>
                                         <p class="ordermsg">${msg}</p>
-                                        <p class="rdorng hidden">Total Order Price : ${total}</p>
-                                            <div class="grp__button hidden">
-                                                <button class="confirmord ordbtn">Confirm</button>
-                                                <button class="cancelord ordbtn">Cancel</button>
-                                            </div>
-                                            <p class="rdorng">${bookInfo}</p>
+                                        <p class="rdorng">Total Booking Price : ${total}</p>
+                                        <div class="grp__button hidden">
+                                            <button class="confirmord ordbtn">Confirm</button>
+                                            <button class="cancelord ordbtn">Cancel</button>
+                                        </div>
+                                        <p class="rdorng">${bookInfo}</p>
                                         </div>
                                     `
                                 }
@@ -527,12 +572,12 @@ async function getAllCatMsg() {
                                             <p>Phone No : </p>
                                             <p class="ordermsg">${phn}</p>
                                             <p class="ordermsg">${msg}</p>
-                                            <p class="rdorng hidden">Total Order Price : ${total}</p>
-                                                <div class="grp__button hidden">
-                                                    <button class="confirmord ordbtn">Confirm</button>
-                                                    <button class="cancelord ordbtn">Cancel</button>
-                                                </div>
-                                                <p class="rdorng">${bookInfo}</p>
+                                            <p class="rdorng">Total Booking Price : ${total}</p>
+                                            <div class="grp__button hidden">
+                                                <button class="confirmord ordbtn">Confirm</button>
+                                                <button class="cancelord ordbtn">Cancel</button>
+                                            </div>
+                                            <p class="rdorng">${bookInfo}</p>
                                             </div>
                                         `
                                 }
@@ -553,7 +598,7 @@ async function getAllCatMsg() {
                                             <p>Phone No : </p>
                                             <p class="ordermsg">${phn}</p>
                                             <p class="ordermsg">${msg}</p>
-                                            <p class="rdorng hidden">Order Total : ${total} </p>
+                                            <p class="rdorng">Total Booking Price : ${total} </p>
                                             <div class="grp__button">
                                                 <button class="confirmord ordbtn">Confirm</button>
                                                 <button class="cancelord ordbtn">Cancel</button>
@@ -574,7 +619,7 @@ async function getAllCatMsg() {
                                                 <p>Phone No : </p>
                                                 <p class="ordermsg">${phn}</p>
                                                 <p class="ordermsg">${msg}</p>
-                                                <p class="rdorng hidden">Order Total : ${total} </p>
+                                                <p class="rdorng">Total Booking Price : ${total} </p>
                                                 <div class="grp__button">
                                                     <button class="confirmord ordbtn">Confirm</button>
                                                     <button class="cancelord ordbtn">Cancel</button>

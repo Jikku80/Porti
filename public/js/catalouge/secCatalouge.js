@@ -114,6 +114,8 @@ let jar = [];
                                         let res = response.json();
                                         if (response.status === 200) {
                                             res.then(result => {
+                                                let catalougeItems = document.querySelector(".sec__cat__items");
+                                                catalougeItems.innerHTML = "";
                                                 result.forEach(item => {
                                                     if (typeof (item) !== "object") {
                                                         // subItemHeader.style.color = compColor;
@@ -123,8 +125,6 @@ let jar = [];
                                                         subItm.innerHTML += `<h3 class="catalouge__subcate__list cateHead">${item}</h3>`
                                                     }
                                                     else {
-                                                        let catalougeItems = document.querySelector(".sec__cat__items");
-                                                        catalougeItems.innerHTML = "";
                                                         subItemModel.classList.add("hidden");
                                                         details.classList.add("hidden");
                                                         smallCardElem(item);
@@ -438,6 +438,7 @@ let jar = [];
 
     cancelbanner.addEventListener("click", () => {
         bansec.remove();
+        window.sessionStorage.setItem("hideBanner", "true");
     })
 })();
 
@@ -986,7 +987,6 @@ function smallCardElem(el) {
     }
 })();
 
-
 (function () {
     let next = document.querySelector(".next__seccatal");
     let prev = document.querySelector(".prev__seccatal");
@@ -1000,6 +1000,14 @@ function smallCardElem(el) {
         }
         else {
             pg = pgC
+        }
+        let hideBanner = window.sessionStorage.getItem('hideBanner');
+        let banner = document.querySelector(".sec__menu__banner");
+        if (hideBanner == "true") {
+            banner.classList.add("hidden");
+        }
+        else {
+            banner.classList.remove("hidden");
         }
         try {
             let load = document.querySelector('.loader');
@@ -2124,9 +2132,42 @@ window.addEventListener("load", async () => {
     if (pgCount.innerText === "") {
         pgCount.innerText = 0;
     }
-    if (orgUsrId !== "" && usrId !== "") {
-        if (orgUsrId !== usrId) {
-            let newCount = (pgCount.innerText * 1) + 1;
+    let newCount = (pgCount.innerText * 1) + 1;
+    let pgCounter = window.sessionStorage.getItem('pageCounter');
+    if (pgCounter == null) {
+        if (orgUsrId !== "" && usrId !== "") {
+            if (orgUsrId !== usrId) {
+                window.sessionStorage.setItem('pageCounter', newCount);
+                try {
+                    let load = document.querySelector('.loader');
+                    load.classList.remove("hidden")
+                    const endpoint = `/api/v1/catalouge/${orgId}/updateCompanyPg`
+                    await fetch(endpoint, {
+                        method: 'PATCH',
+                        headers: {
+                            Accept: "application/json, text/plain, */*",
+                            'Content-type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            pageCount: newCount
+                        })
+                    }).then((response) => {
+                        load.classList.add("hidden");
+                        if (response.status === 200) {
+                        } else {
+                            console.log(response);
+                            errorAlert("Error Pg!!!")
+                        }
+                    })
+                }
+                catch (err) {
+                    console.log(err);
+                    errorAlert('Sorry! Something went wrong', err);
+                };
+            }
+        }
+        else {
+            window.sessionStorage.setItem('pageCounter', newCount);
             try {
                 let load = document.querySelector('.loader');
                 load.classList.remove("hidden")
@@ -2154,35 +2195,6 @@ window.addEventListener("load", async () => {
                 errorAlert('Sorry! Something went wrong', err);
             };
         }
-    }
-    else {
-        let newCount = (pgCount.innerText * 1) + 1;
-        try {
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const endpoint = `/api/v1/catalouge/${orgId}/updateCompanyPg`
-            await fetch(endpoint, {
-                method: 'PATCH',
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    pageCount: newCount
-                })
-            }).then((response) => {
-                load.classList.add("hidden");
-                if (response.status === 200) {
-                } else {
-                    console.log(response);
-                    errorAlert("Error Pg!!!")
-                }
-            })
-        }
-        catch (err) {
-            console.log(err);
-            errorAlert('Sorry! Something went wrong', err);
-        };
     }
 });
 

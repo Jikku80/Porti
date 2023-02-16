@@ -436,6 +436,7 @@ window.addEventListener("load", () => {
                                         <p class="gry">From : ${el.date}</p>
                                         <p class="gry">To : ${el.todate}</p>
                                     </div>
+                                    <p>Total Booking Price : ${el.total}</p>
                                     <p class="gry">${el.createdAt}</p>
                                 </div>
                             `
@@ -501,6 +502,7 @@ window.addEventListener("load", () => {
                                         <p class="gry">From : ${el.date}</p>
                                         <p class="gry">To : ${el.todate}</p>
                                     </div>
+                                    <p>Total Booking Price : ${el.total}</p>
                                     <p class="gry">${el.createdAt}</p>
                                 </div>
                             `

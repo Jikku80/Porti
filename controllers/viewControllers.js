@@ -307,6 +307,14 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
                     banner
                 })
                 break;
+            case "eb6669076ee9537ef67c6a0a789346614a98f7c6":
+                res.status(200).render('brochure/secBrochure', {
+                    title: `${organization[0].name}`,
+                    brochures,
+                    organization: organization[0],
+                    banner
+                })
+                break;
             default:
                 res.status(404).render('404.pug')
         }

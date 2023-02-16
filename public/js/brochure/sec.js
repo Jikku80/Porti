@@ -11,11 +11,6 @@
     let orgid = document.querySelector(".orgid").innerText;
     let curorgName = document.querySelector(".pageName").innerText;
     let alrt = document.querySelector(".bkalert")
-    let addtobookbtn = document.querySelectorAll(".addtobooking");
-    let formCont = document.querySelector(".form__items");
-    let catalusrName = document.querySelector(".portfoliouser").innerText;
-    let curLogUserName = document.querySelector(".curloguser").innerText;
-    let usrName = catalusrName + "-" + curLogUserName
     let socket = io();
 
     socket.on("brobookingreply", (broid, orguser, orguserid) => {
@@ -27,128 +22,7 @@
         }
     })
 
-    let books = usrName.toLowerCase();
-    let bookingsName = usrName.toUpperCase();
-
-    books = localStorage.getItem(bookingsName);
-    if (books == null) {
-        jar = []
-    } else {
-        jar = JSON.parse(books);
-    }
-    addtobookbtn.forEach(item => {
-        item.addEventListener("click", () => {
-            formCont.innerHTML = "";
-            let itemname = item.parentElement.childNodes[0].innerText;
-            let itemprice = item.parentElement.childNodes[3].innerText;
-            let itemdiscount = item.parentElement.childNodes[6].innerText;
-            let price;
-            if (itemdiscount !== "") {
-                let disper = itemdiscount / 100
-                let newp = (itemprice * 1) * disper;
-                price = itemprice - newp;
-            } else {
-                price = (itemprice * 1)
-            }
-            let quantity = 1;
-            let current = new Date();
-            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-            let uq = cDate + "|" + cTime;
-            let uid = itemname + uq;
-            jar.push({ itemname, price, quantity, uid });
-            localStorage.setItem(bookingsName, JSON.stringify(jar))
-            jar.forEach(item => {
-                formCont.innerHTML +=
-                    `
-                    <div class="form__item__bod">
-                        <img src="/images/cancel.png" class="cancelitem" alt="cancel__btn"/>
-                        <h6>${item.itemname}</h6>
-                        <label>qnt:</label>
-                        <input class="quantityinpt" type="text" value=${item.quantity} />
-                        <button class="updateitem">Update</button>
-                        <h4 class="hidden">${item.uid}</h4>
-                        <h4 class="hidden price">${item.price}</h4>
-                    </div>
-                `
-            })
-            successAlert('Item has been added in selected booking items')
-        })
-    })
-    formCont.innerHTML = "";
-    jar.forEach(item => {
-        formCont.innerHTML +=
-            `
-            <div class="form__item__bod">
-                <img src="/images/cancel.png" class="cancelitem" alt="cancel__btn"/>
-                <h6>${item.itemname}</h6>
-                <label>qnt:</label>
-                <input class="quantityinpt" type="text" value =${item.quantity} />
-                <button class="updateitem">Update</button>
-                <h4 class="hidden">${item.uid}</h4>
-                <h4 class="hidden price">${item.price}</h4>
-            </div>
-        `
-    })
-
-    let cancelitem = document.querySelectorAll(".cancelitem");
-    cancelitem.forEach(item => {
-        item.addEventListener("click", () => {
-            let curcard = item.parentElement;
-            let curId = item.parentElement.childNodes[11].innerText;
-            jar.filter((el, i) => {
-                if (el.uid == curId) {
-                    curcard.remove();
-                    jar.splice(i, 1)
-                    localStorage.setItem(bookingsName, JSON.stringify(jar));
-                    successAlert("Product has been removed")
-                }
-            })
-        });
-    });
-
-    let updateitem = document.querySelectorAll(".updateitem");
-    updateitem.forEach(item => {
-        item.addEventListener("click", () => {
-            let quantity = item.parentElement.childNodes[7].value;
-            let itemname = item.parentElement.childNodes[3].innerText;
-            let price = item.parentElement.childNodes[13].innerText;
-            let uid = item.parentElement.childNodes[11].innerText;
-
-            let newValue = ({ itemname, price, quantity, uid });
-            jar.filter((el, i) => {
-                if (el.uid == uid) {
-                    jar.splice(i, 1, newValue)
-                    localStorage.setItem(bookingsName, JSON.stringify(jar));
-                    successAlert("Quantity Updated!!!")
-                }
-            })
-        })
-    })
-
     bookBtn.addEventListener("click", async (e) => {
-        let itemPriceList = [];
-        let qList = [];
-        let displaySec = document.querySelector(".form__items");
-        let cartCard = document.querySelectorAll(".form__item__bod");
-
-        if (displaySec !== null) {
-            cartCard.forEach(item => {
-                let quantity = item.childNodes[7].value;
-                let product = item.childNodes[3].innerText;
-                let price = item.childNodes[13].innerText;
-
-                let msg = quantity + " " + product + ", ";
-                bromsg.value += msg
-                qList.push(quantity);
-                perItemTotal = (quantity * 1) * (price * 1);
-                itemPriceList.push(perItemTotal);
-            })
-        }
-
-        if (qList.includes("")) {
-            return false;
-        }
         if (broname.value == "") {
             return false;
         }
@@ -172,8 +46,17 @@
         let orguid = document.querySelector(".portiuserid").innerText;
         socket.emit("brobooking", orgid, orguid)
         try {
-            let sumTotal = itemPriceList.reduce((a, b) => a + b, 0);
             let load = document.querySelector('.loader');
+            let totalprice = document.querySelector(".packagetotal").innerText;
+            let discountpercent = document.querySelector(".packagediscount").innerText;
+            let total;
+            if (discountpercent !== "") {
+                let disper = (discountpercent * 1) / 100
+                let newp = (totalprice * 1) * disper;
+                total = (totalprice * 1) - newp;
+            } else {
+                total = (totalprice * 1)
+            }
             load.classList.remove("hidden")
             const endpoint = `/api/v1/brochure/book`
             await fetch(endpoint, {
@@ -193,7 +76,7 @@
                     todate: brotodate.value,
                     time: brotime.value,
                     message: bromsg.value,
-                    total: sumTotal,
+                    total: total,
                     createdAt: Date.now()
                 })
             }).then((response) => {
@@ -201,8 +84,6 @@
                 if (response.status === 201) {
                     getAllUserBookings()
                     successAlert("Booking Requested Successfully :)");
-                    jar.splice(0);
-                    localStorage.setItem(bookingsName, JSON.stringify(jar));
                     broname.value = "";
                     brophn.value = "";
                     bronum.value = "";
