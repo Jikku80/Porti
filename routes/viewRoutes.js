@@ -47,7 +47,7 @@ router.get('/tweaks/:id', authController.protect, authController.restrictTo('adm
 router.get('/catalougetweaks/:id', authController.protect, authController.restrictTo('admin', 'user'), catalougeController.itemTweaks);
 router.get('/catalog/:company/companystat', messageController.getComOrderStat);
 
-router.get('/brochure/:id/additems', brochureController.addItemsToPage)
+router.get('/brochure/:id/additems?:bro', brochureController.addItemsToPage)
 router.get('/brochuretweaks/:id', authController.protect, authController.restrictTo('admin', 'user'), brochureController.sectionTweaks);
 router.get('/brochure/:org/organizationstat', brochureController.getBookingStat);
 

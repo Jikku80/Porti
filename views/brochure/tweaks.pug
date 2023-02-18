@@ -9,71 +9,74 @@ block content
             span.nocaps.td i
     if (user)
         if (brochure.user.id == user.id)
-            p.hidden.themeUssr= user.theme
-            p.itemid.hidden= brochure.id
-            p.curusrid.hidden= user.id
-            .itemform__head 
-                a.blackbtn(href=`/brochure/${user._id}/additems` title="Add Items") Go Back
-                a.blackbtn(href=`/${user.name}` title="My Menu") My Brochure
-            .center
-                .your__items__bod
-                    .your__items
-                        .catalouge__card
-                            if (brochure.coverImage)
-                                img.brochure__card__img(src=`${brochure.coverImage}` alt="catalouge__item__image")
-                            else
-                                img.brochure__card__img(src="/images/noimg.png" alt="catalouge__item__image")
-                                .catalouge__card__det
-                                    h3.catalouge__card__head.goldn= brochure.name
-                                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
-                                        p.catalouge__card__price.goldn= `${brochure.currency} ${brochure.price}`
-                                    else 
-                                        .catalouge__card__price.hidden
-                                    p.catalouge__card__detail.goldn= brochure.detail
-            .up__items__detail
-                h2.items__head Update Item Detail
-                form.upItem
-                    .form__bod
-                        label.form__label Items Name:
-                        input#upcatalitemname.form__input(type="text" value=brochure.name required)
-                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")    
-                        .form__bod
-                            label.form__label(for="item_name") Currency Sign (optional):        
-                            input#upcatalitemcurrency.form__input(type="text" value=brochure.currency)
-                        .form__bod
-                            label.form__label Items Price (optional): 
-                            input#upcatalitemprice.form__input(type="text" value=brochure.price)
-                    else 
-                        #upcatalitemcurrency.hidden 
-                        #upcatalitemprice.hidden
-                    .form__bod
-                        label.form__label Detail:
-                        textarea#upcatalitemdetail.brochureTextarea.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= brochure.detail
-                    if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
-                        .form__bod 
-                            label.form__label Apply Discount (optional):
-                            if (brochure.applydiscount === true)
-                                input#upcatalitemdiscount.checkbox(type="checkbox" checked="checked")
-                            else
-                                input#upcatalitemdiscount.checkbox(type="checkbox")
-                    else 
-                        #upcatalitemdiscount.hidden
-                    .group__btn
-                        button#upcatalItemBtn.smallbtn.ygbtn Update Item
-                        a(href=`/brochure/${user._id}/additems`).smallbtn.redbtn Cancel
-            .up__items__img
-                h2.items__head Update Items Image
-                form.upItem(action=`/api/v1/brochure/${brochure.id}/updateItemImage` method="post" enctype="multipart/form-data")
-                    .form__bod.file_part
-                        input#upcatalcoverimage.form__input(type="file" name="upcatalogimage" accept="image/*" required)
-                    .group__btn
-                        button#upcatalImgItemBtn.smallbtn.ygbtn Update Item Image  
-                        a(href=`/brochure/${user._id}/additems`).smallbtn.redbtn Cancel  
-            .del__items__sec 
-                h2.items__head Are You Sure You Want To Delete It?
-                .group__btn
-                    button#delcatalItemBtn.smallbtn.redbtn Delete Item  
-                    a(href=`/brochure/${user._id}/additems`).smallbtn.ygbtn Cancel
+            include ../_header
+            .tweaks__bod
+                .tweaks__sub__bod
+                    p.hidden.themeUssr= user.theme
+                    p.itemid.hidden= brochure.id
+                    p.curusrid.hidden= user.id
+                    .itemform__head 
+                        a.blackbtn(href=`/brochure/${user._id}/additems` title="Add Items") Go Back
+                        a.blackbtn(href=`/${user.name}` title="My Menu") My Brochure
+                    .center
+                        .your__items__bod
+                            .your__items
+                                .catalouge__card
+                                    if (brochure.coverImage)
+                                        img.brochure__card__img(src=`${brochure.coverImage}` alt="catalouge__item__image")
+                                    else
+                                        img.brochure__card__img(src="/images/noimg.png" alt="catalouge__item__image")
+                                        .catalouge__card__det
+                                            h3.catalouge__card__head.goldn= brochure.name
+                                            if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
+                                                p.catalouge__card__price.goldn= `${brochure.currency} ${brochure.price}`
+                                            else 
+                                                .catalouge__card__price.hidden
+                                            p.catalouge__card__detail.goldn= brochure.detail
+                    .up__items__detail
+                        h2.items__head Update Item Detail
+                        form.upItem
+                            .form__bod
+                                label.form__label Items Name:
+                                input#upcatalitemname.form__input(type="text" value=brochure.name required)
+                            if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")    
+                                .form__bod
+                                    label.form__label(for="item_name") Currency Sign (optional):        
+                                    input#upcatalitemcurrency.form__input(type="text" value=brochure.currency)
+                                .form__bod
+                                    label.form__label Items Price (optional): 
+                                    input#upcatalitemprice.form__input(type="text" value=brochure.price)
+                            else 
+                                #upcatalitemcurrency.hidden 
+                                #upcatalitemprice.hidden
+                            .form__bod
+                                label.form__label Detail:
+                                textarea#upcatalitemdetail.brochureTextarea.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= brochure.detail
+                            if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
+                                .form__bod 
+                                    label.form__label Apply Discount (optional):
+                                    if (brochure.applydiscount === true)
+                                        input#upcatalitemdiscount.checkbox(type="checkbox" checked="checked")
+                                    else
+                                        input#upcatalitemdiscount.checkbox(type="checkbox")
+                            else 
+                                #upcatalitemdiscount.hidden
+                            .group__btn
+                                button#upcatalItemBtn.smallbtn.ygbtn Update Item
+                                a(href=`/brochure/${user._id}/additems`).smallbtn.redbtn Cancel
+                    .up__items__img
+                        h2.items__head Update Items Image
+                        form.upItem(action=`/api/v1/brochure/${brochure.id}/updateItemImage` method="post" enctype="multipart/form-data")
+                            .form__bod.file_part
+                                input#upcatalcoverimage.form__input(type="file" name="upcatalogimage" accept="image/*" required)
+                            .group__btn
+                                button#upcatalImgItemBtn.smallbtn.ygbtn Update Item Image  
+                                a(href=`/brochure/${user._id}/additems`).smallbtn.redbtn Cancel  
+                    .del__items__sec 
+                        h2.items__head Are You Sure You Want To Delete It?
+                        .group__btn
+                            button#delcatalItemBtn.smallbtn.redbtn Delete Item  
+                            a(href=`/brochure/${user._id}/additems`).smallbtn.ygbtn Cancel
         else 
             .confirm__pg 
                 h1 You Dont Belong Here!!!

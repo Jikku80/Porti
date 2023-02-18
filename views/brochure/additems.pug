@@ -109,25 +109,9 @@ block content
                     .your__item__sec#CatalogeItemSec
                         h2.items__head.scaps Your Sections 
                         .all__brochure__items
-                            for item in brochures 
-                                .brochure__card
-                                    if (item.coverImage)
-                                        img(class="brochure__card__img" loading="lazy" src=`${item.coverImage}` alt="catalouge__item__img")
-                                    else
-                                        img.brochure__card__img( loading="lazy" src="/images/noimg.png" alt="catalouge__item__img")
-                                    .catalouge__card__det
-                                        h3.catalouge__card__head.goldn= item.name
-                                        if (organization.theme == "65954198f2f59aac9b415952aa9c614fd74245ff")
-                                            if (item.price)
-                                                p.catalouge__card__price.goldn= `${item.currency} ${item.price}`
-                                            if (item.applyDiscount == true)
-                                                p.catalouge__card__dis__per.goldn Discount
-                                        else 
-                                            .catalouge__card__price.hidden 
-                                            .catalouge__card__dis__per.hidden
-                                        .grp__btn
-                                            a(href=`/brochuretweaks/${item._id}?update` class="ygbtn btn") Update
-                                            a.redbtn.btn(href=`/brochuretweaks/${item._id}?delete`) Delete
+                        .paginate 
+                            button.prev__bro.pagibtn.hidden Previous
+                            button.next__bro.pagibtn.hidden Next
                         p.currentuid.hidden= user._id
                         if (banner[0])
                             if (banner[0].discountpercent || banner[0].discountpercent !== null)
@@ -138,9 +122,7 @@ block content
                             .itemdiscountpercent.hidden
                         .your__item__bod
                             .your__items.sec__items
-                        //- .paginate 
-                        //-     button.prev__catal Previous
-                        //-     button.next__catal.hidden Next
+                        
                     .itemform__head 
                         h2.form__label.scaps Update Organization Detail
                     form#upOrganization.upItem

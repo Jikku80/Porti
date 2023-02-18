@@ -41,8 +41,8 @@ app.use(
         directives: {
             "default-src": [
                 "'self'",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/payment_gateway_widget.html",
                 "https://portiblobstorage.blob.core.windows.net"
+                // "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/payment_gateway_widget.html",
             ],
             "base-uri": "'self'",
             "font-src": [
@@ -56,8 +56,8 @@ app.use(
             "img-src": [
                 "'self'",
                 "data:",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/icons/infinity-loader.svg",
                 "https://portiblobstorage.blob.core.windows.net"
+                // "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/icons/infinity-loader.svg",
             ],
             "object-src": [
                 "'none'",
@@ -65,17 +65,17 @@ app.use(
             "script-src": [
                 "'self'",
                 "'unsafe-inline'",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
                 "https://portiblobstorage.blob.core.windows.net",
                 "https://cdn.jsdelivr.net/npm/chart.js"
+                // "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
             ],
             "script-src-attr": "'none'",
             "style-src": [
                 "'self'",
                 "'unsafe-inline'",
                 "https://fonts.googleapis.com",
-                "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
                 "https://portiblobstorage.blob.core.windows.net"
+                // "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
             ]
         },
     }),

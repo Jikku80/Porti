@@ -181,7 +181,7 @@ next.addEventListener("click", async () => {
         load.classList.remove("hidden")
         let subItems = document.querySelector(".your__items")
         subItems.innerHTML = "";
-        let fullpath = location.pathname
+        let fullpath = location.pathname;
         let resultpath = fullpath.match("/catalouge/(.*)/")
         const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
         let myHeaders = new Headers();
@@ -329,7 +329,7 @@ prev.addEventListener("click", async () => {
         let subItems = document.querySelector(".your__items")
         subItems.innerHTML = "";
         let fullpath = location.pathname
-        let resultpath = fullpath.match("/catalouge/(.*)/")
+        let resultpath = fullpath.match("/catalouge/(.*)/");
         const endpoint = `/api/v1/catalouge/${resultpath[1]}/paginate/${pg}`
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'image/jpeg/png')

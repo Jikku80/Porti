@@ -7,7 +7,8 @@ const authController = require('./../controllers/authControllers');
 
 const router = express.Router({ mergeParams: true });
 
-router.patch('/:id/updateOrg', brochureController.updateOrgi)
+router.patch('/:id/updateOrg', brochureController.updateOrgi);
+router.get('/:id/pagination?:bro', brochureController.bropaginate);
 
 router.use(authController.protect);
 router.use(authController.isLoggedIn);

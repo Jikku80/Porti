@@ -9,6 +9,19 @@
     display: none;
 }
 
+.pagibtn{
+    background-color: transparent;
+    padding: 1%;
+    border: 1px solid white;
+    color : white;
+    cursor: pointer;
+}
+
+.pagibtn:hover{
+    background-color: white;
+    color: black;
+}
+
 .brochure__card{
     margin: 4%;
 }

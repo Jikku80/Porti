@@ -366,3 +366,254 @@ window.addEventListener("load", async () => {
         privbod.classList.remove("hidden");
     });
 })();
+
+let next = document.querySelector(".next__bro");
+let prev = document.querySelector(".prev__bro");
+let pgC = window.sessionStorage.getItem('paginate');
+
+let x;
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+};
+
+(async function () {
+    let subItems = document.querySelector("#section")
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    });
+                    if (subItems.children.length === 20) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+
+    if (pg == 1) {
+        prev.classList.add("hidden")
+    }
+    else {
+        prev.classList.remove("hidden");
+    }
+
+})();
+
+next.addEventListener("click", async () => {
+    let pg = ++x;
+    prev.classList.remove("hidden");
+    window.sessionStorage.setItem("paginate", pg);
+    window.location.hash = "#"
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        let subItems = document.querySelector("#section")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    });
+                    window.setTimeout(() => {
+                        location.hash = "#section"
+                    }, 200)
+                    if (subItems.children.length === 20) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+})
+
+prev.addEventListener("click", async () => {
+    let pg = --x
+    window.sessionStorage.setItem("paginate", pg);
+    try {
+        let load = document.querySelector('.loader');
+        window.location.hash = "#"
+        load.classList.remove("hidden")
+        if (x == 1) {
+            prev.classList.add("hidden")
+        }
+        next.classList.remove("hidden");
+        let subItems = document.querySelector("#section")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    });
+                })
+                window.setTimeout(() => {
+                    location.hash = "#section"
+                }, 200)
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+});

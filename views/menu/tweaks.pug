@@ -10,69 +10,72 @@ block content
             span.nocaps.td i
     if (user)
         if (menu.user.id == user.id)
-            p.themeUs.hidden= user.theme
-            p.itemid.hidden= menu.id
-            p.curid.hidden= user.id
-            .itemform__head 
-                a.blackbtn(href=`/menu/${user._id}/additemstomenu` title="Add Items") Go Back
-                a.blackbtn(href=`/${user.name}` title="My Menu") My Menu
-            .center
-                .sub__items__bod
-                    .sub__items
-                        .menu__card
-            .up__items__detail
-                h2.items__head Update Item Detail
-                form.upItem
-                    .form__bod
-                        label.form__label(for="upitemname") Food Name:
-                        input#upitemname.form__input(type="text" value=menu.name required)
-                    .form__bod
-                        label.form__label(for="upitemprice") Currency Sign: 
-                        input#upitemcurrency.form__input(type="text" value=menu.currency required)
-                    .form__bod
-                        label.form__label(for="upitemprice") Price: 
-                        input#upitemprice.form__input(type="number" value=menu.price required)
-                    .form__bod
-                        label.form__label(for="upitemcat") Category: 
-                        input#upitemcat.form__input(type="text" value=menu.category required)
-                    .form__bod
-                        label.form__label(for="upitemdetail") Detail (optional):
-                        textarea#upitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
-                    if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
-                        .form__bod 
-                            label.form__label Apply Discount(optional) :
-                            if (menu.applydiscount === true)
-                                input#upitemdiscount.checkbox(type="checkbox" checked="checked")
-                            else
-                                input#upitemdiscount.checkbox(type="checkbox")
-                        .form__bod 
-                            label.form__label Available (optional) :
-                            if (menu.available === true)
-                                input#upitemavailable.checkbox(type="checkbox" checked="checked")
-                            else
-                                input#upitemavailable.checkbox(type="checkbox")
-                            p Unchecking it will show users, item is not available for today!!!
-                    else 
-                        #upitemdiscount.hidden
-                        #upitemavailable.hidden
-                    .group__btn
-                        button#upItemBtn.smallbtn.ygbtn Update Item
-                        a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel
-            .up__items__img
-                h2.items__head Update Items Image
-                form.upItem(action="/api/v1/menu/updateItemImage" method="post" enctype="multipart/form-data")
-                    .form__bod.file_part
-                        label.form__label(for="upcoverimage") Update Item Image
-                        input#upcoverimage.form__input(type="file" accept="image/*" name="upmenuimage" required)
-                        input.hidden.form__input(type="text" name="upmenuid" value=menu.id)
-                    .group__btn
-                        button#upImgItemBtn.smallbtn.ygbtn Update Item Image  
-                        a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel  
-            .del__items__sec 
-                h2.items__head Are You Sure You Want To Delete It?
-                .group__btn
-                    button#delItemBtn.smallbtn.redbtn Delete Item  
-                    a(href=`/menu/${user._id}/additemstomenu`).smallbtn.ygbtn Cancel
+            include ../_header
+            .tweaks__bod
+                .tweaks__sub__bod
+                    p.themeUs.hidden= user.theme
+                    p.itemid.hidden= menu.id
+                    p.curid.hidden= user.id
+                    .itemform__head 
+                        a.blackbtn(href=`/menu/${user._id}/additemstomenu` title="Add Items") Go Back
+                        a.blackbtn(href=`/${user.name}` title="My Menu") My Menu
+                    .center
+                        .sub__items__bod
+                            .sub__items
+                                .menu__card
+                    .up__items__detail
+                        h2.items__head Update Item Detail
+                        form.upItem
+                            .form__bod
+                                label.form__label(for="upitemname") Food Name:
+                                input#upitemname.form__input(type="text" value=menu.name required)
+                            .form__bod
+                                label.form__label(for="upitemprice") Currency Sign: 
+                                input#upitemcurrency.form__input(type="text" value=menu.currency required)
+                            .form__bod
+                                label.form__label(for="upitemprice") Price: 
+                                input#upitemprice.form__input(type="number" value=menu.price required)
+                            .form__bod
+                                label.form__label(for="upitemcat") Category: 
+                                input#upitemcat.form__input(type="text" value=menu.category required)
+                            .form__bod
+                                label.form__label(for="upitemdetail") Detail (optional):
+                                textarea#upitemdetail.form__input(rows="4" cols="50" placeholder="You can Describe about your food only if you want to, this field is optional...")= menu.detail
+                            if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                                .form__bod 
+                                    label.form__label Apply Discount(optional) :
+                                    if (menu.applydiscount === true)
+                                        input#upitemdiscount.checkbox(type="checkbox" checked="checked")
+                                    else
+                                        input#upitemdiscount.checkbox(type="checkbox")
+                                .form__bod 
+                                    label.form__label Available (optional) :
+                                    if (menu.available === true)
+                                        input#upitemavailable.checkbox(type="checkbox" checked="checked")
+                                    else
+                                        input#upitemavailable.checkbox(type="checkbox")
+                                    p Unchecking it will show users, item is not available for today!!!
+                            else 
+                                #upitemdiscount.hidden
+                                #upitemavailable.hidden
+                            .group__btn
+                                button#upItemBtn.smallbtn.ygbtn Update Item
+                                a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel
+                    .up__items__img
+                        h2.items__head Update Items Image
+                        form.upItem(action="/api/v1/menu/updateItemImage" method="post" enctype="multipart/form-data")
+                            .form__bod.file_part
+                                label.form__label(for="upcoverimage") Update Item Image
+                                input#upcoverimage.form__input(type="file" accept="image/*" name="upmenuimage" required)
+                                input.hidden.form__input(type="text" name="upmenuid" value=menu.id)
+                            .group__btn
+                                button#upImgItemBtn.smallbtn.ygbtn Update Item Image  
+                                a(href=`/menu/${user._id}/additemstomenu`).smallbtn.redbtn Cancel  
+                    .del__items__sec 
+                        h2.items__head Are You Sure You Want To Delete It?
+                        .group__btn
+                            button#delItemBtn.smallbtn.redbtn Delete Item  
+                            a(href=`/menu/${user._id}/additemstomenu`).smallbtn.ygbtn Cancel
         else 
             .confirm__pg 
                 h1 You Dont Belong Here!!!

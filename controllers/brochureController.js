@@ -108,19 +108,49 @@ exports.getBrochure = factory.getOne(Brochure);
 exports.deleteBrochure = factory.deleteOne(Brochure);
 
 exports.addItemsToPage = catchAsync(async (req, res, next) => {
-    const user_id = req.params.id
-    const brochures = await Brochure.find({ user: user_id })
-    const organization = await Organization.findOne({ user: user_id })
-    const theme = await Theme.find({ themeCategory: "Brochure" })
-    const banner = await BrochureBanner.find({ user: user_id })
+    const user_id = req.params.id;
+    let pg;
+    if (req.query.bro) {
+        pg = req.query.bro
+        let features = new APIFeatures(Brochure.find({ user: user_id }), { limit: 12, page: pg }).srt().paginate();
+        const brochures = await features.query
 
-    res.status(200).render('brochure/additems', {
-        title: 'Brochure Tweaks',
-        organization,
-        brochures,
-        theme,
-        banner
-    })
+        res.status(200).json({
+            'status': 'success',
+            brochures
+        })
+    }
+    else {
+        pg = 1;
+        let features = new APIFeatures(Brochure.find({ user: user_id }), { limit: 12, page: pg }).srt().paginate();
+        const brochures = await features.query
+        const organization = await Organization.findOne({ user: user_id })
+        const theme = await Theme.find({ themeCategory: "Brochure" })
+        const banner = await BrochureBanner.find({ user: user_id })
+
+        res.status(200).render('brochure/additems', {
+            title: 'Brochure Tweaks',
+            organization,
+            brochures,
+            theme,
+            banner
+        })
+    }
+});
+
+exports.bropaginate = catchAsync(async (req, res, next) => {
+    const user_id = req.params.id;
+    let pg;
+    if (req.query.bro) {
+        pg = req.query.bro
+        let features = new APIFeatures(Brochure.find({ user: user_id }), { limit: 20, page: pg }).srt().paginate();
+        const brochures = await features.query
+
+        res.status(200).json({
+            'status': 'success',
+            brochures
+        })
+    }
 })
 
 exports.sectionTweaks = catchAsync(async (req, res) => {
@@ -313,7 +343,9 @@ exports.book = catchAsync(async (req, res, next) => {
 exports.getAllUserBooking = catchAsync(async (req, res, next) => {
     const id = req.params.id;
     const org = req.params.org;
-    const bookings = await OrgBook.find({ organization: org }).then(item => {
+    let pg = 1;
+    let features = new APIFeatures(OrgBook.find({ organization: org }), { limit: 11, page: pg }).srt().paginate();
+    const bookings = await features.query.then(item => {
         const data = item.filter(el => {
             return el.userId === id
         })

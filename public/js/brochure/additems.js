@@ -220,6 +220,8 @@
     })
 })();
 
+
+
 (function () {
     let theme = document.querySelector(".themeUsr").innerText;
     let bodsec = document.querySelector(".whole__menu__sec");
@@ -934,3 +936,263 @@ async function itemorderCanceled(val, usr) {
         };
     })
 })();
+
+let next = document.querySelector(".next__bro");
+let prev = document.querySelector(".prev__bro");
+let pgC = window.sessionStorage.getItem('paginate');
+
+let x;
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+};
+
+(async function () {
+    let subItems = document.querySelector(".all__brochure__items")
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        subItems.innerHTML = "";
+        let fullpath = location.pathname
+        let resultpath = fullpath.match("/brochure/(.*)/")
+        const endpoint = `/brochure/${resultpath[1]}/additems/?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                            <div class="brochure__card">
+                                <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                <div class="catalouge__card__det">
+                                    <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                    <div class="grp__btn">
+                                    <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                    <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                            <div class="brochure__card">
+                                <img class="brochure__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                <div class="catalouge__card__det">
+                                    <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                    <div class="grp__btn">
+                                    <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                    <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        }
+                    });
+                    if (subItems.children.length === 12) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+
+    if (pg == 1) {
+        prev.classList.add("hidden")
+    }
+    else {
+        prev.classList.remove("hidden");
+    }
+
+})();
+
+next.addEventListener("click", async () => {
+    let pg = ++x;
+    prev.classList.remove("hidden");
+    window.sessionStorage.setItem("paginate", pg);
+    window.location.hash = "#"
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        let subItems = document.querySelector(".all__brochure__items")
+        subItems.innerHTML = "";
+        let fullpath = location.pathname
+        let resultpath = fullpath.match("/brochure/(.*)/")
+        const endpoint = `/brochure/${resultpath[1]}/additems/?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                            <div class="brochure__card">
+                                <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                <div class="catalouge__card__det">
+                                    <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                    <div class="grp__btn">
+                                    <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                    <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                            <div class="brochure__card">
+                                <img class="brochure__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                <div class="catalouge__card__det">
+                                    <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                    <div class="grp__btn">
+                                    <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                    <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        }
+                    });
+                    window.setTimeout(() => {
+                        location.hash = "#CatalogeItemSec"
+                    }, 200)
+                    if (subItems.children.length === 12) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+})
+
+prev.addEventListener("click", async () => {
+    let pg = --x
+    window.sessionStorage.setItem("paginate", pg);
+    try {
+        let load = document.querySelector('.loader');
+        window.location.hash = "#"
+        load.classList.remove("hidden")
+        if (x == 1) {
+            prev.classList.add("hidden")
+        }
+        next.classList.remove("hidden");
+        let subItems = document.querySelector(".all__brochure__items")
+        subItems.innerHTML = "";
+        let fullpath = location.pathname
+        let resultpath = fullpath.match("/brochure/(.*)/")
+        const endpoint = `/brochure/${resultpath[1]}/additems?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="brochure__card">
+                                        <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <div class="catalouge__card__det">
+                                            <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                            <div class="grp__btn">
+                                            <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                            <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                <div class="brochure__card">
+                                    <img class="brochure__card__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    <div class="catalouge__card__det">
+                                        <h3 class="catalouge__card__head goldn">${el.name}</h3>
+                                        <div class="grp__btn">
+                                        <a href="/brochuretweaks/${el._id}?update" class="ygbtn">Update</a>
+                                        <a href="/brochuretweaks/${el._id}?delete" class="redbtn">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    });
+                    window.setTimeout(() => {
+                        location.hash = "#CatalogeItemSec"
+                    }, 200)
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+});

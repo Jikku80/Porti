@@ -707,9 +707,9 @@
 
 .fot_sec{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
-    font-size: .7em;
+    font-size: 9px;
   }
 
 .footer__first__bod{

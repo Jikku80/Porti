@@ -83,29 +83,11 @@ block content
         else    
             img.first__bro__cover(src="/images/hill.jpg" alt="cover__img")
         #section
-            for items in brochures
-                .first__bro__sec__section 
-                    .first__bro__sec__half 
-                        if (items.coverImage)
-                            img.section__img(src=`${items.coverImage}` alt="section image")
-                        else 
-                            img.section__img(src="/images/noimg.png" alt="no image")
-                    .first__bro__sec__other
-                        h2= items.name 
-                        pre= items.detail
-                        h2= `Price : ${items.currency} ${items.price}`
-                        h2.hidden= items.price
-                        if (items.applydiscount == true)
-                            if (banner[0])
-                                h3= `${banner[0].discountpercent}% off`
-                        else 
-                            h3.hidden
-                        .addtobooking Add To Booking
-                        if (items.applydiscount == true)
-                            if (banner[0])
-                                h3.hidden= `${banner[0].discountpercent}`
-                        else 
-                            h3.hidden
+        if (banner[0])
+            h3.bannerdiscountpercent.hidden= `${banner[0].discountpercent}`
+        .paginate.first__paginate 
+            button.prev__bro.bropagibtn.hidden Previous
+            button.next__bro.bropagibtn.hidden Next
         #bookNow
             if (user)
                 .curUserId.hidden= user.id

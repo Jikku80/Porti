@@ -11,11 +11,6 @@
     let orgid = document.querySelector(".orgid").innerText;
     let curorgName = document.querySelector(".pageName").innerText;
     let alrt = document.querySelector(".bkalert")
-    let addtobookbtn = document.querySelectorAll(".addtobooking");
-    let formCont = document.querySelector(".form__items");
-    let catalusrName = document.querySelector(".portfoliouser").innerText;
-    let curLogUserName = document.querySelector(".curloguser").innerText;
-    let usrName = catalusrName + "-" + curLogUserName
     let socket = io();
 
     socket.on("brobookingreply", (broid, orguser, orguserid) => {
@@ -27,6 +22,12 @@
         }
     })
 
+    let addtobookbtn = document.querySelectorAll(".addtobooking");
+    let formCont = document.querySelector(".form__items");
+    let catalusrName = document.querySelector(".portfoliouser").innerText;
+    let curLogUserName = document.querySelector(".curloguser").innerText;
+    let usrName = catalusrName + "-" + curLogUserName
+
     let books = usrName.toLowerCase();
     let bookingsName = usrName.toUpperCase();
 
@@ -36,45 +37,6 @@
     } else {
         jar = JSON.parse(books);
     }
-    addtobookbtn.forEach(item => {
-        item.addEventListener("click", () => {
-            formCont.innerHTML = "";
-            let itemname = item.parentElement.childNodes[0].innerText;
-            let itemprice = item.parentElement.childNodes[3].innerText;
-            let itemdiscount = item.parentElement.childNodes[6].innerText;
-            let price;
-            if (itemdiscount !== "") {
-                let disper = itemdiscount / 100
-                let newp = (itemprice * 1) * disper;
-                price = itemprice - newp;
-            } else {
-                price = (itemprice * 1)
-            }
-            let quantity = 1;
-            let current = new Date();
-            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-            let uq = cDate + "|" + cTime;
-            let uid = itemname + uq;
-            jar.push({ itemname, price, quantity, uid });
-            localStorage.setItem(bookingsName, JSON.stringify(jar))
-            jar.forEach(item => {
-                formCont.innerHTML +=
-                    `
-                    <div class="form__item__bod">
-                        <img src="/images/cancel.png" class="cancelitem" alt="cancel__btn"/>
-                        <h6>${item.itemname}</h6>
-                        <label>qnt:</label>
-                        <input class="quantityinpt" type="text" value=${item.quantity} />
-                        <button class="updateitem">Update</button>
-                        <h4 class="hidden">${item.uid}</h4>
-                        <h4 class="hidden price">${item.price}</h4>
-                    </div>
-                `
-            })
-            successAlert('Item has been added in selected booking items')
-        })
-    })
     formCont.innerHTML = "";
     jar.forEach(item => {
         formCont.innerHTML +=
@@ -201,6 +163,7 @@
                 if (response.status === 201) {
                     getAllUserBookings()
                     successAlert("Booking Requested Successfully :)");
+                    displaySec.innerHTML = "";
                     jar.splice(0);
                     localStorage.setItem(bookingsName, JSON.stringify(jar));
                     broname.value = "";
@@ -222,6 +185,97 @@
         };
     })
 })();
+
+function addtobook() {
+    let addtobookbtn = document.querySelectorAll(".addtobooking");
+    let formCont = document.querySelector(".form__items");
+    let catalusrName = document.querySelector(".portfoliouser").innerText;
+    let curLogUserName = document.querySelector(".curloguser").innerText;
+    let usrName = catalusrName + "-" + curLogUserName
+
+    let books = usrName.toLowerCase();
+    let bookingsName = usrName.toUpperCase();
+
+    books = localStorage.getItem(bookingsName);
+    if (books == null) {
+        jar = []
+    } else {
+        jar = JSON.parse(books);
+    }
+    addtobookbtn.forEach(item => {
+        item.addEventListener("click", () => {
+            formCont.innerHTML = "";
+            let itemname = item.parentElement.childNodes[1].innerText;
+            let itemprice = item.parentElement.childNodes[7].innerText;
+            let itemdiscount = item.parentElement.childNodes[13].innerText;
+            let price;
+            if (itemdiscount !== "") {
+                let disper = itemdiscount / 100
+                let newp = (itemprice * 1) * disper;
+                price = itemprice - newp;
+            } else {
+                price = (itemprice * 1)
+            }
+            let quantity = 1;
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let uq = cDate + "|" + cTime;
+            let uid = itemname + uq;
+            jar.push({ itemname, price, quantity, uid });
+            localStorage.setItem(bookingsName, JSON.stringify(jar))
+            jar.forEach(item => {
+                formCont.innerHTML +=
+                    `
+                    <div class="form__item__bod">
+                        <img src="/images/cancel.png" class="cancelitem" alt="cancel__btn"/>
+                        <h6>${item.itemname}</h6>
+                        <label>qnt:</label>
+                        <input class="quantityinpt" type="text" value=${item.quantity} />
+                        <button class="updateitem">Update</button>
+                        <h4 class="hidden">${item.uid}</h4>
+                        <h4 class="hidden price">${item.price}</h4>
+                    </div>
+                `
+            })
+            let cancelitem = document.querySelectorAll(".cancelitem");
+            cancelitem.forEach(item => {
+                item.addEventListener("click", () => {
+                    let curcard = item.parentElement;
+                    let curId = item.parentElement.childNodes[11].innerText;
+                    jar.filter((el, i) => {
+                        if (el.uid == curId) {
+                            curcard.remove();
+                            jar.splice(i, 1)
+                            localStorage.setItem(bookingsName, JSON.stringify(jar));
+                            successAlert("Product has been removed")
+                        }
+                    })
+                });
+            });
+
+            let updateitem = document.querySelectorAll(".updateitem");
+            updateitem.forEach(item => {
+                item.addEventListener("click", () => {
+                    let quantity = item.parentElement.childNodes[7].value;
+                    let itemname = item.parentElement.childNodes[3].innerText;
+                    let price = item.parentElement.childNodes[13].innerText;
+                    let uid = item.parentElement.childNodes[11].innerText;
+
+                    let newValue = ({ itemname, price, quantity, uid });
+                    jar.filter((el, i) => {
+                        if (el.uid == uid) {
+                            jar.splice(i, 1, newValue)
+                            localStorage.setItem(bookingsName, JSON.stringify(jar));
+                            successAlert("Quantity Updated!!!")
+                        }
+                    })
+                })
+            })
+            successAlert('Item has been added in selected booking items')
+        })
+    })
+}
 
 async function getAllUserBookings() {
     let usr = document.querySelector(".curUserId").innerText;
@@ -485,3 +539,414 @@ window.addEventListener("load", async () => {
         privbod.classList.remove("hidden");
     });
 })();
+
+let next = document.querySelector(".next__bro");
+let prev = document.querySelector(".prev__bro");
+let pgC = window.sessionStorage.getItem('paginate');
+
+let x;
+if (pgC === null) {
+    x = 1
+}
+else {
+    x = pgC
+};
+let bannerdiscount = document.querySelector(".bannerdiscountpercent").innerText;
+
+(async function () {
+    let subItems = document.querySelector("#section")
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                        else {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                    });
+                    if (subItems.children.length === 20) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                    addtobook();
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+
+    if (pg == 1) {
+        prev.classList.add("hidden")
+    }
+    else {
+        prev.classList.remove("hidden");
+    }
+
+})();
+
+next.addEventListener("click", async () => {
+    let pg = ++x;
+    prev.classList.remove("hidden");
+    window.sessionStorage.setItem("paginate", pg);
+    window.location.hash = "#"
+    try {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        let subItems = document.querySelector("#section")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                        else {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                    });
+                    window.setTimeout(() => {
+                        location.hash = "#section"
+                    }, 200)
+                    if (subItems.children.length === 20) {
+                        next.classList.remove("hidden");
+                    } else {
+                        next.classList.add("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        next.classList.add("hidden");
+                        subItems.innerHTML = `<h3 class="go__back center goldn">Oops!! Thats All You've Added So Far :)</h3>`
+                    }
+                    addtobook();
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+})
+
+prev.addEventListener("click", async () => {
+    let pg = --x
+    window.sessionStorage.setItem("paginate", pg);
+    try {
+        let load = document.querySelector('.loader');
+        window.location.hash = "#"
+        load.classList.remove("hidden")
+        if (x == 1) {
+            prev.classList.add("hidden")
+        }
+        next.classList.remove("hidden");
+        let subItems = document.querySelector("#section")
+        subItems.innerHTML = "";
+        let resultpath = document.querySelector(".portiuserid").innerText;
+        const endpoint = `/api/v1/brochure/${resultpath}/pagination?bro=${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            load.classList.add("hidden");
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.brochures
+                    items.forEach(el => {
+                        if (!el.coverImage) {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                        else {
+                            if (el.applydiscount !== true) {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3 class="hidden"></h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden"></h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                <div class="first__bro__sec__section">
+                                    <div class="first__bro__sec__half">
+                                    <img class="section__img" loading="lazy" src="${el.coverImage}" alt="catalouge__item__img">
+                                    </div>
+                                    <div class="first__bro__sec__other">
+                                        <h2 class="">${el.name}</h1>
+                                        <pre>${el.detail}</pre>
+                                        <h2>Price : ${el.currency} ${el.price}</h2>
+                                        <h2 class="hidden">${el.price}</h2>
+                                        <h3>${bannerdiscount}% off</h3>
+                                        <button class="addtobooking">Add To Booking</button>
+                                        <h3 class="hidden">${bannerdiscount}</h3>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        }
+                    });
+                    addtobook();
+                })
+                window.setTimeout(() => {
+                    location.hash = "#section"
+                }, 200)
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+});

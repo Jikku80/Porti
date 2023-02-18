@@ -147,7 +147,7 @@ pre{
 
 .get__booked{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -165,7 +165,7 @@ pre{
     color: yellow;
 }
 
-.addtobooking{
+.addtobooking,.bropagibtn{
     background-color: transparent;
     color: #000;
     border: 1px solid black;
@@ -173,9 +173,13 @@ pre{
     cursor: pointer;
 }
 
-.addtobooking:hover{
+.addtobooking:hover, .bropagibtn:hover{
     background-color: black;
     color: white;
+}
+
+.paginate{
+    margin: 2%;
 }
 
 .form__items{

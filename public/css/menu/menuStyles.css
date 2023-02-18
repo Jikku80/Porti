@@ -958,6 +958,17 @@ input::file-selector-button, ::-webkit-file-upload-button{
     color: red;
 }
 
+.tweaks__bod{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.tweaks__sub__bod{
+    width: 84%;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
@@ -1083,6 +1094,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     }
 
     .termservice{
+        width: 100%;
+    }
+
+    .tweaks__sub__bod{
         width: 100%;
     }
 }

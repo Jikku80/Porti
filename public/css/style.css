@@ -241,7 +241,11 @@ html{
   height: 100vh;
   position: fixed;
   top: 0;
-  background-color: rgba(10, 176, 241, 0.26);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -509,7 +513,14 @@ input, textarea{
   width: 77vw;
 }
 
-.port__highlights__bod,.invi__highlights__section,.menu__highlights__section, .catalouge__highlights__section{
+.highlight__bod__sec{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.port__highlights__bod,.invi__highlights__section,.menu__highlights__section, .catalouge__highlights__section, .brochure__highlights__section{
   margin: 1%;
   /* background-color: rgba(0, 0, 0, 0.411);   */
   backdrop-filter: blur(5px);
@@ -522,7 +533,7 @@ input, textarea{
   font-size: 12px;
   font-variant: small-caps;
   animation: shine 4s ease-in-out forwards infinite;
-  width: 94vw;
+  width: 80vw;
 }
 
 .cr__bod__headr{
@@ -1506,8 +1517,13 @@ input::file-selector-button, ::-webkit-file-upload-button{
     margin-top: 4%;
   }
 
+  .creation__body{
+    justify-content: center;
+    align-items: center;
+  }
+
   .port__bod, .invi__section, .menu__section, .newsec{
-    width: 93vw;
+    width: 80vw;
   }
 
   .comp__form{
