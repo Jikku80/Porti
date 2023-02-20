@@ -359,7 +359,11 @@
                             bronoti.classList.remove("hidden");
                         }
                     })
-                } else {
+                }
+                else if (response.status === 404) {
+                    notifyAlert("Please Create Your Organization!!!")
+                }
+                else {
                     errorAlert("Booking fetching error!!!")
                     console.log(response);
                 }
@@ -407,7 +411,11 @@
                             menunoti.classList.remove("hidden");
                         }
                     })
-                } else {
+                }
+                else if (response.status === 404) {
+                    notifyAlert("Please Create Your Food Store!!!");
+                }
+                else {
                     errorAlert("Order fetching error!!!")
                     console.log(response);
                 }
@@ -456,7 +464,11 @@
                             catalnoti.classList.remove("hidden");
                         }
                     })
-                } else {
+                }
+                else if (response.status === 404) {
+                    notifyAlert("Please Create Your Company!!!");
+                }
+                else {
                     errorAlert("Order fetching error!!!")
                     console.log(response);
                 }

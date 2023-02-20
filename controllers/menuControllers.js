@@ -932,6 +932,8 @@ exports.restronoti = catchAsync(async (req, res) => {
 
     let restro = await Restaurant.findOne({ user: id })
 
+    if (!restro) return (res.status(404).json({ status: 'success' }));
+
     const neworder = await ResOrder.find({ restro: restro._id }).then(item => {
         let datas = item.filter(el => {
             if (el.orderInfo == undefined) {

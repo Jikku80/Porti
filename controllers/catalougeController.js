@@ -903,7 +903,9 @@ exports.removediscountall = catchAsync(async (req, res) => {
 exports.compnoti = catchAsync(async (req, res) => {
     const id = req.params.id;
 
-    let company = await Company.findOne({ user: id })
+    let company = await Company.findOne({ user: id });
+
+    if (!company) return (res.status(404).json({ status: 'success' }));
 
     const neworder = await ComOrder.find({ restro: company._id }).then(item => {
         let datas = item.filter(el => {

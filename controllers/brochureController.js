@@ -1060,6 +1060,7 @@ exports.bookingnoti = catchAsync(async (req, res) => {
     const id = req.params.id;
 
     let org = await Organization.findOne({ user: id })
+    if (!org) return (res.status(404).json({ status: 'success' }));
 
     const newbook = await OrgBook.find({ organization: org._id }).then(item => {
         let datas = item.filter(el => {
