@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (!portfolio)
@@ -23,7 +23,7 @@ block content
                         .land__nav__main
                         if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
                             if (portImage.length === 0)
-                                h1.banner.second__access.form__label No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
+                                h3.banner.second__access.form__label No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
                             .portfolio__tweaks
                                 include _addImage
                                 if (portImage.length !== 0)
@@ -52,7 +52,7 @@ block content
                             .next__addimg.hidden
                             .prev__addimg.hidden
                         .del__img__sec.hidden 
-                            h1 Are You Sure you want to delete it?
+                            h3.txtcnt Are You Sure you want to delete it?
                             .group__delbtn
                                 button#confirmImgDelete.delbtn Delete 
                                 button#cancelImgDelete.delbtn Cancel

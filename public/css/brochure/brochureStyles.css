@@ -184,7 +184,6 @@ cursor: pointer;
 }
 
 
-
 @media (min-width: 601px) and (max-width: 900px){
     .darkmode{
         right: 55px;
@@ -236,4 +235,12 @@ cursor: pointer;
         width: 10vw;
         height: 5vh;
     }
+
+    .org__form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
 }

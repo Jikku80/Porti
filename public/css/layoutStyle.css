@@ -85,6 +85,11 @@ p{
     font-variant: normal;
 }
 
+.nocapsmall{
+    font-size: 16px !important;
+    font-variant: normal;
+  }
+
 .land__nav__sub{
     display: flex;
     flex-direction: row;
@@ -234,7 +239,7 @@ p{
     font-family: Arial, Helvetica, sans-serif;
     font-variant: small-caps;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
   
 .port_sec_head span{
@@ -791,10 +796,24 @@ height: .8rem;
 background-color: orangered;
 }
 
+.txtcnt{
+    text-align: center;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
       }
+
+    .nocapsmall{
+        font-size: 10px !important;
+        font-variant: normal;
+    }
+
+    .porti__off__img{
+        width: 25px;
+    }
+
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
     }
@@ -807,6 +826,11 @@ background-color: orangered;
     .port_link{
         font-size: 1.5em;
     }
+
+    .profPic{
+        width: 6rem;
+        height: 6rem;
+      }
 
     .banner{
         font-size: 12px;
@@ -848,6 +872,10 @@ background-color: orangered;
     #themes, #themeSec, #themeSix{
         width: 300px;
     }
+
+    .footer__contact__bod{
+        padding-left: 25%;
+      }
 }
 
 @media screen and (max-width: 600px){
@@ -865,6 +893,7 @@ background-color: orangered;
     }
     .land__whole__sec{
         flex-direction: column;
+        overflow-x: hidden;
     }
 
     .navigation{
@@ -977,8 +1006,9 @@ background-color: orangered;
       }
       
       .footer__contact__bod{
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 0;
       }
 

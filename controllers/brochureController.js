@@ -16,7 +16,7 @@ const APIFeatures = require('./../utils/apiFeatures');
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
-const { findByIdAndUpdate } = require('../models/messageModel');
+// const { findByIdAndUpdate } = require('../models/messageModel');
 
 exports.createOrganization = catchAsync(async (req, res, next) => {
 

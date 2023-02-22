@@ -129,6 +129,11 @@ body{
     font-variant: normal;
 }
 
+.nocapsmall{
+    font-size: 16px !important;
+    font-variant: normal;
+  }
+
 .menu__messages__btn, .menu__reserve__btn{
     position: fixed;
     z-index: 1;
@@ -350,7 +355,7 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     font-variant: small-caps;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
   
 .port_sec_head span{
@@ -969,10 +974,23 @@ input::file-selector-button, ::-webkit-file-upload-button{
     width: 84%;
 }
 
+.txtcnt{
+    text-align: center;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
       }
+
+    .nocapsmall{
+        font-size: 10px !important;
+        font-variant: normal;
+    }
+
+    .porti__off__img{
+        width: 25px;
+    }
 
     .new__menu__reserve{
         left: 20vw;
@@ -998,6 +1016,9 @@ input::file-selector-button, ::-webkit-file-upload-button{
         width: 100%;
         font-size: .8em;
       }
+    .footer__contact__bod{
+        padding-left: 25%;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -1048,6 +1069,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
     .whole__menu__sec{
         align-items: center;
+        overflow-x: hidden;
     }
 
     .menu__section{
@@ -1083,8 +1105,9 @@ input::file-selector-button, ::-webkit-file-upload-button{
       }
       
       .footer__contact__bod{
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 0;
       }
 

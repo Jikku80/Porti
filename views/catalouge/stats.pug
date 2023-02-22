@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
 
@@ -23,13 +23,13 @@ block content
                         .chart__back
                             canvas#myChart
                     .restro__allorders__chart 
-                        h2.txt All Time Order Chart 
+                        h3.txt All Time Order Chart 
                         .txt.alltimetotalorder
                         .restro__graph__grp
                             canvas#myPie
                             canvas#myBar.bar
                             canvas#resPie
-                    h2.txt.txtcent View Your Orders Using the Filters Below
+                    h3.txt.txtcent View Your Orders Using the Filters Below
                     .restro__stat__btns 
                         .currentrestroid.hidden= company[0]._id
                         button#getPerDay.statbtn Today 
@@ -37,7 +37,7 @@ block content
                         button#getPerMonth.statbtn Last 30 Days
                         button#getAllRestro.statbtn All Company Orders
                         button#getAllReserve.statbtn All Returns
-                    h2.txt.txtcent Find By Month 
+                    h3.txt.txtcent Find By Month 
                     .restro__stat__month   
                         .res__stat__inpt
                             input#getyear(type="number", name="perdate" value="2023")

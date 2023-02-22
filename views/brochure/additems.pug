@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (user)
@@ -57,7 +57,7 @@ block content
                     if (brochures.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Brochure, Add Few Items!
                     if (organization.theme == "eb6669076ee9537ef67c6a0a789346614a98f7c6")
-                        p.scaps Update Your Brochure Price and Currency
+                        p.scaps.form__label.txtcnt Update Your Brochure Price and Currency
                         form.org__form
                             .org__money__detail
                                 .form__bod 
@@ -124,7 +124,7 @@ block content
                             .your__items.sec__items
                         
                     .itemform__head 
-                        h2.form__label.scaps Update Organization Detail
+                        h3.form__label.scaps Update Organization Detail
                     form#upOrganization.upItem
                         .form__bod
                             label.form__label(for="company_name") Name:
@@ -161,7 +161,7 @@ block content
                         button#updateCompBtn.blackbtn Update now
 
                     .itemform__head 
-                        h2.form__label.scaps Update Enterprise Cover Image
+                        h3.form__label.scaps Update Enterprise Cover Image
                         p.compimg__id.hidden= organization._id
                     form#upCompanyImage.upItem(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
                         .form__bod.file_part
@@ -171,7 +171,7 @@ block content
                     
                     .createBanner
                         .itemform__head 
-                            h2.form__label.scaps Create A Banner
+                            h3.form__label.scaps Create A Banner
                         form.upItem
                             .form__bod 
                                 label.form__label.scaps Banner Information 
@@ -206,7 +206,7 @@ block content
                                 #catalogbannerId.hidden
                                 #updateDiscountToAll.hidden 
                                 #removeDiscountToAll.hidden
-                    h2.scaps Update Your Organizations Terms And Policies
+                    h4.scaps.form__label.txtcnt Update Your Organizations Terms And Policies
                     .termsandpolicies 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 

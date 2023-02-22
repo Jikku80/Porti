@@ -5,7 +5,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (user)
@@ -18,21 +18,21 @@ block content
             .restro__stat__bod
                 h1.txt.stathead= `${restro[0].name} Statistics`
                 .restro__thirtyday__graph
-                    h2.txt Orders Made in Last 30 Days
+                    h3.txt Orders Made in Last 30 Days
                     .chart__back
                         canvas#myChart
                 .restro__allorders__chart 
-                    h2.txt All Time Order Chart 
+                    h3.txt All Time Order Chart 
                     p.txt.txtcent.alltimetotalorder
                     .restro__graph__grp
                         canvas#myPie
                         canvas#myBar.bar
                         canvas#resPie
-                h2.txtcent Most Liked Items
+                h3.txtcent Most Liked Items
                 .likedItem.grntag
-                h2.txtcent Most Dis-Liked Items
+                h3.txtcent Most Dis-Liked Items
                 .disLikedItem.rdtag
-                h2.txt.txtcent View Your Orders Using the Filters Below
+                h3.txt.txtcent View Your Orders Using the Filters Below
                 .restro__stat__btns 
                     .currentrestroid.hidden= restro[0]._id
                     .currentusrid.hidden= restro[0].user._id
@@ -42,7 +42,7 @@ block content
                     button#getAllHome.statbtn All Home Orders 
                     button#getAllRestro.statbtn All Restro Orders
                     button#getAllReserve.statbtn All Reservation
-                h2.txt.txtcent Find By Month 
+                h3.txt.txtcent Find By Month 
                 .restro__stat__month   
                     .res__stat__inpt
                         input#getyear(type="number", name="perdate" value="2023")

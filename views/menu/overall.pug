@@ -5,7 +5,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (user)
@@ -57,8 +57,8 @@ block content
                     .menu__reserve__secetion.hidden
                         .menu__reserve__mid__sec
                             .menu__reserve__head 
-                                h3.scaps Reservations (Last 50 Reservation Made)
                                 img.cancel__reserve__sec.point(src="/images/cancel.png" alt="cancel__btn")
+                                h3.scaps Reservations (Last 50 Reservation Made)
                             .menu__reserve__bod
                             .menu__reserve__bod__prev
                         .menu__reveived__reserve.hidden
@@ -75,8 +75,8 @@ block content
                         #qrcode 
                     #item__form
                         .itemform__head 
-                            h2.form__label.scaps Add Items To Menu
-                            h2
+                            h3.form__label.scaps Add Items To Menu
+                            h3
                                 a.scaps(href="#upRestro") Update Restaurant
                         form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
                             .form__bod
@@ -108,7 +108,7 @@ block content
                                 input#coverimage.form__input(type="file" name="menuimage" accept="image/*")
                             button#addItemBtn.blackbtn Add Item
                     .your__item__sec#foodItemSec
-                        h2.items__head.scaps Your Items 
+                        h3.items__head.scaps Your Items 
                         p.currentid.hidden= user._id
                         if (banner[0])
                             if (banner[0].discountpercent || banner[0].discountpercent !== null)
@@ -124,7 +124,7 @@ block content
                                 button.next.hidden Next
                     
                     .itemform__head 
-                        h2.form__label.scaps Update Restaurant Detail
+                        h3.form__label.scaps Update Restaurant Detail
                     form#upRestro.upItem
                         .form__bod
                             label.form__label Restaurant Name:
@@ -147,7 +147,7 @@ block content
                                 input#reshomedel.checkbox(type="checkbox", checked="checked")
                             else 
                                 input#reshomedel.checkbox(type="checkbox")
-                            p Checking the box will update order form so people can add their personal details
+                            label Checking the box will update order form so people can add their personal details
                         .form__bod 
                             label.form__label Change Theme (optional):
                             select#menuThemes
@@ -169,7 +169,7 @@ block content
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
                         .createBanner
                             .itemform__head 
-                                h2.form__label.scaps Create A Banner
+                                h3.form__label.scaps Create A Banner
                             form.upItem
                                 .form__bod 
                                     label.form__label.scaps Banner Information 
@@ -213,7 +213,7 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h2.scaps Update Your Organizations Terms And Policies
+                    h4.scaps.txtcent Update Your Organizations Terms And Policies
                     .termsandpolicies 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 

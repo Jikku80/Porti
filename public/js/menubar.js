@@ -331,7 +331,6 @@
         errorAlert('Sorry! Something went wrong', err);
     };
 
-
     if (bronoti) {
         socket.on("brobooking", (catid, usrid) => {
             if (userid == usrid) {
@@ -343,12 +342,12 @@
 
         try {
             const endpoint = `/api/v1/brochure/getnewbookingnoti/${userid}`
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'image/jpeg/png')
+            myHeaders.get('Content-Type');
             await fetch(endpoint, {
                 method: 'GET',
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    'Content-type': 'application/json',
-                }
+                headers: myHeaders
             }).then((response) => {
 
                 if (response.status === 200) {

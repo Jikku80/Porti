@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (user)
@@ -53,8 +53,8 @@ block content
                     .menu__reserve__secetion.hidden
                         .menu__reserve__mid__sec
                             .menu__reserve__head 
-                                h3.scaps Returns (Last 50 Returns Made)
                                 img.cancel__reserve__sec.point(src="/images/cancel.png" alt="cancel__btn")
+                                h3.scaps Returns (Last 50 Returns Made)
                             .menu__reserve__bod
                             .menu__reserve__bod__prev
                         .menu__reveived__reserve.hidden
@@ -72,8 +72,8 @@ block content
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form
                         .itemform__head 
-                            h2.form__label.scaps Add Items To Catalouge
-                            h2 
+                            h3.form__label.scaps Add Items To Catalouge
+                            h3 
                                 a.scaps(href="#upCompany") Update Company
                         form#addCatItem.upItem(action="/api/v1/catalouge/" method="post" enctype="multipart/form-data")
                             .form__bod
@@ -116,7 +116,7 @@ block content
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
                             button#cataddItemBtn.blackbtn Add Item
                     .your__item__sec#CatalogeItemSec
-                        h2.items__head.scaps Your Items 
+                        h3.items__head.scaps Your Items 
                         p.currentuid.hidden= user._id
                         if (banner[0])
                             if (banner[0].discountpercent || banner[0].discountpercent !== null)
@@ -131,7 +131,7 @@ block content
                             button.prev__catal Previous
                             button.next__catal.hidden Next
                     .itemform__head 
-                        h2.form__label.scaps Update Enterprise Detail
+                        h3.form__label.scaps Update Enterprise Detail
                     form#upCompany.upItem
                         .form__bod
                             label.form__label(for="company_name") Company Name:
@@ -174,7 +174,7 @@ block content
                         button#updateCompBtn.blackbtn Update now
 
                     .itemform__head 
-                        h2.form__label.scaps Update Enterprise Cover Image
+                        h3.form__label.scaps Update Enterprise Cover Image
                         p.compimg__id.hidden= company[0]._id
                     form#upCompanyImage.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
                         .form__bod.file_part
@@ -184,7 +184,7 @@ block content
                     if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
                         .createBanner
                             .itemform__head 
-                                h2.form__label.scaps Create A Banner
+                                h3.form__label.scaps Create A Banner
                             form.upItem
                                 .form__bod 
                                     label.form__label.scaps Banner Information 
@@ -228,7 +228,7 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h2.scaps Update Your Organizations Terms And Policies
+                    h4.scaps.txtcnt Update Your Organizations Terms And Policies
                     .termsandpolicies 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 

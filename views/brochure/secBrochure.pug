@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     .pageCount.hidden= organization.pageCount
@@ -83,16 +83,6 @@ block content
         else    
             img.first__bro__cover(src="/images/hill.jpg" alt="cover__img")
         #section
-            //- for items in brochures
-            //-     .first__bro__sec__section 
-            //-         .first__bro__sec__half 
-            //-             if (items.coverImage)
-            //-                 img.section__img(src=`${items.coverImage}` alt="section image")
-            //-             else 
-            //-                 img.section__img(src="/images/noimg.png" alt="no image")
-            //-         .first__bro__sec__other
-            //-             h2= items.name 
-            //-             pre= items.detail
         .paginate 
             button.prev__bro.bropagibtn.hidden Previous
             button.next__bro.bropagibtn.hidden Next
@@ -182,3 +172,4 @@ block content
     script(src="/socket.io/socket.io.js") 
     script(src="/js/brochure/sec.js") 
     script(src="/js/usermsg.js") 
+    script(src="/js/disFt.js") 

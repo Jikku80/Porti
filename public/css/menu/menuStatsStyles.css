@@ -214,6 +214,10 @@
         font-size: 16px;
     }
     .restro__stat__bod{
+        width: 95%;
+        overflow-x: hidden;
+    }
+    .restro__stat__bod{
         width: 100%;
     }
     #myChart{
@@ -239,5 +243,16 @@
 
     .statbtn{
         padding: 2%;
+    }
+
+    .alltimetotalorder{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rdtag, .grntag{
+        border-radius: 2px !important ;
     }
 }

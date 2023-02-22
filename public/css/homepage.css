@@ -329,7 +329,7 @@
   width: 150px;
   height: 76px;
   line-height: 78px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   font-variant: small-caps;
   text-decoration: none;
@@ -933,6 +933,10 @@
         top:93%;
         left: 94%;
     }
+
+    .footer__contact__bod{
+        padding-left: 25%;
+      }
 }
 
 @keyframes present {

@@ -4,7 +4,7 @@ block content
     h1.loader
         .bink
             img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td Por
+            span.td vPor
             span.grn t
             span.nocaps.td i
     if (user)
@@ -15,11 +15,11 @@ block content
                 .restro__stat__bod
                     h1.txt.stathead= `${organization.name} Statistics`
                     .restro__thirtyday__graph
-                        h2.txt Bookings Made in Last 30 Days
+                        h3.txt Bookings Made in Last 30 Days
                         .chart__back
                             canvas#myChart
                     .restro__allorders__chart 
-                        h2.txt All Time Booking Chart 
+                        h3.txt All Time Booking Chart 
                         .txt.alltimetotalorder
 
                         .restro__graph__grp
@@ -28,14 +28,14 @@ block content
                     .pageCount_sec
                         p.txt.opn Page Views : 
                             span.txt= organization.pageCount
-                    h2.txt.txtcent View Your Booking Using the Filters Below
+                    h3.txt.txtcent View Your Booking Using the Filters Below
                     .restro__stat__btns 
                         .currentrestroid.hidden= organization._id
                         button#getPerDay.statbtn Today 
                         button#getPerWeek.statbtn Last 7 Days
                         button#getPerMonth.statbtn Last 30 Days
                         button#getAllRestro.statbtn All Booking Orders
-                    h2.txt.txtcent Find By Month 
+                    h3.txt.txtcent Find By Month 
                     .restro__stat__month   
                         .res__stat__inpt
                             input#getyear.getyr(type="number", name="perdate" value="2023")
