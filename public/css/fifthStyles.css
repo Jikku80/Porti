@@ -47,6 +47,7 @@
 }
 
 .picture-box{
+    position: relative;
     display: flex;
     align-items: center;
     background-color: rgb(184, 184, 184);

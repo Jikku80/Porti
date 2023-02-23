@@ -3,7 +3,7 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8, val
     <form class="comp__form">
         <div class="form__head">
             <h1>Create Company</h1>
-            <img src="/images/cancel.png" alt="cancel_img" class="cancel__cataloge pointer" />
+            <img src="/images/cancel.png" alt="cancel_img" class="cancel__cataloge pointer crossbtn" />
         </div>
         <div class="form__cont">
             <label class="form__label">Company Name:</label>

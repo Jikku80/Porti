@@ -71,7 +71,22 @@ block content
             .main__pic(id=`${portfolio.focusColor}`)
                 each img, i in portfolio.images
                     .picture-box
+                        if (portfolio.watermark === true)
+                            .smallwatermark
+                                p= `${portfolio.user.name} vPor`
+                                    span.grn t
+                                    span.nocaps i
                         img.picture-box__img.imgFull(src=`${img}`, alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
+
+        .fullimg__sec.hidden 
+            .fullimg__head 
+                img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
+            if (portfolio.watermark === true)
+                .watermark
+                    p= `${portfolio.user.name} vPor`
+                        span.grn t
+                        span.nocaps i
+            .fullimg__bod
         .fifth
             .about__bod#fifth__about
                 h2.ppabt.headFont(id=`${portfolio.secHeadColor}`) About 

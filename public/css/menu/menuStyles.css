@@ -585,7 +585,7 @@ input, textarea{
 
 .blackbtn{
     background-color: rgba(0, 0, 0, 0.247);
-    border: 2px solid rgba(0, 0, 0, 0.247);
+    border: 2px solid rgba(128, 128, 128, 0.514);
     color: white;
     padding: 1%;
     margin: 1%;
@@ -897,6 +897,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
     flex-direction: column;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -978,6 +979,65 @@ input::file-selector-button, ::-webkit-file-upload-button{
     text-align: center;
 }
 
+.our__privacy__sec{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.our__privacy__main{
+    width: 50%;
+    height: 80vh;
+    background-color: white;
+    overflow-y: auto;
+    color: black;
+    border-radius: 2rem;
+    scrollbar-width: none;
+    letter-spacing: normal;
+  }
+  
+.our__privacy__head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+.our__privacy__bod{
+    padding: 2%;
+}
+
+.privanch{
+    color: black;
+}
+
+#priCancel{
+    width: 5rem;
+    height: 5rem;
+}
+
+.watermark{
+    width: 100vw;
+    height: 5vh;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+    position: fixed;
+    top: 50vh;
+    z-index: 2;
+    text-align: center;
+    font-size: 16px;
+    font-variant: small-caps;
+}
+  
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
@@ -1025,6 +1085,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     input, select, textarea{
         font-size: 16px !important;
     }
+
+    .our__privacy__main{
+        width: 90vw;
+      }
 
     .menu__reserve__btn{
         left: 1vw;

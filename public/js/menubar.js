@@ -349,7 +349,6 @@
                 method: 'GET',
                 headers: myHeaders
             }).then((response) => {
-
                 if (response.status === 200) {
                     let res = response.json();
                     res.then(item => {

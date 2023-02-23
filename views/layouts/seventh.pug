@@ -153,7 +153,7 @@ block content
                         h3.headFont Previous Accomplishment || Experiences
                         pre.ansFont= portfolio.previous
                     p.prof__user__id.hidden= portfolio.user._id
-                    .prev__cont
+                    .prev__cont#seventhimgcont
                         if (portImage.length === 0)
                             .prev__addimgSec.hidden 
                             .next__addimgSec.hidden
@@ -161,12 +161,26 @@ block content
                             .prev__cont__sub#imgCont
                                 each item in portImage
                                     .port__images
+                                        if (portfolio.watermark === true)
+                                            .smallwatermark
+                                                p= `${portfolio.user.name} vPor`
+                                                    span.grn t
+                                                    span.nocaps i
                                         img.port_img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
                                         h3.first__head= item.name
-                            .paginate__addimg
-                                .group__delbtn
-                                    button.redbtn.prev__addimgSec Prev
-                                    button.redbtn.next__addimgSec Next
+                        .paginate__addimg
+                            .group__delbtn
+                                button.redbtn.prev__addimgSec.bc.hidden Prev
+                                button.redbtn.next__addimgSec.bc.hidden Next
+                    .fullimg__sec.hidden 
+                        .fullimg__head 
+                            img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
+                        if (portfolio.watermark === true)
+                            .watermark
+                                p= `${portfolio.user.name} vPor`
+                                    span.grn t
+                                    span.nocaps i
+                        .fullimg__bod
                     if (portfolio.problem !== "")
                         h3.headFont= `${portfolio.name} ran into a problem`
                         pre.ansFont= portfolio.problem 
@@ -197,7 +211,9 @@ block content
 
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
+    script(src="/js/layouts/paginate.js") 
     script(src="/js/layouts/seventh.js") 
     script(src="/js/layouts/pgct.js") 
-    script(src="/js/usermsg.js") 
+    script(src="/js/usermsg.js")
+    script(src="/js/imgFull.js")
     script(src="/js/disFt.js") 

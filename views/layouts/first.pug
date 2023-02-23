@@ -105,13 +105,26 @@ block content
                             .accomp__cont
                                 each item in portImage
                                     .accomp__cont__card
-                                        img.imgsnd.imgFull(src=`${item.addImage}`, loading="lazy", alt="previous_image")
+                                        if (portfolio.watermark === true)
+                                            .smallwatermark
+                                                p= `${portfolio.user.name} vPor`
+                                                    span.grn t
+                                                    span.nocaps i
+                                        img.imgsnd.imgFull.pointer(src=`${item.addImage}`, loading="lazy", alt="previous_image")
                                         h3.head= item.name
                             .paginate__addimg
                                 .group__delbtn 
-                                    button.redbtn.firstPrev Prev
-                                    button.redbtn.firstNext Next 
-
+                                    button.redbtn.firstPrev.hidden Prev
+                                    button.redbtn.firstNext.hidden Next 
+        .fullimg__sec.hidden 
+            .fullimg__head 
+                img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
+            if (portfolio.watermark === true)
+                .watermark
+                    p= `${portfolio.user.name} vPor`
+                        span.grn t
+                        span.nocaps i
+            .fullimg__bod
         .first
             #contact
                 if (portfolio.problem !== "")

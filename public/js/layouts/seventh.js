@@ -32,6 +32,7 @@
     })
 })();
 
+paginate(".next__addimgSec", ".prev__addimgSec", ".prev__cont__sub", ".port__images", "#seventhimgcont");
 
 (function () {
     let defaultBtn = document.getElementById("defaultseventhTheme");

@@ -20,6 +20,7 @@ router.patch('/updateUser/:id', userController.updateUser);
 router.patch('/updateAccount/:id', userController.updateAccountType);
 router.post('/updateDP', userController.updateDP);
 router.delete('/deleteme', userController.deleteMe);
+router.delete('/closeaccount/:id', userController.closeAccount);
 
 router.use(authController.restrictTo('admin'));
 

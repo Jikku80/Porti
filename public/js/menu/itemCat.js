@@ -48,7 +48,7 @@ next.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.price}</p>
@@ -61,7 +61,7 @@ next.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                    <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
                                         <p class="menu__card__price">${el.price}</p>
@@ -71,6 +71,7 @@ next.addEventListener("click", async () => {
                             `
                         }
                     });
+                    openimg();
                     window.setTimeout(() => {
                         window.location.hash = "#foodItem"
                     }, 200)
@@ -127,7 +128,7 @@ prev.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.price}</p>
@@ -140,7 +141,7 @@ prev.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.price}</p>
@@ -150,6 +151,7 @@ prev.addEventListener("click", async () => {
                                 `
                         }
                     });
+                    openimg();
                     window.setTimeout(() => {
                         window.location.hash = "#foodItem"
                     }, 200)
@@ -217,7 +219,7 @@ window.addEventListener("load", async () => {
                                                     subItems.innerHTML +=
                                                         `
                                                             <div class="menu__card">
-                                                                <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                                                <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                                                 <div class="menu__card__det">
                                                                     <h3 class="menu__card__head">${el.name}</h3>
                                                                     <p class="menu__card__price">${el.price}</p>
@@ -230,7 +232,7 @@ window.addEventListener("load", async () => {
                                                     subItems.innerHTML +=
                                                         `
                                                         <div class="menu__card">
-                                                            <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                                            <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                                 <p class="menu__card__price">${el.price}</p>
@@ -240,6 +242,7 @@ window.addEventListener("load", async () => {
                                                     `
                                                 }
                                             });
+                                            openimg();
                                         })
                                     } else {
                                         console.log(response);
@@ -307,7 +310,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                     subItems.innerHTML +=
                                         `
                                         <div class="menu__card">
-                                            <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                            <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                 <p class="menu__card__price">${el.price}</p>
@@ -320,7 +323,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                     subItems.innerHTML +=
                                         `
                                         <div class="menu__card">
-                                            <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                            <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head">${el.name}</h3>
                                                 <p class="menu__card__price">${el.price}</p>
@@ -331,6 +334,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                 }
                             }
                         });
+                        openimg();
                         if (sub.children.length == 0) {
                             sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
                         }
@@ -385,7 +389,7 @@ window.addEventListener("load", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="${el.coverImage}" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.currency}${el.price}</p>
@@ -398,7 +402,7 @@ window.addEventListener("load", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" src="/images/noimg.png" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
                                             <p class="menu__card__price">${el.currency}${el.price}</p>
@@ -408,6 +412,7 @@ window.addEventListener("load", async () => {
                                 `
                         }
                     });
+                    openimg();
                     if (sub.children.length == 0) {
                         sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
                     }
@@ -546,3 +551,27 @@ window.addEventListener("load", async () => {
         privbod.classList.remove("hidden");
     });
 })();
+
+function openimg() {
+    const fullImg = document.querySelectorAll('.imgFull');
+    let imgsec = document.querySelector(".fullimg__sec");
+    let imgbod = document.querySelector(".fullimg__bod");
+    let cancelimgsec = document.querySelector(".cancelimgsec");
+
+    fullImg.forEach(img => {
+        img.addEventListener("click", () => {
+            console.log("click")
+            imgsec.classList.remove("hidden");
+            imgbod.innerHTML = "";
+            imgbod.innerHTML =
+                `
+                    <img class="fullimgmode" src="${img.src}" alt="img" />
+                `
+        })
+    });
+
+    cancelimgsec.addEventListener("click", () => {
+        imgsec.classList.add("hidden");
+        imgbod.innerHTML = "";
+    })
+}

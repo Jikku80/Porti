@@ -2,18 +2,15 @@ bgChanger = document.getElementById("go__create");
 homelogin = document.getElementById("log");
 homeCont = document.querySelector(".main__content");
 homebod = document.querySelector(".bod");
-prest = document.querySelector(".presents");
 
 bgChanger.addEventListener("mouseover", () => {
     homeCont.classList.add("bg__changer");
     homebod.classList.add("bg__changer");
-    prest.classList.remove("hidden");
 })
 
 bgChanger.addEventListener("mouseout", () => {
     homeCont.classList.remove("bg__changer");
     homebod.classList.remove("bg__changer");
-    prest.classList.add("hidden");
 })
 
 homelogin.addEventListener("mouseover", () => {
@@ -26,24 +23,24 @@ homelogin.addEventListener("mouseout", () => {
     homebod.classList.remove("bg__changer");
 });
 
-let futbtn = document.querySelector('.futuristic-button');
-let tp = document.querySelector(".top");
-let bottom = document.querySelector(".bottom");
-let parallelogramleft = document.querySelector(".parallelogram-left");
-let parallelogramright = document.querySelector(".parallelogram-right");
+// let futbtn = document.querySelector('.futuristic-button');
+// let tp = document.querySelector(".top");
+// let bottom = document.querySelector(".bottom");
+// let parallelogramleft = document.querySelector(".parallelogram-left");
+// let parallelogramright = document.querySelector(".parallelogram-right");
 
-futbtn.addEventListener("mouseover", (function () {
-    tp.classList.add('active');
-    bottom.classList.add('active');
-    parallelogramleft.classList.add('active');
-    parallelogramright.classList.add('active');
-}));
-futbtn.addEventListener("mouseout", (function () {
-    tp.classList.remove('active');
-    bottom.classList.remove('active');
-    parallelogramleft.classList.remove('active');
-    parallelogramright.classList.remove('active');
-}));
+// futbtn.addEventListener("mouseover", (function () {
+//     tp.classList.add('active');
+//     bottom.classList.add('active');
+//     parallelogramleft.classList.add('active');
+//     parallelogramright.classList.add('active');
+// }));
+// futbtn.addEventListener("mouseout", (function () {
+//     tp.classList.remove('active');
+//     bottom.classList.remove('active');
+//     parallelogramleft.classList.remove('active');
+//     parallelogramright.classList.remove('active');
+// }));
 
 
 (function () {
@@ -142,7 +139,8 @@ futbtn.addEventListener("mouseout", (function () {
     let got = document.querySelector(".go__top");
     let lod = document.querySelector(".loader");
     let td = document.querySelectorAll(".td");
-    let btn89 = document.querySelector(".button-89");
+    let framebtn = document.querySelector(".framebtn");
+    let effbtn = document.querySelectorAll(".effectbtn")
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
@@ -234,6 +232,11 @@ futbtn.addEventListener("mouseout", (function () {
             item.style.backgroundColor = "white";
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
+        effbtn.forEach(item => {
+            item.style.boxShadow = "6px 0px 0px black"
+            item.style.borderColor = "black"
+            item.style.color = "black"
+        })
         lime.forEach(item => {
             item.style.backgroundColor = "white";
         })
@@ -256,7 +259,7 @@ futbtn.addEventListener("mouseout", (function () {
         td.forEach(item => {
             item.style.color = "black";
         })
-        btn89.style.background = "conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,black 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p))"
+        framebtn.style.background = "conic-gradient(from 90deg at 2px 2px,#0000 90deg,black 0) .40em .40em/calc(100% - 2px - 2*.40em) calc(100% - 2px - 2*.40em)"
         bgChanger.addEventListener("mouseover", () => {
             homeCont.classList.add("white__changer");
             homebod.classList.add("white__changer");

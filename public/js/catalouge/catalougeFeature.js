@@ -36,6 +36,7 @@ catalougeSearchBar.addEventListener("keypress", async (e) => {
                         items.forEach(el => {
                             addCardElem(el);
                         });
+                        openimg();
                         if (subItems.children.length == 0) {
                             subItems.innerHTML = `<h3 class="center">Oopsie!!! No Items Found!!! :(</h3>`
                         }
@@ -130,6 +131,7 @@ window.addEventListener("load", async () => {
                                                 else {
                                                     subItemModel.classList.add('hidden');
                                                     addCardElem(item);
+                                                    openimg();
                                                 }
                                             })
                                             let subCateList = document.querySelectorAll(".catalouge__subcate__list")
@@ -165,6 +167,7 @@ window.addEventListener("load", async () => {
                                                                     result.forEach(item => {
                                                                         addCardElem(item)
                                                                     })
+                                                                    openimg();
                                                                 })
                                                             }
                                                             else {
@@ -211,7 +214,7 @@ function addCardElem(el) {
         catalougeItems.innerHTML +=
             `
             <div class="catal__card">
-                <img class="catal__card__img imgFull" src="${el.coverImage}" alt="catalouge__item__image">
+                <img class="catal__card__img imgFull pointer" src="${el.coverImage}" alt="catalouge__item__image">
                 <div class="catal__card__det">
                     <div class="card__sub__sec">
                         <p class="catal__card__head cardtxt">Name: </p>
@@ -245,7 +248,7 @@ function addCardElem(el) {
         catalougeItems.innerHTML +=
             `
             <div class="catal__card">
-                <img class="catal__card__img imgFull" src="/images/noimg.png" alt="catalouge__item__image">
+                <img class="catal__card__img imgFull pointer" src="/images/noimg.png" alt="catalouge__item__image">
                 <div class="catal__card__det">
                     <div class="card__sub__sec">
                         <p class="catal__card__head cardtxt">Name: </p>
@@ -275,6 +278,7 @@ function addCardElem(el) {
             </div>
         `
     }
+    openimg();
     let catCard = document.querySelectorAll(".catal__card");
     let catTxt = document.querySelectorAll(".cardtxt")
     catCard.forEach(item => {
@@ -285,19 +289,7 @@ function addCardElem(el) {
     catTxt.forEach(item => {
         item.style.color = fontColor
     })
-    fullPic()
 }
-
-function fullPic() {
-    const fullImg = document.querySelectorAll('.imgFull');
-
-    fullImg.forEach(img => {
-        img.addEventListener("click", () => {
-            window.open(img.src)
-        })
-    })
-}
-fullPic();
 
 let modelCanceler = document.querySelector(".cancel__subModel")
 modelCanceler.addEventListener("click", () => {
@@ -355,6 +347,7 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
+                        openimg();
                         if (subItems.children.length === 12) {
                             next.classList.remove("hidden");
                         } else {
@@ -415,6 +408,7 @@ modelCanceler.addEventListener("click", () => {
                         items.forEach(el => {
                             addCardElem(el)
                         });
+                        openimg();
                         window.setTimeout(() => {
                             location.hash = "#compcatalouge"
                         }, 200)
@@ -467,8 +461,9 @@ modelCanceler.addEventListener("click", () => {
                     res.then(result => {
                         let items = result
                         items.forEach(el => {
-                            addCardElem(el)
+                            addCardElem(el);
                         });
+                        openimg();
                         window.setTimeout(() => {
                             location.hash = "#compcatalouge"
                         }, 200)
@@ -736,3 +731,27 @@ window.addEventListener("load", async () => {
         privbod.classList.remove("hidden");
     });
 })();
+
+function openimg() {
+    const fullImg = document.querySelectorAll('.imgFull');
+    let imgsec = document.querySelector(".fullimg__sec");
+    let imgbod = document.querySelector(".fullimg__bod");
+    let cancelimgsec = document.querySelector(".cancelimgsec");
+
+    fullImg.forEach(img => {
+        img.addEventListener("click", () => {
+            console.log("click")
+            imgsec.classList.remove("hidden");
+            imgbod.innerHTML = "";
+            imgbod.innerHTML =
+                `
+                    <img class="fullimgmode" src="${img.src}" alt="img" />
+                `
+        })
+    });
+
+    cancelimgsec.addEventListener("click", () => {
+        imgsec.classList.add("hidden");
+        imgbod.innerHTML = "";
+    })
+}

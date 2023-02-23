@@ -8,45 +8,30 @@ block content
             span.grn t
             span.nocaps.td i
     .main__content 
-        h3.presents.hidden
-            span.maf Lakhey 
-                span.gry De 
-                    span.mid.td Tech 
-                        span.gry Presents 
-            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
-            span.wite vPor
-            span.grn t
-            span.nocaps.wite i
         .main__content__log
             if (!user)
-                a#log(href="/account/login" title="Login | SignUp") 
-                    .futuristic-button
-                        .top 
-                        .parallelogram-left
-                        .parallelogram-right
-                        .bottom 
-                        .button-text Login | SignUp
+                .catchybtn
+                    a#log(href="/account/login" title="Login | SignUp")  Login | SignUp -->
             else 
                 a#log.fkAncky.norot(href="/account/me" title="Your Account")
                     if (!user.photo)
                         img.accpic(src=`/images/hitman.png`, alt="dp")
                     else
                         img.accpic(src=`${user.photo}`) 
-                    span= user.name
-                .futuristic-button.hidden
+                    span.cabinsketch= user.name
         .main__content__nav
             a.fkAncky(href="#aTM") About 
                 span.maf Lakhey 
                     span.lst De 
                         span.wite Tech
             if (!user)
-                a.crPr.button-89(href="/layouts/highlights") vPor
+                a.crPr.framebtn(href="/layouts/highlights") vPor
                     span.grn t
-                    span.crPr i-
+                    span.nocapsB.mid i-
                     span.orng Features
                 #go__create.hidden
             else
-                a.crPr.button-89(href="/layouts/porti")
+                a.crPr.framebtn(href="/layouts/porti")
                     p#go__create.wite Let's  
                         span.orng Suit Up
             .fkAncky
@@ -56,10 +41,10 @@ block content
                             span.wite Tech
         .main__content__learn
             .learn__content 
-                a.button-49(href="#abtPorti") 
+                a.effectbtn(href="#abtPorti") 
                     span.whte About 
                     span vPorti 
-                a.button-49(href="#pGuide") vPorti 
+                a.effectbtn(href="#pGuide") vPorti 
                     span.whte Guide
         .main__content__logo 
             .logo__grp 

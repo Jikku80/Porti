@@ -661,6 +661,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
     margin: 2%;
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.438);
+    position: relative;
 }
 
 .port_img{
@@ -800,6 +801,116 @@ background-color: orangered;
     text-align: center;
 }
 
+.our__privacy__sec{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.our__privacy__main{
+    width: 50%;
+    height: 80vh;
+    background-color: white;
+    overflow-y: auto;
+    color: black;
+    border-radius: 2rem;
+    scrollbar-width: none;
+    letter-spacing: normal;
+  }
+  
+.our__privacy__head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+.our__privacy__bod{
+    padding: 2%;
+}
+
+.privanch{
+    color: black;
+}
+
+#priCancel{
+    width: 5rem;
+    height: 5rem;
+  }
+
+.fullimg__sec{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.fullimg__head{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    width: 100%;
+}
+
+.fullimgmode{
+    width: 100%;
+    height: fit-content;
+}
+
+.bc{
+    color: black;
+}
+
+.head{
+    text-align: center;
+}
+
+.smallwatermark{
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    height: 5vh;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+    text-shadow: 1px 1px 2px gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.watermark{
+    width: 100vw;
+    height: 5vh;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+    position: fixed;
+    top: 50vh;
+    z-index: 2;
+    text-align: center;
+    font-size: 16px;
+    font-variant: small-caps;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px gold;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
@@ -882,6 +993,11 @@ background-color: orangered;
     input, select, textarea{
         font-size: 16px !important;
     }
+
+    .our__privacy__main{
+        width: 90vw;
+      }
+
     .menu__bar{
         position: sticky;
         top: 0;

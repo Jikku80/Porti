@@ -80,6 +80,7 @@ let pimg1 = document.querySelector('#img1Collec');
 let pid = document.getElementById('endpoint').innerText;
 let pthemes = document.getElementById("themeSec");
 let searchVisiSec = document.getElementById("upSearchVisibleSec");
+let watermarkSec = document.getElementById("upwatermarkSec");
 
 pdBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -107,7 +108,8 @@ pdBtn.addEventListener("click", async (e) => {
                 email: pemail.value,
                 fb: pFb.value,
                 location: pLoc.value,
-                searchVisible: searchVisiSec.checked
+                searchVisible: searchVisiSec.checked,
+                watermark: watermarkSec.checked
             })
         }).then((response) => {
             load.classList.add("hidden");

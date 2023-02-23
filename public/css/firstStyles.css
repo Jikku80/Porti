@@ -97,11 +97,13 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 
 .accomp__cont__card{
     margin: 1%;
     font-size: 1rem;
+    position: relative;
 }
 
 .accomp__cont__card img{

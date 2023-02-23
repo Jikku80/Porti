@@ -51,6 +51,5 @@
     ans.forEach(items => {
         items.style.color = fontColor;
     })
-
-
 })();
+

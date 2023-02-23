@@ -12,3 +12,16 @@
         return;
     }
 })();
+
+(function () {
+    let openprivacy = document.querySelector(".loadPrivacy");
+    let privsec = document.querySelector('.our__privacy__sec');
+    let cancelpriv = document.querySelector("#priCancel")
+    openprivacy.addEventListener("click", () => {
+        privsec.classList.remove("hidden");
+    })
+
+    cancelpriv.addEventListener("click", () => {
+        privsec.classList.add('hidden');
+    })
+})();

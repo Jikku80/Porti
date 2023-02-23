@@ -4,6 +4,7 @@ const fs = require('fs')
 const User = require('./../models/userModel');
 const Portfolio = require('./../models/portfolioModel');
 const PortfolioImage = require('./../models/portfolioImageModel');
+const Invite = require('./../models/inviteModel');
 const Restaurant = require('./../models/restaurantDetailModel')
 const Menu = require('./../models/menuModel');
 const Banner = require('./../models/bannerModel');
@@ -13,7 +14,7 @@ const CatalogBanner = require('./../models/catalogBannerModel');
 const ComComment = require('./../models/comComment');
 const Brochure = require('./../models/brochureModel');
 const BrochureBanner = require('./../models/brochureBannerModel');
-let Organization = require('./../models/organizationModel');
+const Organization = require('./../models/organizationModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -208,6 +209,114 @@ exports.updateAccountType = catchAsync(async (req, res, next) => {
             runValidators: true
         }
     );
+
+    res.status(200).json({
+        status: 'Success'
+    });
+});
+
+exports.closeAccount = catchAsync(async (req, res, next) => {
+
+    const port = await Portfolio.findOne({ user: req.params.id })
+
+    if (port !== null) {
+        await Portfolio.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await PortfolioImage.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await PortfolioImage.findByIdAndDelete(item)
+        })
+    }
+
+    const invi = await Invite.find({ user: req.params.id })
+
+    if (invi.length !== 0) {
+        let data = []
+        await Invite.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Invite.findByIdAndDelete(item)
+        })
+    }
+
+    const restro = await Restaurant.findOne({ user: req.params.id })
+
+    if (restro !== null) {
+        await Restaurant.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Menu.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Menu.findByIdAndDelete(item)
+        })
+
+        await Banner.findOneAndDelete({ user: req.params.id })
+    }
+
+    const company = await Company.findOne({ user: req.params.id })
+
+    if (company !== null) {
+        await Company.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Catalouge.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Catalouge.findByIdAndDelete(item)
+        })
+
+        let comdata = []
+        await ComComment.find({ companyUserId: req.params.id }).then(item => {
+            item.filter(el => {
+                comdata.push(el.id)
+            })
+        });
+
+        comdata.forEach(async (item) => {
+            await ComComment.findByIdAndDelete(item)
+        })
+        await CatalogBanner.findOneAndDelete({ user: req.params.id })
+    }
+
+    const organization = await Organization.findOne({ user: req.params.id })
+
+    if (organization !== null) {
+        await Organization.findOneAndDelete({ user: req.params.id });
+
+        let data = []
+        await Brochure.find({ user: req.params.id }).then(item => {
+            item.filter(el => {
+                data.push(el.id)
+            })
+        });
+
+        data.forEach(async (item) => {
+            await Brochure.findByIdAndDelete(item)
+        })
+
+        await BrochureBanner.findOneAndDelete({ user: req.params.id })
+    }
+
+    await User.findByIdAndDelete(req.user.id);
 
     res.status(200).json({
         status: 'Success'

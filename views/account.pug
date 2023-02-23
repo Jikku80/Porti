@@ -74,7 +74,7 @@ block content
                             h2 Personal || Portfolio 
                             p Create Virtual Portfolio
                         .acc__typ__card.restaurant
-                            h2 Food || Food Menu
+                            h2 Food Hub || Food Menu
                             p Create Virtual Menu
                         .acc__typ__card.business
                             h2 Business || Products
@@ -97,7 +97,7 @@ block content
                             h2 Personal || Portfolio 
                             p Create Virtual Portfolio
                         .acc__typ__card.restaurant
-                            h2 Food || Food Menu
+                            h2 Food Hub || Food Menu
                             p Create Virtual Menu
                         .acc__typ__card.business
                             h2 Business || Products
@@ -105,7 +105,18 @@ block content
                         .acc__typ__card.brochure
                             h2 Organization || Hotels
                             p Create Virtual Brochure
-                include _footer
+        .close__account__sec
+            .close__account 
+                h2.txtcnt Danger Danger !!!
+                .redbtn.closeaccount Close Account
+        .close__confirm.hidden  
+            h1.txtcnt Are you sure you want to close your account?
+            h2.txtcnt Everything will be lost!!!
+            .close__btn__grp 
+                .confirmclose Confirm 
+                .cancelclose Cancel
+        .exp_foot
+            include _footer
     else 
         h1 You are not Logged In, Please Log In 
         a.redbtn(href="/account/login") LogIn

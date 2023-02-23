@@ -1,18 +1,21 @@
 function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
     let next = document.querySelector(nextVal);
     let prev = document.querySelector(prevVal);
-    let user__id = document.querySelector(".prof__user__id")
+    let user__id = document.querySelector(".prof__user__id").innerText
     let subItems = document.querySelector(contVal)
 
     if (subItems) {
-        if (subItems.children.length < 4) {
-            next.classList.add("hidden");
+        if (subItems.children.length == 12) {
+            next.classList.remove("hidden");
         }
     }
     let x = 1;
 
     if (x == 1) {
         prev.classList.add("hidden")
+    }
+    else {
+        prev.classList.remove("hidden")
     }
     next.addEventListener("click", async () => {
         let pg = ++x
@@ -39,7 +42,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                             subItems.innerHTML +=
                                 `
                                 <div class=${cardVal}> 
-                                    <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                    <img class="port_img imgFull" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                 </div>
                             `
@@ -97,7 +100,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                             subItems.innerHTML +=
                                 `
                                 <div class=${cardVal}> 
-                                    <img class="port_img imgFull" src="/images/ports/addedImages/${el.addImage}", alt="second_img", loading="lazy" srcset="" />
+                                    <img class="port_img imgFull" src="${el.addImage}", alt="second_img", loading="lazy" srcset="" />
                                     <h3 class="first__head portfolio__item__name">${el.name}</h3>
                                 </div>
                             `

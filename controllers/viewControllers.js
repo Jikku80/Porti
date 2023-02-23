@@ -389,7 +389,8 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             msg: req.body.msg,
             problem: req.body.problem,
             solution: req.body.solution,
-            searchVisible: req.body.searchVisible
+            searchVisible: req.body.searchVisible,
+            watermark: req.body.watermark
         },
         {
             new: true,
@@ -418,7 +419,8 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             phn_no: req.body.phn_no,
             showNo: req.body.showNo,
             theme: req.body.theme,
-            searchVisible: req.body.searchVisible
+            searchVisible: req.body.searchVisible,
+            watermark: req.body.watermark
         },
         {
             new: true,

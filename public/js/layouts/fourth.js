@@ -50,14 +50,6 @@
         mainHead.classList.remove("hide");
         fh.classList.remove("hide");
     })
-
-    const fullImg = document.querySelectorAll('.imgFull');
-
-    fullImg.forEach(img => {
-        img.addEventListener("click", () => {
-            window.open(img.src)
-        })
-    })
 })();
 
 (function () {

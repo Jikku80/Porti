@@ -370,7 +370,7 @@ lakheyBack.addEventListener("click", async (e) => {
                 if (response.status === 200) {
                     successAlert("Your Portfolio Account has been set :)");
                     window.setTimeout(() => {
-                        location.assign('/account/me');
+                        location.assign('/layouts/porti');
                     }, 400);
                 }
                 else {
@@ -402,9 +402,9 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
-                    successAlert("Your Restaurant Account has been set :)");
+                    successAlert("Your Food Hub Account has been set :)");
                     window.setTimeout(() => {
-                        location.assign('/account/me');
+                        location.assign('/layouts/porti');
                     }, 400);
                 }
                 else {
@@ -438,7 +438,7 @@ lakheyBack.addEventListener("click", async (e) => {
                 if (response.status === 200) {
                     successAlert("Your Business Account has been set :)");
                     window.setTimeout(() => {
-                        location.assign('/account/me');
+                        location.assign('/layouts/porti');
                     }, 400);
                 }
                 else {
@@ -470,9 +470,9 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
-                    successAlert("Your Oraganizational Account has been set :)");
+                    successAlert("Your Organizational Account has been set :)");
                     window.setTimeout(() => {
-                        location.assign('/account/me');
+                        location.assign('/layouts/porti');
                     }, 400);
                 }
                 else {
@@ -510,5 +510,52 @@ lakheyBack.addEventListener("click", async (e) => {
     if (accountType === "brochure") {
         brochure.classList.add("hidden")
     }
+})();
 
+(function () {
+    let closeaccbtn = document.querySelector('.closeaccount');
+    let closesec = document.querySelector(".close__confirm");
+    let confirmclose = document.querySelector(".confirmclose");
+    let cancelclose = document.querySelector(".cancelclose");
+
+    closeaccbtn.addEventListener("click", () => {
+        closesec.classList.remove('hidden');
+    })
+
+    confirmclose.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/users/closeaccount/${currentid}`
+            await fetch((endpoint), {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Account has been Closed :(");
+                    window.setTimeout(() => {
+                        location.assign('/');
+                    }, 300);
+                }
+                else {
+                    console.log(response)
+                    errorAlert("Error Updating Account Type :(")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong :(', err);
+        };
+    })
+
+    cancelclose.addEventListener("click", () => {
+        closesec.classList.add("hidden");
+    })
 })();

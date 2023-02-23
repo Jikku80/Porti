@@ -435,10 +435,10 @@ prev.addEventListener("click", async () => {
             <p class="head form__label">Your Menu Link</p>
             <p class="head form__label">Your Endpoint / Username is Case-Insensitive</p>
             <p class="menu__link__displayer qrLink">${location.host}/${nm}</p>
-            <button class="copy__menu ygbtn smallbtn">Copy Link</button>
-            <button class="ygbtn smallbtn" id="openMenu">My Menu</button>
-            <button class="ygbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
-            <button class="ygbtn smallbtn downQr hidden" id="dqr">Download QRCode</button>
+            <button class="copy__menu blackbtn smallbtn">Copy Link</button>
+            <button class="blackbtn smallbtn" id="openMenu">My Menu</button>
+            <button class="blackbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
+            <button class="blackbtn smallbtn downQr hidden" id="dqr">Download QRCode</button>
         </div>
     `
     let openMenu = document.getElementById("openMenu");
@@ -601,8 +601,6 @@ async function getAllResMsg() {
     let menuMsgBod = document.querySelector(".menu__message__bod__prev");
 
     try {
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden");
         menuMsgBod.innerHTML = "";
         const endpoint = `/api/v1/message/${resid}`
         await fetch(endpoint, {
@@ -612,7 +610,6 @@ async function getAllResMsg() {
                 'Content-type': 'application/json',
             }
         }).then((response) => {
-            load.classList.add("hidden");
             if (response.status === 200) {
                 let res = response.json();
                 res.then((item) => {

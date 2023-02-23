@@ -115,9 +115,10 @@ block content
         .portiuserid.hidden
     .eighth__bod__section
         h4.namefont.eigthname= `${portfolio.name} Portfolio`
+        .prof__user__id.hidden= portfolio.user._id
         h4.scroll__info.headFont &#8810; Scroll || Swipe &#8811;
         .eighth__bod 
-            .eighth__img__cont
+            .eighth__img__cont#eightimgcont
                 if (allPortImg.length === 0)
                     .imgeightcont
                         img.eighth__bod__img(src="/images/bg.png")
@@ -131,8 +132,17 @@ block content
                 else
                     each item in allPortImg
                         .imgeightcont
+                            if (portfolio.watermark === true)
+                                .smallwatermark
+                                    p= `${portfolio.user.name} vPor`
+                                        span.grn t
+                                        span.nocaps i
                             img.eighth__bod__img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
                             h3.headFont= item.name
+        .fullimg__sec.hidden 
+            .fullimg__head 
+                img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
+            .fullimg__bod
         .eighth__about__sec 
             .fontColor.hidden= portfolio.fontColor 
             .headColor.hidden= portfolio.headColor 
@@ -181,7 +191,9 @@ block content
                         p.headFont= `Address: ${portfolio.location}`
     script(src="/js/alert.js") 
     script(src="/socket.io/socket.io.js") 
+    script(src="/js/layouts/paginate.js") 
     script(src="/js/layouts/eighth.js") 
     script(src="/js/layouts/pgct.js") 
     script(src="/js/usermsg.js") 
+    script(src="/js/imgFull.js")
     script(src="/js/disFt.js") 

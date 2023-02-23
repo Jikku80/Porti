@@ -7,10 +7,10 @@
             <p class="head form__label">Your Brochure Link</p>
             <p class="head form__label">Your Endpoint / Username is Case-Insensitive</p>
             <p class="catalouge__link__displayer catalqrLink">${location.host}/${nm}</p>
-            <button class="copy__catalouge ygbtn smallbtn">Copy Link</button>
-            <button class="ygbtn smallbtn" id="openmycatal">My Brochure</button>
-            <button class="ygbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
-            <button class="ygbtn smallbtn hidden" id="dqrcatalouge">Download QRCode</button>
+            <button class="copy__catalouge blackbtn smallbtn">Copy Link</button>
+            <button class="blackbtn smallbtn" id="openmycatal">My Brochure</button>
+            <button class="blackbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
+            <button class="blackbtn smallbtn hidden" id="dqrcatalouge">Download QRCode</button>
         </div>
     `
     let openMenu = document.getElementById("openmycatal");
@@ -444,8 +444,6 @@ async function getAllCatMsg() {
     let menuMsgBod = document.querySelector(".menu__message__bod__prev");
 
     try {
-        let load = document.querySelector('.loader');
-        load.classList.remove("hidden");
         menuMsgBod.innerHTML = "";
         const endpoint = `/api/v1/brochure/broBooking/${curcatid}`
         await fetch(endpoint, {
@@ -455,7 +453,6 @@ async function getAllCatMsg() {
                 'Content-type': 'application/json',
             }
         }).then((response) => {
-            load.classList.add("hidden");
             if (response.status === 200) {
                 let res = response.json();
                 res.then((item) => {

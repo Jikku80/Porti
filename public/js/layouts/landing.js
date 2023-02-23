@@ -89,6 +89,7 @@ let hd5 = document.getElementById("upsoln");
 let id = document.getElementById('endpoint').innerText;
 let themes = document.getElementById("themes");
 let searchVisi = document.getElementById("upSearchVisible");
+let watermark = document.getElementById("upwatermark");
 
 updBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -122,7 +123,8 @@ updBtn.addEventListener("click", async (e) => {
                 msg: hd3.value,
                 problem: hd4.value,
                 solution: hd5.value,
-                searchVisible: searchVisi.checked
+                searchVisible: searchVisi.checked,
+                watermark: watermark.checked
             })
         }).then((response) => {
             load.classList.add("hidden");

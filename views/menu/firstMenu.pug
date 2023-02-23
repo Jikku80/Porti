@@ -81,6 +81,12 @@ block content
                     .paginate 
                         button(type="button" name="prev").prev Previous
                         button(type="button" name="next").next.hidden Next  
+                .fullimg__sec.hidden 
+                    .fullimg__head 
+                        img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
+                    //- .watermark
+                    //-     p= `${restro[0].user.name} vPorti`
+                    .fullimg__bod
                 if (restro[0].serviceTerms)
                     p.sec__terms Terms And Conditions
                     .terms__sec.hidden 
@@ -110,5 +116,4 @@ block content
     script(src="/js/menu/itemCat.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/usermsg.js") 
-    script(src="/js/disFt.js") 
-    
+    script(src="/js/disFt.js")

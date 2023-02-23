@@ -10,7 +10,7 @@ id5 = document.getElementById("usId").innerText;
 let formLayoutFive = document.createElement("div");
 formLayoutFive.classList.add('formLayout5')
 formLayoutFive.innerHTML = `
-<form class="comp__form" action="api/v1/portfolio/createCollec" method="post" enctype="multipart/form-data">
+<form class="comp__form" action="/api/v1/portfolio/createCollec" method="post" enctype="multipart/form-data">
     <div class="form__head">
         <h1>AT Layout</h1>
         <img src="/images/cancel.png" alt="cancel_img" class="clFivecreate" />

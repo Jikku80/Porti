@@ -69,16 +69,6 @@ const observer = new IntersectionObserver(entries => {
         // prev.classList.remove('fadein-animation');
         // abtbody.classList.remove('fadein-animation');
     })
-})
-
-// observer.observe(cont, prv, abt);
-
-const fullImg = document.querySelectorAll('.imgFull');
-
-fullImg.forEach(img => {
-    img.addEventListener("click", () => {
-        window.open(img.src)
-    })
 });
 
 (function () {
