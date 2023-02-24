@@ -745,7 +745,7 @@ function openimg() {
             imgbod.innerHTML = "";
             imgbod.innerHTML =
                 `
-                    <img class="fullimgmode" src="${img.src}" alt="img" />
+                    <img class="fullimgmode" draggable="false" src="${img.src}" alt="img" />
                 `
         })
     });

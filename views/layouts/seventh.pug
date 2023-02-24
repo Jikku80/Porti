@@ -160,14 +160,14 @@ block content
                         else
                             .prev__cont__sub#imgCont
                                 each item in portImage
-                                    .port__images
+                                    .port__images.open_full
+                                        img.port_img.imgFull(src=`${item.addImage}`, draggable="false" loading="lazy" alt="second_img", srcset="")
+                                        h3.first__head= item.name
                                         if (portfolio.watermark === true)
                                             .smallwatermark
                                                 p= `${portfolio.user.name} vPor`
                                                     span.grn t
                                                     span.nocaps i
-                                        img.port_img.imgFull(src=`${item.addImage}`, loading="lazy" alt="second_img", srcset="")
-                                        h3.first__head= item.name
                         .paginate__addimg
                             .group__delbtn
                                 button.redbtn.prev__addimgSec.bc.hidden Prev
@@ -180,6 +180,7 @@ block content
                                 p= `${portfolio.user.name} vPor`
                                     span.grn t
                                     span.nocaps i
+                            .block__div
                         .fullimg__bod
                     if (portfolio.problem !== "")
                         h3.headFont= `${portfolio.name} ran into a problem`

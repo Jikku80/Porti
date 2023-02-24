@@ -1,15 +1,17 @@
 const fullImg = document.querySelectorAll('.imgFull');
+let smalldiv = document.querySelectorAll(".open_full")
 let imgsec = document.querySelector(".fullimg__sec");
 let imgbod = document.querySelector(".fullimg__bod");
 let cancelimgsec = document.querySelector(".cancelimgsec");
 
-fullImg.forEach(img => {
-    img.addEventListener("click", () => {
+smalldiv.forEach(item => {
+    item.addEventListener("click", () => {
         imgsec.classList.remove("hidden");
+        img = item.childNodes[0]
         imgbod.innerHTML = "";
         imgbod.innerHTML =
             `
-            <img class="fullimgmode" src="${img.src}" alt="img" />
+            <img class="fullimgmode" src="${img.src}" draggable="false" alt="img" />
         `
     })
 });

@@ -881,6 +881,16 @@ background-color: orangered;
     text-align: center;
 }
 
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-drag: none;
+}
+
 .smallwatermark{
     position: absolute;
     top: 45%;
@@ -894,14 +904,23 @@ background-color: orangered;
     justify-content: center;
 }
 
+.imgFull{
+    pointer-events: none;
+}
+
+.open_full{
+    cursor: pointer;
+}
+
 .watermark{
     width: 100vw;
-    height: 5vh;
+    height: 20vh;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.185);
     position: fixed;
-    top: 50vh;
-    z-index: 2;
+    top: 45vh;
+    left: 0;
+    z-index: 3;
     text-align: center;
     font-size: 16px;
     font-variant: small-caps;
@@ -909,6 +928,23 @@ background-color: orangered;
     align-items: center;
     justify-content: center;
     text-shadow: 1px 1px 2px gold;
+}
+
+.block__div{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    z-index: 2;
+}
+
+.cancelimgsec{
+    z-index: 3;
+    margin-right: 2vw;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
