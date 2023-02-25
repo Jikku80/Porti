@@ -153,21 +153,9 @@ block content
                     pre.ansFont= portfolio.previous
                 p.prof__user__id.hidden= portfolio.user._id
                 .prev__cont
+                    .portfoliowatermark.hidden= portfolio.watermark
                     .prev__cont__sub#thirdImgCont
-                        if (portImage.length === 0)
-                            .firstPrev.hidden 
-                            .firstNext.hidden
-                        else 
-                            .accomp__cont
-                                each item in portImage
-                                    .accomp__cont__card.open_full
-                                        img.imgsnd.imgFull.pointer(src=`${item.addImage}`, draggable="false" loading="lazy", alt="previous_image")
-                                        h3.head= item.name
-                                        if (portfolio.watermark === true)
-                                            .smallwatermark
-                                                p= `${portfolio.user.name} vPor`
-                                                    span.grn t
-                                                    span.nocaps i
+                        .accomp__cont
                         .paginate__addimg
                             .group__delbtn 
                                 button.redbtn.firstPrev.hidden Prev

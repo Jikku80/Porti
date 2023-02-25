@@ -127,6 +127,7 @@ pdBtn.addEventListener("click", async (e) => {
                     updateImgCollec.classList.remove("hidden");
                     delSec.classList.remove("hidden");
                     updateFormSec.classList.add('hidden');
+                    location.reload();
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")

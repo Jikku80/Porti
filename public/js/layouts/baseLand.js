@@ -109,7 +109,7 @@ function downloadportiQRCode(file) {
     let subItems = document.querySelector(".port__card__main")
 
     if (subItems !== null) {
-        if (subItems.children.length < 4) {
+        if (subItems.children.length < 20) {
             next.classList.add("hidden");
         }
     }
@@ -120,7 +120,6 @@ function downloadportiQRCode(file) {
             prev.classList.add("hidden")
         }
     }
-
     next.addEventListener("click", async () => {
         let pg = ++x
         prev.classList.remove("hidden");
@@ -158,7 +157,7 @@ function downloadportiQRCode(file) {
                                 </div>
                             `
                         });
-                        if (subItems.children.length === 4) {
+                        if (subItems.children.length === 20) {
                             next.classList.remove("hidden");
                         } else {
                             next.classList.add("hidden");

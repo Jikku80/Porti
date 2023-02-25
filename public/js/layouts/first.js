@@ -12,25 +12,13 @@ const observer = new IntersectionObserver(entries => {
 
         if (entry.isIntersecting) {
             box.classList.add('fadein-animation');
-            // prev.classList.add('fadein-animation');
-            // abtbody.classList.add('fadein-animation');
             return;
         }
         box.classList.remove('fadein-animation');
-        // prev.classList.remove('fadein-animation');
-        // abtbody.classList.remove('fadein-animation');
     })
 })
 
 observer.observe(cont, prv, abt);
-
-// const fullImg = document.querySelectorAll('.imgFull');
-
-// fullImg.forEach(img => {
-//     img.addEventListener("click", () => {
-//         window.open(img.src)
-//     })
-// });
 
 (function () {
     let fontColor = document.querySelector(".main").id;
@@ -99,6 +87,79 @@ observer.observe(cont, prv, abt);
 
 })();
 
-paginate(".firstNext", ".firstPrev", ".accomp__cont", ".accomp__cont__card", "#firstImgCont");
+window.addEventListener("load", async () => {
+    let userid = document.querySelector(".prof__user__id").innerText
+    let subItems = document.querySelector(".accomp__cont")
+    let watermark = document.querySelector(".portfoliowatermark").innerText;
+    let usrname = document.querySelector(".portfoliouser").innerText;
+    let pgC = window.sessionStorage.getItem('paginate');
 
+    let pg;
+    if (pgC === null) {
+        pg = 1
+    }
+    else {
+        pg = pgC
+    }
+    try {
+        subItems.innerHTML = "";
+        const endpoint = `/api/v1/portfolio/${userid}/pagination/${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result
+                    items.forEach(el => {
+                        if (watermark !== "true") {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="accomp__cont__card open_full"> 
+                                        <img class="port_img imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                        <h3 class="head portfolio__item__name">${el.name}</h3>
+                                    </div>
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="accomp__cont__card open_full"> 
+                                        <img class="port_img imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                        <h3 class="head portfolio__item__name">${el.name}</h3>
+                                        <div class="smallwatermark">
+                                            <p>${usrname} vPor</p>
+                                                <span class="grn">t</span>
+                                                <span class="nocaps">i</span>
+                                        </div>
+                                    </div>
+                                `
+                        }
+                    });
+                    openFullImg();
+                    let next = document.querySelector(".firstNext");
+                    if (subItems.children.length == 20) {
+                        next.classList.remove("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        subItems.innerHTML = `<h3 class="go__back center">Oops!! No items so far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+
+    paginate(".firstNext", ".firstPrev", ".accomp__cont", ".accomp__cont__card", "#firstImgCont", pgC);
+});
 

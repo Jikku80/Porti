@@ -1,15 +1,25 @@
-function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
+function paginate(nextVal, prevVal, contVal, cardVal, locVal, pgC) {
     let next = document.querySelector(nextVal);
     let prev = document.querySelector(prevVal);
     let user__id = document.querySelector(".prof__user__id").innerText
-    let subItems = document.querySelector(contVal)
+    let subItems = document.querySelector(contVal);
+    let watermark = document.querySelector(".portfoliowatermark").innerText;
+    let usrname = document.querySelector(".portfoliouser").innerText;
 
     if (subItems) {
-        if (subItems.children.length == 12) {
+        if (subItems.children.length == 20) {
             next.classList.remove("hidden");
         }
     }
-    let x = 1;
+
+    let x;
+
+    if (pgC === null) {
+        x = 1
+    }
+    else {
+        x = pgC
+    }
 
     if (x == 1) {
         prev.classList.add("hidden")
@@ -20,6 +30,7 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
     next.addEventListener("click", async () => {
         let pg = ++x
         prev.classList.remove("hidden");
+        window.sessionStorage.setItem("paginate", pg);
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -39,18 +50,33 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                     res.then(result => {
                         let items = result
                         items.forEach(el => {
-                            subItems.innerHTML +=
-                                `
-                                <div class=${cardVal}> 
-                                    <img class="port_img imgFull" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
-                                    <h3 class="first__head portfolio__item__name">${el.name}</h3>
-                                </div>
-                            `
+                            if (watermark !== "true") {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="${cardVal} open_full"> 
+                                            <img class="port_img imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                            <h3 class="head portfolio__item__name">${el.name}</h3>
+                                            <div class="smallwatermark"></div>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="${cardVal} open_full"> 
+                                            <img class="port_img blureff imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                            <h3 class="head portfolio__item__name">${el.name}</h3>
+                                            <div class="smallwatermark">
+                                            </div>
+                                        </div>
+                                    `
+                            }
                         });
+                        openFullImg()
                         window.setTimeout(() => {
                             window.location.hash = locVal;
                         }, 200)
-                        if (subItems.children.length === 12) {
+                        if (subItems.children.length === 20) {
                             next.classList.remove("hidden");
                         } else {
                             next.classList.add("hidden");
@@ -73,7 +99,8 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
     })
 
     prev.addEventListener("click", async () => {
-        let pg = --x
+        let pg = --x;
+        window.sessionStorage.setItem("paginate", pg);
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -97,14 +124,29 @@ function paginate(nextVal, prevVal, contVal, cardVal, locVal) {
                     res.then(result => {
                         let items = result
                         items.forEach(el => {
-                            subItems.innerHTML +=
-                                `
-                                <div class=${cardVal}> 
-                                    <img class="port_img imgFull" src="${el.addImage}", alt="second_img", loading="lazy" srcset="" />
-                                    <h3 class="first__head portfolio__item__name">${el.name}</h3>
-                                </div>
-                            `
+                            if (watermark !== "true") {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="${cardVal} open_full"> 
+                                            <img class="port_img imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                            <h3 class="head portfolio__item__name">${el.name}</h3>
+                                            <div class="smallwatermark"></div>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="${cardVal} open_full"> 
+                                            <img class="port_img blureff imgFull pointer" src="${el.addImage}", loading="lazy" alt="second_img", srcset="" />
+                                            <h3 class="head portfolio__item__name">${el.name}</h3>
+                                            <div class="smallwatermark">
+                                            </div>
+                                        </div>
+                                    `
+                            }
                         });
+                        openFullImg()
                         window.setTimeout(() => {
                             window.location.hash = locVal;
                         }, 200)

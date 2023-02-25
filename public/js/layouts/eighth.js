@@ -149,3 +149,94 @@
         item.style.color = fontColor;
     })
 })();
+
+window.addEventListener("load", async () => {
+    let userid = document.querySelector(".prof__user__id").innerText
+    let subItems = document.querySelector(".eighth__img__cont")
+    let watermark = document.querySelector(".portfoliowatermark").innerText;
+    let usrname = document.querySelector(".portfoliouser").innerText;
+
+    let pg = 1;
+    try {
+        subItems.innerHTML = "";
+        const endpoint = `/api/v1/portfolio/${userid}/pagination/${pg}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result
+                    if (items.length !== 0) {
+                        items.forEach(el => {
+                            if (watermark !== "true") {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="imgeightcont open_full"> 
+                                            <img class="eighth__bod__img imgFull pointer" src="${el.addImage}", loading="lazy" alt="eigth_img", srcset="" />
+                                            <h3 class="headFont">${el.name}</h3>
+                                        </div>
+                                    `
+                            }
+                            else {
+                                subItems.innerHTML +=
+                                    `
+                                        <div class="imgeightcont open_full"> 
+                                            <img class="eighth__bod__img imgFull pointer" src="${el.addImage}", loading="lazy" alt="eigth_img", srcset="" />
+                                            <h3 class="headFont">${el.name}</h3>
+                                            <div class="smallwatermark">
+                                                <p>${usrname} vPor</p>
+                                                    <span class="grn">t</span>
+                                                    <span class="nocaps">i</span>
+                                            </div>
+                                        </div>
+                                    `
+                            }
+                        });
+                    }
+                    else {
+                        subItems.innerHTML +=
+                            `
+                        <div class="imgeightcont">
+                            <img class="eighth__bod__img" src="/images/bg.png" alt="noimg"/>
+                            <h3 class="headFont">vPorti(You havent added your images)</h3>
+                        </div>
+                        <div class="imgeightcont">
+                            <img class="eighth__bod__img" src="/images/noimg.png" alt="noimg"/>
+                            <h3 class="headFont">vPorti(You havent added your images)</h3>
+                        </div>
+                        <div class="imgeightcont">
+                            <img class="eighth__bod__img" src="/images/rbg.png" alt="noimg"/>
+                            <h3 class="headFont">vPorti(You havent added your images)</h3>
+                        </div>
+                        `
+                    }
+                    let hdfnt = document.querySelectorAll(".headFont");
+                    let fontColor = document.querySelector(".secHeadColor").innerText;
+                    hdfnt.forEach(item => {
+                        item.style.color = fontColor;
+                    })
+                    openFullImg();
+                    let next = document.querySelector(".firstNext");
+                    if (subItems.children.length == 20) {
+                        next.classList.remove("hidden");
+                    }
+                    if (subItems.innerHTML == "") {
+                        subItems.innerHTML = `<h3 class="go__back center">Oops!! No items so far :)</h3>`
+                    }
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+});

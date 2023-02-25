@@ -156,24 +156,12 @@ block content
                         pre.ansFont= portfolio.previous
                     p.prof__user__id.hidden= portfolio.user._id
                     .prev__cont
-                            if (portImage.length === 0)
-                                .prev__addimgSec.hidden 
-                                .next__addimgSec.hidden
-                            else
-                                .prev__cont__sub#imgCont
-                                    each item in portImage
-                                        .port__images.open_full
-                                            img.port_img.imgFull(src=`${item.addImage}`, draggable="false" loading="lazy" alt="second_img", srcset="")
-                                            h3.first__head= item.name
-                                            if (portfolio.watermark === true)
-                                                .smallwatermark
-                                                    p= `${portfolio.user.name} vPor`
-                                                        span.grn t
-                                                        span.nocaps i
-                            .paginate__addimg
-                                .group__delbtn
-                                    button.redbtn.prev__addimgSec.hidden Prev
-                                    button.redbtn.next__addimgSec.hidden Next
+                        .portfoliowatermark.hidden= portfolio.watermark
+                        .prev__cont__sub#imgCont
+                        .paginate__addimg
+                            .group__delbtn
+                                button.redbtn.prev__addimgSec.hidden Prev
+                                button.redbtn.next__addimgSec.hidden Next
             .fullimg__sec.hidden 
                 .fullimg__head 
                     img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")

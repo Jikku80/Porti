@@ -142,6 +142,7 @@ updBtn.addEventListener("click", async (e) => {
                     updateImg.classList.remove("hidden");
                     delFirst.classList.remove("hidden");
                     updateForm.classList.add('hidden');
+                    location.reload();
                 }, 400);
             } else {
                 errorAlert("Invalid input, Duplication Input error or user already have a portfolio!!!")

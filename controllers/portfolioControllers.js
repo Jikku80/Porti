@@ -125,6 +125,24 @@ exports.updateMe = factory.updateOne(Portfolio);
 exports.deleteMe = factory.deleteOne(Portfolio);
 exports.makePorti = factory.createOne(Portfolio);
 
+exports.onePort = catchAsync(async (req, res, next) => {
+    const portfolio = Portfolio.findOne({ user: req.params.id })
+    if (portfolio) {
+        portfolio.then(item => {
+            let img = [];
+            let imgs = item.images
+            imgs.forEach(images => {
+                return img.push(images)
+            })
+            res.status(200).json({
+                status: 'success',
+                img
+            })
+        })
+
+    }
+});
+
 exports.updatePortPg = catchAsync(async (req, res, next) => {
 
     const updatedPortfolio = await Portfolio.findByIdAndUpdate(req.params.id, {
@@ -203,6 +221,17 @@ exports.updatePrevImgData = catchAsync(async (req, res, next) => {
 });
 
 exports.deletePorti = catchAsync(async (req, res, next) => {
+    let imgids = [];
+    PortfolioImage.find({ user: req.params.id }).then(item => {
+        item.filter(el => {
+            imgids.push(el.id)
+        })
+    })
+
+    imgids.forEach(async (item) => {
+        await PortfolioImage.findByIdAndDelete(item)
+    })
+
     const item = await Portfolio.findByIdAndDelete(req.body.id);
 
     if (!item) return next(new AppError('No document found with the given ID', 404));
@@ -231,7 +260,7 @@ exports.deletePortiImage = catchAsync(async (req, res, next) => {
 exports.paginatePortImage = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const pg = req.params.page
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 4, page: pg }).paginate();
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 20, page: pg }).paginate().srt();
     await features.query.then((items) => {
         res.status(200).json(items)
     })
@@ -240,7 +269,7 @@ exports.paginatePortImage = catchAsync(async (req, res, next) => {
 exports.paginatePortImageTwl = catchAsync(async (req, res, next) => {
     const user_id = req.params.id
     const pg = req.params.page
-    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 12, page: pg }).paginate();
+    const features = new APIFeatures(PortfolioImage.find({ user: user_id }), { limit: 20, page: pg }).paginate().srt();
     await features.query.then((items) => {
         res.status(200).json(items)
     })

@@ -68,15 +68,16 @@ block content
                 .main__fifth__sub(id=`${portfolio.backColor}`)
                     a.fifth__a.headTop(href="#fifth__about") About 
                     a.fifth__a.headTop(href="#fifth__cont") Contact 
+            .portfoliowatermark.hidden= portfolio.watermark
             .main__pic(id=`${portfolio.focusColor}`)
-                each img, i in portfolio.images
-                    .picture-box.open_full
-                        img.picture-box__img.imgFull(src=`${img}`, draggable="false" alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
-                        if (portfolio.watermark === true)
-                            .smallwatermark
-                                p= `${portfolio.user.name} vPor`
-                                    span.grn t
-                                    span.nocaps i
+                //- each img, i in portfolio.images
+                //-     .picture-box.open_full
+                //-         img.picture-box__img.imgFull(src=`${img}`, draggable="false" alt=`Your Creations ${i + 1}`, class=`pic-box__img--${i + 1}`)
+                //-         if (portfolio.watermark === true)
+                //-             .smallwatermark
+                //-                 p= `${portfolio.user.name} vPor`
+                //-                     span.grn t
+                //-                     span.nocaps i
 
         .fullimg__sec.hidden 
             .fullimg__head 

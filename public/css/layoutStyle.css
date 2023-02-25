@@ -662,6 +662,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.438);
     position: relative;
+    display: inline-block;
 }
 
 .port_img{
@@ -888,13 +889,16 @@ img {
     user-select: none;
     -webkit-user-drag: none;
     -webkit-touch-callout: none;
+    display: block;
     user-drag: none;
 }
 
 .smallwatermark{
-    position: absolute;
-    top: 45%;
-    width: 100%;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    width: auto;
     height: 5vh;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.185);
@@ -902,6 +906,10 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.blureff{
+    filter: blur(6px);
 }
 
 .imgFull{
@@ -918,8 +926,9 @@ img {
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.185);
     position: fixed;
-    top: 45vh;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
     z-index: 3;
     text-align: center;
     font-size: 16px;

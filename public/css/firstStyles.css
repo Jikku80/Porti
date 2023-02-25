@@ -104,6 +104,8 @@ body{
     margin: 1%;
     font-size: 1rem;
     position: relative;
+    display: inline-block;
+    content: 'hey';
 }
 
 .accomp__cont__card img{

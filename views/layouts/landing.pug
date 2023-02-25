@@ -21,6 +21,20 @@ block content
                 .land__whole__sec
                     .land__content
                         .land__nav__main
+                        .land__goto
+                            h1#port_name= `${portfolio.name}`
+                            span.endpoint.hidden= `${portfolio._id}`
+                            p.xsf Go to your portfolio
+                            .port__link
+                                #urlLink
+                                    span#endpoint= `${portfolio._id}`
+                                    span#user__nam= portfolio.user.name
+                                    span#portitheme= portfolio.theme   
+                            .copy__link 
+                                button#copyLink.redbtn Copy Link
+                                button#genportiqr.redbtn Generate QRCode
+                                button#downportiqr.redbtn.hidden Download QRCode 
+                        .qr__sec#qrLanding 
                         if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
                             if (portImage.length === 0)
                                 h3.banner.second__access.form__label No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
@@ -30,6 +44,7 @@ block content
                                     
                                     .portImage__tweak__sec#portImageTweakSec
                                         h2#PrevSection Your Previous Images Tweak Section
+
                                         .port__card__main
                                             each item in portImage 
                                                 .port__images 
@@ -56,20 +71,6 @@ block content
                             .group__delbtn
                                 button#confirmImgDelete.delbtn Delete 
                                 button#cancelImgDelete.delbtn Cancel
-                        .land__goto
-                            h1#port_name= `${portfolio.name}`
-                            span.endpoint.hidden= `${portfolio._id}`
-                            p.xsf Go to your portfolio
-                            .port__link
-                                #urlLink
-                                    span#endpoint= `${portfolio._id}`
-                                    span#user__nam= portfolio.user.name
-                                    span#portitheme= portfolio.theme   
-                            .copy__link 
-                                button#copyLink.redbtn Copy Link
-                                button#genportiqr.redbtn Generate QRCode
-                                button#downportiqr.redbtn.hidden Download QRCode 
-                        .qr__sec#qrLanding 
                         if (portfolio.theme == "a9993e364706816aba3e25717850c26c9cd0d89d" || portfolio.theme == "da98568d1b2005611973ad49868b38aa8ae68fd7")
                             form.theme__edit#editTheme
                                 h2 Edit Theme Preference

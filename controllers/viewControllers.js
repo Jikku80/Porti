@@ -121,7 +121,7 @@ function comp(a, b) {
 exports.myPort = catchAsync(async (req, res) => {
     const id = req.params.id
     const pg = 1;
-    const features = new APIFeatures(PortfolioImage.find({ user: id }), { limit: 4, page: pg }).paginate();
+    const features = new APIFeatures(PortfolioImage.find({ user: id }), { limit: 20, page: pg }).paginate();
     const portImage = await features.query
     const theme = await Theme.find({ themeCategory: "Portfolio" })
     await Portfolio.findOne({ user: id }).populate('user').then(portfolio => {
@@ -153,7 +153,7 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
     const pg = 1;
     const portfolio = await Portfolio.findOne({ user: usr[0]._id }).populate('user')
     if (portfolio !== null) {
-        const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 12, page: pg }).paginate();
+        const features = new APIFeatures(PortfolioImage.find({ user: usr[0]._id }), { limit: 20, page: pg }).paginate().srt();
         const portImage = await features.query
         const allPortImg = await PortfolioImage.find({ user: usr[0]._id })
         let theme = portfolio.theme

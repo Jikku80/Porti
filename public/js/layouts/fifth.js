@@ -53,3 +53,59 @@
     })
 })();
 
+window.addEventListener("load", async () => {
+    let userid = document.querySelector(".portiuserid").innerText;
+    let subItems = document.querySelector(".main__pic");
+    let watermark = document.querySelector(".portfoliowatermark").innerText;
+    let usrname = document.querySelector(".portfoliouser").innerText;
+
+    try {
+        subItems.innerHTML = "";
+        const endpoint = `/api/v1/portfolio/getone/${userid}`
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'image/jpeg/png')
+        myHeaders.get('Content-Type');
+        await fetch((endpoint), {
+            method: 'GET',
+            headers: myHeaders
+        }).then((response) => {
+            let res = response.json();
+            if (response.status === 200) {
+                res.then(result => {
+                    let items = result.img
+                    items.forEach(el => {
+                        if (watermark !== "true") {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="picture-box open_full"> 
+                                        <img class="picture-box__img imgFull pointer" src="${el}", loading="lazy" alt="your_img", srcset="" />
+                                    </div>
+                                `
+                        }
+                        else {
+                            subItems.innerHTML +=
+                                `
+                                    <div class="picture-box open_full"> 
+                                        <img class="picture-box__img imgFull pointer" src="${el}", loading="lazy" alt="your_img", srcset="" />
+                                        <div class="smallwatermark">
+                                            <p>${usrname} vPor</p>
+                                                <span class="grn">t</span>
+                                                <span class="nocaps">i</span>
+                                        </div>
+                                    </div>
+                                `
+                        }
+                    });
+                    openFullImg();
+                })
+            } else {
+                console.log(response);
+                errorAlert("Error")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+});

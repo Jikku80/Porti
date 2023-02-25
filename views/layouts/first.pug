@@ -98,24 +98,12 @@ block content
                         pre.ansFont= portfolio.previous
                 .prev__cont
                     .prev__cont__sub#firstImgCont
-                        if (portImage.length === 0)
-                            .firstPrev.hidden 
-                            .firstNext.hidden
-                        else 
-                            .accomp__cont
-                                each item in portImage
-                                    .accomp__cont__card.open_full
-                                        img.imgsnd.imgFull.pointer(src=`${item.addImage}`, draggable="false" loading="lazy", alt="previous_image")
-                                        h3.head= item.name
-                                        if (portfolio.watermark === true)
-                                            .smallwatermark
-                                                p= `${portfolio.user.name} vPor`
-                                                    span.grn t
-                                                    span.nocaps i
-                            .paginate__addimg
-                                .group__delbtn 
-                                    button.redbtn.firstPrev.hidden Prev
-                                    button.redbtn.firstNext.hidden Next 
+                        .portfoliowatermark.hidden= portfolio.watermark
+                        .accomp__cont
+                        .paginate__addimg
+                            .group__delbtn 
+                                button.redbtn.firstPrev.hidden Prev
+                                button.redbtn.firstNext.hidden Next 
         .fullimg__sec.hidden 
             .fullimg__head 
                 img(src="/images/cancel.png" class="cancelimgsec pointer" alt="canceimg")
@@ -164,10 +152,10 @@ block content
                 img(src="/images/rup.png", alt="up_arrow")
 
     script(src="/js/alert.js") 
-    script(src="/js/imgFull.js") 
     script(src="/js/layouts/paginate.js") 
     script(src=`/js/layouts/first.js`) 
     script(src="/js/layouts/pgct.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/usermsg.js") 
+    script(src="/js/imgFull.js") 
     script(src=`/js/disFt.js`) 
