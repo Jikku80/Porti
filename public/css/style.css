@@ -1761,6 +1761,15 @@ input::file-selector-button, ::-webkit-file-upload-button{
     text-align: center;
   }
 
+  .contact__anch{
+    width: 100%;
+    text-align: center;
+  }
+
+  .close__account{
+    width: 100%;
+  }
+
   .bar{
     width: 80vw !important;
     font-size: 16px !important;

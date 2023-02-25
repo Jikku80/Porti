@@ -1173,6 +1173,12 @@ img {
         padding: 0;
       }
 
+      .contact__anch{
+        width: 100%;
+        text-align: center;
+      }
+    
+
     .footer__first__bod, .footer__sec__bod{
         flex-direction: column;
         text-align: center;
