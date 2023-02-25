@@ -164,6 +164,10 @@ html{
   font-weight: bolder;
 }
 
+.hoveffect:hover{
+  color : rgb(54, 219, 54)
+}
+
 .login__head {
   display: flex;
   flex-direction: row;

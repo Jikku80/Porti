@@ -12,47 +12,47 @@ audio#msgalert.hidden
             span.chr vPor
             span.grn t
             span.nocapsmall.chr i
-        a#portiSearch.anavi.search__button(href="/search/bar" title="search") Search
+        a#portiSearch.anavi.search__button(href="/search/bar" title="search") &#x1F50E;&#xFE0E;Search
         a(href="/account/me")
             if (user.photo)
                 img#menuImg.profPic(src=`${user.photo}`, alt="prof__pic", title=`${user.name}`)
             else 
                 img#menuImg.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
-        a#menuLayouts.anavi(href="/layouts/porti" title="layouts") Layouts
+        a#menuLayouts.anavi(href="/layouts/porti" title="layouts") &#10022;Layouts
         if (user.accountType === "portfolio")
-            a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") Portfolio
+            a#menuPortfolio.anavi(href=`/myportfolio/${user._id}` title="your portfolio") &#10070;Portfolio
         else 
             #menuPortfolio.anavi.hidden
         if (user.accountType === "restaurant")
             .msgdiv
-                a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") Menu
+                a#menuMenu.anavi(href=`/menu/${user._id}/additemstomenu` title="your menu") &#10070;Menu
                 .newmenunoti.hidden
-            a#menuMenuStats.anavi(href=`/api/v1/menu/restrostat/${user._id}` title="your menu statistics") Statistics
+            a#menuMenuStats.anavi(href=`/api/v1/menu/restrostat/${user._id}` title="your menu statistics") &#9684;Statistics
         else 
             #menuMenu.anavi.hidden 
             #menuMenuStats.hidden
         if (user.accountType === "business")
             .msgdiv
-                a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") Catalogue
+                a#menuCataloge.anavi(href=`/catalouge/${user._id}/additems` title="your catalouge") &#10070;Catalogue
                 .newcatalognoti.hidden
-            a#menuCatalogeStats.anavi(href=`/api/v1/catalouge/companystat/${user._id}` title="your catalouge statistics") Statistics
+            a#menuCatalogeStats.anavi(href=`/api/v1/catalouge/companystat/${user._id}` title="your catalouge statistics") &#9684;Statistics
         else 
             #menuCataloge.anavi.hidden
             #menuCatalogeStats.anavi.hidden
         if (user.accountType === "brochure")
             .msgdiv 
-                a#menuBrochure.anavi(href=`/brochure/${user._id}/additems` title="your brochure") Brochure 
+                a#menuBrochure.anavi(href=`/brochure/${user._id}/additems` title="your brochure") &#10070;Brochure 
                 .newbookingnoti.hidden
-            a#menuBrochureStats.anavi(href=`/api/v1/brochure/brochurestat/${user._id}` title="your catalouge statistics") Statistics
+            a#menuBrochureStats.anavi(href=`/api/v1/brochure/brochurestat/${user._id}` title="your catalouge statistics") &#9684;Statistics
         else 
             #menuBrochure.anavi.hidden
             #menuBrochureStats.anavi.hidden
-        a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") Invitations
+        a#menuInvitation.anavi(href=`/invitations/${user._id}` title="your invitation") &#10020;Invitations
         .msgdiv
-            a#message.anavi(href=`/mymessages/${user._id}` title="your messages") Messages
+            a#message.anavi(href=`/mymessages/${user._id}` title="your messages") &#9993;Messages
             .newmsgnotifier.hidden
-        a#exp.anavi(href=`/activity/${user._id}/tracker` title="your expenses") Activity
-        #logout.logout.pointer SignOut
+        a#exp.anavi(href=`/activity/${user._id}/tracker` title="your expenses") &#9935;Activity
+        #logout.logout.pointer &#10162;SignOut
 
 script(src="/js/alert.js")  
 script(src="/js/logout.js") 

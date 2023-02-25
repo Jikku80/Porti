@@ -11,7 +11,7 @@ block content
         .main__content__log
             if (!user)
                 .catchybtn
-                    a#log(href="/account/login" title="Login | SignUp")  Login | SignUp -->
+                    a#log(href="/account/login" title="Login | SignUp")  Login | SignUp&#10162;
             else 
                 a#log.fkAncky.norot(href="/account/me" title="Your Account")
                     if (!user.photo)
@@ -63,26 +63,27 @@ block content
                     if (!user)
                         p.usrTheme.hidden
                         a.bottom__anch(href="/account/login") 
-                            h3 Login | SignUp
+                            h3 &#10162;
+                                span Login | SignUp
                     else
                         p.usrTheme.hidden= user.theme
                         .bottom__nav__inner 
                             if (user.accountType == "portfolio")
                                 a.bottom__anch.text__shadow(href=`/myportfolio/${user._id}`) 
-                                    h3 Portfolio
+                                    h3 &#10070;Portfolio
                             if (user.accountType === "restaurant")
                                 a.bottom__anch.text__shadow(href=`/menu/${user._id}/additemstomenu`) 
-                                    h3 Menu
+                                    h3 &#10070;Menu
                             if (user.accountType === "business")
                                 a.bottom__anch.text__shadow(href=`/catalouge/${user._id}/additems`) 
-                                    h3 Catalouge
+                                    h3 &#10070;Catalouge
                             if (user.accountType === "brochure")
                                 a.bottom__anch.text__shadow(href=`/brochure/${user._id}/additems`)
-                                    h3 Brochure
+                                    h3 &#10070;Brochure
                             a.bottom__anch.text__shadow(href=`/invitations/${user._id}`) 
-                                h3 Invitation
+                                h3 &#10020;Invitation
                             .bottom__anch.text__shadow.logout 
-                                h3 SignOut
+                                h3 &#10162;SignOut
                 .first__abt__cont.containr#apS 
                     .first__half__cont 
                         h1 About 
@@ -99,7 +100,7 @@ block content
                                 span.wite FREE
                         button#showAboutPorti.shwbtn Know About vPorti
                 #abtPortiSection.second__abt__cont.hidden
-                    p Lakhey Tech Presents vPorti. In Czech "V" means "In" and in Spanish "Por ti" means "For You" together its "In For You". The website is practically in for you. In this age of Technology, where things are easy acces via internet then sotring it locally or using it physically, vPorti is here to help you with situations that can really be a drag.
+                    p Lakhey Tech Presents vPorti. In Czech "V" means "In" and in Spanish "Por ti" means "For You" together its "In For You", Well thats what google said. In this age of Technology, where things are easy acces via internet then storing it locally or using it physically, vPorti is here to help you with situations that can really be a drag.
                     h3 Why vPorti?
                     p Is your Interview Coming near still have no CV? Do not know what you should include and how you should present yourself? Well! vPORTI is here to save the day :). Create Your portfolio within few minutes. Just answer the questions given and your all set.
                     p Is a big event coming and dont want to waste time energy and money on making invitation card. Well with vporti you can create Invitation card. Create it share it to your guests.
@@ -107,6 +108,7 @@ block content
                     p vPorti is here for Business owners who are selling products or services. If you have alot of items or services use our catalog feature.
                     p vPorti Brings you varities of Theme Select and Just Focus on your Content, Make yourself stand out. Create Here Access it AnyWhere!!!
                     p With the help of vPorti sharing is more easy, forget the hassle of saving storing and printing your CV, Invitation, Menu, Catalouge. Access them with your QR code or Link. Also showing your previous works gets easy, updating your details gets easy. 
+                    p Creating a website can be such a rip off while you are just starting out, vporti is here with similar working mechanism for free.
                     h3 Who vPorti is For :
                     ul  
                         li Applying For Work | Showcasing Your Work
@@ -114,10 +116,6 @@ block content
                         li Food Spot | Food | Drinks Cafe Owner
                         li Business Owner | Shop Owner
                         li For Anyone | Everyone who needs a Portfolio, Invitation Card, Food Menu, Catalogue
-                    h3 Will A Portolio From vPorti Guarantee Your Ace In Interview?
-                    p Well That's all upto You, How you describe yourself, how you sell yourself creates a difference. 
-                    h3 Is vPorti Free To Use?
-                    p Yes! vPorti is Free And Will Always Have Free Features For It's Users. It May Contain Some Themes Which You Might Have To Pay For. But Feel free to signup and create your vporti account as there are lots of free themes :)
             .padder.darkgreen#pGuide
                 .containr 
                     .second__half__cont 
@@ -132,7 +130,7 @@ block content
                                 span.maf Hassle 
                             h1 Short Easy 
                                 span.grn Link
-                            p.porti_all_link.guidlink www.vporti.com/username
+                            p.porti_all_link.guidlink vporti.com/username
                         button#showGuide.shwbtn vPorti Processes 
                     .first__half__cont 
                         h1.wite 
@@ -158,8 +156,8 @@ block content
                             .gbox__head 
                                 h3 Step 2
                             .gbox__bod
-                                p You will be redirected to your account, Click on Layouts from nav bar 
-                                p Browse Through the theme and select one
+                                p You will be redirected to your account, from where pick your account type.
+                                p Browse Through the theme from layout and select one
                         .gbox 
                             .gbox__head 
                                 h3 Step 3
@@ -247,7 +245,7 @@ block content
                         h2 You Portfolio link will be 
                             span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.vporti.com/username
+                            p.porti_all_link vporti.com/username
             .darkgreen.padder#iHelper
                 .containr 
                     .second__half__cont
@@ -378,7 +376,7 @@ block content
                         h2 You Menu link will be 
                             span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.vporti.com/username
+                            p.porti_all_link vporti.com/username
             .padder.darkgreen#cHelper
                 .containr 
                     .second__half__cont
@@ -484,7 +482,7 @@ block content
                         h2 You Catalog link will be 
                             span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.vporti.com/username
+                            p.porti_all_link vporti.com/username
             .padder.darkgreen#bHelper
                 .containr 
                     .second__half__cont
@@ -575,7 +573,7 @@ block content
                         h2 You Brochure link will be 
                             span.mid.nocaps /yourusername
                         .link__format
-                            p.porti_all_link www.vporti.com/username
+                            p.porti_all_link vporti.com/username
             .padder.darkgreen#aTM
                 .containr 
                     .first__half__cont 
@@ -647,7 +645,7 @@ block content
                                             option(value="unlock") Theme Unlock Problem 
                                             option(value="Other") Other
                                     label.form__label(for='message') Message 
-                                    textarea#msgmessage.form__input(type="text", name="message", placeholder="Porti is this and that...", rows="5", cols="40", required)
+                                    textarea#msgmessage.form__input(type="text", name="message", placeholder="vPorti is this and that...", rows="5", cols="40", required)
                                     .form__group
                                     button.send__msg.greybtn Send
             .fot_sec
