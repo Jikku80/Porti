@@ -7,8 +7,9 @@ button#signup.redbtn SignUp
                 h1 SignUp Form 
                 img#signCancel(src="/images/cancel.png" alt="cancel_img") 
             .signup__bod
-                label.form__label(for='text') Name
-                input#m_name.form__input(type='text', name="email_add", placeholder='Your Name', required)
+                label.form__label(for='text') User Name
+                p Do not use space, or special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>?
+                input#m_name.form__input(type='text', name="email_add", placeholder='username', required)
                 p.same__user__warn.maf.hidden User with this name already exits. Please use a different one!
                 p.white__space.maf.hidden You cannot use space in name!!!
                 p.unallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed

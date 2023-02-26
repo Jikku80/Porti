@@ -4,8 +4,8 @@
   "description": "just a portfolio",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "start:prod": "SET NODE_ENV=production & node server.js",
+    "start": "nodemon server.js",
+    "start:prod": "SET NODE_ENV=production & nodemon server.js",
     "test": "echo \"No test specified\""
   },
   "author": "TechMafia",
