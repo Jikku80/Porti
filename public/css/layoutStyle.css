@@ -827,6 +827,7 @@ background-color: orangered;
     border-radius: 2rem;
     scrollbar-width: none;
     letter-spacing: normal;
+    font-size: 16px;
   }
   
 .our__privacy__head {
@@ -840,7 +841,7 @@ background-color: orangered;
 }
 
 .privanch{
-    color: black;
+    color: black !important;
 }
 
 #priCancel{

@@ -897,7 +897,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1003,6 +1002,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
     border-radius: 2rem;
     scrollbar-width: none;
     letter-spacing: normal;
+    font-size: 16px;
+
   }
   
 .our__privacy__head {
@@ -1016,7 +1017,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .privanch{
-    color: black;
+    color: black !important;
 }
 
 #priCancel{
