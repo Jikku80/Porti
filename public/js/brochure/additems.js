@@ -11,13 +11,14 @@
             <button class="blackbtn smallbtn" id="openmycatal">My Brochure</button>
             <button class="blackbtn smallbtn" id="qrcatalouge">Generate QRCode</button>
             <button class="blackbtn smallbtn hidden" id="dqrcatalouge">Download QRCode</button>
+            <p>Share In Social Sites</p>
+            <button class="blackbtn fbbtn">Facebook</button>
         </div>
     `
     let openMenu = document.getElementById("openmycatal");
     openMenu.addEventListener("click", () => {
         window.open(`/${nm}`)
     })
-
     let menuLinkDis = document.querySelector(".catalouge__link__displayer");
     let copyLink = document.querySelector(".copy__catalouge");
     copyLink.addEventListener("click", () => {
@@ -26,6 +27,14 @@
         navigator.clipboard.writeText(plink);
 
         successAlert("Link Copied")
+    })
+
+    let fbbtn = document.querySelector(".fbbtn");
+    fbbtn.addEventListener("click", () => {
+        let params;
+        let url = menuLinkDis.innerText;
+        let shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+        window.open(shareUrl, "NewWindow", params);
     })
 })();
 

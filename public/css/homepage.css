@@ -198,9 +198,16 @@
 .main__content__logo{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     position: absolute;
     top: 70vh;
+    padding: 1%;
+    align-items: center;
+}
+
+.qttxt{
+    font-size: 16px;
+    font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
 }
 
 .logo__grp{
@@ -589,6 +596,15 @@
         transform: translate(-53%, 0);
         top: 0;
         margin-top: 1.5vh;
+    }
+
+    .main__content__logo{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .qttxt{
+        font-size: 12px;
     }
 
     .main__content{

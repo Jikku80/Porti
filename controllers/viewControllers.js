@@ -893,4 +893,21 @@ exports.expPage = catchAsync(async (req, res, next) => {
             search
         })
     }
+});
+
+exports.sitemap = catchAsync(async (req, res) => {
+
+    let xml_content = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        '  <url>',
+        '    <loc>https://www.vporti.com/</loc>',
+        '    <lastmod>2023-02-27</lastmod>',
+        '    <changefreq>daily</changefreq>',
+        '    <priority>1</priority>',
+        '  </url>',
+        '</urlset>'
+    ]
+    res.set('Content-Type', 'text/xml')
+    res.send(xml_content.join('\n'))
 })

@@ -26,6 +26,14 @@ copyLink.addEventListener("click", () => {
     successAlert("Link Copied")
 })
 
+let fbbtn = document.querySelector(".fbbtn");
+fbbtn.addEventListener("click", () => {
+    let params;
+    let url = portLink.innerText;
+    let shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+    window.open(shareUrl, "NewWindow", params);
+})
+
 
 let portigen = document.querySelector("#genportiqr");
 let portiqrurl = document.querySelector(".port_link").innerText;

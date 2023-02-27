@@ -439,6 +439,8 @@ prev.addEventListener("click", async () => {
             <button class="blackbtn smallbtn" id="openMenu">My Menu</button>
             <button class="blackbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
             <button class="blackbtn smallbtn downQr hidden" id="dqr">Download QRCode</button>
+            <p>Share In Social Sites</p>
+            <button class="blackbtn fbbtn">Facebook</button>
         </div>
     `
     let openMenu = document.getElementById("openMenu");
@@ -454,6 +456,14 @@ prev.addEventListener("click", async () => {
         navigator.clipboard.writeText(plink);
 
         successAlert("Link Copied")
+    })
+
+    let fbbtn = document.querySelector(".fbbtn");
+    fbbtn.addEventListener("click", () => {
+        let params;
+        let url = menuLinkDis.innerText;
+        let shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+        window.open(shareUrl, "NewWindow", params);
     })
 })();
 

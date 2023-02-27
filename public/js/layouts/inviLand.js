@@ -32,6 +32,14 @@ copyinviLink.addEventListener("click", () => {
     successAlert("Link Copied")
 })
 
+let fbbtn = document.querySelector(".fbbtn");
+fbbtn.addEventListener("click", () => {
+    let params;
+    let url = inviLink.innerText;
+    let shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+    window.open(shareUrl, "NewWindow", params);
+})
+
 let invigen = document.querySelector("#geninviqr");
 let inviqrurl = document.querySelector(".invi_link").innerText;
 let downinviQr = document.querySelector("#downinviqr")
