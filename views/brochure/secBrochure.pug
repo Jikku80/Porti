@@ -62,11 +62,12 @@ block content
     .first__bro__section
         if (banner[0])
             .bro__banner__sec.hidden 
-                p= banner[0].bannerInfo
+                p.bannerinfo= banner[0].bannerInfo
                 img.cancelbanner.point(src="/images/cancel.png" alt="cancelbanner")
         else 
             .bro__banner__sec.hidden
             .cancelbanner.hidden
+            .bannerinfo.hidden
         audio.bkalert.hidden
             source(src="/noti/msg.mp3")
         .first__bro__nav 

@@ -957,6 +957,10 @@ img {
     margin-right: 2vw;
 }
 
+.yllow{
+    color: goldenrod;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;

@@ -2,10 +2,11 @@ extends baseCatalouge
 
 block content
     h1.loader
-        img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-        span vPor
-        span.grn t
-        span.nocaps i
+        .bink
+            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
+            span vPor
+            span.grn t
+            span.nocaps i
     .pageCount.hidden= company.pageCount
     .pageName.hidden= company.name
     if (user)
@@ -210,15 +211,16 @@ block content
                         #uniquecompuserid.hidden
                         .form__item__display__sec.hidden 
                         .foods__order__his.hidden
-        .sec__menu__banner.hidden 
-            if (banner[0])
+        if (banner[0])
+            .sec__menu__banner.hidden 
                 p.bannerinfo= banner[0].bannerInfo
                 p.bannerDisc.hidden= banner[0].discountpercent
                 img.removebanner.point(src="/images/cancel.png", alt="cancel__btn")
-            else 
-                .sec__menu__banner.hidden
-                .removebanner.hidden 
-                .bannerDisc.hidden
+        else 
+            .sec__menu__banner.hidden
+            .removebanner.hidden 
+            .bannerDisc.hidden
+            .bannerinfo.hidden
         
         .sec__search__items 
             input.secSearchInput(type="text" placeholder="Search")

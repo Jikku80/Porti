@@ -40,11 +40,15 @@ let brovalsec = document.querySelector(".brochurevalsec");
     let bar = document.querySelector(".search_bar");
     let anc = document.querySelectorAll(".anc");
     let lod = document.querySelector(".loader");
+    let fry = document.querySelectorAll(".gry");
 
     if (theme == "red") {
         document.body.style.backgroundColor = "crimson";
         lod.style.backgroundColor = "crimson";
         srch.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        fry.forEach(item => {
+            item.style.color = "black";
+        })
     }
     else if (theme == "dark") {
         document.body.style.backgroundColor = "black";

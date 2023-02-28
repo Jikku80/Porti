@@ -72,11 +72,11 @@
                 textarea#upsoln.form__input(type="text" rows="4" cols="30" name="soln")= portfolio.solution
             .form__bod 
                 label.form__label Add watermark : 
-                p watermarks are only on the browser, so you have to use your own watermarks before adding picture
                 if (portfolio.watermark === true)
                     input#upwatermark.checkbox(type="checkbox" checked="checked")
                 else
                     input#upwatermark.checkbox(type="checkbox")
+            p.form__label watermarks are only on the browser, so you have to use your own watermarks before adding picture
             button#updateBtn.redbtn.bigbtn Update
             
     

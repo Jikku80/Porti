@@ -1003,11 +1003,14 @@ function smallCardElem(el) {
         }
         let hideBanner = window.sessionStorage.getItem('hideBanner');
         let banner = document.querySelector(".sec__menu__banner");
-        if (hideBanner == "true") {
-            banner.classList.add("hidden");
-        }
-        else {
-            banner.classList.remove("hidden");
+        let bannerinfo = document.querySelector(".bannerinfo").innerText;
+        if (bannerinfo !== "") {
+            if (hideBanner == "true") {
+                banner.classList.add("hidden");
+            }
+            else {
+                banner.classList.remove("hidden");
+            }
         }
         try {
             let load = document.querySelector('.loader');
