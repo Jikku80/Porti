@@ -1,4 +1,6 @@
 .whole__homepage{
+    margin: 0;
+    padding: 0;
     overflow-x: hidden !important;
 }
 
@@ -196,7 +198,12 @@
     top: 70vh;
     padding: 1%;
     align-items: center;
-    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+.quote {
+    padding: 1%;
 }
 
 .qttxt{
@@ -246,11 +253,9 @@
 }
 
 .padder{
-    margin: 5% 0 5% 0;
+    margin: 5% 0% 5% 0%;
     padding: 5vh 2vw 2vh 2vw;
     animation: shine 4s ease-in-out forwards infinite;
-    /* box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.171); */
-    /* border: 1px solid grey; */
 }
 
 .nocapsB{
@@ -596,8 +601,12 @@
     .main__content__logo{
         display: flex;
         flex-direction: column;
-        width: 95%;
     }
+
+    .quote {
+        padding: 0;
+    }
+    
     
     .qttxt{
         font-size: 12px;
