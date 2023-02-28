@@ -902,7 +902,7 @@ exports.sitemap = catchAsync(async (req, res) => {
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
         '  <url>',
         '    <loc>https://www.vporti.com/</loc>',
-        '    <lastmod>2023-02-27</lastmod>',
+        '    <lastmod>2023-02-28</lastmod>',
         '    <changefreq>daily</changefreq>',
         '    <priority>1</priority>',
         '  </url>',

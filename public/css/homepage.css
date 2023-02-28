@@ -1,3 +1,7 @@
+.whole__homepage{
+    overflow-x: hidden !important;
+}
+
 .main__content, .bod{
     background-color: rgb(0, 26, 0);
     font-family: 'Arial Narrow Bold', sans-serif, Times, serif;
@@ -75,7 +79,7 @@
     text-decoration: none;
     font-variant: small-caps;
     font-size: larger;
-    font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     color: gray;
 }
@@ -123,12 +127,6 @@
 }
 
 .catchybtn{
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-bottom-right-radius: 2rem;
     position: absolute;
     top: 0;
     left: 50%;
@@ -145,10 +143,6 @@
     font-size: 40px;
 }
 
-.catchybtn:hover{
-    background-color: transparent;
-}
-
 .framebtn {
     padding: calc(.5em + .40em) calc(.9em + .40em);
     color: white;
@@ -161,18 +155,17 @@
 }
 
 .effectbtn{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: transparent;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 2%;
     color: white;
     text-decoration: none;
-    font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     border-top-left-radius: 2rem;
     box-shadow: 6px 0px 0px white;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .effectbtn:hover{
@@ -203,6 +196,7 @@
     top: 70vh;
     padding: 1%;
     align-items: center;
+    overflow-x: hidden !important;
 }
 
 .qttxt{
@@ -504,8 +498,8 @@
     border-radius: 8rem;
     position: fixed;
     align-items: flex-end;
-    top:90%;
-    left: 96.5%;
+    bottom:1vh;
+    right: .5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -525,6 +519,7 @@
     justify-content: space-evenly;
     width: 100%;
     font-size: 9px;
+    overflow-x: hidden;
   }
 
 .footer__first__bod{
@@ -601,8 +596,9 @@
     .main__content__logo{
         display: flex;
         flex-direction: column;
+        width: 95%;
     }
-
+    
     .qttxt{
         font-size: 12px;
     }
@@ -686,8 +682,8 @@
     }
 
     .go__top{
-        top:90%;
-        left: 88%;
+        bottom: 1vh;
+        right: 3vw;
     }
 
     .footer__contact__bod{
@@ -761,11 +757,6 @@
         margin: 4%;
         padding: 4%;
         width: 40vw;
-    }
-
-    .go__top{
-        top:93%;
-        left: 94%;
     }
 
     .footer__contact__bod{
