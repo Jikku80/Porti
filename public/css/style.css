@@ -222,6 +222,15 @@ html{
   backdrop-filter: blur(5px);
 }
 
+#country{
+  background-color: crimson;
+  color: white;
+  border-radius: 1rem;
+  border-color: crimson;
+  cursor: pointer;
+  width: 20%;
+}
+
 .terms__cond{
   margin-top: 2%;
   cursor: pointer;
@@ -875,6 +884,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .card__main{
   width: 83%;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
@@ -1440,6 +1450,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     font-variant: normal;
   }
 
+  #country{
+    width: 30%;
+  }
+
   .porti__off__img{
       width: 25px;
   }
@@ -1488,6 +1502,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
   .portForm textarea, .portForm input{
     width: 70vw;
+  }
+
+  .comp__form__main{
+    display: flex;
+    justify-content: right;
   }
 
   .un_layout img, .unl img, .portunl img{
@@ -1562,6 +1581,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     }
   .term__main, .our__privacy__main{
     width: 90vw;
+  }
+
+  #country{
+    width: 75%;
   }
   
   .account__types{
@@ -1697,7 +1720,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
   
   .card__main{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
   }
 

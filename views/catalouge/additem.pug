@@ -159,7 +159,7 @@ block content
                             input#compType.form__input(type="text", value=company[0].compType)
                         .form__bod 
                             label.form__label Change Theme (optional):
-                            select#compTheme
+                            select#compTheme.selectsec
                                 option.opt(hidden selected)= company[0].theme 
                                 each item in theme 
                                     if (item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))

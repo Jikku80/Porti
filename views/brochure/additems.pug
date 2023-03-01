@@ -152,7 +152,7 @@ block content
                             input#compType.form__input(type="text", value=organization.orgType)
                         .form__bod 
                             label.form__label Change Theme (optional):
-                            select#compTheme
+                            select#compTheme.selectsec
                                 option.opt(hidden selected)= organization.theme 
                                 each item in theme 
                                     if (item.themeType === 'Free' || item.validBrochureUser.includes(user.id))

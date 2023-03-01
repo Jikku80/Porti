@@ -388,7 +388,8 @@ function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, va
                     </div>
                     <button id=${val11} type="button" class="port__form__btn portSubmit hidden">Create</button>
                 </div>
-                <button id="skipandcreate" class="port__form__btn">Skip & Create</button>
+                <p class="uniquetmid hidden"></p>
+                <button id="skipandcreateportfolio" class="whitebtn wite">Skip & Create</button>
             </div>
         </form>
     `

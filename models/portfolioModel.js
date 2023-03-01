@@ -36,10 +36,6 @@ const portfolioSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    country: {
-        type: String,
-        trim: true
-    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

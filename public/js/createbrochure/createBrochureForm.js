@@ -1,4 +1,4 @@
-function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val8, val9) {
+function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val9) {
     return `
     <form class="comp__form">
         <div class="form__head">
@@ -22,10 +22,6 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val8, val
             <input id=${val9} class="form__input" placeholder="Hotel, Motel, Any other Firm" required />
         </div>
         <div class="form__cont">
-            <label class="form__label">Country:</label>
-            <input id=${val8} class="form__input" placeholder="Spain" required />
-        </div>
-        <div class="form__cont">
             <label class="form__label">Address:</label>
             <input id=${val3} class="form__input" placeholder="Kings Palace" required />
         </div>
@@ -41,6 +37,7 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val8, val
             <label class="form__label">Slogan (optional) : </label>
             <input id=${val6} class="form__input" placeholder="11:00 AM is not late" required />
         </div>
+        <p class="uniquebrotmid hidden"></p>
         <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>
         <button id="skipandcreatebro" class="whitebtn wite">Skip & Create</button>

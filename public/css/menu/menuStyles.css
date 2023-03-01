@@ -1073,6 +1073,14 @@ input::file-selector-button, ::-webkit-file-upload-button{
     color: white;
 }
 
+.selectsec{
+    background-color: rgba(0, 0, 0, 0.247);
+    border-color: rgba(0, 0, 0, 0.247);
+    color:white;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;

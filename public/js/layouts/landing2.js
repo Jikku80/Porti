@@ -81,7 +81,6 @@ let pid = document.getElementById('endpoint').innerText;
 let pthemes = document.getElementById("themeSec");
 let searchVisiSec = document.getElementById("upSearchVisibleSec");
 let watermarkSec = document.getElementById("upwatermarkSec");
-let country = document.getElementById("upcount");
 
 pdBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -110,8 +109,7 @@ pdBtn.addEventListener("click", async (e) => {
                 fb: pFb.value,
                 location: pLoc.value,
                 searchVisible: searchVisiSec.checked,
-                watermark: watermarkSec.checked,
-                country: country.value
+                watermark: watermarkSec.checked
             })
         }).then((response) => {
             load.classList.add("hidden");

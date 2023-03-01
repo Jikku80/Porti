@@ -5,6 +5,7 @@ let memail = document.getElementById("m_email");
 let mpassword = document.getElementById("m_password");
 let pwdConfirm = document.getElementById("passwordConfirm");
 let termbox = document.getElementById("termbox");
+let country = document.getElementById("country");
 
 let sign__up = document.querySelector(".sign__up")
 let signCancel = document.getElementById("signCancel");
@@ -72,6 +73,11 @@ signup.addEventListener('click', async (e) => {
         e.preventDefault();
         return false;
     }
+
+    if (country.value == "0") {
+        e.preventDefault();
+        return false;
+    }
     e.preventDefault();
     let load = document.querySelector('.loader');
     load.classList.remove("hidden")
@@ -87,7 +93,8 @@ signup.addEventListener('click', async (e) => {
                 email: memail.value,
                 password: mpassword.value,
                 passwordConfirm: pwdConfirm.value,
-                termsandconditionagreed: termbox.checked
+                termsandconditionagreed: termbox.checked,
+                country: country.value
             })
         }).then((response) => {
             load.classList.add("hidden");

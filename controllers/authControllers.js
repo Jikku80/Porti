@@ -53,6 +53,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
         termsandconditionagreed: req.body.termsandconditionagreed,
+        country: req.body.country,
         createdAt: Date.now()
     });
 

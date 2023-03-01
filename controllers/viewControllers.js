@@ -100,23 +100,25 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
     })
 })
 
+
+function comp(a, b) {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+}
+
 exports.gotoInviMid = catchAsync(async (req, res) => {
     const id = req.params.id
-    await Invite.find({ user: id }).populate('user').then(invites => {
-        res.status(200).render('Invitations', {
-            title: 'Your Invitations',
-            invites
-        })
-    }).catch(err => console.log(err));
+    const invites = await Invite.find({ user: id }).populate('user')
+
+    res.status(200).render('Invitations', {
+        title: 'Your Invitations',
+        invites
+    })
 })
 
 const pagination = function (array, page_size, page_number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
 
-function comp(a, b) {
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-}
 
 exports.myPort = catchAsync(async (req, res) => {
     const id = req.params.id
@@ -390,8 +392,7 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             problem: req.body.problem,
             solution: req.body.solution,
             searchVisible: req.body.searchVisible,
-            watermark: req.body.watermark,
-            country: req.body.country
+            watermark: req.body.watermark
         },
         {
             new: true,
@@ -421,8 +422,7 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             showNo: req.body.showNo,
             theme: req.body.theme,
             searchVisible: req.body.searchVisible,
-            watermark: req.body.watermark,
-            country: req.body.country
+            watermark: req.body.watermark
         },
         {
             new: true,

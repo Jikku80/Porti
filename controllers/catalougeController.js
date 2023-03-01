@@ -346,7 +346,6 @@ exports.createCompany = catchAsync(async (req, res, next) => {
         email: req.body.email,
         social: req.body.social,
         locationLink: req.body.locationLink,
-        country: req.body.country,
         slogan: req.body.slogan,
         contact: req.body.contact,
         Address: req.body.Address,

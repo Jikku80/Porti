@@ -127,7 +127,6 @@ exports.createRestaurant = catchAsync(async (req, res, next) => {
         name: req.body.name,
         user: req.user.id,
         slogan: req.body.slogan,
-        country: req.body.country,
         Address: req.body.address,
         theme: req.body.theme,
         phn_no: req.body.phn_no,

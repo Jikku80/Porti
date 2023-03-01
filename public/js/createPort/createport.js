@@ -13,9 +13,11 @@ layoutOneForm.innerHTML = createPortiForm("Create Portfolio", "cancel__create", 
 document.body.appendChild(layoutOneForm);
 let crForm = document.querySelector('.createForm');
 crForm.classList.add("hidden");
+let tmid = document.querySelector(".uniquetmid")
 
 layout1.forEach(item => {
     item.addEventListener("click", () => {
+        tmid.innerText = "";
         location.hash = "#portNav";
         footer__first.classList.add("hidden");
         portBod.classList.add("hidden");
@@ -23,163 +25,168 @@ layout1.forEach(item => {
         menuSec.classList.add("hidden");
         catSec.classList.add("hidden");
         crForm.classList.remove("hidden");
-        let yourname = document.querySelector("#yourname");
-        let role = document.querySelector("#role");
-        let aboutyou = document.querySelector("#aboutyou");
-        let what = document.getElementById("what");
-        let why = document.getElementById("why");
-        let yourno = document.getElementById("yourno");
-        let showNo = document.getElementById("yourCheck");
-        let youremail = document.getElementById("youremail");
-        let fb = document.getElementById("yourFb");
-        let loction = document.getElementById("yourLoc");
-        let yourwork = document.getElementById("yourwork");
-        let prob = document.getElementById("yourProb");
-        let soln = document.getElementById("yourSoln");
-        let fail = document.getElementById("yourFail");
-        let moti = document.getElementById("yourMoti");
-        let msg = document.getElementById("yourMsg");
-        let submit = document.getElementById("form__btn");
-        let theme = item.id;
-
-        submit.addEventListener("click", async (e) => {
-            if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
-                return false;
-            }
-            if (youremail.value < 1 || youremail.value == "" || youremail.value == null) {
-                return false;
-            }
-            e.preventDefault();
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden")
-            const endpoint = '/api/v1/portfolio/makePorti'
-            try {
-                await fetch((endpoint), {
-                    method: 'POST',
-                    headers: {
-                        Accept: "application/json, text/plain, */*",
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: yourname.value,
-                        role: role.value,
-                        about: aboutyou.value,
-                        what: what.value,
-                        why: why.value,
-                        phn_no: yourno.value,
-                        showNo: showNo.checked,
-                        theme: theme,
-                        email: youremail.value,
-                        fb: fb.value,
-                        location: loction.value,
-                        previous: yourwork.value,
-                        problem: prob.value,
-                        solution: soln.value,
-                        failure: fail.value,
-                        motivation: moti.value,
-                        msg: msg.value,
-                        createdAt: Date.now()
-                    })
-                }).then((response) => {
-                    load.classList.add("hidden");
-                    if (response.status === 201) {
-                        successAlert("Your Portfolio has been created :)");
-                        window.setTimeout(() => {
-                            location.assign(`/myportfolio/${id1}`);
-                        }, 400);
-                    } else {
-                        errorAlert("Email Address or Phone Number is not correct!!!")
-                        console.log(response);
-                    }
-                })
-            }
-            catch (err) {
-                console.log(err);
-                errorAlert('Sorry! Something went wrong', err);
-            };
-        })
-        let skipandcreate = document.getElementById("skipandcreate");
-
-        skipandcreate.addEventListener("click", async (e) => {
-            e.preventDefault();
-            let load = document.querySelector('.loader');
-            load.classList.remove("hidden");
-            let curname = document.getElementById("curlogusr").innerText;
-            let curemail = document.getElementById("curusremail").innerText;
-            let yorname = document.querySelector("#yourname").value;
-            let yoremail = document.getElementById("youremail").value;
-            let yorrole = document.querySelector("#role").value;
-
-            const endpoint = '/api/v1/portfolio/makePorti'
-            let yname;
-            let yrole;
-            let yemail;
-            if (yorname !== "") {
-                yname = yorname;
-            }
-            else {
-                yname = curname;
-            }
-            if (yorrole !== "") {
-                yrole = yorrole;
-            } else {
-                yrole = "Human";
-            }
-            if (yoremail !== "") {
-                yemail = yoremail;
-            }
-            else {
-                yemail = curemail;
-            }
-
-            try {
-                await fetch((endpoint), {
-                    method: 'POST',
-                    headers: {
-                        Accept: "application/json, text/plain, */*",
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: yname,
-                        role: yrole,
-                        about: aboutyou.value,
-                        what: what.value,
-                        why: why.value,
-                        phn_no: yourno.value,
-                        showNo: showNo.checked,
-                        theme: theme,
-                        email: yemail,
-                        fb: fb.value,
-                        location: loction.value,
-                        previous: yourwork.value,
-                        problem: prob.value,
-                        solution: soln.value,
-                        failure: fail.value,
-                        motivation: moti.value,
-                        msg: msg.value,
-                        createdAt: Date.now()
-                    })
-                }).then((response) => {
-                    load.classList.add("hidden");
-                    if (response.status === 201) {
-                        successAlert("Your Portfolio has been created :)");
-                        window.setTimeout(() => {
-                            location.assign(`/myportfolio/${id1}`);
-                        }, 400);
-                    } else {
-                        errorAlert("Email Address or Phone Number is not correct!!!")
-                        console.log(response);
-                    }
-                })
-            }
-            catch (err) {
-                console.log(err);
-                errorAlert('Sorry! Something went wrong', err);
-            };
-        })
-    })
-
+        let themeid = item.id;
+        tmid.innerText = themeid;
+    });
 });
+
+(function () {
+    let yourname = document.querySelector("#yourname");
+    let role = document.querySelector("#role");
+    let aboutyou = document.querySelector("#aboutyou");
+    let what = document.getElementById("what");
+    let why = document.getElementById("why");
+    let yourno = document.getElementById("yourno");
+    let showNo = document.getElementById("yourCheck");
+    let youremail = document.getElementById("youremail");
+    let fb = document.getElementById("yourFb");
+    let loction = document.getElementById("yourLoc");
+    let yourwork = document.getElementById("yourwork");
+    let prob = document.getElementById("yourProb");
+    let soln = document.getElementById("yourSoln");
+    let fail = document.getElementById("yourFail");
+    let moti = document.getElementById("yourMoti");
+    let msg = document.getElementById("yourMsg");
+    let submit = document.getElementById("form__btn");
+
+    submit.addEventListener("click", async (e) => {
+        let theme = tmid.innerText;
+        if (yourname.value < 1 || yourname.value == "" || yourname.value == null) {
+            return false;
+        }
+        if (youremail.value < 1 || youremail.value == "" || youremail.value == null) {
+            return false;
+        }
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        const endpoint = '/api/v1/portfolio/makePorti'
+        try {
+            await fetch((endpoint), {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: yourname.value,
+                    role: role.value,
+                    about: aboutyou.value,
+                    what: what.value,
+                    why: why.value,
+                    phn_no: yourno.value,
+                    showNo: showNo.checked,
+                    theme: theme,
+                    email: youremail.value,
+                    fb: fb.value,
+                    location: loction.value,
+                    previous: yourwork.value,
+                    problem: prob.value,
+                    solution: soln.value,
+                    failure: fail.value,
+                    motivation: moti.value,
+                    msg: msg.value,
+                    createdAt: Date.now()
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Your Portfolio has been created :)");
+                    window.setTimeout(() => {
+                        location.assign(`/myportfolio/${id1}`);
+                    }, 400);
+                } else {
+                    errorAlert("Email Address or Phone Number is not correct!!!")
+                    console.log(response);
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+    let skipandcreate = document.getElementById("skipandcreateportfolio");
+
+    skipandcreate.addEventListener("click", async (e) => {
+        let theme = tmid.innerText;
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+        let curname = document.getElementById("curlogusr").innerText;
+        let curemail = document.getElementById("curusremail").innerText;
+        let yorname = document.querySelector("#yourname").value;
+        let yoremail = document.getElementById("youremail").value;
+        let yorrole = document.querySelector("#role").value;
+
+        const endpoint = '/api/v1/portfolio/makePorti'
+        let yname;
+        let yrole;
+        let yemail;
+        if (yorname !== "") {
+            yname = yorname;
+        }
+        else {
+            yname = curname;
+        }
+        if (yorrole !== "") {
+            yrole = yorrole;
+        } else {
+            yrole = "Human";
+        }
+        if (yoremail !== "") {
+            yemail = yoremail;
+        }
+        else {
+            yemail = curemail;
+        }
+
+        try {
+            await fetch((endpoint), {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: yname,
+                    role: yrole,
+                    about: aboutyou.value,
+                    what: what.value,
+                    why: why.value,
+                    phn_no: yourno.value,
+                    showNo: showNo.checked,
+                    theme: theme,
+                    email: yemail,
+                    fb: fb.value,
+                    location: loction.value,
+                    previous: yourwork.value,
+                    problem: prob.value,
+                    solution: soln.value,
+                    failure: fail.value,
+                    motivation: moti.value,
+                    msg: msg.value,
+                    createdAt: Date.now()
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Your Portfolio has been created :)");
+                    window.setTimeout(() => {
+                        location.assign(`/myportfolio/${id1}`);
+                    }, 400);
+                } else {
+                    errorAlert("Email Address or Phone Number is not correct!!!")
+                    console.log(response);
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
 
 let cancelCreate = document.querySelector(".cancel__create");
 cancelCreate.addEventListener("click", () => {

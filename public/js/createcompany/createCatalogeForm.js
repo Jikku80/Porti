@@ -1,4 +1,4 @@
-function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8, val9) {
+function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val9) {
     return `
     <form class="comp__form">
         <div class="form__head">
@@ -16,10 +16,6 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8, val
         <div class="form__cont">
             <label class="form__label">Company Web or Social media Link (optional):</label>
             <input id=${val2} class="form__input" placeholder="www.acebook.com/comp" required />
-        </div>
-        <div class="form__cont">
-            <label class="form__label">Company Country:</label>
-            <input id=${val8} class="form__input" placeholder="Spain" required />
         </div>
         <div class="form__cont">
             <label class="form__label">Company Type:</label>
@@ -41,6 +37,7 @@ function createCataloge(val, val1, val2, val3, val4, val5, val6, val7, val8, val
             <label class="form__label">Company Slogan (optional) : </label>
             <input id=${val6} class="form__input" placeholder="11:00 AM is not late" required />
         </div>
+        <p class="catalogtmid hidden"></p>
         <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>
         <button id="skipandcreatecatalog" class="whitebtn wite">Skip & Create</button>

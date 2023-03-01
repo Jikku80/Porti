@@ -35,6 +35,7 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
             <label class="form__label">Phone Number: </label>
             <input id=${val6} class="form__input" placeholder="999999998" required />
         </div>
+        <p class="uniqueinviid hidden"></p>
         <div class="form__btn">
             <button id=${val7} class="redbtn">Create</button>
             <button id="skipandcreateinvi" class="whitebtn wite">Skip & Create</button>

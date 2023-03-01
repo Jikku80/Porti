@@ -47,7 +47,7 @@
                     input#upSearchVisible.checkbox(type="checkbox")
             .form__bod 
                 label.form__label Change Theme 
-                select#themes
+                select#themes.selectsec
                     option.opt(hidden selected)= portfolio.theme 
                     each item in theme 
                         if (item.themeType === 'Free' || item.validUser.includes(user.id))
@@ -61,9 +61,6 @@
             .form__bod
                 label.form__label Address: 
                 input#upLoc.form__input(type="text" value=`${portfolio.location}`)
-            .form__bod
-                label.form__label Country: 
-                input#upcount.form__input(type="text" value=`${portfolio.country}`)
             .form__bod
                 label.form__label Detail:
                 textarea#upwork.form__input(rows="5" cols="50" name="previous" required)= portfolio.previous

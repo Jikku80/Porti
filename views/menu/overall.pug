@@ -150,7 +150,7 @@ block content
                             label Checking the box will update order form so people can add their personal details
                         .form__bod 
                             label.form__label Change Theme (optional):
-                            select#menuThemes
+                            select#menuThemes.selectsec
                                 option.opt(hidden selected)= restro[0].theme 
                                 each item in theme 
                                     if (item.themeType === 'Free' || item.validMenuUser.includes(user.id))

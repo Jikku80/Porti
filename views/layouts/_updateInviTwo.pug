@@ -25,7 +25,7 @@
                 input#upinphn_no2.form__input(name="why" value= `${invite.phn_no}` required)
             .form__bod 
                 label.form__label Change Theme 
-                select#upinTheme2
+                select#upinTheme2.selectsec
                     option.opt(hidden selected)= `${invite.theme}` 
                     each item in theme 
                         if (item.themeType === 'Free' || item.validInviUser.includes(user.id))

@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'porti'
     },
+    country: {
+        type: String
+    },
     role: {
         type: String,
         enum: ['user', 'staff', 'admin'],

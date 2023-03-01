@@ -967,6 +967,14 @@ img {
     width: fit-content;
 }
 
+.selectsec{
+    background-color: crimson;
+    border-color: crimson;
+    color:white;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;
