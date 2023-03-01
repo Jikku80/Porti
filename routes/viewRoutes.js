@@ -15,6 +15,7 @@ const router = express.Router();
 router.get('/account/logout', authController.logout);
 router.patch('/passwordreset/:tokenId', authController.resetPassword);
 router.get('/vporti/sitemap.xml', viewsController.sitemap);
+router.get('/vporti/robot.txt', viewsController.robotxt);
 
 router.use(authController.isLoggedIn);
 router.get('/:username', viewsController.layoutTally);

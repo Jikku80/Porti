@@ -87,6 +87,56 @@ menuLayouts.forEach(item => {
             };
         })
 
+        let skipandcreate = document.getElementById("skipandcreate");
+
+        skipandcreate.addEventListener("click", async (e) => {
+            e.preventDefault();
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            let yoname = document.querySelector("#curlogusr").innerText;
+            let yname;
+            if (name.value !== "") {
+                yname = name.value;
+            }
+            else {
+                yname = yoname;
+            }
+            const endpoint = `/api/v1/menu/createRestaurant`
+            try {
+                await fetch((endpoint), {
+                    method: 'POST',
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: yname,
+                        address: address.value,
+                        slogan: slogan.value,
+                        phn_no: no.value,
+                        theme: theme,
+                        country: country.value,
+                        resType: resType.value
+                    })
+                }).then((response) => {
+                    load.classList.add("hidden");
+                    if (response.status === 201) {
+                        successAlert("Your Food Hub has been created :)");
+                        window.setTimeout(() => {
+                            location.assign(`/menu/${userRestroid}/additemstomenu`);
+                        }, 400);
+                    } else {
+                        console.log(response)
+                        errorAlert("Duplication Input error!!")
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
+        })
+
     })
 });
 

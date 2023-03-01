@@ -14,7 +14,6 @@ const companySchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, 'Please provide your email address!'],
-        unique: true,
         lowercase: true,
         validate: [validator.isEmail, 'please provide a valid email address!']
     },

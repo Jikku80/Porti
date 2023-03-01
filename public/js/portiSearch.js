@@ -655,7 +655,6 @@ async function searchPost(value) {
 async function getAllSearch() {
     let curUser = document.querySelector(".curloguser").innerText;
     let searchCont = document.querySelector(".search__history__bod");
-    searchCont.innerHTML = "";
     try {
         const endpoint = `/api/v1/search/getAllSearch/${curUser}`
         let myHeaders = new Headers();
@@ -667,6 +666,7 @@ async function getAllSearch() {
         }).then((response) => {
             if (response.status === 200) {
                 let res = response.json();
+                searchCont.innerHTML = "";
                 res.then(data => {
                     let item = data.searches
                     item.forEach(el => {
@@ -717,6 +717,7 @@ async function deleteSearch(value) {
             })
         }).then((response) => {
             if (response.status === 200) {
+                successAlert("search removed")
                 getAllSearch();
                 return;
             } else {

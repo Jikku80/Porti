@@ -10,7 +10,6 @@ const portfolioSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, 'Please provide your email address!'],
-        unique: true,
         lowercase: true,
         validate: [validator.isEmail, 'please provide a valid email address!']
     },
@@ -34,6 +33,10 @@ const portfolioSchema = new mongoose.Schema({
         type: String
     },
     location: {
+        type: String,
+        trim: true
+    },
+    country: {
         type: String,
         trim: true
     },

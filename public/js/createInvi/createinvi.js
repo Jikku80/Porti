@@ -114,7 +114,61 @@ inviLayouts.forEach(item => {
                 errorAlert('Sorry! Something went wrong', err);
             };
         })
-
+        let skipandcreateinvi = document.getElementById("skipandcreateinvi");
+        skipandcreateinvi.addEventListener("click", async (e) => {
+            e.preventDefault();
+            let yoname = document.getElementById("curlogusr").innerText;
+            let yname;
+            let ysecname;
+            if (secname.value !== "") {
+                ysecname = secname.value
+            } else {
+                ysecname = yoname;
+            }
+            if (yourname.value !== "") {
+                yname = yourname.value
+            } else {
+                yname = "Party"
+            }
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = '/api/v1/invite/makeInvi'
+            try {
+                await fetch((endpoint), {
+                    method: 'POST',
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fname: yname,
+                        sname: ysecname,
+                        about: aboutyou.value,
+                        address: what.value,
+                        phn_no: yourno.value,
+                        pdate: why.value,
+                        theme: theme,
+                        ptime: yourwork.value,
+                        createdAt: Date.now()
+                    })
+                }).then((response) => {
+                    load.classList.add("hidden");
+                    if (response.status === 201) {
+                        successAlert("Your Invitation has been created :)");
+                        window.setTimeout(() => {
+                            location.assign(`/invitations/${inid1}`);
+                        }, 400);
+                    } else {
+                        console.log(response)
+                        errorAlert("Duplication Input error!!")
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
+        })
     })
 });
 

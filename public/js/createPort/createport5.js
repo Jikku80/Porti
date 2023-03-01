@@ -60,10 +60,11 @@ formLayoutFive.innerHTML = `
     <p>You can Upload Upto 20 Images At Once</p>
     <div class="form__cont small__form">
         <label class="form__label">Upload Images</label>
-        <input type="file" class="form__input" id="fifthimg1" name="uploadimages" multiple accept="image/*" required/>
+        <input type="file" class="form__input" id="fifthimg1" name="uploadimages" multiple accept="image/*"/>
     </div>
     <div class="form__btn">
     <button id="fifthformbtn" class="redbtn">Create</button>
+    <button id="skipandcreateport" class="whitebtn wite">Skip & Create</button>
     </div>
 
 </form>
@@ -93,4 +94,86 @@ clFiveCreate.addEventListener("click", () => {
     window.setTimeout(() => {
         location.hash = "#crtPort";
     }, 200)
+})
+
+let skipandcreate = document.getElementById("skipandcreateport");
+
+skipandcreate.addEventListener("click", async (e) => {
+    let aboutyou = document.querySelector("#fifthabout");
+    let what = document.getElementById("fifthwhat");
+    let why = document.getElementById("fifthwhy");
+    let yourno = document.getElementById("fifthno");
+    let showNo = document.getElementById("fifthCheck");
+    let fb = document.getElementById("fifthFb");
+    let loction = document.getElementById("fifthLoc");
+    let theme = document.getElementById("fifthtm").value;
+    e.preventDefault();
+    let load = document.querySelector('.loader');
+    load.classList.remove("hidden");
+    let curname = document.getElementById("curlogusr").innerText;
+    let curemail = document.getElementById("curusremail").innerText;
+    let yorname = document.querySelector("#fifthname").value;
+    let yoremail = document.getElementById("fifthemail").value;
+    let yorrole = document.querySelector("#fifthrole").value;
+
+    const endpoint = '/api/v1/portfolio/makePorti'
+    let yname;
+    let yrole;
+    let yemail;
+    if (yorname !== "") {
+        yname = yorname;
+    }
+    else {
+        yname = curname;
+    }
+    if (yorrole !== "") {
+        yrole = yorrole;
+    } else {
+        yrole = "Human";
+    }
+    if (yoremail !== "") {
+        yemail = yoremail;
+    }
+    else {
+        yemail = curemail;
+    }
+
+    try {
+        await fetch((endpoint), {
+            method: 'POST',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: yname,
+                role: yrole,
+                about: aboutyou.value,
+                what: what.value,
+                why: why.value,
+                phn_no: yourno.value,
+                showNo: showNo.checked,
+                theme: theme,
+                email: yemail,
+                fb: fb.value,
+                location: loction.value,
+                createdAt: Date.now()
+            })
+        }).then((response) => {
+            load.classList.add("hidden");
+            if (response.status === 201) {
+                successAlert("Your Portfolio has been created :)");
+                window.setTimeout(() => {
+                    location.assign(`/myportfolio/${id1}`);
+                }, 400);
+            } else {
+                errorAlert("Email Address or Phone Number is not correct!!!")
+                console.log(response);
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
 })

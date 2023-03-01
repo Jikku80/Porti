@@ -390,7 +390,8 @@ exports.updatePortData = catchAsync(async (req, res, next) => {
             problem: req.body.problem,
             solution: req.body.solution,
             searchVisible: req.body.searchVisible,
-            watermark: req.body.watermark
+            watermark: req.body.watermark,
+            country: req.body.country
         },
         {
             new: true,
@@ -420,7 +421,8 @@ exports.updatePortDataSec = catchAsync(async (req, res, next) => {
             showNo: req.body.showNo,
             theme: req.body.theme,
             searchVisible: req.body.searchVisible,
-            watermark: req.body.watermark
+            watermark: req.body.watermark,
+            country: req.body.country
         },
         {
             new: true,
@@ -910,4 +912,18 @@ exports.sitemap = catchAsync(async (req, res) => {
     ]
     res.set('Content-Type', 'text/xml')
     res.send(xml_content.join('\n'))
+})
+
+exports.robotxt = catchAsync(async (req, res) => {
+
+    let robo_content = [
+        'User-agent: *',
+        'Allow: /public/',
+        'Disallow: /',
+        'Crawl-delay: 20',
+        'Visit-time: 0200-0300',
+        'Sitemap: https://www.vporti.com/vporti/sitemap.xml'
+    ]
+    res.type('text/plain')
+    res.send(robo_content.join('\n'))
 })

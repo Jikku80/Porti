@@ -38,6 +38,66 @@ catalogeLayouts.forEach(item => {
         let compType = document.getElementById("catalogetype");
         let theme = item.id;
 
+        let skipandcreate = document.getElementById("skipandcreatecatalog");
+
+        skipandcreate.addEventListener("click", async (e) => {
+            e.preventDefault();
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden");
+            let yoname = document.getElementById("curlogusr").innerText;
+            let yoemail = document.getElementById("curusremail").innerText;
+            let yname;
+            let yemail;
+            if (name.value !== "") {
+                yname = name.value
+            } else {
+                yname = yoname;
+            }
+            if (email.value !== "") {
+                yemail = email.value
+            } else {
+                yemail = yoemail;
+            }
+
+            const endpoint = `/api/v1/catalouge/createCompany`
+            try {
+                await fetch((endpoint), {
+                    method: 'POST',
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: yname,
+                        email: yemail,
+                        social: social.value,
+                        locationLink: add_link.value,
+                        slogan: slogan.value,
+                        contact: phn_no.value,
+                        theme: theme,
+                        Address: address.value,
+                        country: country.value,
+                        compType: compType.value
+                    })
+                }).then((response) => {
+                    load.classList.add("hidden");
+                    if (response.status === 201) {
+                        successAlert("Your Enterprise has been created :)");
+                        window.setTimeout(() => {
+                            location.assign(`/catalouge/${catalogeid1}/additems`);
+                        }, 400);
+                    } else {
+                        console.log(response)
+                        errorAlert("Duplication Input error!!")
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
+        })
+
         submit.addEventListener("click", async (e) => {
             if (name.value < 1 || name.value == "" || name.value == null) {
                 return false;
@@ -98,7 +158,6 @@ catalogeLayouts.forEach(item => {
                 errorAlert('Sorry! Something went wrong', err);
             };
         })
-
     })
 });
 

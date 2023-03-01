@@ -90,6 +90,7 @@ let id = document.getElementById('endpoint').innerText;
 let themes = document.getElementById("themes");
 let searchVisi = document.getElementById("upSearchVisible");
 let watermark = document.getElementById("upwatermark");
+let country = document.getElementById("upcount");
 
 updBtn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -124,7 +125,8 @@ updBtn.addEventListener("click", async (e) => {
                 problem: hd4.value,
                 solution: hd5.value,
                 searchVisible: searchVisi.checked,
-                watermark: watermark.checked
+                watermark: watermark.checked,
+                country: country.value
             })
         }).then((response) => {
             load.classList.add("hidden");

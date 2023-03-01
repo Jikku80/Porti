@@ -43,6 +43,7 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val8, val
         </div>
         <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>
+        <button id="skipandcreatebro" class="whitebtn wite">Skip & Create</button>
         </div>
     </form>
 `

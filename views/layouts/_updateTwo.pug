@@ -49,6 +49,9 @@
             .form__bod
                 label.form__label Address: 
                 input#upLocSec.form__input(type="text" value=`${portfolio.location}`)
+            .form__bod
+                label.form__label Country: 
+                input#upcount.form__input(type="text" value=`${portfolio.country}`)
             .form__bod 
                 label.form__label Protect Picture (Add watermark) : 
                 if (portfolio.watermark === true)

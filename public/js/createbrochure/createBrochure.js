@@ -90,7 +90,63 @@ brochureLayouts.forEach(item => {
                 errorAlert('Sorry! Something went wrong', err);
             };
         })
-
+        let skipandcreate = document.getElementById("skipandcreatebro");
+        skipandcreate.addEventListener("click", async (e) => {
+            e.preventDefault();
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden");
+            let yoname = document.getElementById("curlogusr").innerText;
+            let yoemail = document.getElementById("curusremail").innerText;
+            let yname;
+            let yemail;
+            if (name.value !== "") {
+                yname = name.value
+            } else {
+                yname = yoname;
+            }
+            if (email.value !== "") {
+                yemail = email.value
+            } else {
+                yemail = yoemail;
+            }
+            const endpoint = `/api/v1/brochure/createOrganization`
+            try {
+                await fetch((endpoint), {
+                    method: 'POST',
+                    headers: {
+                        Accept: "application/json, text/plain, */*",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: yname,
+                        email: yemail,
+                        social: social.value,
+                        locationLink: add_link.value,
+                        slogan: slogan.value,
+                        contact: phn_no.value,
+                        theme: theme,
+                        Address: address.value,
+                        country: country.value,
+                        orgType: orgType.value
+                    })
+                }).then((response) => {
+                    load.classList.add("hidden");
+                    if (response.status === 201) {
+                        successAlert("Your Organization has been created :)");
+                        window.setTimeout(() => {
+                            location.assign(`/brochure/${brochureuserid}/additems`);
+                        }, 400);
+                    } else {
+                        console.log(response)
+                        errorAlert("Duplication Input error!!")
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
+        })
     })
 });
 

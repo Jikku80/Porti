@@ -31,6 +31,7 @@ function createRestro(val, val1, val2, val3, val4, val5, val6) {
         </div>
         <div class="form__btn">
         <button id=${val4} class="redbtn">Create</button>
+        <button id="skipandcreate" class="whitebtn wite">Skip & Create</button>
         </div>
     </form>
 `
