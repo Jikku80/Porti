@@ -461,6 +461,13 @@ input{
     text-shadow: 1px 1px 1px black;
 }
 
+.contact__sec__catal__sec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .resorderfill{
         top: 1vh;
@@ -521,6 +528,13 @@ input{
     .cart__card__img{
         width: 18vw;
         height: 10vh;
+    }
+
+    .contact__sec__catal__sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 }

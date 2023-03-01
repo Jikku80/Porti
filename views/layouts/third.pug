@@ -191,7 +191,7 @@ block content
                         .cont__box.contact__sec__box
                             p= `Phone: ${portfolio.phn_no}` 
                     .cont__box.contact__sec__box
-                        p= `Email: ${portfolio.email}`
+                        a(href=`mailto:${portfolio.email}`).mail= `Email: ${portfolio.email}`
                     if (portfolio.fb != "")
                         .cont
                             a(href=`${portfolio.fb}`)

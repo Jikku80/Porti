@@ -508,7 +508,10 @@ prev.addEventListener("click", async () => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
-                    successAlert("Restro Details Updated Successfully :)");
+                    successAlert("Food Hub Details Updated Successfully :)");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 300)
                 } else {
                     console.log(response);
                     errorAlert("Invalid input, Duplication Input error!!!")
@@ -964,8 +967,19 @@ async function orderCanceled(val, usr, route) {
     let delBtn = document.getElementById("deleteCompany");
     let id = document.querySelector(".delrestroid").innerText;
     let user = document.querySelector(".delmenuid").innerText;
+    let delpop = document.querySelector(".close__confirm");
+    let confirmdel = document.querySelector(".confirmclose");
+    let canceldel = document.querySelector(".cancelclose");
 
-    delBtn.addEventListener("click", async () => {
+    canceldel.addEventListener("click", () => {
+        delpop.classList.add("hidden");
+    })
+
+    delBtn.addEventListener("click", () => {
+        delpop.classList.remove("hidden");
+    })
+
+    confirmdel.addEventListener("click", async () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
@@ -982,7 +996,7 @@ async function orderCanceled(val, usr, route) {
                 load.classList.add("hidden");
                 console.log(response);
                 if (response.status === 200) {
-                    successAlert("Your Restaurant Has been Deleted :(");
+                    successAlert("Your Food Hub Has been Deleted :(");
                     window.setTimeout(() => {
                         location.assign(`/layouts/porti`);
                     }, 300)

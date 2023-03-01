@@ -77,7 +77,7 @@ block content
                         .itemform__head 
                             h3.form__label.scaps Add Items To Menu
                             h3
-                                a.scaps(href="#upRestro") Update Restaurant
+                                a.scaps(href="#upRestro") Update Food Hub
                         form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
                             .form__bod
                                 label.form__label Food Name:
@@ -124,10 +124,10 @@ block content
                                 button.next.hidden Next
                     
                     .itemform__head 
-                        h3.form__label.scaps Update Restaurant Detail
+                        h3.form__label.scaps Update Food Hub Detail
                     form#upRestro.upItem
                         .form__bod
-                            label.form__label Restaurant Name:
+                            label.form__label Food Hub Name:
                             input#resname.form__input(type="text" required value=restro[0].name)
                         .form__bod
                             label.form__label Address: 
@@ -160,10 +160,10 @@ block content
                             p.restro__id.hidden= restro[0]._id
                         else 
                             p.restro__id.hidden
-                        button#updateResBtn.blackbtn Update Restaurant
+                        button#updateResBtn.blackbtn Update Food Hub
                     form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem
                         .form__bod.file_part
-                        label.form__label(for="upcoverimage").scaps Update Restaurant Cover Image
+                        label.form__label(for="upcoverimage").scaps Update Food Hub Cover Image
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
                         button.blackbtn Update Cover Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
@@ -239,11 +239,17 @@ block content
                                     textarea#policiesValue.big__input(type="text" placeholder="Enter Your Privacy Policies")
                                 #updatePolicies.blackbtn Update 
                 .delete__sec 
-                    h2.scaps Delete Restaurant 
+                    h2.scaps Delete Food Hub 
                     p.scaps It will delete Everything including all the Menu items
                     .delrestroid.hidden= restro[0]._id
                     .delmenuid.hidden= restro[0].user._id
                     btn#deleteCompany.blackbtn Delete
+                .close__confirm.hidden  
+                    h1.txtcnt Are you sure you want to Delete your Food Hub?
+                    h2.txtcnt Everything will be lost!!!
+                    .close__btn__grp 
+                        .confirmclose Confirm 
+                        .cancelclose Cancel
                 include ../_footer
     else 
         .confirm__pg

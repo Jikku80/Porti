@@ -176,7 +176,7 @@ block content
                             .form__bod 
                                 label.form__label.scaps Banner Information 
                                 if (!banner[0])
-                                    textarea.form__input#catalogbannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
+                                    textarea.form__input#catalogbannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount In Our Package")
                                 else 
                                     textarea.form__input#catalogbannerInfo(type="text" placeholder="You Can only have one Banner at a time" disabled)
                                 label.form__label Discount Percentage(optional)
@@ -237,6 +237,12 @@ block content
                     .delcompid.hidden= organization._id
                     .delcatalid.hidden= organization.user._id
                     btn#deleteOrganization.blackbtn Delete
+                .close__confirm.hidden  
+                    h1.txtcnt Are you sure you want to Delete your Organization?
+                    h2.txtcnt Everything will be lost!!!
+                    .close__btn__grp 
+                        .confirmclose Confirm 
+                        .cancelclose Cancel
             .to__left
                 include ../_footer
     else 

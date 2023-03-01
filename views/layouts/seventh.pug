@@ -192,7 +192,7 @@ block content
                     if (portfolio.showNo === true && portfolio.phn_no !== "")
                         p.mkbold.headFont &#128222; : 
                             span= portfolio.phn_no 
-                    p.mkbold.headFont &#128231; : 
+                    a(href=`mailto:${portfolio.email}`).mail.mkbold.headFont &#128231; : 
                         span= portfolio.email
                     if (portfolio.location)
                         p.mkbold.headFont &#127968; : 

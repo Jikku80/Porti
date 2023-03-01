@@ -189,7 +189,7 @@ block content
                     .cont__box.fourth__cont
                         p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.fourth__cont
-                    p= `Email: ${portfolio.email}`
+                    a(href=`mailto:${portfolio.email}`).mail= `Email: ${portfolio.email}`
                 if (portfolio.fb != "")
                     .cont
                         a(href=`${portfolio.fb}`)

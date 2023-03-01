@@ -132,6 +132,9 @@
     let sevbod = document.querySelector(".eighth__bod__section");
     let namefont = document.querySelector(".namefont");
     let about = document.querySelector(".eighth__about__bod");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     namefont.style.color = headColor;
 

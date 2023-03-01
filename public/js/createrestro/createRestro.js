@@ -71,7 +71,7 @@ menuLayouts.forEach(item => {
                 }).then((response) => {
                     load.classList.add("hidden");
                     if (response.status === 201) {
-                        successAlert("Your Restaurante has been created :)");
+                        successAlert("Your Food Hub has been created :)");
                         window.setTimeout(() => {
                             location.assign(`/menu/${userRestroid}/additemstomenu`);
                         }, 400);

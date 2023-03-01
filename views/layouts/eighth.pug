@@ -162,7 +162,7 @@ block content
                 .eighth__contact
                     if (portfolio.showNo === true && portfolio.phn_no !== "")
                         p.headFont= `Phone: ${portfolio.phn_no}` 
-                    p.headFont= `Email: ${portfolio.email}`
+                    a(href=`mailto:${portfolio.email}`).mail.headFont= `Email: ${portfolio.email}`
                     if (portfolio.fb != "")
                         a(href=`${portfolio.fb}`)
                             if (portfolio.user.photo)

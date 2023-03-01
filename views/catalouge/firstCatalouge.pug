@@ -157,7 +157,7 @@ block content
                 .footer__mail__bod.footr__bod 
                     if (company.email !== "")
                         h4.comp__cont.cardtxt Email Us At 
-                        p.comp__email.cardtxt= company.email 
+                        a(href=`mailto:${company.email}`).comp__email.cardtxt.comp__loc= company.email 
                     if (company.social !== "")
                         h4.cardtxt OR
                         h4.comp__cont.cardtxt Our Social Link 

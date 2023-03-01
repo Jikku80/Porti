@@ -90,6 +90,9 @@ const observer = new IntersectionObserver(entries => {
     let contbox = document.querySelectorAll(".contact__sec__box");
     let prevBtn = document.querySelector(".firstPrev");
     let nextBtn = document.querySelector(".firstNext");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     mainSec.style.backgroundColor = backColor;
     nav.style.color = focusColor;

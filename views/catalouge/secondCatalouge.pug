@@ -299,7 +299,7 @@ block content
             if (company.social !== "")
                 a.headFont.comp__loc(href=`${company.social}`)= `${company.social}`
             if (company.email !== "")
-                p.headFont= company.email
+                a(href=`mailto:${company.email}`).headFont.comp__loc= company.email
             if (company.serviceTerms)
                 p.sec__terms Terms And Conditions
                 .terms__sec.hidden 

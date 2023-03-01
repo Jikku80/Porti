@@ -71,6 +71,9 @@
     let contbox = document.querySelectorAll(".fourth__cont");
     let prevBtn = document.querySelector(".firstPrev");
     let nextBtn = document.querySelector(".firstNext");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     nav.style.color = focusColor;
     previous.style.backgroundColor = backColor;

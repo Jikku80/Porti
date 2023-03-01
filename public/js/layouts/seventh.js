@@ -123,6 +123,9 @@ window.addEventListener("load", async () => {
     let backColor = "white";
     let fontFam = "Arial, Helvetica, sans-serif";
     let id = document.getElementById('seventhid').innerText;
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     defaultBtn.addEventListener("click", async (e) => {
         e.preventDefault();

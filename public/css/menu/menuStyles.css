@@ -1037,7 +1037,41 @@ input::file-selector-button, ::-webkit-file-upload-button{
     font-size: 16px;
     font-variant: small-caps;
 }
+ 
+.close__confirm{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(220, 20, 60, 0.76);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
   
+.close__btn__grp{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+  
+.confirmclose, .cancelclose{
+    border: 1px solid white;
+    color : rgba(220, 20, 60, 0.76);
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 1%;
+    background-color: white;
+    cursor: pointer;
+}
+  
+.confirmclose:hover, .cancelclose:hover{
+    background-color: transparent;
+    color: white;
+}
 
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{

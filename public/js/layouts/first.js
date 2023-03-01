@@ -38,6 +38,9 @@ observer.observe(cont, prv, abt);
     let contbox = document.querySelectorAll(".contbox");
     let prevBtn = document.querySelector(".firstPrev");
     let nextBtn = document.querySelector(".firstNext");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     mainSec.style.backgroundColor = backColor;
     nav.style.backgroundColor = focusColor;

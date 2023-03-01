@@ -215,7 +215,10 @@
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
-                    successAlert("Company Details Updated Successfully :)");
+                    successAlert("Organization Details Updated Successfully :)");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 300)
                 } else {
                     console.log(response);
                     errorAlert("Invalid input, Duplication Input error!!!")
@@ -370,8 +373,19 @@
     let delBtn = document.getElementById("deleteOrganization");
     let id = document.querySelector(".delcompid").innerText;
     let user = document.querySelector(".delcatalid").innerText;
+    let delpop = document.querySelector(".close__confirm");
+    let confirmdel = document.querySelector(".confirmclose");
+    let canceldel = document.querySelector(".cancelclose");
 
-    delBtn.addEventListener("click", async () => {
+    canceldel.addEventListener("click", () => {
+        delpop.classList.add("hidden");
+    })
+
+    delBtn.addEventListener("click", () => {
+        delpop.classList.remove("hidden");
+    })
+
+    confirmdel.addEventListener("click", async () => {
         try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")

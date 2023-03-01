@@ -128,7 +128,7 @@ block content
                         .contbox
                             p= `Phone: ${portfolio.phn_no}`
                     .contbox
-                        p= `Email-id: ${portfolio.email}`
+                        a(href=`mailto:${portfolio.email}`).mail= `Email-id: ${portfolio.email}`
                     if (portfolio.fb != "")
                         .cont
                             a(href=`${portfolio.fb}`)

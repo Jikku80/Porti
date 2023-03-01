@@ -961,6 +961,12 @@ img {
     color: goldenrod;
 }
 
+.mail{
+    text-decoration: none;
+    color: white;
+    width: fit-content;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;

@@ -173,6 +173,7 @@ pre{
     margin: 5vh;
     padding: 2%;
     transition: transform .2s;
+    width: fit-content;
     /* width: 100%; */
 }
 

@@ -14,6 +14,9 @@
     let prevCont = document.querySelector(".main__sixth__prev");
     let sixBox = document.querySelectorAll(".sixth__box");
     let cont = document.querySelectorAll(".ans");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontCol;
     primeHead.forEach(items => {
         items.style.color = headCol;
     })

@@ -16,6 +16,9 @@
     let contBox = document.querySelectorAll(".cont__box");
     let prevBtn = document.querySelector(".prev__addimgSec");
     let nextBtn = document.querySelector(".next__addimgSec");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     mainBod.style.backgroundColor = bgColor;
     mainBod.style.fontFamily = fontFam;

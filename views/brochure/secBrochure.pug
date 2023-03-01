@@ -158,7 +158,8 @@ block content
                 .policies__sec.hidden 
                 .hideprivacypolicies.hidden
         #contact
-            h4= `Email : ${organization.email}`
+            h4
+                a(href=`mailto:${organization.email}`)= `Email : ${organization.email}`
             h4= `Address : ${organization.Address}`
             h4 
                 a(href=`${organization.locationLink}`) Address Link 

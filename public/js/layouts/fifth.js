@@ -12,6 +12,9 @@
     let ans = document.querySelectorAll(".ansFont");
     let contbox = document.querySelectorAll(".fif__box");
     let mainbodsec = document.querySelector(".main__bod__sec");
+    let cusmail = document.querySelector(".mail");
+
+    cusmail.style.color = fontColor;
 
     mainbodsec.style.backgroundColor = headColor;
 
