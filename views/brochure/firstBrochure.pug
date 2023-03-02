@@ -67,6 +67,7 @@ block content
         else 
             .bro__banner__sec.hidden
             .cancelbanner.hidden
+            .bannerinfo.hidden
         audio.bkalert.hidden
             source(src="/noti/msg.mp3")
         .first__bro__nav 
@@ -85,6 +86,8 @@ block content
         #section
         if (banner[0])
             h3.bannerdiscountpercent.hidden= `${banner[0].discountpercent}`
+        else 
+            .bannerdiscountpercent.hidden 
         .paginate.first__paginate 
             button.prev__bro.bropagibtn.hidden Previous
             button.next__bro.bropagibtn.hidden Next
@@ -123,6 +126,7 @@ block content
                 .upItem 
                 .curUserId.hidden
                 .orgid.hidden
+                .form__items.hidden
                 h2 You are not Logged In, Please Log In to Book 
                 #bookBtn.hidden
         h4.brotxt Your Bookings

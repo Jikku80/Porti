@@ -740,7 +740,6 @@ function openimg() {
 
     fullImg.forEach(img => {
         img.addEventListener("click", () => {
-            console.log("click")
             imgsec.classList.remove("hidden");
             imgbod.innerHTML = "";
             imgbod.innerHTML =
