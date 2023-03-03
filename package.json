@@ -4,7 +4,7 @@
   "description": "just a portfolio",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "SET NODE_ENV=production & node server.js",
     "test": "echo \"No test specified\""
   },

@@ -226,11 +226,11 @@ exports.deletePorti = catchAsync(async (req, res, next) => {
         item.filter(el => {
             imgids.push(el.id)
         })
+        imgids.forEach(async (item) => {
+            await PortfolioImage.findByIdAndDelete(item)
+        })
     })
 
-    imgids.forEach(async (item) => {
-        await PortfolioImage.findByIdAndDelete(item)
-    })
 
     const item = await Portfolio.findByIdAndDelete(req.body.id);
 

@@ -919,6 +919,7 @@ exports.robotxt = catchAsync(async (req, res) => {
     let robo_content = [
         'User-agent: *',
         'Allow: /public/',
+        'Allow: /views/',
         'Disallow: /',
         'Crawl-delay: 20',
         'Visit-time: 0200-0300',

@@ -20,7 +20,7 @@ router.post('/portfolioImage', authController.restrictTo('user', 'admin'), portC
 
 router.post('/createCollec', authController.restrictTo('user', 'admin'), portController.createImgColl);
 router.post('/makePorti', authController.restrictTo('user', 'admin'), portController.setUsersId, portController.makePorti);
-router.delete('/:uid/deletePorti', authController.restrictTo('user', 'admin'), portController.deletePorti)
+router.delete('/:id/deletePorti', authController.restrictTo('user', 'admin'), portController.deletePorti)
 router.delete('/:id/deletePortiImage', authController.restrictTo('user', 'admin'), portController.deletePortiImage)
 
 router.patch('/:id/updatePortfolioTheme', authController.restrictTo('user', 'admin'), portController.updatePortfolioTheme);
