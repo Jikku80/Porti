@@ -940,6 +940,6 @@ exports.robotxt = catchAsync(async (req, res) => {
         'Visit-time: 0200-0300',
         'Sitemap: https://www.vporti.com/vporti/sitemap.xml'
     ]
-    res.type('text/plain')
+    res.type('Content-Type', 'text/plain')
     res.send(robo_content.join('\n'))
 })
