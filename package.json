@@ -1,7 +1,7 @@
 {
   "name": "vporti",
   "version": "1.0.0",
-  "description": "vporti webapplication",
+  "description": "Create Virtual Portfolio, Invitation, Food Menu, Catalog, Brochure",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
