@@ -23,25 +23,13 @@ homelogin.addEventListener("mouseout", () => {
     homebod.classList.remove("bg__changer");
 });
 
-// let futbtn = document.querySelector('.futuristic-button');
-// let tp = document.querySelector(".top");
-// let bottom = document.querySelector(".bottom");
-// let parallelogramleft = document.querySelector(".parallelogram-left");
-// let parallelogramright = document.querySelector(".parallelogram-right");
+let gotoport = document.querySelector(".menuPortfolio");
 
-// futbtn.addEventListener("mouseover", (function () {
-//     tp.classList.add('active');
-//     bottom.classList.add('active');
-//     parallelogramleft.classList.add('active');
-//     parallelogramright.classList.add('active');
-// }));
-// futbtn.addEventListener("mouseout", (function () {
-//     tp.classList.remove('active');
-//     bottom.classList.remove('active');
-//     parallelogramleft.classList.remove('active');
-//     parallelogramright.classList.remove('active');
-// }));
-
+gotoport.addEventListener("click", () => {
+    let uid = document.querySelector(".menuPortfolio").id
+    let newid = btoa(uid);
+    location.href = `/myportfolio/${newid}`
+});
 
 (function () {
     let showPorti = document.getElementById("showAboutPorti");

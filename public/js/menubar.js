@@ -18,6 +18,14 @@
     }
 })();
 
+let gotoport = document.querySelector("#menuPortfolio");
+
+gotoport.addEventListener("click", () => {
+    let uid = document.querySelector(".curuserId").innerText
+    let newid = btoa(uid);
+    location.href = `/myportfolio/${newid}`
+});
+
 (function () {
     let layouts = document.getElementById("menuLayouts");
     let search = document.getElementById("portiSearch");

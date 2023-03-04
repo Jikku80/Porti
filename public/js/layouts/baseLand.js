@@ -136,9 +136,8 @@ function downloadportiQRCode(file) {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             subItems.innerHTML = "";
-            let fullpath = location.pathname
-            let resultpath = fullpath.match("/myportfolio/(.*)")
-            const endpoint = `/api/v1/portfolio/${resultpath[1]}/paginate/${pg}`
+            let resultpath = document.querySelector(".urthemeurs").innerText;
+            const endpoint = `/api/v1/portfolio/${resultpath}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');
@@ -203,9 +202,8 @@ function downloadportiQRCode(file) {
             next.classList.remove("hidden");
             subItems.innerHTML = "";
             window.location.hash = "#"
-            let fullpath = location.pathname
-            let resultpath = fullpath.match("/myportfolio/(.*)")
-            const endpoint = `/api/v1/portfolio/${resultpath[1]}/paginate/${pg}`
+            let resultpath = document.querySelector(".urthemeurs").innerText;
+            const endpoint = `/api/v1/portfolio/${resultpath}/paginate/${pg}`
             let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'image/jpeg/png')
             myHeaders.get('Content-Type');

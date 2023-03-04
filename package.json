@@ -1,14 +1,14 @@
 {
-  "name": "portfolio",
+  "name": "vporti",
   "version": "1.0.0",
-  "description": "just a portfolio",
+  "description": "vporti webapplication",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "start:prod": "SET NODE_ENV=production & node server.js",
     "test": "echo \"No test specified\""
   },
-  "author": "TechMafia",
+  "author": "Lakhey De Tech",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.19"

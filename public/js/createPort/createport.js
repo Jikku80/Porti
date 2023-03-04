@@ -172,8 +172,9 @@ layout1.forEach(item => {
                 load.classList.add("hidden");
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
+                    let newid = btoa(id1);
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${id1}`);
+                        location.assign(`/myportfolio/${newid}`);
                     }, 400);
                 } else {
                     errorAlert("Email Address or Phone Number is not correct!!!")

@@ -7,6 +7,7 @@ const Message = require('./../models/messageModel');
 const User = require('./../models/userModel');
 
 const APIFeatures = require('./../utils/apiFeatures')
+const atob = require('./../utils/decode');
 
 const Portfolio = require('./../models/portfolioModel');
 const PortfolioImages = require('./../models/portfolioImageModel');
@@ -121,7 +122,7 @@ const pagination = function (array, page_size, page_number) {
 
 
 exports.myPort = catchAsync(async (req, res) => {
-    const id = req.params.id
+    const id = atob(req.params.id)
     const pg = 1;
     const features = new APIFeatures(PortfolioImage.find({ user: id }), { limit: 20, page: pg }).paginate();
     const portImage = await features.query
@@ -904,13 +905,13 @@ exports.sitemap = catchAsync(async (req, res) => {
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
         '  <url>',
         '    <loc>https://www.vporti.com/</loc>',
-        '    <lastmod>2023-02-28</lastmod>',
+        '    <lastmod>2023-03-4</lastmod>',
         '    <changefreq>daily</changefreq>',
         '    <priority>1</priority>',
         '  </url>',
         '</urlset>'
     ]
-    res.set('Content-Type', 'text/xml')
+    res.set('Content-Type', 'application/xml')
     res.send(xml_content.join('\n'))
 })
 

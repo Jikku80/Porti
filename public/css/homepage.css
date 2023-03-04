@@ -335,6 +335,7 @@
 .bottom__anch{
     color: rgb(207, 207, 207);
     text-decoration: none;   
+    cursor: pointer;
 }
 
 .bottom__nav__inner{
@@ -588,6 +589,10 @@
 }
 
 @media screen and (max-width: 600px) {
+    .fkAncky{
+        display: none;
+    }
+
     input, select, textarea{
         font-size: 16px !important;
     }
