@@ -352,17 +352,15 @@ sendMsg.addEventListener("click", async (e) => {
     let whiteSpace = document.querySelector(".white__space");
     let specialCharac = document.querySelector(".unallowed__charc");
     let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
-    // sameE.classList.add("hidden");
-    // same.classList.add("hidden");
-    // whiteSpace.classList.add("hidden");
-    // specialCharac.classList.add("hidden");
+    let usrvalid = document.querySelector(".validinfo");
+    let emailvalid = document.querySelector(".validemail");
 
     startbtn.addEventListener("click", () => {
         signupform.classList.remove("hidden");
     })
 
 
-    toemail.addEventListener("click", () => {
+    toemail.addEventListener("click", async () => {
         if (mname.value < 1) {
             mname.style.borderColor = "crimson";
         }
@@ -374,11 +372,37 @@ sendMsg.addEventListener("click", async (e) => {
                     specialCharac.classList.remove("hidden");
                 }
                 else {
-                    whiteSpace.classList.add("hidden");
-                    specialCharac.classList.add("hidden");
-                    mname.style.borderColor = "gray";
-                    emailsec.classList.remove("hidden");
-                    namesec.classList.add("hidden");
+                    try {
+                        usrvalid.classList.remove("hidden");
+                        const endpoint = `/api/users/validatesignup/${mname.value}`
+                        await fetch((endpoint), {
+                            method: 'GET',
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        }).then((response) => {
+                            usrvalid.classList.add("hidden");
+                            if (response.status === 200) {
+                                whiteSpace.classList.add("hidden");
+                                specialCharac.classList.add("hidden");
+                                same.classList.add("hidden");
+                                mname.style.borderColor = "gray";
+                                emailsec.classList.remove("hidden");
+                                namesec.classList.add("hidden");
+                            }
+                            else if (response.status === 403) {
+                                same.classList.remove("hidden");
+                                errorAlert("User with this name already exists!!!")
+                            }
+                            else {
+                                console.log(response)
+                            }
+                        })
+                    }
+                    catch (err) {
+                        console.log(err);
+                        errorAlert('Sorry! Something went wrong', err);
+                    };
                 }
             }
         }
@@ -389,14 +413,40 @@ sendMsg.addEventListener("click", async (e) => {
         namesec.classList.remove("hidden");
     })
 
-    topass.addEventListener("click", () => {
+    topass.addEventListener("click", async () => {
         if (memail.value < 1 || memail.value == "" || memail.value == null) {
             memail.style.borderColor = "crimson";
         }
         else {
-            passsec.classList.remove("hidden");
-            emailsec.classList.add("hidden");
-            memail.style.borderColor = "gray";
+            try {
+                emailvalid.classList.remove("hidden");
+                const endpoint = `/api/users/validateemail/${memail.value}`
+                await fetch((endpoint), {
+                    method: 'GET',
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                }).then((response) => {
+                    emailvalid.classList.add("hidden");
+                    if (response.status === 200) {
+                        passsec.classList.remove("hidden");
+                        emailsec.classList.add("hidden");
+                        memail.style.borderColor = "gray";
+                        sameE.classList.add("hidden");
+                    }
+                    else if (response.status === 403) {
+                        sameE.classList.remove("hidden");
+                        errorAlert("User with this email already exists!!!")
+                    }
+                    else {
+                        console.log(response)
+                    }
+                })
+            }
+            catch (err) {
+                console.log(err);
+                errorAlert('Sorry! Something went wrong', err);
+            };
         }
 
     })
@@ -514,7 +564,7 @@ sendMsg.addEventListener("click", async (e) => {
                         location.assign('/account/me');
                     }, 400);
                 }
-                else if (response.status === 409) {
+                else if (response.status === 404) {
                     errorAlert("User with this name already exists! Use Different Name!")
                     same.classList.remove("hidden");
                 }

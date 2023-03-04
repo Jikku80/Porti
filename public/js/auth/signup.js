@@ -104,7 +104,7 @@ signup.addEventListener('click', async (e) => {
                     location.assign('/account/me');
                 }, 400);
             }
-            else if (response.status === 409) {
+            else if (response.status === 404) {
                 errorAlert("User with this name already exists! Use Different Name!")
                 same.classList.remove("hidden");
             }

@@ -11,8 +11,9 @@ block content
         .main__content 
             .main__content__log
                 if (!user)
+                    #log.hidden
                     .catchybtn
-                        a#log.newusersignup.pointer(title="Login | SignUp")  Let's Start&#10162;
+                        a.newusersignup.pointer(title="Login | SignUp")  Let's Start&#10162;
                 else 
                     .newusersignup.hidden
                     a#log.fkAncky.norot(href="/account/me" title="Your Account")
@@ -22,25 +23,12 @@ block content
                             img.accpic(src=`${user.photo}`) 
                         span.cabinsketch= user.name
             .main__content__nav
-                a.fkAncky(href="#aTM") About 
-                    span.maf Lakhey 
-                        span.lst De 
-                            span.wite Tech
-                if (!user)
-                    a.crPr.framebtn.highlitbtn(href="/layouts/highlights") vPor
-                        span.grn t
-                        span.nocapsB.mid i-
-                        span.orng Features
-                    #go__create.hidden
-                else
+                if (user)
                     a.crPr.framebtn(href="/layouts/porti")
                         p#go__create.wite Let's  
                             span.orng Suit Up
-                .fkAncky
-                    a.opst(href="#cTM") Reach  
-                        span.maf  Lakhey 
-                            span.lst De 
-                                span.wite Tech
+                else 
+                    #go__create.hidden
             .main__content__learn
                 .learn__content 
                     a.effectbtn(href="#abtPorti") 
@@ -716,10 +704,12 @@ block content
                     h3 Enter Your UserName 
                     p.gry.infotag Please Do Not Use SPACE, or any special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>?
                     input#m_name.signup__input(type="text" placeholder="username")
+                    p.validinfo.infotag.gry.hidden.bink validating username....
                     .toemailsec.signupbtn.circle &#8921;
                 .signup__email__sec.hidden.signup__innersec
                     h3 Enter Your Email Address
                     input#m_email.signup__input(type="email" placeholder="you@email.com")
+                    p.validemail.infotag.gry.hidden.bink validating email....
                     .btnGroup
                         .toname.signupbtn.circle &#8920;
                         .topasssec.signupbtn.circle &#8921;
@@ -1009,7 +999,8 @@ block content
                 p.same__user__warn.maf.hidden User with this name already exits. Please use a different one!
                 p.white__space.maf.hidden You cannot use space in name!!!
                 p.unallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
-                p.same__email__warn.maf.hidden Email already in Use. Please use a different one or go to Forgot Password!
+                p.same__email__warn.maf.hidden Email already in Use. Please use a different one or go to 
+                    a(href="/account/login") Forgot Password!
                 
         .termsandconditions.hidden 
             .term__main

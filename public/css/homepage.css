@@ -69,14 +69,6 @@
     animation: none;
 }
 
-#log{
-    display: flex;
-}
-
-#log:hover{
-    color: white;
-}
-
 .fkAncky{
     text-decoration: none;
     font-variant: small-caps;
@@ -128,21 +120,21 @@
     color: orangered
 }
 
-.catchybtn{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 40vw;
-    display: flex;
-    justify-content: center;
-}
-
 .catchybtn a{
     color: white;
     text-decoration: none;
     font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
     font-size: 50px;
+    width: 100vw;
+}
+
+.newusersignup{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    top: 20vh !important;
 }
 
 .framebtn {
@@ -550,6 +542,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .signup__bod{
@@ -654,13 +647,6 @@
 }
 
 @media screen and (max-width: 600px) {
-    .fkAncky{
-        display: none;
-    }
-
-    .highlitbtn{
-        display: none;
-    }
 
     .catchybtn{
         top: 20vh !important;
@@ -687,6 +673,7 @@
     .main__content__logo{
         display: flex;
         flex-direction: column;
+        top: 65vh;
     }
 
     .quote {
@@ -699,7 +686,7 @@
 
     .main__content{
         margin-top: 2vh;
-        height: 83vh;
+        height: 80vh;
     }
 
     .catchybtn{
@@ -713,6 +700,7 @@
     .main__content__nav{
         flex-direction: column;
         justify-content: space-evenly;
+        height: 60vh;
     }
 
     .view__tm{
@@ -788,15 +776,12 @@
 @media (min-width: 601px) and (max-width: 900px){
 
     .main__content{
-        height: 82vh;
-    }
-
-    .catchybtn{
-        width: 50vw;
+        height: 80vh;
     }
     
     .catchybtn a{
         font-size: 30px;
+        width: 100vw;
     }
 
     .main__content__log{

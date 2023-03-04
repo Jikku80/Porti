@@ -323,6 +323,40 @@ exports.closeAccount = catchAsync(async (req, res, next) => {
     });
 })
 
+exports.validateUsers = catchAsync(async (req, res, next) => {
+    let usrname = req.params.username
+    let uname = usrname.toLowerCase();
+    await User.findOne({ name: uname }).then(item => {
+        if (item) {
+            res.status(403).json({
+                status: 'Failed'
+            })
+        }
+        else {
+            res.status(200).json({
+                status: 'Success'
+            })
+        }
+    })
+})
+
+exports.validateEmail = catchAsync(async (req, res, next) => {
+    let usrname = req.params.useremail
+    let uname = usrname.toLowerCase();
+    await User.findOne({ email: uname }).then(item => {
+        if (item) {
+            res.status(403).json({
+                status: 'Failed'
+            })
+        }
+        else {
+            res.status(200).json({
+                status: 'Success'
+            })
+        }
+    })
+})
+
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
 exports.updateUser = factory.updateOne(User);
