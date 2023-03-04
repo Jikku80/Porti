@@ -142,7 +142,7 @@
     color: white;
     text-decoration: none;
     font-family: Cabin Sketch, Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .framebtn {
@@ -540,6 +540,71 @@
     font-family: Cabin Sketch;
 }
 
+.new__signup__sec{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.596);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup__bod{
+    width: 60%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 80vh;
+    padding: 2%;
+}
+
+.infotag{
+    font-size: 10px;
+}
+
+.signup__innersec{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup__input{
+    width: 100%;
+    height: 5vh;
+}
+
+.signupbtn{
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    padding: 2%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    font-size: 20px;
+    cursor: pointer;
+    width: fit-content;
+    margin: 2%;
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 16rem;
+    font-size: 25px;
+}
 
 @media (max-height: 600px) {
     .main__content__log{
@@ -599,6 +664,14 @@
 
     .catchybtn{
         top: 20vh !important;
+    }
+
+    .signup__bod{
+        width: 90vw;
+    }
+
+    .infotag{
+        font-size: 8px;
     }
         
     input, select, textarea{
