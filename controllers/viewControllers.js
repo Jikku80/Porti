@@ -899,6 +899,7 @@ exports.expPage = catchAsync(async (req, res, next) => {
 });
 
 exports.sitemap = catchAsync(async (req, res) => {
+    let lastmod = new Date().toISOString();
 
     let xml_content = [
         '<?xml version="1.0" encoding="UTF-8"?>',

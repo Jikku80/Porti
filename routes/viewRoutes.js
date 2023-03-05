@@ -20,9 +20,6 @@ router.get('/vporti/robots.txt', viewsController.robotxt);
 router.use(authController.isLoggedIn);
 router.get('/:username', viewsController.layoutTally);
 
-// router.get('/catalog/:user', catalougeController.firstCatalouge);
-// router.get('/profile/:username', viewsController.layoutTally);
-// router.get('/menu/:user', menuController.menuFirst);
 router.get('/invitation/:user/:id', inlayoutController.inviFirst);
 
 router.post('/send/msg', viewsController.newMsg);
@@ -34,7 +31,6 @@ router.get('/reset/password?:tokenId', viewsController.restForm);
 
 router.patch('/update/port', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortData);
 router.patch('/update/portSec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortDataSec);
-// router.patch('/updateportSix', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortSix);
 
 router.post('/updateportImg/:id', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortImgData);
 router.post('/update/portImgCollec', authController.protect, authController.restrictTo('admin', 'user'), viewsController.updatePortImgCollec);

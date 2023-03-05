@@ -9,12 +9,11 @@ block content
             span.nocaps.td i
     .whole__homepage
         .main__content 
-            .main__content__log
-                if (!user)
-                    #log.hidden
-                    .catchybtn
-                        a.newusersignup.pointer(title="Let's Start")  Let's Start&#10162;
-                else 
+            if (!user)
+                #log.hidden
+                h1.newusersignup.pointer(title="Let's Start")  Let's Start&#10162;
+            else 
+                .main__content__log
                     .newusersignup.hidden
                     a#log.fkAncky.norot(href="/account/me" title="Your Account")
                         if (!user.photo)
