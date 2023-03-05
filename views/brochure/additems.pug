@@ -31,6 +31,12 @@ block content
             .lbtn.hidden
             .whole__menu__sec 
                 .menu__section
+                    .options 
+                        a(href='#item__form') Add Section
+                        a(href="#upOrganization") Update 
+                        a(href="#banrsec") Banner 
+                        a(href="#termsandcond") Terms and Policies
+                        a(href="#deleteOrganization") Delete
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= organization.id
@@ -169,7 +175,7 @@ block content
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
                         button#compUpdateImgBtn.blackbtn Update Cover Image
                     
-                    .createBanner
+                    .createBanner#banrsec
                         .itemform__head 
                             h3.form__label.scaps Create A Banner
                         form.upItem

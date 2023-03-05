@@ -32,6 +32,13 @@ block content
             .lbtn.hidden
             .whole__menu__sec
                 .menu__section
+                    .options 
+                        a(href='#item__form') Add Items
+                        a(href="#upRestro") Update 
+                        if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                            a(href="#banrsec") Banner 
+                        a(href="#termsandcond") Terms and Policies
+                        a(href="#deleteCompany") Delete
                     if (menus.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Menu, Add Few Items!
                     
@@ -167,7 +174,7 @@ block content
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
                         button.blackbtn Update Cover Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
-                        .createBanner
+                        .createBanner#banrsec
                             .itemform__head 
                                 h3.form__label.scaps Create A Banner
                             form.upItem

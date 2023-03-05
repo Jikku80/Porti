@@ -1081,6 +1081,16 @@ input::file-selector-button, ::-webkit-file-upload-button{
     border-radius: 1rem;
 }
 
+.options{
+    display: flex;
+    justify-content: space-around;
+}
+
+.options a{
+    color: goldenrod;
+    text-decoration: none;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.8vw;

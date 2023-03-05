@@ -31,6 +31,13 @@ block content
             .lbtn.hidden
             .whole__menu__sec 
                 .menu__section
+                    .options 
+                        a(href='#item__form') Add Items
+                        a(href="#upCompany") Update 
+                        if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                            a(href="#banrsec") Banner 
+                        a(href="#termsandcond") Terms and Policies
+                        a(href="#deleteCompany") Delete
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= company[0]._id
@@ -182,7 +189,7 @@ block content
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
                         button#compUpdateImgBtn.blackbtn Update Cover Image
                     if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
-                        .createBanner
+                        .createBanner#banrsec
                             .itemform__head 
                                 h3.form__label.scaps Create A Banner
                             form.upItem

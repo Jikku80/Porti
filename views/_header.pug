@@ -20,7 +20,7 @@ audio#msgalert.hidden
                 img#menuImg.profPic.satProf(src="/images/bighitman.png", alt="prof__pic", title=`${user.name}`)
         a#menuLayouts.anavi(href="/layouts/porti" title="layouts") &#10022;Layouts
         if (user.accountType === "portfolio")
-            a#menuPortfolio.pointer(title="your portfolio") &#10070;Portfolio
+            #menuPortfolio.pointer(title="your portfolio") &#10070;Portfolio
         else 
             #menuPortfolio.anavi.hidden
         if (user.accountType === "restaurant")
