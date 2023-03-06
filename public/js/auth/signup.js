@@ -59,7 +59,7 @@ signup.addEventListener('click', async (e) => {
 
     if (mpwdLen < 9) {
         e.preventDefault();
-        errorAlert("Password must be 9 Characters long")
+        errorAlert("Password must be Atleast 9 Characters long")
         return false;
     }
 

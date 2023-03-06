@@ -16,13 +16,6 @@
     height: 77vh;
 }
 
-.accpic{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2rem;
-    margin-right: 1vw;
-}
-
 .logout{
     cursor: pointer;
 }
@@ -204,6 +197,7 @@
     font-variant: small-caps;
     font-weight: 900;
     font-size: x-large;
+    text-decoration: none;
 }
 
 .learn__content{

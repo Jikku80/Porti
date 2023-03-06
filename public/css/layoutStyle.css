@@ -244,8 +244,12 @@ p{
   
 .port_sec_head span{
     font-size: 1em;
-    font-weight: bold;
+    font-weight: 900;
 }
+
+.noletterspace{
+    letter-spacing: normal;
+  }
 
 .grn{
     color: rgb(54, 219, 54);
@@ -987,7 +991,7 @@ img {
 
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
-        font-size: 1.8vw;
+        font-size: 1.5vw;
       }
 
     .nocapsmall{

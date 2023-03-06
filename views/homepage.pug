@@ -10,17 +10,9 @@ block content
     .whole__homepage
         .main__content 
             if (!user)
-                #log.hidden
                 h1.newusersignup.pointer(title="Let's Start")  Let's Start&#10162;
             else 
-                .main__content__log
-                    .newusersignup.hidden
-                    a#log.fkAncky.norot(href="/account/me" title="Your Account")
-                        if (!user.photo)
-                            img.accpic(src=`/images/hitman.png`, alt="dp")
-                        else
-                            img.accpic(src=`${user.photo}`) 
-                        span.cabinsketch= user.name
+                .newusersignup.hidden
             .main__content__nav
                 if (user)
                     a.crPr.framebtn(href="/layouts/porti")
@@ -45,11 +37,18 @@ block content
                         span.wite Create vPOR
                         span.grn T
                         span.wite i"
-                .logo__grp 
-                    img.porti__off__img(src="/images/portii.png", alt="porti__img")
-                    span.wite vPor
-                    span.grn T
-                    span.nocaps.wite i
+                if (!user)
+                    .logo__grp
+                        img.porti__off__img(src="/images/portii.png", alt="porti__img")
+                        span.wite vPor
+                        span.grn T
+                        span.nocaps.wite i
+                else 
+                    a.logo__grp.pointer(href="/account/me") 
+                        img.porti__off__img(src="/images/portii.png", alt="porti__img")
+                        span.wite vPor
+                        span.grn T
+                        span.nocaps.wite i
         .bod 
             .view__tm 
                 #abtPorti.padder.darkgreen

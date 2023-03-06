@@ -1,5 +1,4 @@
 bgChanger = document.getElementById("go__create");
-homelogin = document.getElementById("log");
 homeCont = document.querySelector(".main__content");
 homebod = document.querySelector(".bod");
 
@@ -12,16 +11,6 @@ bgChanger.addEventListener("mouseout", () => {
     homeCont.classList.remove("bg__changer");
     homebod.classList.remove("bg__changer");
 })
-
-homelogin.addEventListener("mouseover", () => {
-    homeCont.classList.add("bg__changer");
-    homebod.classList.add("bg__changer");
-})
-
-homelogin.addEventListener("mouseout", () => {
-    homeCont.classList.remove("bg__changer");
-    homebod.classList.remove("bg__changer");
-});
 
 let gotoport = document.querySelector(".menuPortfolio");
 
@@ -160,15 +149,6 @@ gotoport.addEventListener("click", () => {
             prest.classList.add("hidden");
         })
 
-        homelogin.addEventListener("mouseover", () => {
-            homeCont.classList.add("red__changer");
-            homebod.classList.add("red__changer");
-        })
-
-        homelogin.addEventListener("mouseout", () => {
-            homeCont.classList.remove("red__changer");
-            homebod.classList.remove("red__changer");
-        });
     }
     else if (theme == "dark") {
         upAccForm.style.backgroundColor = "black";
@@ -193,16 +173,6 @@ gotoport.addEventListener("click", () => {
             homebod.classList.remove("black__changer");
             prest.classList.add("hidden");
         })
-
-        homelogin.addEventListener("mouseover", () => {
-            homeCont.classList.add("black__changer");
-            homebod.classList.add("black__changer");
-        })
-
-        homelogin.addEventListener("mouseout", () => {
-            homeCont.classList.remove("black__changer");
-            homebod.classList.remove("black__changer");
-        });
     }
     else if (theme == "white") {
         upAccForm.style.backgroundColor = "white";
@@ -259,16 +229,6 @@ gotoport.addEventListener("click", () => {
             homebod.classList.remove("white__changer");
             prest.classList.add("hidden");
         })
-
-        homelogin.addEventListener("mouseover", () => {
-            homeCont.classList.add("white__changer");
-            homebod.classList.add("white__changer");
-        })
-
-        homelogin.addEventListener("mouseout", () => {
-            homeCont.classList.remove("white__changer");
-            homebod.classList.remove("white__changer");
-        });
     }
     else {
         console.log("Hola from Porti")
@@ -468,7 +428,7 @@ sendMsg.addEventListener("click", async (e) => {
             }
             else {
                 if (mpwdLen < 9) {
-                    errorAlert("Password must be 9 Characters long")
+                    errorAlert("Password must be Atleast 9 Characters long")
                 }
                 else {
                     if (mpassword.value !== pwdConfirm.value) {
@@ -519,7 +479,7 @@ sendMsg.addEventListener("click", async (e) => {
 
         if (mpwdLen < 9) {
             e.preventDefault();
-            errorAlert("Password must be 9 Characters long")
+            errorAlert("Password must be Atleast 9 Characters long")
             return false;
         }
 

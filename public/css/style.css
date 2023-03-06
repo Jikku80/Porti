@@ -84,7 +84,7 @@ html{
 
 .port_sec_head span{
   font-size: 1em;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .menu__bar {
@@ -1440,9 +1440,13 @@ input::file-selector-button, ::-webkit-file-upload-button{
   background-color: orangered;
 }
 
+.noletterspace{
+  letter-spacing: normal;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
   .navigation a{
-    font-size: 1.8vw;
+    font-size: 1.5vw;
   }
 
   .nocapsmall{
