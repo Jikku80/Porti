@@ -37,9 +37,9 @@ let daysec = document.querySelector(".daysec");
                         let data = item.resOrders;
                         let foodata = item.foodOrders;
                         ordcount.innerHTML = `
-                        <h2 class="txtcent">Total No. of Orders Today : ${data.length}</h2>
-                        <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
-                        <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
+                        <h2 class="txtcent txt grntag">Total No. of Orders Today : ${data.length}</h2>
+                        <h2 class="txtcent txt grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
+                        <h2 class="txtcent txt rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
                         foodata.forEach(item => {
                             let dt = item.createdAt
@@ -161,7 +161,7 @@ let daysec = document.querySelector(".daysec");
                         let data = item.resOrders;
                         let foodata = item.foodOrders;
                         ordcount.innerHTML = `
-                        <h2 class="txtcent">Total No. of Orders This Week : ${data.length}</h2>
+                        <h2 class="txtcent grntag">Total No. of Orders This Week : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
@@ -284,7 +284,7 @@ let daysec = document.querySelector(".daysec");
                         let data = item.resOrders;
                         let foodata = item.foodOrders;
                         ordcount.innerHTML = `
-                        <h2 class="txtcent">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>
+                        <h2 class="txtcent grntag">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
@@ -414,7 +414,7 @@ let daysec = document.querySelector(".daysec");
                         data = item.resOrders;
                         let foodata = item.foodOrders;
                         ordcount.innerHTML = `
-                        <h2 class="txtcent">Total No. of Orders made in ${val} : ${data.length}</h2>
+                        <h2 class="txtcent grntag">Total No. of Orders made in ${val} : ${data.length}</h2>
                         <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                         <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                         `
@@ -688,7 +688,7 @@ async function getOrderDetail(val) {
                     getOrderPieChart(list, 'myPie');
                     total = item.totalConfirm + item.totalCanceled + item.totalLeftOut;
                     totaldisp.innerHTML = `
-                    <h2 class="txtcent">Total Number Of Orders : ${total}</h2>
+                    <h2 class="txtcent grntag">Total Number Of Orders : ${total}</h2>
                     <h2 class="txtcent grntag">Total Confirmed Order Amount : ${item.totalConfirmedAmount}</h2>
                     <h2 class="txtcent rdtag">Total Canceled & Left Out Order Amount : ${item.totalUnConfirmedAmount}</h2>
                     `
@@ -896,7 +896,7 @@ async function byMonthReserve(restro, month) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Home Orders : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Home Orders : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -977,7 +977,7 @@ async function byMonthReserve(restro, month) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Restaurant Orders : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Restaurant Orders : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -1056,7 +1056,7 @@ async function byMonthReserve(restro, month) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Reservation : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Reservation : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();

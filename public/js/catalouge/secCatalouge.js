@@ -813,7 +813,7 @@ function smallCardElem(el) {
                         <img class="sec__cat__img" src="${el.coverImage}" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
-                                <h3>Price : ${el.price}</h3>
+                                <h3>Price : ${el.currency}${el.price}</h3>
                                 <h3 class="itemDiscPercent">Discount : ${bannerDiscount}%</h3>
                                 <h3 class="stock rdstock">Out Of Stock</h3>
                         </div>
@@ -831,7 +831,7 @@ function smallCardElem(el) {
                         <img class="sec__cat__img" src="${el.coverImage}" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
-                                <h3>Price : ${el.price}</h3>
+                                <h3>Price : ${el.currency}${el.price}</h3>
                                 <h3 class="itemDiscPercent">Discount : ${bannerDiscount}%</h3>
                                 <h3 class="stock">Stock Quantity: ${el.stockQuantity}</h3>
                         </div>
@@ -851,7 +851,7 @@ function smallCardElem(el) {
                     <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
                     <div class="sec__cat__item__info">
                             <h3>Name : ${el.name}</h3>
-                            <h3>Price : ${el.price}</h3>
+                            <h3>Price : ${el.currency}${el.price}</h3>
                             <h3 class="itemDiscPercent">Discount : ${bannerDiscount}%</h3>
                             <h3 class="stock rdstock">Out Of Stock</h3>
                     </div>
@@ -869,7 +869,7 @@ function smallCardElem(el) {
                         <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
-                                <h3>Price : ${el.price}</h3>
+                                <h3>Price : ${el.currency}${el.price}</h3>
                                 <h3 class="itemDiscPercent">Discount : ${bannerDiscount}%</h3>
                                 <h3 class="stock">Stock Quantity: ${el.stockQuantity}</h3>
                         </div>
@@ -890,7 +890,7 @@ function smallCardElem(el) {
                     <img class="sec__cat__img" src="${el.coverImage}" alt="catalouge__item__image">
                     <div class="sec__cat__item__info">
                             <h3>Name : ${el.name}</h3>
-                            <h3>Price : ${el.price}</h3>
+                            <h3>Price : ${el.currency}${el.price}</h3>
                             <h3 class="stock rdstock">Out Of Stock</h3>
                     </div>
                     <div class="sec__cat__btn__grp">
@@ -906,7 +906,7 @@ function smallCardElem(el) {
                         <img class="sec__cat__img" src="${el.coverImage}" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
-                                <h3>Price : ${el.price}</h3>
+                                <h3>Price : ${el.currency}${el.price}</h3>
                                 <h3 class="stock">Stock Quantity: ${el.stockQuantity}</h3>
                         </div>
                         <div class="sec__cat__btn__grp">
@@ -925,7 +925,7 @@ function smallCardElem(el) {
                     <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
                     <div class="sec__cat__item__info">
                             <h3>Name : ${el.name}</h3>
-                            <h3>Price : ${el.price}</h3>
+                            <h3>Price : ${el.currency}${el.price}</h3>
                             <h3 class="stock rdstock">Out Of Stock</h3>
                     </div>
                     <div class="sec__cat__btn__grp">
@@ -941,7 +941,7 @@ function smallCardElem(el) {
                         <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
-                                <h3>Price : ${el.price}</h3>
+                                <h3>Price : ${el.currency}${el.price}</h3>
                                 <h3 class="stock">Stock Quantity: ${el.stockQuantity}</h3>
                         </div>
                         <div class="sec__cat__btn__grp">

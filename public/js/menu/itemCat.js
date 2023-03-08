@@ -51,7 +51,7 @@ next.addEventListener("click", async () => {
                                         <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__price">${el.currency}${el.price}</p>
                                             <p class="menu__card__detail">${el.detail}</p>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@ next.addEventListener("click", async () => {
                                     <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.price}</p>
+                                        <p class="menu__card__price">${el.currency}${el.price}</p>
                                         <p class="menu__card__detail">${el.detail}</p>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ prev.addEventListener("click", async () => {
                                         <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__price">${el.currency}${el.price}</p>
                                             <p class="menu__card__detail">${el.detail}</p>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@ prev.addEventListener("click", async () => {
                                         <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.price}</p>
+                                            <p class="menu__card__price">${el.currency}${el.price}</p>
                                             <p class="menu__card__detail">${el.detail}</p>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@ window.addEventListener("load", async () => {
                                                                 <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                                                 <div class="menu__card__det">
                                                                     <h3 class="menu__card__head">${el.name}</h3>
-                                                                    <p class="menu__card__price">${el.price}</p>
+                                                                    <p class="menu__card__price">${el.currency}${el.price}</p>
                                                                     <p class="menu__card__detail">${el.detail}</p>
                                                                 </div>
                                                             </div>
@@ -235,7 +235,7 @@ window.addEventListener("load", async () => {
                                                             <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head">${el.name}</h3>
-                                                                <p class="menu__card__price">${el.price}</p>
+                                                                <p class="menu__card__price">${el.currency}${el.price}</p>
                                                                 <p class="menu__card__detail">${el.detail}</p>
                                                             </div>
                                                         </div>
@@ -313,7 +313,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                             <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head">${el.name}</h3>
-                                                <p class="menu__card__price">${el.price}</p>
+                                                <p class="menu__card__price">${el.currency}${el.price}</p>
                                                 <p class="menu__card__detail">${el.detail}</p>
                                             </div>
                                         </div>
@@ -326,7 +326,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                             <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head">${el.name}</h3>
-                                                <p class="menu__card__price">${el.price}</p>
+                                                <p class="menu__card__price">${el.currency}${el.price}</p>
                                                 <p class="menu__card__detail">${el.detail}</p>
                                             </div>
                                         </div>

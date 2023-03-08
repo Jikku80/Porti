@@ -34,7 +34,7 @@ let daysec = document.querySelector(".daysec");
                     res.then(item => {
                         data = item.resOrders;
                         prodata = item.foodOrders
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Today : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Orders Today : ${data.length}</h2>`
                         prodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -135,7 +135,7 @@ let daysec = document.querySelector(".daysec");
                     res.then(item => {
                         let data = item.resOrders;
                         let prodata = item.foodOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders This Week : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Orders This Week : ${data.length}</h2>`
                         prodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -235,7 +235,7 @@ let daysec = document.querySelector(".daysec");
                     res.then(item => {
                         let data = item.resOrders;
                         let prodata = item.foodOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Orders Made In Last 30 Days : ${data.length}</h2>`
                         prodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -342,7 +342,7 @@ let daysec = document.querySelector(".daysec");
                     res.then(item => {
                         let data = item.resOrders;
                         let prodata = item.foodOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders made in ${val} : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Orders made in ${val} : ${data.length}</h2>`
                         prodata.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -798,7 +798,7 @@ async function byMonthReserve(restro, month) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Orders : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Orders : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();
@@ -878,7 +878,7 @@ async function byMonthReserve(restro, month) {
                     let res = response.json();
                     res.then(item => {
                         data = item.restroOrders;
-                        ordcount.innerHTML = `<h2 class="txtcent">Total No. of Reservation : ${data.length}</h2>`
+                        ordcount.innerHTML = `<h2 class="txtcent grntag">Total No. of Reservation : ${data.length}</h2>`
                         data.forEach(item => {
                             let dt = item.createdAt
                             dt = dt.toLocaleString();

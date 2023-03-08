@@ -155,6 +155,47 @@
     background-color: transparent;
 }
 
+.dropdownbtn{
+    width: fit-content;
+    padding: 2vw;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(0, 26, 0);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: fit-content !important;
+}
+  
+.dropdown-content a {
+    color: gray;
+    font-variant: small-caps;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+}
+  
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: rgb(0, 26, 0);
+}
+  
+.dropdown .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
 .main__content__nav{
     width: 100%;
     height: 65%;
@@ -292,6 +333,92 @@
 .shwbtn:hover{
     background-color: rgb(54, 219, 54);
     color :rgb(0, 26, 0);
+}
+
+.playsec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vidbtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    background-color: transparent;
+    color: gray;
+    padding: 2%;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.vidbtn h1{
+    padding: 0;
+    margin: 0;
+}
+
+.vidbtn:hover{
+    background-color: gray;
+    color: rgb(0, 26, 0);
+}
+
+.imgitemsec{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mySlides{
+    height: 65vh;
+    text-align: center;
+}
+
+.showslidesec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.slidecollec{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.slideinnerimg{
+    width: 15vw;
+    height: 25vh;
+    cursor: pointer;
+}
+
+.videoplayer{
+    width: 80%;
+    height: 60vh;
+}
+
+.cancelimgbtn{
+    position: fixed;
+    top: 1vh;
+    right: 2vw;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .link__format{
@@ -526,7 +653,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.596);
+    background-color: transparent;
     width: 100%;
     height: 100%;
     display: flex;
@@ -540,12 +667,27 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
     height: 80vh;
     padding: 2%;
+}
+
+.signup__bod__cancelsec{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.signupbod__formsec{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .infotag{
@@ -645,6 +787,18 @@
 
     .infotag{
         font-size: 8px;
+    }
+
+    .slidecollec{
+        display: inline-block;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: hidden;
+    }
+    
+    .slideinnerimg{
+        width: 40vw;
+        margin: 1%;
     }
         
     input, select, textarea{
@@ -819,6 +973,18 @@
     .footer__contact__bod{
         padding-left: 25%;
       }
+    
+      .slidecollec{
+        display: inline-block;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: hidden;
+    }
+    
+    .slideinnerimg{
+        width: 40vw;
+        margin: 1%;
+    }
 }
 
 @keyframes present {

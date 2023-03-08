@@ -314,11 +314,15 @@ sendMsg.addEventListener("click", async (e) => {
     let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
     let usrvalid = document.querySelector(".validinfo");
     let emailvalid = document.querySelector(".validemail");
+    let cancelstart = document.querySelector(".cancelletstart");
 
     startbtn.addEventListener("click", () => {
         signupform.classList.remove("hidden");
     })
 
+    cancelstart.addEventListener("click", () => {
+        signupform.classList.add("hidden");
+    })
 
     toemail.addEventListener("click", async () => {
         if (mname.value < 1) {
@@ -555,3 +559,231 @@ sendMsg.addEventListener("click", async (e) => {
     })
 
 })();
+
+(function () {
+    let dropdwn = document.querySelector(".guidedrp");
+    let dropcont = document.querySelector(".guidecont");
+
+    let kdropdwn = document.querySelector(".knowdrp");
+    let kdropcont = document.querySelector(".knowcont");
+
+    dropdwn.addEventListener("click", () => {
+        dropcont.classList.toggle("hidden")
+    })
+
+    kdropdwn.addEventListener("click", () => {
+        kdropcont.classList.toggle("hidden")
+    })
+
+    let menuimgsec = document.querySelector(".menuitemsec");
+    let cancelmenusec = document.querySelector(".cancelmenu");
+    let playmenusec = document.querySelector(".playmenuvid");
+    let menucont = document.querySelector(".menucont");
+    let playcatalogsec = document.querySelector(".playcatalogvid");
+
+    let playbrochuresec = document.querySelector(".playbrochurevid");
+
+    playmenusec.addEventListener("click", () => {
+        menucont.innerHTML = "";
+        menuimgsec.classList.remove("hidden");
+        cancelmenusec.classList.remove("hidden");
+        let val1 = "/images/menu/additems.mp4";
+        let val2 = "/images/menu/makeorder.mp4";
+        let val3 = "/images/menu/overview.mp4";
+        let val4 = "/images/menu/stats.png";
+        let val5 = "/images/menu/piestats.png";
+        slider(menucont, val1, val2, val3, val4, val5);
+    });
+
+    cancelmenusec.addEventListener("click", () => {
+        menuimgsec.classList.add("hidden");
+        cancelmenusec.classList.add("hidden");
+    })
+
+    playcatalogsec.addEventListener("click", () => {
+        menucont.innerHTML = "";
+        menuimgsec.classList.remove("hidden");
+        cancelmenusec.classList.remove("hidden");
+        let val1 = "/images/menu/cataladd.mp4";
+        let val2 = "/images/menu/catmake.mp4";
+        let val3 = "/images/menu/catalover.mp4";
+        let val4 = "/images/menu/catalstats.png";
+        let val5 = "/images/menu/catalpiestats.png";
+        slider(menucont, val1, val2, val3, val4, val5);
+    });
+
+    playbrochuresec.addEventListener("click", () => {
+        menucont.innerHTML = "";
+        menuimgsec.classList.remove("hidden");
+        cancelmenusec.classList.remove("hidden");
+        let val1 = "/images/menu/broadd.mp4";
+        let val2 = "/images/menu/brobook.mp4";
+        let val3 = "/images/menu/broveeview.mp4";
+        let val4 = "/images/menu/brostats.png";
+        let val5 = "/images/menu/bropie.png";
+        slider(menucont, val1, val2, val3, val4, val5);
+    });
+
+})();
+
+function slider(slidr, val1, val2, val3, val4, val5) {
+    slidr.innerHTML = "";
+    slidr.innerHTML += `
+        <div class="mySlides">
+            <div class="numbertext">1 / 5</div>
+            <div class="showslidesec">            
+                <video class="videoplayer" controls>
+                    <source src="${val1}" type="video/mp4">
+                </video>
+            </div>
+            <h1 class="slidecaps">Add Items</h1>
+        </div>
+        <div class="slidecollec">
+            <img class="slideinnerimg addtomenuimg" src="/images/menu/add.png" alt="addtomenu" />
+            <img class="slideinnerimg makeorderimg" src="/images/menu/make.png" alt="makeorders" />
+            <img class="slideinnerimg overviewimg" src="/images/menu/over.png" alt="overview" />
+            <img class="slideinnerimg statsimg" src="/images/menu/sta.png" alt="statistics" />
+            <img class="slideinnerimg statsecimg" src="/images/menu/sta.png" alt="statistics" />
+        </div>
+    `
+    let addtomenu = document.querySelector(".addtomenuimg");
+    let makeorder = document.querySelector(".makeorderimg");
+    let overview = document.querySelector(".overviewimg");
+    let stats = document.querySelector(".statsimg");
+    let statsec = document.querySelector(".statsecimg");
+    let showslide = document.querySelector(".showslidesec");
+    let slidecaps = document.querySelector(".slidecaps");
+    let numbertxt = document.querySelector(".numbertext");
+
+    addtomenu.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "1 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val1}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Add Items";
+    })
+
+    makeorder.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "2 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val2}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Make & Accept"
+    })
+
+    overview.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "3 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val3}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Simple Overview"
+    })
+
+    stats.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "4 / 5";
+        showslide.innerHTML += `
+                    <img class="videoplayer" src="${val4}" alt="stats" />
+                    `
+        slidecaps.innerText = "Statistics"
+    })
+
+    statsec.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "5 / 5";
+        showslide.innerHTML += `
+                    <img class="videoplayer" src="${val5}" alt="stats" />
+                    `
+        slidecaps.innerText = "Statistics"
+    })
+};
+
+function sliderc(slidr, val1, val2, val3, val4, val5) {
+    slidr.innerHTML = "";
+    slidr.innerHTML += `
+        <div class="mySlides">
+            <div class="numbertext">1 / 5</div>
+            <div class="showslidesec">            
+                <video class="videoplayer" controls>
+                    <source src="${val1}" type="video/mp4">
+                </video>
+            </div>
+            <h1 class="slidecaps">Add Items</h1>
+        </div>
+        <div class="slidecollec">
+            <img class="slideinnerimg addtomenuimg" src="/images/menu/add.png" alt="addtomenu" />
+            <img class="slideinnerimg makeorderimg" src="/images/menu/make.png" alt="makeorders" />
+            <img class="slideinnerimg overviewimg" src="/images/menu/over.png" alt="overview" />
+            <img class="slideinnerimg statsimg" src="/images/menu/sta.png" alt="statistics" />
+            <img class="slideinnerimg statsecimg" src="/images/menu/sta.png" alt="statistics" />
+        </div>
+    `
+    let addtomenu = document.querySelector(".addtomenuimg");
+    let makeorder = document.querySelector(".makeorderimg");
+    let overview = document.querySelector(".overviewimg");
+    let stats = document.querySelector(".statsimg");
+    let statsec = document.querySelector(".statsecimg");
+    let showslide = document.querySelector(".showslidesec");
+    let slidecaps = document.querySelector(".slidecaps");
+    let numbertxt = document.querySelector(".numbertext");
+
+    addtomenu.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "1 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val1}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Add Items";
+    })
+
+    makeorder.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "2 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val2}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Make & Accept"
+    })
+
+    overview.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "3 / 5";
+        showslide.innerHTML += `
+                    <video class="videoplayer" controls>
+                        <source src="${val3}" type="video/mp4">
+                    </video>
+                    `
+        slidecaps.innerText = "Simple Overview"
+    })
+
+    stats.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "4 / 5";
+        showslide.innerHTML += `
+                    <img class="videoplayer" src="${val4}" alt="stats" />
+                    `
+        slidecaps.innerText = "Statistics"
+    })
+
+    statsec.addEventListener("click", () => {
+        showslide.innerHTML = "";
+        numbertxt.innerText = "5 / 5";
+        showslide.innerHTML += `
+                    <img class="videoplayer" src="${val5}" alt="stats" />
+                    `
+        slidecaps.innerText = "Statistics"
+    })
+};
