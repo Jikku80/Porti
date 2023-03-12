@@ -6,6 +6,9 @@ let prev = document.querySelector(".prev");
 let sub = document.querySelector(".sub__items");
 let pgC = window.sessionStorage.getItem('secpaginate');
 
+let focColor = document.querySelector(".seccatfocusColor").innerText;
+let fonFam = document.querySelector(".seccatFontFam").innerText;
+
 let x;
 
 if (pgC === null) {
@@ -50,9 +53,9 @@ next.addEventListener("click", async () => {
                                     <div class="menu__card">
                                         <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.currency}${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                            <h3 class="menu__card__head focfont">${el.name}</h3>
+                                            <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                            <p class="menu__card__detail focfont">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
@@ -63,9 +66,9 @@ next.addEventListener("click", async () => {
                                 <div class="menu__card">
                                     <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                     <div class="menu__card__det">
-                                        <h3 class="menu__card__head">${el.name}</h3>
-                                        <p class="menu__card__price">${el.currency}${el.price}</p>
-                                        <p class="menu__card__detail">${el.detail}</p>
+                                        <h3 class="menu__card__head focfont">${el.name}</h3>
+                                        <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                        <p class="menu__card__detail focfont">${el.detail}</p>
                                     </div>
                                 </div>
                             `
@@ -75,6 +78,12 @@ next.addEventListener("click", async () => {
                     window.setTimeout(() => {
                         window.location.hash = "#foodItem"
                     }, 200)
+                    let fontback = document.querySelectorAll(".focfont");
+
+                    fontback.forEach(item => {
+                        item.style.color = focColor;
+                        item.style.fontFamily = fonFam;
+                    })
                     if (sub.children.length === 12) {
                         next.classList.remove("hidden");
                     } else {
@@ -130,9 +139,9 @@ prev.addEventListener("click", async () => {
                                     <div class="menu__card">
                                         <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.currency}${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                            <h3 class="menu__card__head focfont">${el.name}</h3>
+                                            <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                            <p class="menu__card__detail focfont">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
@@ -143,9 +152,9 @@ prev.addEventListener("click", async () => {
                                     <div class="menu__card">
                                         <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.currency}${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                            <h3 class="menu__card__head focfont">${el.name}</h3>
+                                            <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                            <p class="menu__card__detail focfont">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
@@ -155,6 +164,12 @@ prev.addEventListener("click", async () => {
                     window.setTimeout(() => {
                         window.location.hash = "#foodItem"
                     }, 200)
+                    let fontback = document.querySelectorAll(".focfont");
+
+                    fontback.forEach(item => {
+                        item.style.color = focColor;
+                        item.style.fontFamily = fonFam;
+                    })
                 })
             } else {
                 console.log(response);
@@ -186,11 +201,18 @@ window.addEventListener("load", async () => {
                 res.then(result => {
                     let menuItm = document.querySelector(".category");
                     result.forEach(item => {
-                        menuItm.innerHTML += `<h3 class="menu__items">${item}</h3>`
+                        menuItm.innerHTML += `<h3 class="menu__items fontback">${item}</h3>`
                     })
 
                     let menItems = document.querySelectorAll(".menu__items");
-                    let subItems = document.querySelector(".sub__items")
+                    let subItems = document.querySelector(".sub__items");
+                    let fontColor = document.querySelector(".seccatFontColor").innerText;
+                    let fontback = document.querySelectorAll(".fontback");
+
+                    fontback.forEach(item => {
+                        item.style.backgroundColor = fontColor;
+                        item.style.fontFamily = fonFam;
+                    })
 
                     menItems.forEach(item => {
                         item.addEventListener("click", async (e) => {
@@ -221,9 +243,9 @@ window.addEventListener("load", async () => {
                                                             <div class="menu__card">
                                                                 <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                                                 <div class="menu__card__det">
-                                                                    <h3 class="menu__card__head">${el.name}</h3>
-                                                                    <p class="menu__card__price">${el.currency}${el.price}</p>
-                                                                    <p class="menu__card__detail">${el.detail}</p>
+                                                                    <h3 class="menu__card__head focfont">${el.name}</h3>
+                                                                    <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                                                    <p class="menu__card__detail focfont">${el.detail}</p>
                                                                 </div>
                                                             </div>
                                                         `
@@ -234,14 +256,20 @@ window.addEventListener("load", async () => {
                                                         <div class="menu__card">
                                                             <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                                             <div class="menu__card__det">
-                                                                <h3 class="menu__card__head">${el.name}</h3>
-                                                                <p class="menu__card__price">${el.currency}${el.price}</p>
-                                                                <p class="menu__card__detail">${el.detail}</p>
+                                                                <h3 class="menu__card__head focfont">${el.name}</h3>
+                                                                <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                                                <p class="menu__card__detail focfont">${el.detail}</p>
                                                             </div>
                                                         </div>
                                                     `
                                                 }
                                             });
+                                            let fontback = document.querySelectorAll(".focfont");
+
+                                            fontback.forEach(item => {
+                                                item.style.color = focColor;
+                                                item.style.fontFamily = fonFam;
+                                            })
                                             openimg();
                                         })
                                     } else {
@@ -312,9 +340,9 @@ searchBar.addEventListener("keypress", async (e) => {
                                         <div class="menu__card">
                                             <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                             <div class="menu__card__det">
-                                                <h3 class="menu__card__head">${el.name}</h3>
-                                                <p class="menu__card__price">${el.currency}${el.price}</p>
-                                                <p class="menu__card__detail">${el.detail}</p>
+                                                <h3 class="menu__card__head focfont">${el.name}</h3>
+                                                <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                                <p class="menu__card__detail focfont">${el.detail}</p>
                                             </div>
                                         </div>
                                     `
@@ -325,15 +353,21 @@ searchBar.addEventListener("keypress", async (e) => {
                                         <div class="menu__card">
                                             <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                             <div class="menu__card__det">
-                                                <h3 class="menu__card__head">${el.name}</h3>
-                                                <p class="menu__card__price">${el.currency}${el.price}</p>
-                                                <p class="menu__card__detail">${el.detail}</p>
+                                                <h3 class="menu__card__head focfont">${el.name}</h3>
+                                                <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                                <p class="menu__card__detail focfont">${el.detail}</p>
                                             </div>
                                         </div>
                                     `
                                 }
                             }
                         });
+                        let fontback = document.querySelectorAll(".focfont");
+
+                        fontback.forEach(item => {
+                            item.style.color = focColor;
+                            item.style.fontFamily = fonFam;
+                        })
                         openimg();
                         if (sub.children.length == 0) {
                             sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
@@ -391,9 +425,9 @@ window.addEventListener("load", async () => {
                                     <div class="menu__card">
                                         <img class="menu__card__img imgFull pointer" src="${el.coverImage}" alt="menu__item__image">
                                         <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.currency}${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                            <h3 class="menu__card__head focfont">${el.name}</h3>
+                                            <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                            <p class="menu__card__detail focfont">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
@@ -404,15 +438,21 @@ window.addEventListener("load", async () => {
                                     <div class="menu__card">
                                         <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
-                                            <h3 class="menu__card__head">${el.name}</h3>
-                                            <p class="menu__card__price">${el.currency}${el.price}</p>
-                                            <p class="menu__card__detail">${el.detail}</p>
+                                            <h3 class="menu__card__head focfont">${el.name}</h3>
+                                            <p class="menu__card__price focfont">${el.currency}${el.price}</p>
+                                            <p class="menu__card__detail focfont">${el.detail}</p>
                                         </div>
                                     </div>
                                 `
                         }
                     });
                     openimg();
+                    let fontback = document.querySelectorAll(".focfont");
+
+                    fontback.forEach(item => {
+                        item.style.color = focColor;
+                        item.style.fontFamily = fonFam;
+                    })
                     if (sub.children.length == 0) {
                         sub.innerHTML = `<h3>Oopsie!!! No Items Found!!! :(</h3>`
                     }
@@ -444,10 +484,12 @@ let bod = document.querySelector(".first__menu__bod")
 dark.addEventListener("click", () => {
     if (!bod.classList.contains('white__bg')) {
         bod.classList.add('white__bg');
+        document.body.classList.add('white__bg');
         bod.style.color = "chocolate";
         dark.innerHTML = `<img src="/images/off.png" />`
     } else {
         bod.classList.remove('white__bg');
+        document.body.classList.remove('white__bg');
         bod.style.color = "goldenrod"
         dark.innerHTML = `<img src="/images/on.png" />`
     }
@@ -574,4 +616,101 @@ function openimg() {
         imgsec.classList.add("hidden");
         imgbod.innerHTML = "";
     })
-}
+};
+
+(function () {
+    let editdum = document.querySelector(".edit__sec__cat");
+    let editfeat = document.querySelector(".edit__features__sec");
+    let canceledit = document.querySelector(".cancel__edit__dummy");
+    let upPortTheme = document.getElementById("changesecCatTheme");
+    let backColor = document.getElementById("secCatBackColor");
+    let fontColor = document.getElementById("secCatFontColor");
+    let focusColor = document.getElementById("secCatFocusColor");
+    let fontFam = document.getElementById("secCatFontFam");
+    let secCol = document.getElementById("secFontColor");
+    let id = document.getElementById('secCatid').innerText;
+
+    editdum.addEventListener("click", () => {
+        editfeat.classList.remove("hidden");
+    })
+
+    canceledit.addEventListener("click", () => {
+        editfeat.classList.add("hidden");
+    })
+
+    upPortTheme.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+
+        const endpoint = `/api/v1/menu/${id}/updateRestaurant`
+        try {
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    themecolor: backColor.value,
+                    fontColor: fontColor.value,
+                    focusColor: focusColor.value,
+                    secHeadColor: secCol.value,
+                    fontFam: fontFam.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Menu Theme has been updated :)");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    errorAlert("Invalid input, Input error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
+    let fontColor = document.querySelector(".seccatFontColor").innerText;
+    let fontFam = document.querySelector(".seccatFontFam").innerText;
+    let backColor = document.querySelector(".seccatThemeColor").innerText;
+    let focusColor = document.querySelector(".seccatfocusColor").innerText;
+    let secfontcolor = document.querySelector(".secFontColor").innerText;
+    let sevbod = document.querySelector(".first__menu__bod");
+    let txtfont = document.querySelectorAll(".txt");
+    let focSec = document.querySelectorAll(".focusback");
+    let search = document.querySelector(".searchbar");
+    let fontback = document.querySelectorAll(".fontback");
+    let secfont = document.querySelectorAll(".secfont");
+
+    secfont.forEach(item => {
+        item.style.color = secfontcolor;
+    })
+
+    fontback.forEach(item => {
+        item.style.backgroundColor = fontColor;
+    })
+
+    search.style.borderColor = fontColor;
+    sevbod.style.fontFamily = fontFam;
+    // sevbod.style.color = fontColor;
+    sevbod.style.backgroundColor = backColor;
+
+    focSec.forEach(item => {
+        item.style.borderColor = focusColor;
+    })
+
+    txtfont.forEach(item => {
+        item.style.color = fontColor;
+        item.style.fontFamily = fontFam;
+    })
+})();

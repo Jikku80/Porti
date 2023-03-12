@@ -43,6 +43,33 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    themecolor: {
+        type: String
+    },
+    fontColor: {
+        type: String
+    },
+    headColor: {
+        type: String
+    },
+    secHeadColor: {
+        type: String
+    },
+    focusColor: {
+        type: String
+    },
+    fontFam: {
+        type: String
+    },
+    polygon: {
+        type: String
+    },
+    covWidth: {
+        type: String
+    },
+    covHeight: {
+        type: String
+    },
     coverImage: String,
     pageCount: Number,
     createdAt: {

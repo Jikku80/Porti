@@ -148,13 +148,16 @@ block content
                         .form__bod
                             label.form__label Contact: 
                             input#resContact.form__input(type="number", value=restro[0].phn_no)
-                        .form__bod
-                            label.form__label Home Delivery:
-                            if (restro[0].homedelivery === true) 
-                                input#reshomedel.checkbox(type="checkbox", checked="checked")
-                            else 
-                                input#reshomedel.checkbox(type="checkbox")
-                            label Checking the box will update order form so people can add their personal details
+                        if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                            .form__bod
+                                label.form__label Home Delivery:
+                                if (restro[0].homedelivery === true) 
+                                    input#reshomedel.checkbox(type="checkbox", checked="checked")
+                                else 
+                                    input#reshomedel.checkbox(type="checkbox")
+                                label Checking the box will update order form so people can add their personal details
+                        else 
+                            #reshomedel.hidden
                         .form__bod 
                             label.form__label Change Theme (optional):
                             select#menuThemes.selectsec
@@ -172,7 +175,7 @@ block content
                         .form__bod.file_part
                         label.form__label(for="upcoverimage").scaps Update Food Hub Cover Image
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
-                        button.blackbtn Update Cover Image 
+                        button.blackbtn Update Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
                         .createBanner#banrsec
                             .itemform__head 

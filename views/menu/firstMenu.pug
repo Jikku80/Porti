@@ -58,23 +58,77 @@ block content
         .curlogusername.hidden
         .curloguser.hidden
         .portiuserid.hidden
+    if (!user)
+        #secCatid.hidden 
+        #changesecCatTheme.hidden 
+        .cancel__edit__dummy.hidden
+        .edit__sec__cat.hidden
+    else
+        if (user.id !== restro[0].user.id)
+            #secCatid.hidden 
+            #changesecCatTheme.hidden 
+            .cancel__edit__dummy.hidden
+            .edit__sec__cat.hidden
+        else
+            .edit__sec__cat.focusback(title="Edit Theme") &#9881;
+            .edit__features__sec.hidden.focusback
+                .edit__feat__head 
+                    h3.txt Edit Theme 
+                    img.cancel__edit__dummy.point(src="/images/cancel.png" alt="cancel__edit")
+                .edit__feat__bod
+                    #secCatid.hidden= restro[0]._id
+                    form.feat_form_bod
+                        .form__bod__cat 
+                            label Background Color:
+                            input#secCatBackColor(type="color" value="#001a00")
+                        .form__bod__cat 
+                            label Focus Color:
+                            input#secCatFocusColor(type="color" value="#daa520")
+                        .form__bod__cat 
+                            label Font Color:
+                            input#secCatFontColor(type="color" value="#d2691e")
+                        .form__bod__cat
+                            label Second Color:
+                            input#secFontColor(type="color" value="#808080")
+                        .form__bod__cat 
+                            label Font Family 
+                            select#secCatFontFam
+                                option.opt(hidden selected) Arial
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                                option.opt(value="Londrina Sketch") Londrina Sketch
+                                option.opt(value="Cabin Sketch") Cabin Sketch
+                        .grp_sec_cat_btn
+                            button#changesecCatTheme.ygbtn Update Theme
     .first__menu__bod
-        .menu__border
-            .menu__secborder
+        .menu__border.focusback
+            .menu__secborder.focusback
                 if (restro[0])
-                    h1.menu__head.res__name= restro[0].name
-                    p.menu__head.res__add= restro[0].Address
-                    p.menu__head.res__add= restro[0].phn_no
+                    .first_dp_sec   
+                        if (restro[0].coverImage)
+                            img.profPic(src=`${restro[0].coverImage}`, alt="cov__pic", title=`${restro[0].name}`)
+                        else 
+                            img.profPic.satProf(src="/images/bighitman.png", alt="cov__pic", title=`${restro[0].name}`)
+                    h1.menu__head.res__name.txt= restro[0].name
+                    p.menu__head.res__add.secfont= restro[0].Address
+                    p.menu__head.res__add.secfont= restro[0].phn_no
                     p.menu__user__id.hidden= restro[0].user.id
-                h1.menu__head Me n u
+                .seccatFontColor.hidden= restro[0].fontColor 
+                .seccatFontFam.hidden= restro[0].fontFam 
+                .seccatThemeColor.hidden= restro[0].themecolor
+                .seccatfocusColor.hidden= restro[0].focusColor 
+                .secFontColor.hidden= restro[0].secHeadColor
+                h1.menu__head.txt Me n u
                 form.search
-                    input.searchbar(type="text", required, placeholder="Search Items...")
+                    input.searchbar.txt(type="text", required, placeholder="Search Items...")
                 button(type="button" name="darkmode").darkmode 
                     img(src="/images/on.png" alt="darkmode__image")
                 if (restro[0])
-                    p.menu__head.res__slogan= restro[0].slogan
+                    p.menu__head.res__slogan.secfont= restro[0].slogan
                 .menu__bod
-                    h3.grab__all ALL
+                    h3.grab__all.fontback ALL
                     .category
                 .sub__item__bod#foodItem
                     .sub__items.row__items
@@ -88,25 +142,25 @@ block content
                     //-     p= `${restro[0].user.name} vPorti`
                     .fullimg__bod
                 if (restro[0].serviceTerms)
-                    p.sec__terms Terms And Conditions
+                    p.sec__terms.txt Terms And Conditions
                     .terms__sec.hidden 
                         .termservice__head 
-                            h3 Terms of Service 
+                            h3.txt Terms of Service 
                             img.hideterms.point(src="/images/cancel.png" alt="cancel__btn")
                         .terms__sec__bod
-                            pre.termspoliciespre= restro[0].serviceTerms 
+                            pre.termspoliciespre.txt= restro[0].serviceTerms 
                 else 
                     .terms__sec.hidden 
                     .hideterms.hidden 
                     .sec__terms.hidden 
                 if (restro[0].privacyPolicies)
-                    p.sec__policies Privacy Policies
+                    p.sec__policies.txt Privacy Policies
                     .policies__sec.hidden 
                         .privacypolicies__head 
-                            h3 Privacy Policies 
+                            h3.txt Privacy Policies 
                             img.hideprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
                         .policies__sec__bod
-                            pre.termspoliciespre= restro[0].privacyPolicies
+                            pre.termspoliciespre.txt= restro[0].privacyPolicies
                 else 
                     .sec__policies.hidden 
                     .policies__sec.hidden
@@ -116,4 +170,4 @@ block content
     script(src="/js/menu/itemCat.js") 
     script(src="/socket.io/socket.io.js") 
     script(src="/js/usermsg.js") 
-    script(src="/js/disFt.js")
+    //- script(src="/js/disFt.js")

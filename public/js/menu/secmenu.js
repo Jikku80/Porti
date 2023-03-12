@@ -260,6 +260,13 @@ window.addEventListener("load", () => {
                             }
                         });
                         likeDislikeConfig()
+                        let menuseccardsec = document.querySelector(".menu_sec_card");
+                        let inptbx = document.querySelector(".orderno");
+                        let foccol = document.querySelector(".seccatfocusColor").innerText;
+
+                        menuseccardsec.style.color = foccol;
+                        inptbx.style.borderColor = foccol;
+                        inptbx.style.color = foccol;
 
                         let cancelitembtn = document.querySelectorAll(".cancelitembtn");
                         let foodname = document.querySelector(".menu__food__name")
@@ -730,7 +737,31 @@ async function getUserMsg() {
                         }
 
                     })
+
+                    let foodordsec = document.querySelectorAll(".food__order__list");
+
+                    let foccol = document.querySelector(".seccatfocusColor").innerText;
+                    let fontcol = document.querySelector(".seccatFontColor").innerText;
+                    let faded = document.querySelectorAll(".faded");
+                    let fontfa = document.querySelector(".seccatFontFam").innerText;
                     let delBtn = document.querySelectorAll(".delreqbtn");
+
+                    delBtn.forEach(item => {
+                        item.style.color = foccol;
+                        item.style.borderColor = foccol;
+                        item.style.fontFamily = fontfa;
+                    })
+
+                    foodordsec.forEach(item => {
+                        item.style.backgroundColor = fontcol;
+                        item.style.color = foccol;
+                    })
+
+                    faded.forEach(item => {
+                        item.style.fontWeight = "bolder";
+                        item.style.color = foccol;
+                    })
+
                     let socket = io();
                     delBtn.forEach(item => {
                         item.addEventListener("click", async () => {
@@ -1306,7 +1337,30 @@ async function getReservation() {
                                     </div>
                                 `
                         }
+                        let foodordsec = document.querySelectorAll(".food__order__list");
+
+                        let foccol = document.querySelector(".seccatfocusColor").innerText;
+                        let fontcol = document.querySelector(".seccatFontColor").innerText;
+                        let faded = document.querySelectorAll(".faded");
                         let delReserve = document.querySelectorAll(".delreservebtn");
+                        let fontfa = document.querySelector(".seccatFontFam").innerText;
+
+                        delReserve.forEach(item => {
+                            item.style.color = foccol;
+                            item.style.borderColor = foccol;
+                            item.style.fontFamily = fontfa;
+                        })
+
+                        foodordsec.forEach(item => {
+                            item.style.backgroundColor = fontcol;
+                            item.style.color = foccol;
+                        })
+
+                        faded.forEach(item => {
+                            item.style.fontWeight = "bolder";
+                            item.style.color = foccol;
+                        })
+
                         delReserve.forEach(item => {
                             item.addEventListener("click", () => {
                                 deleteReservation(item.id);
@@ -1487,4 +1541,184 @@ window.addEventListener("load", async () => {
         resord.classList.add("hidden");
         resvbtn.classList.add("hidden");
     });
+})();
+
+(function () {
+    let editdum = document.querySelector(".edit__sec__cat");
+    let editfeat = document.querySelector(".edit__features__sec");
+    let canceledit = document.querySelector(".cancel__edit__dummy");
+    let upPortTheme = document.getElementById("changesecCatTheme");
+    let backColor = document.getElementById("secCatBackColor");
+    let fontColor = document.getElementById("secCatFontColor");
+    let focusColor = document.getElementById("secCatFocusColor");
+    let fontFam = document.getElementById("secCatFontFam");
+    let polygn = document.getElementById("secCatPolygon");
+    let covHeight = document.getElementById("secCatCovHeight");
+    let covWidth = document.getElementById("secCatCovWidth");
+    let id = document.getElementById('secCatid').innerText;
+
+    editdum.addEventListener("click", () => {
+        editfeat.classList.remove("hidden");
+    })
+
+    canceledit.addEventListener("click", () => {
+        editfeat.classList.add("hidden");
+    })
+
+    upPortTheme.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden");
+
+        const endpoint = `/api/v1/menu/${id}/updateRestaurant`
+        try {
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    themecolor: backColor.value,
+                    fontColor: fontColor.value,
+                    focusColor: focusColor.value,
+                    fontFam: fontFam.value,
+                    polygon: polygn.value,
+                    covWidth: covWidth.value,
+                    covHeight: covHeight.value
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Menu Theme has been updated :)");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    errorAlert("Invalid input, Input error!!!")
+                    console.log(response);
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();
+
+(function () {
+    let fontColor = document.querySelector(".seccatFontColor").innerText;
+    let fontFam = document.querySelector(".seccatFontFam").innerText;
+    let polygn = document.querySelector(".seccatPolygon").innerText;
+    let covWidth = document.querySelector(".seccatCovWidth").innerText;
+    let covHeight = document.querySelector(".seccatCovHeight").innerText;
+    let backColor = document.querySelector(".seccatThemeColor").innerText;
+    let focusColor = document.querySelector(".seccatfocusColor").innerText;
+    let sevbod = document.querySelector(".sec__menu__sec");
+    let txtfont = document.querySelectorAll(".txt");
+    let imgStyl = document.querySelector(".sec__cat__coverpic");
+    let focSec = document.querySelectorAll(".focusback");
+    let focop = document.querySelectorAll(".focusbackop");
+    let inpt = document.querySelectorAll("input");
+    let lon = document.querySelectorAll(".lonbtn");
+
+    lon.forEach(item => {
+        item.style.borderColor = fontColor;
+    })
+
+    inpt.forEach(item => {
+        item.style.borderColor = fontColor;
+        item.style.color = fontColor;
+    })
+
+    sevbod.style.fontFamily = fontFam;
+    sevbod.style.color = fontColor;
+    sevbod.style.backgroundColor = backColor;
+
+    focSec.forEach(item => {
+        item.style.backgroundColor = focusColor;
+        item.style.opacity = "0.8"
+    })
+
+    focop.forEach(item => {
+        item.style.backgroundColor = focusColor;
+    })
+
+    txtfont.forEach(item => {
+        item.style.color = fontColor;
+        item.style.fontFamily = fontFam;
+    })
+
+    if (covWidth == "hundred") {
+        imgStyl.style.width = "100vw";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covWidth == "seventy") {
+        imgStyl.style.width = "70vw";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covWidth == "fifty") {
+        imgStyl.style.width = "50vw";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covWidth == "thirty") {
+        imgStyl.style.width = "30vw";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covWidth == "remove") {
+        imgStyl.style.width = "0vw";
+        imgStyl.style.zIndex = "0";
+    }
+
+    if (covHeight == "hundred") {
+        imgStyl.style.height = "100vh";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covHeight == "seventy") {
+        imgStyl.style.height = "70vh";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covHeight == "fifty") {
+        imgStyl.style.height = "50vh";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covHeight == "thirty") {
+        imgStyl.style.height = "30vh";
+        imgStyl.style.zIndex = "0";
+    }
+    if (covHeight == "remove") {
+        imgStyl.style.height = "0vh";
+        imgStyl.style.zIndex = "0";
+    }
+
+    if (polygn == "full") {
+        imgStyl.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+        imgStyl.style.webkitClipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+        imgStyl.style.zIndex = "0";
+    }
+    else if (polygn == "right") {
+        imgStyl.style.clipPath = "polygon(0 0, 0% 100%, 100% 0)"
+        imgStyl.style.webkitClipPath = "polygon(0 0, 0% 100%, 100% 0)"
+        imgStyl.style.zIndex = "0";
+    }
+    else if (polygn == "parallel") {
+        imgStyl.style.clipPath = "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)"
+        imgStyl.style.webkitClipPath = "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)"
+        imgStyl.style.zIndex = "0";
+    }
+    else if (polygn == "hexa") {
+        imgStyl.style.clipPath = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+        imgStyl.style.webkitClipPath = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+        imgStyl.style.zIndex = "0";
+    }
+    else if (polygn == "crack") {
+        imgStyl.style.webkitClipPath = "polygon(20% 0%, 58% 68%, 100% 20%, 66% 71%, 80% 100%, 43% 63%, 0% 80%, 41% 55%)";
+        imgStyl.style.clipPath = "polygon(20% 0%, 58% 68%, 100% 20%, 66% 71%, 80% 100%, 43% 63%, 0% 80%, 41% 55%)"
+        imgStyl.style.zIndex = "0";
+    }
+    else {
+        return;
+    }
 })();

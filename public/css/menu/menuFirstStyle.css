@@ -10,7 +10,7 @@ html{
 }
 
 .white__bg{
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(250, 250, 250) !important;
 }
 
 .menu__head{
@@ -28,6 +28,12 @@ html{
 .menu__secborder{
     border: 2px solid goldenrod;
     padding: 1%;
+}
+
+.first_dp_sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .res__add, .res__slogan{

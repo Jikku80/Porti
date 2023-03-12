@@ -11,11 +11,11 @@ block content
     .pageName.hidden= restro[0].name
     if (user)
         if (user.id !== restro[0].user.id)
-            h1.msg__user__btn &#9993;
+            h1.msg__user__btn.focusback &#9993;
             .msg__dot.hidden
             audio.usermsgalert.hidden
                 source(src="/noti/msg.mp3")
-            .msg__user__sec.hidden 
+            .msg__user__sec.hidden.focusback 
                 .msg__user__head 
                     h2.portfoliouser= restro[0].user.name
                     p.portiuserid.hidden= restro[0].user.id
@@ -41,15 +41,15 @@ block content
             .curloguser.hidden= user._id
             .cur__user__msg.hidden
     else 
-        h1.msg__user__btn &#9993;
+        h1.msg__user__btn.focusback &#9993;
         .msg__dot.hidden
-        .msg__user__sec.hidden 
+        .msg__user__sec.hidden.focusback 
             .msg__user__head 
                 h2.portfoliouser= restro[0].user.name
                 img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
             .msg__user__bod 
-                p You Are Not Logged In 
-                    span.goToLoginPage Login || SignUp
+                p.txt You Are Not Logged In 
+                    span.txt.goToLoginPage Login || SignUp
                 .cur__user__msg.hidden 
         .usermsgalrt.hidden 
         .msg__user__sec.hidden 
@@ -63,35 +63,42 @@ block content
             .sec__menu__usr__id.hidden= restro[0].user.id
         else 
             .sec__menu__usr__id.hidden
-        .resdetail(title="contact info") &#9743;
+        .seccatFontColor.hidden= restro[0].fontColor 
+        .seccatFontFam.hidden= restro[0].fontFam 
+        .seccatPolygon.hidden= restro[0].polygon
+        .seccatCovWidth.hidden= restro[0].covWidth 
+        .seccatCovHeight.hidden= restro[0].covHeight
+        .seccatThemeColor.hidden= restro[0].themecolor
+        .seccatfocusColor.hidden= restro[0].focusColor 
+        .resdetail.focusback(title="contact info") &#9743;
         .restro__info.hidden
-            .restrodeatilmidsec
+            .restrodeatilmidsec.focusback
                 .res__detail__head 
-                    p Contact Us 
+                    p.txt Contact Us 
                     img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
                 .restro__info__bod.sec__contact__detail 
                     p= restro[0].Address
                     p= restro[0].phn_no
                     if (restro[0].serviceTerms)
-                        p.sec__terms Terms And Conditions
-                        .terms__sec.hidden 
+                        p.sec__terms.txt Terms And Conditions
+                        .terms__sec.hidden.focusback 
                             .termservice__head 
-                                h3 Terms of Service 
+                                h3.txt Terms of Service 
                                 img.hideterms.point(src="/images/cancel.png" alt="cancel__btn")
                             .terms__sec__bod
-                                pre.termspoliciespre= restro[0].serviceTerms 
+                                pre.termspoliciespre.txt= restro[0].serviceTerms 
                     else 
                         .terms__sec.hidden 
                         .hideterms.hidden 
                         .sec__terms.hidden 
                     if (restro[0].privacyPolicies)
-                        p.sec__policies Privacy Policies
-                        .policies__sec.hidden 
+                        p.sec__policies.txt Privacy Policies
+                        .policies__sec.hidden.focusback 
                             .privacypolicies__head 
-                                h3 Privacy Policies 
+                                h3.txt Privacy Policies 
                                 img.hideprivacypolicies.point(src="/images/cancel.png" alt="cancel__btn")
                             .policies__sec__bod
-                                pre.termspoliciespre= restro[0].privacyPolicies
+                                pre.txt.termspoliciespre= restro[0].privacyPolicies
                     else 
                         .sec__policies.hidden 
                         .policies__sec.hidden
@@ -102,12 +109,12 @@ block content
             #thisusrid.hidden= user._id
         else 
             #thisusrid.hidden
-        .resorder(title="order") &#127869;
+        .resorder.focusback(title="order") &#127869;
         .resorderfill.hidden
         audio#secmsgalert.hidden
             source(src="/noti/msg.mp3")
-        .resorder__info.hidden 
-            .restromidsec
+        .resorder__info.hidden
+            .restromidsec.focusbackop
                 .res__detail__head 
                     p Order 
                     img.cancel__order.point(src="/images/cancel.png" alt="cancel__btn")
@@ -116,7 +123,7 @@ block content
                     .restro__info__bod
                         form
                             .form__cont__order
-                                label Tabel No :
+                                label.txt Tabel No :
                                 input#tableno(type="text", name="tableno", placeholder="rc11 Or Home Delivery")
                                 #uniqueusername.hidden= user.name
                                 #uniqueuserid.hidden= user.id
@@ -126,14 +133,14 @@ block content
                                 textarea#resordermsg.hidden(type="text", name="resordermsg", placeholder="1 Chicken Pizza") 
                                 input#uniquerestroname.hidden(type="text" value=`${restro[0]._id}`)
                             if (restro[0].homedelivery === true)
-                                p.hminfo If Home Delivery click 
-                                    span#showHomeDelOpt Home Delivery
+                                p.hminfo.txt If Home Delivery click 
+                                    span#showHomeDelOpt.txt Home Delivery
                                 .showhomesec.hidden
                                     .form__cont__order 
-                                        label Address :
+                                        label.txt Address :
                                         input#resordadd(type="text", placeholder="your address")
                                     .form__cont__order 
-                                        label Phone Number :
+                                        label.txt Phone Number :
                                         input#resordphn(type="number", placeholder="976456132498")
                             else 
                                 .showhomesec.hidden
@@ -141,16 +148,16 @@ block content
                                 input#resordphn.hidden
                                 #showHomeDelOpt.hidden
                             .form__cont__order
-                                button#sendorderreq.lonbtn Order
+                                button#sendorderreq.lonbtn.txt Order
  
-                        h3 Your Order
-                        p.smallfnt Your Recent Orders
+                        h3.txt Your Order
+                        p.smallfnt.txt Your Recent Orders
                         .foods__order__his
 
                 else 
                     .restro__info__bod 
-                        h4 You are Not Logged In Please Log in to Order Food 
-                        .lonbtn#gotoLogin Login || SignUp
+                        h4.txt You are Not Logged In Please Log in to Order Food 
+                        .lonbtn#gotoLogin.txt Login || SignUp
                         #sendorderreq.hidden 
                         #uniquerestroname.hidden
                         #uniqueusername.hidden
@@ -160,7 +167,7 @@ block content
                         .foods__order__his.hidden
         if (banner[0])
             .sec__menu__banner.hidden 
-                p.bannerinfo= banner[0].bannerInfo
+                p.bannerinfo.txt= banner[0].bannerInfo
                 img.removebanner.point(src="/images/cancel.png", alt="cancel__btn")
         else 
             .sec__menu__banner.hidden
@@ -168,32 +175,33 @@ block content
             .bannerinfo.hidden
         .sec__menu__cover 
             h1.resname= `${restro[0].name} Menu`
-            if (restro[0].coverImage)
-                img(src=`${restro[0].coverImage}`, alt="cover__img")
-            else
-                img(src="/images/menubacksmall.jpg", alt="cover__img")
-            .sec__menu__cate 
+            .menu__cover__com
+                if (restro[0].coverImage)
+                    img.sec__cat__coverpic(src=`${restro[0].coverImage}`, alt="cover__img")
+                else
+                    img.sec__cat__coverpic(src="/images/menubacksmall.jpg", alt="cover__img")
+            .sec__menu__cate.focusback 
                 .sec__menu__cate__first
                     if (allmenus.length >= "3")
-                        p.sec__menu__cate__names.point= allmenus[0]
-                        p.sec__menu__cate__names.point= allmenus[1]
-                        p.sec__menu__cate__names.point= allmenus[2]
+                        p.sec__menu__cate__names.point.txt= allmenus[0]
+                        p.sec__menu__cate__names.point.txt= allmenus[1]
+                        p.sec__menu__cate__names.point.txt= allmenus[2]
                     else 
-                        p.sec__menu__cate__names.point Add Item
-                        p.sec__menu__cate__names.point Add Item
-                        p.sec__menu__cate__names.point Add Item
-                p.viewallcate.point View All 
-        .sec__menu__viewall.hidden 
+                        p.sec__menu__cate__names.point.txt Add Item
+                        p.sec__menu__cate__names.point.txt Add Item
+                        p.sec__menu__cate__names.point.txt Add Item
+                p.viewallcate.point.txt View All 
+        .sec__menu__viewall.hidden.focusback 
             .sec__menu__viewall__head
-                p All Food Types 
+                p.txt All Food Types 
                 img.cancel__Cat(src="/images/cancel.png", alt="cancel__btn")
             .sec__menu__viewall__bod
                 if (allmenus[0])
                     each menu in allmenus 
-                        p.sec__menu__cate__names.point= menu
+                        p.sec__menu__cate__names.point.txt= menu
                 else 
-                    p.sec__menu__cate__names.point Add Item
-        .sec__menu__allfood.hidden 
+                    p.sec__menu__cate__names.point.txt Add Item
+        .sec__menu__allfood.hidden.focusback 
             .sec__menu__allfood__head 
             
             .sec__menu__allfood__bod 
@@ -208,50 +216,50 @@ block content
         .sec__item__sec.hidden
 
     if (user)
-        .reserve__btn(title="make reservation") &#129348;
+        .reserve__btn.focusback(title="make reservation") &#129348;
         .reserve__fill.hidden
         .reserve__sec.hidden 
-            .reserve__midsec 
+            .reserve__midsec.focusbackop 
                 .reserve__head 
-                    h1 Make Reservation 
+                    h1 Make Reservation.txt 
                     img.reservecancel.point(src="/images/cancel.png" alt="cancel")
                     .acclog.hidden
                 .reserve__bod
                     form
                         .form__cont__order
-                            label Name :
+                            label.txt Name :
                             input#reserveuser(type="text", name="tableno", value=user.name)
                             #reserveuserid.hidden= user.id
                             #reserverestroid.hidden= restro[0]._id
                         .form__cont__order
-                            label Total People : 
+                            label.txt Total People : 
                             input#reserveno(type="number" required placeholder="2") 
                         .form__cont__order
-                            label Date : 
+                            label.txt Date : 
                             input#reservedate(type="date" required) 
                         .form__cont__order
-                            label Time : 
+                            label.txt Time : 
                             input#reservetime(type="time" required)
                         .form__cont__order 
-                            label Contact : 
+                            label.txt Contact : 
                             input#reservephn(type="number" required placeholder="9876543127")
                         .form__cont__order
-                            button#reservereq.lonbtn Reserve
-                    h3 Your Reservations
-                        p.smallfnt Your Recent Reservations with 
+                            button#reservereq.lonbtn.txt Reserve
+                    h3.txt Your Reservations
+                        p.txt.smallfnt Your Recent Reservations with 
                             span= restro[0].name
                     .reservations
     else 
-        .reserve__btn(title="make reservation") &#129348;
+        .reserve__btn.focusback.txt(title="make reservation") &#129348;
         .reserve__fill.hidden
         .reserve__sec.hidden
-            .reserve__midsec
+            .reserve__midsec.focusback
                 .reserve__head 
-                    h1 Make Reservation 
+                    h1.txt Make Reservation 
                     img.reservecancel.point(src="/images/cancel.png" alt="cancel")
                 .reserve__bod
-                    h3 Login To Make Reservation
-                    h3.lonbtn.acclog Login || SignUp
+                    h3.txt Login To Make Reservation
+                    h3.txt.lonbtn.acclog Login || SignUp
         .reservations.hidden
         #reserveuser.hidden 
         #reserveuserid.hidden 
@@ -260,6 +268,74 @@ block content
         #reservetime.hidden 
         #reservephn.hidden 
         #reservereq.hidden
+    if (!user)
+        #secCatid.hidden 
+        #changesecCatTheme.hidden 
+        .cancel__edit__dummy.hidden
+        .edit__sec__cat.hidden
+    else
+        if (user.id !== restro[0].user.id)
+            #secCatid.hidden 
+            #changesecCatTheme.hidden 
+            .cancel__edit__dummy.hidden
+            .edit__sec__cat.hidden
+        else
+            .edit__sec__cat.focusback.txt(title="Edit Theme") &#9881;
+            .edit__features__sec.hidden.focusback
+                .edit__feat__head 
+                    h3.txt Edit Theme 
+                    img.cancel__edit__dummy.point(src="/images/cancel.png" alt="cancel__edit")
+                .edit__feat__bod
+                    #secCatid.hidden= restro[0]._id
+                    form.feat_form_bod
+                        .form__bod__cat 
+                            label.txt Background Color:
+                            input#secCatBackColor(type="color" value="#ffffff")
+                        .form__bod__cat 
+                            label.txt Cover Image Style:  
+                            select#secCatPolygon
+                                option.opt(hidden selected) Full
+                                option.opt(value="crack") Crack 
+                                option.opt(value="full") Full
+                                option.opt(value="right") Right Angle
+                                option.opt(value="parallel") Parallel
+                                option.opt(value="hexa") Hexa
+                        .form__bod__cat 
+                            label.txt Cover Image Height:  
+                            select#secCatCovHeight
+                                option.opt(hidden selected) 100
+                                option.opt(value="hundred") 100 
+                                option.opt(value="seventy") 70
+                                option.opt(value="fifty") 50
+                                option.opt(value="thirty") 30
+                                option.opt(value="remove") 0
+                        .form__bod__cat 
+                            label.txt Cover Image Width:  
+                            select#secCatCovWidth
+                                option.opt(hidden selected) 100
+                                option.opt(value="hundred") 100 
+                                option.opt(value="seventy") 70
+                                option.opt(value="fifty") 50
+                                option.opt(value="thirty") 30
+                                option.opt(value="remove") 0
+                        .form__bod__cat 
+                            label.txt Focus Color:
+                            input#secCatFocusColor(type="color" value="#000000d1")
+                        .form__bod__cat
+                            label.txt Font Color:
+                            input#secCatFontColor(type="color" value="#ffffff")
+                        .form__bod__cat 
+                            label.txt Font Family 
+                            select#secCatFontFam
+                                option.opt(hidden selected) Londrina Sketch
+                                option.opt(value="cursive") Cursive 
+                                option.opt(value="monospace") Monospace
+                                option.opt(value="Arial") Arial
+                                option.opt(value="Impact") Impact
+                                option.opt(value="Londrina Sketch") Londrina Sketch
+                                option.opt(value="Cabin Sketch") Cabin Sketch
+                        .grp_sec_cat_btn
+                            button#changesecCatTheme.blackbtn Update Theme
 
             
     script(src="/js/alert.js") 
