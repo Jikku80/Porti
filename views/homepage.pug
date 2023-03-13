@@ -67,10 +67,10 @@ block content
             .view__tm 
                 #abtPorti.padder.darkgreen
                     .bottom__nav
-                        h2 About 
+                        h2.fntsmall About 
                             span.wite vPor
                             span.grn t
-                            span.wite.nocaps i
+                            span.wite.ncp i
                         if (!user)
                             p.usrTheme.hidden
                             a.bottom__anch(href="/account/login") 
@@ -98,7 +98,7 @@ block content
                                 .bottom__anch.text__shadow.logout 
                                     h3 &#10162;SignOut
                     .first__abt__cont.containr#apS 
-                        .first__half__cont 
+                        .first__half__cont.mobhidehalfsec 
                             h1 About 
                                 span.wite vPor
                                 span.grn t
@@ -134,22 +134,24 @@ block content
                             li Business Owner | Shop Owner
                             li For Anyone | Everyone who needs a Portfolio, Invitation Card, Food Menu, Catalogue, Brochure
                 .padder.darkgreen#pGuide
-                    .containr 
+                    .containr.icont 
                         .second__half__cont 
                             .second__half__head.to__left
-                                h1 Easy 
+                                h2 Easy 
                                     span.wite Create,  
-                                    span.grn Share 
-                                h1 No 
+                                    span.gry Share 
+                                h2 No 
                                     span Recurring 
                                     span.maf Charges,
-                                h1 No 
+                                h2 No 
                                     span.maf Hassle 
-                                h1 Short Easy 
-                                    span.grn Link
+                                h2 Short Easy 
+                                    span.gry Link
+                                h2 Your Business 
+                                    span.wite Statistics
                                 p.porti_all_link.guidlink vporti.com/user
                             button#showGuide.shwbtn vPorti Processes 
-                        .first__half__cont 
+                        .first__half__cont.mobhidehalfsec 
                             h1.wite 
                                 span vPor
                                 span.grn t
@@ -247,10 +249,10 @@ block content
                     .containr 
                         .first__half__cont 
                             h1.wite Port
-                                span.gry  folio 
-                                span Helper
+                                span.gry folio 
+                                span.gry Helper
                         .second__half__cont
-                            .second__half__head
+                            .second__half__head.mobhidehalfsec
                                 h2 Interview 
                                     span.wite Solution
                                 h2.gry Your Work 
@@ -341,9 +343,9 @@ block content
                             .link__format
                                 p.porti_all_link vporti.com/user
                 .darkgreen.padder#iHelper
-                    .containr 
+                    .containr.icont 
                         .second__half__cont
-                            .second__half__head.to__left
+                            .second__half__head.to__left.mobhidehalfsec
                                 h2 Party, Function 
                                     span.wite Solution
                                 h2.gry Create 
@@ -355,8 +357,8 @@ block content
                             button#showInviHelper.shwbtn Invitation Helper
                         .first__half__cont 
                             h1.wite Invi
-                                span.gry  tation 
-                                span Helper
+                                span.gry tation 
+                                span.gry Helper
                     #portiinviHelper.hidden
                         h3.wite Invitation 
                             span.lst Helper
@@ -407,22 +409,23 @@ block content
                                     p You can change layout in here by updating change theme
                                     p You can update the background image by going to update cover image or invitation image.
                 .darkgreen.padder#mHelper
-                    .containr 
+                    .containr
                         .first__half__cont 
                             h1.wite Menu 
                                 span.gry Helper
                         .second__half__cont
-                            .second__half__head
-                                h2 Food Spot 
-                                    span.wite Solution
-                                h2 Keep Track Of Your Food Spot 
-                                    span.wite Intel 
-                                h2.wite Orders, Reservations 
-                                    span.gry Made
-                                h2.gry Grow With 
-                                    span.wite vPOR
-                                    span.grn T
-                                    span.wite.nocaps i
+                            .second__half__head 
+                                .detsec.mobhidehalfsec
+                                    h2 Food Spot 
+                                        span.wite Solution
+                                    h2 Keep Track Of Your Food Spot 
+                                        span.wite Intel 
+                                    h2.wite Orders, Reservations 
+                                        span.gry Made
+                                    h2.gry Grow With 
+                                        span.wite vPOR
+                                        span.grn T
+                                        span.wite.nocaps i
                                 .playsec
                                     .playmenuvid.vidbtn.pointer
                                         h1 &#9655;Watch
@@ -541,27 +544,28 @@ block content
                             .link__format
                                 p.porti_all_link vporti.com/user
                 .padder.darkgreen#cHelper
-                    .containr 
+                    .containr.icont 
                         .second__half__cont
                             .second__half__head.to__left
-                                h2 Your Product 
-                                    span.wite Solution
-                                h2 Your Business 
-                                    span.wite Growth
-                                h2 Keep Track Of Your Business 
-                                    span.wite Intel 
-                                h2.wite Orders and Returns 
-                                    span.gry Requested
-                                h2.gry Grow With 
-                                    span.wite vPOR
-                                    span.grn T
-                                    span.wite.nocaps i
+                                .detsec.mobhidehalfsec
+                                    h2 Your Product 
+                                        span.wite Solution
+                                    h2 Your Business 
+                                        span.wite Growth
+                                    h2 Keep Track Of Your Business 
+                                        span.wite Intel 
+                                    h2.wite Orders and Returns 
+                                        span.gry Requested
+                                    h2.gry Grow With 
+                                        span.wite vPOR
+                                        span.grn T
+                                        span.wite.nocaps i
                                 .playsec
                                     .playcatalogvid.vidbtn.pointer
                                         h1 &#9655;Watch
                             button#showCatalogHelper.shwbtn Catalog Helper
                         .first__half__cont 
-                            h1.wite Cata  
+                            h1.wite Cata
                                 span.gry log  
                                 span.gry Helper
                     #porticatalogeHelper.hidden
@@ -703,27 +707,28 @@ block content
                             .link__format
                                 p.porti_all_link vporti.com/user
                 .padder.darkgreen#bHelper
-                    .containr 
+                    .containr.icont 
                         .second__half__cont
                             .second__half__head.to__left
-                                h2 Your Product 
-                                    span.wite Solution
-                                h2 Your Business 
-                                    span.wite Growth
-                                h2 Keep Track Of Your Business 
-                                    span.wite Intel
-                                h2.wite Bookings 
-                                    span.gry Made
-                                h2.gry Grow With 
-                                    span.wite vPOR
-                                    span.grn T
-                                    span.wite.nocaps i
+                                .detsec.mobhidehalfsec
+                                    h2 Your Product 
+                                        span.wite Solution
+                                    h2 Your Business 
+                                        span.wite Growth
+                                    h2 Keep Track Of Your Business 
+                                        span.wite Intel
+                                    h2.wite Bookings 
+                                        span.gry Made
+                                    h2.gry Grow With 
+                                        span.wite vPOR
+                                        span.grn T
+                                        span.wite.nocaps i
                                 .playsec
                                     .playbrochurevid.vidbtn.pointer
                                         h1 &#9655;Watch
                             button#showBrochureHelper.shwbtn Brochure Helper
                         .first__half__cont 
-                            h1.wite Bro  
+                            h1.wite Bro
                                 span.gry chure  
                                 span.gry Helper
                     #portibrochureHelper.hidden
@@ -846,11 +851,12 @@ block content
                     .containr 
                         .first__half__cont 
                             h1 About 
-                                span.maf Lakhey  
+                                span.maf Lakhey
+                                br 
                                 span.gry De 
                                 span.wite Tech
                         .second__half__cont
-                            .second__half__head
+                            .second__half__head.mobhidehalfsec
                                 h2.gry Easy With 
                                     span.wite vPOR
                                     span.grn T
@@ -884,15 +890,16 @@ block content
                         p The entire vPorti.com Web Site is Copyright © 2022 by Lakhey De Tech. All Rights Reserved. The vporti.com site may not be copied or duplicated in whole or part by any means without express prior agreement in writing or unless specifically noted on the site.
                         p Some photographs, icons contained on the site may be the copyrighted property of others; acknowledgement of those copyrights is hereby given. All such material is used with the permission of the owner. 
                 .padder.darkgreen#cTM
-                    .containr 
+                    .containr.icont 
                         .second__half__cont
-                            .second__half__head.to__left
+                            .second__half__head.to__left.mobhidehalfsec
                                 h2.gry Feel Free To Text Lakhey De Tech 
                                 h2 Lakhey De Tech is Here For You
                             button#showContactTM.shwbtn Message Lakhey De Tech
                         .first__half__cont 
                             h1 Reach 
                                 span.maf Lakhey 
+                                br
                                 span.gry De 
                                 span.wite Tech
                     #contactTM.hidden

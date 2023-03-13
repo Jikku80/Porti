@@ -691,6 +691,14 @@ function openimg() {
     let search = document.querySelector(".searchbar");
     let fontback = document.querySelectorAll(".fontback");
     let secfont = document.querySelectorAll(".secfont");
+    let pre = document.querySelector(".prev");
+    let nex = document.querySelector(".next");
+
+    pre.style.color = fontColor;
+    pre.style.borderColor = fontColor;
+
+    nex.style.color = fontColor;
+    nex.style.borderColor = fontColor;
 
     secfont.forEach(item => {
         item.style.color = secfontcolor;

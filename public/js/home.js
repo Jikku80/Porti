@@ -117,7 +117,9 @@ gotoport.addEventListener("click", () => {
     let lod = document.querySelector(".loader");
     let td = document.querySelectorAll(".td");
     let framebtn = document.querySelector(".framebtn");
-    let effbtn = document.querySelectorAll(".effectbtn")
+    let effbtn = document.querySelectorAll(".effectbtn");
+    let portlinkdis = document.querySelectorAll(".porti_all_link");
+    let para = document.querySelectorAll("p");
 
     if (theme == "red") {
         upAccForm.style.backgroundColor = "crimson";
@@ -180,6 +182,14 @@ gotoport.addEventListener("click", () => {
         bod.style.backgroundColor = "white";
         document.body.style.backgroundColor = "white";
         selec.style.backgroundColor = "white";
+        para.forEach(item => {
+            item.style.color = "black";
+        })
+        portlinkdis.forEach(item => {
+            item.style.backgroundColor = "gray";
+            item.style.color = "white";
+        })
+
         selec.style.borderColor = "black";
         selec.style.color = "black";
         bod.style.color = "black";

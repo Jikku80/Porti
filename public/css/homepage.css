@@ -294,7 +294,7 @@
 
 .first__half__cont{
     width: 50%;
-    font-size: 5.2vw;
+    font-size: 4.2vw;
 }
 
 .second__half__cont{
@@ -321,8 +321,8 @@
 
 .shwbtn{
     padding: 2%;
-    border: 2px solid rgb(54, 219, 54);
-    color: rgb(54, 219, 54);
+    border: 2px solid gray;
+    color: gray;
     background-color:rgb(0, 26, 0);
     font-weight: bolder;
     font-size: 2em;
@@ -331,7 +331,7 @@
 }
 
 .shwbtn:hover{
-    background-color: rgb(54, 219, 54);
+    background-color: gray;
     color :rgb(0, 26, 0);
 }
 
@@ -427,7 +427,7 @@
 }
 
 .porti_all_link{
-    background-color: chartreuse;
+    background-color: white;
     width: fit-content;
     font-size: 2em;
     color:rgb(0, 26, 0);
@@ -781,6 +781,10 @@
 
 @media screen and (max-width: 600px) {
 
+    .mobhidehalfsec{
+        display: none;
+    }
+
     .signupbod{
         width: 90vw;
     }
@@ -827,7 +831,7 @@
 
     .main__content{
         margin-top: 2vh;
-        height: 80vh;
+        height: 82vh;
     }
     
     .newusersignup{
@@ -849,13 +853,18 @@
         flex-direction: column;
     }
 
+    .icont{
+        flex-direction: column-reverse;
+    }
+
     .first__half__cont{
         width: 100%;
-        font-size: 3em;
+        font-size: 2.2em;
     }
 
     .second__half__cont{
         width: 100%;
+        font-size: 12px;
     }
 
     .second__half__head{
@@ -863,8 +872,16 @@
         margin-bottom: 5vh;
     }
 
-    .bottom__nav h2{
+    .fntsmall{
         font-size: 14px;
+    }
+
+    .ncp{
+        font-variant: normal;
+    }
+
+    .bottom__nav{
+        align-items: center;
     }
 
     .bottom__nav__inner{
@@ -941,9 +958,13 @@
         flex-direction: column;
     }
 
+    .icont{
+        flex-direction: column-reverse;
+    }
+
     .first__half__cont{
         width: 100%;
-        font-size: 4em;
+        font-size: 3.2em;
     }
 
     .second__half__cont{
