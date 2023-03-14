@@ -106,6 +106,11 @@ menuLayouts.forEach(item => {
         else {
             yname = yoname;
         }
+        if (no.value !== "") {
+            yno = no.value
+        } else {
+            yno = 0
+        }
         const endpoint = `/api/v1/menu/createRestaurant`
         try {
             await fetch((endpoint), {
@@ -118,7 +123,7 @@ menuLayouts.forEach(item => {
                     name: yname,
                     address: address.value,
                     slogan: slogan.value,
-                    phn_no: no.value,
+                    phn_no: yno,
                     theme: theme,
                     resType: resType.value
                 })

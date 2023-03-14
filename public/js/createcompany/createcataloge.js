@@ -65,6 +65,11 @@ catalogeLayouts.forEach(item => {
         } else {
             yemail = yoemail;
         }
+        if (phn_no.value !== "") {
+            yno = phn_no.value
+        } else {
+            yno = 0
+        }
 
         const endpoint = `/api/v1/catalouge/createCompany`
         try {
@@ -80,7 +85,7 @@ catalogeLayouts.forEach(item => {
                     social: social.value,
                     locationLink: add_link.value,
                     slogan: slogan.value,
-                    contact: phn_no.value,
+                    contact: yno,
                     theme: theme,
                     Address: address.value,
                     compType: compType.value

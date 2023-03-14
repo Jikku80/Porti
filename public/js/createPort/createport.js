@@ -4,7 +4,7 @@ inviSec = document.querySelector('.invi__section');
 menuSec = document.querySelector('.menu__section');
 catSec = document.querySelector('.catalouge__section');
 layout1 = document.querySelectorAll(".portunl");
-id1 = document.getElementById("usId").innerText;
+let id1 = document.getElementById("usId").innerText;
 
 let layoutOneForm = document.createElement("div");
 layoutOneForm.classList.add("createForm");
@@ -123,6 +123,11 @@ layout1.forEach(item => {
         let yname;
         let yrole;
         let yemail;
+        if (yourno.value !== "") {
+            yno = yourno.value
+        } else {
+            yno = 0
+        }
         if (yorname !== "") {
             yname = yorname;
         }
@@ -140,7 +145,6 @@ layout1.forEach(item => {
         else {
             yemail = curemail;
         }
-
         try {
             await fetch((endpoint), {
                 method: 'POST',
@@ -154,7 +158,7 @@ layout1.forEach(item => {
                     about: aboutyou.value,
                     what: what.value,
                     why: why.value,
-                    phn_no: yourno.value,
+                    phn_no: yno,
                     showNo: showNo.checked,
                     theme: theme,
                     email: yemail,

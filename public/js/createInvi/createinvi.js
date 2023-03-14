@@ -139,6 +139,11 @@ inviLayouts.forEach(item => {
         } else {
             yname = "Party"
         }
+        if (yourno.value !== "") {
+            yno = yourno.value
+        } else {
+            yno = 0
+        }
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
         const endpoint = '/api/v1/invite/makeInvi'
@@ -154,7 +159,7 @@ inviLayouts.forEach(item => {
                     sname: ysecname,
                     about: aboutyou.value,
                     address: what.value,
-                    phn_no: yourno.value,
+                    phn_no: yno,
                     pdate: why.value,
                     theme: theme,
                     ptime: yourwork.value,
