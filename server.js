@@ -13,8 +13,8 @@ const app = require('./app');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-url = process.env.DATABASE_LOCAL;
-// url = process.env.DATABASE;
+// url = process.env.DATABASE_LOCAL;
+url = process.env.DATABASE;
 
 io.on('connection', (socket) => {
     socket.on("resorders", (restoid, oderuser, usrid) => {
