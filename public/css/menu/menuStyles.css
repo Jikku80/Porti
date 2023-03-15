@@ -102,7 +102,6 @@ body{
     justify-content: space-around;
     align-items: center;
     font-size: 2rem;
-    letter-spacing: 2px;
     font-variant: small-caps;
     width: 15vw;
   }
@@ -121,8 +120,9 @@ body{
 }
 
 .scaps{
-    font-variant: small-caps;
-    letter-spacing: 2px;
+    font-size: 16px;
+    /* font-variant: small-caps;
+    letter-spacing: 2px; */
 }
 
 .nocaps{
@@ -731,17 +731,15 @@ input::file-selector-button, ::-webkit-file-upload-button{
     background-color: rgba(0, 0, 0, 0.411);
     padding: 2%;
     border-radius: 2rem;
-    font-variant: small-caps;
-    letter-spacing: 2px;
+    font-size: 16px;
 }
 
 .menu__link__displayer, .catalouge__link__displayer{
-    background-color: rgba(220, 20, 60, 0.411);
+    background-color: gray;
     margin: 2% 2% 0% 2%;
     padding: 1%;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    font-size: 2em;
     font-variant: normal;
 }
 

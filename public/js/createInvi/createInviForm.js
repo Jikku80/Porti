@@ -5,6 +5,9 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
             <h1>Create Invitation</h1>
             <img src="/images/cancel.png" alt="cancel_img" class="cancel__invite pointer crossbtn" />
         </div>
+        <div class="to_centre">
+            <button id="skipandcreateinvi" class="whitebtn wite">Skip Form & Create</button>
+        </div>
         <div class="form__cont">
             <label class="form__label">Person or Party Name:</label>
             <input id=${val} class="form__input" type="text" placeholder="Romeo || Birthday Party" required/>
@@ -38,7 +41,6 @@ function createInvi(val, val1, val2, val3, val4, val5, val6, val7) {
         <p class="uniqueinviid hidden"></p>
         <div class="form__btn">
             <button id=${val7} class="redbtn">Create</button>
-            <button id="skipandcreateinvi" class="whitebtn wite">Skip & Create</button>
         </div>
     </form>
 `

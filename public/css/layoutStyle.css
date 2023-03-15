@@ -52,8 +52,6 @@ p{
 
 #port_name, #invite_name{
     text-align: center;
-    /* font-size: medium; */
-    font-family: cursive;
 }
 
 .land__nav__main{
@@ -101,7 +99,7 @@ p{
     border-radius: 1rem;
     padding: 2%;
     margin: 2vh;
-    font-variant: small-caps;
+    /* font-variant: small-caps; */
 }
 
 .smallest__cont{
@@ -271,7 +269,6 @@ p{
     align-items: center;
     font-size: 2rem;
     font-variant: small-caps;
-    letter-spacing: 2px;
     width: 15vw;
   }
   

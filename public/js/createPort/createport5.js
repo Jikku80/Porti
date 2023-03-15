@@ -15,6 +15,9 @@ formLayoutFive.innerHTML = `
         <h1>AT Layout</h1>
         <img src="/images/cancel.png" alt="cancel_img" class="clFivecreate" />
     </div>
+    <div class="to_centre">
+        <button id="skipandcreateport" class="whitebtn wite">Skip Form & Create</button>
+    </div>
     <div class="form__cont">
         <label class="form__label">Portfolio Name:</label>
         <input id="fifthname" class="form__input" name="portname" type="text" placeholder="TechMafia" required/>
@@ -64,7 +67,6 @@ formLayoutFive.innerHTML = `
     </div>
     <div class="form__btn">
     <button id="fifthformbtn" class="redbtn">Create</button>
-    <button id="skipandcreateport" class="whitebtn wite">Skip & Create</button>
     </div>
 
 </form>

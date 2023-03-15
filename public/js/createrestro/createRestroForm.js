@@ -5,6 +5,9 @@ function createRestro(val, val1, val2, val3, val4, val6) {
             <h1>Create Your Restaurant || Bakery || Food Spot</h1>
             <img src="/images/cancel.png" alt="cancel_img" class="cancel__restro pointer crossbtn" />
         </div>
+        <div class="to_centre">
+            <button id="skipandcreate" class="whitebtn wite">Skip Form & Create</button>
+        </div>
         <div class="form__cont">
             <label class="form__label">Name:</label>
             <input id=${val} class="form__input" type="text" placeholder="Romeo Restro" required/>
@@ -28,7 +31,6 @@ function createRestro(val, val1, val2, val3, val4, val6) {
         <p class="uniquerestrotmid hidden"></p>
         <div class="form__btn">
         <button id=${val4} class="redbtn">Create</button>
-        <button id="skipandcreate" class="whitebtn wite">Skip & Create</button>
         </div>
     </form>
 `

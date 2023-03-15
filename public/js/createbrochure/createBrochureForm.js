@@ -5,6 +5,9 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val9) {
             <h1>Create Organization || Hotel || Motel</h1>
             <img src="/images/cancel.png" alt="cancel_img" class="cancel__brochure pointer crossbtn" />
         </div>
+        <div class="to_centre">
+            <button id="skipandcreatebro" class="whitebtn wite">Skip Form & Create</button>
+        </div>
         <div class="form__cont">
             <label class="form__label">Name:</label>
             <input id=${val} class="form__input" type="text" placeholder="Romeo Co" required/>
@@ -40,7 +43,6 @@ function createBrochure(val, val1, val2, val3, val4, val5, val6, val7, val9) {
         <p class="uniquebrotmid hidden"></p>
         <div class="form__btn">
         <button id=${val7} class="redbtn">Create</button>
-        <button id="skipandcreatebro" class="whitebtn wite">Skip & Create</button>
         </div>
     </form>
 `

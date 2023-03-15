@@ -123,7 +123,7 @@ html{
   justify-content: space-around;
   align-items: center;
   font-size: 2rem;
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
   font-variant: small-caps;
   width: 15vw;
 }
@@ -597,7 +597,6 @@ input, textarea{
   overflow-y: auto;
   scrollbar-width: thin;
   font-size: 12px;
-  font-variant: small-caps;
   animation: shine 4s ease-in-out forwards infinite;
   width: 77vw;
 }
@@ -1122,6 +1121,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
   margin: 1%;
   background-color: transparent;
   border: 2px solid white;
+  background-color: white;
+  color: #000;
   border-radius: 1rem;
   cursor: pointer;
   font-variant: small-caps;
@@ -1129,8 +1130,14 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .whitebtn:hover{
-  background-color: white;
-  color: black;
+  background-color: transparent;
+  color: white;
+}
+
+.to_centre{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .limebtn{
@@ -1338,8 +1345,6 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .expense__sec{
   display: flex;
   justify-content: flex-end;
-  font-variant: small-caps;
-  letter-spacing: 2px;
 }
 
 .exp__bod{
@@ -1590,6 +1595,10 @@ input::file-selector-button, ::-webkit-file-upload-button{
     }
   .term__main, .our__privacy__main{
     width: 90vw;
+  }
+
+  .whitebtn{
+    padding:3%;
   }
 
   #country{
