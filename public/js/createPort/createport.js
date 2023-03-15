@@ -454,9 +454,9 @@ updatePortLayout.forEach(item => {
                 if (response.status === 200) {
                     successAlert("Your Portfolio layout has been updated :)");
                     let newid = btoa(id1);
-                    // window.setTimeout(() => {
-                    //     location.assign(`/myportfolio/${newid}`);
-                    // }, 400);
+                    window.setTimeout(() => {
+                        location.assign(`/myportfolio/${newid}`);
+                    }, 400);
                 } else {
                     errorAlert("Portfolio Layout Update Error!!!")
                 }

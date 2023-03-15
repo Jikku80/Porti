@@ -183,9 +183,10 @@ block content
                     h3.headFont= `Contact ${portfolio.name}`
 
                     .cont__boxbg
-                        if (portfolio.showNo === true && portfolio.phn_no !== "")
-                            .cont__box
-                                p= `Phone: ${portfolio.phn_no}` 
+                        if (portfolio.showNo === true)
+                            if (portfolio.phn_no !== "" && portfolio.phn_no !== 0)
+                                .cont__box
+                                    p= `Phone: ${portfolio.phn_no}` 
                         .cont__box
                             a(href=`mailto:${portfolio.email}`).mail= `${portfolio.email}`
                         if (portfolio.fb != "")

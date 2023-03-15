@@ -160,10 +160,12 @@ block content
         #contact
             h4
                 a(href=`mailto:${organization.email}`)= `Email : ${organization.email}`
-            h4= `Address : ${organization.Address}`
+            if (organization.Address !== "")
+                h4= `Address : ${organization.Address}`
             h4 
                 a(href=`${organization.locationLink}`) Address Link 
-            h4= `Contact : ${organization.contact}` 
+            if (organization.contact !== 0 || organization.contact !== "")
+                h4= `Contact : ${organization.contact}` 
             h4
                 a(href=`${organization.social}`) Profile Link
 

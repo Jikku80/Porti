@@ -189,9 +189,10 @@ block content
                     else
                         img.seventh__img(src="/images/bighitman.png", alt="user__pic")
                 .seventh__contact
-                    if (portfolio.showNo === true && portfolio.phn_no !== "")
-                        p.mkbold.headFont &#128222; : 
-                            span= portfolio.phn_no 
+                    if (portfolio.showNo === true)
+                        if (portfolio.phn_no !== "" && portfolio.phn_no !== 0)
+                            p.mkbold.headFont &#128222; : 
+                                span= portfolio.phn_no 
                     a(href=`mailto:${portfolio.email}`).mail.mkbold.headFont &#128231; : 
                         span= portfolio.email
                     if (portfolio.location)

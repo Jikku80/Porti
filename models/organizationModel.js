@@ -35,7 +35,7 @@ const organizationSchema = new mongoose.Schema({
         trim: true
     },
     contact: {
-        type: String,
+        type: Number,
         trim: true,
     },
     coverImage: {

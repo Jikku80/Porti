@@ -185,9 +185,10 @@ block content
                 h2.secHead Contact 
                 img#fourthThirdClose(src="/images/cancel.png", alt="cancel__img")
             .cont__boxbg
-                if (portfolio.showNo === true && portfolio.phn_no !== "")
-                    .cont__box.fourth__cont
-                        p= `Phone: ${portfolio.phn_no}` 
+                if (portfolio.showNo === true)
+                    if (portfolio.phn_no !== "" && portfolio.phn_no !== 0)
+                        .cont__box.fourth__cont
+                            p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.fourth__cont
                     a(href=`mailto:${portfolio.email}`).mail= `Email: ${portfolio.email}`
                 if (portfolio.fb != "")

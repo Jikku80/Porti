@@ -160,8 +160,9 @@ block content
                     h3.headFont Previous Accomplishment Details
                     pre.ansFont= portfolio.previous
                 .eighth__contact
-                    if (portfolio.showNo === true && portfolio.phn_no !== "")
-                        p.headFont= `Phone: ${portfolio.phn_no}` 
+                    if (portfolio.showNo === true)
+                        if (portfolio.phn_no !== "" && portfolio.phn_no !== 0)
+                            p.headFont= `Phone: ${portfolio.phn_no}` 
                     a(href=`mailto:${portfolio.email}`).mail.headFont= `Email: ${portfolio.email}`
                     if (portfolio.fb != "")
                         a(href=`${portfolio.fb}`)

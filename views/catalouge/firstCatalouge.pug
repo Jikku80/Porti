@@ -151,7 +151,7 @@ block content
                     p= company.Address 
                 if (company.locationLink !== "")
                     a.comp__loc.cardtxt(href=`${company.locationLink}`)= `open ${company.name} Location`
-                if (company.contact !== "")
+                if (company.contact !== "" && company.contact !== 0)
                     h4.comp__cont.cardtxt Get In Touch With Us In 
                     h4.cardtxt= company.contact 
                 .footer__mail__bod.footr__bod 

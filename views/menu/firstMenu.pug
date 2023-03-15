@@ -113,7 +113,8 @@ block content
                             img.profPic.satProf(src="/images/bighitman.png", alt="cov__pic", title=`${restro[0].name}`)
                     h1.menu__head.res__name.txt= restro[0].name
                     p.menu__head.res__add.secfont= restro[0].Address
-                    p.menu__head.res__add.secfont= restro[0].phn_no
+                    if (restro[0].phn_no !== 0)
+                        p.menu__head.res__add.secfont= restro[0].phn_no
                     p.menu__user__id.hidden= restro[0].user.id
                 .seccatFontColor.hidden= restro[0].fontColor 
                 .seccatFontFam.hidden= restro[0].fontFam 

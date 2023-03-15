@@ -78,7 +78,8 @@ block content
                     img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
                 .restro__info__bod.sec__contact__detail 
                     p= restro[0].Address
-                    p= restro[0].phn_no
+                    if (restro[0].phn_no !== 0)
+                        p= restro[0].phn_no
                     if (restro[0].serviceTerms)
                         p.sec__terms.txt Terms And Conditions
                         .terms__sec.hidden.focusback 

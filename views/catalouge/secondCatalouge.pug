@@ -294,7 +294,7 @@ block content
                 p.headFont= company.Address
             if (company.locationLink !== "")
                 a.headFont.comp__loc(href=`${company.locationLink}`)= `Open Location`
-            if (company.contact !== "")
+            if (company.contact !== "" && company.contact !== 0)
                 p.headFont= company.contact
             if (company.social !== "")
                 a.headFont.comp__loc(href=`${company.social}`)= `${company.social}`

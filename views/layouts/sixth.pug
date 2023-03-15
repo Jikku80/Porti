@@ -149,9 +149,10 @@ block content
             h1.firstHalf Get in 
                 span.otherHalf Touch
             .cont__boxbg.main__cont__bod
-                if (portfolio.showNo === true && portfolio.phn_no !== "")
-                    .cont__box.sixth__box
-                        p= `Phone: ${portfolio.phn_no}` 
+                if (portfolio.showNo === true)
+                    if (portfolio.phn_no !== "" && portfolio.phn_no !== 0)
+                        .cont__box.sixth__box
+                            p= `Phone: ${portfolio.phn_no}` 
                 .cont__box.sixth__box
                     a(href=`mailto:${portfolio.email}`).mail= `Email: ${portfolio.email}`
                 if (portfolio.fb != "")
