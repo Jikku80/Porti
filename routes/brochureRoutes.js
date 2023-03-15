@@ -13,6 +13,8 @@ router.get('/:id/pagination?:bro', brochureController.bropaginate);
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
 
+router.patch('/:id/updateOrganizationLayout', brochureController.updateOrganizationLayout);
+
 router.post('/', authController.restrictTo('user', 'admin'), brochureController.createBrochure);
 router.get('/:id/getItem', brochureController.getBrochure);
 router.patch('/:id/updateItemDetail', authController.restrictTo('user', 'admin'), brochureController.updateBrochure);

@@ -166,4 +166,43 @@ cancelBrochure.addEventListener("click", () => {
     window.setTimeout(() => {
         location.hash = "#crtBrochure";
     }, 200)
+});
+
+let updateBroLayout = document.querySelectorAll(".updateBroLayout");
+
+updateBroLayout.forEach(item => {
+    item.addEventListener("click", async () => {
+
+        let theme = item.id;
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/brochure/${brochureuserid}/updateOrganizationLayout`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: theme
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Organization Layout Updated Successfully :)");
+                    window.setTimeout(() => {
+                        location.assign(`/brochure/${brochureuserid}/additems`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Layout Updation Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
 })

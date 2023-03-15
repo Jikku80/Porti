@@ -164,6 +164,27 @@ exports.updatePortPg = catchAsync(async (req, res, next) => {
     })
 });
 
+exports.updatePortLayout = catchAsync(async (req, res, next) => {
+    let userid = req.params.id;
+
+    let portfolio = await Portfolio.findOne({ user: userid });
+
+    const updatedPort = await Portfolio.findByIdAndUpdate(portfolio.id, {
+        $set: { theme: req.body.theme }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedPort) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+    })
+})
+
 exports.updatePortfolioTheme = catchAsync(async (req, res, next) => {
     const updatedPortfolioTheme = await Portfolio.findByIdAndUpdate(
         req.params.id,

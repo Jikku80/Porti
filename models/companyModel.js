@@ -78,7 +78,8 @@ const companySchema = new mongoose.Schema({
         required: [true, 'Company must belong to a User']
     },
     theme: {
-        type: String
+        type: String,
+        default: "51eac6b471a284d3341d8c0c63d0f1a286262a18"
     },
     serviceTerms: {
         type: String,

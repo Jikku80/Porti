@@ -50,6 +50,7 @@ block content
                         .gGroup 
                             .freeSec.whitebtn.brochurebtn#freebrochureBtn Unlocked
                             .paidSec.whitebtn.brochurebtn#lockedbrochureBtn Locked
+                        .updateBroLayout.hidden
                         .layout__main#freeBrochureSec
                             each item in theme
                                 if (item.themeCategory === "Brochure" && item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
@@ -62,18 +63,17 @@ block content
                     else 
                         .noti__sec
                             .sticky__section
-                                h2 You Already have A Brochure!
-                                p.warn You can't have more than one Brochure!
+                                p Update Your Brochure Layout!
                             if (!brochure)
                                 .sticky__section 
-                                    h2.warn You Haven't added items to your Brochure!
+                                    p.warn You Haven't added items to your Brochure!
                         .gGroup 
                             .freeSec.whitebtn.brochurebtn#freebrochureBtn Unlocked
                             .paidSec.whitebtn.brochurebtn#lockedbrochureBtn Locked
                         .layout__main#freeBrochureSec 
                             each item in theme
                                 if (item.themeCategory === "Brochure" && item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
-                                    .un_layout
+                                    .un_layout.updateBroLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="brochure")
                                         p.portDet= item.name
                         .layuot__main#lockedBrochureSec 
@@ -86,6 +86,7 @@ block content
                 #freebrochureBtn.hidden 
                 #lockedbrochureBtn.hidden  
                 .brochure__section.hidden
+                .updateBroLayout.hidden
             if (user.accountType === "business")
                 .catalouge__section.newsec.shinesec#crtCataloge
                     if (!company)
@@ -97,8 +98,8 @@ block content
                         .gGroup 
                             .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
                             .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
+                        .updateCataLayout.hidden
                         .layout__main#freeCatalgSec
-                            //- #catal1.unl
                             each item in theme
                                 if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
                                     .unl.cataloge_layouts(id=`${item.themeId}`)
@@ -110,18 +111,17 @@ block content
                     else 
                         .noti__sec
                             .sticky__section
-                                h2 You Already have A Catalouge!
-                                p.warn You can't have more than one Catalouge!
+                                p Update Your Catalog Layout!
                             if (!catalouge)
                                 .sticky__section 
-                                    h2.warn You Haven't added items to your cataloge!
+                                    p.warn You Haven't added items to your cataloge!
                         .gGroup 
                             .freeSec.whitebtn.catalgbtn#freeCatalgBtn Unlocked
                             .paidSec.whitebtn.catalgbtn#lockedCatalgBtn Locked
                         .layout__main#freeCatalgSec 
                             each item in theme
                                 if (item.themeCategory === "Cataloge" && item.themeType === 'Free' || item.validCatalogeUser.includes(user.id))
-                                    .un_layout
+                                    .un_layout.updateCataLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                         p.portDet= item.name
                         .layuot__main#lockedCatalgSec 
@@ -134,6 +134,7 @@ block content
                 #freeCatalgBtn.hidden 
                 #lockedCatalgBtn.hidden  
                 .catalouge__section.hidden
+                .updateCataLayout.hidden
             if (user.accountType === "restaurant")
                 .menu__section#crtMenu.shinesec
                     if (!restro)
@@ -145,6 +146,7 @@ block content
                         .gGroup 
                             .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
                             .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
+                        .updateLayout.hidden
                         .layout__main#freeMenuSec
                             //- #menu1.unl
                             each item in theme
@@ -158,18 +160,17 @@ block content
                     else 
                         .noti__sec
                             .sticky__section
-                                h2 You Already have A Menu!
-                                p.warn You can't have more than one Menu!
+                                p Update your Menu Layout
                             if (!menu)
                                 .sticky__section 
-                                    h2.warn You Haven't added items to your menu!
+                                    p.warn You Haven't added items to your menu!
                         .gGroup 
                             .freeSec.whitebtn.menubtn#freeMenuBtn Unlocked
                             .paidSec.whitebtn.menubtn#lockedMenuBtn Locked
                         .layout__main#freeMenuSec
                             each item in theme
                                 if (item.themeCategory === "Menu" && item.themeType === 'Free' || item.validMenuUser.includes(user.id))
-                                    .un_layout
+                                    .un_layout.updateLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="menu1")
                                         p.portDet= item.name
                         .layout__main#lockedMenuSec 
@@ -182,6 +183,7 @@ block content
                 #freeMenuBtn.hidden 
                 #lockedMenuBtn.hidden
                 .menu__section.hidden
+                .updateLayout.hidden
             
             if (user.accountType !== "portfolio")
                 #crtPort.hidden 
@@ -193,17 +195,17 @@ block content
                 #lockedItems.hidden
                 .port__bod.hidden
                 .port__section.hidden
+                .updatePortfolioLayout.hidden
             else
                 if (portfolio)
                     .port__bod.port__section.shinesec
                         .noti__sec
                             .sticky__section
-                                h2 You Already have A Portfolio!
-                                p.warn You can't have more than one portfolio!
+                                p Update Your portfolio Layout!
                             if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
                                 if (!portfolioImage)
                                     .sticky__section 
-                                        h2.warn You Haven't Uploaded Any Previous Work Image 
+                                        p.warn You Haven't Uploaded Any Previous Work Image 
                         p Need tips Creating Your Portfolio Go To 
                             a.portDet(href="/#pHelper") Portfolio Helper
                         .gGroup 
@@ -212,13 +214,13 @@ block content
                         .layout__main#freeItems
                             each item in theme
                                 if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))
-                                    .un_layout
+                                    .un_layout.updatePortfolioLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                         p.portDet= item.name
-                            #layout5
-                                .un_layout
-                                    img(src="/images/layout5.png", loading="lazy", alt="layout5")
-                                    p AT Layout (you can upload upto 20 images)
+                            #layout5.hidden
+                            .un_layout.updatePortfolioLayout(id="da98568d1b2005611973ad49868b38aa8ae68fd7")
+                                img(src="/images/layout5.png", loading="lazy", alt="layout5")
+                                p AT Layout (you can upload upto 20 images)
                         .layout__main#lockedItems
                             each item in theme
                                 if (item.themeCategory === "Portfolio" && item.paid === false)
@@ -239,6 +241,7 @@ block content
                         .gGroup 
                             .freeSec.whitebtn.glassbtn#freePortSec Unlocked
                             .paidSec.whitebtn.glassbtn#lockedPortSec Locked
+                        .updatePortfolioLayout.hidden
                         .layout__main#freeItems
                             each item in theme
                                 if (item.themeCategory === "Portfolio" && item.themeType === 'Free' || item.validUser.includes(user.id))

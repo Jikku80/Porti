@@ -98,7 +98,8 @@ const organizationSchema = new mongoose.Schema({
         required: [true, 'Company must belong to a User']
     },
     theme: {
-        type: String
+        type: String,
+        default: "65954198f2f59aac9b415952aa9c614fd74245ff"
     },
     createdAt: {
         type: Date,

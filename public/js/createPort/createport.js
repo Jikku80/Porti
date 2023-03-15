@@ -92,8 +92,9 @@ layout1.forEach(item => {
                 load.classList.add("hidden");
                 if (response.status === 201) {
                     successAlert("Your Portfolio has been created :)");
+                    let newid = btoa(id1);
                     window.setTimeout(() => {
-                        location.assign(`/myportfolio/${id1}`);
+                        location.assign(`/myportfolio/${newid}`);
                     }, 400);
                 } else {
                     errorAlert("Email Address or Phone Number is not correct!!!")
@@ -429,3 +430,42 @@ function aboutHelper(about) {
     })
 
 })();
+
+let updatePortLayout = document.querySelectorAll(".updatePortfolioLayout");
+
+updatePortLayout.forEach(item => {
+    item.addEventListener("click", async () => {
+        let theme = item.id;
+        const endpoint = `/api/v1/portfolio/${id1}/updatePortfolioLayout`
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: theme
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Portfolio layout has been updated :)");
+                    let newid = btoa(id1);
+                    // window.setTimeout(() => {
+                    //     location.assign(`/myportfolio/${newid}`);
+                    // }, 400);
+                } else {
+                    errorAlert("Portfolio Layout Update Error!!!")
+                }
+            })
+
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})

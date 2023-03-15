@@ -444,6 +444,27 @@ exports.updateCompanyPg = catchAsync(async (req, res, next) => {
     })
 });
 
+exports.updateCompanyLayout = catchAsync(async (req, res, next) => {
+    let userid = req.params.id;
+
+    let company = await Company.findOne({ user: userid });
+
+    const updatedCompany = await Company.findByIdAndUpdate(company.id, {
+        $set: { theme: req.body.theme }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedCompany) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+    })
+})
+
 exports.createCatalogBanner = catchAsync(async (req, res, next) => {
 
     const banner = await CatalogBanner.create({
@@ -906,7 +927,7 @@ exports.compnoti = catchAsync(async (req, res) => {
 
     if (!company) return (res.status(404).json({ status: 'success' }));
 
-    const neworder = await ComOrder.find({ restro: company._id }).then(item => {
+    const neworder = await ComOrder.find({ company: company._id }).then(item => {
         let datas = item.filter(el => {
             if (el.orderInfo == undefined) {
                 return el
@@ -915,7 +936,7 @@ exports.compnoti = catchAsync(async (req, res) => {
         return datas
     })
 
-    const newreturn = await CompReturn.find({ restro: company._id }).then(item => {
+    const newreturn = await CompReturn.find({ company: company._id }).then(item => {
         let datas = item.filter(el => {
             if (el.returnInfo == undefined) {
                 return el

@@ -11,6 +11,8 @@ block content
         include _header
         .update__account__form 
             p.hidden.backTheme= user.theme
+            p.hidden.curlogusrnamaya= user.name
+            p.hidden.curlogusremail= user.email
             h2 Change Background Color
             p.hidden#currentId= user.id
             .update__background 

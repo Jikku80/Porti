@@ -182,6 +182,27 @@ exports.updateResPg = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.updateResLayout = catchAsync(async (req, res, next) => {
+    let userid = req.params.id;
+
+    let restro = await Restaurant.findOne({ user: userid });
+
+    const updatedRestro = await Restaurant.findByIdAndUpdate(restro.id, {
+        $set: { theme: req.body.theme }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedRestro) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+    })
+})
+
 exports.updateResImg = catchAsync(async (req, res, next) => {
 
     const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;

@@ -402,6 +402,7 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
+                    createFoodHub();
                     successAlert("Your Food Hub Account has been set :)");
                     window.setTimeout(() => {
                         location.assign('/layouts/porti');
@@ -436,6 +437,7 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
+                    createCompy();
                     successAlert("Your Business Account has been set :)");
                     window.setTimeout(() => {
                         location.assign('/layouts/porti');
@@ -470,6 +472,7 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
+                    createOrgy();
                     successAlert("Your Organizational Account has been set :)");
                     window.setTimeout(() => {
                         location.assign('/layouts/porti');
@@ -559,3 +562,91 @@ lakheyBack.addEventListener("click", async (e) => {
         closesec.classList.add("hidden");
     })
 })();
+
+async function createFoodHub() {
+    let curyname = document.querySelector(".curlogusrnamaya").innerText;
+    const endpoint = `/api/v1/menu/createRestaurant`
+    try {
+        await fetch((endpoint), {
+            method: 'POST',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: curyname,
+                phn_no: 0
+            })
+        }).then((response) => {
+            if (response.status === 201) {
+            } else {
+                console.log(response)
+                errorAlert("Duplication Input error!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+async function createCompy() {
+    let curyname = document.querySelector(".curlogusrnamaya").innerText;
+    let curyemail = document.querySelector(".curlogusremail").innerText;
+    const endpoint = `/api/v1/catalouge/createCompany`
+    try {
+        await fetch((endpoint), {
+            method: 'POST',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: curyname,
+                email: curyemail,
+                contact: 0
+            })
+        }).then((response) => {
+            if (response.status === 201) {
+            } else {
+                console.log(response)
+                errorAlert("Duplication Input error!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+};
+
+async function createOrgy() {
+    let curyname = document.querySelector(".curlogusrnamaya").innerText;
+    let curyemail = document.querySelector(".curlogusremail").innerText;
+    const endpoint = `/api/v1/brochure/createOrganization`
+    try {
+        await fetch((endpoint), {
+            method: 'POST',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: curyname,
+                email: curyemail,
+                contact: 0
+            })
+        }).then((response) => {
+            if (response.status === 201) {
+            } else {
+                console.log(response)
+                errorAlert("Duplication Input error!!")
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}

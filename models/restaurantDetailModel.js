@@ -25,7 +25,8 @@ const restaurantSchema = new mongoose.Schema({
         trim: true
     },
     theme: {
-        type: String
+        type: String,
+        default: "40bd001563085fc35165329ea1ff5c5ecbdbbeef"
     },
     phn_no: {
         type: Number,

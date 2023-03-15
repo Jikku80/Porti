@@ -179,4 +179,43 @@ cancelCataloge.addEventListener("click", () => {
     window.setTimeout(() => {
         location.hash = "#crtCataloge";
     }, 200)
+});
+
+let updateCataLayout = document.querySelectorAll(".updateCataLayout");
+
+updateCataLayout.forEach(item => {
+    item.addEventListener("click", async () => {
+
+        let theme = item.id;
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/catalouge/${catalogeid1}/updateCompanyLayout`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: theme
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Company Details Updated Successfully :)");
+                    window.setTimeout(() => {
+                        location.assign(`/catalouge/${catalogeid1}/additems`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
 })

@@ -159,3 +159,42 @@ cancelRestro.addEventListener("click", () => {
         location.hash = "#crtMenu";
     }, 200)
 })
+
+let updateFoodLayout = document.querySelectorAll(".updateLayout");
+
+updateFoodLayout.forEach(item => {
+    item.addEventListener("click", async () => {
+
+        let theme = item.id;
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/${userRestroid}/updateFoodLayout`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: theme
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Food Hub Layout Updated Successfully :)");
+                    window.setTimeout(() => {
+                        location.assign(`/menu/${userRestroid}/additemstomenu`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Layout Updating Error")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})

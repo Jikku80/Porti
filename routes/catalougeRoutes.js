@@ -22,6 +22,9 @@ router.patch('/:id/updateCompanyPg', catalougeController.updateCompanyPg);
 router.use(authController.protect);
 router.use(authController.isLoggedIn);
 
+router.patch('/:id/updateCompanyLayout', catalougeController.updateCompanyLayout);
+
+
 router.get('/companystat/:id', authController.restrictTo('user', 'admin'), catalougeController.redirectoTocatalogStats);
 
 router.post('/', authController.restrictTo('user', 'admin'), catalougeController.createCatalouge);

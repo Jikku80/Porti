@@ -14,6 +14,7 @@ router.get('/:id', portController.getMe);
 router.get('/:id/paginate/:page', portController.paginatePortImage)
 router.get('/:id/pagination/:page', portController.paginatePortImageTwl)
 router.use(authController.protect);
+router.patch('/:id/updatePortfolioLayout', portController.updatePortLayout);
 
 router.route('/').get(authController.restrictTo('admin'), portController.getAllPort).post(authController.restrictTo('user', 'admin'), portController.createMe);
 router.post('/portfolioImage', authController.restrictTo('user', 'admin'), portController.updatePrevImgData);

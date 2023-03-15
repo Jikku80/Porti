@@ -18,6 +18,8 @@ router.use(authController.isLoggedIn);
 router.get('/:id/getItem', menuController.getMenu);
 router.use(authController.protect);
 
+router.patch('/:id/updateFoodLayout', menuController.updateResLayout);
+
 router.get('/restrostat/:id', authController.restrictTo('user', 'admin'), menuController.redirectoTorestroStats);
 
 router.post('/', authController.restrictTo('user', 'admin'), menuController.createMenu);

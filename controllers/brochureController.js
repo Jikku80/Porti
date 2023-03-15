@@ -206,6 +206,27 @@ exports.updateOrgi = catchAsync(async (req, res, next) => {
     })
 });
 
+exports.updateOrganizationLayout = catchAsync(async (req, res, next) => {
+    let userid = req.params.id;
+
+    let orgi = await Organization.findOne({ user: userid });
+
+    const updatedOrg = await Organization.findByIdAndUpdate(orgi.id, {
+        $set: { theme: req.body.theme }
+    },
+        {
+            new: true,
+            runValidators: true
+        });
+
+    if (!updatedOrg) return next(new AppError('No document found with the given ID', 404));
+
+
+    res.status(200).json({
+        status: 'success',
+    })
+})
+
 exports.updateBrochureItemImg = catchAsync(async (req, res, next) => {
 
     const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
