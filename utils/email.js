@@ -14,14 +14,14 @@ module.exports = class Email {
         this.url = url;
         this.token = token;
         this.from = {
-            email: "mailtrap@vporti.com",
-            name: "Mailtrap Test"
+            email: "lakheydetech@vporti.com",
+            name: "Lakhey De Tech"
         };
     }
 
     async sendMail(template, subject) {
-        const mailendpoint = "https://send.api.mailtrap.io/";
-        const mailtoken = "6f8ece257e8dfedf9aa470b9f63225c2";
+
+        const mailtoken = process.env.MAIL_TRAP
 
         const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
             firstName: this.firstName,
@@ -31,15 +31,14 @@ module.exports = class Email {
         });
 
 
-        const client = new MailtrapClient({ endpoint: mailendpoint, token: mailtoken })
+        const client = new MailtrapClient({ token: mailtoken })
         client.send({
             from: this.from,
             to: this.to,
             subject: subject,
             text: htmlToText.fromString(html),
-            category: "Integration Test"
+            category: "In Production"
         })
-            .then(console.log, console.error);
     }
 
     async sendWelcome() {
