@@ -1,6 +1,3 @@
-const nodemailer = require('nodemailer');
-const pug = require('pug');
-const htmlToText = require('html-to-text');
 const { MailtrapClient } = require('mailtrap');
 
 module.exports = class Email {
@@ -15,114 +12,51 @@ module.exports = class Email {
         this.token = token;
         this.from = {
             email: "lakheydetech@vporti.com",
-            name: "Lakhey De Tech"
+            name: "vporti"
         };
     }
 
-    async sendMail(template, subject) {
+    async sendMail() {
 
         const mailtoken = process.env.MAIL_TRAP
-
-        const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
-            firstName: this.firstName,
-            url: this.url,
-            token: this.token,
-            subject
-        });
-
 
         const client = new MailtrapClient({ token: mailtoken })
         client.send({
             from: this.from,
             to: this.to,
-            subject: subject,
-            text: htmlToText.fromString(html),
-            category: "In Production"
+            template_uuid: "6e93fabf-232d-4438-8943-b17c100e65c3",
+            template_variables: {
+                "user_name": this.firstName,
+                "next_step_link": "www.vporti.com",
+                "get_started_link": "www.vporti.com/#pGuide",
+                "onboarding_video_link": "www.vporti.com/#pHelper"
+            }
         })
+            .then(console.log, console.error);
+    }
+
+    async sendResetMail() {
+        const resetmailtoken = process.env.MAIL_TRAP
+        const resetlink = `${this.url}?${this.token}`
+        const emailad = this.to[0].email;
+        const client = new MailtrapClient({ token: resetmailtoken })
+        client.send({
+            from: this.from,
+            to: this.to,
+            template_uuid: "ad94b3a8-fd10-441c-abbf-e8a327f75344",
+            template_variables: {
+                "user_email": emailad,
+                "pass_reset_link": resetlink
+            }
+        })
+            .then(console.log, console.error);
     }
 
     async sendWelcome() {
-        await this.sendMail('welcome', 'Welcome to Lakhey Family!');
+        await this.sendMail();
     }
 
     async sendPasswordReset() {
-        let date = new Date();
-        let exdate = date.getTime() + 600000;
-        exdate = new Date(exdate)
-        date = date.toLocaleTimeString();
-        let newdate = exdate.toLocaleTimeString();
-        await this.sendMail(
-            'passwordReset',
-            `Your password reset token only valids for 10 min from ${date} to ${newdate}`
-        );
+        await this.sendResetMail();
     }
 }
-
-
-// module.exports = class Email {
-//     constructor(user, url, token) {
-//         this.to = user.email;
-//         this.firstName = user.name.split(' ')[0];
-//         this.url = url;
-//         this.token = token;
-//         this.from = `vPorti <${process.env.EMAIL_FROM}>`;
-//     }
-
-//     newTransport() {
-//         if (process.env.NODE_ENV === 'production') {
-
-//             return nodemailer.createTransport({
-//                 service: 'gmail',
-//                 auth: {
-//                     user: process.env.EMAIL_USERNAME,
-//                     pass: process.env.EMAIL_PASSWORD
-//                 }
-//             });
-//         }
-
-//         return nodemailer.createTransport({
-//             service: 'gmail',
-//             auth: {
-//                 user: process.env.EMAIL_USERNAME,
-//                 pass: process.env.EMAIL_PASSWORD
-//             }
-//         });
-//     }
-
-
-//     async send(template, subject) {
-
-//         const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
-//             firstName: this.firstName,
-//             url: this.url,
-//             token: this.token,
-//             subject
-//         });
-
-//         const mailOptions = {
-//             from: this.from,
-//             to: this.to,
-//             subject,
-//             html,
-//             text: htmlToText.fromString(html)
-//         };
-
-//         await this.newTransport().sendMail(mailOptions);
-//     }
-
-//     async sendWelcome() {
-//         await this.send('welcome', 'Welcome to Lakhey Family!');
-//     }
-
-//     async sendPasswordReset() {
-//         let date = new Date();
-//         let exdate = date.getTime() + 600000;
-//         exdate = new Date(exdate)
-//         date = date.toLocaleTimeString();
-//         let newdate = exdate.toLocaleTimeString();
-//         await this.send(
-//             'passwordReset',
-//             `Your password reset token only valids for 10 min from ${date} to ${newdate}`
-//         );
-//     }
-// }
