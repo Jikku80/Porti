@@ -70,5 +70,11 @@ router.patch('/applydiscount/:id', authController.restrictTo('user', 'admin'), m
 router.patch('/removediscount/:id', authController.restrictTo('user', 'admin'), menuController.removediscountall);
 
 router.get('/getnewordernoti/:id', authController.restrictTo('user', 'admin'), menuController.restronoti);
+router.get('/getFoodItems', menuController.getFoodItems);
+router.get('/addFoodItems', menuController.addFoodItems);
+router.get('/getBakeryItems', menuController.getBakeryItems);
+router.get('/addBakeryItems', menuController.addBakeryItems);
+router.get('/getCafeItems', menuController.getCafeItems);
+router.get('/addCafeItems', menuController.addCafeItems);
 
 module.exports = router;

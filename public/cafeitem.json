@@ -1,0 +1,178 @@
+{
+    "Soda":[
+        {
+            "name" : "Coke",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soda",
+            "detail": ""
+        },
+        {
+            "name" : "Fanta",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soda",
+            "detail": ""
+        },
+        {
+            "name" : "Sprite",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soda",
+            "detail": ""
+        },
+        {
+            "name" : "Dew",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soda",
+            "detail": ""
+        }
+    ],
+    "Espresso":[
+        {
+            "name" : "Americano",
+            "currency": "Rs.",
+            "price": "260",
+            "category": "Espresso",
+            "detail": "shots of espresso and water"
+        },
+        {
+            "name" : "Cafe Late",
+            "currency": "Rs.",
+            "price": "240",
+            "category": "Espresso",
+            "detail": "shots of espresso and steamed milk"
+        },
+        {
+            "name" : "Cold Coffee",
+            "currency": "Rs.",
+            "price": "240",
+            "category": "Espresso",
+            "detail": ""
+        },
+        {
+            "name" : "Cappuccino",
+            "currency": "Rs.",
+            "price": "250",
+            "category": "Espresso",
+            "detail": "shots of espresso and steamed frothy milk"
+        },
+        {
+            "name" : "Cafe Mocha",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Espresso",
+            "detail": "shots of espresso mixed with custom mocha and steamed milk"
+        },
+        {
+            "name" : "White Mocha",
+            "currency": "Rs.",
+            "price": "340",
+            "category": "Espresso",
+            "detail": "shots of espresso mixed with custom white choclate mocha and steamed milk"
+        },
+        {
+            "name" : "Espresso Selection",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Espresso",
+            "detail": "Shots of espresso served in a 4oz cup"
+        },
+        {
+            "name" : "Cafe Breve",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Espresso",
+            "detail": "shots of espresso and steamed half/half for a smooth creamy finish"
+        },
+        {
+            "name" : "Cold Brew",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Espresso",
+            "detail": ""
+        },
+        {
+            "name" : "Cafe Au Lait",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Espresso",
+            "detail": "brewed coffe and steamed milk"
+        }
+    ],
+    "Shakes": [
+        {
+            "name" : "Strawberry Milk Shake",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Shakes",
+            "detail": ""
+        },
+        {
+            "name" : "Chocolate Milk Shake",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Shakes",
+            "detail": ""
+        },
+        {
+            "name" : "Kitkat Milk Shake",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Shakes",
+            "detail": ""
+        },
+        {
+            "name" : "Smoothie",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Shakes",
+            "detail": ""
+        }
+    ],
+    "Tea": [
+        {
+            "name" : "Iced Tea",
+            "currency": "Rs.",
+            "price": "100",
+            "category": "Tea",
+            "detail": ""
+        },
+        {
+            "name" : "Hot Tea",
+            "currency": "Rs.",
+            "price": "100",
+            "category": "Tea",
+            "detail": ""
+        },
+        {
+            "name" : "Chai Tea",
+            "currency": "Rs.",
+            "price": "50",
+            "category": "Tea",
+            "detail": ""
+        },
+        {
+            "name" : "Peach Ice Tea",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Tea",
+            "detail": ""
+        },
+        {
+            "name" : "Black Tea",
+            "currency": "Rs.",
+            "price": "50",
+            "category": "Tea",
+            "detail": ""
+        },
+        {
+            "name" : "Green Tea",
+            "currency": "Rs.",
+            "price": "100",
+            "category": "Tea",
+            "detail": ""
+        }
+    ]
+}

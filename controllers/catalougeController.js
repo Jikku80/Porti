@@ -193,13 +193,25 @@ exports.addItemsPage = catchAsync(async (req, res, next) => {
     const company = await Company.find({ user: user_id })
     const theme = await Theme.find({ themeCategory: "Cataloge" })
     const banner = await CatalogBanner.find({ user: user_id })
+    let category = []
+    let subcategory = []
+    await Catalouge.find({ user: user_id }).then(item => {
+        item.filter(el => {
+            category.push(el.category);
+            subcategory.push(el.subcategory);
+        })
+    });
+    let distinctCat = [...new Set(category.map(x => x))];
+    let subdistinctCat = [...new Set(subcategory.map(x => x))];
 
     res.status(200).render('catalouge/additem', {
         title: 'Add Items To Catalouge',
         company,
         catalouges,
         theme,
-        banner
+        banner,
+        distinctCat,
+        subdistinctCat
     })
 })
 

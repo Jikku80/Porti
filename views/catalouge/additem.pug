@@ -100,10 +100,16 @@ block content
                                 input#catitemsn.form__input(type="text" name="catalogserialno" placeholder="CA10050")
                             .form__bod
                                 label.form__label(for="item_category") Item Category: 
-                                input#catitemcat.form__input(type="text", name="catalogcategory" required placeholder="Tiles")
+                                input#catitemcat.form__input(type="text", name="catalogcategory" list="categy" required placeholder="Tiles")
+                                datalist#categy 
+                                    each items in distinctCat
+                                        option(value=items)
                             .form__bod
                                 label.form__label(for="item_subcategory") Item Sub-Category (optional): 
-                                input#subcatitemcat.form__input(type="text", name="catalogsubcategory" placeholder="Japanese Tiles")
+                                input#subcatitemcat.form__input(type="text", name="catalogsubcategory", list="subcategy" placeholder="Japanese Tiles")
+                                datalist#subcategy
+                                    each subitems in subdistinctCat
+                                        option(value=subitems)
                             .form__bod
                                 label.form__label(for="item_detail") Item Detail (optional):
                                 textarea#catitemdetail.form__input(rows="4" cols="50" name="catalogdetail" placeholder="You can Describe about your Item only if you want to, this field is optional...")

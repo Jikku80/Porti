@@ -1,0 +1,302 @@
+{
+    "Burger":[
+        {
+            "name" : "Chicken Burger",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Burger",
+            "detail": ""
+        },
+        {
+            "name" : "Egg Burger",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Burger",
+            "detail": ""
+        },
+        {
+            "name" : "Ham Burger",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Burger",
+            "detail": ""
+        },
+        {
+            "name" : "Fish Burger",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Burger",
+            "detail": ""
+        }
+    ],
+    "Appetizers":[
+        {
+            "name" : "Choila Beef/Chicken",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Samya Bajee",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Pakora",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Samosa",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Chicken Chilly",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Buff Chilly",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Appetizers",
+            "detail": ""
+        }
+    ],
+    "Pizza":[
+        {
+            "name" : "Chesse Pizza",
+            "currency": "Rs.",
+            "price": "350",
+            "category": "Pizza",
+            "detail": "Extra Chesse at just Rs.50"
+        },
+        {
+            "name" : "Veg Pizza",
+            "currency": "Rs.",
+            "price": "300",
+            "category": "Pizza",
+            "detail": "Extra Chesse at just Rs.50"
+        },
+        {
+            "name" : "Chicken Pizza",
+            "currency": "Rs.",
+            "price": "450",
+            "category": "Pizza",
+            "detail": "Extra Chesse at just Rs.50"
+        },
+        {
+            "name" : "Margherita Pizza",
+            "currency": "Rs.",
+            "price": "480",
+            "category": "Pizza",
+            "detail": "Extra Chesse at just Rs.50"
+        },
+        {
+            "name" : "Mushroom Pizza",
+            "currency": "Rs.",
+            "price": "480",
+            "category": "Pizza",
+            "detail": "Extra Chesse at just Rs.50"
+        }
+    ],
+    "Salad":[
+        {
+            "name" : "Salad",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Salad",
+            "detail": ""
+        },
+        {
+            "name" : "Fruit Salad",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Salad",
+            "detail": "Mixed Fruits with yogurt"
+        }
+    ],
+    "MoMo":[
+        {
+            "name" : "Chicken MoMo",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "MoMo",
+            "detail": ""
+        },
+        {
+            "name" : "Buff MoMo",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "MoMo",
+            "detail": ""
+        },
+        {
+            "name" : "Veg MoMo",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "MoMo",
+            "detail": ""
+        },
+        {
+            "name" : "Pork MoMo",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "MoMo",
+            "detail": ""
+        }
+    ],
+    "Chowmein":[
+        {
+            "name" : "Chicken Chowmein",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Chowmein",
+            "detail": ""
+        },
+        {
+            "name" : "Buff Chowmein",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Chowmein",
+            "detail": ""
+        },
+        {
+            "name" : "Veg Chowmein",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Chowmein",
+            "detail": ""
+        },
+        {
+            "name" : "Pork Chowmein",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Chowmein",
+            "detail": ""
+        }
+    ],
+    "Stick Food":[
+        {
+            "name" : "Drum Stick",
+            "currency": "Rs.",
+            "price": "60",
+            "category": "Stick Food",
+            "detail": ""
+        },
+        {
+            "name" : "Sausage",
+            "currency": "Rs.",
+            "price": "45",
+            "category": "Stick Food",
+            "detail": ""
+        },
+        {
+            "name" : "Tofu",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Stick Food",
+            "detail": ""
+        },
+        {
+            "name" : "Aloo",
+            "currency": "Rs.",
+            "price": "45",
+            "category": "Stick Food",
+            "detail": ""
+        }
+    ],
+    "Soft Drinks":[
+        {
+            "name" : "Coke",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soft Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Fanta",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soft Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Sprite",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soft Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Dew",
+            "currency": "Rs.",
+            "price": "70",
+            "category": "Soft Drinks",
+            "detail": ""
+        }
+    ],
+    "Hot Drinks":[
+        {
+            "name" : "Milk Coffee",
+            "currency": "Rs.",
+            "price": "60",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Milk Tea",
+            "currency": "Rs.",
+            "price": "45",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Black Coffee",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Black Tea",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Hot Drinks",
+            "detail": ""
+        }
+    ],
+    "Hard Drinks":[
+        {
+            "name" : "Rum",
+            "currency": "Rs.",
+            "price": "750",
+            "category": "Hard Drinks",
+            "detail": "Rs.750 per 500ml"
+        },
+        {
+            "name" : "Vodka",
+            "currency": "Rs.",
+            "price": "950",
+            "category": "Hard Drinks",
+            "detail": "Rs.450 per 500ml"
+        },
+        {
+            "name" : "Beer",
+            "currency": "Rs.",
+            "price": "450",
+            "category": "Hard Drinks",
+            "detail": "Rs.450 per Bottle"
+        }
+    ]
+}

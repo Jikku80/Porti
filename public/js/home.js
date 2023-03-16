@@ -508,7 +508,7 @@ sendMsg.addEventListener("click", async (e) => {
             return false;
         }
 
-        if (country.value == "0") {
+        if (country.value == "" || country.value < 1) {
             e.preventDefault();
             return false;
         }

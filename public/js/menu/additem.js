@@ -1494,3 +1494,253 @@ async function reserveCanceled(val, usr, route) {
         };
     })
 })();
+
+(function () {
+    let addvporti = document.querySelector('.addvportifood');
+    let vportisec = document.querySelector(".vportiitemsec");
+    let cancelbtn = document.querySelector(".cancelvportiitem");
+    let vportibod = document.querySelector(".vportibod");
+    let addallitem = document.querySelector(".vportiaddall");
+
+    addallitem.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/addFoodItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Items has been added!");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 300)
+                } else {
+                    console.log(response);
+                    errorAlert("Adding Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    addvporti.addEventListener("click", async () => {
+        vportisec.classList.remove("hidden");
+        addallitem.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            vportibod.innerHTML = "";
+            const endpoint = `/api/v1/menu/getFoodItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    let result = response.json();
+                    result.then(foo => {
+                        let food = foo.fooditems
+                        Object.keys(food).forEach(function (key) {
+                            vportibod.innerHTML +=
+                                `
+                                        <h2 class="point openkey">${key}</h2>
+                                    `
+                        })
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Fetching Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        vportisec.classList.add("hidden");
+        vportibod.innerHTML = "";
+        addallitem.classList.add("hidden");
+    })
+})();
+
+(function () {
+    let addvporti = document.querySelector('.addbakeryfood');
+    let vportisec = document.querySelector(".vportiitemsec");
+    let cancelbtn = document.querySelector(".cancelvportiitem");
+    let vportibod = document.querySelector(".vportibod");
+    let addallitem = document.querySelector(".bakeryaddall");
+
+    addallitem.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/addBakeryItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Items has been added!");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 300)
+                } else {
+                    console.log(response);
+                    errorAlert("Adding Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    addvporti.addEventListener("click", async () => {
+        vportisec.classList.remove("hidden");
+        addallitem.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            vportibod.innerHTML = "";
+            const endpoint = `/api/v1/menu/getBakeryItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    let result = response.json();
+                    result.then(foo => {
+                        let food = foo.fooditems
+                        Object.keys(food).forEach(function (key) {
+                            vportibod.innerHTML +=
+                                `
+                                        <h2 class="point openkey">${key}</h2>
+                                    `
+                        })
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Fetching Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        vportisec.classList.add("hidden");
+        vportibod.innerHTML = "";
+        addallitem.classList.add("hidden");
+    })
+})();
+
+(function () {
+    let addvporti = document.querySelector('.addCafefood');
+    let vportisec = document.querySelector(".vportiitemsec");
+    let cancelbtn = document.querySelector(".cancelvportiitem");
+    let vportibod = document.querySelector(".vportibod");
+    let addallitem = document.querySelector(".cafeaddall");
+
+
+    addallitem.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/menu/addCafeItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Items has been added!");
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 300)
+                } else {
+                    console.log(response);
+                    errorAlert("Adding Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    addvporti.addEventListener("click", async () => {
+        vportisec.classList.remove("hidden");
+        addallitem.classList.remove("hidden");
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            vportibod.innerHTML = "";
+            const endpoint = `/api/v1/menu/getCafeItems`
+            await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    let result = response.json();
+                    result.then(foo => {
+                        let food = foo.fooditems
+                        Object.keys(food).forEach(function (key) {
+                            vportibod.innerHTML +=
+                                `
+                                        <h2 class="point openkey">${key}</h2>
+                                    `
+                        })
+                    })
+                } else {
+                    console.log(response);
+                    errorAlert("Fetching Food Items Error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+
+    cancelbtn.addEventListener("click", () => {
+        vportisec.classList.add("hidden");
+        vportibod.innerHTML = "";
+        addallitem.classList.add("hidden");
+    })
+})();

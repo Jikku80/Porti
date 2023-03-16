@@ -973,9 +973,10 @@ block content
                             .tocountrysec.signupbtn.circle &#8921;
                         p.grn.infotag 60% complete
                     .signup__country__sec.hidden.signup__innersec 
-                        h3 Select Your Country 
-                        select#country(name="country")
-                            <option value="0" label="Select a country ... " selected="selected">Select A Country ... </option>
+                        h3 Type And Select Your Country 
+                        input#country.signup__input(type="text", name="signcountry", list="county" required placeholder="type & select")
+                        datalist#county
+                            <option value="NP" label="Select a country ... " selected="selected">Select A Country ... </option>
                             <optgroup id="country-optgroup-Africa" label="Africa">
                                 <option value="DZ" label="Algeria">Algeria</option>
                                 <option value="AO" label="Angola">Angola</option>

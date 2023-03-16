@@ -81,6 +81,18 @@ block content
                     .qrcode__menu 
                         #qrcode 
                     #item__form
+                        .addvportiitem
+                            .addvportifood Add Restro Items
+                            .addbakeryfood Add Bakery Items 
+                            .addCafefood Add Cafe Items
+                        .vportiitemsec.hidden 
+                            .vportihead 
+                                h2 Food Items 
+                                img.cancelvportiitem.point(src="/images/cancel.png", alt="cancelbutton")
+                            .vportibod
+                            .vportiaddall.additembtn.hidden Add All Items
+                            .bakeryaddall.additembtn.hidden Add All Items
+                            .cafeaddall.additembtn.hidden Add All Items
                         .itemform__head 
                             h3.form__label.scaps Add Items To Menu
                             h3
@@ -100,7 +112,10 @@ block content
                                 input#itemprice.form__input(type="number" name="menuprice" required placeholder="150")
                             .form__bod
                                 label.form__label Category: 
-                                input#itemcat.form__input(type="text", name="menucategory" required placeholder="Burger")
+                                input#itemcat.form__input(type="text", name="menucategory", list="mecategory" required placeholder="Burger")
+                                datalist#mecategory
+                                    each items in distinctCat
+                                        option(value=`${items}`)
                             .form__bod
                                 label.form__label Detail (optional):
                                 textarea#itemdetail.form__input(rows="4" cols="50" name="menudetail" placeholder="You can Describe about your food only if you want to, this field is optional...")

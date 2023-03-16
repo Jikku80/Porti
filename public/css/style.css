@@ -222,15 +222,6 @@ html{
   backdrop-filter: blur(5px);
 }
 
-#country{
-  background-color: gray;
-  color: white;
-  border-radius: 1rem;
-  border-color: gray;
-  cursor: pointer;
-  width: 20%;
-}
-
 .terms__cond{
   margin-top: 2%;
   cursor: pointer;

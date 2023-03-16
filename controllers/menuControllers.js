@@ -306,13 +306,22 @@ exports.newMenu = catchAsync(async (req, res, next) => {
     const restro = await Restaurant.find({ user: user_id })
     const banner = await Banner.find({ user: user_id })
     const theme = await Theme.find({ themeCategory: "Menu" })
+    let category = []
+    await Menu.find({ user: user_id }).then(item => {
+        item.filter(el => {
+            category.push(el.category);
+        })
+    });
+    let distinctCat = [...new Set(category.map(x => x))];
+
     await features.query.populate('user').then(menus => {
         res.status(200).render('menu/overall', {
             title: "Add Items",
             menus,
             restro,
             theme,
-            banner
+            banner,
+            distinctCat
         })
     })
 })
@@ -976,5 +985,146 @@ exports.restronoti = catchAsync(async (req, res) => {
         status: "success",
         neworder,
         newreserve
+    })
+});
+
+exports.getFoodItems = catchAsync(async (req, res, next) => {
+
+
+    fs.readFile('./public/menuitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const fooditems = JSON.parse(data)
+            res.status(200).json({
+                status: "success",
+                fooditems
+            })
+        }
+    })
+});
+
+exports.addFoodItems = catchAsync(async (req, res, next) => {
+
+    fs.readFile('./public/menuitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const food = JSON.parse(data)
+
+            Object.keys(food).forEach(function (key) {
+                food[key].forEach(async (item) => {
+
+                    await Menu.create({
+                        name: item.name,
+                        user: req.user.id,
+                        currency: item.currency,
+                        price: item.price,
+                        detail: item.detail,
+                        category: item.category,
+                        createdAt: Date.now()
+                    });
+                })
+            })
+            res.status(200).json({
+                status: "success"
+            })
+        }
+    })
+});
+
+exports.getBakeryItems = catchAsync(async (req, res, next) => {
+
+
+    fs.readFile('./public/bakeryitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const fooditems = JSON.parse(data)
+            res.status(200).json({
+                status: "success",
+                fooditems
+            })
+        }
+    })
+});
+
+exports.addBakeryItems = catchAsync(async (req, res, next) => {
+
+    fs.readFile('./public/bakeryitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const food = JSON.parse(data)
+
+            Object.keys(food).forEach(function (key) {
+                food[key].forEach(async (item) => {
+
+                    await Menu.create({
+                        name: item.name,
+                        user: req.user.id,
+                        currency: item.currency,
+                        price: item.price,
+                        detail: item.detail,
+                        category: item.category,
+                        createdAt: Date.now()
+                    });
+                })
+            })
+            res.status(200).json({
+                status: "success"
+            })
+        }
+    })
+});
+
+exports.getCafeItems = catchAsync(async (req, res, next) => {
+
+
+    fs.readFile('./public/cafeitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const fooditems = JSON.parse(data)
+            res.status(200).json({
+                status: "success",
+                fooditems
+            })
+        }
+    })
+});
+
+exports.addCafeItems = catchAsync(async (req, res, next) => {
+
+    fs.readFile('./public/cafeitem.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log(`Error reading file from disk: ${err}`)
+        } else {
+
+            const food = JSON.parse(data)
+
+            Object.keys(food).forEach(function (key) {
+                food[key].forEach(async (item) => {
+
+                    await Menu.create({
+                        name: item.name,
+                        user: req.user.id,
+                        currency: item.currency,
+                        price: item.price,
+                        detail: item.detail,
+                        category: item.category,
+                        createdAt: Date.now()
+                    });
+                })
+            })
+            res.status(200).json({
+                status: "success"
+            })
+        }
     })
 });

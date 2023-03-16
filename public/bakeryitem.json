@@ -1,0 +1,192 @@
+{
+    "Bun":[
+        {
+            "name" : "Croissants",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Wheat Bread",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Hamburger Buns",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Sweet Rolls",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Bagels",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Muffins",
+            "currency": "Rs.",
+            "price": "80",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Pies",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Bread",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Bun",
+            "detail": ""
+        },
+        {
+            "name" : "Brownie",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Bun",
+            "detail": ""
+        }
+    ],
+    "Cake":[
+        {
+            "name" : "Strawberry Lemonade Cake",
+            "currency": "Rs.",
+            "price": "750",
+            "category": "Cake",
+            "detail": "per pound"
+        },
+        {
+            "name" : "Buttermilk cake",
+            "currency": "Rs.",
+            "price": "830",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "Dark Chocolate Cake",
+            "currency": "Rs.",
+            "price": "730",
+            "category": "Cake",
+            "detail": "per pound"
+        },
+        {
+            "name" : "Carrot Cake",
+            "currency": "Rs.",
+            "price": "730",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "Black Forest",
+            "currency": "Rs.",
+            "price": "550",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "White Forest",
+            "currency": "Rs.",
+            "price": "480",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "Red Velvet",
+            "currency": "Rs.",
+            "price": "1200",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "Chiffon Cake",
+            "currency": "Rs.",
+            "price": "1200",
+            "category": "Cake",
+            "detail": ""
+        },
+        {
+            "name" : "Chesse Cake",
+            "currency": "Rs.",
+            "price": "1000",
+            "category": "Cake",
+            "detail": ""
+        }
+    ],
+    "Hot Drinks":[
+        {
+            "name" : "Milk Coffee",
+            "currency": "Rs.",
+            "price": "60",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Milk Tea",
+            "currency": "Rs.",
+            "price": "45",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Black Coffee",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Hot Drinks",
+            "detail": ""
+        },
+        {
+            "name" : "Black Tea",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Hot Drinks",
+            "detail": ""
+        }
+    ],
+    "Beverages":[
+        {
+            "name" : "Packed Shakes",
+            "currency": "Rs.",
+            "price": "100",
+            "category": "Beverages",
+            "detail": ""
+        },
+        {
+            "name" : "Soda",
+            "currency": "Rs.",
+            "price": "45",
+            "category": "Beverages",
+            "detail": ""
+        },
+        {
+            "name" : "Diet Coke",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Beverages",
+            "detail": ""
+        },
+        {
+            "name" : "Juice",
+            "currency": "Rs.",
+            "price": "40",
+            "category": "Beverages",
+            "detail": ""
+        }
+    ]
+}

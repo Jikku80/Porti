@@ -743,6 +743,63 @@ input::file-selector-button, ::-webkit-file-upload-button{
     font-variant: normal;
 }
 
+.addvportiitem{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2%;
+}
+
+.addvportifood, .addbakeryfood, .addCafefood{
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid orangered;
+    padding: 2%;
+    width: fit-content;
+    cursor: pointer;
+    margin: 2%;
+}
+
+.vportiitemsec{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.863);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vportihead{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.vportibod{
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.additembtn{
+    background-color: #000;
+    color:white;
+    padding: 2%;
+    border: 1px solid black;
+    cursor: pointer;
+    width: fit-content;
+}
+
 .your__item__sec{
     background-color:  rgba(0, 0, 0, 0.637);
     padding: 2%;

@@ -64,7 +64,7 @@ next.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                 <div class="menu__card">
-                                    <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
+                                    <img class="menu__card__img imgFull pointer" src="/images/nofoimg.png" alt="menu__item__image">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head focfont">${el.name}</h3>
                                         <p class="menu__card__price focfont">${el.currency}${el.price}</p>
@@ -150,7 +150,7 @@ prev.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="/images/nofoimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head focfont">${el.name}</h3>
                                             <p class="menu__card__price focfont">${el.currency}${el.price}</p>
@@ -254,7 +254,7 @@ window.addEventListener("load", async () => {
                                                     subItems.innerHTML +=
                                                         `
                                                         <div class="menu__card">
-                                                            <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
+                                                            <img class="menu__card__img imgFull pointer" src="/images/nofoimg.png" alt="menu__item__image">
                                                             <div class="menu__card__det">
                                                                 <h3 class="menu__card__head focfont">${el.name}</h3>
                                                                 <p class="menu__card__price focfont">${el.currency}${el.price}</p>
@@ -351,7 +351,7 @@ searchBar.addEventListener("keypress", async (e) => {
                                     subItems.innerHTML +=
                                         `
                                         <div class="menu__card">
-                                            <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
+                                            <img class="menu__card__img imgFull pointer" src="/images/nofoimg.png" alt="menu__item__image">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head focfont">${el.name}</h3>
                                                 <p class="menu__card__price focfont">${el.currency}${el.price}</p>
@@ -436,7 +436,7 @@ window.addEventListener("load", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="menu__card">
-                                        <img class="menu__card__img imgFull pointer" src="/images/noimg.png" alt="menu__item__image">
+                                        <img class="menu__card__img imgFull pointer" src="/images/nofoimg.png" alt="menu__item__image">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head focfont">${el.name}</h3>
                                             <p class="menu__card__price focfont">${el.currency}${el.price}</p>
