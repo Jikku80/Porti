@@ -32,12 +32,12 @@ block content
             .whole__menu__sec 
                 .menu__section
                     .options 
-                        a(href='#item__form') Add Items
-                        a(href="#upCompany") Update 
+                        a.bigb(href='#item__form') Add Items
+                        a.bigb(href="#upCompany") Update 
                         if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
-                            a(href="#banrsec") Banner 
-                        a(href="#termsandcond") Terms and Policies
-                        a(href="#deleteCompany") Delete
+                            a.bigb(href="#banrsec") Banner 
+                        a.bigb(href="#termsandcond") Terms and Policies
+                        a.bigb(href="#deleteCompany") Delete
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= company[0]._id
@@ -78,11 +78,9 @@ block content
                     if (catalouges.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form
-                        .itemform__head 
-                            h3.form__label.scaps Add Items To Catalouge
-                            h3 
-                                a.scaps(href="#upCompany") Update Company
                         form#addCatItem.upItem(action="/api/v1/catalouge/" method="post" enctype="multipart/form-data")
+                            .itemform__head 
+                                h3.form__label.scaps Add Items To Catalouge
                             .form__bod
                                 label.form__label(for="item_name") Item Name:
                                 input#catitemname.form__input(type="text" name="catalogname" required placeholder="Graphite Tile")
@@ -143,9 +141,9 @@ block content
                         .paginate 
                             button.prev__catal Previous
                             button.next__catal.hidden Next
-                    .itemform__head 
-                        h3.form__label.scaps Update Enterprise Detail
                     form#upCompany.upItem
+                        .itemform__head 
+                            h3.form__label.scaps Update Enterprise Detail
                         .form__bod
                             label.form__label(for="company_name") Company Name:
                             input#compname.form__input(type="text" required value=company[0].name)
@@ -186,10 +184,10 @@ block content
                         p.comp__id.hidden= company[0]._id
                         button#updateCompBtn.blackbtn Update now
 
-                    .itemform__head 
-                        h3.form__label.scaps Update Enterprise Cover Image
-                        p.compimg__id.hidden= company[0]._id
-                    form#upCompanyImage.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
+                    form#upCompanyImage.coversec.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
+                        .itemform__head 
+                            h3.form__label.scaps Update Enterprise Cover Image
+                            p.compimg__id.hidden= company[0]._id
                         .form__bod.file_part
                             label.form__label(for="compcoverimage") Catalouge Cover Image:
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
@@ -241,7 +239,7 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h4.scaps.txtcnt Update Your Organizations Terms And Policies
+                    h4.scaps.txtcnt.form__label Update Your Company Terms And Policies
                     .termsandpolicies 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 

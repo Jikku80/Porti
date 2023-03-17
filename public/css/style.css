@@ -1446,9 +1446,24 @@ input::file-selector-button, ::-webkit-file-upload-button{
     font-size: 1.5vw;
   }
 
+  .port_sec_head span{
+    font-size: 1.5vw;
+    font-weight: 900;
+  }
+
+  .logout{
+      font-size: 1.5vw;
+  }
+
   .nocapsmall{
-    font-size: 10px !important;
-    font-variant: normal;
+      font-size: 1.5vw !important;
+      font-variant: normal;
+  }
+
+  .profPic{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 8rem;
   }
 
   #country{

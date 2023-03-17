@@ -989,13 +989,28 @@ img {
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.5vw;
-      }
+    }
+
+    .port_sec_head span{
+        font-size: 1.5vw;
+        font-weight: 900;
+    }
+
+    .logout{
+        font-size: 1.5vw;
+    }
 
     .nocapsmall{
-        font-size: 10px !important;
+        font-size: 1.5vw !important;
         font-variant: normal;
     }
 
+    .profPic{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 8rem;
+    }
+    
     .porti__off__img{
         width: 25px;
     }

@@ -32,11 +32,11 @@ block content
             .whole__menu__sec 
                 .menu__section
                     .options 
-                        a(href='#item__form') Add Section
-                        a(href="#upOrganization") Update 
-                        a(href="#banrsec") Banner 
-                        a(href="#termsandcond") Terms and Policies
-                        a(href="#deleteOrganization") Delete
+                        a.bigb(href='#item__form') Add Section
+                        a.bigb(href="#upOrganization") Update 
+                        a.bigb(href="#banrsec") Banner 
+                        a.bigb(href="#termsandcond") Terms and Policies
+                        a.bigb(href="#deleteOrganization") Delete
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= organization.id
@@ -78,11 +78,9 @@ block content
                         #orgTotal.hidden 
                         #updateorgcur.hidden
                     #item__form
-                        .itemform__head 
-                            h2.scaps.form__label Add To Brochure
-                            h2 
-                                a.scaps(href="#upOrganization") Update Organization
                         form#addCatItem.upItem(action="/api/v1/brochure/" method="post" enctype="multipart/form-data")
+                            .itemform__head 
+                                h2.scaps.form__label Add To Brochure
                             .form__bod
                                 label.form__label(for="item_name") Section Name:
                                 input#catitemname.form__input(type="text" name="catalogname" required placeholder="Section Name")
@@ -129,9 +127,9 @@ block content
                         .your__item__bod
                             .your__items.sec__items
                         
-                    .itemform__head 
-                        h3.form__label.scaps Update Organization Detail
                     form#upOrganization.upItem
+                        .itemform__head 
+                            h3.form__label.scaps Update Organization Detail
                         .form__bod
                             label.form__label(for="company_name") Name:
                             input#compname.form__input(type="text" required value=organization.name)
@@ -166,10 +164,10 @@ block content
                         p.comp__id.hidden= organization._id
                         button#updateCompBtn.blackbtn Update now
 
-                    .itemform__head 
-                        h3.form__label.scaps Update Enterprise Cover Image
-                        p.compimg__id.hidden= organization._id
-                    form#upCompanyImage.upItem(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
+                    form#upCompanyImage.upItem.coversec(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
+                        .itemform__head 
+                            h3.form__label.scaps Update Enterprise Cover Image
+                            p.compimg__id.hidden= organization._id
                         .form__bod.file_part
                             label.form__label(for="compcoverimage") Catalouge Cover Image:
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)

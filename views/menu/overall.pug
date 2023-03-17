@@ -33,12 +33,12 @@ block content
             .whole__menu__sec
                 .menu__section
                     .options 
-                        a(href='#item__form') Add Items
-                        a(href="#upRestro") Update 
+                        a.bigb(href='#item__form') Add Items
+                        a.bigb(href="#upRestro") Update 
                         if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
-                            a(href="#banrsec") Banner 
-                        a(href="#termsandcond") Terms and Policies
-                        a(href="#deleteCompany") Delete
+                            a.bigb(href="#banrsec") Banner 
+                        a.bigb(href="#termsandcond") Terms and Policies
+                        a.bigb(href="#deleteCompany") Delete
                     if (menus.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Menu, Add Few Items!
                     
@@ -81,6 +81,7 @@ block content
                     .qrcode__menu 
                         #qrcode 
                     #item__form
+                        h3.txtcent.form__label Add From Our Package
                         .addvportiitem
                             .addvportifood Add Restro Items
                             .addbakeryfood Add Bakery Items 
@@ -89,15 +90,14 @@ block content
                             .vportihead 
                                 h2 Food Items 
                                 img.cancelvportiitem.point(src="/images/cancel.png", alt="cancelbutton")
-                            .vportibod
+                            .allvportiitemsec
+                                .vportibod
                             .vportiaddall.additembtn.hidden Add All Items
                             .bakeryaddall.additembtn.hidden Add All Items
                             .cafeaddall.additembtn.hidden Add All Items
-                        .itemform__head 
-                            h3.form__label.scaps Add Items To Menu
-                            h3
-                                a.scaps(href="#upRestro") Update Food Hub
                         form#addItem(action="/api/v1/menu" method="post" enctype="multipart/form-data")
+                            .itemform__head 
+                                h3.form__label.scaps Add Items To Menu
                             .form__bod
                                 label.form__label Food Name:
                                 input#itemname.form__input(type="text"  name="menuname" required placeholder="Chicken Burger")
@@ -145,9 +145,9 @@ block content
                                 button.prev Previous
                                 button.next.hidden Next
                     
-                    .itemform__head 
-                        h3.form__label.scaps Update Food Hub Detail
                     form#upRestro.upItem
+                        .itemform__head 
+                            h3.form__label.scaps Update Food Hub Detail
                         .form__bod
                             label.form__label Food Hub Name:
                             input#resname.form__input(type="text" required value=restro[0].name)
@@ -170,7 +170,7 @@ block content
                                     input#reshomedel.checkbox(type="checkbox", checked="checked")
                                 else 
                                     input#reshomedel.checkbox(type="checkbox")
-                                label Checking the box will update order form so people can add their personal details
+                                label.smalltxt Checking the box will update order form so people can add their personal details
                         else 
                             #reshomedel.hidden
                         .form__bod 
@@ -186,9 +186,9 @@ block content
                         else 
                             p.restro__id.hidden
                         button#updateResBtn.blackbtn Update Food Hub
-                    form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem
+                    form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem.coversec
                         .form__bod.file_part
-                        label.form__label(for="upcoverimage").scaps Update Food Hub Cover Image
+                        h3.form__label(for="upcoverimage").scaps Update Food Hub Cover Image
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
                         button.blackbtn Update Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
@@ -199,7 +199,7 @@ block content
                                 .form__bod 
                                     label.form__label.scaps Banner Information 
                                     if (!banner [0])
-                                        textarea.form__input#bannerInfo(type="text" placeholder="Holiday Offer !!!! 50% Discount On Every Food Item")
+                                        textarea.form__input#bannerInfo(type="text" placeholder="Holiday Offer! 50% Discount On Every Item")
                                     else 
                                         textarea.form__input#bannerInfo(type="text" placeholder="You Can only have one Banner at a time" disabled)
                                     label.form__label Discount Percentage(optional)
@@ -238,7 +238,7 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h4.scaps.txtcent Update Your Organizations Terms And Policies
+                    h6.scaps.txtcent.form__label Update Your Food Hub Terms And Policies
                     .termsandpolicies 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 

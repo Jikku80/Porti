@@ -29,6 +29,44 @@
             "detail": ""
         }
     ],
+    "Rice":[
+        {
+            "name" : "Veg Fried Rice",
+            "currency": "Rs.",
+            "price": "100",
+            "category": "Rice",
+            "detail": ""
+        },
+        {
+            "name" : "Mix Fried Rice",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Rice",
+            "detail": ""
+        },
+        {
+            "name" : "Chicken Fried Rice",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Rice",
+            "detail": ""
+        },
+        {
+            "name" : "Buff Fried Rice",
+            "currency": "Rs.",
+            "price": "110",
+            "category": "Rice",
+            "detail": ""
+        }
+        ,
+        {
+            "name" : "Egg Fried Rice",
+            "currency": "Rs.",
+            "price": "120",
+            "category": "Rice",
+            "detail": ""
+        }
+    ],
     "Appetizers":[
         {
             "name" : "Choila Beef/Chicken",
@@ -38,7 +76,7 @@
             "detail": ""
         },
         {
-            "name" : "Samya Bajee",
+            "name" : "Bhutan",
             "currency": "Rs.",
             "price": "130",
             "category": "Appetizers",
@@ -69,6 +107,27 @@
             "name" : "Buff Chilly",
             "currency": "Rs.",
             "price": "180",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Buff Sukuti Fried",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "Chicken Leg Fried",
+            "currency": "Rs.",
+            "price": "180",
+            "category": "Appetizers",
+            "detail": ""
+        },
+        {
+            "name" : "French Fries",
+            "currency": "Rs.",
+            "price": "280",
             "category": "Appetizers",
             "detail": ""
         }
@@ -108,6 +167,29 @@
             "price": "480",
             "category": "Pizza",
             "detail": "Extra Chesse at just Rs.50"
+        }
+    ],
+    "Naan":[
+        {
+            "name" : "Plain Naan",
+            "currency": "Rs.",
+            "price": "50",
+            "category": "Naan",
+            "detail": ""
+        },
+        {
+            "name" : "Butter Naan",
+            "currency": "Rs.",
+            "price": "60",
+            "category": "Naan",
+            "detail": ""
+        },
+        {
+            "name" : "Keema Naan",
+            "currency": "Rs.",
+            "price": "90",
+            "category": "Naan",
+            "detail": ""
         }
     ],
     "Salad":[
@@ -183,6 +265,82 @@
             "currency": "Rs.",
             "price": "180",
             "category": "Chowmein",
+            "detail": ""
+        }
+    ],
+    "Thukpa":[
+        {
+            "name" : "Chicken Thukpa",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Thukpa",
+            "detail": ""
+        },
+        {
+            "name" : "Mix Thukpa",
+            "currency": "Rs.",
+            "price": "130",
+            "category": "Thukpa",
+            "detail": ""
+        },
+        {
+            "name" : "Egg Thukpa",
+            "currency": "Rs.",
+            "price": "110",
+            "category": "Thukpa",
+            "detail": ""
+        },
+        {
+            "name" : "Buff Thukpa",
+            "currency": "Rs.",
+            "price": "140",
+            "category": "Thukpa",
+            "detail": ""
+        }
+    ],
+    "Thali Set":[
+        {
+            "name" : "Mutton Thali/ Sukut Thali Set",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Thali Set",
+            "detail": "Rice, Saag, Mix Veg, Chatni, Daal, Papad, Dahi"
+        },
+        {
+            "name" : "Chicken Thali",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Thali Set",
+            "detail": "Rice, Saag, Mix Veg, Chatni"
+        },
+        {
+            "name" : "Roti(Chapati) Thali",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Thali Set",
+            "detail": "Roti 5pcs, Saag, Mix Veg, Chatni, Daal, Papad, Dahi"
+        }
+    ],
+    "Khaja Set":[
+        {
+            "name" : "Newari Khaja Set",
+            "currency": "Rs.",
+            "price": "350",
+            "category": "Khaja Set",
+            "detail": ""
+        },
+        {
+            "name" : "Bhutan Chuira Set",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Khaja Set",
+            "detail": ""
+        },
+        {
+            "name" : "Samya Bajee",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Khaja Set",
             "detail": ""
         }
     ],
@@ -273,6 +431,29 @@
             "currency": "Rs.",
             "price": "40",
             "category": "Hot Drinks",
+            "detail": ""
+        }
+    ],
+    "Lassies":[
+        {
+            "name" : "Plain Sweet Lassi",
+            "currency": "Rs.",
+            "price": "150",
+            "category": "Lassies",
+            "detail": ""
+        },
+        {
+            "name" : "Banana Lassi",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Lassies",
+            "detail": ""
+        },
+        {
+            "name" : "Lassi with Ice Cream in your Choice",
+            "currency": "Rs.",
+            "price": "230",
+            "category": "Lassies",
             "detail": ""
         }
     ],
