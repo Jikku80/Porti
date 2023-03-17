@@ -184,8 +184,9 @@ p{
     border-bottom-left-radius: 1rem;
     margin: 1vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 70vw;
     height: auto;
 }
 
@@ -465,6 +466,18 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .bigbtn{
     height: 50px;
 
+}
+
+.bigb{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bolder;
+    border-radius: 2rem;
+    padding: 1%;
+    margin: 1%;
+    cursor: pointer;
+    animation: shine 4s ease-in-out forwards infinite;
 }
 
 .sec__land__bod{
@@ -978,12 +991,8 @@ img {
 
 .options{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-}
-
-.options a{
-    color: goldenrod;
-    text-decoration: none;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -1031,7 +1040,11 @@ img {
     .profPic{
         width: 6rem;
         height: 6rem;
-      }
+    }
+
+    .bigb{
+        padding: 2%;
+    }
 
     .banner{
         font-size: 12px;
@@ -1118,6 +1131,11 @@ img {
       }
     .banner{
         font-size: 10px;
+    }
+
+    .bigb{
+        padding: 3%;
+        margin: 3%;
     }
 
     .land__sixth, .land__secd, .land__farst{

@@ -1,9 +1,7 @@
 .land__update#uppsec
-    button#update_port.redbtn.upMarg Update Portfolio
-    #update_form.hidden.upform.land__farst
+    #update_form.upform.land__farst
         .upform__head 
             h1 Update Your Portfolio 
-            img.cancel(src="/images/cancel.png", alt="cancel_img")
         form#upPort
             .form__bod
                 label.form__label Portfolio Name:
@@ -81,11 +79,10 @@
             
     
     if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb' && portfolio.theme !== 'a9993e364706816aba3e25717850c26c9cd0d89d' && portfolio.theme !== "481743d632b80d39bc2771d19be3ca3005b3f8af" && portfolio.theme !== "fc40ac89c9100d87048e2603edcf58adfc94e6c3")
-        button#update_Img.redbtn.upMarg Update Portfolio Cover Image
-        #update_ImgForm.hidden.upform
+        #update_ImgForm.upform
             .upform__head 
                 h1 Update Your Portfolio Cover Image
-                img.cancl(src="/images/cancel.png", alt="cancel_img")
+                img.cancl(src="/images/cancel.png", alt="cancel_img").hidden
             form#upImage(action=`/updateportImg/${portfolio.id}` method="post" enctype="multipart/form-data")
                 .form__bod
                     input#img1(type="file" accept="image/*" name="portcoverImage", required)

@@ -21,7 +21,6 @@ abrt.addEventListener("click", () => {
     dlcf.classList.add("hidden");
     landCont.classList.remove("hidden");
     landPorti.classList.remove("hidden");
-    addPrevSec.classList.remove("hidden");
     tweakHead.classList.remove("hidden");
     deel.classList.remove("hidden");
 })

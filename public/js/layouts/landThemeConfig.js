@@ -6,6 +6,7 @@
     let inpt = document.querySelectorAll(".form__input");
     let lod = document.querySelector(".loader");
     let td = document.querySelectorAll('.td');
+    let bigb = document.querySelectorAll(".bigb");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -16,6 +17,9 @@
         })
         sec.forEach(item => {
             item.style.borderColor = "white";
+        })
+        bigb.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
     }
     else if (theme == "dark") {
@@ -42,6 +46,10 @@
         })
         td.forEach(item => {
             item.style.color = "black";
+        })
+        bigb.forEach(item => {
+            item.style.color = "black";
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
 
     }

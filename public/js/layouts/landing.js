@@ -8,63 +8,8 @@ let delFirst = document.getElementById("delPp");
 let portiqrsec = document.querySelector(".qr__sec");
 let addItemSec = document.querySelector(".portfolio__tweaks");
 let editThemeSec = document.getElementById("editTheme");
+let portuTheme = document.querySelector(".portfoliotheme").innerText;
 
-updatePort.addEventListener('click', () => {
-    headGo.classList.add('hidden');
-    landNav.classList.add('hidden');
-    updatePort.classList.add('hidden');
-    updateImg.classList.add("hidden");
-    delFirst.classList.add("hidden");
-    portiqrsec.classList.add("hidden");
-    addItemSec.classList.add("hidden");
-    editThemeSec.classList.add("hidden");
-    updateForm.classList.remove('hidden');
-    window.setTimeout(() => {
-        location.hash = "#"
-    }, 200)
-})
-
-updateImg.addEventListener("click", () => {
-    headGo.classList.add('hidden');
-    landNav.classList.add('hidden');
-    updatePort.classList.add('hidden');
-    updateImg.classList.add("hidden");
-    delFirst.classList.add("hidden");
-    portiqrsec.classList.add("hidden");
-    addItemSec.classList.add("hidden");
-    editThemeSec.classList.add("hidden");
-    updateImgForm.classList.remove('hidden');
-    window.setTimeout(() => {
-        location.hash = "#"
-    }, 200)
-})
-
-let cancel = document.querySelector(".cancel");
-let cancl = document.querySelector(".cancl");
-
-cancel.addEventListener("click", () => {
-    headGo.classList.remove('hidden');
-    landNav.classList.remove('hidden');
-    updatePort.classList.remove('hidden');
-    updateImg.classList.remove("hidden");
-    delFirst.classList.remove("hidden");
-    portiqrsec.classList.remove("hidden");
-    addItemSec.classList.remove("hidden");
-    editThemeSec.classList.remove("hidden");
-    updateForm.classList.add('hidden');
-})
-
-cancl.addEventListener("click", () => {
-    headGo.classList.remove('hidden');
-    landNav.classList.remove('hidden');
-    updatePort.classList.remove('hidden');
-    updateImg.classList.remove("hidden");
-    delFirst.classList.remove("hidden");
-    portiqrsec.classList.remove("hidden");
-    addItemSec.classList.remove("hidden");
-    editThemeSec.classList.remove("hidden");
-    updateImgForm.classList.add('hidden');
-})
 
 let upForm = document.getElementById("upForm");
 
@@ -154,4 +99,4 @@ updBtn.addEventListener("click", async (e) => {
         console.log(err);
         errorAlert('Sorry! Something went wrong', err);
     };
-})
+});

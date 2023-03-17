@@ -1,9 +1,7 @@
 .land__update#uppsec
-    button#update_portSec.redbtn.upMarg Update Portfolio
-    #update_formSec.hidden.upform.land__secd
+    #update_formSec.upform.land__secd
         .upform__head 
             h1 Update Your Portfolio 
-            img.cancelSec(src="/images/cancel.png", alt="cancel_img")
         form#upPortSec
             .form__bod
                 label.form__label Portfolio Name:
@@ -57,11 +55,10 @@
                     input#upwatermarkSec.checkbox(type="checkbox")
             button#updateBtnSec.redbtn.bigbtn Update
 
-    button#update_ImgCollec.redbtn.upMarg Update Portfolio Images
-    #update_ImgFormCollec.hidden.upform
+    #update_ImgFormCollec.upform
         .upform__head 
             h1 Update Your Port Images
-            img.canclCollec(src="/images/cancel.png", alt="cancel_img")
+            img.canclCollec(src="/images/cancel.png", alt="cancel_img").hidden
         form#upImageCollec(action="/update/portImgCollec" method="post" enctype="multipart/form-data")
             .form__bod
                 input#img1Collec(type="file" accept="image/*" multiple name="upimagescollec", required)

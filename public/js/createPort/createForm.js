@@ -1,7 +1,7 @@
 function createPortiForm(val, val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, val11, probValue, solveValue, failValue, motiValue, msgValue, role) {
     return `
         <div class="form__head">
-            <h1>${val}</h1>
+            <h1 class="form__label">${val}</h1>
             <img src="/images/cancel.png" alt="cancel_img" class="${val0} crossbtn" />
         </div>
         <form class="comp__form__main">

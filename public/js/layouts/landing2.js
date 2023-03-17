@@ -9,59 +9,6 @@ let portiqrsec2 = document.querySelector(".qr__sec");
 let editThemeSec2 = document.getElementById("editTheme");
 
 
-updatePortSec.addEventListener('click', () => {
-    headGoSec.classList.add('hidden');
-    landNavSec.classList.add('hidden');
-    updatePortSec.classList.add('hidden');
-    updateImgCollec.classList.add("hidden");
-    delSec.classList.add("hidden");
-    portiqrsec2.classList.add("hidden");
-    editThemeSec2.classList.add("hidden");
-    updateFormSec.classList.remove('hidden');
-    window.setTimeout(() => {
-        location.hash = "#"
-    }, 200)
-})
-
-updateImgCollec.addEventListener("click", () => {
-    headGoSec.classList.add('hidden');
-    landNavSec.classList.add('hidden');
-    updatePortSec.classList.add('hidden');
-    updateImgCollec.classList.add("hidden");
-    delSec.classList.add("hidden");
-    portiqrsec2.classList.add("hidden");
-    editThemeSec2.classList.add("hidden");
-    updateImgFormCollec.classList.remove('hidden');
-    window.setTimeout(() => {
-        location.hash = "#"
-    }, 200)
-})
-
-let cancelSec = document.querySelector(".cancelSec");
-let canclSec = document.querySelector(".canclCollec");
-
-cancelSec.addEventListener("click", () => {
-    headGoSec.classList.remove('hidden');
-    landNavSec.classList.remove('hidden');
-    updatePortSec.classList.remove('hidden');
-    updateImgCollec.classList.remove("hidden");
-    delSec.classList.remove("hidden");
-    portiqrsec2.classList.remove("hidden");
-    editThemeSec2.classList.remove("hidden");
-    updateFormSec.classList.add('hidden');
-})
-
-canclSec.addEventListener("click", () => {
-    headGoSec.classList.remove('hidden');
-    landNavSec.classList.remove('hidden');
-    updatePortSec.classList.remove('hidden');
-    updateImgCollec.classList.remove("hidden");
-    delSec.classList.remove("hidden");
-    portiqrsec2.classList.remove("hidden");
-    editThemeSec2.classList.remove("hidden");
-    updateImgFormCollec.classList.add('hidden');
-})
-
 let upFormSec = document.getElementById("upFormSec");
 
 let pname = document.querySelector("#upnameSec");

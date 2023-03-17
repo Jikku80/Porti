@@ -22,11 +22,19 @@ block content
                 .land__whole__sec
                     .land__content
                         .options
-                            a(href="#addImageToPortfolio") Accomplishment Tweak
-                            a(href="#uppsec") Update Portfolio 
-                            a(href="#delPp") Delete Portfolio
+                            .bigb.sharevporti Share
+                            if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
+                                .bigb.gotoaddsec Accomplishment Tweak
+                            else 
+                                .gotoaddsec.hidden
+                            if (portfolio.theme == 'da98568d1b2005611973ad49868b38aa8ae68fd7' || portfolio.theme == 'a9993e364706816aba3e25717850c26c9cd0d89d')
+                                .bigb.gotobanner Edit Theme
+                            else 
+                                .gotobanner.hidden
+                            .bigb.gotoupdate Update Portfolio 
+                            .bigb.gotodel Delete Portfolio
                         .land__nav__main
-                        .land__goto
+                        .land__goto.sharesec
                             h1#port_name= `${portfolio.name}`
                             span.endpoint.hidden= `${portfolio._id}`
                             p.xsf Go to your portfolio
@@ -41,11 +49,12 @@ block content
                                 button#downportiqr.redbtn.hidden Download QRCode 
                             p.xsf Share In Social Sites
                             button.redbtn.fbbtn Facebook
-                        .qr__sec#qrLanding 
+                        .qr__sec#qrLanding.shareqrsec 
+                        .portfoliotheme.hidden= portfolio.theme
                         if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7' && portfolio.theme !== '836b9b955a98e0f2e2d678c179696d6ac53356eb')
                             if (portImage.length === 0)
                                 h3.banner.second__access.form__label No Image Added Yet! Add Your Previous Accomplishment Image, Make Your Portfolio More Appealing ;)
-                            .portfolio__tweaks
+                            .portfolio__tweaks.additemsection.hidden
                                 include _addImage
                                 if (portImage.length !== 0)
                                     
@@ -69,17 +78,18 @@ block content
                                     .next__addimg.hidden
                                     .prev__addimg.hidden
                         else 
-                            .portfolio__tweaks
-                            .port__card__main
+                            .portfolio__tweaks.hidden
+                            .port__card__main.hidden
                             .next__addimg.hidden
                             .prev__addimg.hidden
+                            .additemsection.hidden
                         .del__img__sec.hidden 
                             h3.txtcnt Are You Sure you want to delete it?
                             .group__delbtn
                                 button#confirmImgDelete.delbtn Delete 
                                 button#cancelImgDelete.delbtn Cancel
                         if (portfolio.theme == "a9993e364706816aba3e25717850c26c9cd0d89d" || portfolio.theme == "da98568d1b2005611973ad49868b38aa8ae68fd7")
-                            form.theme__edit#editTheme
+                            form.theme__edit#editTheme.addbannersec.hidden
                                 h2 Edit Theme Preference
                                 .form__bod 
                                     label Background Color:
@@ -108,8 +118,9 @@ block content
                         else 
                             #changeTheme.hidden
                             #editTheme.hidden
+                            .addbannersec.hidden
                     .sec__land__bod
-                        .del__port#delPp 
+                        .del__port#delPp.delete__sec.hidden 
                             .del__bod
                                 #portidelid.hidden= `${portfolio._id}`
                                 button#delPort.redbtn Delete Portfolio
@@ -119,10 +130,12 @@ block content
                                 .yesDelete.redbtn(id=`${user._id}`) Confrim
                                 .noDelete.redbtn Abort
                         if (portfolio.theme !== 'da98568d1b2005611973ad49868b38aa8ae68fd7')
-                            include _updateOne.pug
+                            .updatesection.hidden
+                                include _updateOne.pug
                         else
-                            include _updateTwo.pug
-                        h2.tweak__head Portoflio Content Tweaks
+                            .updatesection.hidden
+                                include _updateTwo.pug
+                        h2.tweak__head.hidden Portoflio Content Tweaks
                     include ../_footer
             else 
                 .notifier

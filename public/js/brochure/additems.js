@@ -246,6 +246,8 @@
     let termservice = document.querySelector(".termservice");
     let priv = document.querySelector(".privacypolicies");
     let biginpt = document.querySelectorAll(".big__input");
+    let bigb = document.querySelectorAll(".bigb");
+
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -254,7 +256,9 @@
         inpt.forEach(item => {
             item.style.borderColor = "white";
         })
-
+        bigb.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
         delsec.style.backgroundColor = "rgba(0, 0, 0, 0.411)"
     }
     else if (theme == "dark") {
@@ -281,6 +285,10 @@
         biginpt.forEach(item => {
             item.style.color = "black";
             item.style.borderColor = "black";
+        })
+        bigb.forEach(item => {
+            item.style.color = "black";
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
     }
     else {

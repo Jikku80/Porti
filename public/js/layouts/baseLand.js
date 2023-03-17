@@ -312,3 +312,126 @@ function delImgItem() {
     })
 }
 delImgItem();
+
+(function () {
+    let sharesec = document.querySelector(".sharesec");
+    let shareqr = document.querySelector(".shareqrsec");
+    let additemsec = document.querySelector(".additemsection");
+    let updatesec = document.querySelector(".updatesection");
+    let bannersec = document.querySelector(".addbannersec");
+    let delsec = document.querySelector(".delete__sec");
+    let porthead = document.querySelector(".tweak__head");
+
+    let sharebtn = document.querySelector(".sharevporti");
+    let addbtn = document.querySelector(".gotoaddsec");
+    let upbtn = document.querySelector(".gotoupdate");
+    let banbtn = document.querySelector(".gotobanner");
+    let delbtn = document.querySelector(".gotodel");
+
+    let sec = window.sessionStorage.getItem('section');
+
+    if (sec === "additemstomenu") {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.remove("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        delsec.classList.add("hidden");
+    }
+    else if (sec === "sharesec") {
+        sharesec.classList.remove("hidden");
+        shareqr.classList.remove("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        delsec.classList.add("hidden");
+    }
+    else if (sec === "updatedatasec") {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.remove("hidden");
+        bannersec.classList.add("hidden");
+        porthead.classList.remove("hidden");
+        delsec.classList.add("hidden");
+    }
+    else if (sec === "createbannersec") {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.remove("hidden");
+        porthead.classList.add("hidden");
+        delsec.classList.add("hidden");
+    }
+    else if (sec == "deletesec") {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        delsec.classList.remove("hidden");
+    }
+    else {
+        window.sessionStorage.setItem("section", "");
+    }
+
+
+    sharebtn.addEventListener("click", () => {
+        sharesec.classList.remove("hidden");
+        shareqr.classList.remove("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        delsec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        window.sessionStorage.setItem("section", "sharesec");
+    });
+
+    addbtn.addEventListener("click", () => {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.remove("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        delsec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        window.sessionStorage.setItem("section", "additemstomenu");
+    });
+
+    upbtn.addEventListener("click", () => {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.remove("hidden");
+        bannersec.classList.add("hidden");
+        delsec.classList.add("hidden");
+        porthead.classList.remove("hidden");
+        window.sessionStorage.setItem("section", "updatedatasec");
+    });
+
+    banbtn.addEventListener("click", () => {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.remove("hidden");
+        delsec.classList.add("hidden");
+        porthead.classList.add("hidden");
+        window.sessionStorage.setItem("section", "createbannersec");
+    });
+
+    delbtn.addEventListener("click", () => {
+        sharesec.classList.add("hidden");
+        shareqr.classList.add("hidden");
+        additemsec.classList.add("hidden");
+        updatesec.classList.add("hidden");
+        bannersec.classList.add("hidden");
+        delsec.classList.remove("hidden");
+        porthead.classList.add("hidden");
+        window.sessionStorage.setItem("section", "deletesec");
+    });
+})();
