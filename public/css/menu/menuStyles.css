@@ -137,7 +137,7 @@ body{
 .menu__messages__btn, .menu__reserve__btn{
     position: fixed;
     z-index: 1;
-    top: 2vh;
+    top: 10vh;
     width: 5rem;
     height: 5rem;
     border-radius: 12rem;
@@ -160,7 +160,7 @@ body{
 .new__menu__msg, .new__menu__reserve{
     position: fixed;
     z-index: 2;
-    top: 4vh;
+    top: 11vh;
     width: 1rem;
     height: 1rem;
     border-radius: 8rem;
@@ -971,12 +971,13 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .termservice, .privacypolicies{
-    width: 80vw;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1169,12 +1170,14 @@ input::file-selector-button, ::-webkit-file-upload-button{
 
 .bigb{
     text-decoration: none;
-    background-color: gray;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: bolder;
     border-radius: 2rem;
     padding: 1%;
     margin: 1%;
+    cursor: pointer;
+    animation: shine 4s ease-in-out forwards infinite;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -1257,8 +1260,13 @@ input::file-selector-button, ::-webkit-file-upload-button{
         left: 1vw;
     }
 
+    .menu__messages__btn, .menu__reserve__btn{
+        top: 20vh;
+    }
+
     .new__menu__reserve{
         left: 6vw;
+        top: 21vh;
     }
 
     .checkbox{
@@ -1266,7 +1274,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
         width: 10vw;
     }
     .new__menu__msg{
-        top: 4vh;
+        top: 21vh;
         right: 4vw;
     }
     .menu__message__mid__sec, .menu__reveived__msg, .menu__reserve__mid__sec, .menu__reveived__reserve{
@@ -1300,7 +1308,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
     }
 
     .bigb{
-        padding: 2%;
+        padding: 3%;
+        margin: 3%;
     }
 
     .addvportifood, .addbakeryfood, .addCafefood{

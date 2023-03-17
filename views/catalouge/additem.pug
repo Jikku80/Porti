@@ -32,12 +32,15 @@ block content
             .whole__menu__sec 
                 .menu__section
                     .options 
-                        a.bigb(href='#item__form') Add Items
-                        a.bigb(href="#upCompany") Update 
+                        .bigb.sharevporti Share 
+                        .bigb.gotoaddsec Add Items
+                        .bigb.gotoupdate Update 
                         if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
-                            a.bigb(href="#banrsec") Banner 
-                        a.bigb(href="#termsandcond") Terms and Policies
-                        a.bigb(href="#deleteCompany") Delete
+                            .bigb.gotobanner Banner 
+                        else 
+                            .gotobanner.hidden
+                        .bigb.gototerm Terms and Policies
+                        .bigb.gotodel Delete
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= company[0]._id
@@ -69,15 +72,15 @@ block content
                                 h3.reservename 
                                 img.cancel__reveived__reserve.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reveived__reserve__bod
-                    .share__catalouge#openCatalouge 
+                    .share__catalouge#openCatalouge.sharesec 
                         h2.form__label Share your Catalouge 
                         p.uname__catal.hidden= user.name
                         p.share__catal__link
-                    .qrcode__menu 
+                    .qrcode__menu.shareqrsec  
                         #catalqrcode 
                     if (catalouges.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
-                    #item__form
+                    #item__form.additemsection.hidden
                         form#addCatItem.upItem(action="/api/v1/catalouge/" method="post" enctype="multipart/form-data")
                             .itemform__head 
                                 h3.form__label.scaps Add Items To Catalouge
@@ -126,7 +129,7 @@ block content
                                 label.form__label(for="catcoverimage") Item Image:
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
                             button#cataddItemBtn.blackbtn Add Item
-                    .your__item__sec#CatalogeItemSec
+                    .your__item__sec#CatalogeItemSec.hidden
                         h3.items__head.scaps Your Items 
                         p.currentuid.hidden= user._id
                         if (banner[0])
@@ -141,7 +144,7 @@ block content
                         .paginate 
                             button.prev__catal Previous
                             button.next__catal.hidden Next
-                    form#upCompany.upItem
+                    form#upCompany.upItem.updatesection.hidden
                         .itemform__head 
                             h3.form__label.scaps Update Enterprise Detail
                         .form__bod
@@ -184,7 +187,7 @@ block content
                         p.comp__id.hidden= company[0]._id
                         button#updateCompBtn.blackbtn Update now
 
-                    form#upCompanyImage.coversec.upItem(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
+                    form#upCompanyImage.coversec.upItem.hidden(action=`/api/v1/catalouge/${company[0]._id}/updateCompanyImage` method="post" enctype="multipart/form-data")
                         .itemform__head 
                             h3.form__label.scaps Update Enterprise Cover Image
                             p.compimg__id.hidden= company[0]._id
@@ -193,7 +196,7 @@ block content
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
                         button#compUpdateImgBtn.blackbtn Update Cover Image
                     if (company[0].theme !== "51eac6b471a284d3341d8c0c63d0f1a286262a18")
-                        .createBanner#banrsec
+                        .createBanner#banrsec.addbannersec.hidden
                             .itemform__head 
                                 h3.form__label.scaps Create A Banner
                             form.upItem
@@ -239,8 +242,9 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h4.scaps.txtcnt.form__label Update Your Company Terms And Policies
-                    .termsandpolicies 
+                        .addbannersec.hidden
+                    h4.upterm.scaps.txtcnt.form__label.hidden Update Your Company Terms And Policies
+                    .termsandpolicies.hidden 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 
                             .termservice__head 
@@ -264,7 +268,7 @@ block content
                                 else 
                                     textarea#policiesValue.big__input(type="text" placeholder="Enter Your Privacy Policies")
                                 #updatePolicies.blackbtn Update 
-                .delete__sec 
+                .delete__sec.hidden 
                     h2.scaps Delete Company 
                     p.scaps It will delete Everything including all the catalog items
                     .delcompid.hidden= company[0]._id
@@ -286,4 +290,6 @@ block content
     script(src="/socket.io/socket.io.js") 
     script(src="/js/catalouge/additemtocat.js")
     script(src="/js/catalouge/qrCode.js")
+    script(src="/js/menucatbro.js") 
+
 

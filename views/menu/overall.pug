@@ -33,12 +33,15 @@ block content
             .whole__menu__sec
                 .menu__section
                     .options 
-                        a.bigb(href='#item__form') Add Items
-                        a.bigb(href="#upRestro") Update 
+                        .bigb.sharevporti Share 
+                        .bigb.gotoaddsec Add Items
+                        .bigb.gotoupdate Update 
                         if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
-                            a.bigb(href="#banrsec") Banner 
-                        a.bigb(href="#termsandcond") Terms and Policies
-                        a.bigb(href="#deleteCompany") Delete
+                            .bigb.gotobanner Banner 
+                        else 
+                            .gotobanner.hidden
+                        .bigb.gototerm Terms and Policies
+                        .bigb.gotodel Delete
                     if (menus.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Menu, Add Few Items!
                     
@@ -73,14 +76,14 @@ block content
                                 h3.reservename 
                                 img.cancel__reveived__reserve.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reveived__reserve__bod
-                    .share__menu 
+                    .share__menu.sharesec 
                         h2.form__label Share your menu 
                         p.uname__menu.hidden= user.name
                         p.share__link
 
-                    .qrcode__menu 
+                    .qrcode__menu.shareqrsec 
                         #qrcode 
-                    #item__form
+                    #item__form.additemsection.hidden
                         h3.txtcent.form__label Add From Our Package
                         .addvportiitem
                             .addvportifood Add Restro Items
@@ -129,7 +132,7 @@ block content
                                 label.form__label(for="coverimage") Food Image:
                                 input#coverimage.form__input(type="file" name="menuimage" accept="image/*")
                             button#addItemBtn.blackbtn Add Item
-                    .your__item__sec#foodItemSec
+                    .your__item__sec#foodItemSec.hidden
                         h3.items__head.scaps Your Items 
                         p.currentid.hidden= user._id
                         if (banner[0])
@@ -145,7 +148,7 @@ block content
                                 button.prev Previous
                                 button.next.hidden Next
                     
-                    form#upRestro.upItem
+                    form#upRestro.upItem.updatesection.hidden
                         .itemform__head 
                             h3.form__label.scaps Update Food Hub Detail
                         .form__bod
@@ -186,13 +189,13 @@ block content
                         else 
                             p.restro__id.hidden
                         button#updateResBtn.blackbtn Update Food Hub
-                    form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem.coversec
+                    form(action=`/api/v1/menu/${restro[0].id}/updateResImage` method="post" enctype="multipart/form-data").upItem.coversec.hidden
                         .form__bod.file_part
                         h3.form__label(for="upcoverimage").scaps Update Food Hub Cover Image
                         input.form__input(type="file" accept="image/*" name="upmenuimage" required)
                         button.blackbtn Update Image 
                     if (restro[0].theme !== "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
-                        .createBanner#banrsec
+                        .createBanner#banrsec.addbannersec.hidden
                             .itemform__head 
                                 h3.form__label.scaps Create A Banner
                             form.upItem
@@ -238,8 +241,9 @@ block content
                         #updateDiscountToAll.hidden 
                         #removeDiscountToAll.hidden
                         .bannerresid.hidden
-                    h6.scaps.txtcent.form__label Update Your Food Hub Terms And Policies
-                    .termsandpolicies 
+                        .addbannersec.hidden
+                    h6.upterm.scaps.txtcent.form__label.hidden Update Your Food Hub Terms And Policies
+                    .termsandpolicies.hidden 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 
                             .termservice__head 
@@ -263,7 +267,7 @@ block content
                                 else 
                                     textarea#policiesValue.big__input(type="text" placeholder="Enter Your Privacy Policies")
                                 #updatePolicies.blackbtn Update 
-                .delete__sec 
+                .delete__sec.hidden 
                     h2.scaps Delete Food Hub 
                     p.scaps It will delete Everything including all the Menu items
                     .delrestroid.hidden= restro[0]._id
@@ -284,3 +288,4 @@ block content
     script(src="/socket.io/socket.io.js") 
     script(src="/js/menu/additem.js") 
     script(src="/js/qr.js")
+    script(src="/js/menucatbro.js") 
