@@ -575,6 +575,9 @@ prev.addEventListener("click", async () => {
     let lod = document.querySelector(".loader");
     let delsec = document.querySelector(".delete__sec");
     let bigb = document.querySelectorAll(".bigb");
+    let youritem = document.querySelectorAll(".blackshine");
+    let blckbtn = document.querySelectorAll(".blackbtn");
+    let footersec = document.querySelectorAll(".footer__anch");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -587,6 +590,9 @@ prev.addEventListener("click", async () => {
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
         delsec.style.backgroundColor = "rgba(0, 0, 0, 0.411)"
+        youritem.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
@@ -612,7 +618,15 @@ prev.addEventListener("click", async () => {
             item.style.color = "black";
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
-
+        youritem.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        blckbtn.forEach(item => {
+            item.style.color = "black";
+        })
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         return;

@@ -328,6 +328,10 @@ lakheyBack.addEventListener("click", async (e) => {
         btn.forEach(item => {
             item.style.color = "black";
         })
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         console.log("Hola from Porti")

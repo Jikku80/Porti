@@ -95,11 +95,10 @@ p{
 }
 
 .land__goto{
-    background-color: rgba(0, 0, 0, 0.411);
     border-radius: 1rem;
     padding: 2%;
     margin: 2vh;
-    /* font-variant: small-caps; */
+    animation: shine 4s ease-in-out forwards infinite;
 }
 
 .smallest__cont{
@@ -289,7 +288,7 @@ p{
 
 .upform{
     width: 100%;
-    background-color: rgba(37, 37, 37, 0.356);  
+    animation: shine 4s ease-in-out forwards infinite;
     padding: 2%;
     margin: 2%;
 }
@@ -471,7 +470,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .bigb{
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bolder;
     border-radius: 2rem;
     padding: 1%;
@@ -741,11 +740,8 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .footer{
     width: 83%;
     margin-top: 2vh;
-    font-family: monospace;
     font-size: 1.2em;
     font-weight: bold;
-    font-variant: small-caps;
-    letter-spacing: 2px;
     display: flex;
     justify-content: center;
     color:gray;
@@ -990,9 +986,14 @@ img {
 }
 
 .options{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: inline-flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: 100%;
+}
+
+.slideswipe{
+    display: none;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -1126,9 +1127,9 @@ img {
         align-items: center;
     }
 
-      .land__content, .sec__land__bod{
-        width: 100vw;
-      }
+    .land__content, .sec__land__bod{
+    width: 100vw;
+    }
     .banner{
         font-size: 10px;
     }
@@ -1138,8 +1139,17 @@ img {
         margin: 3%;
     }
 
+    .slideswipe{
+        display: flex;
+        justify-content: center;
+    }
+
     .land__sixth, .land__secd, .land__farst{
         margin-left: 0%;
+    }
+
+    .land__update{
+        width: 80vw;
     }
 
     #upPort, #upPortSec, #upPortSix, #upImageCollec, #update_ImgForm{
@@ -1214,39 +1224,39 @@ img {
     }
 
     .footer{
-        width: 100%;
-      }
-    
-      .footer__top{
-        flex-direction: column;
-      }
-      
-      .footer__row{
-        width: 100%;
-      }
-    
-      .footer__contact__detail{
-        width: 100%;
-      }
-      
-      .footer__contact__bod{
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-      }
-
-      .contact__anch{
-        width: fit-content;
-        text-align: center;
-      }
-    
-
-    .footer__first__bod, .footer__sec__bod{
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
+    width: 100%;
     }
+
+    .footer__top{
+    flex-direction: column;
+    }
+    
+    .footer__row{
+    width: 100%;
+    }
+
+    .footer__contact__detail{
+    width: 100%;
+    }
+    
+    .footer__contact__bod{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    }
+
+    .contact__anch{
+    width: fit-content;
+    text-align: center;
+    }
+
+
+.footer__first__bod, .footer__sec__bod{
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
 }
 
 

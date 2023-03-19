@@ -1,9 +1,7 @@
 (function () {
     let theme = document.querySelector(".uthemer").innerText;
     let td = document.querySelector(".td");
-    let lbtn = document.querySelector(".limebtn");
     let lod = document.querySelector(".loader");
-    let hed = document.querySelector(".head");
 
     if (theme == "red") {
         document.body.style.backgroundColor = "crimson";
@@ -17,8 +15,10 @@
         document.body.style.backgroundColor = "white";
         lod.style.backgroundColor = "white";
         td.style.color = "black";
-        lbtn.style.color = "black";
-        hed.style.color = "black";
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         console.log("Hola from Porti")

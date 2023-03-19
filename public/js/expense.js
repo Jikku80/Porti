@@ -38,6 +38,10 @@
             item.style.color = "black";
             item.style.backgroundColor = "white"
         })
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         return;

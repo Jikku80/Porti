@@ -846,6 +846,10 @@ async function byMonthReserve(restro, month) {
         cgrp.forEach(item => {
             item.style.backgroundColor = "rgba(0, 0, 0, 0.822)";
         })
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         return;

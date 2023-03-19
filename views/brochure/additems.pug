@@ -38,6 +38,7 @@ block content
                         .bigb.gotobanner Banner 
                         .bigb.gototerm Terms and Policies
                         .bigb.gotodel Delete
+                    .txtcent.form__label.slideswipe &#8810; Slide || Swipe &#8811;
                     .menu__messages__btn &#128722;
                     .new__menu__msg.hidden
                     .curcatid.hidden= organization.id
@@ -55,7 +56,7 @@ block content
                                 h3.tablename 
                                 img.cancel__reveived__msg.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reveived__msg__bod
-                    .share__catalouge#openCatalouge.sharesec 
+                    .share__catalouge#openCatalouge.sharesec.blackshine 
                         h2.form__label Share your Brochure 
                         p.uname__catal.hidden= user.name
                         p.share__catal__link
@@ -63,22 +64,7 @@ block content
                         #catalqrcode 
                     if (brochures.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Brochure, Add Few Items!
-                    if (organization.theme == "eb6669076ee9537ef67c6a0a789346614a98f7c6")
-                        p.scaps.form__label.txtcnt Update Your Brochure Price and Currency
-                        form.org__form
-                            .org__money__detail
-                                .form__bod 
-                                    label.form__label Currency : 
-                                    input#orgCurrency.form__input(type="text" value=organization.currency)
-                                .form__bod 
-                                    label.form__label Total Package Price : 
-                                    input#orgTotal.form__input(type="number" value=organization.total)
-                            button#updateorgcur.blackbtn Update 
-                    else 
-                        #orgCurrency.hidden 
-                        #orgTotal.hidden 
-                        #updateorgcur.hidden
-                    #item__form.additemsection.hidden
+                    #item__form.additemsection.hidden.blackshine
                         form#addCatItem.upItem(action="/api/v1/brochure/" method="post" enctype="multipart/form-data")
                             .itemform__head 
                                 h2.scaps.form__label Add To Brochure
@@ -111,7 +97,7 @@ block content
                                 label.form__label(for="catcoverimage") Section Image:
                                 input#catcoverimage.form__input(type="file" name="catcoverimage" accept="image/*")
                             button#cataddItemBtn.blackbtn Add Section
-                    .your__item__sec#CatalogeItemSec.hidden
+                    .your__item__sec#CatalogeItemSec.hidden.blackshine
                         h2.items__head.scaps Your Sections 
                         .all__brochure__items
                         .paginate 
@@ -127,45 +113,64 @@ block content
                             .itemdiscountpercent.hidden
                         .your__item__bod
                             .your__items.sec__items
-                        
-                    form#upOrganization.upItem.updatesection.hidden
-                        .itemform__head 
-                            h3.form__label.scaps Update Organization Detail
-                        .form__bod
-                            label.form__label(for="company_name") Name:
-                            input#compname.form__input(type="text" required value=organization.name)
-                        .form__bod
-                            label.form__label(for="company_email") Email: 
-                            input#compemail.form__input(type="email" required value=organization.email)
-                        .form__bod
-                            label.form__label(for="comapny_social_account") Social Account Link (optional): 
-                            input#compsocial.form__input(type="text" value=organization.social)
-                        .form__bod
-                            label.form__label(for="company_address") Address: 
-                            input#compaddress.form__input(type="text" required value=organization.Address)
-                        .form__bod
-                            label.form__label(for="company_address_link") Address Link (optional): 
-                            input#complocationLink.form__input(type="text" value=organization.locationLink)
-                        .form__bod
-                            label.form__label(for="company_contact") Contact: 
-                            input#compcontact.form__input(type="text" required value=organization.contact)
-                        .form__bod
-                            label.form__label(for="company_slogan") Slogan (optional): 
-                            input#compslogan.form__input(type="text", value=organization.slogan)
-                        .form__bod
-                            label.form__label(for="company_slogan") Type: 
-                            input#compType.form__input(type="text", value=organization.orgType)
-                        .form__bod 
-                            label.form__label Change Theme (optional):
-                            select#compTheme.selectsec
-                                option.opt(hidden selected)= organization.theme 
-                                each item in theme 
-                                    if (item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
-                                        option.opt(value=`${item.themeId}`)= item.name
-                        p.comp__id.hidden= organization._id
-                        button#updateCompBtn.blackbtn Update now
 
-                    form#upCompanyImage.upItem.coversec.hidden(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
+                    .updatesection.hidden
+                        if (organization.theme == "eb6669076ee9537ef67c6a0a789346614a98f7c6")
+                            .uppriceandcursec.blackshine
+                                h3.scaps.form__label.txtcnt Update Your Brochure Price and Currency
+                                form.org__form
+                                    .org__money__detail
+                                        .form__bod 
+                                            label.form__label Currency : 
+                                            input#orgCurrency.form__input(type="text" value=organization.currency)
+                                        .form__bod 
+                                            label.form__label Total Package Price : 
+                                            input#orgTotal.form__input(type="number" value=organization.total)
+                                    button#updateorgcur.blackbtn Update 
+                        else 
+                            #orgCurrency.hidden 
+                            #orgTotal.hidden 
+                            #updateorgcur.hidden
+                            .uppriceandcursec.hidden
+                            
+                        form#upOrganization.blackshine.upItem
+                            .itemform__head 
+                                h3.form__label.scaps Update Organization Detail
+                            .form__bod
+                                label.form__label(for="company_name") Name:
+                                input#compname.form__input(type="text" required value=organization.name)
+                            .form__bod
+                                label.form__label(for="company_email") Email: 
+                                input#compemail.form__input(type="email" required value=organization.email)
+                            .form__bod
+                                label.form__label(for="comapny_social_account") Social Account Link (optional): 
+                                input#compsocial.form__input(type="text" value=organization.social)
+                            .form__bod
+                                label.form__label(for="company_address") Address: 
+                                input#compaddress.form__input(type="text" required value=organization.Address)
+                            .form__bod
+                                label.form__label(for="company_address_link") Address Link (optional): 
+                                input#complocationLink.form__input(type="text" value=organization.locationLink)
+                            .form__bod
+                                label.form__label(for="company_contact") Contact: 
+                                input#compcontact.form__input(type="text" required value=organization.contact)
+                            .form__bod
+                                label.form__label(for="company_slogan") Slogan (optional): 
+                                input#compslogan.form__input(type="text", value=organization.slogan)
+                            .form__bod
+                                label.form__label(for="company_slogan") Type: 
+                                input#compType.form__input(type="text", value=organization.orgType)
+                            .form__bod 
+                                label.form__label Change Theme (optional):
+                                select#compTheme.selectsec
+                                    option.opt(hidden selected)= organization.theme 
+                                    each item in theme 
+                                        if (item.themeType === 'Free' || item.validBrochureUser.includes(user.id))
+                                            option.opt(value=`${item.themeId}`)= item.name
+                            p.comp__id.hidden= organization._id
+                            button#updateCompBtn.blackbtn Update now
+
+                    form#upCompanyImage.blackshine.upItem.coversec.hidden(action=`/api/v1/brochure/${organization._id}/updateOrganizationImage` method="post" enctype="multipart/form-data")
                         .itemform__head 
                             h3.form__label.scaps Update Enterprise Cover Image
                             p.compimg__id.hidden= organization._id
@@ -174,7 +179,7 @@ block content
                             input#compcoverimage.form__input(type="file" name="upcatalogcoverimage" accept="image/*"  required)
                         button#compUpdateImgBtn.blackbtn Update Cover Image
                     
-                    .createBanner#banrsec.addbannersec.hidden
+                    .createBanner#banrsec.addbannersec.hidden.blackshine
                         .itemform__head 
                             h3.form__label.scaps Create A Banner
                         form.upItem
@@ -212,7 +217,7 @@ block content
                                 #updateDiscountToAll.hidden 
                                 #removeDiscountToAll.hidden
                     h4.upterm.hidden.scaps.form__label.txtcnt Update Your Organizations Terms And Policies
-                    .termsandpolicies.hidden 
+                    .termsandpolicies.hidden.blackshine 
                         .blackbtn#termsandcond Terms and Conditions 
                         .termservice.hidden 
                             .termservice__head 

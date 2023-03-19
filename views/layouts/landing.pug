@@ -33,6 +33,7 @@ block content
                                 .gotobanner.hidden
                             .bigb.gotoupdate Update Portfolio 
                             .bigb.gotodel Delete Portfolio
+                        .form__label.slideswipe &#8810; Slide || Swipe &#8811;
                         .land__nav__main
                         .land__goto.sharesec
                             h1#port_name= `${portfolio.name}`
@@ -59,7 +60,7 @@ block content
                                 if (portImage.length !== 0)
                                     
                                     .portImage__tweak__sec#portImageTweakSec
-                                        h2#PrevSection Your Previous Images Tweak Section
+                                        h2#PrevSection.form__label Your Previous Images Tweak Section
 
                                         .port__card__main
                                             each item in portImage 
@@ -135,7 +136,7 @@ block content
                         else
                             .updatesection.hidden
                                 include _updateTwo.pug
-                        h2.tweak__head.hidden Portoflio Content Tweaks
+                        h2.tweak__head.hidden.form__label Portoflio Content Tweaks
                     include ../_footer
             else 
                 .notifier

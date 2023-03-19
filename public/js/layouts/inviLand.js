@@ -124,6 +124,9 @@ function downloadinviQRCode(file) {
     let inpt = document.querySelectorAll(".form__input");
     let lod = document.querySelector(".loader");
     let td = document.querySelectorAll(".td");
+    let bigb = document.querySelectorAll(".bigb");
+    let landfo = document.querySelector(".land__goto");
+    let upform = document.querySelectorAll(".upform");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -161,7 +164,20 @@ function downloadinviQRCode(file) {
         td.forEach(item => {
             item.style.color = "black";
         })
-
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
+        bigb.forEach(item => {
+            item.style.color = "black";
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        landfo.style.color = "black"
+        landfo.style.animation = "blackShine 4s ease-in-out forwards infinite"
+        upform.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite"
+            item.style.color = "black";
+        })
     }
     else {
         console.log("Hola from Porti")

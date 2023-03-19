@@ -142,13 +142,11 @@ gotoport.addEventListener("click", () => {
         bgChanger.addEventListener("mouseover", () => {
             homeCont.classList.add("red__changer");
             homebod.classList.add("red__changer");
-            prest.classList.remove("hidden");
         })
 
         bgChanger.addEventListener("mouseout", () => {
             homeCont.classList.remove("red__changer");
             homebod.classList.remove("red__changer");
-            prest.classList.add("hidden");
         })
 
     }
@@ -167,13 +165,11 @@ gotoport.addEventListener("click", () => {
         bgChanger.addEventListener("mouseover", () => {
             homeCont.classList.add("black__changer");
             homebod.classList.add("black__changer");
-            prest.classList.remove("hidden");
         })
 
         bgChanger.addEventListener("mouseout", () => {
             homeCont.classList.remove("black__changer");
             homebod.classList.remove("black__changer");
-            prest.classList.add("hidden");
         })
     }
     else if (theme == "white") {
@@ -231,13 +227,15 @@ gotoport.addEventListener("click", () => {
         bgChanger.addEventListener("mouseover", () => {
             homeCont.classList.add("white__changer");
             homebod.classList.add("white__changer");
-            prest.classList.remove("hidden");
         })
 
         bgChanger.addEventListener("mouseout", () => {
             homeCont.classList.remove("white__changer");
             homebod.classList.remove("white__changer");
-            prest.classList.add("hidden");
+        })
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
         })
     }
     else {

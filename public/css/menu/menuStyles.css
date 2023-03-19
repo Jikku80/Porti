@@ -563,9 +563,9 @@ body{
 
 #addItem,#addCatItem, #upRestro, #upCompany, #upOrganization, .coversec, .termsandpolicies{
     border-radius: 2rem;
-    background-color: rgba(0, 0, 0, 0.411);
     margin: 2%;
     padding: 2%;
+    animation: shine 4s ease-in-out forwards infinite;
 }
 
 .smalltxt{
@@ -740,7 +740,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
     text-align: left;
     margin-left: 10px;
     margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.411);
+    animation: shine 4s ease-in-out forwards infinite;
     padding: 2%;
     border-radius: 2rem;
     font-size: 10px;
@@ -822,7 +822,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .your__item__sec{
-    background-color:  rgba(0, 0, 0, 0.637);
+    animation: shine 4s ease-in-out forwards infinite;
     padding: 2%;
     border-radius: 2rem;
 }
@@ -841,7 +841,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .createBanner{
-    background-color:  rgba(0, 0, 0, 0.411);
+    animation: shine 4s ease-in-out forwards infinite;
     padding: 2%;
     border-radius: 2rem;
 }
@@ -892,10 +892,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
     width: 85%;
     margin-top: 2vh;
     font-weight: bold;
-    font-family: monospace;
-    font-size: 1.2em;
-    font-variant: small-caps;
-    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     color:gray;
@@ -1163,21 +1160,27 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .options{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: inline-flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: 100%;
 }
 
 .bigb{
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bolder;
     border-radius: 2rem;
     padding: 1%;
     margin: 1%;
+    width: fit-content;
     cursor: pointer;
     animation: shine 4s ease-in-out forwards infinite;
+}
+
+.slideswipe{
+    display: none;
 }
 
 @media (min-width: 601px) and (max-width: 900px){
@@ -1310,6 +1313,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
     .bigb{
         padding: 3%;
         margin: 3%;
+    }
+
+    .slideswipe{
+        display: flex;
+        justify-content: center;
     }
 
     .addvportifood, .addbakeryfood, .addCafefood{

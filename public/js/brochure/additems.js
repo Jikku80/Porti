@@ -247,7 +247,9 @@
     let priv = document.querySelector(".privacypolicies");
     let biginpt = document.querySelectorAll(".big__input");
     let bigb = document.querySelectorAll(".bigb");
-
+    let youritem = document.querySelectorAll(".blackshine");
+    let blckbtn = document.querySelectorAll(".blackbtn");
+    let footersec = document.querySelectorAll(".footer__anch");
 
     if (theme == "red") {
         bodsec.style.backgroundColor = "crimson";
@@ -260,6 +262,9 @@
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
         })
         delsec.style.backgroundColor = "rgba(0, 0, 0, 0.411)"
+        youritem.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
     }
     else if (theme == "dark") {
         bodsec.style.backgroundColor = "black";
@@ -289,6 +294,15 @@
         bigb.forEach(item => {
             item.style.color = "black";
             item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        youritem.forEach(item => {
+            item.style.animation = "blackShine 4s ease-in-out forwards infinite";
+        })
+        blckbtn.forEach(item => {
+            item.style.color = "black";
+        })
+        footersec.forEach(item => {
+            item.style.color = "gray";
         })
     }
     else {

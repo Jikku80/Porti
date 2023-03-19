@@ -66,6 +66,10 @@ let brovalsec = document.querySelector(".brochurevalsec");
         })
         bar.style.color = "crimson";
         bar.style.borderColor = "crimson";
+        let footersec = document.querySelectorAll(".footer__anch");
+        footersec.forEach(item => {
+            item.style.color = "gray";
+        })
     }
     else {
         return;

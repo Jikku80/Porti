@@ -47,6 +47,11 @@
     height: 30vw;
 }
 
+.uppriceandcursec{
+    padding: 2%;
+    border-radius: 2rem;
+}
+
 .msg__user__btn{
     position: fixed;
     bottom: 0;
