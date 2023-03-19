@@ -5,63 +5,72 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Croissants.jpg"
         },
         {
             "name" : "Wheat Bread",
             "currency": "Rs.",
             "price": "130",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Wheatbread.jpg"
         },
         {
             "name" : "Hamburger Buns",
             "currency": "Rs.",
             "price": "130",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/HamburgerBuns.jpg"
         },
         {
             "name" : "Sweet Rolls",
             "currency": "Rs.",
             "price": "180",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Sweetrolls.jpg"
         },
         {
             "name" : "Bagels",
             "currency": "Rs.",
             "price": "40",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Bagels.jpg"
         },
         {
             "name" : "Muffins",
             "currency": "Rs.",
             "price": "80",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Muffins.jpg"
         },
         {
             "name" : "Pies",
             "currency": "Rs.",
             "price": "180",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Pies.jpg"
         },
         {
             "name" : "Bread",
             "currency": "Rs.",
             "price": "180",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Wheatbread.jpg"
         },
         {
             "name" : "Brownie",
             "currency": "Rs.",
             "price": "180",
             "category": "Bun",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/Brownie.jpg"
         }
     ],
     "Cake":[
@@ -70,63 +79,72 @@
             "currency": "Rs.",
             "price": "750",
             "category": "Cake",
-            "detail": "per pound"
+            "detail": "per pound",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "Buttermilk cake",
             "currency": "Rs.",
             "price": "830",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "Dark Chocolate Cake",
             "currency": "Rs.",
             "price": "730",
             "category": "Cake",
-            "detail": "per pound"
+            "detail": "per pound",
+            "coverImage": "/images/menuitems/bakery/choc.jpg"
         },
         {
             "name" : "Carrot Cake",
             "currency": "Rs.",
             "price": "730",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "Black Forest",
             "currency": "Rs.",
             "price": "550",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "White Forest",
             "currency": "Rs.",
             "price": "480",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "Red Velvet",
             "currency": "Rs.",
             "price": "1200",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/red.jpg"
         },
         {
             "name" : "Chiffon Cake",
             "currency": "Rs.",
             "price": "1200",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         },
         {
             "name" : "Chesse Cake",
             "currency": "Rs.",
             "price": "1000",
             "category": "Cake",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/bakery/cake.jpg"
         }
     ],
     "Hot Drinks":[
@@ -135,28 +153,32 @@
             "currency": "Rs.",
             "price": "60",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Milk Tea",
             "currency": "Rs.",
             "price": "45",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Black Coffee",
             "currency": "Rs.",
             "price": "40",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Black Tea",
             "currency": "Rs.",
             "price": "40",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         }
     ],
     "Beverages":[
@@ -165,28 +187,32 @@
             "currency": "Rs.",
             "price": "100",
             "category": "Beverages",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Soda",
             "currency": "Rs.",
             "price": "45",
             "category": "Beverages",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Diet Coke",
             "currency": "Rs.",
             "price": "40",
             "category": "Beverages",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Juice",
             "currency": "Rs.",
             "price": "40",
             "category": "Beverages",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         }
     ]
 }

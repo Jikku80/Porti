@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     },
     theme: {
         type: String,
-        default: 'porti'
+        default: 'white'
     },
     country: {
         type: String

@@ -1006,8 +1006,16 @@ exports.getFoodItems = catchAsync(async (req, res, next) => {
 });
 
 exports.addFoodItems = catchAsync(async (req, res, next) => {
+    let menuitem = [];
+    await Menu.find({ user: req.user.id }).then((item) => {
+        item.forEach(menus => {
+            return menuitem.push(menus.name);
+        })
+    })
 
-    fs.readFile('./public/menuitem.json', 'utf8', (err, data) => {
+    let itemfromjson = [];
+
+    fs.readFile('./public/menuitem.json', 'utf8', async (err, data) => {
         if (err) {
             console.log(`Error reading file from disk: ${err}`)
         } else {
@@ -1015,8 +1023,12 @@ exports.addFoodItems = catchAsync(async (req, res, next) => {
             const food = JSON.parse(data)
 
             Object.keys(food).forEach(function (key) {
-                food[key].forEach(async (item) => {
-
+                food[key].forEach(fooitem => {
+                    return itemfromjson.push(fooitem);
+                })
+            })
+            for (item of itemfromjson) {
+                if (!menuitem.includes(item.name)) {
                     await Menu.create({
                         name: item.name,
                         user: req.user.id,
@@ -1024,19 +1036,20 @@ exports.addFoodItems = catchAsync(async (req, res, next) => {
                         price: item.price,
                         detail: item.detail,
                         category: item.category,
+                        coverImage: item.coverImage,
                         createdAt: Date.now()
                     });
-                })
-            })
-            res.status(200).json({
-                status: "success"
-            })
+                }
+            }
         }
+    })
+
+    res.status(200).json({
+        status: "success"
     })
 });
 
 exports.getBakeryItems = catchAsync(async (req, res, next) => {
-
 
     fs.readFile('./public/bakeryitem.json', 'utf8', (err, data) => {
         if (err) {
@@ -1053,17 +1066,28 @@ exports.getBakeryItems = catchAsync(async (req, res, next) => {
 });
 
 exports.addBakeryItems = catchAsync(async (req, res, next) => {
+    let menuitem = [];
+    await Menu.find({ user: req.user.id }).then((item) => {
+        item.forEach(menus => {
+            return menuitem.push(menus.name);
+        })
+    })
 
-    fs.readFile('./public/bakeryitem.json', 'utf8', (err, data) => {
+    let itemfromjson = [];
+
+    fs.readFile('./public/bakeryitem.json', 'utf8', async (err, data) => {
         if (err) {
             console.log(`Error reading file from disk: ${err}`)
         } else {
 
             const food = JSON.parse(data)
-
             Object.keys(food).forEach(function (key) {
-                food[key].forEach(async (item) => {
-
+                food[key].forEach(fooitem => {
+                    return itemfromjson.push(fooitem);
+                })
+            })
+            for (item of itemfromjson) {
+                if (!menuitem.includes(item.name)) {
                     await Menu.create({
                         name: item.name,
                         user: req.user.id,
@@ -1071,10 +1095,11 @@ exports.addBakeryItems = catchAsync(async (req, res, next) => {
                         price: item.price,
                         detail: item.detail,
                         category: item.category,
+                        coverImage: item.coverImage,
                         createdAt: Date.now()
                     });
-                })
-            })
+                }
+            }
             res.status(200).json({
                 status: "success"
             })
@@ -1100,8 +1125,16 @@ exports.getCafeItems = catchAsync(async (req, res, next) => {
 });
 
 exports.addCafeItems = catchAsync(async (req, res, next) => {
+    let menuitem = [];
+    await Menu.find({ user: req.user.id }).then((item) => {
+        item.forEach(menus => {
+            return menuitem.push(menus.name);
+        })
+    })
 
-    fs.readFile('./public/cafeitem.json', 'utf8', (err, data) => {
+    let itemfromjson = [];
+
+    fs.readFile('./public/cafeitem.json', 'utf8', async (err, data) => {
         if (err) {
             console.log(`Error reading file from disk: ${err}`)
         } else {
@@ -1109,8 +1142,12 @@ exports.addCafeItems = catchAsync(async (req, res, next) => {
             const food = JSON.parse(data)
 
             Object.keys(food).forEach(function (key) {
-                food[key].forEach(async (item) => {
-
+                food[key].forEach(fooitem => {
+                    return itemfromjson.push(fooitem);
+                })
+            })
+            for (item of itemfromjson) {
+                if (!menuitem.includes(item.name)) {
                     await Menu.create({
                         name: item.name,
                         user: req.user.id,
@@ -1118,10 +1155,11 @@ exports.addCafeItems = catchAsync(async (req, res, next) => {
                         price: item.price,
                         detail: item.detail,
                         category: item.category,
+                        coverImage: item.coverImage,
                         createdAt: Date.now()
                     });
-                })
-            })
+                }
+            }
             res.status(200).json({
                 status: "success"
             })

@@ -1183,6 +1183,32 @@ input::file-selector-button, ::-webkit-file-upload-button{
     display: none;
 }
 
+.fullimg__sec{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.fullimg__head{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    width: 100%;
+}
+
+.fullimgmode{
+    width: 50vw !important;
+    height: 50vh !important;
+}
+
 @media (min-width: 601px) and (max-width: 900px){
     .navigation a{
         font-size: 1.5vw;
@@ -1231,6 +1257,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
         margin: 2%;
         padding: 2%;
         font-size: 1.5em;
+    }
+
+    .fullimgmode{
+        width: 100vw !important;
+        height: 70vh !important;
     }
     .footer__contact__detail{
         width: 100%;
@@ -1339,6 +1370,11 @@ input::file-selector-button, ::-webkit-file-upload-button{
         font-size: 1em;
         margin: 2%;
         padding: 2%;
+    }
+
+    .fullimgmode{
+        width: 100vw !important;
+        height: 70vh !important;
     }
 
     .footer{

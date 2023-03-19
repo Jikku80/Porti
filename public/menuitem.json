@@ -5,28 +5,32 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Burger",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/burger.jpg"
         },
         {
             "name" : "Egg Burger",
             "currency": "Rs.",
             "price": "130",
             "category": "Burger",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/burger.jpg"
         },
         {
             "name" : "Ham Burger",
             "currency": "Rs.",
             "price": "130",
             "category": "Burger",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/burger.jpg"
         },
         {
             "name" : "Fish Burger",
             "currency": "Rs.",
             "price": "180",
             "category": "Burger",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/burger.jpg"
         }
     ],
     "Rice":[
@@ -35,28 +39,32 @@
             "currency": "Rs.",
             "price": "100",
             "category": "Rice",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/friedrice.jpg"
         },
         {
             "name" : "Mix Fried Rice",
             "currency": "Rs.",
             "price": "130",
             "category": "Rice",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/friedrice.jpg"
         },
         {
             "name" : "Chicken Fried Rice",
             "currency": "Rs.",
             "price": "130",
             "category": "Rice",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/friedrice.jpg"
         },
         {
             "name" : "Buff Fried Rice",
             "currency": "Rs.",
             "price": "110",
             "category": "Rice",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/friedrice.jpg"
         }
         ,
         {
@@ -64,7 +72,8 @@
             "currency": "Rs.",
             "price": "120",
             "category": "Rice",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/friedrice.jpg"
         }
     ],
     "Appetizers":[
@@ -87,14 +96,16 @@
             "currency": "Rs.",
             "price": "130",
             "category": "Appetizers",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/pakora.jpg"
         },
         {
             "name" : "Samosa",
             "currency": "Rs.",
             "price": "130",
             "category": "Appetizers",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/samos.jpg"
         },
         {
             "name" : "Chicken Chilly",
@@ -122,14 +133,16 @@
             "currency": "Rs.",
             "price": "180",
             "category": "Appetizers",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/leg.jpg"
         },
         {
             "name" : "French Fries",
             "currency": "Rs.",
             "price": "280",
             "category": "Appetizers",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/fries.jpg"
         }
     ],
     "Pizza":[
@@ -138,35 +151,40 @@
             "currency": "Rs.",
             "price": "350",
             "category": "Pizza",
-            "detail": "Extra Chesse at just Rs.50"
+            "detail": "Extra Chesse at just Rs.50",
+            "coverImage": "/images/menuitems/pizza.jpg"
         },
         {
             "name" : "Veg Pizza",
             "currency": "Rs.",
             "price": "300",
             "category": "Pizza",
-            "detail": "Extra Chesse at just Rs.50"
+            "detail": "Extra Chesse at just Rs.50",
+            "coverImage": "/images/menuitems/pizza.jpg"
         },
         {
             "name" : "Chicken Pizza",
             "currency": "Rs.",
             "price": "450",
             "category": "Pizza",
-            "detail": "Extra Chesse at just Rs.50"
+            "detail": "Extra Chesse at just Rs.50",
+            "coverImage": "/images/menuitems/pizza.jpg"
         },
         {
             "name" : "Margherita Pizza",
             "currency": "Rs.",
             "price": "480",
             "category": "Pizza",
-            "detail": "Extra Chesse at just Rs.50"
+            "detail": "Extra Chesse at just Rs.50",
+            "coverImage": "/images/menuitems/pizza.jpg"
         },
         {
             "name" : "Mushroom Pizza",
             "currency": "Rs.",
             "price": "480",
             "category": "Pizza",
-            "detail": "Extra Chesse at just Rs.50"
+            "detail": "Extra Chesse at just Rs.50",
+            "coverImage": "/images/menuitems/pizza.jpg"
         }
     ],
     "Naan":[
@@ -175,21 +193,24 @@
             "currency": "Rs.",
             "price": "50",
             "category": "Naan",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/naan.jpg"
         },
         {
             "name" : "Butter Naan",
             "currency": "Rs.",
             "price": "60",
             "category": "Naan",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/naan.jpg"
         },
         {
             "name" : "Keema Naan",
             "currency": "Rs.",
             "price": "90",
             "category": "Naan",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/naan.jpg"
         }
     ],
     "Salad":[
@@ -198,14 +219,16 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Salad",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/salad.jpg"
         },
         {
             "name" : "Fruit Salad",
             "currency": "Rs.",
             "price": "230",
             "category": "Salad",
-            "detail": "Mixed Fruits with yogurt"
+            "detail": "Mixed Fruits with yogurt",
+            "coverImage": "/images/menuitems/salad.jpg"
         }
     ],
     "MoMo":[
@@ -214,28 +237,32 @@
             "currency": "Rs.",
             "price": "150",
             "category": "MoMo",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/momo.jpg"
         },
         {
             "name" : "Buff MoMo",
             "currency": "Rs.",
             "price": "130",
             "category": "MoMo",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/momo.jpg"
         },
         {
             "name" : "Veg MoMo",
             "currency": "Rs.",
             "price": "130",
             "category": "MoMo",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/momo.jpg"
         },
         {
             "name" : "Pork MoMo",
             "currency": "Rs.",
             "price": "180",
             "category": "MoMo",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/momo.jpg"
         }
     ],
     "Chowmein":[
@@ -244,28 +271,32 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Chowmein",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/chowmein.jpg"
         },
         {
             "name" : "Buff Chowmein",
             "currency": "Rs.",
             "price": "130",
             "category": "Chowmein",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/chowmein.jpg"
         },
         {
             "name" : "Veg Chowmein",
             "currency": "Rs.",
             "price": "130",
             "category": "Chowmein",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/chowmein.jpg"
         },
         {
             "name" : "Pork Chowmein",
             "currency": "Rs.",
             "price": "180",
             "category": "Chowmein",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/chowmein.jpg"
         }
     ],
     "Thukpa":[
@@ -274,51 +305,58 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Thukpa",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/thukpa.jpg"
         },
         {
             "name" : "Mix Thukpa",
             "currency": "Rs.",
             "price": "130",
             "category": "Thukpa",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/thukpa.jpg"
         },
         {
             "name" : "Egg Thukpa",
             "currency": "Rs.",
             "price": "110",
             "category": "Thukpa",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/thukpa.jpg"
         },
         {
             "name" : "Buff Thukpa",
             "currency": "Rs.",
             "price": "140",
             "category": "Thukpa",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/thukpa.jpg"
         }
     ],
     "Thali Set":[
         {
-            "name" : "Mutton Thali/ Sukut Thali Set",
+            "name" : "Mutton Thali/ Sukuti Thali Set",
             "currency": "Rs.",
             "price": "150",
             "category": "Thali Set",
-            "detail": "Rice, Saag, Mix Veg, Chatni, Daal, Papad, Dahi"
+            "detail": "Rice, Saag, Mix Veg, Chatni, Daal, Papad, Dahi",
+            "coverImage": "/images/menuitems/thali.jpg"
         },
         {
             "name" : "Chicken Thali",
             "currency": "Rs.",
             "price": "230",
             "category": "Thali Set",
-            "detail": "Rice, Saag, Mix Veg, Chatni"
+            "detail": "Rice, Saag, Mix Veg, Chatni",
+            "coverImage": "/images/menuitems/thali.jpg"
         },
         {
             "name" : "Roti(Chapati) Thali",
             "currency": "Rs.",
             "price": "230",
             "category": "Thali Set",
-            "detail": "Roti 5pcs, Saag, Mix Veg, Chatni, Daal, Papad, Dahi"
+            "detail": "Roti 5pcs, Saag, Mix Veg, Chatni, Daal, Papad, Dahi",
+            "coverImage": "/images/menuitems/thali.jpg"
         }
     ],
     "Khaja Set":[
@@ -327,7 +365,8 @@
             "currency": "Rs.",
             "price": "350",
             "category": "Khaja Set",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/khaja.jpg"
         },
         {
             "name" : "Bhutan Chuira Set",
@@ -341,7 +380,8 @@
             "currency": "Rs.",
             "price": "230",
             "category": "Khaja Set",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/khaja.jpg"
         }
     ],
     "Stick Food":[
@@ -350,14 +390,16 @@
             "currency": "Rs.",
             "price": "60",
             "category": "Stick Food",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/drum.jpg"
         },
         {
             "name" : "Sausage",
             "currency": "Rs.",
             "price": "45",
             "category": "Stick Food",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/sausage.jpg"
         },
         {
             "name" : "Tofu",
@@ -371,7 +413,8 @@
             "currency": "Rs.",
             "price": "45",
             "category": "Stick Food",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/aloo.jpg"
         }
     ],
     "Soft Drinks":[
@@ -380,28 +423,32 @@
             "currency": "Rs.",
             "price": "70",
             "category": "Soft Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Fanta",
             "currency": "Rs.",
             "price": "70",
             "category": "Soft Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Sprite",
             "currency": "Rs.",
             "price": "70",
             "category": "Soft Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         },
         {
             "name" : "Dew",
             "currency": "Rs.",
             "price": "70",
             "category": "Soft Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/soda.jpg"
         }
     ],
     "Hot Drinks":[
@@ -410,28 +457,32 @@
             "currency": "Rs.",
             "price": "60",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Milk Tea",
             "currency": "Rs.",
             "price": "45",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Black Coffee",
             "currency": "Rs.",
             "price": "40",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         },
         {
             "name" : "Black Tea",
             "currency": "Rs.",
             "price": "40",
             "category": "Hot Drinks",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/hot.jpg"
         }
     ],
     "Lassies":[
@@ -440,21 +491,24 @@
             "currency": "Rs.",
             "price": "150",
             "category": "Lassies",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/lassi.jpg"
         },
         {
             "name" : "Banana Lassi",
             "currency": "Rs.",
             "price": "230",
             "category": "Lassies",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/lassi.jpg"
         },
         {
             "name" : "Lassi with Ice Cream in your Choice",
             "currency": "Rs.",
             "price": "230",
             "category": "Lassies",
-            "detail": ""
+            "detail": "",
+            "coverImage": "/images/menuitems/lassi.jpg"
         }
     ],
     "Hard Drinks":[
@@ -463,21 +517,24 @@
             "currency": "Rs.",
             "price": "750",
             "category": "Hard Drinks",
-            "detail": "Rs.750 per 500ml"
+            "detail": "Rs.750 per 500ml",
+            "coverImage": "/images/menuitems/drinks.jpg"
         },
         {
             "name" : "Vodka",
             "currency": "Rs.",
             "price": "950",
             "category": "Hard Drinks",
-            "detail": "Rs.450 per 500ml"
+            "detail": "Rs.450 per 500ml",
+            "coverImage": "/images/menuitems/drinks.jpg"
         },
         {
             "name" : "Beer",
             "currency": "Rs.",
             "price": "450",
             "category": "Hard Drinks",
-            "detail": "Rs.450 per Bottle"
+            "detail": "Rs.450 per Bottle",
+            "coverImage": "/images/menuitems/drinks.jpg"
         }
     ]
 }
