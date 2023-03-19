@@ -10,6 +10,7 @@ block content
     .whole__homepage
         .main__content 
             if (!user)
+                a.loguserin(href="/account/login") Login | SingUp&#10162;
                 h1.newusersignup.pointer(title="Let's Start")  Let's Start&#10162;
             else 
                 .newusersignup.hidden

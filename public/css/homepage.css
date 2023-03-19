@@ -20,6 +20,16 @@
     cursor: pointer;
 }
 
+.loguserin{
+    position: absolute;
+    top: 3vh;
+    right: 2vh;
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    font-variant: small-caps;
+}
+
 .presents{
     position: absolute;
     font-variant: small-caps;
