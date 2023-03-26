@@ -21,13 +21,7 @@
 }
 
 .loguserin{
-    position: absolute;
-    top: 3vh;
-    right: 2vh;
-    color: white;
-    font-weight: bolder;
-    text-decoration: none;
-    font-variant: small-caps;
+    display: none;
 }
 
 .presents{
@@ -793,6 +787,17 @@
 
     .mobhidehalfsec{
         display: none;
+    }
+
+    .loguserin{
+        display: block;
+        position: absolute;
+        top: 3vh;
+        right: 2vh;
+        color: white;
+        font-weight: bolder;
+        text-decoration: none;
+        font-variant: small-caps;
     }
 
     .signupbod{

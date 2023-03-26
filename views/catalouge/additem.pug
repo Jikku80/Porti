@@ -73,12 +73,18 @@ block content
                                 h3.reservename 
                                 img.cancel__reveived__reserve.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reveived__reserve__bod
-                    .share__catalouge#openCatalouge.sharesec.blackshine 
-                        h2.form__label Share your Catalouge 
-                        p.uname__catal.hidden= user.name
-                        p.share__catal__link
-                    .qrcode__menu.shareqrsec  
-                        #catalqrcode 
+                    .sharesec
+                        .share__catalouge#openCatalouge.blackshine 
+                            h2.form__label Share your Catalouge 
+                            p.uname__catal.hidden= user.name
+                            p.share__catal__link
+                        .qrcode__menu.shareqrsec  
+                            #catalqrcode 
+                        if (company[0].theme == "51eac6b471a284d3341d8c0c63d0f1a286262a18")
+                            .banner 
+                                p This Layout does not support order and returns, change it to CMP Layout from 
+                                    a(href="/layouts/porti") Layouts 
+                                    span or update section
                     if (catalouges.length === 0)
                         h2.banner.up__place__det.form__label You haven't Added Items to your Catalouge, Add Few Items!
                     #item__form.additemsection.hidden.blackshine

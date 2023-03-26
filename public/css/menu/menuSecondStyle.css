@@ -1,5 +1,5 @@
 .sec__menu__sec{
-    font-family: Londrina Sketch;
+    font-family: Cabin Sketch;
     font-size: 16px;
     background-color: white;
 }
@@ -173,7 +173,7 @@ input{
     margin: 2%;
     background-color: transparent;
     color: white;
-    font-family: Londrina Sketch;
+    font-family: Cabin Sketch;
     font-size: 25px;
     cursor: pointer;
     border: 1px solid white
@@ -289,7 +289,7 @@ input{
 }
 
 .menu_sce_card_detail{
-    font-family: Londrina Sketch;
+    font-family: Cabin Sketch;
 }
 
 #ordernoid, .cart__product__quantity{

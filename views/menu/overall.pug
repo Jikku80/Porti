@@ -77,13 +77,19 @@ block content
                                 h3.reservename 
                                 img.cancel__reveived__reserve.point(src="/images/cancel.png" alt="cancel__btn")
                             .menu__reveived__reserve__bod
-                    .share__menu.sharesec.blackshine 
-                        h2.form__label Share your menu 
-                        p.uname__menu.hidden= user.name
-                        p.share__link
+                    .sharesec
+                        .share__menu.blackshine 
+                            h2.form__label Share your menu 
+                            p.uname__menu.hidden= user.name
+                            p.share__link
 
-                    .qrcode__menu.shareqrsec 
-                        #qrcode 
+                        .qrcode__menu.shareqrsec 
+                            #qrcode 
+                        if (restro[0].theme == "40bd001563085fc35165329ea1ff5c5ecbdbbeef")
+                            .banner 
+                                p This Layout does not support order and reservation, change it to ML Layout from 
+                                    a(href="/layouts/porti") Layouts 
+                                    span or update section
                     #item__form.additemsection.hidden
                         h3.txtcent.form__label Add From Our Package
                         .addvportiitem
