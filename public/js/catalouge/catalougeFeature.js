@@ -501,9 +501,9 @@ modelCanceler.addEventListener("click", () => {
 
 (function () {
     let defaultBtn = document.getElementById("defaultfirstCatTheme");
-    let fontColor = "white";
-    let focusColor = "rgb(26, 154, 204)";
-    let backColor = "#2c2c2c";
+    let fontColor = "gray";
+    let focusColor = "rgb(243, 243, 243)";
+    let backColor = "white";
     let fontFam = "Arial";
     let id = document.getElementById('firstCatid').innerText;
 
@@ -628,7 +628,7 @@ modelCanceler.addEventListener("click", () => {
         })
     })
 
-    catalougeSearchBar.style.color = focusColor;
+    catalougeSearchBar.style.color = fontColor;
     catalougeSearchBar.style.borderBottom = `2px solid ${focusColor}`;
     footer.style.backgroundColor = focusColor;
 })();

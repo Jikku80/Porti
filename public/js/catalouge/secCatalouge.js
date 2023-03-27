@@ -565,13 +565,13 @@ async function getUserCompMsg() {
 
 (function () {
     let defaultBtn = document.getElementById("defaultsecCatTheme");
-    let fontColor = "white";
+    let fontColor = "gray";
     let headColor = "white";
-    let secHead = "white";
-    let focusColor = "rgb(122, 220, 233)";
-    let backColor = "#2c2c2c";
+    let secHead = "#674ea7";
+    let focusColor = "rgb(243, 243, 243)";
+    let backColor = "#ffffff";
     let fontFam = "Arial";
-    let polygn = "crack";
+    let polygn = "full";
     let covHeight = "70vh";
     let covWidth = "100vw";
     let id = document.getElementById('secCatid').innerText;

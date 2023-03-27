@@ -92,11 +92,11 @@ block content
                         form.feat_form_bod
                             .form__bod__cat 
                                 label Background Color:
-                                input#secCatBackColor(type="color" value="#2c2c2c")
+                                input#secCatBackColor(type="color" value="#ffffff")
                             .form__bod__cat 
                                 label Cover Image Style:  
                                 select#secCatPolygon
-                                    option.opt(hidden selected) Crack
+                                    option.opt(hidden selected) Full
                                     option.opt(value="crack") Crack 
                                     option.opt(value="full") Full
                                     option.opt(value="right") Right Angle
@@ -131,7 +131,7 @@ block content
                                 input#secCatSecHeadColor(type="color" value="#674ea7")
                             .form__bod__cat 
                                 label Focus Color:
-                                input#secCatFocusColor(type="color" value="#ffffff")
+                                input#secCatFocusColor(type="color" value="#F3F3F3")
                             .form__bod__cat 
                                 label Font Family 
                                 select#secCatFontFam
@@ -173,7 +173,7 @@ block content
         .resorder__info.hidden 
             .restromidsec
                 .res__detail__head 
-                    p Order 
+                    h2 Your Order 
                     img.cancel__order.point(src="/images/cancel.png" alt="cancel__btn")
                 if (user)
                     #gotoLoginComp.hidden
@@ -181,7 +181,7 @@ block content
                         form
                             .form__cont__order
                                 label.formFont Name :
-                                input#userno(type="text", name="tableno", value=user.name, disabled)
+                                input#userno(type="text", name="tableno", placeholder=`${user.name}`, disabled)
                                 #uniquecompusername.hidden= user.name
                                 #uniquecompuserid.hidden= user.id
                             .form__item__display__sec 
@@ -301,7 +301,7 @@ block content
             if (company.email !== "")
                 a(href=`mailto:${company.email}`).headFont.comp__loc= company.email
             if (company.serviceTerms)
-                p.sec__terms Terms And Conditions
+                p.sec__terms.headFont Terms And Conditions
                 .terms__sec.hidden 
                     .termservice__head 
                         h3 Terms of Service 
@@ -313,7 +313,7 @@ block content
                 .hideterms.hidden 
                 .sec__terms.hidden 
             if (company.privacyPolicies)
-                p.sec__policies Privacy Policies
+                p.sec__policies.headFont Privacy Policies
                 .policies__sec.hidden 
                     .privacypolicies__head 
                         h3 Privacy Policies 

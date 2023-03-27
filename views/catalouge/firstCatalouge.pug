@@ -83,13 +83,13 @@ block content
                     form.feat_form_bod
                         .form__bod__cat 
                             label Background Color:
-                            input#firstCatBackColor(type="color" value="#2c2c2c")
+                            input#firstCatBackColor(type="color" value="#ffffff")
                         .form__bod__cat
                             label Font Color:
                             input#firstCatFontColor(type="color" value="#808080")
                         .form__bod__cat 
                             label Focus Color:
-                            input#firstCatFocusColor(type="color" value="#ffffff")
+                            input#firstCatFocusColor(type="color" value="#F3F3F3")
                         .form__bod__cat 
                             label Font Family 
                             select#firstCatFontFam
@@ -107,7 +107,7 @@ block content
             if (company.coverImage)
                 img.company__cover(src=`${company.coverImage}`, alt="cover image")
             else 
-                img.company__cover(src="/images/bg.png", alt="cover image")
+                img.company__cover(src="/images/open.jpg", alt="cover image")
             .navigator
                 h1.blackbg= company.name
                 p.comp__user__id.hidden= company.user._id
@@ -148,7 +148,7 @@ block content
             .footr__bod
                 if (company.Address !== "")
                     h4.comp__cont.cardtxt Find Us At
-                    p= company.Address 
+                    p.cardtxt= company.Address 
                 if (company.locationLink !== "")
                     a.comp__loc.cardtxt(href=`${company.locationLink}`)= `open ${company.name} Location`
                 if (company.contact !== "" && company.contact !== 0)
@@ -164,7 +164,7 @@ block content
                         h4
                             a.comp__loc.cardtxt(href=`${company.locationLink}`)= company.social
                 if (company.serviceTerms)
-                    p.sec__terms Terms And Conditions
+                    p.sec__terms.cardtxt Terms And Conditions
                     .terms__sec.hidden 
                         .termservice__head 
                             h3 Terms of Service 
@@ -176,7 +176,7 @@ block content
                     .hideterms.hidden 
                     .sec__terms.hidden 
                 if (company.privacyPolicies)
-                    p.sec__policies Privacy Policies
+                    p.sec__policies.cardtxt Privacy Policies
                     .policies__sec.hidden 
                         .privacypolicies__head 
                             h3 Privacy Policies 
