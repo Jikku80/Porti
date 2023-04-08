@@ -553,73 +553,73 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     let restro;
     let organization;
 
-    if (lowVals == "portfolio" || lowVals == "portfolios" || lowVals == "profile" || lowVals == "profiles") {
-        if (req.query.port !== undefined) {
-            pg = req.query.port
-            let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
-            const portfolio = await features.query
-            res.status(200).json({ status: 'success', portfolio })
-            return;
-        }
-        else {
-            pg = 1;
-            let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
-            const portfolio = await features.query
-            res.status(200).json({ status: 'success', portfolio })
-            return;
-        }
-    }
+    // if (lowVals == "portfolio" || lowVals == "portfolios" || lowVals == "profile" || lowVals == "profiles") {
+    //     if (req.query.port !== undefined) {
+    //         pg = req.query.port
+    //         let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
+    //         const portfolio = await features.query
+    //         res.status(200).json({ status: 'success', portfolio })
+    //         return;
+    //     }
+    //     else {
+    //         pg = 1;
+    //         let features = new APIFeatures(Portfolio.find({ searchVisible: true }), { limit: 20, page: pg }).paginate();
+    //         const portfolio = await features.query
+    //         res.status(200).json({ status: 'success', portfolio })
+    //         return;
+    //     }
+    // }
 
-    if (lowVals == "menu" || lowVals == "food menu" || lowVals == "menues" || lowVals == "menus" || lowVals == "Restaurant" || lowVals == "Resraurants" || lowVals == "restro") {
-        if (req.query.resto !== undefined) {
-            pg = req.query.resto;
-            let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
-            const restro = await features.query;
-            res.status(200).json({ status: 'success', restro })
-            return;
-        }
-        else {
-            pg = 1;
-            let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
-            const restro = await features.query;
-            res.status(200).json({ status: 'success', restro })
-            return;
-        }
-    }
+    // if (lowVals == "menu" || lowVals == "food menu" || lowVals == "menues" || lowVals == "menus" || lowVals == "Restaurant" || lowVals == "Resraurants" || lowVals == "restro") {
+    //     if (req.query.resto !== undefined) {
+    //         pg = req.query.resto;
+    //         let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
+    //         const restro = await features.query;
+    //         res.status(200).json({ status: 'success', restro })
+    //         return;
+    //     }
+    //     else {
+    //         pg = 1;
+    //         let features = new APIFeatures(Restaurant.find(), { limit: 20, page: pg }).paginate();
+    //         const restro = await features.query;
+    //         res.status(200).json({ status: 'success', restro })
+    //         return;
+    //     }
+    // }
 
-    if (lowVals == "catalog" || lowVals == "cataloges" || lowVals == "catalouge" || lowVals == "catalogs" || lowVals == "cataloge" || lowVals == "catalouges" || lowVals == "company" || lowVals == "companies") {
-        if (req.query.comp !== undefined) {
-            pg = req.query.comp;
-            let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
-            const company = await features.query;
-            res.status(200).json({ status: 'success', company })
-            return;
-        }
-        else {
-            pg = 1;
-            let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
-            const company = await features.query;
-            res.status(200).json({ status: 'success', company })
-            return;
-        }
-    }
+    // if (lowVals == "catalog" || lowVals == "cataloges" || lowVals == "catalouge" || lowVals == "catalogs" || lowVals == "cataloge" || lowVals == "catalouges" || lowVals == "company" || lowVals == "companies") {
+    //     if (req.query.comp !== undefined) {
+    //         pg = req.query.comp;
+    //         let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
+    //         const company = await features.query;
+    //         res.status(200).json({ status: 'success', company })
+    //         return;
+    //     }
+    //     else {
+    //         pg = 1;
+    //         let features = new APIFeatures(Company.find(), { limit: 20, page: pg }).paginate();
+    //         const company = await features.query;
+    //         res.status(200).json({ status: 'success', company })
+    //         return;
+    //     }
+    // }
 
-    if (lowVals == "brochure" || lowVals == "brochures" || lowVals == "hotels" || lowVals == "hotel" || lowVals == "motel" || lowVals == "motels" || lowVals == "organization" || lowVals == "org") {
-        if (req.query.org) {
-            pg = req.query.org;
-            let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
-            const organization = await features.query;
-            res.status(200).json({ status: 'success', organization })
-            return;
-        }
-        else {
-            pg = 1;
-            let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
-            const organization = await features.query;
-            res.status(200).json({ status: 'success', organization })
-            return;
-        }
-    }
+    // if (lowVals == "brochure" || lowVals == "brochures" || lowVals == "hotels" || lowVals == "hotel" || lowVals == "motel" || lowVals == "motels" || lowVals == "organization" || lowVals == "org") {
+    //     if (req.query.org) {
+    //         pg = req.query.org;
+    //         let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
+    //         const organization = await features.query;
+    //         res.status(200).json({ status: 'success', organization })
+    //         return;
+    //     }
+    //     else {
+    //         pg = 1;
+    //         let features = new APIFeatures(Organization.find(), { limit: 20, page: pg }).paginate();
+    //         const organization = await features.query;
+    //         res.status(200).json({ status: 'success', organization })
+    //         return;
+    //     }
+    // }
 
     if (req.query.port !== undefined) {
         pg = req.query.port
@@ -635,8 +635,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return por
         })
-
-        portfolio = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            portfolio = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', portfolio })
+            return;
+        }
     }
     else {
         pg = 1;
@@ -653,7 +656,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             return por
         })
 
-        portfolio = pagination(foo, 20, pg);
+        if (foo.length !== 0) {
+            portfolio = pagination(foo, 20, pg);
+            res.status(200).json({ status: 'success', portfolio })
+            return;
+        }
     }
 
     if (req.query.resto !== undefined) {
@@ -670,8 +677,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return restr
         })
-
-        restro = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            restro = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', restro })
+            return;
+        }
     }
     else {
         pg = 1;
@@ -688,7 +698,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             return restr
         })
 
-        restro = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            restro = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', restro })
+            return;
+        }
     }
 
     if (req.query.comp !== undefined) {
@@ -705,15 +719,21 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return comps
         })
-
-        company = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            company = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', company })
+            return;
+        }
     }
     else {
         pg = 1;
         const foo = await Company.find().then(comp => {
             const comps = comp.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.compType).toLowerCase();
+                let itemName = item.name
+                let itemType = item.compType
+                let lownam = itemName.toLowerCase();
+                let lowtype = itemType.toLowerCase();
+
                 if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
                     let searchVal = Company.find({ name: item.name })
                     return searchVal
@@ -722,8 +742,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return comps
         })
-
-        company = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            company = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', company })
+            return;
+        }
     }
 
     if (req.query.org !== undefined) {
@@ -740,8 +763,11 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return comps
         })
-
-        organization = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            organization = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', organization })
+            return;
+        }
     }
     else {
         pg = 1;
@@ -757,17 +783,12 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
             });
             return comps
         })
-
-        organization = pagination(foo, 20, pg)
+        if (foo.length !== 0) {
+            organization = pagination(foo, 20, pg)
+            res.status(200).json({ status: 'success', organization })
+            return;
+        }
     }
-
-    res.status(200).json({
-        status: 'success',
-        portfolio,
-        restro,
-        company,
-        organization
-    });
 
 })
 

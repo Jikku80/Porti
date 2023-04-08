@@ -129,7 +129,7 @@ async function getAllUserBookings() {
                                 <div class="book__card">
                                     <p>Name : ${el.name}</p>
                                     <p>Contact : ${el.phn_no}</p>
-                                    <p>No. of people : ${el.numberPeople}</p>
+                                    <p>Service For : ${el.numberPeople}</p>
                                     <p>Booking From : ${el.date}</p>
                                     <p>Booking Till : ${el.todate}</p>
                                     <p>Time : ${el.time}</p>
@@ -144,7 +144,7 @@ async function getAllUserBookings() {
                                 <div class="book__card">
                                     <p>Name : ${el.name}</p>
                                     <p>Contact : ${el.phn_no}</p>
-                                    <p>No. of people : ${el.numberPeople}</p>
+                                    <p>Service For : ${el.numberPeople}</p>
                                     <p>Date : ${el.date}</p>
                                     <p>Time : ${el.time}</p>
                                     <p>Total: ${el.total}</p>
@@ -160,7 +160,7 @@ async function getAllUserBookings() {
                                 <div class="book__card">
                                     <p>Name : ${el.name}</p>
                                     <p>Contact : ${el.phn_no}</p>
-                                    <p>No. of people : ${el.numberPeople}</p>
+                                    <p>Service For : ${el.numberPeople}</p>
                                     <p>Booking From : ${el.date}</p>
                                     <p>Booking Till : ${el.todate}</p>
                                     <p>Time : ${el.time}</p>
@@ -176,7 +176,7 @@ async function getAllUserBookings() {
                                     <div class="book__card">
                                         <p>Name : ${el.name}</p>
                                         <p>Contact : ${el.phn_no}</p>
-                                        <p>No. of people : ${el.numberPeople}</p>
+                                        <p>Service For : ${el.numberPeople}</p>
                                         <p>Date : ${el.date}</p>
                                         <p>Time : ${el.time}</p>
                                         <p>Total: ${el.total}</p>

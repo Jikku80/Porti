@@ -1,3 +1,7 @@
+#section{
+    overflow-x: hidden;
+}
+
 .first__bro__section{
     background-color: white;
     font-size: 16px;
@@ -239,6 +243,12 @@ pre{
     .cancelbanner{
         height: 4vh;
     }
+
+    .termsandpolicies{
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -262,8 +272,12 @@ pre{
     }
 
     .first__bro__sec__half, .first__bro__sec__other{
-        width: 100vw;
+        width: 100%;
         height: 50vh;
+    }
+
+    pre{
+        width: 95%;
     }
 
     .first__bro__sec__other{
@@ -289,5 +303,11 @@ pre{
 
     .bro__banner__sec{
         width: 55vw;
+    }
+
+    .termsandpolicies{
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
     }
 }

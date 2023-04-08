@@ -37,6 +37,7 @@ block content
                                 .un_layout_log
                                     img(src=`${item.picture}`, loading="lazy", alt="invi1")
                                     p.portDet= item.name
+                                    p= item.detail
                 .layout__main#lockedInviSec 
                     .unl
             if (user.accountType === "brochure")
@@ -58,6 +59,7 @@ block content
                                         .un_layout_log
                                             img(src=`${item.picture}`, loading="lazy", alt="brochure")
                                             p.portDet= item.name
+                                            p= item.detail
                         .layout__main#lockedBrochureSec 
                             .unl
                     else 
@@ -79,6 +81,7 @@ block content
                                     .un_layout.updateBroLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="brochure")
                                         p.portDet= item.name
+                                        p= item.detail
                         .layuot__main#lockedBrochureSec 
                             .un_layout
             else 
@@ -109,6 +112,7 @@ block content
                                         .un_layout_log
                                             img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                             p.portDet= item.name
+                                            p= item.detail
                         .layout__main#lockedCatalgSec 
                             .unl
                     else 
@@ -130,6 +134,7 @@ block content
                                     .un_layout.updateCataLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                         p.portDet= item.name
+                                        p= item.detail
                         .layuot__main#lockedCatalgSec 
                             .un_layout
             else 
@@ -161,6 +166,7 @@ block content
                                         .un_layout_log
                                             img(src=`${item.picture}`, loading="lazy", alt="menu1")
                                             p.portDet= item.name
+                                            p= item.detail
                         .layout__main#lockedMenuSec 
                             .unl
                     else 
@@ -182,6 +188,7 @@ block content
                                     .un_layout.updateLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="menu1")
                                         p.portDet= item.name
+                                        p= item.detail
                         .layout__main#lockedMenuSec 
                             .un_layout
             else 
@@ -227,6 +234,7 @@ block content
                                     .un_layout.updatePortfolioLayout(id=`${item.themeId}`)
                                         img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                         p.portDet= item.name
+                                        p= item.detail
                             #layout5.hidden
                             .un_layout.updatePortfolioLayout(id="da98568d1b2005611973ad49868b38aa8ae68fd7")
                                 img(src="/images/layout5.png", loading="lazy", alt="layout5")
@@ -239,6 +247,7 @@ block content
                                             a(href=`/paywith/${item.themeId}`)
                                                 img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                             p.portDet= item.name
+                                            p= item.detail
                                             p.layout__price.portDet= item.price
                                             a.redbtn(href=`/paywith/${item.themeId}`) Unlock
                 else
@@ -259,6 +268,7 @@ block content
                                         .un_layout_log
                                             img(src=`${item.picture}`, loading="lazy", alt="layout1")
                                             p.layout__name.portDet(id=`${item.name}`)= item.name
+                                            p= item.detail
                             #layout5.unl
                                 .un_layout_log
                                     img(src="/images/layout5.png", loading="lazy", alt="layout5")
@@ -272,6 +282,7 @@ block content
                                             a(href=`/paywith/${item.themeId}`)
                                                 img(src=`${item.picture}`)
                                             p.layout__name.portDet= item.name 
+                                            p= item.detail
                                             p.layout__price.portDet= item.price
                                             a.redbtn(href=`/paywith/${item.themeId}`) Unlock
                  
