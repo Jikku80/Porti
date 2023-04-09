@@ -953,3 +953,17 @@ prev.addEventListener("click", async () => {
         errorAlert('Sorry! Something went wrong', err);
     };
 });
+
+(function () {
+    let hamnav = document.querySelector(".hamnav");
+    let nav = document.querySelector(".first__bro__nav");
+    let closenav = document.querySelector(".closenavbar");
+
+    hamnav.addEventListener("click", () => {
+        nav.style.display = "inline-block";
+    })
+
+    closenav.addEventListener("click", () => {
+        nav.style.display = "none";
+    })
+})();

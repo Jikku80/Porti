@@ -29,6 +29,10 @@
     height: 3vw;
 }
 
+.hamnav{
+    display: none;
+}
+
 .first__bro__nav{
     width: 100%;
     background-color: rgba(255, 255, 255, 0.2);
@@ -38,6 +42,7 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: fixed;
     top: 0;
+    z-index: 2;
 }
 
 .first__bro__nav ul {
@@ -47,6 +52,10 @@
     font-size: 16px;
     list-style-type: none;
     padding: 2%;
+}
+
+.closenavbar{
+    display: none;
 }
 
 .first__bro__nav a{
@@ -63,6 +72,20 @@
 .first__bro__cover{
     width: 100vw;
     height: 100vh;
+}
+
+.abslogan{
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 25%;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .first__bro__sec__section{
@@ -226,6 +249,9 @@ pre{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
+    .abslogan{
+        width: 40%;
+    }
     .section__img{
         width: 40vw;
         height: 20vh;
@@ -252,8 +278,46 @@ pre{
 }
 
 @media screen and (max-width: 600px){
+    .hamnav{
+        position: fixed;
+        left: 5px;
+        top: 5px;
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        text-shadow: 1px 1px 2px black;
+        font-size: 18px;
+        border-radius: 4rem;
+        width: 15vw;
+        height: 15vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1;
+    }
+
     .first__bro__nav{
-        position: absolute;
+        position: fixed;
+        display: none;
+    }
+
+    .closenavbar{
+        display: inline-block;
+        cursor: pointer;
+        color: black;
+        margin: 0;
+    }
+
+    .abslogan{
+        top: 60%;
+        left: 5%;
+        width: 80%;
+        font-size: 20px;
+        
     }
 
     .first__bro__nav ul {

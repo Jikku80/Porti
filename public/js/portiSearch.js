@@ -752,6 +752,8 @@ async function getData(searchValue) {
         let load = document.querySelector('.loader');
         load.classList.remove("hidden")
         searchCont.classList.add("hidden");
+        let psearchval = document.querySelector("#portisearch");
+        psearchval.value = searchValue;
         subItems.innerHTML = "";
         const endpoint = `/search/${searchValue}/bar`
         let myHeaders = new Headers();

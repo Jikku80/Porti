@@ -70,8 +70,11 @@ block content
             .bannerinfo.hidden
         audio.bkalert.hidden
             source(src="/noti/msg.mp3")
+        .hamnav 
+            h1 &#8801;
         .first__bro__nav 
             ul 
+                h1.closenavbar x
                 li.nav__org= organization.name
                 li
                     a.nav__sec(href="#section") Service 
@@ -83,6 +86,8 @@ block content
             img.first__bro__cover(src=`${organization.coverImage}` alt="cover__img")        
         else    
             img.first__bro__cover(src="/images/brocov.jpg" alt="cover__img")
+        if (organization.slogan)
+            h1.abslogan= organization.slogan
         #section
         if (banner[0])
             h3.bannerdiscountpercent.hidden= `${banner[0].discountpercent}`
@@ -131,7 +136,6 @@ block content
                 #bookBtn.hidden
         h4.brotxt Your Bookings
         .get__booked
-        h4.brotxt= organization.slogan
         .termsandpolicies.brotxt
             if (organization.serviceTerms)
                 h4.terms.point Terms And Conditions 

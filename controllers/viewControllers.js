@@ -633,14 +633,15 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
-                foo.push(item);
+            let itemtype = (item.role).toLowerCase();
+            if ((item.searchVisible == true) || (item.searchVisible == "true")) {
+                if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
+                    foo.push(item);
+                }
             }
         })
         if (foo.length !== 0) {
             portfolio = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', portfolio })
-            return;
         }
     }
     else {
@@ -655,15 +656,16 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
-                foo.push(item);
+            let itemtype = (item.role).toLowerCase();
+            if ((item.searchVisible == true) || (item.searchVisible == "true")) {
+                if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
+                    foo.push(item);
+                }
             }
         })
 
         if (foo.length !== 0) {
             portfolio = pagination(foo, 20, pg);
-            res.status(200).json({ status: 'success', portfolio })
-            return;
         }
     }
 
@@ -679,14 +681,13 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.resType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
         if (foo.length !== 0) {
             restro = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', restro })
-            return;
         }
     }
     else {
@@ -701,15 +702,14 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.resType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
 
         if (foo.length !== 0) {
             restro = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', restro })
-            return;
         }
     }
 
@@ -725,14 +725,13 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.compType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
         if (foo.length !== 0) {
             company = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', company })
-            return;
         }
     }
     else {
@@ -747,14 +746,13 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.compType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
         if (foo.length !== 0) {
             company = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', company })
-            return;
         }
     }
 
@@ -770,14 +768,13 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.orgType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
         if (foo.length !== 0) {
             organization = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', organization })
-            return;
         }
     }
     else {
@@ -792,17 +789,23 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
         let foo = [];
         namelist.forEach(item => {
             let itemname = (item.name).toLowerCase();
-            if (itemname.includes(lowVals)) {
+            let itemtype = (item.orgType).toLowerCase();
+            if ((itemname.includes(lowVals)) || (itemtype.includes(lowVals))) {
                 foo.push(item);
             }
         })
         if (foo.length !== 0) {
             organization = pagination(foo, 20, pg)
-            res.status(200).json({ status: 'success', organization })
-            return;
         }
     }
 
+    res.status(200).json({
+        status: 'success',
+        company,
+        portfolio,
+        organization,
+        restro
+    })
 })
 
 exports.searchPage = catchAsync(async (req, res, next) => {

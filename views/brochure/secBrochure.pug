@@ -70,8 +70,11 @@ block content
             .bannerinfo.hidden
         audio.bkalert.hidden
             source(src="/noti/msg.mp3")
+        .hamnav 
+            h1 &#8801;
         .first__bro__nav 
             ul 
+                h1.closenavbar x
                 li.nav__org= organization.name
                 li
                     a.nav__sec(href="#section") Service
@@ -82,7 +85,9 @@ block content
         if (organization.coverImage)
             img.first__bro__cover(src=`${organization.coverImage}` alt="cover__img")        
         else    
-            img.first__bro__cover(src="/images/hill.jpg" alt="cover__img")
+            img.first__bro__cover(src="/images/mix.jpg" alt="cover__img")
+        if (organization.slogan)
+            h1.abslogan= organization.slogan
         #section
         .paginate 
             button.prev__bro.bropagibtn.hidden Previous
@@ -131,7 +136,6 @@ block content
                 #bookBtn.hidden
         h4.brotxt Your Bookings
         .get__booked
-        h4.brotxt= organization.slogan
         .termsandpolicies.brotxt
             if (organization.serviceTerms)
                 h4.terms.point Terms And Conditions 
