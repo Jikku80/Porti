@@ -623,17 +623,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
 
     if (req.query.port !== undefined) {
         pg = req.query.port
-        let foo = await Portfolio.find().then(ports => {
-            const por = ports.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowrole = (item.role).toLowerCase();
-                if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
-                    let searchVal = Portfolio.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return por
+        let namelist = [];
+        await Portfolio.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             portfolio = pagination(foo, 20, pg)
@@ -643,17 +645,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     }
     else {
         pg = 1;
-        let foo = await Portfolio.find().then(ports => {
-            const por = ports.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowrole = (item.role).toLowerCase();
-                if ((lownam.includes(lowVals) && item.searchVisible == true) || (lowrole.includes(lowVals) && item.searchVisible == true)) {
-                    let searchVal = Portfolio.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return por
+        let namelist = [];
+        await Portfolio.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
 
         if (foo.length !== 0) {
@@ -665,17 +669,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
 
     if (req.query.resto !== undefined) {
         pg = req.query.resto
-        const foo = await Restaurant.find().then(resto => {
-            const restr = resto.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.resType).toLowerCase();
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Restaurant.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return restr
+        let namelist = [];
+        await Restaurant.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             restro = pagination(foo, 20, pg)
@@ -685,17 +691,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     }
     else {
         pg = 1;
-        const foo = await Restaurant.find().then(resto => {
-            const restr = resto.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.resType).toLowerCase();
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Restaurant.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return restr
+        let namelist = [];
+        await Restaurant.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
 
         if (foo.length !== 0) {
@@ -707,17 +715,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
 
     if (req.query.comp !== undefined) {
         pg = req.query.comp
-        const foo = await Company.find().then(comp => {
-            const comps = comp.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.compType).toLowerCase();
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Company.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return comps
+        let namelist = [];
+        await Company.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             company = pagination(foo, 20, pg)
@@ -727,20 +737,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     }
     else {
         pg = 1;
-        const foo = await Company.find().then(comp => {
-            const comps = comp.filter(item => {
-                let itemName = item.name
-                let itemType = item.compType
-                let lownam = itemName.toLowerCase();
-                let lowtype = itemType.toLowerCase();
+        let namelist = [];
+        await Company.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
 
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Company.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return comps
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             company = pagination(foo, 20, pg)
@@ -751,17 +760,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
 
     if (req.query.org !== undefined) {
         pg = req.query.org;
-        let foo = await Organization.find().then(comp => {
-            const comps = comp.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.orgType).toLowerCase();
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Company.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return comps
+        let namelist = [];
+        await Organization.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             organization = pagination(foo, 20, pg)
@@ -771,17 +782,19 @@ exports.searchPorti = catchAsync(async (req, res, next) => {
     }
     else {
         pg = 1;
-        let foo = await Organization.find().then(comp => {
-            const comps = comp.filter(item => {
-                let lownam = (item.name).toLowerCase();
-                let lowtype = (item.orgType).toLowerCase();
-                if ((lownam.includes(lowVals)) || (lowtype.includes(lowVals))) {
-                    let searchVal = Company.find({ name: item.name })
-                    return searchVal
-                }
-                return;
-            });
-            return comps
+        let namelist = [];
+        await Organization.find().then(comp => {
+            comp.forEach(item => {
+                return namelist.push(item);
+            })
+        })
+
+        let foo = [];
+        namelist.forEach(item => {
+            let itemname = (item.name).toLowerCase();
+            if (itemname.includes(lowVals)) {
+                foo.push(item);
+            }
         })
         if (foo.length !== 0) {
             organization = pagination(foo, 20, pg)
