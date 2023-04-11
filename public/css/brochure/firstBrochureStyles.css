@@ -242,9 +242,6 @@ pre{
 }
 
 @media (min-width: 601px) and (max-width: 900px){
-    .abslogan{
-        width: 40%;
-    }
     .section__img{
         width: 40vw;
         height: 20vh;

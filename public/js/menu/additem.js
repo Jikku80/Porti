@@ -439,7 +439,7 @@ prev.addEventListener("click", async () => {
             <button class="blackbtn smallbtn" id="openMenu">My Menu</button>
             <button class="blackbtn smallbtn qrGen" id="qrmenu">Generate QRCode</button>
             <button class="blackbtn smallbtn downQr hidden" id="dqr">Download QRCode</button>
-            <p>Share In Social Sites</p>
+            <p class="form__label">Share In Social Sites</p>
             <button class="blackbtn fbbtn">Facebook</button>
         </div>
     `
