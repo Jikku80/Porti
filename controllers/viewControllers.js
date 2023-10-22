@@ -28,6 +28,7 @@ const Booking = require('./../models/bookModel');
 const ResReserve = require('./../models/reserveModel');
 const ComReturn = require('./../models/returnModel');
 const Search = require('./../models/searchModel');
+const CustomTheme = require('./../models/customModel');
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -74,9 +75,18 @@ exports.portiHighlights = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.custom = catchAsync(async (req, res, next) => {
+    const customTheme = await CustomTheme.findOne({ user: req.user.id });
+
+    res.status(200).render('custom', {
+        title: "Custom Layout",
+        customTheme
+    })
+})
+
 exports.gotoPort = catchAsync(async (req, res, next) => {
 
-
+    const customTheme = await CustomTheme.findOne({ user: req.user.id });
     const portfolio = await Portfolio.findOne({ user: req.user.id })
     const portfolioImage = await PortfolioImage.findOne({ user: req.user.id })
     const menu = await Menu.findOne({ user: req.user.id })
@@ -97,7 +107,8 @@ exports.gotoPort = catchAsync(async (req, res, next) => {
         company,
         theme,
         brochure,
-        organization
+        organization,
+        customTheme
     })
 })
 

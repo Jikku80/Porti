@@ -218,4 +218,40 @@ updateCataLayout.forEach(item => {
             errorAlert('Sorry! Something went wrong', err);
         };
     })
-})
+});
+
+(function () {
+    let createcustom = document.querySelector("#customThemeVamos");
+    createcustom.addEventListener("click", async () => {
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/customTheme/`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    console.log("vamos");
+                    window.setTimeout(() => {
+                        location.assign(`/layouts/custom`);
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    })
+})();

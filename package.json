@@ -4,14 +4,14 @@
   "description": "Create Virtual Portfolio, Invitation, Food Menu, Catalog, Brochure",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production & node server.js",
     "test": "echo \"No test specified\""
   },
   "author": "Lakhey De Tech",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^3.0.1"
   },
   "dependencies": {
     "@azure/identity": "^3.1.2",

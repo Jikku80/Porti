@@ -1,0 +1,842 @@
+extends base
+
+block content 
+    h1.loader
+        .bink
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            span.res vPor
+            span.grn t
+            span.nocaps.res i
+    if (!user)
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a.limebtn(href="/account/login") Sign In
+    else
+        //- include _header
+        .custom__main__sec 
+            .custom__first 
+                a.port_sec_head.hm.noletterspace.vportilogo(href="/" title="home")
+                    img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+                    span.chr vPor
+                    span.grn t
+                    span.nocapsmall.chr i
+                .edit__nav.smalleditbtn.opennavtweak Navbar  
+                .edit__nav.smalleditbtn.opencovertweak Cover Pic
+                .edit__nav.smalleditbtn.openbodtweak Body Sec
+                .edit__nav.smalleditbtn.openitemtweak Item Sec
+                .edit__nav.smalleditbtn.openordertweak Order Sec 
+                .edit__nav.smalleditbtn.openfoottweak Footer
+            .custom__sec 
+                .custom__sec__top 
+                    .custom__displayer
+                        .custom__nav#displayernavsec 
+                            .custom__nav__inside
+                                p Yr Enterprise 
+                                a.cusanc(href="#cusprod") Product 
+                                a.cusanc(href="#cusord") Order 
+                                a.cusanc(href="#cuscont") Contact Us
+                        .custom__ham.hidden &#9776;
+                        .custom__ham__inside.hidden 
+                            .ham__head
+                                p.cusanc Your Enterprise 
+                                img.close__ham(src="/images/cancel.png", alt="", srcset="")
+                            a.cusanc.hamanc(href="#cusprod") Product 
+                            a.cusanc.hamanc(href="#cusord") Order 
+                            a.cusanc.hamanc(href="#cuscont") Contact Us
+                        .custom__back__img#displayercovsec
+                            if (customTheme.covimg)
+                                img.custom__cov(src=`${customTheme.covimg}`, alt="your cov pic", srcset="")
+                            else
+                                img.custom__cov(src="/images/doodle.jpg", alt="doodle image", srcset="")
+                        .main__display__bod
+                            #displayerbodsec
+                                .custom__whole__bod
+                                    .custom__bod#cusprod 
+                                        .search__sec 
+                                            input#searchbar(type="search", name="searchbar" placeholder="type here to search...")
+                                            p.abnoti.hidden 
+                                        #displayeritemsec
+                                        h3.bodhead Your Products
+                                        .custom__prod
+                                            .custom__bod__prod 
+                                                .bod__prod__top     
+                                                    img(src="/images/upload.png", alt="", srcset="")
+                                                .bod__prod__bottom 
+                                                    p Name: First Item Name 
+                                                    p Detail: Item Details 
+                                                    p Price: Item price
+                                                    .custom__grp
+                                                        .custom__btn Add to cart 
+                                                        .custom__btn View Product
+                                            .custom__bod__prod 
+                                                .bod__prod__top     
+                                                    img(src="/images/upload.png", alt="", srcset="")
+                                                .bod__prod__bottom 
+                                                    p Name: Second Item Name 
+                                                    p Detail: Item Details 
+                                                    p Price: Item price
+                                                    .custom__grp
+                                                        .custom__btn Add to cart 
+                                                        .custom__btn View Product
+                                            .custom__bod__prod
+                                                .bod__prod__top     
+                                                    img(src="/images/upload.png", alt="", srcset="")
+                                                .bod__prod__bottom 
+                                                    p Name: Third Item Name 
+                                                    p Detail: Item Details 
+                                                    p Price: Item price
+                                                    .custom__grp
+                                                        .custom__btn Add to cart 
+                                                        .custom__btn View Product
+                                    .custom__ord#cusord 
+                                        #displayerordersec
+                                        h3.bodhead Your Orders (Customer View)
+                                        .custom__ord__sec 
+                                            .custom__ords.allorders 
+                                                p Name: First Name
+                                                p Address: Your Address
+                                                p Order: Order Detail 
+                                                p Order confirmation detail
+                                            .custom__ords.allorders
+                                                p Name: Second Name
+                                                p Address: Your Address
+                                                p Order: Order Detail 
+                                                p Order confirmation detail
+                                            .custom__ords.allorders
+                                                p Name: Third Name
+                                                p Address: Your Address
+                                                p Order: Order Detail 
+                                                p Order confirmation detail
+                                .displayer__footer__sec
+                                    .custom__foot#cuscont 
+                                        p Contact: +78 498798654
+                                        p Email: your@email.com
+                                        p Terms and Conditions 
+                                        p Privacy Policies
+                .custom__sec__bottom.navbar__tweak__sec
+                    .custom__sec__bottom__right 
+                        h4 Position Nav Bar
+                        .sec__bottom__right__top 
+                            p.custom__button.posnavbarright Right 
+                            p.custom__button.posnavbarleft Left 
+                            p.custom__button.posnavbartop Top 
+                            p.custom__button.posnavbarbottom Bottom
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.navfontsize)
+                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.navfontsize)
+                                else
+                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value="10")
+                            .top__grp
+                                p.edit__fontfam.small__divider Font Family 
+                                select.font__select(type='select', name="cusfontfam", id="cusfontfam")
+                                    option(value="Serif") Serif
+                                    option(value="Sans-serif") Sans-serif
+                                    option(value="Monospace") Monospace
+                                    option(value="Cursive") Cursive
+                                    option(value="Fantasy") Fantasy
+                                    option(value="Tourney") Tourney
+                                    option(value="Cabin Sketch") Cabin Sketch
+                        .sec__bottom__right__bottom
+                            p Navbar Visibility
+                            p.custom_red_button.removenavbar Remove
+                            p.custom__button.shownavbar.hidden Show
+                            .hamnav__sec.hidden
+                                p Use Ham Navbar 
+                                if (customTheme.hamnav == "true")
+                                    input#hamnav(type="checkbox", name="ham", checked)
+                                else 
+                                    input#hamnav(type="checkbox", name="ham")
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.edit__height.small__divider Height 
+                                if (customTheme.navheight)
+                                    input#cusnavheight.inptrange(type="range", name="cusheightrange", min="1" max="10" value=customTheme.navheight)
+                                else
+                                    input#cusnavheight.inptrange(type="range", name="cusheightrange", min="1" max="10" value="4")
+                                if (customTheme.navheight)
+                                    input#cusnavheightvert.inptrange.hidden(type="range", name="cusheightrange", min="50" max="100" value=customTheme.navheight)
+                                else
+                                    input#cusnavheightvert.inptrange.hidden(type="range", name="cusheightrange", min="50" max="100" value="100")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.navwidth)
+                                    input#cusnavwidth.inptrange(type="range", name="cuswidthrange", min="50" max="100" value=customTheme.navwidth)
+                                else
+                                    input#cusnavwidth.inptrange(type="range", name="cuswidthrange", min="50" max="100" value="100")
+                                if (customTheme.navwidth)
+                                    input#cusnavwidthvert.inptrange.hidden(type="range", name="cuswidthrange", min="8" max="12" value=customTheme.navwidth)
+                                else
+                                    input#cusnavwidthvert.inptrange.hidden(type="range", name="cuswidthrange", min="8" max="12" value="10")
+                        .sec__bottom__left__middle
+                            .mid__grp 
+                                p.small__divider Position Nav Content
+                                .radio__grp
+                                    .radio__in__grp
+                                        input#navleft.inptpos(type="radio", name="cusnavpos" value="Left")
+                                        label.leftlabel(for="navleft") Left
+                                        input#verttop.inptpos.hidden(type="radio", name="cusnavpos" value="Topper")
+                                        label.toplabel.hidden(for="verttop") Top
+                                    .radio__in__grp
+                                        input#navcenter.inptpos(type="radio", name="cusnavpos" value="Center")
+                                        input#navcentervert.inptpos.hidden(type="radio", name="cusnavpos" value="CenterVert")
+                                        label(for="navcenter") Center
+                                    .radio__in__grp
+                                        input#navright.inptpos(type="radio", name="cusnavpos" value="Right")
+                                        label.rightlabel(for="navright") Right
+                                        input#vertbottom.inptpos.hidden(type="radio", name="cusnavpos" value="Buttom")
+                                        label.bottomlabel.hidden(for="vertbottom") Bottom
+                        .sec__bottom__left__bottom 
+                            .bottom__grp
+                                p.edit__back.small__divider Background Color 
+                                input#cusnavbackcol.inptcol(type="color", name="cusbackcolor" value="#f5f5f5")
+                            .bottom__grp
+                                p.edit__color.small__divider Font Color
+                                input#cusnavcol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                .custom__sec__bottom.cover__tweak__sec.hidden
+                    .custom__sec__bottom__right 
+                        h4 Cover Pictures
+                        .sec__bottom__right__top 
+                            .cover__grp 
+                                img.covimg.doodlecov(src="/images/doodle.jpg", alt="", srcset="")
+                                p Color 
+                            .cover__grp 
+                                img.covimg.redbluecov(src="/images/redblue.jpg")
+                                p abstract 
+                            .cover__grp 
+                                img.covimg.magcov(src="/images/mag.jpg", alt="", srcset="")
+                                p mag
+                            .cover__grp 
+                                img.covimg.neoncov(src="/images/neon.jpg", alt="", srcset="")
+                                p neon
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontsize.small__divider Cover Filter 
+                                select.font__select(type='select', name="covfilter", id="covfilter")
+                                    option(value="none") None
+                                    option(value="grayscale") Gray Scale
+                                    option(value="blur") Blur
+                                    option(value="opacity") Opacity
+                                    option(value="saturate") Saturate
+                                    option(value="invert") Invert
+                                    option(value="contrast") Contrast
+                            .top__grp 
+                                p.small__divider.filter__header
+                                if (customTheme.covfilterper)
+                                    input#coverfilterper.hidden.inptrange(type="range", name="cusheightrange", min="11" max="100" value=customTheme.covfilterper)
+                                else
+                                    input#coverfilterper.hidden.inptrange(type="range", name="cusheightrange", min="11" max="100" value="10") 
+                                if (customTheme.covfilterper)
+                                    input#coverfilterpx.hidden.inptrange(type="range", name="cusheightrange", min="1" max="10" value=customTheme.covfilterper)
+                                else
+                                    input#coverfilterpx.hidden.inptrange(type="range", name="cusheightrange", min="1" max="10" value="4") 
+                            .top__grp
+                                p.edit__fontfam.small__divider Cover Style
+                                select.font__select(type='select', name="cusfontfam", id="covstyle")
+                                    option(value="none") None
+                                    option(value="triangle") Triangle
+                                    option(value="parallel") Parallel
+                                    option(value="star") Star
+                                    option(value="circle") Asymmetric Circle
+                                    option(value="crack") Crack
+                                    option(value="rhombus") Rhombus
+                        .sec__bottom__right__bottom
+                            p Cover Picture Visibility
+                            p.custom_red_button.removecoverpic Remove
+                            p.custom__button.showcoverpic.hidden Show
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.edit__height.small__divider Height 
+                                if (customTheme.covheight)
+                                    input#coverheight.inptrange(type="range", name="cusheightrange", min="10" max="100" value=customTheme.covheight)
+                                else
+                                    input#coverheight.inptrange(type="range", name="cusheightrange", min="10" max="100" value="100")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.covwidth)
+                                    input#coverwidth.inptrange(type="range", name="cuswidthrange", min="10" max="100" value=customTheme.covwidth)
+                                else
+                                    input#coverwidth.inptrange(type="range", name="cuswidthrange", min="10" max="100" value="100")
+                        .sec__bottom__left__middle
+                            .mid__grp 
+                                p.small__divider Position Cover Picture
+                                .group__cover
+                                    p.custom__button.poscovright Right 
+                                    p.custom__button.poscovleft Left 
+                                    p.custom__button.poscovcenter Center 
+                                    p.custom__button.poscovtop Top 
+                                    p.custom__button.poscovbottom Bottom
+                .custom__sec__bottom.bod__tweak__sec.hidden
+                    .custom__sec__bottom__right 
+                        h4 Tweak Body
+                        .sec__bottom__right__top 
+                            .bottom__grp
+                                p.edit__back.small__divider Background Color 
+                                input#bodbackcol.inptcol(type="color", name="cusbackcolor" value="#ffffff")
+                            .bottom__grp
+                                p.edit__color.small__divider Font Color
+                                input#bodcol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontfam.small__divider Font Family
+                                select.font__select(type='select', name="cusfontfam", id="bodfontfam")
+                                    option(value="Serif") Serif
+                                    option(value="Sans-serif") Sans-serif
+                                    option(value="Monospace") Monospace
+                                    option(value="Cursive") Cursive
+                                    option(value="Fantasy") Fantasy
+                                    option(value="Tourney") Tourney
+                                    option(value="Cabin Sketch") Cabin Sketch
+                            .top__grp
+                                p.edit__fontfam.small__divider Align Sections
+                                select.font__select(type='select', name="cusfontfam", id="bodalignsec")
+                                    option(value="normal") Normal
+                                    option(value="reverse") Reverse
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.bodfontsize)
+                                    input#bodfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.bodfontsize)
+                                else
+                                    input#bodfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value="10")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.bodwidth)
+                                    input#bodwidth.inptrange(type="range", name="cuswidthrange", min="88" max="100" value=customTheme.bodwidth)
+                                else
+                                    input#bodwidth.inptrange(type="range", name="cuswidthrange", min="88" max="100" value="100")
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.small__divider Position Body
+                                .group__cover
+                                    p.custom__button.posbodleft Left 
+                                    p.custom__button.posbodcenter Center 
+                                    p.custom__button.posbodright Right 
+                        .sec__bottom__right__mid
+                            .mid__grp
+                                p Searchbar Visibility
+                                p.custom_red_button.removesearch Remove
+                                p.custom__button.showsearch.hidden Show
+                            .mid__grp
+                                p.edit__fontfam.small__divider Searchbar Position
+                                select.font__select(type='select', name="cusfontfam", id="searchpos")
+                                    option(value="relative") Relative
+                                    option(value="absolute") Absolute
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__width.small__divider Searchbar Width 
+                                if (customTheme.searchwidth)
+                                    input#searchwidth.inptrange(type="range", name="cuswidthrange", min="30" max="100" value=customTheme.searchwidth)
+                                else
+                                    input#searchwidth.inptrange(type="range", name="cuswidthrange", min="30" max="100" value="100")
+                            .top__grp
+                                p.edit__color.small__divider Searchbar Color
+                                input#searchcol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                .custom__sec__bottom.item__tweak__sec.hidden  
+                    .custom__sec__bottom__right 
+                        h4 Item Tweaks 
+                        .sec__bottom__right__top 
+                            .bottom__grp
+                                p.edit__back.small__divider Background Color 
+                                input#itembackcol.inptcol(type="color", name="cusbackcolor" value="#ffffff")
+                            .bottom__grp
+                                p.edit__color.small__divider Font Color
+                                input#itemcol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontfam.small__divider Flex Items
+                                select.font__select(type='select', name="cusfontfam", id="itemflex")
+                                    option(value="row") Row
+                                    option(value="column") Column
+                            .top__grp
+                                p.edit__fontfam.small__divider Align Sections
+                                select.font__select(type='select', name="cusfontfam", id="itemalign")
+                                    option(value="normal") Normal
+                                    option(value="reverse") Reverse
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.itemfontsize)
+                                    input#itemfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.itemfontsize)
+                                else
+                                    input#itemfontsize.inptrange(type="range", name="cusfontrange", min="8" max="13" value="10")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.itemwidth)
+                                    input#itemwidth.inptrange(type="range", name="cuswidthrange", min="20" max="95" value=customTheme.itemwidth)
+                                else
+                                    input#itemwidth.inptrange(type="range", name="cuswidthrange", min="20" max="95" value="50")
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.small__divider Position Items
+                                .group__cover
+                                    p.custom__button.positemleft Left 
+                                    p.custom__button.positemcenter Center 
+                                    p.custom__button.positemright Right 
+                        .sec__bottom__right__mid
+                            .mid__grp
+                                p.edit__back.small__divider Button Background Color 
+                                input#buttonbackcol.inptcol(type="color", name="buttonbackcolor" value="#ffffff")
+                            .mid__grp
+                                p.edit__back.small__divider Button Color 
+                                input#buttoncol.inptcol(type="color", name="buttoncolor" value="#ffffff")
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__back.small__divider Button Radius 
+                                if (customTheme.buttonradius)
+                                    input#buttonradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value=customTheme.buttonradius)
+                                else
+                                    input#buttonradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value="0")
+                            .top__grp
+                                p.edit__back.small__divider Item margin 
+                                if (customTheme.itemmargin)
+                                    input#itemmargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value=customTheme.itemmargin)
+                                else
+                                    input#itemmargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value="10")    
+                .custom__sec__bottom.order__tweak__sec.hidden  
+                    .custom__sec__bottom__right 
+                        h4 Order Tweaks 
+                        .sec__bottom__right__top 
+                            .bottom__grp
+                                p.edit__back.small__divider Background Color 
+                                input#orderbackcol.inptcol(type="color", name="cusbackcolor" value="#ffffff")
+                            .bottom__grp
+                                p.edit__color.small__divider Font Color
+                                input#ordercol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontfam.small__divider Flex Items
+                                select.font__select(type='select', name="cusfontfam", id="orderflex")
+                                    option(value="row") Row
+                                    option(value="column") Column
+                            .top__grp
+                                p.edit__fontfam.small__divider Align Sections
+                                select.font__select(type='select', name="cusfontfam", id="orderalign")
+                                    option(value="normal") Normal
+                                    option(value="reverse") Reverse
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.orderfontsize)
+                                    input#orderfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.orderfontsize)
+                                else
+                                    input#orderfontsize.inptrange(type="range", name="cusfontrange", min="8" max="13" value="10")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.orderwidth)
+                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="20" value=customTheme.orderwidth)
+                                else
+                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="20" value="50")
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.small__divider Position Items
+                                .group__cover
+                                    p.custom__button.posorderleft Left 
+                                    p.custom__button.posordercenter Center 
+                                    p.custom__button.posorderright Right 
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__back.small__divider Order margin 
+                                if (customTheme.ordermargin)
+                                    input#ordermargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value=customTheme.ordermargin)
+                                else
+                                    input#ordermargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value="10") 
+                            .top__grp
+                                p.edit__back.small__divider Order Radius 
+                                if (customTheme.orderradius)
+                                    input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value=customTheme.orderradius)
+                                else
+                                    input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value="0")
+                        .sec__bottom__right__mid
+                            .mid__grp
+                                input#orderbackcol.inptcol(type="color", name="buttonbackcolor" value="#ffffff")
+                                p.edit__back.small__divider Order Background Color 
+                            .mid__grp
+                                input#ordercol.inptcol(type="color", name="buttoncolor" value="#ffffff")
+                                p.edit__back.small__divider Order Color 
+                .custom__sec__bottom.footer__tweak__sec.hidden  
+                    .custom__sec__bottom__right 
+                        h4 Footer Tweaks 
+                        .sec__bottom__right__top 
+                            .bottom__grp
+                                p.edit__back.small__divider Background Color 
+                                input#footerbackcol.inptcol(type="color", name="cusbackcolor" value="#ffffff")
+                            .bottom__grp
+                                p.edit__color.small__divider Font Color
+                                input#footercol.inptcol(type="color", name="cusfontcolor" value="#000000")
+                        .sec__bottom__right__mid
+                            .top__grp
+                                p.edit__fontfam.small__divider Flex Items
+                                select.font__select(type='select', name="cusfontfam", id="footerflex")
+                                    option(value="row") Row
+                                    option(value="column") Column
+                            .top__grp
+                                p.edit__fontfam.small__divider Align Sections
+                                select.font__select(type='select', name="cusfontfam", id="footeralign")
+                                    option(value="normal") Normal
+                                    option(value="reverse") Reverse
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.footerfontsize)
+                                    input#footerfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.footerfontsize)
+                                else
+                                    input#footerfontsize.inptrange(type="range", name="cusfontrange", min="8" max="13" value="10")
+                            .top__grp
+                                p.edit__width.small__divider Width 
+                                if (customTheme.footerwidth)
+                                    input#footerwidth.inptrange(type="range", name="cuswidthrange", min="5" max="65" value=customTheme.footerwidth)
+                                else
+                                    input#footerwidth.inptrange(type="range", name="cuswidthrange", min="5" max="65" value="50")
+
+                    .custom__sec__bottom__left
+                        .sec__bottom__left__top
+                            .top__grp
+                                p.small__divider Position Items
+                                .group__cover
+                                    p.custom__button.posfooterleft Left 
+                                    p.custom__button.posfootercenter Center 
+                                    p.custom__button.posfooterright Right 
+                        .sec__bottom__right__bottom
+                            .top__grp
+                                p.edit__back.small__divider Footer padding
+                                if (customTheme.footerpadding)
+                                    input#footerpadding.inptrange(type="range", name="cusfontrange", min="0" max="20" value=customTheme.footerpadding)
+                                else
+                                    input#footerpadding.inptrange(type="range", name="cusfontrange", min="0" max="20" value="10") 
+                            .top__grp
+                                p.edit__back.small__divider Footer Radius 
+                                if (customTheme.footerradius)
+                                    input#footerradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value=customTheme.footerradius)
+                                else
+                                    input#footerradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value="0")
+                        .sec__bottom__right__mid
+                            .mid__grp
+
+                            .mid__grp
+
+                                   
+            .custom__third
+                a(href="/layouts/porti").smalleditbtn Cancel
+                .resetcustomtheme.cancelupdate Reset
+                .deletecustomtheme.deletecustom Delete
+                .smalleditbtn.viewTheme View
+                .updatecustomtheme Update 
+
+            .nav__upval.hidden 
+                p.customthemeid= customTheme.id
+                if (customTheme.navpos)
+                    p.uppos= customTheme.navpos
+                else
+                    p.uppos top
+                if (customTheme.navfontsize)
+                    p.upfontsize= customTheme.navfontsize 
+                else
+                    p.upfontsize 10 
+                if (customTheme.navfontfam)
+                    p.upfontfam= customTheme.navfontfam 
+                else
+                    p.upfontfam Serif
+                if (customTheme.navvisibility)
+                    p.upvisibility= customTheme.navvisibility
+                else
+                    p.upvisibility 
+                if (customTheme.hamnav)
+                    p.uphamnav= customTheme.hamnav 
+                else
+                    p.uphamnav false 
+                if (customTheme.navheight)
+                    p.upheight= customTheme.navheight 
+                else 
+                    p.upheight 
+                if (customTheme.navwidth)
+                    p.upwidth= customTheme.navwidth 
+                else
+                    p.upwidth 
+                if (customTheme.navcontentpos)
+                    p.upcontentpos= customTheme.navcontentpos 
+                else
+                    p.upcontentpos center 
+                if (customTheme.navbackcol)
+                    p.upbackcol= customTheme.navbackcol 
+                else 
+                    p.upbackcol white
+                if (customTheme.navcol)
+                    p.upcol= customTheme.navcol 
+                else
+                    p.upcol black
+                if (customTheme.covpos)
+                    p.upcovpos= customTheme.covpos 
+                else
+                    p.upcovpos center 
+                if (customTheme.covfilter)
+                    p.upcovfilter= customTheme.covfilter 
+                else 
+                    p.upcovfilter none 
+                if (customTheme.covfilterper)
+                    p.upcovfilterper= customTheme.covfilterper 
+                else 
+                    p.upcovfilterper 
+                if (customTheme.covstyle)
+                    p.upcovstyle= customTheme.covstyle 
+                else
+                    p.upcovstyle none 
+                if (customTheme.covvisibility)
+                    p.upcovvisibility= customTheme.covvisibility 
+                else 
+                    p.upcovvisibility true 
+                if (customTheme.covheight)
+                    p.upcovheight= customTheme.covheight 
+                else 
+                    p.upcovheight 100
+                if (customTheme.covwidth)
+                    p.upcovwidth= customTheme.covwidth 
+                else 
+                    p.upcovwidth 100
+                if (customTheme.covimg)
+                    p.upcovimg= customTheme.covimg 
+                else 
+                    p.upcovimg doodle
+                if (customTheme.bodbackcol)
+                    p.upbodbackcol= customTheme.bodbackcol 
+                else 
+                    p.upbodbackcol white
+                if (customTheme.bodcol)
+                    p.upbodcol= customTheme.bodcol 
+                else 
+                    p.upbodcol black
+                if (customTheme.bodfontfam)
+                    p.upbodfontfam= customTheme.bodfontfam 
+                else 
+                    p.upbodfontfam Serif
+                if (customTheme.bodalign)
+                    p.upbodalign= customTheme.bodalign 
+                else 
+                    p.upbodalign normal
+                if (customTheme.bodfontsize)
+                    p.upbodfontsize= customTheme.bodfontsize
+                else 
+                    p.upbodfontsize 10
+                if (customTheme.bodwidth)
+                    p.upbodwidth= customTheme.bodwidth
+                else 
+                    p.upbodwidth 100
+                if (customTheme.bodpos)
+                    p.upbodpos= customTheme.bodpos 
+                else 
+                    p.upbodpos 
+                if (customTheme.searchvisibility)
+                    p.upsearchvisibility= customTheme.searchvisibility
+                else 
+                    p.upsearchvisibility true
+                if (customTheme.searchpos)
+                    p.upsearchpos= customTheme.searchpos
+                else 
+                    p.upsearchpos
+                if (customTheme.searchwidth)
+                    p.upsearchwidth= customTheme.searchwidth
+                else 
+                    p.upsearchwidth 30
+                if (customTheme.searchcol)
+                    p.upsearchcol= customTheme.searchcol
+                else 
+                    p.upsearchcol crimson
+                if (customTheme.itembackcol)
+                    p.upitembackcol= customTheme.itembackcol
+                else 
+                    p.upitembackcol white
+                if (customTheme.itemfontcol)
+                    p.upitemfontcol= customTheme.itemfontcol
+                else 
+                    p.upitemfontcol black
+                if (customTheme.flexitem)
+                    p.upflexitem= customTheme.flexitem
+                else 
+                    p.upflexitem row 
+                if (customTheme.alignitem)
+                    p.upalignitem= customTheme.alignitem
+                else 
+                    p.upalignitem 
+                if (customTheme.itemfontsize)
+                    p.upitemfontsize= customTheme.itemfontsize
+                else 
+                    p.upitemfontsize 10
+                if (customTheme.itemwidth)
+                    p.upitemwidth= customTheme.itemwidth
+                else 
+                    p.upitemwidth 
+                if (customTheme.itempos)
+                    p.upitempos= customTheme.itempos
+                else 
+                    p.upitempos center
+                if (customTheme.buttonbackcol)
+                    p.upbuttonbackcol= customTheme.buttonbackcol
+                else 
+                    p.upbuttonbackcol white
+                if (customTheme.buttoncol)
+                    p.upbuttoncol= customTheme.buttoncol
+                else 
+                    p.upbuttoncol black
+                if (customTheme.buttonradius)
+                    p.upbuttonradius= customTheme.buttonradius
+                else 
+                    p.upbuttonradius 
+                if (customTheme.itemmargin)
+                    p.upitemmargin= customTheme.itemmargin
+                else 
+                    p.upitemmargin 
+                if (customTheme.orderbackcol)
+                    p.uporderbackcol= customTheme.orderbackcol
+                else 
+                    p.uporderbackcol white
+                if (customTheme.orderfontcol)
+                    p.uporderfontcol= customTheme.orderfontcol
+                else 
+                    p.uporderfontcol black
+                if (customTheme.flexorder)
+                    p.upflexorder= customTheme.flexorder
+                else 
+                    p.upflexorder row 
+                if (customTheme.alignorder)
+                    p.upalignorder= customTheme.alignorder
+                else 
+                    p.upalignorder 
+                if (customTheme.orderfontsize)
+                    p.uporderfontsize= customTheme.orderfontsize
+                else 
+                    p.uporderfontsize 10
+                if (customTheme.orderwidth)
+                    p.uporderwidth= customTheme.orderwidth
+                else 
+                    p.uporderwidth 
+                if (customTheme.orderpos)
+                    p.uporderpos= customTheme.orderpos
+                else 
+                    p.uporderpos center
+                if (customTheme.ordermargin)
+                    p.upordermargin= customTheme.ordermargin
+                else 
+                    p.upordermargin 
+                //- if (customTheme.buttonradius)
+                //-     p.upbuttonradius= customTheme.buttonradius
+                //- else 
+                //-     p.upbuttonradius 
+                //- if (customTheme.buttonbackcol)
+                //-     p.upbuttonbackcol= customTheme.buttonbackcol
+                //- else 
+                //-     p.upbuttonbackcol white
+                //- if (customTheme.buttoncol)
+                //-     p.upbuttoncol= customTheme.buttoncol
+                //- else 
+                //-     p.upbuttoncol black
+                if (customTheme.footerbackcol)
+                    p.upfooterbackcol= customTheme.footerbackcol
+                else 
+                    p.upfooterbackcol white
+                if (customTheme.footerfontcol)
+                    p.upfooterfontcol= customTheme.footerfontcol
+                else 
+                    p.upfooterfontcol black
+                if (customTheme.flexfooter)
+                    p.upflexfooter= customTheme.flexfooter
+                else 
+                    p.upflexfooter row 
+                if (customTheme.alignfooter)
+                    p.upalignfooter= customTheme.alignfooter
+                else 
+                    p.upalignfooter 
+                if (customTheme.footerfontsize)
+                    p.upfooterfontsize= customTheme.footerfontsize
+                else 
+                    p.upfooterfontsize 10
+                if (customTheme.footerwidth)
+                    p.upfooterwidth= customTheme.footerwidth
+                else 
+                    p.upfooterwidth 
+                if (customTheme.footerpos)
+                    p.upfooterpos= customTheme.footerpos
+                else 
+                    p.upfooterpos center
+                if (customTheme.footerpadding)
+                    p.upfooterpadding= customTheme.footerpadding
+                else 
+                    p.upfooterpadding 
+                if (customTheme.footerradius)
+                    p.upfooterradius= customTheme.footerradius
+                else 
+                    p.upfooterradius 
+            .nav__val.hidden 
+                p.navposval= customTheme.navpos 
+                p.navfontsizeval= customTheme.navfontsize 
+                p.navfontfamval= customTheme.navfontfam 
+                p.navvisibilityval= customTheme.navvisibility
+                p.hamnavval= customTheme.hamnav 
+                p.navheightval= customTheme.navheight 
+                p.navwidthval= customTheme.navwidth 
+                p.navcontentposval= customTheme.navcontentpos
+                p.navbackcolval= customTheme.navbackcol 
+                p.navcolval= customTheme.navcol
+                p.covposval= customTheme.covpos 
+                p.covfilterval= customTheme.covfilter 
+                p.covfilterperval= customTheme.covfilterper 
+                p.covstyleval= customTheme.covstyle 
+                p.covvisibilityval= customTheme.covvisibility 
+                p.covheightval= customTheme.covheight
+                p.covwidthval= customTheme.covwidth 
+                p.covimgval= customTheme.covimg
+                p.bodbackcolval= customTheme.bodbackcol 
+                p.bodcolval= customTheme.bodcol 
+                p.bodfontfamval= customTheme.bodfontfam 
+                p.bodalignval= customTheme.bodalign 
+                p.bodfontsizeval= customTheme.bodfontsize 
+                p.bodwidthval= customTheme.bodwidth 
+                p.bodposval= customTheme.bodpos 
+                p.searchvisibilityval= customTheme.searchvisibility 
+                p.searchposval= customTheme.searchpos 
+                p.searchwidthval= customTheme.searchwidth 
+                p.searchcolval= customTheme.searchcol
+                p.itembackcolval= customTheme.itembackcol
+                p.itemfontcolval= customTheme.itemfontcol 
+                p.flexitemval= customTheme.flexitem 
+                p.alignitemval= customTheme.alignitem 
+                p.itemfontsizeval= customTheme.itemfontsize
+                p.itemwidthval= customTheme.itemwidth
+                p.itemposval= customTheme.itempos 
+                p.buttonbackcolval= customTheme.buttonbackcol
+                p.buttoncolval= customTheme.buttoncol 
+                p.buttonradiusval= customTheme.buttonradius 
+                p.itemmarginval= customTheme.itemmargin
+                p.orderbackcolval= customTheme.orderbackcol
+                p.orderfontcolval= customTheme.orderfontcol 
+                p.flexorderval= customTheme.flexorder 
+                p.alignorderval= customTheme.alignorder 
+                p.orderfontsizeval= customTheme.orderfontsize
+                p.orderwidthval= customTheme.orderwidth
+                p.orderposval= customTheme.orderpos 
+                p.ordermarginval= customTheme.ordermargin
+                //- p.buttonradiusval= customTheme.buttonradius 
+                //- p.buttonbackcolval= customTheme.buttonbackcol
+                //- p.buttoncolval= customTheme.buttoncol 
+                p.footerbackcolval= customTheme.footerbackcol
+                p.footerfontcolval= customTheme.footerfontcol 
+                p.flexfooterval= customTheme.flexfooter 
+                p.alignfooterval= customTheme.alignfooter 
+                p.footerfontsizeval= customTheme.footerfontsize
+                p.footerwidthval= customTheme.footerwidth
+                p.footerposval= customTheme.footerpos 
+                p.footerpaddingval= customTheme.footerpadding
+                p.footerradiusval= customTheme.footerradius
+    
+    script(src="/js/alert.js") 
+    script(src="/js/custom.js") 

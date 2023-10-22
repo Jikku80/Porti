@@ -113,6 +113,10 @@ block content
                                             img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                             p.portDet= item.name
                                             p.portDet= item.detail
+                            a(href="/layouts/custom").un_layout
+                                img(src=`/images/custom.jpg`, loading="lazy", alt="cataloge1")
+                                p.portDet Custom Layout
+                                p.portDet Create Your Layout
                         .layout__main#lockedCatalgSec 
                             .unl
                     else 
@@ -135,6 +139,17 @@ block content
                                         img(src=`${item.picture}`, loading="lazy", alt="cataloge1")
                                         p.portDet= item.name
                                         p.portDet= item.detail
+                            if (customTheme)
+                                #customThemeVamos.hidden
+                                a.un_layout(href="/layouts/custom")
+                                    img(src=`/images/custom.jpg`, loading="lazy", alt="cataloge1")
+                                    p.portDet Custom Layout
+                                    p.portDet Create Your Layout
+                            else
+                                .un_layout#customThemeVamos
+                                    img(src=`/images/custom.jpg`, loading="lazy", alt="cataloge1")
+                                    p.portDet Custom Layout
+                                    p.portDet Create Your Layout
                         .layuot__main#lockedCatalgSec 
                             .un_layout
             else 

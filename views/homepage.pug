@@ -68,10 +68,11 @@ block content
             .view__tm 
                 #abtPorti.padder.darkgreen
                     .bottom__nav
-                        h2.fntsmall About 
-                            span.wite vPor
-                            span.grn t
-                            span.wite.ncp i
+                        h2.fntsmall
+                            a.wite.nodeco(href="#showAboutPortisection") About 
+                                span.wite vPor
+                                span.grn t
+                                span.wite.ncp i
                         if (!user)
                             p.usrTheme.hidden
                             a.bottom__anch(href="/account/login") 
@@ -100,7 +101,7 @@ block content
                                     h3 &#10162;SignOut
                     .first__abt__cont.containr#apS 
                         .first__half__cont.mobhidehalfsec 
-                            h1 About 
+                            h1#showAboutPortisection About 
                                 span.wite vPor
                                 span.grn t
                                 span.mid.nocapsB i

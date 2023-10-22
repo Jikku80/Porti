@@ -21,6 +21,7 @@ const brochureRouter = require('./routes/brochureRoutes');
 const themeRouter = require('./routes/themeRoutes');
 const paymentRouter = require('./routes/paymentRoutes');
 const searchRouter = require('./routes/searchRoutes');
+const customRouter = require('./routes/customRoutes');
 
 const app = express();
 
@@ -131,7 +132,7 @@ app.use('/api/v1/menu', menuRouter);
 app.use('/api/v1/catalouge', catalougeRouter);
 app.use('/api/v1/brochure', brochureRouter);
 app.use('/api/v1/search', searchRouter);
-
+app.use('/api/v1/customTheme', customRouter);
 
 
 app.get('*', function (req, res, next) {

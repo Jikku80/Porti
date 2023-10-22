@@ -1,21 +1,48 @@
 (function () {
+    let smallmenu = document.querySelector(".menu__bar");
+    let bigmenu = document.querySelector("#side__bar")
+    window.addEventListener("resize", () => {
+        if (window.innerWidth < 601) {
+            smallmenu.classList.remove("hidden");
+            bigmenu.classList.add("hidden");
+            smallmenu.addEventListener("click", () => {
+                smallmenu.classList.add("hidden");
+                bigmenu.classList.remove("hidden");
+                window.setTimeout(() => {
+                    window.location.hash = "#side__bar"
+                }, 200)
+    
+            })
+        }else{
+            smallmenu.classList.add("hidden");
+            bigmenu.classList.remove("hidden");
+        }
+    })
+})();
+
+(function () {
     let menubar = document.querySelector(".menu__bar");
     let menu = document.querySelector(".main__navigation");
-    let width = window.screen.width;
+    let width = window.innerWidth;
 
-    menubar.classList.add("hidden");
-    if (width < 601) {
-        menu.classList.add("hidden");
-        menubar.classList.remove("hidden");
-        menubar.addEventListener("click", () => {
-            menubar.classList.add("hidden");
+    window.addEventListener("load", () => {
+        if (width < 601) {
+            menu.classList.add("hidden");
+            menubar.classList.remove("hidden");
+            menubar.addEventListener("click", () => {
+                menubar.classList.add("hidden");
+                menu.classList.remove("hidden");
+                window.setTimeout(() => {
+                    window.location.hash = "#side__bar"
+                }, 200)
+    
+            })
+        }
+        else{
             menu.classList.remove("hidden");
-            window.setTimeout(() => {
-                window.location.hash = "#side__bar"
-            }, 200)
-
-        })
-    }
+            menubar.classList.add("hidden");
+        }
+    })
 })();
 
 let gotoport = document.querySelector("#menuPortfolio");
@@ -133,7 +160,6 @@ gotoport.addEventListener("click", () => {
         return;
     }
 })();
-
 
 (function () {
     let theme = document.querySelector(".userTheme").innerText;

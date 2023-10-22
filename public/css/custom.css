@@ -1,0 +1,462 @@
+.custom__main__sec{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    color: black;
+    scroll-behavior: smooth;
+}
+
+.custom__first{
+    width: 10vw;
+    border-right: 1px solid black;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.custom__sec{
+    width: 80vw;
+    background-color: rgb(68, 68, 68);
+    display: flex;
+    flex-direction: column;
+}
+
+.custom__third{
+    width: 10vw;
+    border-left: 1px solid black;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vportilogo{
+    font-size: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.cancelupdate{
+    border-radius: 1rem;
+    border: 1px solid white;
+    color: white;
+     padding: 1em;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 1em;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.deletecustom{
+    border-radius: 1rem;
+    border: 1px solid crimson;
+    color: white;
+    background-color: crimson;
+     padding: 1em;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 1em;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.cancelupdate:hover{
+    border-color: goldenrod;
+    background-color: goldenrod;
+}
+
+.updatecustomtheme{
+    border: 1px solid rgb(0, 140, 255);
+    background-color: rgb(0, 140, 255);
+    font-family: monospace;
+    color: white;
+    border-radius: 1rem;
+     padding: 1em;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.smalleditbtn{
+    border-radius: 1rem;
+    border: 1px solid gray;
+    padding: 1em;
+    margin: 1em;
+    cursor: pointer;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+.smalleditbtn:hover{
+    background-color: rgba(0, 0, 0, 0.288);
+}
+
+.custom__sec__top{
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom__displayer{
+    width: 90%;
+    height: 80%;
+    background-color: white;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.custom__nav{
+    width: 71.9%;
+    top: 6%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+}
+
+.custom__nav__inside{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 4em;
+}
+
+.custom__ham{
+    position: absolute;
+    top: 6.5%;
+    left: 14.5%;
+    border-radius: 8rem;
+    height: 2em;
+    width: 2em;
+    z-index: 1;
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0.363);
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.custom__ham__inside{
+    position: absolute;
+    top: 6.5%;
+    left: 14.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.363);
+    z-index: 1;
+    width: 63%;
+    color: white;
+    padding: 4%;
+}
+
+.close__ham{
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.ham__head{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.hamnav__sec{
+    display: flex;
+}
+
+.custom__cov{
+    height: 100%;
+    width: 100%;
+}
+
+.cusanc{
+    color: black;
+    text-decoration: none;
+}
+
+.hamanc{
+    color: white;
+    margin: 2%;
+}
+
+.custom__back__img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.search__sec{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+#searchbar{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid crimson;
+    color: crimson;
+    outline: 0;
+    transition: transform .2s;
+    font-size: 16px;
+    padding: 1%;
+    margin: 2%;
+    width: 30%;
+    background-color: transparent;
+}
+
+#searchbar:focus{
+    transform: scale(1.2);
+}
+
+.custom__bod, .custom__ord{
+    padding: 2%;
+}
+
+.custom__prod, .custom__ord__sec{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.custom__prod{
+    flex-wrap: wrap;
+}
+
+.custom__bod__prod{
+    background-color: whitesmoke;
+    height: auto;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    /* margin: 5px; */
+}
+
+.custom__ords{
+    background-color: whitesmoke;
+    /* height: 40vh; */
+    width: 20vw;
+    padding: 1%;
+    margin: 10px;
+}
+
+.bod__prod__top{
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bod__prod__bottom{
+    height: 50%;
+    padding: 2%;
+}
+
+.custom__grp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.custom__btn{
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.custom__foot{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.custom__sec__bottom{
+    width: 100%;
+    height: 40%;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.custom__sec__bottom__right {
+    height: 100%;
+    width: 50%;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.custom__sec__bottom__left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+} 
+
+.sec__bottom__right__top{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sec__bottom__right__mid{
+    display: flex;
+}
+
+.sec__bottom__right__bottom{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50%;
+
+}
+
+.custom__button, .custom_red_button{
+    padding: 2%;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+}
+
+.custom__button:hover{
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+}
+
+.custom_red_button:hover{
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+    border-color: crimson;
+}
+
+.sec__bottom__left__top, .sec__bottom__left__bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+}
+
+.top__grp, .mid__grp{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio__grp{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.bottom__grp{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.inptpos{
+    cursor: pointer;
+}
+
+.inptcol, #hamnav {
+    border: none;
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer;
+}
+
+.inptrange{
+    width: 50%;
+    cursor: pointer;
+}
+
+.font__select{
+    background-color: rgb(68, 68, 68);
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.small__divider{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.group__cover{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cover__grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.covimg{
+    width: 6em;
+    height: 6em;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.covimg:hover{
+    transform: scale(1.5);
+}
+
+@media (min-width: 601px) and (max-width: 900px){
+    .smalleditbtn{
+        font-size: 10px;
+    }
+
+    .custom__third, .resetcustomtheme, .deletecustomtheme, .updatecustomtheme{
+        font-size: 10px;
+    }
+}
