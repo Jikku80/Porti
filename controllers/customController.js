@@ -9,6 +9,8 @@ exports.setUsersId = (req, res, next) => {
     next();
 }
 
+exports.delCustomCatal = factory.deleteOne(CustomTheme);
+
 exports.createCustomTheme = catchAsync(async (req, res, next) => {
     await CustomTheme.create({
         user: req.user.id
@@ -32,3 +34,4 @@ exports.updateCustomTheme = catchAsync(async (req, res, next) => {
         customtheme: updatedTheme
     })
 });
+

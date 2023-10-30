@@ -452,18 +452,18 @@ block content
                                     input#ordermargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value=customTheme.ordermargin)
                                 else
                                     input#ordermargin.inptrange(type="range", name="cusfontrange", min="0" max="20" value="10") 
-                            .top__grp
-                                p.edit__back.small__divider Order Radius 
-                                if (customTheme.orderradius)
-                                    input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value=customTheme.orderradius)
-                                else
-                                    input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value="0")
-                        .sec__bottom__right__mid
-                            .mid__grp
-                                input#orderbackcol.inptcol(type="color", name="buttonbackcolor" value="#ffffff")
-                                p.edit__back.small__divider Order Background Color 
-                            .mid__grp
-                                input#ordercol.inptcol(type="color", name="buttoncolor" value="#ffffff")
+                        //-     .top__grp
+                        //-         p.edit__back.small__divider Order Radius 
+                        //-         if (customTheme.orderradius)
+                        //-             input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value=customTheme.orderradius)
+                        //-         else
+                        //-             input#orderradius.inptrange(type="range", name="cusfontrange", min="0" max="3" value="0")
+                        //- .sec__bottom__right__mid
+                        //-     .mid__grp
+                        //-         input#orderbackcol.inptcol(type="color", name="buttonbackcolor" value="#ffffff")
+                        //-         p.edit__back.small__divider Order Background Color 
+                        //-     .mid__grp
+                        //-         input#ordercol.inptcol(type="color", name="buttoncolor" value="#ffffff")
                                 p.edit__back.small__divider Order Color 
                 .custom__sec__bottom.footer__tweak__sec.hidden  
                     .custom__sec__bottom__right 
@@ -528,10 +528,11 @@ block content
 
                                    
             .custom__third
+                p.catalud.hidden= customTheme.user.id
+                a(href=`/${customTheme.user.name}`).smalleditbtn.viewTheme View
                 a(href="/layouts/porti").smalleditbtn Cancel
                 .resetcustomtheme.cancelupdate Reset
                 .deletecustomtheme.deletecustom Delete
-                .smalleditbtn.viewTheme View
                 .updatecustomtheme Update 
 
             .nav__upval.hidden 

@@ -10,4 +10,6 @@ router.route('/').post(authController.restrictTo('user', 'admin'), customThemeCo
 
 router.route('/updateCustomTheme/:id').patch(authController.restrictTo('admin', 'user'), customThemeController.updateCustomTheme);
 
+router.route('/deleteCustomTheme/:id').delete(authController.restrictTo('admin', 'user'), customThemeController.delCustomCatal);
+
 module.exports = router;

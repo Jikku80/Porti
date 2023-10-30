@@ -16,6 +16,7 @@ const CatalogBanner = require('./../models/catalogBannerModel');
 const Restaurant = require('./../models/restaurantDetailModel');
 const Menu = require('./../models/menuModel');
 const Catalouge = require('./../models/catalougeModel');
+const CustomCatalogVal = require('./../models/customModel');
 const Company = require("./../models/companyModel");
 const Invite = require('./../models/inviteModel');
 const Theme = require('./../models/themeModel');
@@ -273,6 +274,7 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
         const featres = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
         const catalouges = await featres.query
         const banner = await CatalogBanner.find({ user: usr[0]._id })
+        const customCatal = await CustomCatalogVal.find({user: usr[0]._id})
         const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
             const items = el.filter(item => {
                 if (item.hotItem === true) {
@@ -297,6 +299,16 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
                     company: company[0],
                     banner,
                     hotItems
+                })
+                break;
+            case "customCatalog":
+                res.status(200).render('catalouge/customCatalouge', {
+                    title: `${company[0].name}`,
+                    catalouges,
+                    company: company[0],
+                    banner,
+                    hotItems,
+                    customCatal
                 })
                 break;
             default:

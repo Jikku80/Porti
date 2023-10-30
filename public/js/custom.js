@@ -383,8 +383,10 @@ openfootertweak.addEventListener("click", () => {
         upfooterwidth.innerText = footerwidth.value;
     })
 
-    let newitemfontsize = footerfontsizeval.innerText * 1
-    footersec.style.fontSize = newitemfontsize+`px`
+    if (footerfontsizeval.innerText !== ""){
+        let newitemfontsize = footerfontsizeval.innerText * 1
+        footersec.style.fontSize = newitemfontsize+`px`
+    }
 
     footerfontsize.addEventListener("change", () => {
         footersec.style.fontSize = `${footerfontsize.value}px`
@@ -398,7 +400,9 @@ openfootertweak.addEventListener("click", () => {
         upfooterbackcol.innerText = footerbackcol.value;
     })
 
-    footersec.style.color = footerfontcolval.innerText;
+    if (footerfontcolval.innerText !== ""){
+        footersec.style.color = footerfontcolval.innerText;
+    }
 
     footercol.addEventListener("change", () =>  {
         footersec.style.color = footercol.value;
@@ -606,8 +610,11 @@ openfootertweak.addEventListener("click", () => {
         })
     })
 
-    let newitemfontsize = orderfontsizeval.innerText * 1
-    ordersec.style.fontSize = newitemfontsize+`px`
+    if  (orderfontsizeval.innerText !== ""){
+        let newitemfontsize = orderfontsizeval.innerText * 1
+        ordersec.style.fontSize = newitemfontsize+`px`
+    }
+
 
     orderfontsize.addEventListener("change", () => {
         ordersec.style.fontSize = `${orderfontsize.value}px`
@@ -859,10 +866,12 @@ openfootertweak.addEventListener("click", () => {
         }
     })
 
-    yourprod.forEach(item => {
-        let newwidth = itemwidthval.innerText * 1;
-        item.style.width = newwidth + "%";
-    })
+    if (itemwidthval.innerText !== ""){
+        yourprod.forEach(item => {
+            let newwidth = itemwidthval.innerText * 1;
+            item.style.width = newwidth + "%";
+        })
+    }
 
     itemwidth.addEventListener("change", () =>  {
         yourprod.forEach(item => {
@@ -871,9 +880,10 @@ openfootertweak.addEventListener("click", () => {
         })
     })
 
-    let newitemfontsize = itemfontsizeval.innerText * 1
-    prodsec.style.fontSize = newitemfontsize+`px`
-
+    if (itemfontsizeval.innerText !== ""){
+        let newitemfontsize = itemfontsizeval.innerText * 1
+        prodsec.style.fontSize = newitemfontsize+`px`
+    }
     itemfontsize.addEventListener("change", () => {
         prodsec.style.fontSize = `${itemfontsize.value}px`
         upitemfontsize.innerText = itemfontsize.value;
@@ -969,11 +979,12 @@ openfootertweak.addEventListener("click", () => {
         }
     })
 
-    yourprod.forEach(item => {
-        let newmargin = itemmarginval.innerText * 1;
-        item.style.margin = newmargin + "px";
-    })
-
+    if (itemmarginval.innerText !== ""){
+        yourprod.forEach(item => {
+            let newmargin = itemmarginval.innerText * 1;
+            item.style.margin = newmargin + "px";
+        })
+    }
 })();
 
 (function () {
@@ -1036,7 +1047,10 @@ openfootertweak.addEventListener("click", () => {
         upsearchvisibility.innerText = "true";
     })
 
-    searchbar.style.width = `${searchwidthval.innerText}%`
+    if (searchwidthval !== ""){
+        searchbar.style.width = `${searchwidthval.innerText}%`
+    }
+
 
     searchwidth.addEventListener("change", () => {
         searchbar.style.width = `${searchwidth.value}%`
@@ -1135,9 +1149,11 @@ openfootertweak.addEventListener("click", () => {
         }
     })
 
-    bodhead.forEach(item => {
-        item.style.fontSize = `${bodfontsizeval.innerText}px`;
-    })
+    if (bodfontsizeval.innerText !== ""){
+        bodhead.forEach(item => {
+            item.style.fontSize = `${bodfontsizeval.innerText}px`;
+        })
+    }
 
     bodfontsize.addEventListener("change", () => {
         bodhead.forEach(item => {
@@ -2086,4 +2102,127 @@ openfootertweak.addEventListener("click", () => {
             loader.classList.add("hidden");
         }
     })
+})();
+
+(function(){
+    let delbtn = document.querySelector(".deletecustom");
+    let catalogeid = document.querySelector(".catalud");
+
+    delbtn.addEventListener("click", async () => {
+        let load = document.querySelector('.loader');
+        load.classList.remove("hidden")
+        try {
+            const endpoint = `/api/v1/catalouge/${catalogeid.innerText}/updateCompanyLayout`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: "51eac6b471a284d3341d8c0c63d0f1a286262a18"
+                })
+            }).then((response) => {
+                if (response.status === 200) {
+                    console.log("success");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+
+        const endpoint = `/api/v1/customTheme/deleteCustomTheme/${customid}`
+        try {
+            await fetch((endpoint), {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 200) {
+                    successAlert("Your Custom Layout has been deletec :(");
+                    window.setTimeout(() => {
+                        location.assign(`/layouts/porti`);
+                    }, 400);
+                } else {
+                    console.log(response)
+                    errorAlert("Layout Deletion error!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
+
+})();
+
+(function(){
+    let resetbtn = document.querySelector(".resetcustomtheme");
+    resetbtn.addEventListener("click", async function () {
+        const endpoint = `/api/v1/customTheme/deleteCustomTheme/${customid}`
+        try {
+            await fetch((endpoint), {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                })
+            }).then((response) => {
+                if (response.status === 200) {
+                    
+                } else {
+                    console.log(response)
+                    errorAlert("Layout Deletion error!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+
+        try {
+            let load = document.querySelector('.loader');
+            load.classList.remove("hidden")
+            const endpoint = `/api/v1/customTheme/`
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+
+                })
+            }).then((response) => {
+                load.classList.add("hidden");
+                if (response.status === 201) {
+                    successAlert("Your Layout has been Reseted!")
+                    window.setTimeout(() => {
+                        location.reload();
+                    }, 400);
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+    });
 })();

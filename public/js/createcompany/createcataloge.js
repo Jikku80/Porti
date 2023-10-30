@@ -224,6 +224,31 @@ updateCataLayout.forEach(item => {
     let createcustom = document.querySelector("#customThemeVamos");
     createcustom.addEventListener("click", async () => {
         try {
+            const endpoint = `/api/v1/catalouge/${catalogeid1}/updateCompanyLayout`
+            await fetch(endpoint, {
+                method: 'PATCH',
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    theme: "customCatalog"
+                })
+            }).then((response) => {
+                if (response.status === 200) {
+                    console.log("success");
+                } else {
+                    console.log(response);
+                    errorAlert("Invalid input, Duplication Input error!!!")
+                }
+            })
+        }
+        catch (err) {
+            console.log(err);
+            errorAlert('Sorry! Something went wrong', err);
+        };
+
+        try {
             let load = document.querySelector('.loader');
             load.classList.remove("hidden")
             const endpoint = `/api/v1/customTheme/`
