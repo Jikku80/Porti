@@ -122,22 +122,23 @@ block content
                             p.custom__button.posnavbartop Top 
                             p.custom__button.posnavbarbottom Bottom
                         .sec__bottom__right__mid
-                            .top__grp
-                                p.edit__fontsize.small__divider Font Size 
-                                if (customTheme.navfontsize)
-                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.navfontsize)
-                                else
-                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value="10")
-                            .top__grp
-                                p.edit__fontfam.small__divider Font Family 
-                                select.font__select(type='select', name="cusfontfam", id="cusfontfam")
-                                    option(value="Serif") Serif
-                                    option(value="Sans-serif") Sans-serif
-                                    option(value="Monospace") Monospace
-                                    option(value="Cursive") Cursive
-                                    option(value="Fantasy") Fantasy
-                                    option(value="Tourney") Tourney
-                                    option(value="Cabin Sketch") Cabin Sketch
+                            .mid__grp 
+                                p.small__divider Position Nav Content
+                                .radio__grp
+                                    .radio__in__grp
+                                        input#navleft.inptpos(type="radio", name="cusnavpos" value="Left")
+                                        label.leftlabel(for="navleft") Left
+                                        input#verttop.inptpos.hidden(type="radio", name="cusnavpos" value="Topper")
+                                        label.toplabel.hidden(for="verttop") Top
+                                    .radio__in__grp
+                                        input#navcenter.inptpos(type="radio", name="cusnavpos" value="Center")
+                                        input#navcentervert.inptpos.hidden(type="radio", name="cusnavpos" value="CenterVert")
+                                        label(for="navcenter") Center
+                                    .radio__in__grp
+                                        input#navright.inptpos(type="radio", name="cusnavpos" value="Right")
+                                        label.rightlabel(for="navright") Right
+                                        input#vertbottom.inptpos.hidden(type="radio", name="cusnavpos" value="Buttom")
+                                        label.bottomlabel.hidden(for="vertbottom") Bottom
                         .sec__bottom__right__bottom
                             p Navbar Visibility
                             p.custom_red_button.removenavbar Remove
@@ -171,24 +172,23 @@ block content
                                     input#cusnavwidthvert.inptrange.hidden(type="range", name="cuswidthrange", min="8" max="12" value=customTheme.navwidth)
                                 else
                                     input#cusnavwidthvert.inptrange.hidden(type="range", name="cuswidthrange", min="8" max="12" value="10")
-                        .sec__bottom__left__middle
-                            .mid__grp 
-                                p.small__divider Position Nav Content
-                                .radio__grp
-                                    .radio__in__grp
-                                        input#navleft.inptpos(type="radio", name="cusnavpos" value="Left")
-                                        label.leftlabel(for="navleft") Left
-                                        input#verttop.inptpos.hidden(type="radio", name="cusnavpos" value="Topper")
-                                        label.toplabel.hidden(for="verttop") Top
-                                    .radio__in__grp
-                                        input#navcenter.inptpos(type="radio", name="cusnavpos" value="Center")
-                                        input#navcentervert.inptpos.hidden(type="radio", name="cusnavpos" value="CenterVert")
-                                        label(for="navcenter") Center
-                                    .radio__in__grp
-                                        input#navright.inptpos(type="radio", name="cusnavpos" value="Right")
-                                        label.rightlabel(for="navright") Right
-                                        input#vertbottom.inptpos.hidden(type="radio", name="cusnavpos" value="Buttom")
-                                        label.bottomlabel.hidden(for="vertbottom") Bottom
+                        .sec__bottom__left__bottom
+                            .top__grp
+                                p.edit__fontsize.small__divider Font Size 
+                                if (customTheme.navfontsize)
+                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value=customTheme.navfontsize)
+                                else
+                                    input#cusfontsize.inptrange(type="range", name="cusfontrange", min="10" max="20" value="10")
+                            .top__grp
+                                p.edit__fontfam.small__divider Font Family 
+                                select.font__select(type='select', name="cusfontfam", id="cusfontfam")
+                                    option(value="Serif") Serif
+                                    option(value="Sans-serif") Sans-serif
+                                    option(value="Monospace") Monospace
+                                    option(value="Cursive") Cursive
+                                    option(value="Fantasy") Fantasy
+                                    option(value="Tourney") Tourney
+                                    option(value="Cabin Sketch") Cabin Sketch
                         .sec__bottom__left__bottom 
                             .bottom__grp
                                 p.edit__back.small__divider Background Color 

@@ -1946,7 +1946,7 @@ openfootertweak.addEventListener("click", () => {
         navsec.style.justifyContent = "left"
         navsec.style.height = "48vh"
         navbar.style.flexDirection = "column"
-        navbar.style.height = "100%"
+        navbar.style.height = "100%";
         navheight.classList.add("hidden");
         navwidth.classList.add("hidden");
         vertheight.classList.remove("hidden");
@@ -1974,7 +1974,7 @@ openfootertweak.addEventListener("click", () => {
         navsec.style.height = ""
         navbar.style.flexDirection = ""
         navbar.style.height = ""
-        navbar.style.width = ""
+        navbar.style.width = "";
         navsec.style.justifyContent = ""
         navsec.style.alignItems = ""
         navheight.classList.remove("hidden");
@@ -2001,7 +2001,7 @@ openfootertweak.addEventListener("click", () => {
         navsec.style.position = "absolute"
         navsec.style.bottom = "46%"
         navsec.style.top = "48%"
-        navsec.style.width = "71.9%"
+        navsec.style.width = "71.9%";
         navsec.style.right = ""
         navsec.style.left = ""
         navsec.style.height = ""
@@ -2055,9 +2055,10 @@ openfootertweak.addEventListener("click", () => {
     hamnav.addEventListener("click", () => {
         if (hamnav.checked == true) {
             hamicon.classList.remove("hidden");
-            uphamnav.innerText = "true"
+            uphamnav.innerText = "true";
         } else {
             hamicon.classList.add("hidden");
+            uphamnav.innerText = "false";
         }
     });
     hamicon.addEventListener("click", () => {

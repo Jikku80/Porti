@@ -274,7 +274,8 @@ exports.layoutTally = catchAsync(async (req, res, next) => {
         const featres = new APIFeatures(Catalouge.find({ user: usr[0]._id }), { limit: 12, page: req.query.page }).paginate().srt();
         const catalouges = await featres.query
         const banner = await CatalogBanner.find({ user: usr[0]._id })
-        const customCatal = await CustomCatalogVal.find({user: usr[0]._id})
+        const custmCatal = await CustomCatalogVal.find({user: usr[0]._id})
+        const customCatal = custmCatal[0];
         const hotItems = await Catalouge.find({ user: usr[0]._id }).then(el => {
             const items = el.filter(item => {
                 if (item.hotItem === true) {

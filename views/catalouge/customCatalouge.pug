@@ -7,6 +7,81 @@ block content
             span vPor
             span.grn t
             span.nocaps i
-    h1 Custom Page    
+    .custom_catal_sec
+        .custom__nav
+            .custom__catal__nav 
+                p= company.name 
+                a.cusanc(href="#cusprod") Product 
+                a.cusanc(href="#cusord") Order 
+                a.cusanc(href="#cuscont") Contact Us 
+        .custom__ham.hidden &#9776;
+        .custom__ham__inside.hidden 
+            .ham__head
+                p.cusanc.hamanc= company.name 
+                img.close__ham.point(src="/images/cancel.png", alt="", srcset="")
+            a.cusanc.hamanc(href="#cusprod") Product 
+            a.cusanc.hamanc(href="#cusord") Order 
+            a.cusanc.hamanc(href="#cuscont") Contact Us
+        .custom__catal__backpic 
+            img.custom__dp(src="/images/doodle.jpg", alt="doodle image", srcset="")
 
+    .customcatalvalsec.hidden 
+        .navpos= customCatal.navpos
+        .navfontsize= customCatal.navfontsize 
+        .navfontfam= customCatal.navfontfam 
+        .navvisibility= customCatal.navvisibility
+        .hamnav= customCatal.hamnav 
+        .navheight= customCatal.navheight 
+        .navwidth= customCatal.navwidth 
+        .navcontentpos= customCatal.navcontentpos 
+        .navbackcol= customCatal.navbackcol 
+        .navcol= customCatal.navcol 
+        .covpos= customCatal.covpos 
+        .covfilter= customCatal.covfilter 
+        .covfilterper= customCatal.covfilterper 
+        .covstyle= customCatal.covstyle 
+        .covvisibility= customCatal.covvisibility 
+        .covheight= customCatal.covheight 
+        .covwidth= customCatal.covwidth 
+        .covimg= customCatal.covimg 
+        .bodbackcol= customCatal.bodbackcol 
+        .bodcol= customCatal.bodcol 
+        .bodfontfam= customCatal.bodfontfam 
+        .bodalign= customCatal.bodalign 
+        .bodfontsize= customCatal.bodfontsize 
+        .bodwidth= customCatal.bodwidth 
+        .bodpos= customCatal.bodpos 
+        .searchvisibility= customCatal.searchvisibility 
+        .searchpos= customCatal.searchpos 
+        .searchwidth= customCatal.searchwidth 
+        .searchcol= customCatal.searchcol 
+        .itembackcol= customCatal.itembackcol 
+        .itemfontcol= customCatal.itemfontcol 
+        .flexitem= customCatal.flexitem 
+        .alignitem= customCatal.alignitem 
+        .itemfontsize= customCatal.itemfontsize 
+        .itemwidth= customCatal.itemwidth 
+        .itempos= customCatal.itempos 
+        .buttonbackcol= customCatal.buttonbackcol 
+        .buttoncol= customCatal.buttoncol 
+        .buttonradius= customCatal.buttonradius
+        .itemmargin= customCatal.itemmargin 
+        .orderbackcol= customCatal.orderbackcol 
+        .orderfontcol= customCatal.orderfontcol 
+        .flexorder= customCatal.flexorder 
+        .alignorder= customCatal.alignorder 
+        .orderfontsize= customCatal.orderfontsize 
+        .orderwidth= customCatal.orderwidth 
+        .orderpos= customCatal.orderpos 
+        .ordermargin= customCatal.ordermargin 
+        .footerbackcol= customCatal.footerbackcol 
+        .footerfontcol= customCatal.footerfontcol 
+        .flexfooter= customCatal.flexfooter 
+        .alignfooter= customCatal.alignfooter 
+        .footerfontsize= customCatal.footerfontsize 
+        .footerwidth= customCatal.footerwidth 
+        .footerpos= customCatal.footerpos
+        .footerpadding= customCatal.footerpadding 
+        .footerradius= customCatal.footerradius 
     script(src="/js/alert.js") 
+    script(src="/js/catalouge/customCatalouge.js") 
