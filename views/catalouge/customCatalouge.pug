@@ -24,7 +24,70 @@ block content
             a.cusanc.hamanc(href="#cuscont") Contact Us
         .custom__catal__backpic 
             img.custom__dp(src="/images/doodle.jpg", alt="doodle image", srcset="")
-
+        .custom__body
+            .custom__body__mid
+                .custom__body__sec 
+                    .custom__body__top
+                        .custom__search__sec
+                            input.custom__searchbar(type="text", name="searchbar" placeholder="type here to search...")
+                        h2 Your Products
+                        .custom__prod__sec
+                            .custom__products 
+                                .custom__prod__top     
+                                    img(src="/images/upload.png", alt="", srcset="")
+                                .custom__prod__bottom 
+                                    p Name: First Item Name 
+                                    p Detail: Item Details are here okay
+                                    p Price: Item price
+                                    .custom__grp
+                                        .custom__btn Add to cart 
+                                        .custom__btn View Product
+                            .custom__products 
+                                .custom__prod__top     
+                                    img(src="/images/upload.png", alt="", srcset="")
+                                .custom__prod__bottom 
+                                    p Name: Second Item Name 
+                                    p Detail: Item Details are here okay
+                                    p Price: Item price
+                                    .custom__grp
+                                        .custom__btn Add to cart 
+                                        .custom__btn View Product
+                            .custom__products 
+                                .custom__prod__top     
+                                    img(src="/images/upload.png", alt="", srcset="")
+                                .custom__prod__bottom 
+                                    p Name: Third Item Name 
+                                    p Detail: Item Details are here okay
+                                    p Price: Item price
+                                    .custom__grp
+                                        .custom__btn Add to cart 
+                                        .custom__btn View Product
+                    .custom__order__sec
+                        h2.bodhead Your Orders
+                        .custom__orders
+                            .cusorders 
+                                p Name: First Name
+                                p Address: Your Address
+                                p Order: Order Detail 
+                                p Order confirmation detail
+                            .cusorders 
+                                p Name: Second Name
+                                p Address: Your Address
+                                p Order: Order Detail 
+                                p Order confirmation detail
+                            .cusorders 
+                                p Name: Third Name
+                                p Address: Your Address
+                                p Order: Order Detail 
+                                p Order confirmation detail
+                .custom__footer
+                    .footer__cont 
+                        p Contact:
+                            span= company.contact
+                        p Email: 
+                            span= company.email
+                        p Terms and Conditions 
+                        p Privacy Policies
     .customcatalvalsec.hidden 
         .navpos= customCatal.navpos
         .navfontsize= customCatal.navfontsize 

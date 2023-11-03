@@ -62,7 +62,7 @@ block content
                                                 .bod__prod__top     
                                                     img(src="/images/upload.png", alt="", srcset="")
                                                 .bod__prod__bottom 
-                                                    p Name: First Item Name 
+                                                    p Name: First Item
                                                     p Detail: Item Details 
                                                     p Price: Item price
                                                     .custom__grp
@@ -72,7 +72,7 @@ block content
                                                 .bod__prod__top     
                                                     img(src="/images/upload.png", alt="", srcset="")
                                                 .bod__prod__bottom 
-                                                    p Name: Second Item Name 
+                                                    p Name: Second Item 
                                                     p Detail: Item Details 
                                                     p Price: Item price
                                                     .custom__grp
@@ -82,7 +82,7 @@ block content
                                                 .bod__prod__top     
                                                     img(src="/images/upload.png", alt="", srcset="")
                                                 .bod__prod__bottom 
-                                                    p Name: Third Item Name 
+                                                    p Name: Third Item
                                                     p Detail: Item Details 
                                                     p Price: Item price
                                                     .custom__grp
@@ -433,9 +433,9 @@ block content
                             .top__grp
                                 p.edit__width.small__divider Width 
                                 if (customTheme.orderwidth)
-                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="20" value=customTheme.orderwidth)
+                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="60" value=customTheme.orderwidth)
                                 else
-                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="20" value="50")
+                                    input#orderwidth.inptrange(type="range", name="cuswidthrange", min="5" max="60" value="5")
 
                     .custom__sec__bottom__left
                         .sec__bottom__left__top
@@ -656,7 +656,7 @@ block content
                 if (customTheme.itembackcol)
                     p.upitembackcol= customTheme.itembackcol
                 else 
-                    p.upitembackcol white
+                    p.upitembackcol
                 if (customTheme.itemfontcol)
                     p.upitemfontcol= customTheme.itemfontcol
                 else 
@@ -684,7 +684,7 @@ block content
                 if (customTheme.buttonbackcol)
                     p.upbuttonbackcol= customTheme.buttonbackcol
                 else 
-                    p.upbuttonbackcol white
+                    p.upbuttonbackcol
                 if (customTheme.buttoncol)
                     p.upbuttoncol= customTheme.buttoncol
                 else 
@@ -700,7 +700,7 @@ block content
                 if (customTheme.orderbackcol)
                     p.uporderbackcol= customTheme.orderbackcol
                 else 
-                    p.uporderbackcol white
+                    p.uporderbackcol whitesmoke
                 if (customTheme.orderfontcol)
                     p.uporderfontcol= customTheme.orderfontcol
                 else 
@@ -728,7 +728,7 @@ block content
                 if (customTheme.ordermargin)
                     p.upordermargin= customTheme.ordermargin
                 else 
-                    p.upordermargin 
+                    p.upordermargin 10
                 //- if (customTheme.buttonradius)
                 //-     p.upbuttonradius= customTheme.buttonradius
                 //- else 
@@ -744,7 +744,7 @@ block content
                 if (customTheme.footerbackcol)
                     p.upfooterbackcol= customTheme.footerbackcol
                 else 
-                    p.upfooterbackcol white
+                    p.upfooterbackcol whitesmoke
                 if (customTheme.footerfontcol)
                     p.upfooterfontcol= customTheme.footerfontcol
                 else 

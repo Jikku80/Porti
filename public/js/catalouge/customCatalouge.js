@@ -65,6 +65,44 @@
     let cusanc = document.querySelectorAll(".cusanc");
     let dp = document.querySelector(".custom__dp");
     let backpicsec = document.querySelector(".custom__catal__backpic");
+    let cusbod = document.querySelector(".custom__body__sec");
+    let searchbar = document.querySelector(".custom__searchbar");
+    let searchsec = document.querySelector(".custom__search__sec");
+    let custombod = document.querySelector(".custom__body");
+    let custommid = document.querySelector(".custom__body__mid");
+    let products = document.querySelectorAll(".custom__products");
+    let prodsec = document.querySelector(".custom__prod__sec");
+    let custombtn = document.querySelectorAll(".custom__btn");
+    let orders = document.querySelectorAll(".cusorders");
+    let ordersec = document.querySelector(".custom__orders");
+    let footer = document.querySelector(".footer__cont");
+    let footersec = document.querySelector(".custom__footer");
+
+    if (navcontentpos == "Left"){
+        customnav.style.display = "flex";
+        customnav.style.justifyContent = "left";
+    }else if (navcontentpos == "Center"){
+        customnav.style.display = "flex";
+        customnav.style.justifyContent = "center";
+    }else if (navcontentpos == "Right"){
+        customnav.style.display = "flex";
+        customnav.style.justifyContent = "right";
+    }else if (navcontentpos == "Topper"){
+        customnav.style.display = "flex";
+        navbar.style.position = "relative";
+        customnav.style.alignItems = "flex-start";
+    }else if (navcontentpos == "Buttom"){
+        customnav.style.display = "flex";
+        navbar.style.position = "relative";
+        customnav.style.alignItems = "flex-end";
+    }else if (navcontentpos == "CenterVert"){
+        customnav.style.display = "flex";
+        navbar.style.position = "relative";
+        customnav.style.alignItems = "center";
+    }else{
+        customnav.style.display = "flex";
+        customnav.style.justifyContent = "center";
+    }
 
     if (navpos == "right"){
         customnav.style.position = "fixed";
@@ -129,7 +167,6 @@
     })
 
     if (navheight !== ""){
-        console.log(navheight)
         navbar.style.height = navheight;
     }
 
@@ -137,31 +174,7 @@
         navbar.style.width = navwidth;
     }
 
-    if (navcontentpos == "Left"){
-        customnav.style.display = "flex";
-        customnav.style.justifyContent = "left";
-    }else if (navcontentpos == "Center"){
-        customnav.style.display = "flex";
-        customnav.style.justifyContent = "center";
-    }else if (navcontentpos == "Right"){
-        customnav.style.display = "flex";
-        customnav.style.justifyContent = "right";
-    }else if (navcontentpos == "Topper"){
-        customnav.style.display = "flex";
-        navbar.style.position = "relative";
-        customnav.style.alignItems = "flex-start";
-    }else if (navcontentpos == "Buttom"){
-        customnav.style.display = "flex";
-        navbar.style.position = "relative";
-        customnav.style.alignItems = "flex-end";
-    }else if (navcontentpos == "CenterVert"){
-        customnav.style.display = "flex";
-        navbar.style.position = "relative";
-        customnav.style.alignItems = "center";
-    }else{
-        customnav.style.display = "flex";
-        customnav.style.justifyContent = "center";
-    }
+    
 
     if (navbackcol !== ""){
         navbar.style.backgroundColor = navbackcol;
@@ -304,4 +317,315 @@
         console.log("")
     }
 
+    if (bodbackcol !== ""){
+        document.body.style.backgroundColor = bodbackcol;
+    }
+
+    if (bodcol !== ""){
+        document.body.style.color = bodcol;
+    }
+
+    if (bodfontfam !== ""){
+        cusbod.style.fontFamily = bodfontfam
+        searchbar.style.fontFamily = bodfontfam
+    }
+
+    if (bodalign == "reverse"){
+        cusbod.style.display = "flex";
+        cusbod.style.flexDirection = "column-reverse";
+    }else{
+        cusbod.style.display = "flex";
+        cusbod.style.flexDirection = "column";
+    }
+
+    if (bodfontsize !== ""){
+        cusbod.style.fontSize = bodfontsize + "px";
+        searchbar.style.fontSize = bodfontsize + "px";
+    }
+
+    if (bodwidth !== ""){
+        custommid.style.width = bodwidth + "vw";
+    }
+
+    if (bodpos == "left"){
+        custombod.style.display = "flex";
+        custombod.style.justifyContent = "left"
+    }else if (bodpos == "right"){
+        custombod.style.display = "flex";
+        custombod.style.justifyContent = "right"
+    }else {
+        custombod.style.display = "flex";
+        custombod.style.justifyContent = "center"
+    }
+
+    if (searchvisibility == false || searchvisibility == "false"){
+        searchsec.classList.add("hidden");
+    }else{
+        searchsec.classList.remove("hidden");
+    }
+
+    if (searchpos == "absolute"){
+        searchsec.style.position = "absolute";
+        searchsec.style.top = "50%";
+        searchsec.style.left = "50%";
+        searchsec.style.transform = "translate(-50%, -50%)";
+    }
+
+    if (searchwidth !== ""){
+        searchbar.style.width = searchwidth ;
+        let newwidth = searchwidth.slice(0, -1);
+        newwidth = newwidth * 1;
+        if (newwidth > 80){
+            searchbar.style.transform = "unset";
+        }
+    }
+
+    if (searchcol !== ""){
+        searchbar.style.color = searchcol;
+        searchbar.style.borderColor = searchcol; 
+    }
+
+    if (itembackcol !== ""){
+        products.forEach(item => {
+            item.style.backgroundColor = itembackcol
+        })
+    }
+
+    if (itemfontcol !== ""){
+        products.forEach(item => {
+            item.style.color = itemfontcol
+        })
+    }
+
+    if (flexitem == "column"){
+        prodsec.style.flexDirection = "column";
+    }else{
+        prodsec.style.flexDirection = "row";
+    }
+
+    if (alignitem == "reverse"){
+        if (flexitem == "column"){
+            prodsec.style.flexDirection = "column-reverse";
+        }else{
+            prodsec.style.flexDirection = "row-reverse";
+        }
+    }else{
+        if (flexitem == "column"){
+            prodsec.style.flexDirection = "column";
+        }else{
+            prodsec.style.flexDirection = "row";
+        }
+    }
+
+    if (itemfontsize !== ""){
+        prodsec.style.fontSize = itemfontsize + "px";
+    }
+
+    if (itemwidth !== ""){
+        products.forEach(item => {
+            item.style.width = itemwidth + "vw";
+        })
+    }
+
+    if (itempos == "left"){
+        prodsec.style.justifyContent = "left";
+        products.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexitem == "column"){
+            prodsec.style.marginLeft = "auto";
+            prodsec.style.marginRight = "0";
+            prodsec.style.alignItems = "flex-start"
+        }
+    }else if (itempos == "right"){
+        prodsec.style.justifyContent = "right";
+        products.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexitem == "column"){
+            prodsec.style.marginLeft = "auto";
+            prodsec.style.marginRight = "0";
+            prodsec.style.alignItems = "flex-end"
+        }
+    }else{
+        prodsec.style.justifyContent = "center";
+        products.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexitem == "column"){
+            prodsec.style.marginLeft = "auto";
+            prodsec.style.marginRight = "0";
+            prodsec.style.alignItems = "center"
+        }
+    }
+
+    if (buttonbackcol !== ""){
+        custombtn.forEach(item => {
+            item.style.backgroundColor = buttonbackcol;
+        })
+    }
+
+    if (buttoncol !== ""){
+        custombtn.forEach(item => {
+            item.style.color = buttoncol;
+            item.style.borderColor = buttoncol;
+        })
+    }
+
+    if (buttonradius !== ""){
+        custombtn.forEach(item => {
+            item.style.borderRadius = buttonradius + "rem";
+        })
+    }
+
+    if (itemmargin !== ""){
+        products.forEach(item => {
+            item.style.margin = itemmargin + "px";
+        })
+    }
+
+    if (orderbackcol !== ""){
+        orders.forEach(item => {
+            item.style.backgroundColor = orderbackcol;
+        })
+    }
+
+    if (orderfontcol !== ""){
+        orders.forEach(item => {
+            item.style.color = orderfontcol;
+        })
+    }
+
+    if (flexorder == "column"){
+        ordersec.style.flexDirection = "column";
+    }else{
+        ordersec.style.flexDirection = "row";
+    }
+
+    if (alignorder == "reverse"){
+        if (flexorder == "column"){
+            ordersec.style.flexDirection = "column-reverse";
+        }else{
+            ordersec.style.flexDirection = "row-reverse";
+        }
+    }else{
+        if (flexorder == "column"){
+            ordersec.style.flexDirection = "column";
+        }else{
+            ordersec.style.flexDirection = "row";
+        }
+    }
+
+    if (orderfontsize !== ""){
+        ordersec.style.fontSize = orderfontsize + "px";
+    }
+
+    if (orderwidth !== ""){
+        orders.forEach(item => {
+            item.style.width = orderwidth + "%";
+        })
+    }
+
+    if (orderpos == "left"){
+        ordersec.style.justifyContent = "left";
+        orders.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexorder == "column"){
+            ordersec.style.marginLeft = "auto";
+            ordersec.style.marginRight = "0";
+            ordersec.style.alignItems = "flex-start"
+        }
+    } else if (orderpos == "right"){
+        ordersec.style.justifyContent = "right";
+        orders.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexorder == "column"){
+            ordersec.style.marginLeft = "auto";
+            ordersec.style.marginRight = "0";
+            ordersec.style.alignItems = "flex-end"
+        }
+    }else{
+        ordersec.style.justifyContent = "center";
+        orders.forEach(item => {
+            item.style.margin = "1%";
+        })
+        if (flexorder == "column"){
+            ordersec.style.marginLeft = "auto";
+            ordersec.style.marginRight = "0";
+            ordersec.style.alignItems = "center"
+        }
+    }
+
+    if (ordermargin !== ""){
+        orders.forEach(item => {
+            item.style.margin = ordermargin + "px";
+        })
+    }
+
+    if (footerbackcol !== ""){
+        footer.style.backgroundColor = footerbackcol;
+    }
+
+    if (footerfontcol !== ""){
+        footer.style.color = footerfontcol;
+    }
+
+    if (flexfooter == "column"){
+        footer.style.display = "flex";
+        footer.style.flexDirection = "column";
+    }else{
+        footer.style.display = "flex";
+        footer.style.flexDirection = "row";
+    }
+
+    if (alignfooter == "reverse"){
+        if (flexfooter == "column"){
+            footer.style.display = "flex";
+            footer.style.flexDirection = "column-reverse";
+        }else{
+            footer.style.display = "flex";
+            footer.style.flexDirection = "row-reverse";
+        }
+    }else{
+        if (flexfooter == "column"){
+            footer.style.display = "flex";
+            footer.style.flexDirection = "column";
+        }else{
+            footer.style.display = "flex";
+            footer.style.flexDirection = "row";
+        }
+    }
+
+    if (footerfontsize !== ""){
+        footer.style.fontSize = footerfontsize + "px";
+    }
+
+    if (footerwidth !== ""){
+        footer.style.width = footerwidth + "vw";
+    }
+
+    if (footerpos == "left"){
+        footersec.style.display = "flex";
+        footersec.style.justifyContent = "left";
+    }else if (footerpos == "right"){
+        footersec.style.display = "flex";
+        footersec.style.justifyContent = "right";
+    }else{
+        footersec.style.display = "flex";
+        footersec.style.justifyContent = "center";
+    }
+
+    if (footerpadding !== ""){
+        footer.style.paddingBottom = footerpadding + "px";
+    }
+
+    if (navpos == "bottom"){
+        footer.style.paddingBottom = navbar.clientHeight + "px";
+    }
+
+    if (footerradius !== ""){
+        footer.style.borderRadius = footerradius + "rem";
+    }
 })();

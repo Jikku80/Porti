@@ -227,11 +227,11 @@
     color: crimson;
     outline: 0;
     transition: transform .2s;
+    background-color: transparent;
     font-size: 16px;
     padding: 1%;
     margin: 2%;
     width: 30%;
-    background-color: transparent;
 }
 
 #searchbar:focus{
@@ -246,28 +246,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
-.custom__prod{
     flex-wrap: wrap;
 }
+/* 
+.custom__prod{
+    flex-wrap: wrap;
+} */
 
 .custom__bod__prod{
     background-color: whitesmoke;
-    height: auto;
-    width: 20vw;
+    height: fit-content;
+    /* width: 15vw; */
     display: flex;
     flex-direction: column;
     padding: 2%;
+    border-radius: 1rem;
     /* margin: 5px; */
 }
 
 .custom__ords{
     background-color: whitesmoke;
     /* height: 40vh; */
-    width: 20vw;
+    /* width: 20vw; */
     padding: 1%;
     margin: 10px;
+    border-radius: 1rem;
 }
 
 .bod__prod__top{
@@ -291,6 +294,7 @@
 .custom__btn{
     border: 1px solid black;
     padding: 2%;
+    margin: 5px;
 }
 
 .custom__foot{
@@ -299,6 +303,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
 }
 
 .custom__sec__bottom{

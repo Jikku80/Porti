@@ -333,10 +333,11 @@ openfootertweak.addEventListener("click", () => {
     });
 
     footerpadding.addEventListener("change", () => {
-        yourorder.forEach(item => {
-            item.style.padding = `${footerpadding.value}px`;
-            upfooterpadding.innerText = footerpadding.value;
-        })
+        // yourorder.forEach(item => {
+        //     item.style.padding = `${footerpadding.value}px`;
+        // })
+        footersec.style.paddingBottom = footerpadding.value + "px";
+        upfooterpadding.innerText = footerpadding.value;
     })
 
     if(footerposval.innerText == "left"){
@@ -478,7 +479,7 @@ openfootertweak.addEventListener("click", () => {
     })
 
     let newmargin = footerpaddingval.innerText * 1;
-    footersec.style.margin = newmargin + "px";
+    footersec.style.paddingBottom = newmargin + "px";
 
 })();
 
@@ -1048,7 +1049,7 @@ openfootertweak.addEventListener("click", () => {
     })
 
     if (searchwidthval !== ""){
-        searchbar.style.width = `${searchwidthval.innerText}%`
+        searchbar.style.width = `${searchwidthval.innerText}`
     }
 
 
