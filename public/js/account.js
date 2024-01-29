@@ -579,6 +579,7 @@ async function createFoodHub() {
             },
             body: JSON.stringify({
                 name: curyname,
+                resType: "restro",
                 phn_no: 0
             })
         }).then((response) => {
@@ -609,6 +610,7 @@ async function createCompy() {
             body: JSON.stringify({
                 name: curyname,
                 email: curyemail,
+                compType: "Business",
                 contact: 0
             })
         }).then((response) => {
@@ -639,6 +641,7 @@ async function createOrgy() {
             body: JSON.stringify({
                 name: curyname,
                 email: curyemail,
+                orgType: "Motel",
                 contact: 0
             })
         }).then((response) => {

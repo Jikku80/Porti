@@ -130,6 +130,6 @@
 
     }
     else {
-        console.log("Hola from Porti")
+        document.body.style.backgroundColor = "rgb(0, 26, 0)";
     }
 })();

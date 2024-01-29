@@ -7,7 +7,66 @@ block content
             span vPor
             span.grn t
             span.nocaps i
+    .pageCount.hidden= company.pageCount
+    .pageName.hidden= company.name
+    if (user)
+        if (user.id !== company.user.id)
+            h1.msg__user__btn &#9993;
+            .msg__dot.hidden
+            audio.usermsgalert.hidden
+                source(src="/noti/msg.mp3")
+            .msg__user__sec.hidden 
+                .msg__user__head 
+                    h2.portfoliouser= company.user.name
+                    p.portiuserid.hidden= company.user.id
+                    p.curlogusername.hidden= user.name
+                    p.curloguser.hidden= user._id 
+                    img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+                .msg__user__bod 
+                    .cur__user__msg
+                form.msg__inpt__sec
+                    input.curusermessage(type="text" placeholder="type your message") 
+                    img(src="/images/send.png" class="sendusermessagebtn")
+        else 
+            .msg__user__btn.hidden 
+            .msg__dot.hidden
+            .usermsgalrt.hidden 
+            .msg__user__sec.hidden 
+            .cancelmsgusersec.hidden 
+            .curusermessage.hidden 
+            .sendusermessagebtn.hidden
+            .portfoliouser.hidden= company.user.name 
+            .portiuserid.hidden= company.user.id
+            .curlogusername.hidden= user.name 
+            .curloguser.hidden= user._id
+            .cur__user__msg.hidden
+    else 
+        h1.msg__user__btn &#9993;
+        .msg__dot.hidden
+        .msg__user__sec.hidden 
+            .msg__user__head 
+                h2.portfoliouser= company.user.name
+                img.cancelmsgusersec(src="/images/cancel.png" alt="cancelbtn")
+            .msg__user__bod 
+                p You Are Not Logged In 
+                    span.goToLoginPage Login || SignUp
+                .cur__user__msg.hidden 
+        .usermsgalrt.hidden 
+        .msg__user__sec.hidden 
+        .curusermessage.hidden 
+        .sendusermessagebtn.hidden
+        .curlogusername.hidden
+        .curloguser.hidden
+        .portiuserid.hidden
     .custom_catal_sec
+        .seccataluserid.hidden= company.user._id
+        #thiscurrentcompusrname.hidden=company.user.name
+        if (user)
+            #uniquecompuserid.hidden= user.id
+            #uniquecompusername.hidden= user.name
+        else 
+            #uniquecompuserid.hidden
+            #uniquecompusername.hidden
         .custom__nav
             .custom__catal__nav 
                 p= company.name 
@@ -30,38 +89,70 @@ block content
                     .custom__body__top
                         .custom__search__sec
                             input.custom__searchbar(type="text", name="searchbar" placeholder="type here to search...")
+                        .cntre
+                            h2.getAllSecCatItem.point.seccatbtn All Items
                         h2 Your Products
                         .custom__prod__sec
-                            .custom__products 
-                                .custom__prod__top     
-                                    img(src="/images/upload.png", alt="", srcset="")
-                                .custom__prod__bottom 
-                                    p Name: First Item Name 
-                                    p Detail: Item Details are here okay
-                                    p Price: Item price
-                                    .custom__grp
-                                        .custom__btn Add to cart 
-                                        .custom__btn View Product
-                            .custom__products 
-                                .custom__prod__top     
-                                    img(src="/images/upload.png", alt="", srcset="")
-                                .custom__prod__bottom 
-                                    p Name: Second Item Name 
-                                    p Detail: Item Details are here okay
-                                    p Price: Item price
-                                    .custom__grp
-                                        .custom__btn Add to cart 
-                                        .custom__btn View Product
-                            .custom__products 
-                                .custom__prod__top     
-                                    img(src="/images/upload.png", alt="", srcset="")
-                                .custom__prod__bottom 
-                                    p Name: Third Item Name 
-                                    p Detail: Item Details are here okay
-                                    p Price: Item price
-                                    .custom__grp
-                                        .custom__btn Add to cart 
-                                        .custom__btn View Product
+                            for item in catalouges
+                                .custom__products 
+                                    .custom__prod__top     
+                                        if (item.CoverImage)
+                                            img(src=`${item.CoverImage}`, alt="")
+                                        else
+                                            img(src="/images/upload.png", alt="", srcset="")
+                                    .custom__prod__bottom 
+                                        h5= `Name : ${item.name}`
+                                        h5= `Price : ${item.currency} ${item.price}` 
+                                        if (item.applydiscount == true)
+                                            if (banner[0].discountpercent || banner[0].discountpercent !== null)
+                                                h5= `Discount : ${banner[0].discountpercent}%`
+                                                .bannerdisc= banner[0].discountpercent
+                                        if (item.stockQuantity === 0 || item.stockQuantity === null)
+                                            h5.stock.rdstock= `Out Of Stock`
+                                        else
+                                            h5.stock= `Stock Quantity : ${item.stockQuantity}`
+                                        if (item.stockQuantity === 0 || item.stockQuantity === null)
+                                            .custom__grp
+                                                button(name=item._id disabled).custom__btn.addToCart Add To Cart
+                                                button(id=item._id name=`${item.category}`).custom__btn.viewProduct View
+                                        else
+                                            .custom__grp
+                                                button(name=item._id).custom__btn.addToCart Add To Cart
+                                                button(id=item._id name=`${item.category}`).custom__btn.viewProduct View
+                    .productModal.hidden 
+                        .productMidModal
+                            .product__head#prodBod
+                                p.productHead 
+                                img.cancelProduct.point(src="/images/cancel.png" alt="cancel__btn")
+                            .product__bod
+
+                            h2 Similar Items
+                            .similar__bod
+
+                            if (user)
+                                h2.txtcent Add A Comment
+                                .thisuserid.hidden= user._id
+                                form
+                                    .form__cont__order
+                                        textarea#newComment(type="text" placeholder="Add a comment" required) 
+                                    .form__cont__order
+                                        button#createComment.seccatbtn Comment
+                                h3 Last Comments
+                                .all__comment__sec
+                            else 
+                                h2.txtcent Add A Comment
+                                .thisuserid.hidden
+                                form
+                                    .form__cont__order
+                                        textarea#newComment(type="text" disabled required) Log In To Comment
+                                    .form__cont__order
+                                        button(disabled)#createComment.seccatbtn Comment
+                                h3 Last Comments
+                                .all__comment__sec
+                    .paginate 
+                        .seccataluserid.hidden= company.user._id
+                        button(type="button").prev__seccatal.seccatbtn Previous
+                        button(type="button").next__seccatal.seccatbtn Next
                     .custom__order__sec
                         h2.bodhead Your Orders
                         .custom__orders
@@ -88,6 +179,19 @@ block content
                             span= company.email
                         p Terms and Conditions 
                         p Privacy Policies
+    .resdetail(title="Product Categories") &#9776;
+    .restro__info.hidden
+        .catdeatilmidsec
+            h1.txtcent.headFont= company.name
+            .res__detail__head 
+                h3 Categories 
+                img.cancel__detail.point(src="/images/cancel.png" alt="cancel__btn")
+            .restro__info__bod.sec__cat__catg 
+        .sec__sub__item__modal
+            .sec__sub__head.res__detail__head
+                h3.sec__sub__head__info 
+                img.cancel__sub.point(src="/images/cancel.png" alt="cancel__btn")
+            .sec__cat__sub
     .customcatalvalsec.hidden 
         .navpos= customCatal.navpos
         .navfontsize= customCatal.navfontsize 
@@ -147,4 +251,6 @@ block content
         .footerpadding= customCatal.footerpadding 
         .footerradius= customCatal.footerradius 
     script(src="/js/alert.js") 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/js/usermsg.js") 
     script(src="/js/catalouge/customCatalouge.js") 

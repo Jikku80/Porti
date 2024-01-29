@@ -75,6 +75,7 @@ app.use(
                 "'self'",
                 "'unsafe-inline'",
                 "https://fonts.googleapis.com",
+                "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
                 "https://portiblobstorage.blob.core.windows.net"
                 // "https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js",
             ]

@@ -38,7 +38,7 @@ async function getAllCatalougeItem() {
                                     subItems.innerHTML +=
                                         `
                                         <div class="catalouge__card">
-                                            <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                            <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                             <div class="catalouge__card__det">
                                                 <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                                 <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -61,7 +61,7 @@ async function getAllCatalougeItem() {
                                     subItems.innerHTML +=
                                         `
                                         <div class="catalouge__card">
-                                            <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                            <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                             <div class="catalouge__card__det">
                                                 <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                                 <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -202,7 +202,7 @@ next.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="catalouge__card">
-                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                         <div class="catalouge__card__det">
                                             <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                             <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -225,7 +225,7 @@ next.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="catalouge__card">
-                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                         <div class="catalouge__card__det">
                                             <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                             <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -349,7 +349,7 @@ prev.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="catalouge__card">
-                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                         <div class="catalouge__card__det">
                                             <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                             <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -372,7 +372,7 @@ prev.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="catalouge__card">
-                                        <img class="catalouge__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <img class="catalouge__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                         <div class="catalouge__card__det">
                                             <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                             <p class="catalouge__card__head goldn">${el.serialno}</p>
@@ -629,6 +629,7 @@ prev.addEventListener("click", async () => {
         })
     }
     else {
+        document.body.style.backgroundColor = "rgb(0, 26, 0)";
         return;
     }
 })();

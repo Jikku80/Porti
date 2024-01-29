@@ -140,6 +140,7 @@ body{
     border: 1px solid black;
     padding: 2%;
     cursor: pointer;
+    font-weight: bolder;
 }
 
 .custom__orders{
@@ -164,4 +165,26 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+}
+
+.cancelProduct{
+    width: fit-content;
+    height: fit-content;
+}
+
+.simnoimg{
+    width: auto;
+    height: auto;
+}
+
+.cus__cat__item__card{
+    background-color: white;
+    color: black;
+    margin: 1%;
+    width: 20vw;
+    border-radius: .5rem;
+}
+
+.resdetail{
+    top: 10%;
 }

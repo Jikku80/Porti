@@ -755,6 +755,7 @@ async function byMonthReserve(restro, month) {
         })
     }
     else {
+        document.body.style.backgroundColor = "rgb(0, 26, 0)"
         return;
     }
 })();

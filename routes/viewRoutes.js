@@ -64,6 +64,7 @@ router.get('/messages/all', viewsController.getAllMsg);
 
 router.get('/account/me', authController.protect, viewsController.getAccount);
 router.get('/layouts/custom', authController.protect, viewsController.custom);
+router.get('/layouts/custominvi', authController.protect, viewsController.customInvi);
 
 router.post('/submit/user-data', authController.protect, viewsController.updateUserData);
 router.post('/password/Update', authController.protect, authController.updatePassword);

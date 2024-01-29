@@ -248,7 +248,7 @@ function addCardElem(el) {
         catalougeItems.innerHTML +=
             `
             <div class="catal__card">
-                <img class="catal__card__img imgFull pointer" src="/images/noimg.png" alt="catalouge__item__image">
+                <img class="catal__card__img imgFull pointer" src="/images/upload.png" alt="catalouge__item__image">
                 <div class="catal__card__det">
                     <div class="card__sub__sec">
                         <p class="catal__card__head cardtxt">Name: </p>

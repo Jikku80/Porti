@@ -20,7 +20,7 @@ async function getOneCatalougeItem() {
                     let item = result.data.data
                     catalougeCard.innerHTML =
                         `
-                            <img class="catalouge__card__img" src="/images/noimg.png" alt="catalouge__item__image">
+                            <img class="catalouge__card__img" src="/images/upload.png" alt="catalouge__item__image">
                             <div class="catalouge__card__det deat">
                                 <h3 class="catalouge__card__head goldn">${item.name}</h3>
                                 <p class="catalouge__card__price goldn">${item.serialno}</p>
@@ -197,6 +197,6 @@ window.addEventListener("load", async () => {
 
     }
     else {
-        console.log("Hola from Porti")
+        document.body.style.backgroundColor = "rgb(0, 26, 0)";
     }
 })();

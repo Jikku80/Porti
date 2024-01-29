@@ -415,7 +415,7 @@ else {
                                 `
                                 <div class="first__bro__sec__section">
                                     <div class="first__bro__sec__half">
-                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    <img class="section__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                     </div>
                                     <div class="first__bro__sec__other">
                                         <h2 class="">${el.name}</h1>
@@ -499,7 +499,7 @@ next.addEventListener("click", async () => {
                                 `
                                 <div class="first__bro__sec__section">
                                     <div class="first__bro__sec__half">
-                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    <img class="section__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                     </div>
                                     <div class="first__bro__sec__other">
                                         <h2 class="">${el.name}</h1>
@@ -581,7 +581,7 @@ prev.addEventListener("click", async () => {
                                 `
                                 <div class="first__bro__sec__section">
                                     <div class="first__bro__sec__half">
-                                    <img class="section__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                    <img class="section__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                     </div>
                                     <div class="first__bro__sec__other">
                                         <h2 class="">${el.name}</h1>

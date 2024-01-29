@@ -848,7 +848,7 @@ function smallCardElem(el) {
                 catalougeItems.innerHTML +=
                     `
                 <div class="sec__cat__item__card">
-                    <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
+                    <img class="sec__cat__img" src="/images/upload.png" alt="catalouge__item__image">
                     <div class="sec__cat__item__info">
                             <h3>Name : ${el.name}</h3>
                             <h3>Price : ${el.currency}${el.price}</h3>
@@ -866,7 +866,7 @@ function smallCardElem(el) {
                 catalougeItems.innerHTML +=
                     `
                     <div class="sec__cat__item__card">
-                        <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
+                        <img class="sec__cat__img" src="/images/upload.png" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
                                 <h3>Price : ${el.currency}${el.price}</h3>
@@ -922,7 +922,7 @@ function smallCardElem(el) {
                 catalougeItems.innerHTML +=
                     `
                 <div class="sec__cat__item__card">
-                    <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
+                    <img class="sec__cat__img" src="/images/upload.png" alt="catalouge__item__image">
                     <div class="sec__cat__item__info">
                             <h3>Name : ${el.name}</h3>
                             <h3>Price : ${el.currency}${el.price}</h3>
@@ -938,7 +938,7 @@ function smallCardElem(el) {
                 catalougeItems.innerHTML +=
                     `
                     <div class="sec__cat__item__card">
-                        <img class="sec__cat__img" src="/images/noimg.png" alt="catalouge__item__image">
+                        <img class="sec__cat__img" src="/images/upload.png" alt="catalouge__item__image">
                         <div class="sec__cat__item__info">
                                 <h3>Name : ${el.name}</h3>
                                 <h3>Price : ${el.currency}${el.price}</h3>
@@ -1226,7 +1226,7 @@ async function openProdMid(item) {
                     productbod.innerHTML =
                         `
                             <div class="product__bod__info">
-                                <img class="product__card__img" src="/images/noimg.png" alt="catalouge__item__image">
+                                <img class="product__card__img" src="/images/upload.png" alt="catalouge__item__image">
                                 <div class="product__card__det">
                                     <h3 class="product__card__head">${item.name}</h3>
                                     <p class="product__card__price">Serial No : ${item.serialno}</p>
@@ -1394,7 +1394,7 @@ async function addPiece(val) {
                                                 <div class="cart__card">
                                                     <img class="cancelCartProduct point" src="/images/cancel.png" alt="cancel__btn"/>
                                                     <div class="cart__card__item">
-                                                        <img src="/images/noimg.png" class="cart__card__img"/>
+                                                        <img src="/images/upload.png" class="cart__card__img"/>
                                                         <p class="cart__product__name">${item.name}</p>
                                                         <p class="hidden cart__product__price">${item.price}</p>
                                                         <p class="hidden cart__product__id">${item.itemId}</p>
@@ -1452,7 +1452,7 @@ function showItems() {
                                     <div class="cart__card">
                                         <img class="cancelCartProduct point" src="/images/cancel.png" alt="cancel__btn"/>
                                         <div class="cart__card__item">
-                                            <img src="/images/noimg.png" class="cart__card__img"/>
+                                            <img src="/images/upload.png" class="cart__card__img"/>
                                             <p class="cart__product__name">${item.name}</p>
                                             <p class="hidden cart__product__price">${item.price}</p>
                                             <p class="hidden cart__product__id">${item.itemId}</p>
@@ -1589,7 +1589,7 @@ async function similarItems(category, itemId) {
                                     similarSec.innerHTML +=
                                         `
                                         <div class="sec__cat__item__card similarcard">
-                                            <img class="sec__cat__img simimg" src="/images/noimg.png" alt="catalouge__item__image">
+                                            <img class="sec__cat__img simimg" src="/images/upload.png" alt="catalouge__item__image">
                                             <div class="sec__cat__item__info">
                                                     <h3>Name : ${el.name}</h3>
                                                     <h3>Price : ${el.price}</h3>
@@ -1606,7 +1606,7 @@ async function similarItems(category, itemId) {
                                     similarSec.innerHTML +=
                                         `
                                             <div class="sec__cat__item__card similarcard">
-                                                <img class="sec__cat__img simimg" src="/images/noimg.png" alt="catalouge__item__image">
+                                                <img class="sec__cat__img simimg" src="/images/upload.png" alt="catalouge__item__image">
                                                 <div class="sec__cat__item__info">
                                                         <h3>Name : ${el.name}</h3>
                                                         <h3>Price : ${el.price}</h3>
@@ -1662,7 +1662,7 @@ async function similarItems(category, itemId) {
                                     similarSec.innerHTML +=
                                         `
                                         <div class="sec__cat__item__card similarcard">
-                                            <img class="sec__cat__img simimg" src="/images/noimg.png" alt="catalouge__item__image">
+                                            <img class="sec__cat__img simimg" src="/images/upload.png" alt="catalouge__item__image">
                                             <div class="sec__cat__item__info">
                                                     <h3>Name : ${el.name}</h3>
                                                     <h3>Price : ${el.price}</h3>
@@ -1678,7 +1678,7 @@ async function similarItems(category, itemId) {
                                     similarSec.innerHTML +=
                                         `
                                             <div class="sec__cat__item__card similarcard">
-                                                <img class="sec__cat__img simimg" src="/images/noimg.png" alt="catalouge__item__image">
+                                                <img class="sec__cat__img simimg" src="/images/upload.png" alt="catalouge__item__image">
                                                 <div class="sec__cat__item__info">
                                                         <h3>Name : ${el.name}</h3>
                                                         <h3>Price : ${el.price}</h3>
@@ -1707,6 +1707,7 @@ async function similarItems(category, itemId) {
                         item.addEventListener("click", async () => {
                             location.hash = "#"
                             openProdMid(item)
+                            getComments(item.id);
                             window.setTimeout(() => {
                                 location.hash = "#prodBod"
                             }, 200)

@@ -85,7 +85,7 @@ async function getAllItem() {
                                     subItems.innerHTML +=
                                         `
                                         <div class="menu__card">
-                                            <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                            <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                             <div class="menu__card__det">
                                                 <h3 class="menu__card__head goldn">${el.name}</h3>
                                                 <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -104,7 +104,7 @@ async function getAllItem() {
                                     subItems.innerHTML +=
                                         `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                        <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -240,7 +240,7 @@ next.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                        <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -259,7 +259,7 @@ next.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                    <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -376,7 +376,7 @@ prev.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                     <div class="menu__card">
-                                        <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                        <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                         <div class="menu__card__det">
                                             <h3 class="menu__card__head goldn">${el.name}</h3>
                                             <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -395,7 +395,7 @@ prev.addEventListener("click", async () => {
                                 subItems.innerHTML +=
                                     `
                                 <div class="menu__card">
-                                    <img class="menu__card__img" loading="lazy" src="/images/noimg.png" alt="food_item_pic">
+                                    <img class="menu__card__img" loading="lazy" src="/images/upload.png" alt="food_item_pic">
                                     <div class="menu__card__det">
                                         <h3 class="menu__card__head goldn">${el.name}</h3>
                                         <p class="menu__card__price goldn">${el.currency} ${el.price}</p>
@@ -587,6 +587,7 @@ prev.addEventListener("click", async () => {
         })
     }
     else {
+        document.body.style.backgroundColor = "rgb(0, 26, 0)"
         return;
     }
 })();

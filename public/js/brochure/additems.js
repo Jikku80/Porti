@@ -306,6 +306,7 @@
         })
     }
     else {
+        document.body.style.backgroundColor = "rgb(0, 26, 0)"
         return;
     }
 })();
@@ -1024,7 +1025,7 @@ else {
                             subItems.innerHTML +=
                                 `
                             <div class="brochure__card">
-                                <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                <img class="brochure__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                 <div class="catalouge__card__det">
                                     <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                     <div class="grp__btn">
@@ -1111,7 +1112,7 @@ next.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                             <div class="brochure__card">
-                                <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                <img class="brochure__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                 <div class="catalouge__card__det">
                                     <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                     <div class="grp__btn">
@@ -1196,7 +1197,7 @@ prev.addEventListener("click", async () => {
                             subItems.innerHTML +=
                                 `
                                     <div class="brochure__card">
-                                        <img class="brochure__card__img" loading="lazy" src="/images/noimg.png" alt="catalouge__item__img">
+                                        <img class="brochure__card__img" loading="lazy" src="/images/upload.png" alt="catalouge__item__img">
                                         <div class="catalouge__card__det">
                                             <h3 class="catalouge__card__head goldn">${el.name}</h3>
                                             <div class="grp__btn">

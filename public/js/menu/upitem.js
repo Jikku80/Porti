@@ -33,7 +33,7 @@ async function getOneItem() {
                     else {
                         menuCard.innerHTML =
                             `
-                                <img class="menu__card__img" src="/images/noimg.png" alt="item__image">
+                                <img class="menu__card__img" src="/images/upload.png" alt="item__image">
                                 <div class="menu__card__det">
                                     <h3 class="menu__card__head goldn">${item.name}</h3>
                                     <p class="menu__card__price goldn">${item.currency} ${item.price}</p>
@@ -200,6 +200,6 @@ window.addEventListener("load", async () => {
 
     }
     else {
-        console.log("Hola from Porti")
+        document.body.style.backgroundColor = "rgb(0, 26, 0)";
     }
 })();

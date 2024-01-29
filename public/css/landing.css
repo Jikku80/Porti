@@ -1,0 +1,512 @@
+body{
+    background-color: white;
+    font-size: 16px;
+}
+
+.landing__navbar{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    z-index: 1;
+}
+
+.landing__navbar__firsthalf{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40vw;
+}
+
+.landing__navbar__sechalf{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30vw;
+}
+
+.navbar__logo{
+    font-size: 18px;
+    font-variant: small-caps;
+    font-weight: bolder;
+}
+
+.fnt{
+    font-size: 15px !important;
+}
+
+.nav__head__content{
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    align-items: center;
+}
+
+.navhead{
+    cursor: pointer;
+}
+
+.navhead:hover{
+    border-bottom: 2px solid white;
+}
+
+.arrowhead{
+    margin-left: 10px;
+}
+
+.mini__nav{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    top: 7vh;
+    padding: 1%;
+    width: fit-content;
+    z-index: 1;
+}
+
+.mini__nav ul{
+    margin: 0;
+    padding: 0;
+}
+
+.mini__nav ul li {
+    padding: 2%;
+    list-style-type: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.mini__nav ul li p{
+    font-weight: 100;
+}
+
+.mini__nav ul li:hover{
+    border-bottom: 2px solid white;
+}
+
+.service__nav__sec{
+    left: 11vw;
+}
+
+.about__nav__sec{
+    left: 20vw
+}
+
+.reach__nav__sec{
+    left: 30vw;
+}
+
+.landing__video {
+    width: 100%;
+    height: 50%;
+    filter: brightness(40%);
+}
+
+.navbar__start{
+    background-color: white;
+    color: black;
+    border-radius: 8rem;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.landing__intro{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro__head{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.landing__intro__head h1{
+    font-size: 60px ;
+}
+
+.landing__intro__head p{
+    font-size: 20px;
+}
+
+.lets__start__btn{
+    margin-top: 10%;
+    padding: 2%;
+    padding-left: 15%;
+    padding-right: 15%;
+    border: 2px solid white;
+    width: fit-content;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lets__start__btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.landing__howcansec{
+    padding: 6%;
+    color: rgb(68, 68, 68);
+}
+
+.headlogo{
+    color: #378A37;
+    font-variant: small-caps;
+}
+
+.landing__iwantto__sec{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.grn__card{
+    width: 45%;
+    background-color: #EFF0EF;
+    border-radius: 1rem;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+
+.learnmore__sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.learnmore__btn{
+    color: #378A37;
+    width: 60%;
+    margin-top: 6%;
+    padding-bottom: 2%;
+    border-bottom: 2px solid #378A37;
+    cursor: pointer;
+    text-align: left;
+}
+
+.rightarrow{
+    margin-right: 10px;
+}
+
+.iwanto__inner{
+    padding: 4%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.iwanto__inner__first, .iwanto__inner__sec{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.onlineimg{
+    width: 15vw;
+    height: 25vh;
+    filter: grayscale(60%);
+}
+
+.invilandimg{
+    border-radius: 1rem;
+    filter: grayscale(60%);
+}
+
+.shape__sec{
+    display: flex;
+    width: 100%;
+    padding: 4%;
+}
+
+.circle{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 20rem;
+    background-color: #CAE0CA;
+}
+
+.rec__sec{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    align-items: left;
+}
+
+.long__rec{
+    width: 8vw;
+    height: 2vh;
+    margin: 2%;
+    border-radius: 1rem;
+    background-color: #d8d8d8;
+}
+
+.short__rec{
+    width: 40%;
+    height: 2vh;
+    border-radius: 1rem;
+    background-color: #d8d8d8;
+}
+
+.land__taketo__mid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landport{
+    margin-top: 4%;
+    width: 30vw;
+    height: 37vh;
+}
+
+.landing__ripoff{
+    color: rgb(68, 68, 68);
+    text-align: center;
+    padding: 4%;
+    background-color: #ebebeb;
+}
+
+.rip{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.headp{
+    font-size: 25px;
+}
+
+.fly{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.start_mid_sec{
+    width: 35%;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.startarrow{
+    font-size: 20px;
+}
+
+.landing__effort{
+    color: rgb(68, 68, 68);
+    padding: 6%;
+}
+
+.hover__card__sec{
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    justify-content: space-between;
+}
+
+.hover__card__left{
+    width: 30%;
+}
+
+.hover__card__left h2{
+    cursor: pointer;
+    width: fit-content;
+}
+
+.hover__card__left h2:hover{
+    color: #378A37;
+}
+
+.hover__card__right{
+    height: 70%;
+}
+
+.hoverimg{
+    width: 60vw;
+    border-radius: 1rem;
+    height: 70vh;
+}
+
+.landing__stats__sec, .landing__vporti__created{
+    padding: 6%;
+    color: rgb(68, 68, 68);
+}
+
+.stats__img__sec{
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats_img{
+    width: 50%;
+    height: fit-content;
+    filter: grayscale(100%);
+}
+
+.vporti__created__inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vporti__created__inner__left p{
+    width: 80%;
+}
+
+.vcimg{
+    width: 50%;
+    height: fit-content;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.landing__slider__sec{
+    color: rgb(68, 68, 68);
+    text-align: left;
+    padding-top: 4%;
+    margin-bottom: 25%;
+}
+
+.landing__slider__sec h1{
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 6%;
+}
+
+.landing__slider__sec p{
+    padding-left: 6%;
+}
+
+.slider__right, .slider__left{
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.slider__left{
+    position: absolute;
+    right: 0;
+}
+
+.overlay__container{
+    position: relative;
+    animation: slider 60s 2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.overlay__containerSec{
+    position: relative;
+    animation: sliderSec 60s 2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.377);
+}
+
+.overlay__details{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay__container:hover, .overlay:hover{
+    opacity: 1;
+}
+
+.landing__btn{
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    padding: 1%;
+    padding-left: 6%;
+    padding-right: 6%;
+    border-radius: 1rem;
+}
+
+.landing__btn:hover{
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+}
+
+.slider__img{
+    display: block;
+    width: 40vw;
+    height: 40vh;
+    margin: 10px;
+}
+
+.landing__footer{
+    background-color: #2c2c2c;
+}
+
+.grn{
+    color: rgb(54, 219, 54);
+}
+
+.ilogo{
+    font-variant: normal;
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+
+@keyframes slider{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: 225vw;
+    }
+}
+
+@keyframes sliderSec{
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 270vw;
+    }
+}

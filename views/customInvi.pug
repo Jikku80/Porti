@@ -1,0 +1,26 @@
+extends base
+
+block content 
+    h1.loader
+        .bink
+            img.porti__off__img(src="/images/smalport.png", alt="porti__img")
+            span.res vPor
+            span.grn t
+            span.nocaps.res i
+    if (!user)
+        .confirm__pg
+            h1 Please Sign In To Your Account !
+            a.limebtn(href="/account/login") Sign In
+    else
+        .crop.csibtn(draggable="true") Move
+            //- .crop-line.crop-top-line 
+            //- .crop-line.crop-right-line 
+            //- .crop-line.crop-bottom-line 
+            //- .crop-line.crop-left-line 
+            //- .crop-corner.crop-top-left-corner 
+            //- .crop-corner.crop-top-right-corner 
+            .crop-corner.crop-bottom-right-corner 
+            //- .crop-corner.crop-bottom-left-corner
+    
+    script(src="/js/alert.js") 
+    script(src="/js/customInvi.js") 

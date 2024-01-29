@@ -333,9 +333,6 @@ openfootertweak.addEventListener("click", () => {
     });
 
     footerpadding.addEventListener("change", () => {
-        // yourorder.forEach(item => {
-        //     item.style.padding = `${footerpadding.value}px`;
-        // })
         footersec.style.paddingBottom = footerpadding.value + "px";
         upfooterpadding.innerText = footerpadding.value;
     })
@@ -580,7 +577,7 @@ openfootertweak.addEventListener("click", () => {
         if (orderflex.value == "column"){
             ordersec.style.marginLeft = "auto";
             ordersec.style.marginRight = "0";
-            ordersec.style.alignItems = "flex-end"
+            ordersec.style.alignItems = "flex-end";
         }
     })
 

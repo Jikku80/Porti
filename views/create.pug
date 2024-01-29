@@ -31,6 +31,10 @@ block content
                     .freeSec.whitebtn.invitebtn#freeInviBtn Unlocked
                     .paidSec.whitebtn.invitebtn#lockedInviBtn Locked
                 .layout__main#freeInviSec
+                    .unl.invi_layouts
+                        a.un_layout_log(href="/layouts/custominvi") 
+                            img(src=`/images/custom.jpg`, loading="lazy", alt="custom")
+                            p.portDet Custom Layout
                     each item in theme
                         if (item.themeCategory === "Invitation" && item.themeType === 'Free' || item.validInviUser.includes(user.id))
                             .unl.invi__layouts(id=`${item.themeId}`)

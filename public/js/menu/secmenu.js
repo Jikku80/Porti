@@ -139,7 +139,7 @@ window.addEventListener("load", () => {
                                         `
                                             <img class="point cancelitembtn" title="go back" src="/images/cancel.png" loading="lazy" alt="cancel__btn" />
                                             <div class="menu_sec_card">
-                                                <img class="menu_sec_card_img" src="/images/noimg.png" alt="menu__item__image">
+                                                <img class="menu_sec_card_img" src="/images/upload.png" alt="menu__item__image">
                                                 <div class="menu_sec_card_det">
                                                     <div id="${el._id}" class="like__dislike">
                                                     </div>
@@ -171,7 +171,7 @@ window.addEventListener("load", () => {
                                         `
                                         <img class="point cancelitembtn" title="go back" src="/images/cancel.png" loading="lazy" alt="cancel__btn" />
                                         <div class="menu_sec_card">
-                                            <img class="menu_sec_card_img" src="/images/noimg.png" alt="menu__item__image">
+                                            <img class="menu_sec_card_img" src="/images/upload.png" alt="menu__item__image">
                                             <div class="menu_sec_card_det">
                                                 <div id="${el._id}" class="like__dislike">
                                                 </div>
@@ -204,7 +204,7 @@ window.addEventListener("load", () => {
                                         `
                                             <img class="point cancelitembtn" title="go back" src="/images/cancel.png" loading="lazy" alt="cancel__btn" />
                                             <div class="menu_sec_card">
-                                                <img class="menu_sec_card_img" src="/images/noimg.png" alt="menu__item__image">
+                                                <img class="menu_sec_card_img" src="/images/upload.png" alt="menu__item__image">
                                                 <div class="menu_sec_card_det">
                                                     <div id="${el._id}" class="like__dislike">
                                                     </div>
@@ -235,7 +235,7 @@ window.addEventListener("load", () => {
                                         `
                                         <img class="point cancelitembtn" title="go back" src="/images/cancel.png" loading="lazy" alt="cancel__btn" />
                                         <div class="menu_sec_card">
-                                            <img class="menu_sec_card_img" src="/images/noimg.png" alt="menu__item__image">
+                                            <img class="menu_sec_card_img" src="/images/upload.png" alt="menu__item__image">
                                             <div class="menu_sec_card_det">
                                                 <div id="${el._id}" class="like__dislike">
                                                 </div>
@@ -587,7 +587,7 @@ function msgSwap(val, itemname, itemimg, quantity, price, afterDiscPrice) {
                 <div class="cart__card">
                     <img class="cancelItemresOrder point" src="/images/cancel.png" alt="cancel" />
                     <div class="cart__card__item">
-                        <img src="/images/noimg.png" class="cart__card__img"/>
+                        <img src="/images/upload.png" class="cart__card__img"/>
                         <p class="cart__product__name">${item.name}</p>
                         <p class="hidden cart__product__price">${item.price}</p>
                     </div>
@@ -627,7 +627,7 @@ function showOrderItems() {
                 <div class="cart__card">
                     <img class="cancelItemresOrder point" src="/images/cancel.png" alt="cancel" />
                     <div class="cart__card__item">
-                        <img src="/images/noimg.png" class="cart__card__img"/>
+                        <img src="/images/upload.png" class="cart__card__img"/>
                         <p class="cart__product__name">${item.name}</p>
                         <p class="hidden cart__product__price">${item.price}</p>
                     </div>
