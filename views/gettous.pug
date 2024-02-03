@@ -1,0 +1,68 @@
+extends base
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include _menubar
+    .getintouch__page
+        h1.subheadlogo Get in touch with
+            img.subheadlogoimg(src="/images/sublogo.png")
+        .getintouch__message
+            if (!user)
+                .please__login__banner
+                    h2 Please Login to Message Us 
+                    a(href="/account/login").getintouch__login Login | Sign Up
+                #msgname.hidden 
+                #msgemail.hidden 
+                #siteType.hidden 
+                #msgmessage.hidden 
+                .send__msg.hidden
+            else
+                form.getintouch__form
+                    .form__row
+                        .form__column
+                            label(for='name') Name
+                            input#msgname.getintouch__input(type='text', name="name", value=user.name, disabled,  required)
+                        .form__column
+                            label(for='email') Email address
+                            input#msgemail.getintouch__input(type='email', name="email", value=user.email, disabled, required)
+                    .form__column
+                        label(for='siteType') Query Type 
+                        select.form__select.getintouch__select(type='select', name="siteType", id="siteType")
+                                option(value="query") Query
+                                option(value="review") Review
+                                option(value="bug") Bug report 
+                                option(value="payment") Payment Problem 
+                                option(value="theme") Theme Problem
+                                option(value="unlock") Theme Unlock Problem 
+                                option(value="Other") Other
+                    .form__column
+                        label(for='message') Message 
+                        textarea#msgmessage.getintouch__txtarea(type="text", name="message", placeholder="vPorti is this and that...", rows="5", cols="40", required)
+                    .form__button__sec
+                        button.send__msg.getintouch__btn Send 
+            .getintouch__other
+                h2 Contact Us
+                p Please feel free to rate, give vPorti your valuable feedback. Your feedbacks will help vPorti get better ;)
+                .getintouch__Detail 
+                    h3
+                        i.fa-solid.fa-phone  
+                        span  9813719909
+                    h3 
+                        i.fa-solid.fa-envelope 
+                        span  lakheydetech@gmail.com
+                .getintouch__logo 
+                    h3.getintouch__icon 
+                        i.fa-brands.fa-google
+                    h3.getintouch__icon 
+                        i.fa-brands.fa-x-twitter 
+                    h3.getintouch__icon
+                        i.fa-brands.fa-facebook 
+                    h3.getintouch__icon
+                        i.fa-brands.fa-instagram
+
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js")
+    script(src="/js/getintouch.js") 

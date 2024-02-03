@@ -1,0 +1,32 @@
+extends base
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include _menubar
+    .aboutus__page
+        h1 A Platform Built For...
+        .aboutus__divider
+            .aboutus__cons 
+                h2 Hidden Charges 
+                h2 Sponsored Content 
+                h2 Pop ups and Banners 
+                h2 Clickbait 
+                h2 Pageviews
+                .about__img__cont__cons
+                    img.about__img(src="/images/hook.png", alt="hook__img")
+            .aboutus__pros 
+                h2 People 
+                h2 Quality 
+                h2 Growth
+                h2 Start ups || Business
+                h2 Restaurants 
+                .about__img__cont__pros
+                    img.about__img__pros(src="/images/power.png", alt="power.jpg")
+    .landing__footer 
+        include _footer
+
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js")

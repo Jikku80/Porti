@@ -24,6 +24,11 @@ router.get('/invitation/:user/:id', inlayoutController.inviFirst);
 
 router.post('/send/msg', viewsController.newMsg);
 router.get('/', viewsController.homePage);
+router.get('/vporti/aboutus', viewsController.getAboutPage);
+router.get('/vporti/guidelines', viewsController.getGuidePage);
+router.get('/vporti/courses', viewsController.getCoursePage);
+router.get('/vporti/getintouch', viewsController.getContactPage);
+
 router.post('/scan/qr', viewsController.qrCodeGen);
 
 router.post('/account/login', authController.login);

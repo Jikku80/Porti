@@ -58,6 +58,34 @@ exports.homePage = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.getAboutPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('aboutus', {
+        title: 'About Us'
+    })
+})
+
+exports.getGuidePage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('guide', {
+        title: 'GuideLines'
+    })
+})
+
+exports.getCoursePage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('course', {
+        title: 'Course'
+    })
+})
+
+exports.getContactPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('gettous', {
+        title: 'Message Us'
+    })
+})
+
 exports.getOverview = catchAsync(async (req, res, next) => {
 
     res.status(200).render('overview', {

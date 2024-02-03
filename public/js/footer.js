@@ -24,4 +24,16 @@
     cancelpriv.addEventListener("click", () => {
         privsec.classList.add('hidden');
     })
+
+    let termsandcond = document.getElementById("termsandcond");
+    let tac = document.querySelector(".termsandconditions");
+    let termcancel = document.getElementById("termCancel");
+
+    termsandcond.addEventListener("click", () => {
+        tac.classList.remove("hidden");
+    })
+
+    termcancel.addEventListener("click", () => {
+        tac.classList.add('hidden');
+    })
 })();

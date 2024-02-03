@@ -3,77 +3,28 @@ extends base
 block content 
     h1.loader
         .bink
-            img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-            span.td vPor
-            span.grn t
-            span.ilogo i
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
     
     .landing__page 
-        video.landing__video(autoplay loop muted) 
-            source(src="/images/cov.mp4" type="video/mp4")
+        .video__container
+            video.landing__video(autoplay loop muted) 
+                source(src="/images/cov.mp4" type="video/mp4")
         .landing__intro 
             .landing__intro__head
-                h1.intro__head Grow Your Business
-                h1.intro__head Through Digital
+                h1.intro__head Take Your Business
+                h1.intro__head Online, It's Free
                 br
                 p Create a user-friendly and visually appealing webpage that showcases your products or services which is mobile-responsive.
             .lets__start__btn Let's Start
-        .landing__navbar 
-            .landing__navbar__firsthalf 
-                .navbar__logo
-                    img.porti__of__img(src="/images/smalport.png", alt="porti__img")
-                    span.td vPor
-                    span.grn t
-                    span.nocaps.fnt i
-                .nav__head__content
-                    .navbar__services.navhead Create
-                        i.fa-solid.fa-angle-down.arrowhead.servicearrow
-                    .service__nav__sec.mini__nav.hidden
-                        ul 
-                            li Portfolio 
-                                br
-                                p Create Portfolio Webpage using Portfolio Builder Feature
-                            li Invitation
-                                br
-                                p Create Invitation Webpage Card using Invitation Webpage Feature
-                            li Catalog
-                                br
-                                p Create Catalog Webpage using Catalog Builder Feature, Showcase and sell your product digitally, Order product features for your customers
-                            li Food Menu
-                                br
-                                p Create Food Menu Webpage using Menu Builder Feature, Scan and load your restaurant Menu digitally, order, reserve, rating features for your customers
-                            li Brochure
-                                br
-                                p Create Brochure Webpage using Brochure Builder Feature, Sell your service digitally, booking options for your customers
-                    .navbar__about.navhead About Us
-                        i.fa-solid.fa-angle-down.arrowhead.aboutarrow
-                    .about__nav__sec.mini__nav.hidden
-                        ul
-                            li About vPorti 
-                                br
-                                p Learn what is possible with vPorti
-                            li Guide 
-                                br
-                                p Learn more about how to use our features
-                    .navbar__reach.navhead Reach Out
-                        i.fa-solid.fa-angle-down.arrowhead.reacharrow
-                    .reach__nav__sec.mini__nav.hidden 
-                        ul 
-                            li Message Us 
-                                br
-                                p Message Us directly
-            .landing__navbar__sechalf
-                .nav__head__content 
-                    .navbar__login.navhead Login 
-                    .navbar__start.navhead Get Started
+        include _menubar
         .landing__howcansec 
-            h1.howcanhead How Can 
-                span.headlogo vPorti 
+            h1.howcanhead.subheadlogo How Can 
+                img.subheadlogoimg(src="/images/sublogo.png")
                 span Help You?
             .landing__iwantto__sec 
                 .landing__sell__online.grn__card 
                     .iwanto__card 
-                        h2.iwantohead I want to sell Online 
+                        h2.iwantohead I want a Online Store
                         p vPorti simplifies the task of setting up an online store, making it easy for you to showcase and sell your products effortlessly 
                         .learnmore__sec 
                             .learnmore__btn 
@@ -138,62 +89,52 @@ block content
                         .land__taketo__mid
                             img.landport.invilandimg(src="/images/landinvi.jpg", alt="portsecimg")
         .landing__ripoff 
-            h1.rip Creating a website can be such a rip off
-            h1.rip create 
-                span.headlogo vPorti
+            h1.rip Creating a website can be a rip off, 
+            h1.rip.subheadlogo create 
+                img.subheadlogoimg(src="/images/sublogo.png")
             .learnmore__sec 
                 .learnmore__btn.start_mid_sec 
                     p Start Creating 
                     i.startarrow.fa-solid.fa-arrow-right
         .landing__effort 
-            h1 Clicks away with 
-                span.headlogo vPorti
-            p -- Customize, create and manage your portfolio, online store and invitation with ease.
+            h1.subheadlogo Clicks away with 
+                img.subheadlogoimg(src="/images/sublogo.png")
+            p Customize, create and manage your portfolio, online store and invitation with ease.
             .hover__card__sec
                 .hover__card__left 
-                    h2.landtoport Portfolio 
+                    h2.landtoport.mrleft Portfolio 
                         i.portarrow.fa-solid.fa-arrow-right
-                    h2.landtoinvi Invitation 
+                    h2.landtoinvi.mrleft Invitation 
                         i.inviarrow.fa-solid.fa-arrow-right.hidden
-                    h2.landtomenu Food Menu 
+                    h2.landtomenu.mrleft Foodmenu 
                         i.menuarrow.fa-solid.fa-arrow-right.hidden
-                    h2.landtocatalog Catalog 
+                    h2.landtocatalog.mrleft Catalog 
                         i.catalogarrow.fa-solid.fa-arrow-right.hidden
-                    h2.landtobrochure Brochure 
+                    h2.landtobrochure.mrleft Brochure 
                         i.broarrow.fa-solid.fa-arrow-right.hidden
                 .hover__card__right
                     img.hoverimg(src="/images/layout6.png" alt="portfolio_layout")
         .landing__ripoff.unsure 
-            h1.fly Unsure about your business? will it fly or not?
-            p.fly.headp Why increase expenses when you can 
-            p.fly.headp try online store for 
+            h1.fly Lacking capital to go online? 
+            p.fly.headp Create online store for 
                 span.headlogo Free
-            h1.fly fly with 
-                span.headlogo vPorti
+            h1.fly.subheadlogo fly with 
+                img.subheadlogoimg(src="/images/sublogo.png")
             .learnmore__sec 
-                .learnmore__btn.start_mid_sec 
+                a.landinganc(href="/vporti/guidelines").learnmore__btn.start_mid_sec 
                     p Learn More 
                     i.startarrow.fa-solid.fa-arrow-right
         .landing__stats__sec 
-            h1 Business Statistics in 
-                span.headlogo vPorti 
-            p -- All your business statistics in one place, orders made, total amount, return, reservation and many more.
+            h1.subheadlogo Business Statistics in 
+                img.subheadlogoimg(src="/images/sublogo.png")
+            p All your business statistics in one place, orders made, total amount, return, reservation and many more.
             .stats__img__sec 
                 img.stats_img(src="/images/menu/stats.png")
                 img.stats_img(src="/images/menu/chart.png")
-        .landing__vporti__created 
-            h1 Webpage created with 
-                span.headlogo vPorti 
-            .vporti__created__inner 
-                .vporti__created__inner__left
-                    p With so many pre built themes and custom theme feature you can easily create your own webpage
-                    p Add your own privacy polices and conditions 
-                    p Tweak it any way you want 
-                img.vcimg(src="/images/syar.png", alt="", srcset="")
         .landing__slider__sec
-            h1 To your destination with 
-                span.headlogo vPorti
-            p -- Take yourself to your desired destination
+            .landing__center
+                h1.subheadlogo To your destination with 
+                    img.subheadlogoimg(src="/images/sublogo.png")
             p Select a theme and start 
             .slider__sec 
                 .slider__right 
@@ -222,6 +163,15 @@ block content
                                         span= theme.themeCategory
                                         span  layout for now
                                     .landing__btn Start with this
+        .landing__vporti__created 
+            h1.subheadlogo Webpage created with 
+                img.subheadlogoimg(src="/images/sublogo.png") 
+            .vporti__created__inner 
+                .vporti__created__inner__left
+                    p With so many pre built themes and custom theme feature you can easily create your own webpage
+                    p Add your own privacy polices and conditions 
+                    p Tweak it any way you want 
+                img.vcimg(src="/images/syar.png", alt="", srcset="")
         .landing__footer 
             include _footer
     script(src="/js/alert.js")

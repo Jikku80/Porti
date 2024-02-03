@@ -1,6 +1,16 @@
 body{
     background-color: white;
     font-size: 16px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+p{
+    font-family: Pathway Extreme, sans-serif;
 }
 
 .landing__navbar{
@@ -12,6 +22,8 @@ body{
     justify-content: space-between;
     padding: 1%;
     z-index: 1;
+    font-family: Pathway Extreme, sans-serif;
+    font-weight: 600;
 }
 
 .landing__navbar__firsthalf{
@@ -34,8 +46,17 @@ body{
     font-weight: bolder;
 }
 
+.landinganc{
+    color: white;
+    text-decoration: none;
+}
+
 .fnt{
     font-size: 15px !important;
+}
+
+.landing__ham{
+    display: none;
 }
 
 .nav__head__content{
@@ -65,7 +86,7 @@ body{
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(5px);
     position: fixed;
-    top: 7vh;
+    top: 7.5vh;
     padding: 1%;
     width: fit-content;
     z-index: 1;
@@ -152,6 +173,7 @@ body{
     width: fit-content;
     font-weight: bold;
     cursor: pointer;
+    font-family: Pathway Extreme, sans-serif;
 }
 
 .lets__start__btn:hover{
@@ -164,9 +186,16 @@ body{
     color: rgb(68, 68, 68);
 }
 
+.subheadlogo{
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+}
+
 .headlogo{
     color: #378A37;
     font-variant: small-caps;
+    font-weight: 900;
 }
 
 .landing__iwantto__sec{
@@ -186,6 +215,7 @@ body{
 
 .learnmore__sec{
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
@@ -198,6 +228,7 @@ body{
     border-bottom: 2px solid #378A37;
     cursor: pointer;
     text-align: left;
+    text-decoration: none;
 }
 
 .rightarrow{
@@ -277,7 +308,10 @@ body{
 
 .landing__ripoff{
     color: rgb(68, 68, 68);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 4%;
     background-color: #ebebeb;
 }
@@ -294,6 +328,12 @@ body{
 .fly{
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.unsure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .start_mid_sec{
@@ -323,6 +363,7 @@ body{
 
 .hover__card__left{
     width: 30%;
+    font-family: Pathway Extreme, sans-serif;
 }
 
 .hover__card__left h2{
@@ -377,19 +418,21 @@ body{
 
 .landing__slider__sec{
     color: rgb(68, 68, 68);
-    text-align: left;
+    text-align: center;
     padding-top: 4%;
-    margin-bottom: 25%;
+    padding-bottom: 25%;
+    background-color: #ebebeb;
+}
+
+.landing__center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .landing__slider__sec h1{
     margin-bottom: 0;
     margin-top: 0;
-    padding-left: 6%;
-}
-
-.landing__slider__sec p{
-    padding-left: 6%;
 }
 
 .slider__right, .slider__left{
@@ -481,6 +524,9 @@ body{
 
 .landing__footer{
     background-color: #2c2c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grn{
@@ -491,7 +537,720 @@ body{
     font-variant: normal;
     font-size: 2rem;
     font-weight: bolder;
-  }
+}
+
+.ham__starter{
+    display: none;
+}
+
+.first__nav__head{
+    display: none;
+}
+
+.guideline__page{
+    color: rgb(68, 68, 68);
+    background-color: #f7f7f7;
+    margin-top: 5vh;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    font-family: Pathway Extreme, sans-serif;
+}
+
+.guideline__inner__sec, .guideline__inner__first{
+    display: flex;
+}
+
+.stick{
+    width: 3px;
+    height: 63vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    left: 6.2%;
+    background-color: #c2dbc2;
+}
+
+.invistick{
+    width: 3px;
+    height: 63vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    left: 6%;
+}
+
+.round{
+    background-color: #759675;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 20rem;
+}
+
+.guideline__mid__sec{
+    width: 60vw;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.guideline__mid__sec h2{
+    font-size: 20px;
+    margin-bottom: 0%;
+}
+
+.guideline__mid__sec p{
+    font-size: 14px;
+    margin: 0%;
+}
+
+.guide__cont{
+    cursor: pointer;
+}
+
+.guideline__img{
+    width: 30vw;
+}
+
+.guide__process{
+    position: absolute;
+    left: 60vw;
+    bottom: 4vh;
+    width: 50vw;
+}
+
+.guideline__card__sec{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20vh;
+}
+
+.guideline__card{
+    display: flex;
+    flex-direction: column;
+    background-color:#ebebeb;
+    padding: 1%;
+    border: 1rem;
+    margin: 2%;
+}
+
+.gray{
+    color: gray;
+}
+
+.guideline__card img{
+    width: 20vw;
+    height: 30vh;
+}
+
+.halftri{
+    clip-path: polygon(100% 0, 0 100%, 0 0);
+}
+
+.ophalftri{
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+.circ{
+    clip-path: circle(33% at 50% 50%);
+}
+
+.guideline__card__btn{
+    color: #759675;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #759675;
+    text-decoration: none;
+}
+
+.guideline__card__btn:hover{
+    color: #378A37;
+    cursor: pointer;
+    border-bottom: 2px solid #378A37;
+}
+
+.guideline__footer{
+    background-color: #2c2c2c;
+    color: gray;
+}
+
+.getintouch__page{
+    padding: 3%;
+    color: rgb(68, 68, 68);
+    margin-top: 2%;
+    font-family: Pathway Extreme, sans-serif;
+}
+
+.getintouch__message{
+    display: flex;
+    justify-content: space-between;
+}
+
+.getintouch__form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form__column{
+    display: flex;
+    flex-direction: column;
+    margin: 4%;
+}
+
+.getintouch__input, .getintouch__select{
+    width: 20vw;
+    margin-top: 4%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid gray;
+}
+
+.getintouch__select{
+    background-color: white;
+    cursor: pointer;
+}
+
+.getintouch__txtarea{
+    padding: 2%;
+    margin-top: 4%;
+    background-color: #f7f7f7ab;
+    border: 2px solid rgba(128, 128, 128, 0.74);
+    resize: none;
+}
+
+.form__button__sec{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.getintouch__btn{
+    width: 15vw;
+    padding: 2%;
+    background-color: #378A37;
+    border: 1px solid #378A37;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.getintouch__other{
+    border-left: 2px solid gray;
+    width: 30%;
+    padding-left: 10vw;
+}
+
+.getintouch__Detail{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.getintouch__logo{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+}
+
+.getintouch__icon{
+    cursor: pointer;
+}
+
+.please__login__banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.getintouch__login{
+    width: fit-content;
+    height: fit-content;
+    background-color: #378A37;
+    text-align: center;
+    color: white;
+    padding: 2%;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer__icon:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.aboutus__page, .course__page{
+    text-align: center;
+    margin-top: 2%;
+    padding: 4%;
+    color: rgb(68, 68, 68);
+}
+
+.aboutus__page h1{
+    font-variant: small-caps;
+}
+
+.aboutus__divider{
+    display: flex;
+}
+
+.aboutus__cons{
+    width: 45%;
+    text-align: right;
+    padding-right: 5%;
+}
+
+.aboutus__cons h2{
+    text-decoration-line: line-through;
+    text-decoration-color: gray;
+    text-decoration-thickness: 13%; 
+    color: gray;
+    font-family: sans-serif;
+    margin-bottom: 4.5%;
+}
+
+.aboutus__pros h2{
+    color: #378A37;
+    font-family: Pathway Extreme, sans-serif;
+}
+
+.aboutus__pros{
+    border-left: 2px solid gray;
+    padding-left: 5%;
+    text-align: left;
+}
+
+.about__img__cont__cons{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.about__img{
+    width: 20vw;
+    height: 25vh;
+    filter: grayscale(100%);
+}
+
+.about__img__pros{
+    width: 18vw;
+    height: 25vh;
+}
+
+@media (min-width: 601px) and (max-width: 982px){
+    .landing__ham{
+        display: none;
+    }
+
+    .ham__starter{
+        display: none;
+    }
+
+    .video__container{
+        overflow: hidden;
+    }
+    .landing__video{
+        width: 1000px;
+        height: auto;
+    }
+
+    .landing__intro{
+        top: 12%;
+    }
+
+    .landing__intro__head h1{
+        font-size: 30px;
+    }
+    
+    .landing__intro__head p{
+        font-size: 20px;
+    }
+
+    .landing__navbar__firsthalf{
+        width: 60%;
+    }
+
+    .landing__navbar__sechalf{
+        width: 40%;
+    }
+
+    .mini__nav{
+        top: 5%;
+    }
+
+    .service__nav__sec{
+        left: 11vw;
+    }
+    
+    .about__nav__sec{
+        left: 22vw
+    }
+    
+    .reach__nav__sec{
+        left: 45vw;
+    }
+    
+
+    .onlineimg{
+        height: 10vh;
+    }
+
+    .landport{
+        height: 16vh;
+    }
+
+    .hoverimg{
+        height: 25vh;
+    }
+
+    .slider__img{
+        height: 15vh;
+    }
+
+    .first__nav__head{
+        display: none;
+    }
+
+    .guideline__inner__sec{
+        flex-direction: column;
+    }
+
+    .stick, .invistick, .round{
+        display: none;
+    }
+
+
+    .guide__process{
+        bottom: 20%;
+    }
+
+    .guideline__card{
+        padding: 4%;
+    }
+
+    .guideline__card img{
+        width: 80vw;
+    }
+
+    .getintouch__page, .aboutus__page{
+        margin-top: 4vh;
+    }
+
+    .getintouch__message{
+        flex-direction: column;
+    }
+
+    .getintouch__form{
+        width: 100%;
+    }
+
+    .getintouch__input, .getintouch__select{
+        width: 25vw;
+    }
+
+    .getintouch__btn{
+        width: 30vw;
+    }
+
+    .getintouch__other{
+        width: 80%;
+        border-left: none;
+        margin-top: 10vh;
+    }
+
+    .getintouch__logo{
+        margin-top: 5%;
+    }
+    
+    .about__img__pros, .about__img{
+        height: 15vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .landing__page{
+        overflow-x: hidden;
+    }
+    .landing__page h1, .guideline__page h1, .getintouch__page h1, .aboutus__page h1{
+        font-size: 20px;
+    }
+
+    .landing__page h2, .aboutus__page h2{
+        font-size: 16px;
+    }
+
+    .video__container{
+        overflow: hidden;
+    }
+    .landing__video{
+        width: 800px;
+        height: auto;
+    }
+    .landing__intro{
+        top: 20%;
+    }
+
+    .landing__intro__head h1{
+        font-size: 25px;
+        width: 90vw;
+    }
+    
+    .landing__intro__head p{
+        font-size: 12px;
+    }
+
+    .nav__head__content{
+        display: none;
+    }
+
+    .ham__starter{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .close__ham{
+        font-size: 25px;
+    }
+
+    .subheadlogoimg{
+        width: 25vw;
+    }
+
+    .first__nav__head{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #2c2c2c;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .mini__nav{
+        position: static;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        background-color: #2c2c2c !important;
+    }
+
+    .mini__nav ul li{
+        margin: 5vh;
+        width: 100%;
+    }
+
+    .mini__nav ul li:hover{
+        border-bottom: none;
+    }
+    
+    
+    .landing__ham{
+        display: block;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .landing__navbar__sechalf{
+        width: 15%;
+        justify-content: center;
+    }
+
+    .grn__card{
+        width: 95%;
+        margin-bottom: 6%;
+    }
+
+    .onlineimg{
+        width: 30vw;
+        height: 15vh;
+    }
+
+    .long__rec{
+        width: 16vw;
+    }
+
+    .short__rec{
+        width: 50%;
+    }
+
+    .landport{
+        width: 70vw;
+        height: 23vh;
+    }
+
+    .start_mid_sec{
+        width: 70%;
+    }
+
+    .hover__card__sec{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hover__card__left{
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .portarrow{
+        display: none;
+    }
+
+    .mrleft{
+        margin-right: 6%;
+    }
+
+    .hoverimg{
+        width: 85vw;
+        height: auto;
+    }
+
+    .headp{
+        font-size: 15px;
+    }
+
+    .stats_img{
+        height: auto;
+    }
+
+    .vporti__created__inner{
+        flex-direction: column;
+    }
+
+    .vporti__created__inner__left p, .vcimg{
+        width: 100%;
+    }
+
+    .slider__img{
+        height: 10vh;
+    }
+
+    .landing__slider__sec{
+        padding-bottom: 30%;
+    }
+
+    .footer{
+        font-size: 12px;
+    }
+
+    .guideline__inner__sec{
+        flex-direction: column;
+    }
+
+    .guideline__mid__sec{
+        width: 100%;
+    }
+
+    .stick, .invistick, .round{
+        display: none;
+    }
+
+    .guideline__img__sec {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .guide__process{
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 60%;
+    }
+
+    .guideline__card{
+        padding: 5%;
+        margin: 6%;
+    }
+
+    .guideline__card img{
+        width: 80vw;
+    }
+
+    .getintouch__page, .aboutus__page{
+        margin-top: 10vh;
+    }
+
+    .getintouch__message{
+        flex-direction: column;
+    }
+
+    .getintouch__form{
+        width: 100%;
+    }
+
+    .getintouch__input, .getintouch__select{
+        width: 100%;
+    }
+
+    .getintouch__btn{
+        width: 30vw;
+    }
+
+    .getintouch__other{
+        width: 80%;
+        border-left: none;
+        margin-top: 10vh;
+    }
+
+    .about__img, .about__img__pros{
+        height: 15vh;
+    }
+}
+
+@media (max-height: 600px) {
+    .landing__navbar__sechalf{
+        width: 40%;
+    }
+    .landing__intro{
+        top: 20vw;
+    }
+
+    .onlineimg{
+        height: 20vh;
+    }
+
+    .landport{
+        height: 35vh;
+    }
+    .hoverimg{
+        height: 70vh;
+    }
+
+    .stats_img, .vcimg, .slider__img{
+        height: 50vh;
+    }
+
+    .guideline__card img{
+        height: 60%;
+    }
+}
 
 @keyframes slider{
     0%{

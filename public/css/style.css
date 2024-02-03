@@ -238,9 +238,6 @@ html{
 
 #termsandcond{
   cursor: pointer;
-  color: greenyellow;
-  font-weight: bold;
-  font-size: 12px;
 }
 
 #termsandcond:hover{
@@ -1276,11 +1273,14 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .footer{
   width: 83%;
   margin-top: 2vh;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 16px;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
   color:gray;
+  padding: 4%;
+  background-color: #2c2c2c;
+  font-family: Pathway Extreme, sans-serif;
 }
 
 .footer a{
@@ -1293,7 +1293,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 }
 
 .footer a:hover{
-  color: greenyellow;
+  color: white;
 }
 
 .footer__bod{
@@ -1307,7 +1307,7 @@ input::file-selector-button, ::-webkit-file-upload-button{
 .footer__row{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 50%;
 }
 
