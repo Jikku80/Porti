@@ -7,7 +7,9 @@ block content
     
     include _menubar
     .course__page.white__cont 
-        include _sidebarCourse 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
         .course__page__content
             h1 Getting Started
             h2 Login || SignUp 
@@ -24,7 +26,8 @@ block content
             p To change the theme of your page simply go to Layout from the  navbar and click on any layout you like and your theme will be updated.
             p To see the statitics of your business click on statitics from the navbar and you will see all the statics 
             p And activity from the navbar has all the purshaes, booking, reservation you have made with vporti.
-
-    include _footer
+    .landing__footer
+        include _footer
     script(src="/js/alert.js")
     script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

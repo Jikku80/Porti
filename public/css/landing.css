@@ -1116,6 +1116,10 @@ p{
     .about__img__pros, .about__img{
         height: 15vh;
     }
+
+    .course__sidebar{
+        top: 4.5vh;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1251,6 +1255,10 @@ p{
         scrollbar-width: none;
     }
 
+    .landtoport{
+        margin-top: 13.28px;
+    }
+
     .portarrow{
         display: none;
     }
@@ -1282,12 +1290,13 @@ p{
     }
 
     .slider__img{
-        height: 10vh;
+        width: 40vh;
+        height: 20vh;
         margin: 10px;
     }
 
     .landing__slider__sec{
-        padding-bottom: 33%;
+        padding-bottom: 55%;
     }
 
     .slider__right, .slider__left{
@@ -1352,9 +1361,10 @@ p{
     }
 
     .getintouch__other{
-        width: 80%;
+        width: 90%;
         border-left: none;
         margin-top: 10vh;
+        padding: 6%;
     }
 
     .please__login__banner{
@@ -1367,6 +1377,50 @@ p{
 
     .about__img, .about__img__pros{
         height: 15vh;
+    }
+
+    .course__sidebar{
+        top: 9.2vh;
+        width: 100%;
+        display: none;
+        padding: 2%;
+    }
+
+    .course__page__content{
+        margin-top: 6%;
+        width: 100%;
+        padding: 4%;
+    }
+
+    .course__page__content h1{
+        text-align: center;
+    }
+
+    .course__ham{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0e0e0e91;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 20rem;
+        position: fixed;
+        top: 10vh;
+        left: 2vw;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .course__head{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .closeCourseHam{
+        font-size: 25px;
+        cursor: pointer;
     }
 }
 
