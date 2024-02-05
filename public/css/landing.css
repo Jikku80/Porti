@@ -811,7 +811,15 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-top: 20vh;
 }
+
+.getintouch__logosec{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .getintouch__logo{
     width: 100%;
@@ -1100,6 +1108,10 @@ p{
     .getintouch__logo{
         margin-top: 5%;
     }
+
+    .getintouch__Detail{
+        margin-top: 10vw;
+    }
     
     .about__img__pros, .about__img{
         height: 15vh;
@@ -1343,6 +1355,14 @@ p{
         width: 80%;
         border-left: none;
         margin-top: 10vh;
+    }
+
+    .please__login__banner{
+        width: 100%;
+    }
+
+    .getintouch__Detail{
+        margin-top: 10vw;
     }
 
     .about__img, .about__img__pros{
