@@ -12,7 +12,7 @@
         navbarColorChanger();
 
         
-        if (screen.width > 601){
+        if (screen.width > 982){
             hamnavContent.style.display = "none"
         }
     })
@@ -124,6 +124,22 @@ function navbarColorChanger(){
         window.addEventListener("scroll", () => {
             let bod = document.body.getBoundingClientRect();
             if (bod.y < -408){
+                landingnavbar.style.backgroundColor = "#2c2c2c";
+                mininav.forEach(item => {
+                    item.style.backgroundColor = "#2c2c2c";
+                })
+            }else{
+                landingnavbar.style.backgroundColor = "transparent";
+                mininav.forEach(item => {
+                    item.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+                })
+            }
+        })
+    }
+    else if ((windowScreenSize > 601) && (windowScreenSize < 982)){
+        window.addEventListener("scroll", () => {
+            let bod = document.body.getBoundingClientRect();
+            if (bod.y < -518){
                 landingnavbar.style.backgroundColor = "#2c2c2c";
                 mininav.forEach(item => {
                     item.style.backgroundColor = "#2c2c2c";
