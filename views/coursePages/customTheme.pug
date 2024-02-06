@@ -1,0 +1,158 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Custom Theme
+            p With custom theme feature you can create your webpage your way.
+            p Clicking on view will open your webpage, cancel will take you back, reset will reset your webpage, delete will delete your custom webpage and update will update to any changes you will make.
+            .add__top__margin
+                h2#course__nav__detail Navbar
+                h3 Position Navbar 
+                p Navbar you can use position Navbar to set it to right, left, top and bottom side of the screen 
+                h3 Position Nav Content 
+                p Suppose you have set your nav bar to top and decreased the width of the navbar now you will be able to place your nav bar to right, left, center of the top position 
+                p Similarly you have set your navbar to left and decreased the height of the navbar now you will be able to place your navbar to top, center and bottom of the left position.
+                h3 Navbar visibility 
+                p You can remove the navbar completely with this option
+                h3 Use Ham Navbar 
+                p If you have removed the navbar you can use ham nav
+                h3 Height 
+                p This decreases the height of the navbar 
+                h3 Width 
+                p This will decrease the width of the navbar 
+                h3 Font size 
+                p Change the font size of navbar 
+                h3 Font family 
+                p Change the font style of the navbar 
+                h3 Background Color 
+                p This will change the background color of the navbar 
+                h3 Font Color 
+                p This changes the color of text
+            .add__top__margin
+                h2#course__nav__cov Cover Picture 
+                h3 Cover pictures 
+                p You can change the background picture of your webpage 
+                h3 Cover filter 
+                p This adds filter to the cover image 
+                ul 
+                    li Grayscale 
+                    li Blur 
+                    li Opacity 
+                    li Saturate 
+                    li Invert 
+                    li Contrast
+                p you can change the filter percentage accordingly to your preference.
+                h3 Cover Style 
+                p This will set the image to given shape type 
+                ul 
+                    li Triangle 
+                    li Parallel 
+                    li Star 
+                    li Asymmetric circle 
+                    li crack 
+                    li rohmbus
+                h3 Cover picture visibility 
+                p You can completely remove the cover image from your webpage with this 
+                h3 Height 
+                p To change the height of the cover image 
+                h3 Width 
+                p Change the width of the cover image 
+                h3 Position cover picture 
+                p You can position to right, left, center, top, bottom accordingly when you reduce the height or width of the image.
+            .add__top__margin
+                h2#course__nav__bod Body Section 
+                h3 Background Color 
+                p Change the background color of the body 
+                h3 Font Color 
+                p Change the Font Color of the body 
+                h3 Font Family 
+                p Change the text appearance of the body 
+                h3 Align Section 
+                p You can change the position of content inside body, you can place products first or reverse it and send it to the end.
+                h3 Font Size 
+                p Change the text size of the body 
+                h3 Width 
+                p Change the width of the body 
+                h3 Position Body 
+                p After changing the width of the body you can position your web body to left center or right 
+                h3 Searchbar Visibility 
+                p You can remove searchbar if you dont want it 
+                h3 Searchbar Position 
+                ul 
+                    li Relative 
+                        p Will set your searchbar to where it is 
+                    li Absolute 
+                        p Will set your searchbar to center of cover image.
+            .add__top__margin
+                h2#course__nav__item Item Section 
+                h3 Background Color 
+                p Change the background color of the product item  
+                h3 Font Color 
+                p Change the Font Color of the product item 
+                h3 Flex Item 
+                p Change how your product will be displayed in row or column 
+                h3 Align Section 
+                p You can change the position of content inside item section, you can place products first or reverse it and send it to the end.
+                h3 Font Size 
+                p Change the text size of the item section  
+                h3 Width 
+                p Change the width of the item section  
+                h3 Position Item 
+                p After changing the width of the item section you can position your item section to left center or right 
+                h3 Button Background Color 
+                p Change the background color of the button  
+                h3 Button Font Color 
+                p Change the Font Color of the button 
+            .add__top__margin
+                h2#course__nav__order Order section 
+                h3 Background Color 
+                p Change the background color of the order section  
+                h3 Font Color 
+                p Change the Font Color of the order section 
+                h3 Flex Item 
+                p Change how your orders will be displayed in row or column 
+                h3 Align Section 
+                p You can change the position of content inside order section, you can place first orders first or reverse it and send it to the end.
+                h3 Font Size 
+                p Change the text size of the order section  
+                h3 Width 
+                p Change the width of the order section  
+                h3 Position Item 
+                p After changing the width of the order section you can position your order section to left center or right 
+                h3 Order margin 
+                p You can reduce or increase the gap between orders 
+            .add__top__margin
+                h2#course__nav__footer Footer
+                h3 Background Color 
+                p Change the background color of the footer section  
+                h3 Font Color 
+                p Change the Font Color of the footer section 
+                h3 Flex Item 
+                p Change how your orders will be displayed in row or column 
+                h3 Align Section 
+                p You can change the position of content inside footer section, you can place content first or reverse it and send it to the end.
+                h3 Font Size 
+                p Change the text size of the footer section  
+                h3 Width 
+                p Change the width of the footer section  
+                h3 Position Item 
+                p After changing the width of the footer section you can position your footer section to left center or right 
+                h3 Footer Padding 
+                p You can reduce or increase the gap inside the footer 
+                h3 Footer Radius 
+                p You can change the radius of the footer with this option. 
+
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

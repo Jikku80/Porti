@@ -8,6 +8,15 @@
             item.style.backgroundColor = "#2c2c2c";
         })
     }
+
+    let goto__port = document.querySelectorAll(".portlink");
+
+    goto__port.forEach(item => {
+        item.addEventListener("click", () => {
+            let newid = btoa(item.id);
+            location.assign(`/myportfolio/${newid}`)
+        })
+    })
     
     navbarActions()
 

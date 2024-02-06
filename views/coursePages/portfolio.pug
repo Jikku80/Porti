@@ -1,0 +1,58 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Portfolio
+            p How to update your portfolio detail 
+            P Go to portfolio page from the navbar and you will see Update portfolio.
+            .add__top__margin
+                h2#fill__port Details Filling
+                h3 Name 
+                p Enter your name
+                h3 Role 
+                p Enter your occupation like student, artist, engineer etc 
+                h3 About you 
+                p Describe yourself detaily. About Who you are Porfessionally
+                p If the theme | form has no your strength weakness option include these in about me section.
+                h3 What you do?
+                p Describe What you professionally do.  
+                p Show you are fully aware of what you do and can handle the task if given in this position.
+                h3 Why you do it?
+                p Describe Why you do what you professionally do.  
+                p Tell Why you do it? May be you love doing it, may be you were born for it, may be you see lots of money in this line of profession be honest and tell your story.
+                h3 Your Failure | Probelem You faced While Doing What you do?
+                p Describe The time when you hit rock bottom and how you got yourself back up This kind of points shows how mentally strong you are, how you dont run away from your problems.  
+                p If the form | Theme doesnt have this section feel free to add it in About me section.
+                h3 Previous Work | Accomplishments
+                p Describe What you have done, achieved so far in your line of carreer.  
+                p If you have acheived nothing, flex out your certificates, degrees, your prides your glory days relevent to your profession.
+                h3 Image Section
+                p You can add image from add image section after creating your portfolio.
+                p If your theme has cover image, To update your cover image go to update cover image button and you will be able to change your portfolio cover image.
+                h3 Image Heading Section
+                p Give your Image a heading or if you want to price your art work you can type in Rs. Amount
+            .add__top__margin
+                h2#access__port Access your portfolio
+                p you can use the link copy paste it to browser and open your protfolio.
+                p you can use my portfolio button to open your portfoio directly.
+                p you can click generate qrcode button to get your portfolio qr code, just scan it and open your portfolio.
+            .add__top__margin
+                h2#add__img__port Add Image
+                p This is where you add your previous work image, or certificates. Go to Accomplishment tweak to add images.
+                p Note : Based on layouts this section will appear.
+                p Some layouts dont require images at all.
+            
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

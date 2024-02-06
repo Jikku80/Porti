@@ -1,0 +1,47 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Account Setting
+
+            h2 Change Profile Picutre 
+            p You will have to go to accounts from the navbar and look for change profile picture section. Click on the image icon and it will ask you for the picture you want to change. After selecting a picture click on update and your profile picture will be changed.
+
+            h2 Change User Name 
+            p Go to accounts and look for update your account details here you will see your name and remove and enter your new name and hit update.
+
+            h2 Change Email Address 
+            p You cannot change your email adress 
+
+            h2 Update Password 
+            p Go to accounts and look for update password. First you will have to enter your current password, Now enter your new password and re enter your new password and hit the update button it will update your password.
+
+            h2 Forgot Password 
+            p Go to login page and find forget password section here you will see a input box to enter your email adress, enter your email and hit enter, now you will receive a mail to reset your account password. Follow the link and you will be able to reset the password. 
+
+            h2 Switch Account 
+            p In account page you will see switch account type option from here you can switch your current account to portfolio type, business type, menu type and brochure type.
+
+            h2 Close Account 
+            p To delete your account from vporti just go to the accounts and look for close my account section where you will see close my account button, hit it and all your details are deleted from vporti.com 
+
+            h2 Activity 
+            p From the navbar you can go to activity page, this page holds all the purchases, bookings, reservations you have made using vporti.
+            p You can clear all of your search history from your search history section in the activity page.
+
+
+            
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

@@ -1,24 +1,25 @@
-extends base
+extends courseBase
 
 block content 
     h1.loader
         .bink
             img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
     
-    include _menubar
+    include ../_menubar
     .course__page.white__cont 
         include _sidebarCourse
         .course__ham.hidden
             i.fa-solid.fa-bars-staggered 
         .course__page__content
             h1 Getting Started
-            h2 Login || SignUp 
+            h2#course__nav__login Login || SignUp 
             p To Get started with vporti you will have to create a account first. To create account click on login or start button. This will bring you to the login || sign up page where you can sign up as a new user. 
             p First give a name, use your business name if you are going for menu, catalog and brochure. If for portfolio your name will be fine.
             p Your given name will be your endpoint or link to your menu, catalog, brochure and portfolio : vporti.com/@yourgivenname
             p Second give your email address 
             p Third give a password please give a good password
             p Lastly, select the country you can use short form like np, us 
+            h2#course__nav__after After SigningUp
             p Now after signing up it will ask you what type of account you want to create.
             p Clicking portfolio will create your a portfolio, food menu will create you a menu, catalog will create you a catalog or online store and same with the brochure.
             p After this you will be redirected to your account page. To go to your creation if portfolio, go to portfolio, for menu, go to menu, for catalog, go to catalog and for brochure, go to brochure from the navbar.
@@ -27,7 +28,7 @@ block content
             p To see the statitics of your business click on statitics from the navbar and you will see all the statics 
             p And activity from the navbar has all the purshaes, booking, reservation you have made with vporti.
     .landing__footer
-        include _footer
+        include ../_footer
     script(src="/js/alert.js")
     script(src="/js/newMenu.js") 
     script(src="/js/course.js") 

@@ -698,7 +698,7 @@ p{
 }
 
 .ophalftri{
-    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
 }
 
 .circ{
@@ -917,11 +917,27 @@ p{
     height: 85vh;
     width: 20%;
     padding: 1%;
-    color: rgb(68, 68, 68);
     background-color: #ebebeb;
     position: absolute;
     top: 11vh;
     left: 0;
+}
+
+.course__sidebar__inner{
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.course__sidebar a {
+    color: white;
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-family: Pathway Extreme;
+}
+
+.course__sidebar a:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .course__page{
@@ -932,11 +948,27 @@ p{
 }
 
 .course__page__content{
-    width: 75vw;
+    width: 70vw;
     height: 85vh;
     padding: 2%;
     overflow-y: auto;
     scrollbar-width: none;
+}
+
+.sub__heading{
+    margin: 0;
+}
+
+.add__top__margin{
+    margin-top: 10vh;
+}
+
+.course__page__content p{
+    margin-top: 0;
+}
+
+.course__page__content h2, .course__page__content h3{
+    margin-bottom: 0;
 }
 
 @media (min-width: 601px) and (max-width: 982px){
@@ -1130,7 +1162,7 @@ p{
         font-size: 20px;
     }
 
-    .landing__page h2, .aboutus__page h2{
+    .landing__page h2, .aboutus__page h2, .getintouch__page h2, .guideline__page h2{
         font-size: 16px;
     }
 
@@ -1334,10 +1366,11 @@ p{
     .guideline__card{
         padding: 5%;
         margin: 6%;
+        width: 70%;
     }
 
     .guideline__card img{
-        width: 80vw;
+        width: 60vw;
     }
 
     .getintouch__page, .aboutus__page{

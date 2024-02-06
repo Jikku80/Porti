@@ -1,0 +1,36 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Invitation
+            .add__top__margin
+                h2 Details Filling
+                h3 First name
+                p Provide your name || Party Type (Birthday, House Party)
+                h3 Second name 
+                p If its your marriage or some function that include your mate, bud, use his or her name else use the organizer name
+                h3 Your story 
+                p Story TIme, Tell your story, if marriage about your love life, if other function, describe about the function
+                h3 Venue 
+                p Place where you are organizing your party/function
+                h3 Date 
+                p Function Date. when is the party
+                h3 Time onwards
+                p At what time do you want your guests to arrive? fill In accordingly
+                h3 Phone Number
+                p Just incase if your guests gets lost or wants more detail provide your phone number
+            
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

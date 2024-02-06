@@ -1,0 +1,86 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Catalog
+            .add__top__margin
+                h3 Company Name
+                p Your Registered Company name
+                h3 Company Email
+                p Your Company Email Address
+                h3 Company Social Account Link
+                p Your company social media link where people can find you. Like Facebook, LinkediN, instagram, twitter etc
+                h3 Company Address
+                p Your Company Location
+                h3 Company Address Link
+                p This field is a optional field but if you want to add then copy your location link from map and paste it here. It will help people find you easily.
+                h3 Company Contact
+                p Your Company Contact details, phone number or mobile number
+                h3 Company Slogan
+                p This field is a optional field so if only if your company is using a slong add it here
+            .add__top__margin
+                h2#add__to__catalog Adding Items to your Cataloge
+                h3 Product Name
+                p First give your product a name
+                h3 Product Price
+                p Please provide a price to your prodct. You can use Rs. 150 or $150 your country currency and price.
+                h3 Product Serial No.
+                p If your product has a serial no then use it else. you can leave it blank.
+                h3 Product Category
+                p In the category section use your product category, "Tiles" for all the types of tiles. the category spelling for all the tiles must be same, you cant use tile for porcelian tile and tiles for graphite tile. if you want all the different tiles to show up in same tiles use the same spelling.
+                h3 Product Sub-Category
+                p In sub-category section use your product sub category, if it belongs to "Tiles" and its sub category can be "porcelian tile". please use the same spelling for all types of porcelian tile, so that it show up in porcelian tile when user clicks it.
+                h3 Product Detail
+                p item detail is a optional field if you want to add detail about the product then use it else you can leave it blank.
+                h3 Product Image
+                p item image section, it helps user to see what the product looks like so its good to use the product image
+            .add__top__margin
+                h2#access__catal Access your cataloge
+                p you can use the link copy paste it to browser and open your cataloge.
+                p you can use my cataloge button to open your cataloge directly.
+                p you can click generate qrcode button to get your cataloge qr code, just scan it and open your cataloge.
+            .add__top__margin
+                h2#order__return Orders and Returns
+                h3 Orders
+                p On the Top left corner of catalog page you will see a button which contains recent orders your customers has made.
+                p You can confirm or cancel the order by clicking in the orders.
+                p If the orders arent confirmed nor canceled it will be left as Left Out.
+                h3 Returns
+                p Similarly to the top right side next to the side menu you will see return button which holds recent returns requested to you.
+                p You can confirm or cancel the returns by clicking in the return.
+                p If the returns arent confirmed nor canceled it will be left as Left Out.
+            .add__top__margin
+                h2#update__catal Updating Company
+                p Go To Update Company in your catalog page.
+                p You can change your theme from there too.
+                p You will also find updating your vporti cover image below update company section 
+            .add__top__margin
+                h2#banner__catal Create Banner
+                h3 Discount Percent
+                p Give your desierd discount percent but do not user the % sign
+                h3 Banner Info
+                p Your Banner info like "Festive Offer 30% Discount in selected items"
+            .add__top__margin
+                h2#terms__catal Terms and Policies
+                h3 Terms of service
+                p Provide your terms of service for your customers to see.
+                h3 Privacy Policies
+                p Privacy Policies as you will be getting customers information let users know how you will be using their information.
+            .add__top__margin
+                h2 You Catalog link will be 
+                p vporti.com/@yourusername
+            
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

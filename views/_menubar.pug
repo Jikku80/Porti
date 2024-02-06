@@ -75,9 +75,31 @@
                 ul 
                     li 
                         a.landinganc(href="/vporti/getintouch") Message Us 
-            .ham__starter 
+            .ham__starter
+                if (!user)
+                    a.landinganc.navbar__login.navhead(href="/account/login") Login 
+                    a.navbar__start.navhead.landinganc(href="/account/login") Get Started
+                else 
+                    a.landinganc.navhead(href="/layouts/porti") Layouts
+                    if (user.accountType == "portfolio")
+                        a.navbar__start.navhead.landinganc.portlink(id=`${user._id}`) Portfolio
+                    if (user.accountType === "restaurant")
+                        a.navbar__start.navhead.landinganc(href=`/menu/${user._id}/additemstomenu`) Food Menu
+                    if (user.accountType === "business")
+                        a.navbar__start.navhead.landinganc(href=`/catalouge/${user._id}/additems`) Catalouge
+                    if (user.accountType === "brochure")
+                        a.navbar__start.navhead.landinganc(href=`/brochure/${user._id}/additems`) Brochure
+        .nav__head__content
+            if (!user)
                 a.landinganc.navbar__login.navhead(href="/account/login") Login 
                 a.navbar__start.navhead.landinganc(href="/account/login") Get Started
-        .nav__head__content
-            a.landinganc.navbar__login.navhead(href="/account/login") Login 
-            a.navbar__start.navhead.landinganc(href="/account/login") Get Started
+            else 
+                a.landinganc.navhead(href="/layouts/porti") Layouts
+                if (user.accountType == "portfolio")
+                    a.navbar__start.navhead.landinganc.portlink(id=`${user._id}`) Portfolio
+                if (user.accountType === "restaurant")
+                    a.navbar__start.navhead.landinganc(href=`/menu/${user._id}/additemstomenu`) Food Menu
+                if (user.accountType === "business")
+                    a.navbar__start.navhead.landinganc(href=`/catalouge/${user._id}/additems`) Catalouge
+                if (user.accountType === "brochure")
+                    a.navbar__start.navhead.landinganc(href=`/brochure/${user._id}/additems`) Brochure

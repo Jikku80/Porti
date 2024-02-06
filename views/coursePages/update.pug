@@ -1,0 +1,27 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Update Webpage
+            h2 Updating webpage theme
+            ul
+                li You can update your webpage theme by going to layouts page and clicking on themes 
+                li Go to portfolio/menu/catalog/brochure and to update section and look for theme change the theme and hit update 
+                li From the custom theme page where you can modify what you want 
+                li Some layout has update feature on the webpage, open the updating feature by clicking on setting logo
+            h2 Updating webpage details 
+            p Go to your brochure or catalog or menu or portfolio and find the update section you will see a form where you can enter the details accordinly to labels.
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

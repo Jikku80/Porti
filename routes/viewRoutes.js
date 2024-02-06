@@ -26,7 +26,16 @@ router.post('/send/msg', viewsController.newMsg);
 router.get('/', viewsController.homePage);
 router.get('/vporti/aboutus', viewsController.getAboutPage);
 router.get('/vporti/guidelines', viewsController.getGuidePage);
-router.get('/vporti/courses', viewsController.getCoursePage);
+router.get('/vporti/courses/getting-started', viewsController.getCoursePage);
+router.get('/vporti/courses/custom-theme', viewsController.getCustomThemePage);
+router.get('/vporti/courses/portfolio', viewsController.getCoursePortfolioPage);
+router.get('/vporti/courses/invitation', viewsController.getCourseInvitationPage);
+router.get('/vporti/courses/food-menu', viewsController.getCourseFoodMenuPage);
+router.get('/vporti/courses/catalog', viewsController.getCourseCatalogPage);
+router.get('/vporti/courses/brochure', viewsController.getCourseBrochurePage);
+router.get('/vporti/courses/account-setting', viewsController.getCourseAccountPage);
+router.get('/vporti/courses/update-webpage-detail', viewsController.getCourseUpdatePage);
+
 router.get('/vporti/getintouch', viewsController.getContactPage);
 
 router.post('/scan/qr', viewsController.qrCodeGen);

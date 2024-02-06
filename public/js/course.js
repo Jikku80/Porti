@@ -10,22 +10,29 @@
 
     window.addEventListener("resize", () => {
         if (screen.width < 601){
-            hamnav.classList.remove("hidden");
+            if (hamnav.classList.contains("hidden")){
+                courseside.style.display = "flex";
+                cHead.classList.remove("hidden");
+            }else{
+                hamnav.classList.remove("hidden");
+            }
         }else{
             hamnav.classList.add("hidden");
+            courseside.style.display = "flex";
+            cHead.classList.add("hidden");
         }
     
     })
 
     hamnav.addEventListener('click', () => {
         courseside.style.display = "flex";
-        hamnav.style.display = "none";
+        hamnav.classList.add("hidden");
         cHead.classList.remove("hidden");
     })
 
     close.addEventListener('click', () => {
         courseside.style.display = "none";
-        hamnav.style.display = "flex";
+        hamnav.classList.remove("hidden");
         cHead.classList.add("hidden");
     })
 })();

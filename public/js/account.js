@@ -372,6 +372,7 @@ lakheyBack.addEventListener("click", async (e) => {
             }).then((response) => {
                 load.classList.add("hidden");
                 if (response.status === 200) {
+                    createPortfolio();
                     successAlert("Your Portfolio Account has been set :)");
                     window.setTimeout(() => {
                         location.assign('/layouts/porti');
@@ -566,6 +567,36 @@ lakheyBack.addEventListener("click", async (e) => {
         closesec.classList.add("hidden");
     })
 })();
+
+async function createPortfolio(){
+    let curyname = document.querySelector(".curlogusrnamaya").innerText;
+    let curyemail = document.querySelector(".curlogusremail").innerText;
+    const endpoint = "/api/v1/portfolio/makePorti";
+    try {
+        await fetch((endpoint), {
+            method: 'POST',
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: curyname,
+                email: curyemail,
+                createdAt: Date.now()
+            })
+        }).then((response) => {
+            if (response.status === 201) {
+            } else {
+                errorAlert("Email Address or Phone Number is not correct!!!")
+                console.log(response);
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        errorAlert('Sorry! Something went wrong', err);
+    };
+}
 
 async function createFoodHub() {
     let curyname = document.querySelector(".curlogusrnamaya").innerText;

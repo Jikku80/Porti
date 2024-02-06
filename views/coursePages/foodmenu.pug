@@ -1,0 +1,69 @@
+extends courseBase
+
+block content 
+    h1.loader
+        .bink
+            img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+    
+    include ../_menubar
+    .course__page.white__cont 
+        include _sidebarCourse
+        .course__ham.hidden
+            i.fa-solid.fa-bars-staggered 
+        .course__page__content
+            h1 Food Menu
+            
+            .add__top__margin
+                h3 Food Spot Name
+                p Your registered Food Spot/ Restaurant Name
+                h3 Food Spot Address
+                p Provide your food spot location
+                h3 Food Spot Slogan
+                p If your food spot has any slogan you can use it but this field is optional you can leave it blank.
+            .add__top__margin
+                h2#add__to__menu Adding Items to Menu
+                h3 Food Name
+                p First give your food a name
+                h3 Food Price 
+                p Please provide a price to your food. You can use Rs. 150 or $150 your country currency and price.
+                h3 Food Category 
+                p In category section use the category of the food, "Burger", "Pizza".
+                p Use same category "Burger" for all burgers ("chicken burger", "veg buger"). Note: the category spelling must be exactly same. you cant use burger for chicken burger and burgers for veg burger. use the same spelling.
+                h3 Food Details 
+                p Detail section is optional you can add detail of the food you are presenting or you can just leave it blank. 
+                h3 Food Image 
+                p Food Image section, its more appealing if you provide the exact image to the food.
+                h3 Access your menu
+                p you can use the link copy paste it to browser and open your menu.
+                p you can use my menu button to open your menu directly.
+                p you can click generate qrcode button to get your menu qr code, just scan it and open your menu.
+            .add__top__margin
+                h2#orders__reserve Orders and Reservations
+                h3 Orders
+                p On the Top left corner of menu page you will see a button which contains recent orders your customers has made.
+                p You can confirm or cancel the order by clicking in the orders.
+                p If the orders arent confirmed nor canceled it will be left as Left Out. 
+                h3 Reservations
+                p Similarly to the top right side next to the side menu you will see reservation button which holds recent reservations requested to you.
+                p You can confirm or cancel the reservations by clicking in the reservation.
+                p If the reservations arent confirmed nor canceled it will be left as Left Out.
+            .add__top__margin
+                h2#menu__banner Create Banner
+                h3 Discount Percent
+                p Give your desierd discount percent but do not user the % sign.
+                h3 Banner Info
+                p Your Banner info like "Festive Offer 30% Discount in selected items"
+            .add__top__margin
+                h2#menu__terms Terms and Policies
+                h3 Terms of service
+                p Provide your terms of service for your customers to see.\
+                h3 Privacy Policies
+                p Privacy Policies as you will be getting customers information let users know how you will be using their information.
+            .add__top__margin
+                h2 You Menu link will be 
+                p vport.com/@yourusername
+    .landing__footer
+        include ../_footer
+    script(src="/js/alert.js")
+    script(src="/js/newMenu.js") 
+    script(src="/js/course.js") 

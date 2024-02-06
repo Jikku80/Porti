@@ -74,8 +74,64 @@ exports.getGuidePage = catchAsync(async (req, res, next) => {
 
 exports.getCoursePage = catchAsync(async (req, res, next) => {
 
-    res.status(200).render('course', {
-        title: 'Course'
+    res.status(200).render('coursePages/getting', {
+        title: 'Getting Started'
+    })
+})
+
+exports.getCustomThemePage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/customTheme', {
+        title: 'Cusotm Theme'
+    })
+})
+
+exports.getCoursePortfolioPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/portfolio', {
+        title: 'Portfolio Detail'
+    })
+})
+
+exports.getCourseInvitationPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/invitation', {
+        title: 'Invitation Detail'
+    })
+})
+
+exports.getCourseFoodMenuPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/foodmenu', {
+        title: 'Food Menu Detail'
+    })
+})
+
+exports.getCourseCatalogPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/catalog', {
+        title: 'Catalog Detail'
+    })
+})
+
+exports.getCourseBrochurePage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/brochure', {
+        title: 'Brochure Detail'
+    })
+})
+
+exports.getCourseAccountPage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/account', {
+        title: 'Account Setting Detail'
+    })
+})
+
+exports.getCourseUpdatePage = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('coursePages/update', {
+        title: 'Update Webpage Detail'
     })
 })
 
