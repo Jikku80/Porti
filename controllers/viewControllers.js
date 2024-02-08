@@ -42,6 +42,8 @@ const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 exports.homePage = catchAsync(async (req, res, next) => {
+    
+    
     const portThemes = await Theme.find({themeCategory: "Portfolio"});
     const themes = await Theme.find().then(items => {
         const newItem = items.filter(item => {

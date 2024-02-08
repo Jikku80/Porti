@@ -1,0 +1,29 @@
+.loader
+    .bink
+        img.porti__of__img(src="/images/vlogo.png", alt="porti__img")
+.login__page 
+    .login__box
+        .login__logo__cont 
+            a(href="/")
+                img.login__logo(src="/images/blackbglogo.png", alt="porti__img")
+        form.login__form__cont(name="logForm") 
+            .login__form__inner__cont 
+                label Email Address 
+                .login__form__row
+                    i.fa-solid.fa-envelope
+                    input.log__inputbox#email_add.frm__id(type='email', placeholder="username@gmail.com" name="log_email_add" required)
+            .login__form__inner__cont 
+                label Password 
+                .login__form__row 
+                    i.fa-solid.fa-lock
+                    input.log__inputbox#password.frm__pwd(type='password', name="log_password" placeholder="**********" required)
+            .login__form__button.btn__login Login
+
+        .login__other__cont
+            .login__other__inner__cont
+                .login__page__signup.login__page__other__btn Signup 
+                .login__page__forgot.login__page__other__btn Forgot Password?
+
+script(src="/js/alert.js")
+script(src="/js/login.js") 
+

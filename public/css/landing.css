@@ -116,7 +116,7 @@ p{
 }
 
 .mini__nav ul li {
-    padding: 2%;
+    padding: 1%;
     list-style-type: none;
     cursor: pointer;
     font-size: 14px;
@@ -476,13 +476,13 @@ p{
     overflow-x: auto;
     scrollbar-width: none;
     display: flex;
-    margin-bottom: 2%;
 }
 
 .slider__left{
     position: absolute;
     right: 0;
 }
+
 
 .overlay__container{
     position: relative;
@@ -730,6 +730,11 @@ p{
     color: gray;
 }
 
+.guide__cont a{
+    color: rgb(68, 68, 68);
+    text-decoration: none;
+}
+
 .getintouch__page{
     padding: 3%;
     color: rgb(68, 68, 68);
@@ -859,55 +864,62 @@ p{
 
 .aboutus__page{
     text-align: center;
-    margin-top: 2%;
-    padding: 4%;
     color: rgb(68, 68, 68);
 }
 
-.aboutus__divider{
-    display: flex;
-}
-
-.aboutus__cons{
-    width: 45%;
-    text-align: right;
-    padding-right: 5%;
-}
-
-.aboutus__cons h2{
-    text-decoration-line: line-through;
-    text-decoration-color: gray;
-    text-decoration-thickness: 13%; 
-    color: gray;
-    font-family: sans-serif;
-    margin-bottom: 4.5%;
-}
-
-.aboutus__pros h2, .aboutus__page h1{
-    font-family: Pathway Extreme, sans-serif;
-}
-
-.aboutus__pros{
-    border-left: 2px solid gray;
-    padding-left: 5%;
-    text-align: left;
-}
-
-.about__img__cont__cons{
-    display: flex;
-    justify-content: flex-end;
+.aboutus__cov{
     width: 100%;
+    height: 80vh;
+    filter: brightness(20%);
 }
 
-.about__img{
-    width: 20vw;
-    height: 25vh;
-    filter: grayscale(100%);
+.aboutus__grow{
+    position: absolute;
+    bottom: 30vh;
+    left: 10vw;
+    color: white;
+    text-align: left;
+    display: flex;
+    width: fit-content;
+    width: 90%;
 }
 
-.about__img__pros{
-    width: 18vw;
-    height: 25vh;
+.aboutus__box{
+    height: 30px;
+    width: 25px;
+    margin-right: 1%;
+    background-color: #378A37;
+}
+
+.aboutus__grow h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    margin: 0;
+}
+
+.aboutus__awesome{
+    display: flex;
+    justify-content: space-around;
+    text-align: justify;
+    padding: 4%;
+}
+
+.aboutus__awesome__cont{
+    width: 40%;
+}
+
+
+.aboutus__img__cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.abt__aw__img{
+    width: 100%;
+    filter: grayscale(60%);
+    border-radius: 1rem;
 }
 
 .course__sidebar{
@@ -969,6 +981,103 @@ p{
 
 .course__page__content h2, .course__page__content h3{
     margin-bottom: 0;
+}
+
+.login__page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(68, 68, 68);
+    height: 100vh;
+    background-color: #378A37;
+    font-family: Pathway Extreme;
+}
+
+.login__box{
+    height: 90vh;
+    width: 30vw;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login__logo__cont{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.login__logo{
+    width: 70%;
+    clip-path: circle(36% at 50% 50%);
+    cursor: pointer;
+}
+
+.login__form__cont{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__other__cont{
+    width: 100%;
+    height: 10%;
+}
+
+.login__form__inner__cont{
+    background-color: #A3C4A3;
+    padding: 4%;
+    width: 80%;
+    border-radius: 2rem;
+    margin-bottom: 4%;
+}
+
+.log__inputbox{
+    background-color: #A3C4A3;
+    border: none;
+    width: 90%;
+}
+
+.log__inputbox:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.login__form__button{
+    width: 50%;
+    padding: 4%;
+    border-radius: 2rem;
+    background-color: #247124;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+
+.login__form__button:hover{
+    background-color: #378A37;
+}
+
+.login__other__cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #162d16;
+}
+
+.login__other__inner__cont{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login__page__other__btn:hover{
+    cursor: pointer;
+    color: #247124;
 }
 
 @media (min-width: 601px) and (max-width: 982px){
@@ -1098,7 +1207,6 @@ p{
         display: none;
     }
 
-
     .guide__process{
         bottom: 20%;
     }
@@ -1144,13 +1252,29 @@ p{
     .getintouch__Detail{
         margin-top: 10vw;
     }
+
+    .aboutus__grow{
+        top: 20vh;
+    }
+
+    .aboutus__cov{
+        height: 40vh;
+    }
     
-    .about__img__pros, .about__img{
-        height: 15vh;
+    .aboutus__awesome{
+        flex-direction: column;
+    }
+
+    .aboutus__awesome__cont, .aboutus__img__cont{
+        width: 100%;
     }
 
     .course__sidebar{
         top: 4.5vh;
+    }
+
+    .login__box{
+        width: 50%;
     }
 }
 
@@ -1408,8 +1532,29 @@ p{
         margin-top: 10vw;
     }
 
-    .about__img, .about__img__pros{
-        height: 15vh;
+    .aboutus__cov{
+        height: 50vh;
+    }
+
+    .aboutus__box{
+        height: 20px;
+        width: 15px;
+    }
+
+    .aboutus__grow{
+        bottom: 45vh;
+    }
+
+    .aboutus__grow h1{
+        font-size: 30px;
+    }
+
+    .aboutus__awesome{
+        flex-direction: column;
+    }
+
+    .aboutus__awesome__cont, .aboutus__img__cont{
+        width: 100%;
     }
 
     .course__sidebar{
@@ -1454,6 +1599,10 @@ p{
     .closeCourseHam{
         font-size: 25px;
         cursor: pointer;
+    }
+
+    .login__box{
+        width: 90%;
     }
 }
 
