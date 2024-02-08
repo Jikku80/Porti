@@ -1604,6 +1604,13 @@ p{
     .login__box{
         width: 90%;
     }
+
+    .log__inputbox{
+        background-color: #A3C4A3;
+        border: none;
+        width: 80%;
+    }
+    
 }
 
 @media (max-height: 600px) {
