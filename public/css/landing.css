@@ -983,7 +983,7 @@ p{
     margin-bottom: 0;
 }
 
-.login__page{
+.login__page, .signup__page{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -993,12 +993,16 @@ p{
     font-family: Pathway Extreme;
 }
 
-.login__box{
+.login__box, .signup__box{
     height: 90vh;
     width: 30vw;
     background-color: rgba(255, 255, 255, 0.13);
     border-radius: 2rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.signup__box{
+    height: 98vh;
 }
 
 .login__logo__cont{
@@ -1009,19 +1013,34 @@ p{
     text-align: center;
 }
 
-.login__logo{
+.signup__logo__cont{
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    padding-top: 2%;
+}
+
+.login__logo, .signup__logo{
     width: 70%;
     clip-path: circle(36% at 50% 50%);
     cursor: pointer;
 }
 
-.login__form__cont{
+.signup__logo{
+    width: 40%;
+}
+
+.login__form__cont, .signup__form__cont{
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.signup__form__cont{
+    height: 55%;
 }
 
 .login__other__cont{
@@ -1049,7 +1068,7 @@ p{
 }
 
 .login__form__button{
-    width: 50%;
+    width: 70%;
     padding: 4%;
     border-radius: 2rem;
     background-color: #247124;
@@ -1059,14 +1078,13 @@ p{
 }
 
 .login__form__button:hover{
-    background-color: #378A37;
+    background-color: #162d16;
 }
 
 .login__other__cont{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #162d16;
 }
 
 .login__other__inner__cont{
@@ -1075,9 +1093,13 @@ p{
     justify-content: space-between;
 }
 
+.login__page__other__btn{
+    color: #162d16;
+}
+
 .login__page__other__btn:hover{
     cursor: pointer;
-    color: #247124;
+    color: #051d05;
 }
 
 @media (min-width: 601px) and (max-width: 982px){
@@ -1273,8 +1295,19 @@ p{
         top: 4.5vh;
     }
 
-    .login__box{
+    .login__box, .signup__box{
         width: 50%;
+    }
+
+    .signup__logo__cont{
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signup__logo{
+        width: 70%;
     }
 }
 
@@ -1601,8 +1634,19 @@ p{
         cursor: pointer;
     }
 
-    .login__box{
+    .login__box, .signup__box{
         width: 90%;
+    }
+
+    .signup__logo__cont{
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signup__logo{
+        width: 70%;
     }
 
     .log__inputbox{

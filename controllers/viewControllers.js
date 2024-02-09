@@ -147,7 +147,14 @@ exports.getContactPage = catchAsync(async (req, res, next) => {
 exports.getOverview = catchAsync(async (req, res, next) => {
 
     res.status(200).render('overview', {
-        title: 'Login | SignUp'
+        title: 'Login'
+    })
+})
+
+exports.getSignup = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('signupPage', {
+        title: 'Signup'
     })
 })
 
