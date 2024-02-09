@@ -7,20 +7,6 @@ let pwdConfirm = document.getElementById("passwordConfirm");
 let termbox = document.getElementById("termbox");
 let country = document.getElementById("country");
 
-let sign__up = document.querySelector(".sign__up")
-let signCancel = document.getElementById("signCancel");
-
-clickme.addEventListener('click', () => {
-    sign__up.classList.remove('hidden');
-    clickme.classList.add('hidden');
-    window.location.hash = "#signUpForm"
-})
-
-signCancel.addEventListener("click", () => {
-    sign__up.classList.add('hidden');
-    clickme.classList.remove('hidden');
-})
-
 signup.addEventListener('click', async (e) => {
     let sameE = document.querySelector(".same__email__warn");
     let same = document.querySelector(".same__user__warn");
@@ -122,7 +108,7 @@ signup.addEventListener('click', async (e) => {
 })
 
 
-let termsandcond = document.getElementById("termsandcond");
+let termsandcond = document.querySelector(".signup__term");
 let tac = document.querySelector(".termsandconditions");
 let termcancel = document.getElementById("termCancel");
 

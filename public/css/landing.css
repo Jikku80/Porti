@@ -1014,7 +1014,7 @@ p{
 }
 
 .signup__logo__cont{
-    height: 30%;
+    height: 28%;
     width: 100%;
     text-align: center;
     padding-top: 2%;
@@ -1027,7 +1027,7 @@ p{
 }
 
 .signup__logo{
-    width: 40%;
+    width: 30%;
 }
 
 .login__form__cont, .signup__form__cont{
@@ -1100,6 +1100,20 @@ p{
 .login__page__other__btn:hover{
     cursor: pointer;
     color: #051d05;
+}
+
+.signup__box .terms__cond #termbox{
+    border: none;
+    background-color: #A3C4A3 !important;
+}
+
+.signup__term{
+    color: #162d16;
+}
+
+.signup__term:hover{
+    color: #051d05;
+    cursor: pointer;
 }
 
 @media (min-width: 601px) and (max-width: 982px){

@@ -15,22 +15,22 @@ block content
                     label Business Name || Your Name  
                     .login__form__row
                         i.fa-solid.fa-user
-                        input.log__inputbox(type='text', placeholder="username" required)
+                        input#m_name.log__inputbox(type='text', placeholder="username" required)
                 .login__form__inner__cont 
                     label Email Address 
                     .login__form__row
                         i.fa-solid.fa-envelope
-                        input.log__inputbox(type='email', placeholder="username@gmail.com" required)
+                        input#m_email.log__inputbox(type='email', placeholder="username@gmail.com" required)
                 .login__form__inner__cont 
                     label Password 
                     .login__form__row 
                         i.fa-solid.fa-lock
-                        input.log__inputbox(type='password' placeholder="**********" required)
+                        input#m_password.log__inputbox(type='password' placeholder="**********" required)
                 .login__form__inner__cont 
                     label Re-Enter Password 
                     .login__form__row 
                         i.fa-solid.fa-lock
-                        input.log__inputbox(type='password' placeholder="**********" required)
+                        input#passwordConfirm.log__inputbox(type='password' placeholder="**********" required)
                 .login__form__inner__cont 
                     label Select Country  
                     .login__form__row
@@ -300,11 +300,186 @@ block content
                                 <option value="VU" label="Vanuatu">Vanuatu</option>
                                 <option value="WF" label="Wallis and Futuna">Wallis and Futuna</option>
                             </optgroup>
-                .login__form__button Signup
+                .terms__cond
+                    input#termbox(type="checkbox", required)
+                    label.signup__term I have read all Conditions
+                .login__form__button.btn__signup Signup
 
             //- .login__other__cont.signup__other__cont
             //-     .login__other__inner__cont
             //-         a.login__page__signup.login__page__other__btn(href="/account/login") Login 
             //-         a.login__page__forgot.login__page__other__btn(href="/account/forgot-password") Forgot Password?
 
+            p.same__user__warn.maf.hidden User with this name already exits. Please use a different one!
+            p.white__space.maf.hidden You cannot use space in name!!!
+            p.unallowed__charc.maf.hidden special characters ~`!#$%^&*+=-[]\\\';,/{}|\":<>? are not allowed
+            p.same__email__warn.maf.hidden Email already in Use. Please use a different one or go to Forgot Password!
+
+            .termsandconditions.hidden 
+                .term__main
+                    .terms__head
+                        h1 Terms and Conditions
+                        img#termCancel.pointer(src="/images/cancel.png" alt="cancel_img") 
+                    .terms__bod
+                        h2 Welcome to Vporti
+                        p These terms of service outline the rules and regulations for the use of Vporti's Website.
+                        p By accessing this website we assume you accept these terms of service in full. Do not continue to use 
+                            span Vporti's website if you do not accept all of the terms of service stated on this page.
+                        p The following terminology applies to these Terms of Service, Privacy Statement and Disclaimer Notice and 
+                            span any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website
+                            span and accepting the Company's terms of service. "The Company", "Ourselves", "We", "Our" and "Us", refers
+                            span to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client
+                            span or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake
+                            span the process of our assistance to the Client in the most appropriate manner, whether by formal meetings
+                            span of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect
+                            span of provision of the Company's stated services/products, in accordance with and subject to, prevailing law
+                            span of . Any use of the above terminology or other words in the singular, plural,
+                            span capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+                        h2 Cookies 
+                        p We employ the use of cookies. By using Vporti's website you consent to the use of cookies
+                            span in accordance with Vporti's privacy policy.
+                        p Most of the modern day interactive web sites
+                            span use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site
+                            span to enable the functionality of this area and ease of use for those people visiting. Some of our
+                            span affiliate / advertising partners may also use cookies.
+
+
+                        h2 License
+                        p Unless otherwise stated, Vporti and/or it's licensors own the intellectual property rights for
+                            span all material on Vporti. All intellectual property rights are reserved. You may view and/or print
+                            span pages from www.vporti.com for your own personal use subject to restrictions set in these terms of service.
+                        p You must not:
+                        ol
+                            li Republish material from www.vporti.com
+                            li Sell, rent or sub-license material from www.vporti.com
+                            li Reproduce, duplicate or copy material from www.vporti.com
+                        p Redistribute content from Vporti (unless content is specifically made for redistribution).
+
+
+                        h2 User Comments
+                        ol
+                            li This Agreement shall begin on the date hereof.
+                            li Certain parts of this website offer the opportunity for users to post and exchange opinions, information,
+                                span material and data ('Comments') in areas of the website. Vporti does not screen, edit, publish
+                                span or review Comments prior to their appearance on the website and Comments do not reflect the views or
+                                span opinions of Vporti, its agents or affiliates. Comments reflect the view and opinion of the
+                                span person who posts such view or opinion. To the extent permitted by applicable laws Vporti shall
+                                span not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused
+                                span and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this
+                                span website.
+                            li Vporti reserves the right to monitor all Comments and to remove any Comments which it considers
+                                span in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms of Service.
+                            li You warrant and represent that:
+                                ol
+                                    li You are entitled to post the Comments on our website and have all necessary licenses and consents to
+                                        span do so;
+                                    li The Comments do not infringe any intellectual property right, including without limitation copyright,
+                                        span patent or trademark, or other proprietary right of any third party;
+                                    li The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material
+                                        span or material which is an invasion of privacy
+                                    li The Comments will not be used to solicit or promote business or custom or present commercial activities
+                                        span or unlawful activity.
+                            li
+                            li You hereby grant to 
+                                strong Vporti 
+                                span a non-exclusive royalty-free license to use, reproduce,
+                                span edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats
+                                span or media.
+                        h2 Hyperlinking to our Content
+                        ol
+                            li The following organizations may link to our Web site without prior written approval:
+                                ol
+                                    li Government agencies;
+                                    li Search engines;
+                                    li News organizations;
+                                    li Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses; and
+                                    li Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.
+                        ol(start="2")
+                            li These organizations may link to our home page, to publications or to other Web site information so long
+                                span as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or
+                                span approval of the linking party and its products or services; and (c) fits within the context of the linking
+                                span party's site.
+                            li We may consider and approve in our sole discretion other link requests from the following types of organizations:
+                                ol
+                                    li commonly-known consumer and/or business information sources such as Chambers of Commerce, American
+                                        span Automobile Association, AARP and Consumers Union;
+                                    li dot.com community sites;
+                                    li associations or other groups representing charities, including charity giving sites,
+                                    li online directory distributors;
+                                    li internet portals;
+                                    li accounting, law and consulting firms whose primary clients are businesses; and
+                                    li educational institutions and trade associations.
+                        p We will approve link requests from these organizations if we determine that: (a) the link would not reflect
+                            span unfavorably on us or our accredited businesses (for example, trade associations or other organizations
+                            span representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed
+                            span to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from
+                            span the visibility associated with the hyperlink outweighs the absence of Vporti; and (d) where the
+                            span link is in the context of general resource information or is otherwise consistent with editorial content
+                            span in a newsletter or similar product furthering the mission of the organization.
+
+                        p These organizations may link to our home page, to publications or to other Web site information so long as
+                            span the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval
+                            span of the linking party and it products or services; and (c) fits within the context of the linking party's
+                            span site.
+
+                        p If you are among the organizations listed in paragraph 2 above and are interested in linking to our website,
+                            span you must notify us by sending an e-mail to 
+                            a(href="mailto:lakheydetech@gmail.com" title="send an email to lakheydetech@gmail.com") lakheydetech@gmail.com.
+                            span Please include your name, your organization name, contact information (such as a phone number and/or e-mail
+                            span address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site,
+                            span and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.
+
+                        p Approved organizations may hyperlink to our Web site as follows:
+
+                        ol
+                            li By use of our corporate name; or
+                            li By use of the uniform resource locator (Web address) being linked to; or
+                            li By use of any other description of our Web site or material being linked to that makes sense within the
+                                span context and format of content on the linking party's site.
+                        p No use of Vporti's logo or other artwork will be allowed for linking absent a trademark license agreement.
+                        h2 Iframes
+                        p Without prior approval and express written permission, you may not create frames around our Web pages or
+                            span use other techniques that alter in any way the visual presentation or appearance of our Web site.
+                        h2 Content Liability
+                        p We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify
+                            span and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any
+                            span page on your Web site or within any context containing content or materials that may be interpreted as
+                            span libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or
+                            span other violation of, any third party rights.
+                        h2 Reservation of Rights
+                        p We reserve the right at any time and in its sole discretion to request that you remove all links or any particular
+                            span link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also
+                            span reserve the right to amend these terms of service and its linking policy at any time. By continuing
+                            span to link to our Web site, you agree to be bound to and abide by these linking terms of service.
+                        h2 Removal of links from our website
+                        p If you find any link on our Web site or any linked web site objectionable for any reason, you may contact
+                            span us about this. We will consider requests to remove links but will have no obligation to do so or to respond
+                            span directly to you.
+                        p Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness
+                            span or accuracy; nor do we commit to ensuring that the website remains available or that the material on the
+                            span website is kept up to date.
+                        h2 Disclaimer
+                        p To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:
+                        ol
+                            li limit or exclude our or your liability for death or personal injury resulting from negligence;
+                            li limit or exclude our or your liability for fraud or fraudulent misrepresentation;
+                            li limit any of our or your liabilities in any way that is not permitted under applicable law; or
+                            li exclude any of our or your liabilities that may not be excluded under applicable law.
+                        p The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a)
+                            span are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or
+                            span in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort
+                            span (including negligence) and for breach of statutory duty.
+                        p To the extent that the website and the information and services on the website are provided free of charge,
+                            span we will not be liable for any loss or damage of any nature.
+                            span 
+                                h2 Future Update
+                                p Terms of use will be changed accordingly to update in application structure in future.
+                                span Credit &amp; Contact Information
+                        p This Terms of service page was created at 
+                            span 
+                                a(href="https://privacyterms.io/terms-conditions-generator/") privacyterms.io terms &amp; conditions generator. 
+                            spanIf you have
+                            span any queries regarding any of our terms, please contact us.
+
     script(src="/js/alert.js")
+    script(src="/js/auth/signup.js") 
