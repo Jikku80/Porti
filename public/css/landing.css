@@ -554,8 +554,8 @@ p{
 
 .slider__img{
     display: block;
-    width: 40vw;
-    height: 40vh;
+    width: 45vw;
+    height: 45vh;
     margin: 40px;
 }
 
@@ -904,6 +904,10 @@ p{
     padding: 4%;
 }
 
+.aboutus__secawesome{
+    padding-top: 0;
+}
+
 .aboutus__awesome__cont{
     width: 40%;
 }
@@ -1003,6 +1007,7 @@ p{
 
 .signup__box{
     height: 98vh;
+    background-color: rgba(0, 0, 0, 0.253);
 }
 
 .login__logo__cont{
@@ -1014,20 +1019,17 @@ p{
 }
 
 .signup__logo__cont{
-    height: 28%;
     width: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     padding-top: 2%;
 }
 
-.login__logo, .signup__logo{
+.login__logo{
     width: 70%;
     clip-path: circle(36% at 50% 50%);
     cursor: pointer;
-}
-
-.signup__logo{
-    width: 30%;
 }
 
 .login__form__cont, .signup__form__cont{
@@ -1040,7 +1042,7 @@ p{
 }
 
 .signup__form__cont{
-    height: 55%;
+    height: auto;
 }
 
 .login__other__cont{
@@ -1052,7 +1054,7 @@ p{
     background-color: #A3C4A3;
     padding: 4%;
     width: 80%;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     margin-bottom: 4%;
 }
 
@@ -1068,13 +1070,17 @@ p{
 }
 
 .login__form__button{
-    width: 70%;
+    width: 80%;
     padding: 4%;
     border-radius: 2rem;
     background-color: #247124;
     text-align: center;
     cursor: pointer;
     color: white;
+}
+
+.btn__signup{
+    background-color: #378A37;
 }
 
 .login__form__button:hover{
@@ -1107,11 +1113,11 @@ p{
     background-color: #A3C4A3 !important;
 }
 
-.signup__term{
-    color: #162d16;
+.signup__term, .signup_to_login{
+    color: white;
 }
 
-.signup__term:hover{
+.signup__term:hover, .signup_to_login:hover{
     color: #051d05;
     cursor: pointer;
 }
@@ -1313,15 +1319,12 @@ p{
         width: 50%;
     }
 
-    .signup__logo__cont{
-        height: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .signup__box{
+        height: 80vh;
     }
 
-    .signup__logo{
-        width: 70%;
+    .signup__logo__cont{
+        padding-top: 5%;
     }
 }
 
@@ -1653,14 +1656,7 @@ p{
     }
 
     .signup__logo__cont{
-        height: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .signup__logo{
-        width: 70%;
+        padding-top: 5%;
     }
 
     .log__inputbox{

@@ -1,19 +1,5 @@
 let forgotpwd = document.querySelector('.btn__forgotPwd');
 let forgotemail = document.querySelector('#forgot_email');
-let fgPwd = document.getElementById("forgotPwd")
-let fgtPwd = document.querySelector(".forgot_pwd")
-let closeBtn = document.getElementById("closeBtn")
-
-fgtPwd.addEventListener("click", () => {
-    fgPwd.classList.remove("hidden");
-    fgtPwd.classList.add('hidden');
-    window.location.hash = "#forgotPwd"
-})
-
-closeBtn.addEventListener("click", () => {
-    fgPwd.classList.add("hidden");
-    fgtPwd.classList.remove('hidden');
-})
 
 forgotpwd.addEventListener("click", async (e) => {
     if (forgotemail.value < 1 || forgotemail.value == "" || forgotemail.value == null) {

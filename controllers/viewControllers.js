@@ -158,6 +158,13 @@ exports.getSignup = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.getForgot = catchAsync(async (req, res, next) => {
+
+    res.status(200).render('forgotPassword', {
+        title: 'Forgot Password'
+    })
+})
+
 exports.getAllMsg = catchAsync(async (req, res, next) => {
 
     const message = await Message.find();
@@ -500,7 +507,7 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
 });
 
 exports.restForm = (req, res) => {
-    res.status(200).render('reset', {
+    res.status(200).render('resetPassword', {
         title: 'Reset Your Password'
     })
 }
