@@ -78,7 +78,7 @@
             .ham__starter
                 if (!user)
                     a.landinganc.navbar__login.navhead(href="/account/login") Login 
-                    a.navbar__start.navhead.landinganc(href="/account/login") Get Started
+                    a.navbar__start.navhead.landinganc(href="/account/signup") Get Started
                 else 
                     a.landinganc.navhead(href="/layouts/porti") Layouts
                     if (user.accountType == "portfolio")
@@ -92,7 +92,7 @@
         .nav__head__content
             if (!user)
                 a.landinganc.navbar__login.navhead(href="/account/login") Login 
-                a.navbar__start.navhead.landinganc(href="/account/login") Get Started
+                a.navbar__start.navhead.landinganc(href="/account/signup") Get Started
             else 
                 a.landinganc.navhead(href="/layouts/porti") Layouts
                 if (user.accountType == "portfolio")
