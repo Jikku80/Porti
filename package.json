@@ -4,7 +4,7 @@
   "description": "Create Virtual Portfolio, Invitation, Food Menu, Catalog, Brochure",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "SET NODE_ENV=production & node server.js",
     "test": "echo \"No test specified\"",
     "build": "netlify deploy --prod"
