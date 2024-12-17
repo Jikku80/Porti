@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production & node server.js",
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified\"",
+    "build": "netlify deploy --prod"
   },
   "author": "Lakhey De Tech",
   "license": "ISC",
